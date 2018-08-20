@@ -246,9 +246,9 @@ export interface AzureFirewall extends Resource {
  * IP addresses defined in network interfaces.
  * @member {array} [loadBalancingRules] Gets load balancing rules that use this
  * backend address pool.
- * @member {object} [outboundNatRule] Gets outbound rules that use this backend
+ * @member {object} [outboundRule] Gets outbound rules that use this backend
  * address pool.
- * @member {string} [outboundNatRule.id] Resource ID.
+ * @member {string} [outboundRule.id] Resource ID.
  * @member {string} [provisioningState] Get provisioning state of the public IP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -259,7 +259,7 @@ export interface AzureFirewall extends Resource {
 export interface BackendAddressPool extends SubResource {
   readonly backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
   readonly loadBalancingRules?: SubResource[];
-  readonly outboundNatRule?: SubResource;
+  readonly outboundRule?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -338,6 +338,8 @@ export interface BackendAddressPool extends SubResource {
  * unique read-only string that changes whenever the resource is updated.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
+ * array of service endpoint policies.
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
@@ -430,6 +432,9 @@ export interface BackendAddressPool extends SubResource {
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
  * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -482,6 +487,10 @@ export interface BackendAddressPool extends SubResource {
  * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
+ * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
+ * Public IP Prefix this Public IP Address should be allocated from.
+ * @member {string} [backendIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
  * @member {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
@@ -519,6 +528,9 @@ export interface BackendAddressPool extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -535,6 +547,7 @@ export interface InboundNatRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -839,6 +852,55 @@ export interface ServiceEndpointPropertiesFormat {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinition class.
+ * @constructor
+ * Service Endpoint policy definitions.
+ *
+ * @member {string} [description] A description for this rule. Restricted to
+ * 140 chars.
+ * @member {string} [service] service endpoint name.
+ * @member {array} [serviceResources] A list of service resources.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * end point policy definition. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicyDefinition extends SubResource {
+  description?: string;
+  service?: string;
+  serviceResources?: string[];
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicy class.
+ * @constructor
+ * Service End point policy resource.
+ *
+ * @member {array} [serviceEndpointPolicyDefinitions] A collection of service
+ * endpoint policy definitions of the service endpoint policy.
+ * @member {string} [resourceGuid] The resource GUID property of the service
+ * endpoint policy resource.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicy extends Resource {
+  serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinition[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddressSku class.
  * @constructor
  * SKU of a public IP address
@@ -879,7 +941,7 @@ export interface PublicIPAddressDnsSettings {
  * @class
  * Initializes a new instance of the IpTag class.
  * @constructor
- * Contains the IpTag associated with the public IP address
+ * Contains the IpTag associated with the object
  *
  * @member {string} [ipTagType] Gets or sets the ipTag type: Example
  * FirstPartyUsage.
@@ -954,6 +1016,8 @@ export interface IpTag {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -993,6 +1057,9 @@ export interface IpTag {
  * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
+ * @member {object} [publicIPPrefix] The Public IP Prefix this Public IP
+ * Address should be allocated from.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
@@ -1012,6 +1079,7 @@ export interface PublicIPAddress extends Resource {
   dnsSettings?: PublicIPAddressDnsSettings;
   ipTags?: IpTag[];
   ipAddress?: string;
+  publicIPPrefix?: SubResource;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
   provisioningState?: string;
@@ -1064,6 +1132,8 @@ export interface PublicIPAddress extends Resource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1106,6 +1176,9 @@ export interface PublicIPAddress extends Resource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1194,6 +1267,8 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
  * @member {array} [serviceEndpoints] An array of service endpoints.
+ * @member {array} [serviceEndpointPolicies] An array of service endpoint
+ * policies.
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
@@ -1209,6 +1284,7 @@ export interface Subnet extends SubResource {
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
+  serviceEndpointPolicies?: ServiceEndpointPolicy[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -1271,6 +1347,8 @@ export interface Subnet extends SubResource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1349,6 +1427,9 @@ export interface Subnet extends SubResource {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1392,6 +1473,9 @@ export interface Subnet extends SubResource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1616,6 +1700,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1705,6 +1791,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
  * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1754,6 +1843,10 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
+ * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
+ * IP Prefix this Public IP Address should be allocated from.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
  * idle timeout of the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
@@ -3110,6 +3203,8 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
  * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @member {boolean} [allowGlobalReach] Flag to enable Global Reach on the
+ * circuit.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -3125,6 +3220,7 @@ export interface ExpressRouteCircuit extends Resource {
   serviceProviderProperties?: ExpressRouteCircuitServiceProviderProperties;
   provisioningState?: string;
   gatewayManagerEtag?: string;
+  allowGlobalReach?: boolean;
   readonly etag?: string;
 }
 
@@ -3481,8 +3577,8 @@ export interface LoadBalancerSku {
  * this frontend IP.
  * @member {array} [inboundNatPools] Read only. Inbound pools URIs that use
  * this frontend IP.
- * @member {array} [outboundNatRules] Read only. Outbound rules URIs that use
- * this frontend IP.
+ * @member {array} [outboundRules] Read only. Outbound rules URIs that use this
+ * frontend IP.
  * @member {array} [loadBalancingRules] Gets load balancing rules URIs that use
  * this frontend IP.
  * @member {string} [privateIPAddress] The private IP address of the IP
@@ -3524,6 +3620,8 @@ export interface LoadBalancerSku {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -3599,6 +3697,9 @@ export interface LoadBalancerSku {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -3642,6 +3743,9 @@ export interface LoadBalancerSku {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -3653,6 +3757,9 @@ export interface LoadBalancerSku {
  * changes whenever the resource is updated.
  * @member {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
+ * @member {object} [publicIPPrefix] The reference of the Public IP Prefix
+ * resource.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3666,12 +3773,13 @@ export interface LoadBalancerSku {
 export interface FrontendIPConfiguration extends SubResource {
   readonly inboundNatRules?: SubResource[];
   readonly inboundNatPools?: SubResource[];
-  readonly outboundNatRules?: SubResource[];
+  readonly outboundRules?: SubResource[];
   readonly loadBalancingRules?: SubResource[];
   privateIPAddress?: string;
   privateIPAllocationMethod?: string;
   subnet?: Subnet;
   publicIPAddress?: PublicIPAddress;
+  publicIPPrefix?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3711,6 +3819,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {boolean} [disableOutboundSnat] Configures SNAT for the VMs in the
  * backend pool to use the publicIP address specified in the frontend of the
  * load balancing rule.
@@ -3732,6 +3843,7 @@ export interface LoadBalancingRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   disableOutboundSnat?: boolean;
   provisioningState?: string;
   name?: string;
@@ -3812,6 +3924,9 @@ export interface Probe extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3828,6 +3943,7 @@ export interface InboundNatPool extends SubResource {
   backendPort: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3835,9 +3951,9 @@ export interface InboundNatPool extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the OutboundNatRule class.
+ * Initializes a new instance of the OutboundRule class.
  * @constructor
- * Outbound NAT pool of the load balancer.
+ * Outbound pool of the load balancer.
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
@@ -3849,16 +3965,26 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
+ * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * include: 'Tcp', 'Udp', 'All'
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface OutboundNatRule extends SubResource {
+export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
   frontendIPConfigurations?: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
+  protocol?: string;
+  enableTcpReset?: boolean;
+  idleTimeoutInMinutes?: number;
   name?: string;
   etag?: string;
 }
@@ -3894,7 +4020,7 @@ export interface OutboundNatRule extends SubResource {
  * Nat rules. Inbound NAT pools are referenced from virtual machine scale sets.
  * NICs that are associated with individual virtual machines cannot reference
  * an inbound NAT pool. They have to reference individual inbound NAT rules.
- * @member {array} [outboundNatRules] The outbound NAT rules.
+ * @member {array} [outboundRules] The outbound rules.
  * @member {string} [resourceGuid] The resource GUID property of the load
  * balancer resource.
  * @member {string} [provisioningState] Gets the provisioning state of the
@@ -3911,7 +4037,7 @@ export interface LoadBalancer extends Resource {
   probes?: Probe[];
   inboundNatRules?: InboundNatRule[];
   inboundNatPools?: InboundNatPool[];
-  outboundNatRules?: OutboundNatRule[];
+  outboundRules?: OutboundRule[];
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
@@ -3975,6 +4101,947 @@ export interface ErrorModel {
 export interface AzureAsyncOperationResult {
   status?: string;
   error?: ErrorModel;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkTap class.
+ * @constructor
+ * Virtual Network Tap resource
+ *
+ * @member {array} [networkInterfaceTapConfigurations] Specifies the list of
+ * resource IDs for the network interface IP configuration that needs to be
+ * tapped.
+ * @member {object} [destinationNetworkInterfaceIPConfiguration] The reference
+ * to the private IP Address of the collector nic that will receive the tap
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.privateIPAddress] The private IP
+ * address of the IP configuration.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod] The
+ * private IP allocation method. Possible values are 'Static' and 'Dynamic'.
+ * Possible values include: 'Static', 'Dynamic'
+ * @member {object} [destinationNetworkInterfaceIPConfiguration.subnet] The
+ * reference of the subnet resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.addressPrefix] The
+ * address prefix for the subnet.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup] The
+ * reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable] The reference
+ * of the RouteTable resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.subnets] A
+ * collection of references to subnets.
+ * @member {boolean}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.etag] Gets a
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpoints] An
+ * array of service endpoints.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations] Gets an
+ * array of references to the network interface IP configurations using subnet.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.provisioningState] The
+ * provisioning state of the resource.
+ * @member {string} [destinationNetworkInterfaceIPConfiguration.subnet.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string} [destinationNetworkInterfaceIPConfiguration.subnet.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress] The reference
+ * of the public IP resource.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku] The public
+ * IP address SKU.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku.name] Name
+ * of a public IP address SKU. Possible values include: 'Basic', 'Standard'
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+ * The public IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAddressVersion]
+ * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+ * Possible values include: 'IPv4', 'IPv6'
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration]
+ * The IP configuration associated with the public IP address.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings] The
+ * FQDN of the DNS record associated with the public IP address.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+ * Gets or sets the Domain name label.The concatenation of the domain name
+ * label and the regionalized DNS zone make up the fully qualified domain name
+ * associated with the public IP address. If a domain name label is specified,
+ * an A DNS record is created for the public IP in the Microsoft Azure DNS
+ * system.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+ * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+ * with the public IP. This is the concatenation of the domainNameLabel and the
+ * regionalized DNS zone.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+ * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+ * that resolves to this public IP address. If the reverseFqdn is specified,
+ * then a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags] The list
+ * of tags associated with the public IP address.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipAddress] The
+ * IP address associated with the public IP address resource.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix]
+ * The Public IP Prefix this Public IP Address should be allocated from.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
+ * @member {number}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+ * The idle timeout of the public IP address.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.resourceGuid]
+ * The resource GUID property of the public IP resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.provisioningState]
+ * The provisioning state of the PublicIP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.provisioningState] Gets the
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [destinationNetworkInterfaceIPConfiguration.name] The name
+ * of the resource that is unique within a resource group. This name can be
+ * used to access the resource.
+ * @member {string} [destinationNetworkInterfaceIPConfiguration.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {object} [destinationLoadBalancerFrontEndIPConfiguration] The
+ * reference to the private IP address on the internal Load Balancer that will
+ * receive the tap
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.inboundNatRules] Read only.
+ * Inbound rules URIs that use this frontend IP.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.inboundNatPools] Read only.
+ * Inbound pools URIs that use this frontend IP.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.outboundRules] Read only.
+ * Outbound rules URIs that use this frontend IP.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.loadBalancingRules] Gets
+ * load balancing rules URIs that use this frontend IP.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress] The
+ * private IP address of the IP configuration.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
+ * The Private IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {object} [destinationLoadBalancerFrontEndIPConfiguration.subnet] The
+ * reference of the subnet resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix] The
+ * address prefix for the subnet.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
+ * The reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable] The
+ * reference of the RouteTable resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.subnets] A
+ * collection of references to subnets.
+ * @member {boolean}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag] Gets
+ * a unique read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints] An
+ * array of service endpoints.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurations]
+ * Gets an array of references to the network interface IP configurations using
+ * subnet.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.name] The name of the
+ * resource that is unique within a resource group. This name can be used to
+ * access the resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress] The
+ * reference of the Public IP resource.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku] The
+ * public IP address SKU.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
+ * Name of a public IP address SKU. Possible values include: 'Basic',
+ * 'Standard'
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+ * The public IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
+ * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+ * Possible values include: 'IPv4', 'IPv6'
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration]
+ * The IP configuration associated with the public IP address.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
+ * The private IP address of the IP configuration.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
+ * The private IP allocation method. Possible values are 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet]
+ * The reference of the subnet resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
+ * The address prefix for the subnet.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
+ * The reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
+ * The reference of the RouteTable resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
+ * A collection of references to subnets.
+ * @member {boolean}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * Gets an array of references to the network interface IP configurations using
+ * subnet.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
+ * The reference of the public IP resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
+ * Gets the provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
+ * The FQDN of the DNS record associated with the public IP address.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+ * Gets or sets the Domain name label.The concatenation of the domain name
+ * label and the regionalized DNS zone make up the fully qualified domain name
+ * associated with the public IP address. If a domain name label is specified,
+ * an A DNS record is created for the public IP in the Microsoft Azure DNS
+ * system.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+ * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+ * with the public IP. This is the concatenation of the domainNameLabel and the
+ * regionalized DNS zone.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+ * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+ * that resolves to this public IP address. If the reverseFqdn is specified,
+ * then a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags] The
+ * list of tags associated with the public IP address.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
+ * The IP address associated with the public IP address resource.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
+ * The Public IP Prefix this Public IP Address should be allocated from.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
+ * @member {number}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+ * The idle timeout of the public IP address.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
+ * The resource GUID property of the public IP resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
+ * The provisioning state of the PublicIP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones] A
+ * list of availability zones denoting the IP allocated for the resource needs
+ * to come from.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix] The
+ * reference of the Public IP Prefix resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id] Resource
+ * ID.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.provisioningState] Gets the
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [destinationLoadBalancerFrontEndIPConfiguration.name] The
+ * name of the resource that is unique within a resource group. This name can
+ * be used to access the resource.
+ * @member {string} [destinationLoadBalancerFrontEndIPConfiguration.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {array} [destinationLoadBalancerFrontEndIPConfiguration.zones] A
+ * list of availability zones denoting the IP allocated for the resource needs
+ * to come from.
+ * @member {number} [destinationPort] The VXLAN destination port that will
+ * receive the tapped traffic.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VirtualNetworkTap extends Resource {
+  networkInterfaceTapConfigurations?: NetworkInterfaceTapConfiguration[];
+  destinationNetworkInterfaceIPConfiguration?: IPConfiguration;
+  destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfiguration;
+  destinationPort?: number;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkInterfaceTapConfiguration class.
+ * @constructor
+ * Tap configuration in a Network Interface
+ *
+ * @member {object} [virtualNetworkTap] The reference of the Virtual Network
+ * Tap resource.
+ * @member {array} [virtualNetworkTap.networkInterfaceTapConfigurations]
+ * Specifies the list of resource IDs for the network interface IP
+ * configuration that needs to be tapped.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration] The reference
+ * to the private IP Address of the collector nic that will receive the tap
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+ * The private IP address of the IP configuration.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
+ * The private IP allocation method. Possible values are 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet] The
+ * reference of the subnet resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.addressPrefix]
+ * The address prefix for the subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup]
+ * The reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable]
+ * The reference of the RouteTable resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.subnets]
+ * A collection of references to subnets.
+ * @member {boolean}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations]
+ * Gets an array of references to the network interface IP configurations using
+ * subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+ * The reference of the public IP resource.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku]
+ * The public IP address SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.sku.name]
+ * Name of a public IP address SKU. Possible values include: 'Basic',
+ * 'Standard'
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+ * The public IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPAddressVersion]
+ * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+ * Possible values include: 'IPv4', 'IPv6'
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration]
+ * The IP configuration associated with the public IP address.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings]
+ * The FQDN of the DNS record associated with the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+ * Gets or sets the Domain name label.The concatenation of the domain name
+ * label and the regionalized DNS zone make up the fully qualified domain name
+ * associated with the public IP address. If a domain name label is specified,
+ * an A DNS record is created for the public IP in the Microsoft Azure DNS
+ * system.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+ * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+ * with the public IP. This is the concatenation of the domainNameLabel and the
+ * regionalized DNS zone.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+ * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+ * that resolves to this public IP address. If the reverseFqdn is specified,
+ * then a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags]
+ * The list of tags associated with the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipAddress]
+ * The IP address associated with the public IP address resource.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix]
+ * The Public IP Prefix this Public IP Address should be allocated from.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
+ * @member {number}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+ * The idle timeout of the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.resourceGuid]
+ * The resource GUID property of the public IP resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.provisioningState]
+ * The provisioning state of the PublicIP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.zones]
+ * A list of availability zones denoting the IP allocated for the resource
+ * needs to come from.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.provisioningState]
+ * Gets the provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.name] The name
+ * of the resource that is unique within a resource group. This name can be
+ * used to access the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration] The
+ * reference to the private IP address on the internal Load Balancer that will
+ * receive the tap
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.inboundNatRules]
+ * Read only. Inbound rules URIs that use this frontend IP.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.inboundNatPools]
+ * Read only. Inbound pools URIs that use this frontend IP.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.outboundRules]
+ * Read only. Outbound rules URIs that use this frontend IP.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.loadBalancingRules]
+ * Gets load balancing rules URIs that use this frontend IP.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAddress]
+ * The private IP address of the IP configuration.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.privateIPAllocationMethod]
+ * The Private IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet]
+ * The reference of the subnet resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
+ * The address prefix for the subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
+ * The reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable]
+ * The reference of the RouteTable resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.subnets]
+ * A collection of references to subnets.
+ * @member {boolean}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurations]
+ * Gets an array of references to the network interface IP configurations using
+ * subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress]
+ * The reference of the Public IP resource.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku]
+ * The public IP address SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.sku.name]
+ * Name of a public IP address SKU. Possible values include: 'Basic',
+ * 'Standard'
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAllocationMethod]
+ * The public IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPAddressVersion]
+ * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+ * Possible values include: 'IPv4', 'IPv6'
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration]
+ * The IP configuration associated with the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
+ * The private IP address of the IP configuration.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
+ * The private IP allocation method. Possible values are 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet]
+ * The reference of the subnet resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
+ * The address prefix for the subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
+ * The reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
+ * The reference of the RouteTable resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
+ * A collection of references to subnets.
+ * @member {boolean}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.disableBgpRoutePropagation]
+ * Gets or sets whether to disable the routes learned by BGP on that route
+ * table. True means disable.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
+ * An array of service endpoints.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * Gets an array of references to the network interface IP configurations using
+ * subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
+ * The reference of the public IP resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
+ * Gets the provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.name]
+ * The name of the resource that is unique within a resource group. This name
+ * can be used to access the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings]
+ * The FQDN of the DNS record associated with the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel]
+ * Gets or sets the Domain name label.The concatenation of the domain name
+ * label and the regionalized DNS zone make up the fully qualified domain name
+ * associated with the public IP address. If a domain name label is specified,
+ * an A DNS record is created for the public IP in the Microsoft Azure DNS
+ * system.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+ * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+ * with the public IP. This is the concatenation of the domainNameLabel and the
+ * regionalized DNS zone.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+ * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+ * that resolves to this public IP address. If the reverseFqdn is specified,
+ * then a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
+ * The list of tags associated with the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
+ * The IP address associated with the public IP address resource.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix]
+ * The Public IP Prefix this Public IP Address should be allocated from.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
+ * @member {number}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.idleTimeoutInMinutes]
+ * The idle timeout of the public IP address.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.resourceGuid]
+ * The resource GUID property of the public IP resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.provisioningState]
+ * The provisioning state of the PublicIP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.zones]
+ * A list of availability zones denoting the IP allocated for the resource
+ * needs to come from.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix]
+ * The reference of the Public IP Prefix resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPPrefix.id]
+ * Resource ID.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.provisioningState]
+ * Gets the provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.name] The
+ * name of the resource that is unique within a resource group. This name can
+ * be used to access the resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.zones] A
+ * list of availability zones denoting the IP allocated for the resource needs
+ * to come from.
+ * @member {number} [virtualNetworkTap.destinationPort] The VXLAN destination
+ * port that will receive the tapped traffic.
+ * @member {string} [virtualNetworkTap.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {string} [type] Sub Resource type.
+ */
+export interface NetworkInterfaceTapConfiguration extends SubResource {
+  virtualNetworkTap?: VirtualNetworkTap;
+  name?: string;
+  etag?: string;
+  readonly type?: string;
 }
 
 /**
@@ -5716,6 +6783,69 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the PublicIPPrefixSku class.
+ * @constructor
+ * SKU of a public IP prefix
+ *
+ * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ */
+export interface PublicIPPrefixSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReferencedPublicIpAddress class.
+ * @constructor
+ * @member {string} [id] The PublicIPAddress Reference
+ */
+export interface ReferencedPublicIpAddress {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefix class.
+ * @constructor
+ * Public IP prefix resource.
+ *
+ * @member {object} [sku] The public IP prefix SKU.
+ * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ * @member {string} [publicIPAddressVersion] The public IP address version.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * prefix.
+ * @member {number} [prefixLength] The Length of the Public IP Prefix.
+ * @member {string} [ipPrefix] The allocated Prefix
+ * @member {array} [publicIPAddresses] The list of all referenced
+ * PublicIPAddresses
+ * @member {string} [resourceGuid] The resource GUID property of the public IP
+ * prefix resource.
+ * @member {string} [provisioningState] The provisioning state of the Public IP
+ * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
+ */
+export interface PublicIPPrefix extends Resource {
+  sku?: PublicIPPrefixSku;
+  publicIPAddressVersion?: string;
+  ipTags?: IpTag[];
+  prefixLength?: number;
+  ipPrefix?: string;
+  publicIPAddresses?: ReferencedPublicIpAddress[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+  zones?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the PatchRouteFilterRule class.
  * @constructor
  * Route Filter Rule Resource
@@ -6666,6 +7796,8 @@ export interface LocalNetworkGateway extends Resource {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6687,6 +7819,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -6814,6 +7947,8 @@ export interface VirtualNetworkConnectionGatewayReference {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6835,6 +7970,7 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -7358,6 +8494,18 @@ export interface NetworkInterfaceLoadBalancerListResult extends Array<LoadBalanc
 
 /**
  * @class
+ * Initializes a new instance of the NetworkInterfaceTapConfigurationListResult class.
+ * @constructor
+ * Response for list tap configurations API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface NetworkInterfaceTapConfigurationListResult extends Array<NetworkInterfaceTapConfiguration> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NetworkSecurityGroupListResult class.
  * @constructor
  * Response for ListNetworkSecurityGroups API service call.
@@ -7434,6 +8582,18 @@ export interface OperationListResult extends Array<Operation> {
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface PublicIPAddressListResult extends Array<PublicIPAddress> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefixListResult class.
+ * @constructor
+ * Response for ListPublicIpPrefixes API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface PublicIPPrefixListResult extends Array<PublicIPPrefix> {
   nextLink?: string;
 }
 
@@ -7689,5 +8849,31 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicies API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinitionListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicyDefinition API service call. Retrieves
+ * all service endpoint policy definition that belongs to a service endpoint
+ * policy.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyDefinitionListResult extends Array<ServiceEndpointPolicyDefinition> {
   nextLink?: string;
 }

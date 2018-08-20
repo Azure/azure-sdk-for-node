@@ -76,6 +76,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   networkInterfaces: operations.NetworkInterfaces;
   networkInterfaceIPConfigurations: operations.NetworkInterfaceIPConfigurations;
   networkInterfaceLoadBalancers: operations.NetworkInterfaceLoadBalancers;
+  networkInterfaceTapConfigurations: operations.NetworkInterfaceTapConfigurations;
   networkSecurityGroups: operations.NetworkSecurityGroups;
   securityRules: operations.SecurityRules;
   defaultSecurityRules: operations.DefaultSecurityRules;
@@ -84,6 +85,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   connectionMonitors: operations.ConnectionMonitors;
   operations: operations.Operations;
   publicIPAddresses: operations.PublicIPAddresses;
+  publicIPPrefixes: operations.PublicIPPrefixes;
   routeFilters: operations.RouteFilters;
   routeFilterRules: operations.RouteFilterRules;
   routeTables: operations.RouteTables;
@@ -103,6 +105,8 @@ export default class NetworkManagementClient extends AzureServiceClient {
   hubVirtualNetworkConnections: operations.HubVirtualNetworkConnections;
   vpnGateways: operations.VpnGateways;
   vpnConnections: operations.VpnConnections;
+  serviceEndpointPolicies: operations.ServiceEndpointPolicies;
+  serviceEndpointPolicyDefinitions: operations.ServiceEndpointPolicyDefinitions;
 
 
   /**
