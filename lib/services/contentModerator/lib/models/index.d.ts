@@ -515,20 +515,6 @@ export interface DetectedLanguage {
 
 /**
  * @class
- * Initializes a new instance of the ImageListMetadata class.
- * @constructor
- * Image List Metadata.
- *
- * @member {string} [keyOne] Optional Key value pair to describe your list.
- * @member {string} [keyTwo] Optional Key value pair to describe your list.
- */
-export interface ImageListMetadata {
-  keyOne?: string;
-  keyTwo?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ImageList class.
  * @constructor
  * Image List Properties.
@@ -537,30 +523,12 @@ export interface ImageListMetadata {
  * @member {string} [name] Image List Name.
  * @member {string} [description] Description for image list.
  * @member {object} [metadata] Image List Metadata.
- * @member {string} [metadata.keyOne] Optional Key value pair to describe your
- * list.
- * @member {string} [metadata.keyTwo] Optional Key value pair to describe your
- * list.
  */
 export interface ImageList {
   id?: number;
   name?: string;
   description?: string;
-  metadata?: ImageListMetadata;
-}
-
-/**
- * @class
- * Initializes a new instance of the TermListMetadata class.
- * @constructor
- * Term list metadata.
- *
- * @member {string} [keyOne] Optional Key value pair to describe your list.
- * @member {string} [keyTwo] Optional Key value pair to describe your list.
- */
-export interface TermListMetadata {
-  keyOne?: string;
-  keyTwo?: string;
+  metadata?: { [propertyName: string]: any };
 }
 
 /**
@@ -573,28 +541,12 @@ export interface TermListMetadata {
  * @member {string} [name] Term list name.
  * @member {string} [description] Description for term list.
  * @member {object} [metadata] Term list metadata.
- * @member {string} [metadata.keyOne] Optional Key value pair to describe your
- * list.
- * @member {string} [metadata.keyTwo] Optional Key value pair to describe your
- * list.
  */
 export interface TermList {
   id?: number;
   name?: string;
   description?: string;
-  metadata?: TermListMetadata;
-}
-
-/**
- * @class
- * Initializes a new instance of the RefreshIndexAdvancedInfoItem class.
- * @constructor
- * @member {string} [keyOne] Key parameter to describe advanced info.
- * @member {string} [keyTwo] Key parameter to describe advanced info.
- */
-export interface RefreshIndexAdvancedInfoItem {
-  keyOne?: string;
-  keyTwo?: string;
+  metadata?: { [propertyName: string]: any };
 }
 
 /**
@@ -615,7 +567,7 @@ export interface RefreshIndexAdvancedInfoItem {
 export interface RefreshIndex {
   contentSourceId?: string;
   isUpdateSuccess?: boolean;
-  advancedInfo?: RefreshIndexAdvancedInfoItem[];
+  advancedInfo?: { [propertyName: string]: any }[];
   status?: Status;
   trackingId?: string;
 }
@@ -876,34 +828,16 @@ export interface APIError {
 
 /**
  * @class
- * Initializes a new instance of the BodyMetadata class.
- * @constructor
- * Metadata of the list.
- *
- * @member {string} [keyOne] Optional key value pair to describe your list.
- * @member {string} [keyTwo] Optional key value pair to describe your list.
- */
-export interface BodyMetadata {
-  keyOne?: string;
-  keyTwo?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Body class.
  * @constructor
  * @member {string} [name] Name of the list.
  * @member {string} [description] Description of the list.
  * @member {object} [metadata] Metadata of the list.
- * @member {string} [metadata.keyOne] Optional key value pair to describe your
- * list.
- * @member {string} [metadata.keyTwo] Optional key value pair to describe your
- * list.
  */
 export interface Body {
   name?: string;
   description?: string;
-  metadata?: BodyMetadata;
+  metadata?: { [propertyName: string]: any };
 }
 
 /**
