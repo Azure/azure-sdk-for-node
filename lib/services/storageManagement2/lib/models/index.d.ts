@@ -159,9 +159,9 @@ export interface SKUCapability {
  * is set to location. This would be different locations where the SKU is
  * restricted.
  * @member {string} [reasonCode] The reason for the restriction. As of now this
- * can be “QuotaId” or “NotAvailableForSubscription”. Quota Id is set when the
+ * can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the
  * SKU has requiredQuotas parameter as the subscription does not belong to that
- * quota. The “NotAvailableForSubscription” is related to capacity at DC.
+ * quota. The "NotAvailableForSubscription" is related to capacity at DC.
  * Possible values include: 'QuotaId', 'NotAvailableForSubscription'
  */
 export interface Restriction {
@@ -566,6 +566,8 @@ export interface Identity {
  * 'Hot', 'Cool'
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
+ * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
+ * sets to true. Default value: false .
  */
 export interface StorageAccountCreateParameters {
   sku: Sku;
@@ -578,25 +580,30 @@ export interface StorageAccountCreateParameters {
   networkRuleSet?: NetworkRuleSet;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
+  isHnsEnabled?: boolean;
 }
 
 /**
  * @class
  * Initializes a new instance of the Endpoints class.
  * @constructor
- * The URIs that are used to perform a retrieval of a public blob, queue, or
- * table object.
+ * The URIs that are used to perform a retrieval of a public blob, queue,
+ * table, web or dfs object.
  *
  * @member {string} [blob] Gets the blob endpoint.
  * @member {string} [queue] Gets the queue endpoint.
  * @member {string} [table] Gets the table endpoint.
  * @member {string} [file] Gets the file endpoint.
+ * @member {string} [web] Gets the web endpoint.
+ * @member {string} [dfs] Gets the dfs endpoint.
  */
 export interface Endpoints {
   readonly blob?: string;
   readonly queue?: string;
   readonly table?: string;
   readonly file?: string;
+  readonly web?: string;
+  readonly dfs?: string;
 }
 
 /**
@@ -670,6 +677,8 @@ export interface TrackedResource extends Resource {
  * @member {string} [primaryEndpoints.queue] Gets the queue endpoint.
  * @member {string} [primaryEndpoints.table] Gets the table endpoint.
  * @member {string} [primaryEndpoints.file] Gets the file endpoint.
+ * @member {string} [primaryEndpoints.web] Gets the web endpoint.
+ * @member {string} [primaryEndpoints.dfs] Gets the dfs endpoint.
  * @member {string} [primaryLocation] Gets the location of the primary data
  * center for the storage account.
  * @member {string} [statusOfPrimary] Gets the status indicating whether the
@@ -704,6 +713,8 @@ export interface TrackedResource extends Resource {
  * @member {string} [secondaryEndpoints.queue] Gets the queue endpoint.
  * @member {string} [secondaryEndpoints.table] Gets the table endpoint.
  * @member {string} [secondaryEndpoints.file] Gets the file endpoint.
+ * @member {string} [secondaryEndpoints.web] Gets the web endpoint.
+ * @member {string} [secondaryEndpoints.dfs] Gets the dfs endpoint.
  * @member {object} [encryption] Gets the encryption settings on the account.
  * If unspecified, the account is unencrypted.
  * @member {object} [encryption.services] List of services which support
@@ -768,6 +779,8 @@ export interface TrackedResource extends Resource {
  * @member {string} [networkRuleSet.defaultAction] Specifies the default action
  * of allow or deny when no other rules match. Possible values include:
  * 'Allow', 'Deny'
+ * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
+ * sets to true. Default value: false .
  */
 export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
@@ -787,6 +800,7 @@ export interface StorageAccount extends TrackedResource {
   readonly accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
   readonly networkRuleSet?: NetworkRuleSet;
+  isHnsEnabled?: boolean;
 }
 
 /**

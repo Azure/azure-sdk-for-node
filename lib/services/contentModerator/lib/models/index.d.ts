@@ -178,6 +178,21 @@ export interface Email {
 
 /**
  * @class
+ * Initializes a new instance of the SSN class.
+ * @constructor
+ * Detected SSN details.
+ *
+ * @member {string} [text] Detected SSN in the input text content.
+ * @member {number} [index] Index(Location) of the SSN in the input text
+ * content.
+ */
+export interface SSN {
+  text?: string;
+  index?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the IPA class.
  * @constructor
  * IP Address details.
@@ -232,12 +247,14 @@ export interface Address {
  * Personal Identifier Information details.
  *
  * @member {array} [email]
+ * @member {array} [sSN]
  * @member {array} [iPA]
  * @member {array} [phone]
  * @member {array} [address]
  */
 export interface PII {
   email?: Email[];
+  sSN?: SSN[];
   iPA?: IPA[];
   phone?: Phone[];
   address?: Address[];
@@ -294,6 +311,7 @@ export interface DetectedTerms {
  * @member {string} [status.exception] Exception status.
  * @member {object} [pII] Personal Identifier Information details.
  * @member {array} [pII.email]
+ * @member {array} [pII.sSN]
  * @member {array} [pII.iPA]
  * @member {array} [pII.phone]
  * @member {array} [pII.address]

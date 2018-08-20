@@ -47,8 +47,6 @@ export default class ContainerRegistryManagementClient extends AzureServiceClien
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -60,6 +58,9 @@ export default class ContainerRegistryManagementClient extends AzureServiceClien
   operations: operations.Operations;
   replications: operations.Replications;
   webhooks: operations.Webhooks;
+  builds: operations.Builds;
+  buildSteps: operations.BuildSteps;
+  buildTasks: operations.BuildTasks;
 }
 
 export { ContainerRegistryManagementClient, models as ContainerRegistryManagementModels };
