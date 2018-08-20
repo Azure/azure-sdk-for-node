@@ -141,6 +141,72 @@ export interface StorageSyncServices {
 
 
     /**
+     * Check the give namespace name availability.
+     *
+     * @param {string} locationName The desired region for the name check.
+     *
+     * @param {object} parameters Parameters to check availability of the given
+     * namespace name
+     *
+     * @param {string} parameters.name The name to check for availability
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CheckNameAvailabilityResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkNameAvailabilityWithHttpOperationResponse(locationName: string, parameters: models.CheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+
+    /**
+     * Check the give namespace name availability.
+     *
+     * @param {string} locationName The desired region for the name check.
+     *
+     * @param {object} parameters Parameters to check availability of the given
+     * namespace name
+     *
+     * @param {string} parameters.name The name to check for availability
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CheckNameAvailabilityResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CheckNameAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CheckNameAvailabilityResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkNameAvailability(locationName: string, parameters: models.CheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+    checkNameAvailability(locationName: string, parameters: models.CheckNameAvailabilityParameters, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(locationName: string, parameters: models.CheckNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+
+
+    /**
      * Create a new StorageSyncService.
      *
      * @param {string} resourceGroupName The name of the resource group within the
@@ -835,6 +901,8 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
      *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -884,6 +952,8 @@ export interface CloudEndpoints {
      * State
      *
      * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1426,7 +1496,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restoreHeatbeatWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    restoreheartbeatWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restore Heartbeat a given CloudEndpoint.
@@ -1467,9 +1537,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restoreHeatbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    restoreHeatbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, callback: ServiceCallback<void>): void;
-    restoreHeatbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    restoreheartbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreheartbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, callback: ServiceCallback<void>): void;
+    restoreheartbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1623,6 +1693,8 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
      *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1672,6 +1744,8 @@ export interface CloudEndpoints {
      * State
      *
      * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2200,44 +2274,16 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
-     *
-     * @param {number} [parameters.itemDownloadErrorCount] Item download error
-     * count.
-     *
-     * @param {string} [parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [parameters.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [parameters.totalProgress] Total progress
-     *
-     * @param {number} [parameters.byteTotal] Bytes total
-     *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
      * State
      *
      * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2277,44 +2323,16 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
-     *
-     * @param {number} [parameters.itemDownloadErrorCount] Item download error
-     * count.
-     *
-     * @param {string} [parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [parameters.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [parameters.totalProgress] Total progress
-     *
-     * @param {number} [parameters.byteTotal] Bytes total
-     *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
      * State
      *
      * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2376,39 +2394,6 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [options.parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [options.parameters.syncErrorDirection] Sync Error
-     * Direction. Possible values include: 'none', 'initialize', 'download',
-     * 'upload', 'recall'
-     *
-     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
-     * Count.
-     *
-     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
-     * error count.
-     *
-     * @param {string} [options.parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [options.parameters.currentProgressType] current progress
-     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [options.parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [options.parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [options.parameters.totalProgress] Total progress
-     *
-     * @param {number} [options.parameters.byteTotal] Bytes total
-     *
      * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [options.parameters.provisioningState] ServerEndpoint
@@ -2416,6 +2401,11 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
      * lastWorkflowId
+     *
+     * @param {string} [options.parameters.lastOperationName] Resource Last
+     * Operation Name
+     *
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2456,39 +2446,6 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [options.parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [options.parameters.syncErrorDirection] Sync Error
-     * Direction. Possible values include: 'none', 'initialize', 'download',
-     * 'upload', 'recall'
-     *
-     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
-     * Count.
-     *
-     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
-     * error count.
-     *
-     * @param {string} [options.parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [options.parameters.currentProgressType] current progress
-     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [options.parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [options.parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [options.parameters.totalProgress] Total progress
-     *
-     * @param {number} [options.parameters.byteTotal] Bytes total
-     *
      * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [options.parameters.provisioningState] ServerEndpoint
@@ -2496,6 +2453,11 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
      * lastWorkflowId
+     *
+     * @param {string} [options.parameters.lastOperationName] Resource Last
+     * Operation Name
+     *
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2759,7 +2721,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    recallWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
@@ -2800,9 +2762,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    recall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    recall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    recall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2830,44 +2792,16 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
-     *
-     * @param {number} [parameters.itemDownloadErrorCount] Item download error
-     * count.
-     *
-     * @param {string} [parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [parameters.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [parameters.totalProgress] Total progress
-     *
-     * @param {number} [parameters.byteTotal] Bytes total
-     *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
      * State
      *
      * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2907,44 +2841,16 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
-     *
-     * @param {number} [parameters.itemDownloadErrorCount] Item download error
-     * count.
-     *
-     * @param {string} [parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [parameters.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [parameters.totalProgress] Total progress
-     *
-     * @param {number} [parameters.byteTotal] Bytes total
-     *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
      * State
      *
      * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3006,39 +2912,6 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [options.parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [options.parameters.syncErrorDirection] Sync Error
-     * Direction. Possible values include: 'none', 'initialize', 'download',
-     * 'upload', 'recall'
-     *
-     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
-     * Count.
-     *
-     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
-     * error count.
-     *
-     * @param {string} [options.parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [options.parameters.currentProgressType] current progress
-     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [options.parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [options.parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [options.parameters.totalProgress] Total progress
-     *
-     * @param {number} [options.parameters.byteTotal] Bytes total
-     *
      * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [options.parameters.provisioningState] ServerEndpoint
@@ -3046,6 +2919,11 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
      * lastWorkflowId
+     *
+     * @param {string} [options.parameters.lastOperationName] Resource Last
+     * Operation Name
+     *
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3086,39 +2964,6 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
-     *
-     * @param {string} [options.parameters.syncErrorState] Sync Error State
-     *
-     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
-     * Timestamp
-     *
-     * @param {string} [options.parameters.syncErrorDirection] Sync Error
-     * Direction. Possible values include: 'none', 'initialize', 'download',
-     * 'upload', 'recall'
-     *
-     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
-     * Count.
-     *
-     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
-     * error count.
-     *
-     * @param {string} [options.parameters.syncErrorContext] sync error context.
-     *
-     * @param {string} [options.parameters.currentProgressType] current progress
-     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
-     *
-     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
-     *
-     * @param {number} [options.parameters.itemTotalCount] Item Total Count
-     *
-     * @param {number} [options.parameters.byteProgress] Bytes in progress
-     *
-     * @param {number} [options.parameters.totalProgress] Total progress
-     *
-     * @param {number} [options.parameters.byteTotal] Bytes total
-     *
      * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
      * @param {string} [options.parameters.provisioningState] ServerEndpoint
@@ -3126,6 +2971,11 @@ export interface ServerEndpoints {
      *
      * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
      * lastWorkflowId
+     *
+     * @param {string} [options.parameters.lastOperationName] Resource Last
+     * Operation Name
+     *
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3251,7 +3101,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRecallWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
@@ -3292,9 +3142,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRecall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRecall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    beginRecall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3476,6 +3326,19 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
      *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {string} [parameters.discoveryEndpointUri] Resource
+     * discoveryEndpointUri
+     *
+     * @param {string} [parameters.resourceLocation] Resource Location
+     *
+     * @param {string} [parameters.serviceLocation] Service Location
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3528,6 +3391,19 @@ export interface RegisteredServers {
      * storageSyncServiceUid
      *
      * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {string} [parameters.discoveryEndpointUri] Resource
+     * discoveryEndpointUri
+     *
+     * @param {string} [parameters.resourceLocation] Resource Location
+     *
+     * @param {string} [parameters.serviceLocation] Service Location
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3667,6 +3543,19 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
      *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {string} [parameters.discoveryEndpointUri] Resource
+     * discoveryEndpointUri
+     *
+     * @param {string} [parameters.resourceLocation] Resource Location
+     *
+     * @param {string} [parameters.serviceLocation] Service Location
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3719,6 +3608,19 @@ export interface RegisteredServers {
      * storageSyncServiceUid
      *
      * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
+     *
+     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
+     *
+     * @param {string} [parameters.discoveryEndpointUri] Resource
+     * discoveryEndpointUri
+     *
+     * @param {string} [parameters.resourceLocation] Resource Location
+     *
+     * @param {string} [parameters.serviceLocation] Service Location
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *

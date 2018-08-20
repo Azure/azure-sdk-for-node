@@ -1,5 +1,5 @@
 ---
-uid: azure-arm-storagesyncmanagement
+uid: azure-arm-storagesync
 summary: *content
 
 ---
@@ -13,7 +13,7 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 ## How to Install
 
 ```bash
-npm install azure-arm-storagesyncmanagement
+npm install azure-arm-storagesync
 ```
 
 ## How to use
@@ -22,7 +22,7 @@ npm install azure-arm-storagesyncmanagement
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
-const StorageSyncManagementClient = require("azure-arm-storagesyncmanagement");
+const StorageSyncManagementClient = require("azure-arm-storagesync");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new StorageSyncManagementClient(creds, subscriptionId);

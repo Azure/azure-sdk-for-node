@@ -13,9 +13,9 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-export default class StorageSyncManagementClient extends AzureServiceClient {
+export default class MicrosoftStorageSync extends AzureServiceClient {
   /**
-   * Initializes a new instance of the StorageSyncManagementClient class.
+   * Initializes a new instance of the MicrosoftStorageSync class.
    * @constructor
    *
    * @class
@@ -34,11 +34,11 @@ export default class StorageSyncManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - The preferred language for the response.
+   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -56,13 +56,26 @@ export default class StorageSyncManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  operations: operations.Operations;
+  operationGet: operations.OperationGet;
   storageSyncServices: operations.StorageSyncServices;
+  storageSyncServiceByResourceGroupGet: operations.StorageSyncServiceByResourceGroupGet;
+  storageSyncServiceGet: operations.StorageSyncServiceGet;
+  getSyncGroups: operations.GetSyncGroups;
   syncGroups: operations.SyncGroups;
   cloudEndpoints: operations.CloudEndpoints;
+  cloudEndpointsGet: operations.CloudEndpointsGet;
+  cloudEndpointPreBackup: operations.CloudEndpointPreBackup;
+  cloudEndpointPostBackup: operations.CloudEndpointPostBackup;
+  cloudEndpointPreRestore: operations.CloudEndpointPreRestore;
+  cloudEndpointRestoreHeatbeat: operations.CloudEndpointRestoreHeatbeat;
+  cloudEndpointPostRestore: operations.CloudEndpointPostRestore;
   serverEndpoints: operations.ServerEndpoints;
+  serverEndpointsGet: operations.ServerEndpointsGet;
+  serverEndpointRecall: operations.ServerEndpointRecall;
+  registeredServersGet: operations.RegisteredServersGet;
   registeredServers: operations.RegisteredServers;
   workflows: operations.Workflows;
+  abortWorkflows: operations.AbortWorkflows;
 }
 
-export { StorageSyncManagementClient, models as StorageSyncManagementModels };
+export { MicrosoftStorageSync, models as MicrosoftStorageSyncModels };

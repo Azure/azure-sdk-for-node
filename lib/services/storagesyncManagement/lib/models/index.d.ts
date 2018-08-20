@@ -142,6 +142,7 @@ export interface SyncGroup extends BaseResource {
  * @member {boolean} [backupEnabled] Backup Enabled
  * @member {string} [provisioningState] CloudEndpoint Provisioning State
  * @member {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
+ * @member {string} [lastOperationName] Resource Last Operation Name
  */
 export interface CloudEndpoint extends BaseResource {
   storageAccountKey?: string;
@@ -154,6 +155,7 @@ export interface CloudEndpoint extends BaseResource {
   readonly backupEnabled?: boolean;
   provisioningState?: string;
   lastWorkflowId?: string;
+  lastOperationName?: string;
 }
 
 /**
@@ -168,46 +170,22 @@ export interface CloudEndpoint extends BaseResource {
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
  * @member {string} [friendlyName] Friendly Name
- * @member {date} [lastSyncSuccess] Last Sync Success
- * @member {string} [syncErrorState] Sync Error State
- * @member {date} [syncErrorStateTimestamp] Sync Error State Timestamp
- * @member {string} [syncErrorDirection] Sync Error Direction. Possible values
- * include: 'none', 'initialize', 'download', 'upload', 'recall'
- * @member {number} [itemUploadErrorCount] Item Upload Error Count.
- * @member {number} [itemDownloadErrorCount] Item download error count.
- * @member {string} [syncErrorContext] sync error context.
- * @member {string} [currentProgressType] current progress type. Possible
- * values include: 'none', 'initialize', 'download', 'upload', 'recall'
- * @member {number} [itemProgressCount] Item Progress Count
- * @member {number} [itemTotalCount] Item Total Count
- * @member {number} [byteProgress] Bytes in progress
- * @member {number} [totalProgress] Total progress
- * @member {number} [byteTotal] Bytes total
  * @member {string} [serverResourceId] Server Resource Id.
  * @member {string} [provisioningState] ServerEndpoint Provisioning State
  * @member {string} [lastWorkflowId] ServerEndpoint lastWorkflowId
+ * @member {string} [lastOperationName] Resource Last Operation Name
+ * @member {object} [syncStatus] Sync Health Status
  */
 export interface ServerEndpoint extends BaseResource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
   friendlyName?: string;
-  lastSyncSuccess?: Date;
-  syncErrorState?: string;
-  syncErrorStateTimestamp?: Date;
-  syncErrorDirection?: string;
-  itemUploadErrorCount?: number;
-  itemDownloadErrorCount?: number;
-  syncErrorContext?: string;
-  currentProgressType?: string;
-  itemProgressCount?: number;
-  itemTotalCount?: number;
-  byteProgress?: number;
-  totalProgress?: number;
-  byteTotal?: number;
   serverResourceId?: string;
   provisioningState?: string;
   lastWorkflowId?: string;
+  lastOperationName?: string;
+  syncStatus?: any;
 }
 
 /**
@@ -233,6 +211,12 @@ export interface ServerEndpoint extends BaseResource {
  * @member {string} [storageSyncServiceUid] Registered Server
  * storageSyncServiceUid
  * @member {string} [lastWorkflowId] Registered Server lastWorkflowId
+ * @member {string} [lastOperationName] Resource Last Operation Name
+ * @member {string} [discoveryEndpointUri] Resource discoveryEndpointUri
+ * @member {string} [resourceLocation] Resource Location
+ * @member {string} [serviceLocation] Service Location
+ * @member {string} [friendlyName] Friendly Name
+ * @member {string} [managementEndpointUri] Management Endpoint Uri
  */
 export interface RegisteredServer extends BaseResource {
   readonly id?: string;
@@ -250,6 +234,12 @@ export interface RegisteredServer extends BaseResource {
   serverId?: string;
   storageSyncServiceUid?: string;
   lastWorkflowId?: string;
+  lastOperationName?: string;
+  discoveryEndpointUri?: string;
+  resourceLocation?: string;
+  serviceLocation?: string;
+  friendlyName?: string;
+  managementEndpointUri?: string;
 }
 
 /**
@@ -345,6 +335,40 @@ export interface OperationDisplayResource {
   resource?: string;
   operation?: string;
   description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityParameters class.
+ * @constructor
+ * Parameters for a check name availability request.
+ *
+ * @member {string} name The name to check for availability
+ */
+export interface CheckNameAvailabilityParameters {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * The CheckNameAvailability operation response.
+ *
+ * @member {boolean} [nameAvailable] Gets a boolean value that indicates
+ * whether the name is available for you to use. If true, the name is
+ * available. If false, the name has already been taken or invalid and cannot
+ * be used.
+ * @member {string} [reason] Gets the reason that a Storage Sync Service name
+ * could not be used. The Reason element is only returned if NameAvailable is
+ * false. Possible values include: 'Invalid', 'AlreadyExists'
+ * @member {string} [message] Gets an error message explaining the Reason value
+ * in more detail.
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
 }
 
 /**
