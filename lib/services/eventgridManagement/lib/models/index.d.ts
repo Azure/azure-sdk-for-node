@@ -211,7 +211,7 @@ export interface HybridConnectionEventSubscriptionDestination extends EventSubsc
  * @member {array} [labels] List of user defined labels.
  * @member {string} [eventDeliverySchema] The event delivery schema for the
  * event subscription. Possible values include: 'EventGridSchema',
- * 'InputEventSchema', 'CloudEventV01Schema'. Default value: 'EventGridSchema'
+ * 'InputEventSchema', 'CloudEventV01Schema'. Default value: 'InputEventSchema'
  * .
  * @member {object} [retryPolicy] The retry policy for events. This can be used
  * to configure maximum number of delivery attempts and time to live for
@@ -264,8 +264,7 @@ export interface EventSubscription extends Resource {
  * @member {array} [labels] List of user defined labels.
  * @member {string} [eventDeliverySchema] The event delivery schema for the
  * event subscription. Possible values include: 'EventGridSchema',
- * 'InputEventSchema', 'CloudEventV01Schema'. Default value: 'EventGridSchema'
- * .
+ * 'InputEventSchema', 'CloudEventV01Schema'
  * @member {object} [retryPolicy] The retry policy for events. This can be used
  * to configure maximum number of delivery attempts and time to live for
  * events.

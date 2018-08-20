@@ -3034,7 +3034,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -3413,7 +3413,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -3813,7 +3813,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -4190,7 +4190,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -4869,7 +4869,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -5248,7 +5248,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
