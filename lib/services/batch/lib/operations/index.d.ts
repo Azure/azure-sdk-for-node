@@ -679,8 +679,8 @@ export interface Pool {
      * operating system disk of the Virtual Machine.
      *
      * @param {string} [pool.virtualMachineConfiguration.osDisk.caching] The type
-     * of caching to enable for the OS disk. The default value for caching is none.
-     * For information about the caching options see:
+     * of caching to enable for the OS disk. The default value for caching is
+     * readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -1096,8 +1096,8 @@ export interface Pool {
      * operating system disk of the Virtual Machine.
      *
      * @param {string} [pool.virtualMachineConfiguration.osDisk.caching] The type
-     * of caching to enable for the OS disk. The default value for caching is none.
-     * For information about the caching options see:
+     * of caching to enable for the OS disk. The default value for caching is
+     * readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -4172,7 +4172,8 @@ export interface Account {
      * parameters for the operation
      *
      * @param {string} [options.accountListPoolNodeCountsOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch.
      *
      * @param {number} [options.accountListPoolNodeCountsOptions.maxResults] The
      * maximum number of items to return in the response.
@@ -4214,7 +4215,8 @@ export interface Account {
      * parameters for the operation
      *
      * @param {string} [options.accountListPoolNodeCountsOptions.filter] An OData
-     * $filter clause.
+     * $filter clause. For more information on constructing this filter, see
+     * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch.
      *
      * @param {number} [options.accountListPoolNodeCountsOptions.maxResults] The
      * maximum number of items to return in the response.
@@ -4954,18 +4956,8 @@ export interface Job {
      * @param {string} jobPatchParameter.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -5046,7 +5038,7 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -5375,7 +5367,9 @@ export interface Job {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.userAccounts] The
@@ -5550,18 +5544,8 @@ export interface Job {
      * @param {string} jobPatchParameter.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -5642,7 +5626,7 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -5971,7 +5955,9 @@ export interface Job {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.userAccounts] The
@@ -6155,19 +6141,9 @@ export interface Job {
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.vmSize The size of
      * the virtual machines in the pool. All virtual machines in a pool are the
-     * same size. For information about available sizes of virtual machines for
-     * Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * same size. For information about available sizes of virtual machines in
+     * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -6248,7 +6224,7 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -6577,7 +6553,9 @@ export interface Job {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.userAccounts] The
@@ -6756,19 +6734,9 @@ export interface Job {
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.vmSize The size of
      * the virtual machines in the pool. All virtual machines in a pool are the
-     * same size. For information about available sizes of virtual machines for
-     * Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * same size. For information about available sizes of virtual machines in
+     * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -6849,7 +6817,7 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -7178,7 +7146,9 @@ export interface Job {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.userAccounts] The
@@ -8114,19 +8084,9 @@ export interface Job {
      *
      * @param {string} job.poolInfo.autoPoolSpecification.pool.vmSize The size of
      * the virtual machines in the pool. All virtual machines in a pool are the
-     * same size. For information about available sizes of virtual machines for
-     * Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * same size. For information about available sizes of virtual machines in
+     * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] The
@@ -8206,7 +8166,7 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -8528,7 +8488,9 @@ export interface Job {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array} [job.poolInfo.autoPoolSpecification.pool.userAccounts] The
      * list of user accounts to be created on each node in the pool.
@@ -8980,19 +8942,9 @@ export interface Job {
      *
      * @param {string} job.poolInfo.autoPoolSpecification.pool.vmSize The size of
      * the virtual machines in the pool. All virtual machines in a pool are the
-     * same size. For information about available sizes of virtual machines for
-     * Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * same size. For information about available sizes of virtual machines in
+     * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] The
@@ -9072,7 +9024,7 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -9394,7 +9346,9 @@ export interface Job {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array} [job.poolInfo.autoPoolSpecification.pool.userAccounts] The
      * list of user accounts to be created on each node in the pool.
@@ -9864,11 +9818,7 @@ export interface Job {
      *
      * Task counts provide a count of the tasks by active, running or completed
      * task state, and a count of tasks which succeeded or failed. Tasks in the
-     * preparing state are counted as running. If the validationStatus is
-     * unvalidated, then the Batch service has not been able to check state counts
-     * against the task states as reported in the List Tasks API. The
-     * validationStatus may be unvalidated if the job contains more than 200,000
-     * tasks.
+     * preparing state are counted as running.
      *
      * @param {string} jobId The ID of the job.
      *
@@ -9908,11 +9858,7 @@ export interface Job {
      *
      * Task counts provide a count of the tasks by active, running or completed
      * task state, and a count of tasks which succeeded or failed. Tasks in the
-     * preparing state are counted as running. If the validationStatus is
-     * unvalidated, then the Batch service has not been able to check state counts
-     * against the task states as reported in the List Tasks API. The
-     * validationStatus may be unvalidated if the job contains more than 200,000
-     * tasks.
+     * preparing state are counted as running.
      *
      * @param {string} jobId The ID of the job.
      *
@@ -13061,18 +13007,8 @@ export interface JobSchedule {
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -13153,7 +13089,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -13482,7 +13418,9 @@ export interface JobSchedule {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -14071,18 +14009,8 @@ export interface JobSchedule {
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -14163,7 +14091,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -14492,7 +14420,9 @@ export interface JobSchedule {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -15103,18 +15033,8 @@ export interface JobSchedule {
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -15195,7 +15115,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -15524,7 +15444,9 @@ export interface JobSchedule {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -16119,18 +16041,8 @@ export interface JobSchedule {
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -16211,7 +16123,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -16540,7 +16452,9 @@ export interface JobSchedule {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -17536,18 +17450,8 @@ export interface JobSchedule {
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -17628,7 +17532,7 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -17957,7 +17861,9 @@ export interface JobSchedule {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -18513,18 +18419,8 @@ export interface JobSchedule {
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a pool
      * are the same size. For information about available sizes of virtual machines
-     * for Cloud Services pools (pools created with cloudServiceConfiguration), see
-     * Sizes for Cloud Services
-     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
-     * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
-     * For information about available VM sizes for pools using images from the
-     * Virtual Machines Marketplace (pools created with
-     * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
-     * or Sizes for Virtual Machines (Windows)
-     * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
-     * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
-     * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     * in pools, see Choose a VM size for compute nodes in an Azure Batch pool
+     * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -18605,7 +18501,7 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
      * The type of caching to enable for the OS disk. The default value for caching
-     * is none. For information about the caching options see:
+     * is readwrite. For information about the caching options see:
      * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      * Possible values include: 'none', 'readOnly', 'readWrite'
      *
@@ -18934,7 +18830,9 @@ export interface JobSchedule {
      * The list of application licenses the Batch service will make available on
      * each compute node in the pool. The list of application licenses must be a
      * subset of available Batch service application licenses. If a license is
-     * requested which is not supported, pool creation will fail.
+     * requested which is not supported, pool creation will fail. The permitted
+     * licenses available on the pool are 'maya', 'vray', '3dsmax', 'arnold'. An
+     * additional charge applies for each application license added to the pool.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -19954,11 +19852,11 @@ export interface Task {
      * @param {string} jobId The ID of the job to which the task collection is to
      * be added.
      *
-     * @param {array} value The collection of tasks to add. The total serialized
-     * size of this collection must be less than 1MB. If it is greater than 1MB
-     * (for example if each task has 100's of resource files or environment
-     * variables), the request will fail with code 'RequestBodyTooLarge' and should
-     * be retried again with fewer tasks.
+     * @param {array} value The collection of tasks to add. The maximum count of
+     * tasks is 100. The total serialized size of this collection must be less than
+     * 1MB. If it is greater than 1MB (for example if each task has 100's of
+     * resource files or environment variables), the request will fail with code
+     * 'RequestBodyTooLarge' and should be retried again with fewer tasks.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20014,11 +19912,11 @@ export interface Task {
      * @param {string} jobId The ID of the job to which the task collection is to
      * be added.
      *
-     * @param {array} value The collection of tasks to add. The total serialized
-     * size of this collection must be less than 1MB. If it is greater than 1MB
-     * (for example if each task has 100's of resource files or environment
-     * variables), the request will fail with code 'RequestBodyTooLarge' and should
-     * be retried again with fewer tasks.
+     * @param {array} value The collection of tasks to add. The maximum count of
+     * tasks is 100. The total serialized size of this collection must be less than
+     * 1MB. If it is greater than 1MB (for example if each task has 100's of
+     * resource files or environment variables), the request will fail with code
+     * 'RequestBodyTooLarge' and should be retried again with fewer tasks.
      *
      * @param {object} [options] Optional Parameters.
      *
