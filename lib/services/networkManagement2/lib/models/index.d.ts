@@ -30,214 +30,6 @@ export interface SubResource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the AzureFirewallIPConfiguration class.
- * @constructor
- * IP configuration of an Azure Firewall.
- *
- * @member {string} [privateIPAddress] The Firewall Internal Load Balancer IP
- * to be used as the next hop in User Defined Routes.
- * @member {object} [subnet] Reference of the subnet resource. This resource
- * must be named 'AzureFirewallSubnet'.
- * @member {string} [subnet.id] Resource ID.
- * @member {object} [internalPublicIpAddress] Reference of the PublicIP
- * resource. This field is a mandatory input.
- * @member {string} [internalPublicIpAddress.id] Resource ID.
- * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
- * field is populated in the output.
- * @member {string} [publicIPAddress.id] Resource ID.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- */
-export interface AzureFirewallIPConfiguration extends SubResource {
-  privateIPAddress?: string;
-  subnet?: SubResource;
-  internalPublicIpAddress?: SubResource;
-  publicIPAddress?: SubResource;
-  provisioningState?: string;
-  name?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallRCAction class.
- * @constructor
- * Properties of the AzureFirewallRCAction.
- *
- * @member {string} [type] The type of action. Possible values include:
- * 'Allow', 'Deny'
- */
-export interface AzureFirewallRCAction {
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallApplicationRuleProtocol class.
- * @constructor
- * Properties of the application rule protocol.
- *
- * @member {string} [protocolType] Protocol type. Possible values include:
- * 'Http', 'Https'
- * @member {number} [port] Port number for the protocol, cannot be greater than
- * 64000. This field is optional.
- */
-export interface AzureFirewallApplicationRuleProtocol {
-  protocolType?: string;
-  port?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallApplicationRule class.
- * @constructor
- * Properties of an application rule.
- *
- * @member {string} [name] Name of the application rule.
- * @member {string} [description] Description of the rule.
- * @member {array} [sourceAddresses] List of source IP addresses for this rule.
- * @member {array} [protocols] Array of ApplicationRuleProtocols.
- * @member {array} [targetUrls] List of URLs for this rule.
- */
-export interface AzureFirewallApplicationRule {
-  name?: string;
-  description?: string;
-  sourceAddresses?: string[];
-  protocols?: AzureFirewallApplicationRuleProtocol[];
-  targetUrls?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallApplicationRuleCollection class.
- * @constructor
- * Application rule collection resource
- *
- * @member {number} [priority] Priority of the application rule collection
- * resource.
- * @member {object} [action] The action type of a rule collection
- * @member {string} [action.type] The type of action. Possible values include:
- * 'Allow', 'Deny'
- * @member {array} [rules] Collection of rules used by a application rule
- * collection.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- */
-export interface AzureFirewallApplicationRuleCollection extends SubResource {
-  priority?: number;
-  action?: AzureFirewallRCAction;
-  rules?: AzureFirewallApplicationRule[];
-  provisioningState?: string;
-  name?: string;
-  readonly etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallNetworkRule class.
- * @constructor
- * Properties of the network rule.
- *
- * @member {string} [name] Name of the network rule.
- * @member {string} [description] Description of the rule.
- * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
- * @member {array} [sourceAddresses] List of source IP addresses for this rule.
- * @member {array} [destinationAddresses] List of destination IP addresses.
- * @member {array} [destinationPorts] List of destination ports.
- */
-export interface AzureFirewallNetworkRule {
-  name?: string;
-  description?: string;
-  protocols?: string[];
-  sourceAddresses?: string[];
-  destinationAddresses?: string[];
-  destinationPorts?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallNetworkRuleCollection class.
- * @constructor
- * Network rule collection resource
- *
- * @member {number} [priority] Priority of the network rule collection
- * resource.
- * @member {object} [action] The action type of a rule collection
- * @member {string} [action.type] The type of action. Possible values include:
- * 'Allow', 'Deny'
- * @member {array} [rules] Collection of rules used by a network rule
- * collection.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- */
-export interface AzureFirewallNetworkRuleCollection extends SubResource {
-  priority?: number;
-  action?: AzureFirewallRCAction;
-  rules?: AzureFirewallNetworkRule[];
-  provisioningState?: string;
-  name?: string;
-  readonly etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * Common resource representation.
- *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
- */
-export interface Resource extends BaseResource {
-  id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewall class.
- * @constructor
- * Azure Firewall resource
- *
- * @member {array} [applicationRuleCollections] Collection of application rule
- * collections used by a Azure Firewall.
- * @member {array} [networkRuleCollections] Collection of network rule
- * collections used by a Azure Firewall.
- * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
- * resource.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- */
-export interface AzureFirewall extends Resource {
-  applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
-  networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
-  ipConfigurations?: AzureFirewallIPConfiguration[];
-  provisioningState?: string;
-  readonly etag?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the BackendAddressPool class.
  * @constructor
  * Pool of backend IP addresses.
@@ -551,6 +343,26 @@ export interface InboundNatRule extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * Common resource representation.
+ *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface Resource extends BaseResource {
+  id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -2739,6 +2551,194 @@ export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
  */
 export interface TagsObject {
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallIPConfiguration class.
+ * @constructor
+ * IP configuration of an Azure Firewall.
+ *
+ * @member {string} [privateIPAddress] The Firewall Internal Load Balancer IP
+ * to be used as the next hop in User Defined Routes.
+ * @member {object} [subnet] Reference of the subnet resource. This resource
+ * must be named 'AzureFirewallSubnet'.
+ * @member {string} [subnet.id] Resource ID.
+ * @member {object} [internalPublicIpAddress] Reference of the PublicIP
+ * resource. This field is a mandatory input.
+ * @member {string} [internalPublicIpAddress.id] Resource ID.
+ * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
+ * field is populated in the output.
+ * @member {string} [publicIPAddress.id] Resource ID.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface AzureFirewallIPConfiguration extends SubResource {
+  privateIPAddress?: string;
+  subnet?: SubResource;
+  internalPublicIpAddress?: SubResource;
+  publicIPAddress?: SubResource;
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallRCAction class.
+ * @constructor
+ * Properties of the AzureFirewallRCAction.
+ *
+ * @member {string} [type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ */
+export interface AzureFirewallRCAction {
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallApplicationRuleProtocol class.
+ * @constructor
+ * Properties of the application rule protocol.
+ *
+ * @member {string} [protocolType] Protocol type. Possible values include:
+ * 'Http', 'Https'
+ * @member {number} [port] Port number for the protocol, cannot be greater than
+ * 64000. This field is optional.
+ */
+export interface AzureFirewallApplicationRuleProtocol {
+  protocolType?: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallApplicationRule class.
+ * @constructor
+ * Properties of an application rule.
+ *
+ * @member {string} [name] Name of the application rule.
+ * @member {string} [description] Description of the rule.
+ * @member {array} [sourceAddresses] List of source IP addresses for this rule.
+ * @member {array} [protocols] Array of ApplicationRuleProtocols.
+ * @member {array} [targetUrls] List of URLs for this rule.
+ */
+export interface AzureFirewallApplicationRule {
+  name?: string;
+  description?: string;
+  sourceAddresses?: string[];
+  protocols?: AzureFirewallApplicationRuleProtocol[];
+  targetUrls?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallApplicationRuleCollection class.
+ * @constructor
+ * Application rule collection resource
+ *
+ * @member {number} [priority] Priority of the application rule collection
+ * resource.
+ * @member {object} [action] The action type of a rule collection
+ * @member {string} [action.type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [rules] Collection of rules used by a application rule
+ * collection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallApplicationRuleCollection extends SubResource {
+  priority?: number;
+  action?: AzureFirewallRCAction;
+  rules?: AzureFirewallApplicationRule[];
+  provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNetworkRule class.
+ * @constructor
+ * Properties of the network rule.
+ *
+ * @member {string} [name] Name of the network rule.
+ * @member {string} [description] Description of the rule.
+ * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
+ * @member {array} [sourceAddresses] List of source IP addresses for this rule.
+ * @member {array} [destinationAddresses] List of destination IP addresses.
+ * @member {array} [destinationPorts] List of destination ports.
+ */
+export interface AzureFirewallNetworkRule {
+  name?: string;
+  description?: string;
+  protocols?: string[];
+  sourceAddresses?: string[];
+  destinationAddresses?: string[];
+  destinationPorts?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNetworkRuleCollection class.
+ * @constructor
+ * Network rule collection resource
+ *
+ * @member {number} [priority] Priority of the network rule collection
+ * resource.
+ * @member {object} [action] The action type of a rule collection
+ * @member {string} [action.type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [rules] Collection of rules used by a network rule
+ * collection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallNetworkRuleCollection extends SubResource {
+  priority?: number;
+  action?: AzureFirewallRCAction;
+  rules?: AzureFirewallNetworkRule[];
+  provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewall class.
+ * @constructor
+ * Azure Firewall resource
+ *
+ * @member {array} [applicationRuleCollections] Collection of application rule
+ * collections used by a Azure Firewall.
+ * @member {array} [networkRuleCollections] Collection of network rule
+ * collections used by a Azure Firewall.
+ * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
+ * resource.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewall extends Resource {
+  applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
+  networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
+  ipConfigurations?: AzureFirewallIPConfiguration[];
+  provisioningState?: string;
+  readonly etag?: string;
 }
 
 /**
@@ -7298,18 +7298,6 @@ export interface VpnSiteId {
 
 /**
  * @class
- * Initializes a new instance of the AzureFirewallListResult class.
- * @constructor
- * Response for ListAzureFirewalls API service call.
- *
- * @member {string} [nextLink] URL to get the next set of results.
- */
-export interface AzureFirewallListResult extends Array<AzureFirewall> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationGatewayListResult class.
  * @constructor
  * Response for ListApplicationGateways API service call.
@@ -7342,6 +7330,18 @@ export interface ApplicationGatewayAvailableSslPredefinedPolicies extends Array<
  */
 export interface ApplicationSecurityGroupListResult extends Array<ApplicationSecurityGroup> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallListResult class.
+ * @constructor
+ * Response for ListAzureFirewalls API service call.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ */
+export interface AzureFirewallListResult extends Array<AzureFirewall> {
+  nextLink?: string;
 }
 
 /**
@@ -7706,6 +7706,32 @@ export interface BgpServiceCommunityListResult extends Array<BgpServiceCommunity
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEndpointPolicyListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicies API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinitionListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicyDefinition API service call. Retrieves
+ * all service endpoint policy definition that belongs to a service endpoint
+ * policy.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyDefinitionListResult extends Array<ServiceEndpointPolicyDefinition> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UsagesListResult class.
  * @constructor
  * The list usages operation response.
@@ -7896,31 +7922,5 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceEndpointPolicyListResult class.
- * @constructor
- * Response for ListServiceEndpointPolicies API service call.
- *
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceEndpointPolicyDefinitionListResult class.
- * @constructor
- * Response for ListServiceEndpointPolicyDefinition API service call. Retrieves
- * all service endpoint policy definition that belongs to a service endpoint
- * policy.
- *
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface ServiceEndpointPolicyDefinitionListResult extends Array<ServiceEndpointPolicyDefinition> {
   nextLink?: string;
 }

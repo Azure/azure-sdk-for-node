@@ -54,9 +54,9 @@ export default class NetworkManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  azureFirewalls: operations.AzureFirewalls;
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
+  azureFirewalls: operations.AzureFirewalls;
   ddosProtectionPlans: operations.DdosProtectionPlans;
   availableEndpointServices: operations.AvailableEndpointServices;
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;
@@ -90,6 +90,8 @@ export default class NetworkManagementClient extends AzureServiceClient {
   routeTables: operations.RouteTables;
   routes: operations.Routes;
   bgpServiceCommunities: operations.BgpServiceCommunities;
+  serviceEndpointPolicies: operations.ServiceEndpointPolicies;
+  serviceEndpointPolicyDefinitions: operations.ServiceEndpointPolicyDefinitions;
   usages: operations.Usages;
   virtualNetworks: operations.VirtualNetworks;
   subnets: operations.Subnets;
@@ -104,8 +106,6 @@ export default class NetworkManagementClient extends AzureServiceClient {
   hubVirtualNetworkConnections: operations.HubVirtualNetworkConnections;
   vpnGateways: operations.VpnGateways;
   vpnConnections: operations.VpnConnections;
-  serviceEndpointPolicies: operations.ServiceEndpointPolicies;
-  serviceEndpointPolicyDefinitions: operations.ServiceEndpointPolicyDefinitions;
 
 
   /**
