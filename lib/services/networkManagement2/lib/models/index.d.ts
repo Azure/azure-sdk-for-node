@@ -246,9 +246,9 @@ export interface AzureFirewall extends Resource {
  * IP addresses defined in network interfaces.
  * @member {array} [loadBalancingRules] Gets load balancing rules that use this
  * backend address pool.
- * @member {object} [outboundNatRule] Gets outbound rules that use this backend
+ * @member {object} [outboundRule] Gets outbound rules that use this backend
  * address pool.
- * @member {string} [outboundNatRule.id] Resource ID.
+ * @member {string} [outboundRule.id] Resource ID.
  * @member {string} [provisioningState] Get provisioning state of the public IP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -259,7 +259,7 @@ export interface AzureFirewall extends Resource {
 export interface BackendAddressPool extends SubResource {
   readonly backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
   readonly loadBalancingRules?: SubResource[];
-  readonly outboundNatRule?: SubResource;
+  readonly outboundRule?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -338,6 +338,8 @@ export interface BackendAddressPool extends SubResource {
  * unique read-only string that changes whenever the resource is updated.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
+ * array of service endpoint policies.
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
@@ -430,6 +432,9 @@ export interface BackendAddressPool extends SubResource {
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
  * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -482,6 +487,10 @@ export interface BackendAddressPool extends SubResource {
  * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
+ * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
+ * Public IP Prefix this Public IP Address should be allocated from.
+ * @member {string} [backendIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
  * @member {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
@@ -519,6 +528,9 @@ export interface BackendAddressPool extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -535,6 +547,7 @@ export interface InboundNatRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -839,6 +852,55 @@ export interface ServiceEndpointPropertiesFormat {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinition class.
+ * @constructor
+ * Service Endpoint policy definitions.
+ *
+ * @member {string} [description] A description for this rule. Restricted to
+ * 140 chars.
+ * @member {string} [service] service endpoint name.
+ * @member {array} [serviceResources] A list of service resources.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * end point policy definition. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicyDefinition extends SubResource {
+  description?: string;
+  service?: string;
+  serviceResources?: string[];
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicy class.
+ * @constructor
+ * Service End point policy resource.
+ *
+ * @member {array} [serviceEndpointPolicyDefinitions] A collection of service
+ * endpoint policy definitions of the service endpoint policy.
+ * @member {string} [resourceGuid] The resource GUID property of the service
+ * endpoint policy resource.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicy extends Resource {
+  serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinition[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddressSku class.
  * @constructor
  * SKU of a public IP address
@@ -879,7 +941,7 @@ export interface PublicIPAddressDnsSettings {
  * @class
  * Initializes a new instance of the IpTag class.
  * @constructor
- * Contains the IpTag associated with the public IP address
+ * Contains the IpTag associated with the object
  *
  * @member {string} [ipTagType] Gets or sets the ipTag type: Example
  * FirstPartyUsage.
@@ -954,6 +1016,8 @@ export interface IpTag {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -993,6 +1057,9 @@ export interface IpTag {
  * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
+ * @member {object} [publicIPPrefix] The Public IP Prefix this Public IP
+ * Address should be allocated from.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
@@ -1012,6 +1079,7 @@ export interface PublicIPAddress extends Resource {
   dnsSettings?: PublicIPAddressDnsSettings;
   ipTags?: IpTag[];
   ipAddress?: string;
+  publicIPPrefix?: SubResource;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
   provisioningState?: string;
@@ -1064,6 +1132,8 @@ export interface PublicIPAddress extends Resource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1106,6 +1176,9 @@ export interface PublicIPAddress extends Resource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1194,6 +1267,8 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
  * @member {array} [serviceEndpoints] An array of service endpoints.
+ * @member {array} [serviceEndpointPolicies] An array of service endpoint
+ * policies.
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
@@ -1209,6 +1284,7 @@ export interface Subnet extends SubResource {
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
+  serviceEndpointPolicies?: ServiceEndpointPolicy[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -1271,6 +1347,8 @@ export interface Subnet extends SubResource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1349,6 +1427,9 @@ export interface Subnet extends SubResource {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1392,6 +1473,9 @@ export interface Subnet extends SubResource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1506,6 +1590,8 @@ export interface ApplicationGatewayConnectionDraining {
  * @member {string} [probe.id] Resource ID.
  * @member {array} [authenticationCertificates] Array of references to
  * application gateway authentication certificates.
+ * @member {array} [trustedRootCertificates] Array of references to application
+ * gateway trusted root certificates.
  * @member {object} [connectionDraining] Connection draining of the backend
  * http settings resource.
  * @member {boolean} [connectionDraining.enabled] Whether connection draining
@@ -1539,6 +1625,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
   requestTimeout?: number;
   probe?: SubResource;
   authenticationCertificates?: SubResource[];
+  trustedRootCertificates?: SubResource[];
   connectionDraining?: ApplicationGatewayConnectionDraining;
   hostName?: string;
   pickHostNameFromBackendAddress?: boolean;
@@ -1616,6 +1703,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1705,6 +1794,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
  * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1754,6 +1846,10 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
+ * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
+ * IP Prefix this Public IP Address should be allocated from.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
  * idle timeout of the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
@@ -1809,6 +1905,8 @@ export interface ApplicationGatewayBackendHealthServer {
  * @member {string} [backendHttpSettings.probe.id] Resource ID.
  * @member {array} [backendHttpSettings.authenticationCertificates] Array of
  * references to application gateway authentication certificates.
+ * @member {array} [backendHttpSettings.trustedRootCertificates] Array of
+ * references to application gateway trusted root certificates.
  * @member {object} [backendHttpSettings.connectionDraining] Connection
  * draining of the backend http settings resource.
  * @member {boolean} [backendHttpSettings.connectionDraining.enabled] Whether
@@ -1975,6 +2073,32 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
  */
 export interface ApplicationGatewayAuthenticationCertificate extends SubResource {
   data?: string;
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayTrustedRootCertificate class.
+ * @constructor
+ * Trusted Root certificates of an application gateway.
+ *
+ * @member {string} [data] Certificate public data.
+ * @member {string} [keyvaultSecretId] KeyVault Secret Id for certificate.
+ * @member {string} [provisioningState] Provisioning state of the trusted root
+ * certificate resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [name] Name of the trusted root certificate that is unique
+ * within an Application Gateway.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {string} [type] Type of the resource.
+ */
+export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
+  data?: string;
+  keyvaultSecretId?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -2447,6 +2571,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * resource.
  * @member {array} [authenticationCertificates] Authentication certificates of
  * the application gateway resource.
+ * @member {array} [trustedRootCertificates] Trusted Root certificates of the
+ * application gateway resource.
  * @member {array} [sslCertificates] SSL certificates of the application
  * gateway resource.
  * @member {array} [frontendIPConfigurations] Frontend IP addresses of the
@@ -2508,6 +2634,7 @@ export interface ApplicationGateway extends Resource {
   readonly operationalState?: string;
   gatewayIPConfigurations?: ApplicationGatewayIPConfiguration[];
   authenticationCertificates?: ApplicationGatewayAuthenticationCertificate[];
+  trustedRootCertificates?: ApplicationGatewayTrustedRootCertificate[];
   sslCertificates?: ApplicationGatewaySslCertificate[];
   frontendIPConfigurations?: ApplicationGatewayFrontendIPConfiguration[];
   frontendPorts?: ApplicationGatewayFrontendPort[];
@@ -3110,6 +3237,8 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
  * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @member {boolean} [allowGlobalReach] Flag to enable Global Reach on the
+ * circuit.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -3125,6 +3254,7 @@ export interface ExpressRouteCircuit extends Resource {
   serviceProviderProperties?: ExpressRouteCircuitServiceProviderProperties;
   provisioningState?: string;
   gatewayManagerEtag?: string;
+  allowGlobalReach?: boolean;
   readonly etag?: string;
 }
 
@@ -3481,8 +3611,8 @@ export interface LoadBalancerSku {
  * this frontend IP.
  * @member {array} [inboundNatPools] Read only. Inbound pools URIs that use
  * this frontend IP.
- * @member {array} [outboundNatRules] Read only. Outbound rules URIs that use
- * this frontend IP.
+ * @member {array} [outboundRules] Read only. Outbound rules URIs that use this
+ * frontend IP.
  * @member {array} [loadBalancingRules] Gets load balancing rules URIs that use
  * this frontend IP.
  * @member {string} [privateIPAddress] The private IP address of the IP
@@ -3524,6 +3654,8 @@ export interface LoadBalancerSku {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -3599,6 +3731,9 @@ export interface LoadBalancerSku {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -3642,6 +3777,9 @@ export interface LoadBalancerSku {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -3653,6 +3791,9 @@ export interface LoadBalancerSku {
  * changes whenever the resource is updated.
  * @member {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
+ * @member {object} [publicIPPrefix] The reference of the Public IP Prefix
+ * resource.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3666,12 +3807,13 @@ export interface LoadBalancerSku {
 export interface FrontendIPConfiguration extends SubResource {
   readonly inboundNatRules?: SubResource[];
   readonly inboundNatPools?: SubResource[];
-  readonly outboundNatRules?: SubResource[];
+  readonly outboundRules?: SubResource[];
   readonly loadBalancingRules?: SubResource[];
   privateIPAddress?: string;
   privateIPAllocationMethod?: string;
   subnet?: Subnet;
   publicIPAddress?: PublicIPAddress;
+  publicIPPrefix?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3711,6 +3853,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {boolean} [disableOutboundSnat] Configures SNAT for the VMs in the
  * backend pool to use the publicIP address specified in the frontend of the
  * load balancing rule.
@@ -3732,6 +3877,7 @@ export interface LoadBalancingRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   disableOutboundSnat?: boolean;
   provisioningState?: string;
   name?: string;
@@ -3812,6 +3958,9 @@ export interface Probe extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3828,6 +3977,7 @@ export interface InboundNatPool extends SubResource {
   backendPort: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3835,9 +3985,9 @@ export interface InboundNatPool extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the OutboundNatRule class.
+ * Initializes a new instance of the OutboundRule class.
  * @constructor
- * Outbound NAT pool of the load balancer.
+ * Outbound pool of the load balancer.
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
@@ -3849,16 +3999,26 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
+ * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * include: 'Tcp', 'Udp', 'All'
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface OutboundNatRule extends SubResource {
+export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
   frontendIPConfigurations?: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
+  protocol?: string;
+  enableTcpReset?: boolean;
+  idleTimeoutInMinutes?: number;
   name?: string;
   etag?: string;
 }
@@ -3894,7 +4054,7 @@ export interface OutboundNatRule extends SubResource {
  * Nat rules. Inbound NAT pools are referenced from virtual machine scale sets.
  * NICs that are associated with individual virtual machines cannot reference
  * an inbound NAT pool. They have to reference individual inbound NAT rules.
- * @member {array} [outboundNatRules] The outbound NAT rules.
+ * @member {array} [outboundRules] The outbound rules.
  * @member {string} [resourceGuid] The resource GUID property of the load
  * balancer resource.
  * @member {string} [provisioningState] Gets the provisioning state of the
@@ -3911,7 +4071,7 @@ export interface LoadBalancer extends Resource {
   probes?: Probe[];
   inboundNatRules?: InboundNatRule[];
   inboundNatPools?: InboundNatPool[];
-  outboundNatRules?: OutboundNatRule[];
+  outboundRules?: OutboundRule[];
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
@@ -5716,6 +5876,69 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the PublicIPPrefixSku class.
+ * @constructor
+ * SKU of a public IP prefix
+ *
+ * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ */
+export interface PublicIPPrefixSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReferencedPublicIpAddress class.
+ * @constructor
+ * @member {string} [id] The PublicIPAddress Reference
+ */
+export interface ReferencedPublicIpAddress {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefix class.
+ * @constructor
+ * Public IP prefix resource.
+ *
+ * @member {object} [sku] The public IP prefix SKU.
+ * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ * @member {string} [publicIPAddressVersion] The public IP address version.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * prefix.
+ * @member {number} [prefixLength] The Length of the Public IP Prefix.
+ * @member {string} [ipPrefix] The allocated Prefix
+ * @member {array} [publicIPAddresses] The list of all referenced
+ * PublicIPAddresses
+ * @member {string} [resourceGuid] The resource GUID property of the public IP
+ * prefix resource.
+ * @member {string} [provisioningState] The provisioning state of the Public IP
+ * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
+ */
+export interface PublicIPPrefix extends Resource {
+  sku?: PublicIPPrefixSku;
+  publicIPAddressVersion?: string;
+  ipTags?: IpTag[];
+  prefixLength?: number;
+  ipPrefix?: string;
+  publicIPAddresses?: ReferencedPublicIpAddress[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+  zones?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the PatchRouteFilterRule class.
  * @constructor
  * Route Filter Rule Resource
@@ -6666,6 +6889,8 @@ export interface LocalNetworkGateway extends Resource {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6687,6 +6912,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -6814,6 +7040,8 @@ export interface VirtualNetworkConnectionGatewayReference {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6835,6 +7063,7 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -7439,6 +7668,18 @@ export interface PublicIPAddressListResult extends Array<PublicIPAddress> {
 
 /**
  * @class
+ * Initializes a new instance of the PublicIPPrefixListResult class.
+ * @constructor
+ * Response for ListPublicIpPrefixes API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface PublicIPPrefixListResult extends Array<PublicIPPrefix> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RouteFilterListResult class.
  * @constructor
  * Response for the ListRouteFilters API service call.
@@ -7689,5 +7930,31 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicies API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinitionListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicyDefinition API service call. Retrieves
+ * all service endpoint policy definition that belongs to a service endpoint
+ * policy.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyDefinitionListResult extends Array<ServiceEndpointPolicyDefinition> {
   nextLink?: string;
 }
