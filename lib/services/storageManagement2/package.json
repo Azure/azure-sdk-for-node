@@ -1,43 +1,25 @@
 {
   "name": "azure-arm-storage",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Jason, Yang <yabo@microsoft.com>",
-    "Gerner, Emily <emgerner@microsoft.com>",
-    "Wang, Jun <jwa@microsoft.com>",
-    "Huang, Pengfei <phuang@microsoft.com>",
-    "Shintre, Amol <Amol.Shintre@microsoft.com>",
-    "Onalan, Alp <alpon@microsoft.com>",
-    "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>"
-  ],
-  "version": "5.1.1-preview",
-  "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
-  "keywords": [
-    "node",
-    "azure"
-  ],
-  "main": "./lib/storageManagementClient.js",
-  "types": "./lib/storageManagementClient.d.ts",
-  "license": "MIT",
+  "description": "StorageManagementClient Library with typescript type definitions for node",
+  "version": "5.2.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "license": "MIT",
+  "main": "./lib/storageManagementClient.js",
+  "types": "./lib/storageManagementClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/storageManagement2",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }
