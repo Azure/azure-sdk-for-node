@@ -528,7 +528,7 @@ export interface ImageList {
   id?: number;
   name?: string;
   description?: string;
-  metadata?: { [propertyName: string]: any };
+  metadata?: { [propertyName: string]: string };
 }
 
 /**
@@ -546,7 +546,7 @@ export interface TermList {
   id?: number;
   name?: string;
   description?: string;
-  metadata?: { [propertyName: string]: any };
+  metadata?: { [propertyName: string]: string };
 }
 
 /**
@@ -567,7 +567,7 @@ export interface TermList {
 export interface RefreshIndex {
   contentSourceId?: string;
   isUpdateSuccess?: boolean;
-  advancedInfo?: { [propertyName: string]: any }[];
+  advancedInfo?: { [propertyName: string]: string }[];
   status?: Status;
   trackingId?: string;
 }
@@ -837,7 +837,7 @@ export interface APIError {
 export interface Body {
   name?: string;
   description?: string;
-  metadata?: { [propertyName: string]: any };
+  metadata?: { [propertyName: string]: string };
 }
 
 /**
