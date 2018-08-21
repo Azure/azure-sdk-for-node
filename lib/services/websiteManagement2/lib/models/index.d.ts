@@ -4335,6 +4335,7 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
+ * @member {string} [backupName] Name of the backup.
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
  * @member {string} storageAccountUrl SAS URL to the container.
@@ -4359,6 +4360,7 @@ export interface BackupSchedule {
  * @member {array} [databases] Databases included in the backup.
  */
 export interface BackupRequest extends ProxyOnlyResource {
+  backupName?: string;
   enabled?: boolean;
   storageAccountUrl: string;
   backupSchedule?: BackupSchedule;
@@ -6930,6 +6932,22 @@ export interface HybridConnectionLimits extends ProxyOnlyResource {
   readonly maximum?: number;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadata class.
+ * @constructor
+ * Used for getting ResourceHealthCheck settings.
+ *
+ * @member {string} [category] The category that the resource matches in the
+ * RHC Policy File
+ * @member {boolean} [signalAvailability] Is there a health signal for the
+ * resource
+ */
+export interface ResourceHealthMetadata extends ProxyOnlyResource {
+  category?: string;
+  signalAvailability?: boolean;
+}
+
 
 /**
  * @class
@@ -7554,5 +7572,17 @@ export interface ResourceCollection extends Array<string> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface HybridConnectionCollection extends Array<HybridConnection> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadataCollection class.
+ * @constructor
+ * Collection of resource health metadata.
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface ResourceHealthMetadataCollection extends Array<ResourceHealthMetadata> {
   readonly nextLink?: string;
 }
