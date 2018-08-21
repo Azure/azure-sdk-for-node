@@ -38,11 +38,13 @@ export interface ContainerPort {
  * The environment variable to set within the container instance.
  *
  * @member {string} name The name of the environment variable.
- * @member {string} value The value of the environment variable.
+ * @member {string} [value] The value of the environment variable.
+ * @member {string} [secureValue] The value of the secure environment variable.
  */
 export interface EnvironmentVariable {
   name: string;
-  value: string;
+  value?: string;
+  secureValue?: string;
 }
 
 /**
@@ -62,11 +64,11 @@ export interface EnvironmentVariable {
  * instance state.
  */
 export interface ContainerState {
-  readonly state?: string;
-  readonly startTime?: Date;
-  readonly exitCode?: number;
-  readonly finishTime?: Date;
-  readonly detailStatus?: string;
+  state?: string;
+  startTime?: Date;
+  exitCode?: number;
+  finishTime?: Date;
+  detailStatus?: string;
 }
 
 /**
@@ -83,12 +85,12 @@ export interface ContainerState {
  * @member {string} [type] The event type.
  */
 export interface Event {
-  readonly count?: number;
-  readonly firstTimestamp?: Date;
-  readonly lastTimestamp?: Date;
-  readonly name?: string;
-  readonly message?: string;
-  readonly type?: string;
+  count?: number;
+  firstTimestamp?: Date;
+  lastTimestamp?: Date;
+  name?: string;
+  message?: string;
+  type?: string;
 }
 
 /**
@@ -198,6 +200,64 @@ export interface VolumeMount {
 
 /**
  * @class
+ * Initializes a new instance of the ContainerExec class.
+ * @constructor
+ * The container execution command, for liveness or readiness probe
+ *
+ * @member {array} [command] The commands to execute within the container.
+ */
+export interface ContainerExec {
+  command?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerHttpGet class.
+ * @constructor
+ * The container Http Get settings, for liveness or readiness probe
+ *
+ * @member {string} [path] The path to probe.
+ * @member {number} port The port number to probe.
+ * @member {string} [scheme] The scheme. Possible values include: 'http',
+ * 'https'
+ */
+export interface ContainerHttpGet {
+  path?: string;
+  port: number;
+  scheme?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerProbe class.
+ * @constructor
+ * The container probe, for liveness or readiness
+ *
+ * @member {object} [exec] The execution command to probe
+ * @member {array} [exec.command] The commands to execute within the container.
+ * @member {object} [httpGet] The Http Get settings to probe
+ * @member {string} [httpGet.path] The path to probe.
+ * @member {number} [httpGet.port] The port number to probe.
+ * @member {string} [httpGet.scheme] The scheme. Possible values include:
+ * 'http', 'https'
+ * @member {number} [initialDelaySeconds] The initial delay seconds.
+ * @member {number} [periodSeconds] The period seconds.
+ * @member {number} [failureThreshold] The failure threshold.
+ * @member {number} [successThreshold] The success threshold.
+ * @member {number} [timeoutSeconds] The timeout seconds.
+ */
+export interface ContainerProbe {
+  exec?: ContainerExec;
+  httpGet?: ContainerHttpGet;
+  initialDelaySeconds?: number;
+  periodSeconds?: number;
+  failureThreshold?: number;
+  successThreshold?: number;
+  timeoutSeconds?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Container class.
  * @constructor
  * A container instance.
@@ -255,6 +315,36 @@ export interface VolumeMount {
  * instance.
  * @member {array} [volumeMounts] The volume mounts available to the container
  * instance.
+ * @member {object} [livenessProbe] The liveness probe.
+ * @member {object} [livenessProbe.exec] The execution command to probe
+ * @member {array} [livenessProbe.exec.command] The commands to execute within
+ * the container.
+ * @member {object} [livenessProbe.httpGet] The Http Get settings to probe
+ * @member {string} [livenessProbe.httpGet.path] The path to probe.
+ * @member {number} [livenessProbe.httpGet.port] The port number to probe.
+ * @member {string} [livenessProbe.httpGet.scheme] The scheme. Possible values
+ * include: 'http', 'https'
+ * @member {number} [livenessProbe.initialDelaySeconds] The initial delay
+ * seconds.
+ * @member {number} [livenessProbe.periodSeconds] The period seconds.
+ * @member {number} [livenessProbe.failureThreshold] The failure threshold.
+ * @member {number} [livenessProbe.successThreshold] The success threshold.
+ * @member {number} [livenessProbe.timeoutSeconds] The timeout seconds.
+ * @member {object} [readinessProbe] The readiness probe.
+ * @member {object} [readinessProbe.exec] The execution command to probe
+ * @member {array} [readinessProbe.exec.command] The commands to execute within
+ * the container.
+ * @member {object} [readinessProbe.httpGet] The Http Get settings to probe
+ * @member {string} [readinessProbe.httpGet.path] The path to probe.
+ * @member {number} [readinessProbe.httpGet.port] The port number to probe.
+ * @member {string} [readinessProbe.httpGet.scheme] The scheme. Possible values
+ * include: 'http', 'https'
+ * @member {number} [readinessProbe.initialDelaySeconds] The initial delay
+ * seconds.
+ * @member {number} [readinessProbe.periodSeconds] The period seconds.
+ * @member {number} [readinessProbe.failureThreshold] The failure threshold.
+ * @member {number} [readinessProbe.successThreshold] The success threshold.
+ * @member {number} [readinessProbe.timeoutSeconds] The timeout seconds.
  */
 export interface Container {
   name: string;
@@ -265,6 +355,8 @@ export interface Container {
   readonly instanceView?: ContainerPropertiesInstanceView;
   resources: ResourceRequirements;
   volumeMounts?: VolumeMount[];
+  livenessProbe?: ContainerProbe;
+  readinessProbe?: ContainerProbe;
 }
 
 /**
@@ -410,6 +502,36 @@ export interface ContainerGroupPropertiesInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the LogAnalytics class.
+ * @constructor
+ * Container group log analytics information.
+ *
+ * @member {string} workspaceId The workspace id for log analytics
+ * @member {string} workspaceKey The workspace key for log analytics
+ */
+export interface LogAnalytics {
+  workspaceId: string;
+  workspaceKey: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupDiagnostics class.
+ * @constructor
+ * Container group diagnostic information.
+ *
+ * @member {object} [logAnalytics] Container group log analytics information.
+ * @member {string} [logAnalytics.workspaceId] The workspace id for log
+ * analytics
+ * @member {string} [logAnalytics.workspaceKey] The workspace key for log
+ * analytics
+ */
+export interface ContainerGroupDiagnostics {
+  logAnalytics?: LogAnalytics;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -460,6 +582,14 @@ export interface Resource extends BaseResource {
  * @member {array} [instanceView.events] The events of this container group.
  * @member {string} [instanceView.state] The state of the container group. Only
  * valid in response.
+ * @member {object} [diagnostics] The diagnostic information for a container
+ * group.
+ * @member {object} [diagnostics.logAnalytics] Container group log analytics
+ * information.
+ * @member {string} [diagnostics.logAnalytics.workspaceId] The workspace id for
+ * log analytics
+ * @member {string} [diagnostics.logAnalytics.workspaceKey] The workspace key
+ * for log analytics
  */
 export interface ContainerGroup extends Resource {
   readonly provisioningState?: string;
@@ -470,6 +600,7 @@ export interface ContainerGroup extends Resource {
   osType: string;
   volumes?: Volume[];
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
+  diagnostics?: ContainerGroupDiagnostics;
 }
 
 /**
@@ -484,10 +615,10 @@ export interface ContainerGroup extends Resource {
  * @member {string} [description] The description of the operation.
  */
 export interface OperationDisplay {
-  readonly provider?: string;
-  readonly resource?: string;
-  readonly operation?: string;
-  readonly description?: string;
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
 }
 
 /**
@@ -496,8 +627,8 @@ export interface OperationDisplay {
  * @constructor
  * An operation for Azure Container Instance service.
  *
- * @member {string} [name] The name of the operation.
- * @member {object} [display] The display information of the operation.
+ * @member {string} name The name of the operation.
+ * @member {object} display The display information of the operation.
  * @member {string} [display.provider] The name of the provider of the
  * operation.
  * @member {string} [display.resource] The name of the resource type of the
@@ -508,9 +639,9 @@ export interface OperationDisplay {
  * values include: 'User', 'System'
  */
 export interface Operation {
-  readonly name?: string;
-  display?: OperationDisplay;
-  readonly origin?: string;
+  name: string;
+  display: OperationDisplay;
+  origin?: string;
 }
 
 /**
@@ -583,7 +714,7 @@ export interface UsageListResult {
  * @member {string} [content] The content of the log.
  */
 export interface Logs {
-  readonly content?: string;
+  content?: string;
 }
 
 /**
@@ -592,24 +723,24 @@ export interface Logs {
  * @constructor
  * The size of the terminal.
  *
- * @member {number} [row] The row size of the terminal
- * @member {number} [column] The column size of the terminal
+ * @member {number} [rows] The row size of the terminal
+ * @member {number} [cols] The column size of the terminal
  */
 export interface ContainerExecRequestTerminalSize {
-  row?: number;
-  column?: number;
+  rows?: number;
+  cols?: number;
 }
 
 /**
  * @class
  * Initializes a new instance of the ContainerExecRequest class.
  * @constructor
- * The start container exec request.
+ * The container exec request.
  *
  * @member {string} [command] The command to be executed.
  * @member {object} [terminalSize] The size of the terminal.
- * @member {number} [terminalSize.row] The row size of the terminal
- * @member {number} [terminalSize.column] The column size of the terminal
+ * @member {number} [terminalSize.rows] The row size of the terminal
+ * @member {number} [terminalSize.cols] The column size of the terminal
  */
 export interface ContainerExecRequest {
   command?: string;
@@ -626,8 +757,8 @@ export interface ContainerExecRequest {
  * @member {string} [password] The password to start the exec command.
  */
 export interface ContainerExecResponse {
-  readonly webSocketUri?: string;
-  readonly password?: string;
+  webSocketUri?: string;
+  password?: string;
 }
 
 

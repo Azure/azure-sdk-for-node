@@ -71,7 +71,7 @@ export interface StorageProfile {
  * The properties used to create a new server.
  *
  * @member {string} [version] Server version. Possible values include: '9.5',
- * '9.6'
+ * '9.6', '10', '10.0', '10.2'
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
  * @member {object} [storageProfile] Storage profile of a server.
@@ -179,7 +179,7 @@ export interface Sku {
  * server. Can only be specified when the server is being created (and is
  * required for creation).
  * @member {string} [version] Server version. Possible values include: '9.5',
- * '9.6'
+ * '9.6', '10', '10.0', '10.2'
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
  * @member {string} [userVisibleState] A state of a server that is visible to
@@ -225,7 +225,7 @@ export interface Server extends TrackedResource {
  * @member {string} [sku.family] The family of hardware.
  * @member {object} properties Properties of the server.
  * @member {string} [properties.version] Server version. Possible values
- * include: '9.5', '9.6'
+ * include: '9.5', '9.6', '10', '10.0', '10.2'
  * @member {string} [properties.sslEnforcement] Enable ssl enforcement or not
  * when connect to server. Possible values include: 'Enabled', 'Disabled'
  * @member {object} [properties.storageProfile] Storage profile of a server.
@@ -274,7 +274,7 @@ export interface ServerForCreate {
  * @member {string} [administratorLoginPassword] The password of the
  * administrator login.
  * @member {string} [version] The version of a server. Possible values include:
- * '9.5', '9.6'
+ * '9.5', '9.6', '10', '10.0', '10.2'
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
  * @member {object} [tags] Application-specific metadata in the form of

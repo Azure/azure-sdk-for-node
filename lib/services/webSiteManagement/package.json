@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",
@@ -24,8 +24,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.17",
-    "underscore": "^1.8.3",
-    "moment": "~2.18.1"
+    "moment": "^2.22.2",
+    "underscore": "^1.8.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

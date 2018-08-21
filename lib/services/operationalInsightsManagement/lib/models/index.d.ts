@@ -18,20 +18,40 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
+ * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * Common properties of proxy resource.
+ * Display metadata associated with the operation.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {object} [tags] Resource tags
+ * @member {string} [provider] Service provider: Microsoft
+ * OperationsManagement.
+ * @member {string} [resource] Resource on which the operation is performed
+ * etc.
+ * @member {string} [operation] Type of operation: get, read, delete, etc.
  */
-export interface ProxyResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  tags?: { [propertyName: string]: string };
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Supported operation of OperationalInsights resource provider.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] Display metadata associated with the operation.
+ * @member {string} [display.provider] Service provider: Microsoft
+ * OperationsManagement.
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed etc.
+ * @member {string} [display.operation] Type of operation: get, read, delete,
+ * etc.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
 }
 
 /**
@@ -43,7 +63,7 @@ export interface ProxyResource {
  * @member {string} resourceId The resource id of the resource that will be
  * linked to the workspace.
  */
-export interface LinkedService extends ProxyResource {
+export interface LinkedService extends BaseResource {
   resourceId: string;
 }
 
@@ -63,7 +83,7 @@ export interface LinkedService extends ProxyResource {
  * 'LinuxPerformanceObject', 'LinuxPerformanceCollection', 'LinuxSyslog',
  * 'LinuxSyslogCollection', 'WindowsEvent', 'WindowsPerformanceCounter'
  */
-export interface DataSource extends ProxyResource {
+export interface DataSource extends BaseResource {
   properties: any;
   eTag?: string;
   kind: string;
@@ -95,10 +115,12 @@ export interface DataSourceFilter {
  *
  * @member {string} [name] The name of the intelligence pack.
  * @member {boolean} [enabled] The enabled boolean for the intelligence pack.
+ * @member {string} [displayName] The display name of the intelligence pack.
  */
 export interface IntelligencePack {
   name?: string;
   enabled?: boolean;
+  displayName?: string;
 }
 
 /**
@@ -193,30 +215,10 @@ export interface ManagementGroup {
  * The SKU (tier) of a workspace.
  *
  * @member {string} name The name of the SKU. Possible values include: 'Free',
- * 'Standard', 'Premium', 'Unlimited', 'PerNode', 'Standalone'
+ * 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018', 'Standalone'
  */
 export interface Sku {
   name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The resource definition.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -240,13 +242,14 @@ export interface Resource extends BaseResource {
  * client side.
  * @member {object} [sku] The SKU of the workspace.
  * @member {string} [sku.name] The name of the SKU. Possible values include:
- * 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'Standalone'
+ * 'Free', 'Standard', 'Premium', 'Unlimited', 'PerNode', 'PerGB2018',
+ * 'Standalone'
  * @member {number} [retentionInDays] The workspace data retention in days. -1
  * means Unlimited retention for the Unlimited Sku. 730 days is the maximum
  * allowed for all other Skus.
  * @member {string} [eTag] The ETag of the workspace.
  */
-export interface Workspace extends Resource {
+export interface Workspace extends BaseResource {
   provisioningState?: string;
   source?: string;
   customerId?: string;
@@ -258,412 +261,40 @@ export interface Workspace extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the LinkTarget class.
+ * Initializes a new instance of the Resource class.
  * @constructor
- * Metadata for a workspace that isn't linked to an Azure subscription.
+ * The resource definition.
  *
- * @member {string} [customerId] The GUID that uniquely identifies the
- * workspace.
- * @member {string} [displayName] The display name of the workspace.
- * @member {string} [workspaceName] The DNS valid workspace name.
- * @member {string} [location] The location of the workspace.
+ * @member {string} [id] Resource Id
+ * @member {string} [name] Resource name
+ * @member {string} [type] Resource type
+ * @member {string} [location] Resource location
+ * @member {object} [tags] Resource tags
  */
-export interface LinkTarget {
-  customerId?: string;
-  displayName?: string;
-  workspaceName?: string;
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
- * Initializes a new instance of the Tag class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * A tag of a saved search.
+ * Common properties of proxy resource.
  *
- * @member {string} name The tag name.
- * @member {string} value The tag value.
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {object} [tags] Resource tags
  */
-export interface Tag {
-  name: string;
-  value: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CoreSummary class.
- * @constructor
- * The core summary of a search.
- *
- * @member {string} [status] The status of a core summary.
- * @member {number} numberOfDocuments The number of documents of a core
- * summary.
- */
-export interface CoreSummary {
-  status?: string;
-  numberOfDocuments: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchSort class.
- * @constructor
- * The sort parameters for search.
- *
- * @member {string} [name] The name of the field the search query is sorted on.
- * @member {string} [order] The sort order of the search. Possible values
- * include: 'asc', 'desc'
- */
-export interface SearchSort {
-  name?: string;
-  order?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchMetadataSchema class.
- * @constructor
- * Schema metadata for search.
- *
- * @member {string} [name] The name of the metadata schema.
- * @member {number} [version] The version of the metadata schema.
- */
-export interface SearchMetadataSchema {
-  name?: string;
-  version?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchMetadata class.
- * @constructor
- * Metadata for search results.
- *
- * @member {string} [searchId] The request id of the search.
- * @member {string} [resultType] The search result type.
- * @member {number} [total] The total number of search results.
- * @member {number} [top] The number of top search results.
- * @member {string} [id] The id of the search results request.
- * @member {array} [coreSummaries] The core summaries.
- * @member {string} [status] The status of the search results.
- * @member {date} [startTime] The start time for the search.
- * @member {date} [lastUpdated] The time of last update.
- * @member {string} [eTag] The ETag of the search results.
- * @member {array} [sort] How the results are sorted.
- * @member {number} [requestTime] The request time.
- * @member {string} [aggregatedValueField] The aggregated value field.
- * @member {string} [aggregatedGroupingFields] The aggregated grouping fields.
- * @member {number} [sum] The sum of all aggregates returned in the result set.
- * @member {number} [max] The max of all aggregates returned in the result set.
- * @member {object} [schema] The schema.
- * @member {string} [schema.name] The name of the metadata schema.
- * @member {number} [schema.version] The version of the metadata schema.
- */
-export interface SearchMetadata {
-  searchId?: string;
-  resultType?: string;
-  total?: number;
-  top?: number;
-  id?: string;
-  coreSummaries?: CoreSummary[];
-  status?: string;
-  startTime?: Date;
-  lastUpdated?: Date;
-  eTag?: string;
-  sort?: SearchSort[];
-  requestTime?: number;
-  aggregatedValueField?: string;
-  aggregatedGroupingFields?: string;
-  sum?: number;
-  max?: number;
-  schema?: SearchMetadataSchema;
-}
-
-/**
- * @class
- * Initializes a new instance of the SavedSearch class.
- * @constructor
- * Value object for saved search results.
- *
- * @member {string} [id] The id of the saved search.
- * @member {string} [etag] The etag of the saved search.
- * @member {string} category The category of the saved search. This helps the
- * user to find a saved search faster.
- * @member {string} displayName Saved search display name.
- * @member {string} query The query expression for the saved search. Please see
- * https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference
- * for reference.
- * @member {number} version The version number of the query lanuage. Only
- * verion 1 is allowed here.
- * @member {array} [tags] The tags attached to the saved search.
- */
-export interface SavedSearch {
+export interface ProxyResource {
   readonly id?: string;
-  etag?: string;
-  category: string;
-  displayName: string;
-  query: string;
-  version: number;
-  tags?: Tag[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SavedSearchesListResult class.
- * @constructor
- * The saved search operation response.
- *
- * @member {object} [metadata] The metadata from search results.
- * @member {string} [metadata.searchId] The request id of the search.
- * @member {string} [metadata.resultType] The search result type.
- * @member {number} [metadata.total] The total number of search results.
- * @member {number} [metadata.top] The number of top search results.
- * @member {string} [metadata.id] The id of the search results request.
- * @member {array} [metadata.coreSummaries] The core summaries.
- * @member {string} [metadata.status] The status of the search results.
- * @member {date} [metadata.startTime] The start time for the search.
- * @member {date} [metadata.lastUpdated] The time of last update.
- * @member {string} [metadata.eTag] The ETag of the search results.
- * @member {array} [metadata.sort] How the results are sorted.
- * @member {number} [metadata.requestTime] The request time.
- * @member {string} [metadata.aggregatedValueField] The aggregated value field.
- * @member {string} [metadata.aggregatedGroupingFields] The aggregated grouping
- * fields.
- * @member {number} [metadata.sum] The sum of all aggregates returned in the
- * result set.
- * @member {number} [metadata.max] The max of all aggregates returned in the
- * result set.
- * @member {object} [metadata.schema] The schema.
- * @member {string} [metadata.schema.name] The name of the metadata schema.
- * @member {number} [metadata.schema.version] The version of the metadata
- * schema.
- * @member {array} [value] The array of result values.
- */
-export interface SavedSearchesListResult {
-  metadata?: SearchMetadata;
-  value?: SavedSearch[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchError class.
- * @constructor
- * Details for a search error.
- *
- * @member {string} [type] The error type.
- * @member {string} [message] The error message.
- */
-export interface SearchError {
-  type?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchResultsResponse class.
- * @constructor
- * The get search result operation response.
- *
- * @member {string} [id] The id of the search, which includes the full url.
- * @member {object} [metadata] The metadata from search results.
- * @member {string} [metadata.searchId] The request id of the search.
- * @member {string} [metadata.resultType] The search result type.
- * @member {number} [metadata.total] The total number of search results.
- * @member {number} [metadata.top] The number of top search results.
- * @member {string} [metadata.id] The id of the search results request.
- * @member {array} [metadata.coreSummaries] The core summaries.
- * @member {string} [metadata.status] The status of the search results.
- * @member {date} [metadata.startTime] The start time for the search.
- * @member {date} [metadata.lastUpdated] The time of last update.
- * @member {string} [metadata.eTag] The ETag of the search results.
- * @member {array} [metadata.sort] How the results are sorted.
- * @member {number} [metadata.requestTime] The request time.
- * @member {string} [metadata.aggregatedValueField] The aggregated value field.
- * @member {string} [metadata.aggregatedGroupingFields] The aggregated grouping
- * fields.
- * @member {number} [metadata.sum] The sum of all aggregates returned in the
- * result set.
- * @member {number} [metadata.max] The max of all aggregates returned in the
- * result set.
- * @member {object} [metadata.schema] The schema.
- * @member {string} [metadata.schema.name] The name of the metadata schema.
- * @member {number} [metadata.schema.version] The version of the metadata
- * schema.
- * @member {array} [value] The array of result values.
- * @member {object} [error] The error.
- * @member {string} [error.type] The error type.
- * @member {string} [error.message] The error message.
- */
-export interface SearchResultsResponse {
-  readonly id?: string;
-  metadata?: SearchMetadata;
-  value?: any[];
-  error?: SearchError;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchSchemaValue class.
- * @constructor
- * Value object for schema results.
- *
- * @member {string} [name] The name of the schema.
- * @member {string} [displayName] The display name of the schema.
- * @member {string} [type] The type.
- * @member {boolean} indexed The boolean that indicates the field is searchable
- * as free text.
- * @member {boolean} stored The boolean that indicates whether or not the field
- * is stored.
- * @member {boolean} facet The boolean that indicates whether or not the field
- * is a facet.
- * @member {array} [ownerType] The array of workflows containing the field.
- */
-export interface SearchSchemaValue {
-  name?: string;
-  displayName?: string;
-  type?: string;
-  indexed: boolean;
-  stored: boolean;
-  facet: boolean;
-  ownerType?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchGetSchemaResponse class.
- * @constructor
- * The get schema operation response.
- *
- * @member {object} [metadata] The metadata from search results.
- * @member {string} [metadata.searchId] The request id of the search.
- * @member {string} [metadata.resultType] The search result type.
- * @member {number} [metadata.total] The total number of search results.
- * @member {number} [metadata.top] The number of top search results.
- * @member {string} [metadata.id] The id of the search results request.
- * @member {array} [metadata.coreSummaries] The core summaries.
- * @member {string} [metadata.status] The status of the search results.
- * @member {date} [metadata.startTime] The start time for the search.
- * @member {date} [metadata.lastUpdated] The time of last update.
- * @member {string} [metadata.eTag] The ETag of the search results.
- * @member {array} [metadata.sort] How the results are sorted.
- * @member {number} [metadata.requestTime] The request time.
- * @member {string} [metadata.aggregatedValueField] The aggregated value field.
- * @member {string} [metadata.aggregatedGroupingFields] The aggregated grouping
- * fields.
- * @member {number} [metadata.sum] The sum of all aggregates returned in the
- * result set.
- * @member {number} [metadata.max] The max of all aggregates returned in the
- * result set.
- * @member {object} [metadata.schema] The schema.
- * @member {string} [metadata.schema.name] The name of the metadata schema.
- * @member {number} [metadata.schema.version] The version of the metadata
- * schema.
- * @member {array} [value] The array of result values.
- */
-export interface SearchGetSchemaResponse {
-  metadata?: SearchMetadata;
-  value?: SearchSchemaValue[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchHighlight class.
- * @constructor
- * Highlight details.
- *
- * @member {string} [pre] The string that is put before a matched result.
- * @member {string} [post] The string that is put after a matched result.
- */
-export interface SearchHighlight {
-  pre?: string;
-  post?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchParameters class.
- * @constructor
- * Parameters specifying the search query and range.
- *
- * @member {number} [top] The number to get from the top.
- * @member {object} [highlight] The highlight that looks for all occurences of
- * a string.
- * @member {string} [highlight.pre] The string that is put before a matched
- * result.
- * @member {string} [highlight.post] The string that is put after a matched
- * result.
- * @member {string} query The query to search.
- * @member {date} [start] The start date filter, so the only query results
- * returned are after this date.
- * @member {date} [end] The end date filter, so the only query results returned
- * are before this date.
- */
-export interface SearchParameters {
-  top?: number;
-  highlight?: SearchHighlight;
-  query: string;
-  start?: Date;
-  end?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageAccount class.
- * @constructor
- * Describes a storage account connection.
- *
- * @member {string} id The Azure Resource Manager ID of the storage account
- * resource.
- * @member {string} key The storage account key.
- */
-export interface StorageAccount {
-  id: string;
-  key: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageInsightStatus class.
- * @constructor
- * The status of the storage insight.
- *
- * @member {string} state The state of the storage insight connection to the
- * workspace. Possible values include: 'OK', 'ERROR'
- * @member {string} [description] Description of the state of the storage
- * insight.
- */
-export interface StorageInsightStatus {
-  state: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageInsight class.
- * @constructor
- * The top level storage insight resource container.
- *
- * @member {array} [containers] The names of the blob containers that the
- * workspace should read
- * @member {array} [tables] The names of the Azure tables that the workspace
- * should read
- * @member {object} storageAccount The storage account connection details
- * @member {string} [storageAccount.id] The Azure Resource Manager ID of the
- * storage account resource.
- * @member {string} [storageAccount.key] The storage account key.
- * @member {object} [status] The status of the storage insight
- * @member {string} [status.state] The state of the storage insight connection
- * to the workspace. Possible values include: 'OK', 'ERROR'
- * @member {string} [status.description] Description of the state of the
- * storage insight.
- * @member {string} [eTag] The ETag of the storage insight.
- */
-export interface StorageInsight extends ProxyResource {
-  containers?: string[];
-  tables?: string[];
-  storageAccount: StorageAccount;
-  readonly status?: StorageInsightStatus;
-  eTag?: string;
+  readonly name?: string;
+  readonly type?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 
@@ -721,12 +352,13 @@ export interface WorkspaceListResult extends Array<Workspace> {
 
 /**
  * @class
- * Initializes a new instance of the StorageInsightListResult class.
+ * Initializes a new instance of the OperationListResult class.
  * @constructor
- * The list storage insights operation response.
+ * Result of the request to list solution operations.
  *
- * @member {string} [odataNextLink] The link (url) to the next page of results.
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
  */
-export interface StorageInsightListResult extends Array<StorageInsight> {
-  odataNextLink?: string;
+export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
 }
