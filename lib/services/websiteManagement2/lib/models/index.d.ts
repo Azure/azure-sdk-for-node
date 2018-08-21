@@ -4341,6 +4341,7 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
+ * @member {string} [backupName] Name of the backup.
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
  * @member {string} storageAccountUrl SAS URL to the container.
@@ -4365,6 +4366,7 @@ export interface BackupSchedule {
  * @member {array} [databases] Databases included in the backup.
  */
 export interface BackupRequest extends ProxyOnlyResource {
+  backupName?: string;
   enabled?: boolean;
   storageAccountUrl: string;
   backupSchedule?: BackupSchedule;
