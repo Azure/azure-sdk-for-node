@@ -14,620 +14,6 @@ import * as models from '../models';
 
 /**
  * @class
- * AzureFirewalls
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the NetworkManagementClient.
- */
-export interface AzureFirewalls {
-
-
-    /**
-     * Deletes the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, azureFirewallName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, azureFirewallName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewall>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewall>>;
-
-    /**
-     * Gets the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewall} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewall} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewall} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewall>;
-    get(resourceGroupName: string, azureFirewallName: string, callback: ServiceCallback<models.AzureFirewall>): void;
-    get(resourceGroupName: string, azureFirewallName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewall>): void;
-
-
-    /**
-     * Creates or updates the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} parameters Parameters supplied to the create or update Azure
-     * Firewall operation.
-     *
-     * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
-     * Firewall resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
-     * 'Failed'
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewall>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewall>>;
-
-    /**
-     * Creates or updates the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} parameters Parameters supplied to the create or update Azure
-     * Firewall operation.
-     *
-     * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
-     * Firewall resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
-     * 'Failed'
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewall} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewall} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewall} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewall>;
-    createOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, callback: ServiceCallback<models.AzureFirewall>): void;
-    createOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewall>): void;
-
-
-    /**
-     * Lists all Azure Firewalls in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
-
-    /**
-     * Lists all Azure Firewalls in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewallListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-
-
-    /**
-     * Gets all the Azure Firewalls in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
-
-    /**
-     * Gets all the Azure Firewalls in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewallListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
-    listAll(callback: ServiceCallback<models.AzureFirewallListResult>): void;
-    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-
-
-    /**
-     * Deletes the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, azureFirewallName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, azureFirewallName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates or updates the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} parameters Parameters supplied to the create or update Azure
-     * Firewall operation.
-     *
-     * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
-     * Firewall resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
-     * 'Failed'
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewall>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewall>>;
-
-    /**
-     * Creates or updates the specified Azure Firewall.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} azureFirewallName The name of the Azure Firewall.
-     *
-     * @param {object} parameters Parameters supplied to the create or update Azure
-     * Firewall operation.
-     *
-     * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
-     *
-     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
-     * Firewall resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
-     * 'Failed'
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewall} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewall} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewall} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewall>;
-    beginCreateOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, callback: ServiceCallback<models.AzureFirewall>): void;
-    beginCreateOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewall>): void;
-
-
-    /**
-     * Lists all Azure Firewalls in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
-
-    /**
-     * Lists all Azure Firewalls in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewallListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-
-
-    /**
-     * Gets all the Azure Firewalls in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
-
-    /**
-     * Gets all the Azure Firewalls in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AzureFirewallListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
-    listAllNext(nextPageLink: string, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
-}
-
-/**
- * @class
  * ApplicationGateways
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -800,9 +186,6 @@ export interface ApplicationGateways {
      * @param {array} [parameters.authenticationCertificates] Authentication
      * certificates of the application gateway resource.
      *
-     * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
-     *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
      * application gateway resource.
      *
@@ -957,9 +340,6 @@ export interface ApplicationGateways {
      * the gateway resource.
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
-     *
-     * @param {array} [parameters.trustedRootCertificates] Trusted Root
      * certificates of the application gateway resource.
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
@@ -1770,9 +1150,6 @@ export interface ApplicationGateways {
      * @param {array} [parameters.authenticationCertificates] Authentication
      * certificates of the application gateway resource.
      *
-     * @param {array} [parameters.trustedRootCertificates] Trusted Root
-     * certificates of the application gateway resource.
-     *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
      * application gateway resource.
      *
@@ -1927,9 +1304,6 @@ export interface ApplicationGateways {
      * the gateway resource.
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
-     * certificates of the application gateway resource.
-     *
-     * @param {array} [parameters.trustedRootCertificates] Trusted Root
      * certificates of the application gateway resource.
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
@@ -3060,6 +2434,620 @@ export interface ApplicationSecurityGroups {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroupListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationSecurityGroupListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroupListResult>): void;
+}
+
+/**
+ * @class
+ * AzureFirewalls
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AzureFirewalls {
+
+
+    /**
+     * Deletes the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, azureFirewallName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, azureFirewallName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewall>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewall>>;
+
+    /**
+     * Gets the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewall} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewall} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewall} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewall>;
+    get(resourceGroupName: string, azureFirewallName: string, callback: ServiceCallback<models.AzureFirewall>): void;
+    get(resourceGroupName: string, azureFirewallName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewall>): void;
+
+
+    /**
+     * Creates or updates the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} parameters Parameters supplied to the create or update Azure
+     * Firewall operation.
+     *
+     * @param {array} [parameters.applicationRuleCollections] Collection of
+     * application rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.networkRuleCollections] Collection of network
+     * rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
+     * Firewall resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+     * 'Failed'
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewall>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewall>>;
+
+    /**
+     * Creates or updates the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} parameters Parameters supplied to the create or update Azure
+     * Firewall operation.
+     *
+     * @param {array} [parameters.applicationRuleCollections] Collection of
+     * application rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.networkRuleCollections] Collection of network
+     * rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
+     * Firewall resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+     * 'Failed'
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewall} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewall} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewall} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewall>;
+    createOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, callback: ServiceCallback<models.AzureFirewall>): void;
+    createOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewall>): void;
+
+
+    /**
+     * Lists all Azure Firewalls in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
+
+    /**
+     * Lists all Azure Firewalls in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewallListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.AzureFirewallListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
+
+
+    /**
+     * Gets all the Azure Firewalls in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
+
+    /**
+     * Gets all the Azure Firewalls in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewallListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
+    listAll(callback: ServiceCallback<models.AzureFirewallListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
+
+
+    /**
+     * Deletes the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, azureFirewallName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, azureFirewallName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, azureFirewallName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} parameters Parameters supplied to the create or update Azure
+     * Firewall operation.
+     *
+     * @param {array} [parameters.applicationRuleCollections] Collection of
+     * application rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.networkRuleCollections] Collection of network
+     * rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
+     * Firewall resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+     * 'Failed'
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewall>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewall>>;
+
+    /**
+     * Creates or updates the specified Azure Firewall.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} azureFirewallName The name of the Azure Firewall.
+     *
+     * @param {object} parameters Parameters supplied to the create or update Azure
+     * Firewall operation.
+     *
+     * @param {array} [parameters.applicationRuleCollections] Collection of
+     * application rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.networkRuleCollections] Collection of network
+     * rule collections used by a Azure Firewall.
+     *
+     * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
+     * Firewall resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
+     * 'Failed'
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewall} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewall} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewall} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewall>;
+    beginCreateOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, callback: ServiceCallback<models.AzureFirewall>): void;
+    beginCreateOrUpdate(resourceGroupName: string, azureFirewallName: string, parameters: models.AzureFirewall, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewall>): void;
+
+
+    /**
+     * Lists all Azure Firewalls in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
+
+    /**
+     * Lists all Azure Firewalls in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewallListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AzureFirewallListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
+
+
+    /**
+     * Gets all the Azure Firewalls in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureFirewallListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureFirewallListResult>>;
+
+    /**
+     * Gets all the Azure Firewalls in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureFirewallListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureFirewallListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureFirewallListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureFirewallListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.AzureFirewallListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureFirewallListResult>): void;
 }
 
 /**
@@ -24967,6 +24955,1347 @@ export interface BgpServiceCommunities {
 
 /**
  * @class
+ * ServiceEndpointPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ServiceEndpointPolicies {
+
+
+    /**
+     * Deletes the specified service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified service Endpoint Policies in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+
+    /**
+     * Gets the specified service Endpoint Policies in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    get(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    get(resourceGroupName: string, serviceEndpointPolicyName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+
+
+    /**
+     * Creates or updates a service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * service endpoint policy operation.
+     *
+     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
+     * service endpoint policy definitions of the service endpoint policy.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * service endpoint policy resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+
+    /**
+     * Creates or updates a service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * service endpoint policy operation.
+     *
+     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
+     * service endpoint policy definitions of the service endpoint policy.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * service endpoint policy resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+
+
+    /**
+     * Updates service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to update service endpoint
+     * policy tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+
+    /**
+     * Updates service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to update service endpoint
+     * policy tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+
+
+    /**
+     * Gets all the service endpoint policies in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
+
+    /**
+     * Gets all the service endpoint policies in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
+    list(callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+
+
+    /**
+     * Gets all service endpoint Policies in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
+
+    /**
+     * Gets all service endpoint Policies in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+
+
+    /**
+     * Deletes the specified service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * service endpoint policy operation.
+     *
+     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
+     * service endpoint policy definitions of the service endpoint policy.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * service endpoint policy resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+
+    /**
+     * Creates or updates a service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * service endpoint policy operation.
+     *
+     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
+     * service endpoint policy definitions of the service endpoint policy.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * service endpoint policy resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+
+
+    /**
+     * Updates service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to update service endpoint
+     * policy tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+
+    /**
+     * Updates service Endpoint Policies.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {object} parameters Parameters supplied to update service endpoint
+     * policy tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+
+
+    /**
+     * Gets all the service endpoint policies in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
+
+    /**
+     * Gets all the service endpoint policies in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+
+
+    /**
+     * Gets all service endpoint Policies in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
+
+    /**
+     * Gets all service endpoint Policies in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
+}
+
+/**
+ * @class
+ * ServiceEndpointPolicyDefinitions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ServiceEndpointPolicyDefinitions {
+
+
+    /**
+     * Deletes the specified ServiceEndpoint policy definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
+     * Policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ServiceEndpoint policy definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
+     * Policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Get the specified service endpoint policy definitions from service endpoint
+     * policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy name.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
+
+    /**
+     * Get the specified service endpoint policy definitions from service endpoint
+     * policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy name.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyDefinition} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
+    get(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    get(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+
+
+    /**
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition name.
+     *
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
+     *
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
+     * provisioning state of the service end point policy definition. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
+
+    /**
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition name.
+     *
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
+     *
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
+     * provisioning state of the service end point policy definition. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyDefinition} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+
+
+    /**
+     * Gets all service endpoint policy definitions in a service end point policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinitionListResult>>;
+
+    /**
+     * Gets all service endpoint policy definitions in a service end point policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyDefinitionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinitionListResult>;
+    listByResourceGroup(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
+    listByResourceGroup(resourceGroupName: string, serviceEndpointPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
+
+
+    /**
+     * Deletes the specified ServiceEndpoint policy definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
+     * Policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ServiceEndpoint policy definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
+     * Policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition name.
+     *
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
+     *
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
+     * provisioning state of the service end point policy definition. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
+
+    /**
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceEndpointPolicyName The name of the service endpoint
+     * policy.
+     *
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition name.
+     *
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
+     *
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
+     * provisioning state of the service end point policy definition. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyDefinition} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+
+
+    /**
+     * Gets all service endpoint policy definitions in a service end point policy.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinitionListResult>>;
+
+    /**
+     * Gets all service endpoint policy definitions in a service end point policy.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceEndpointPolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceEndpointPolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceEndpointPolicyDefinitionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinitionListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
+}
+
+/**
+ * @class
  * Usages
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -26339,6 +27668,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -26436,6 +27768,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -26675,6 +28010,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -26772,6 +28110,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -36758,1345 +38099,4 @@ export interface VpnConnections {
     listByVpnGatewayNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
     listByVpnGatewayNext(nextPageLink: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
     listByVpnGatewayNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
-}
-
-/**
- * @class
- * ServiceEndpointPolicies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the NetworkManagementClient.
- */
-export interface ServiceEndpointPolicies {
-
-
-    /**
-     * Deletes the specified service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets the specified service Endpoint Policies in a specified resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Expands referenced resources.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
-
-    /**
-     * Gets the specified service Endpoint Policies in a specified resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Expands referenced resources.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    get(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    get(resourceGroupName: string, serviceEndpointPolicyName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-
-
-    /**
-     * Creates or updates a service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * service endpoint policy operation.
-     *
-     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
-     * service endpoint policy definitions of the service endpoint policy.
-     *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     *
-     * @param {string} [parameters.etag] A unique read-only string that changes
-     * whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
-
-    /**
-     * Creates or updates a service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * service endpoint policy operation.
-     *
-     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
-     * service endpoint policy definitions of the service endpoint policy.
-     *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     *
-     * @param {string} [parameters.etag] A unique read-only string that changes
-     * whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-
-
-    /**
-     * Updates service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to update service endpoint
-     * policy tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
-
-    /**
-     * Updates service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to update service endpoint
-     * policy tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-
-
-    /**
-     * Gets all the service endpoint policies in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
-
-    /**
-     * Gets all the service endpoint policies in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
-    list(callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-
-
-    /**
-     * Gets all service endpoint Policies in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
-
-    /**
-     * Gets all service endpoint Policies in a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-
-
-    /**
-     * Deletes the specified service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates or updates a service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * service endpoint policy operation.
-     *
-     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
-     * service endpoint policy definitions of the service endpoint policy.
-     *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     *
-     * @param {string} [parameters.etag] A unique read-only string that changes
-     * whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
-
-    /**
-     * Creates or updates a service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to the create or update
-     * service endpoint policy operation.
-     *
-     * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
-     * service endpoint policy definitions of the service endpoint policy.
-     *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     *
-     * @param {string} [parameters.etag] A unique read-only string that changes
-     * whenever the resource is updated.
-     *
-     * @param {string} [parameters.id] Resource ID.
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.ServiceEndpointPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-
-
-    /**
-     * Updates service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to update service endpoint
-     * policy tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
-
-    /**
-     * Updates service Endpoint Policies.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {object} parameters Parameters supplied to update service endpoint
-     * policy tags.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicy} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-
-
-    /**
-     * Gets all the service endpoint policies in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
-
-    /**
-     * Gets all the service endpoint policies in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-
-
-    /**
-     * Gets all service endpoint Policies in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyListResult>>;
-
-    /**
-     * Gets all service endpoint Policies in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyListResult>): void;
-}
-
-/**
- * @class
- * ServiceEndpointPolicyDefinitions
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the NetworkManagementClient.
- */
-export interface ServiceEndpointPolicyDefinitions {
-
-
-    /**
-     * Deletes the specified ServiceEndpoint policy definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
-     * Policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified ServiceEndpoint policy definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
-     * Policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Get the specified service endpoint policy definitions from service endpoint
-     * policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy name.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
-
-    /**
-     * Get the specified service endpoint policy definitions from service endpoint
-     * policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy name.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyDefinition} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
-    get(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-    get(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-
-
-    /**
-     * Creates or updates a service endpoint policy definition in the specified
-     * service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition name.
-     *
-     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
-     * create or update service endpoint policy operation.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
-     * for this rule. Restricted to 140 chars.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
-     * name.
-     *
-     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
-     * service resources.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
-     * resource that is unique within a resource group. This name can be used to
-     * access the resource.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
-
-    /**
-     * Creates or updates a service endpoint policy definition in the specified
-     * service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition name.
-     *
-     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
-     * create or update service endpoint policy operation.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
-     * for this rule. Restricted to 140 chars.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
-     * name.
-     *
-     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
-     * service resources.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
-     * resource that is unique within a resource group. This name can be used to
-     * access the resource.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyDefinition} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-
-
-    /**
-     * Gets all service endpoint policy definitions in a service end point policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinitionListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinitionListResult>>;
-
-    /**
-     * Gets all service endpoint policy definitions in a service end point policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyDefinitionListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyDefinitionListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, serviceEndpointPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinitionListResult>;
-    listByResourceGroup(resourceGroupName: string, serviceEndpointPolicyName: string, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
-    listByResourceGroup(resourceGroupName: string, serviceEndpointPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
-
-
-    /**
-     * Deletes the specified ServiceEndpoint policy definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
-     * Policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified ServiceEndpoint policy definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
-     * Policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates or updates a service endpoint policy definition in the specified
-     * service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition name.
-     *
-     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
-     * create or update service endpoint policy operation.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
-     * for this rule. Restricted to 140 chars.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
-     * name.
-     *
-     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
-     * service resources.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
-     * resource that is unique within a resource group. This name can be used to
-     * access the resource.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
-
-    /**
-     * Creates or updates a service endpoint policy definition in the specified
-     * service endpoint policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceEndpointPolicyName The name of the service endpoint
-     * policy.
-     *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
-     * endpoint policy definition name.
-     *
-     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
-     * create or update service endpoint policy operation.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
-     * for this rule. Restricted to 140 chars.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
-     * name.
-     *
-     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
-     * service resources.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
-     * resource that is unique within a resource group. This name can be used to
-     * access the resource.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyDefinition} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-
-
-    /**
-     * Gets all service endpoint policy definitions in a service end point policy.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceEndpointPolicyDefinitionListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinitionListResult>>;
-
-    /**
-     * Gets all service endpoint policy definitions in a service end point policy.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceEndpointPolicyDefinitionListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceEndpointPolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceEndpointPolicyDefinitionListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinitionListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinitionListResult>): void;
 }
