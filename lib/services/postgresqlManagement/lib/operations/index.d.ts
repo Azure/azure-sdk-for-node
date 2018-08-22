@@ -52,7 +52,7 @@ export interface Servers {
      * @param {object} parameters.properties Properties of the server.
      *
      * @param {string} [parameters.properties.version] Server version. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
@@ -122,7 +122,7 @@ export interface Servers {
      * @param {object} parameters.properties Properties of the server.
      *
      * @param {string} [parameters.properties.version] Server version. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
@@ -224,7 +224,7 @@ export interface Servers {
      * administrator login.
      *
      * @param {string} [parameters.version] The version of a server. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.sslEnforcement] Enable ssl enforcement or not
      * when connect to server. Possible values include: 'Enabled', 'Disabled'
@@ -289,7 +289,7 @@ export interface Servers {
      * administrator login.
      *
      * @param {string} [parameters.version] The version of a server. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.sslEnforcement] Enable ssl enforcement or not
      * when connect to server. Possible values include: 'Enabled', 'Disabled'
@@ -595,7 +595,7 @@ export interface Servers {
      * @param {object} parameters.properties Properties of the server.
      *
      * @param {string} [parameters.properties.version] Server version. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
@@ -665,7 +665,7 @@ export interface Servers {
      * @param {object} parameters.properties Properties of the server.
      *
      * @param {string} [parameters.properties.version] Server version. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
@@ -767,7 +767,7 @@ export interface Servers {
      * administrator login.
      *
      * @param {string} [parameters.version] The version of a server. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.sslEnforcement] Enable ssl enforcement or not
      * when connect to server. Possible values include: 'Enabled', 'Disabled'
@@ -832,7 +832,7 @@ export interface Servers {
      * administrator login.
      *
      * @param {string} [parameters.version] The version of a server. Possible
-     * values include: '9.5', '9.6'
+     * values include: '9.5', '9.6', '10', '10.0', '10.2'
      *
      * @param {string} [parameters.sslEnforcement] Enable ssl enforcement or not
      * when connect to server. Possible values include: 'Enabled', 'Disabled'
