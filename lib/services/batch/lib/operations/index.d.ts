@@ -628,10 +628,12 @@ export interface Pool {
      *
      * @param {string} pool.cloudServiceConfiguration.osFamily The Azure Guest OS
      * family to be installed on the virtual machines in the pool. Possible values
-     * are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS
-     * Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to
-     * Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016.
-     * For more information, see Azure Guest OS Releases
+     * are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] The Azure
@@ -1045,10 +1047,12 @@ export interface Pool {
      *
      * @param {string} pool.cloudServiceConfiguration.osFamily The Azure Guest OS
      * family to be installed on the virtual machines in the pool. Possible values
-     * are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS
-     * Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to
-     * Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016.
-     * For more information, see Azure Guest OS Releases
+     * are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] The Azure
@@ -4973,10 +4977,12 @@ export interface Job {
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -5561,10 +5567,12 @@ export interface Job {
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -6159,10 +6167,12 @@ export interface Job {
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -6752,10 +6762,12 @@ export interface Job {
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -8101,10 +8113,12 @@ export interface Job {
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -8959,10 +8973,12 @@ export interface Job {
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -13024,10 +13040,12 @@ export interface JobSchedule {
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -14026,10 +14044,12 @@ export interface JobSchedule {
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -15050,10 +15070,12 @@ export interface JobSchedule {
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -16058,10 +16080,12 @@ export interface JobSchedule {
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -17467,10 +17491,12 @@ export interface JobSchedule {
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
@@ -18436,10 +18462,12 @@ export interface JobSchedule {
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
-     * pool. Possible values are: 2 - OS Family 2, equivalent to Windows Server
-     * 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS
-     * Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent
-     * to Windows Server 2016. For more information, see Azure Guest OS Releases
+     * pool. Possible values are:
+     * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+     * 3 - OS Family 3, equivalent to Windows Server 2012.
+     * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+     * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+     * see Azure Guest OS Releases
      * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
      *
      * @param {string}
