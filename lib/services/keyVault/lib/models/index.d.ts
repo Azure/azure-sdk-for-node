@@ -43,8 +43,9 @@ export interface Attributes {
  * As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
  *
  * @member {string} [kid] Key identifier.
- * @member {string} [kty] JsonWebKey key type (kty). Possible values include:
- * 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [keyOps]
  * @member {buffer} [n] RSA modulus.
  * @member {buffer} [e] RSA public exponent.
@@ -59,7 +60,7 @@ export interface Attributes {
  * @member {buffer} [t] HSM Token, used with 'Bring Your Own Key'.
  * @member {string} [crv] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  * @member {buffer} [x] X component of an EC public key.
  * @member {buffer} [y] Y component of an EC public key.
  */
@@ -107,8 +108,9 @@ export interface KeyAttributes extends Attributes {
  *
  * @member {object} [key] The Json web key.
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
- * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
@@ -123,7 +125,7 @@ export interface KeyAttributes extends Attributes {
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
  * @member {string} [key.crv] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  * @member {buffer} [key.x] X component of an EC public key.
  * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [attributes] The key management attributes.
@@ -339,6 +341,19 @@ export interface SecretRestoreParameters {
 
 /**
  * @class
+ * Initializes a new instance of the StorageRestoreParameters class.
+ * @constructor
+ * The secret restore parameters.
+ *
+ * @member {buffer} storageBundleBackup The backup blob associated with a
+ * storage account.
+ */
+export interface StorageRestoreParameters {
+  storageBundleBackup: Buffer;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CertificateAttributes class.
  * @constructor
  * The certificate management attributes.
@@ -400,17 +415,23 @@ export interface CertificateIssuerItem {
  * Properties of the key pair backing a certificate.
  *
  * @member {boolean} [exportable] Indicates if the private key can be exported.
- * @member {string} [keyType] The key type.
- * @member {number} [keySize] The key size in bytes. For example;  1024 or
- * 2048.
+ * @member {string} [keyType] The type of key pair to be used for the
+ * certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
+ * @member {number} [keySize] The key size in bits. For example: 2048, 3072, or
+ * 4096 for RSA.
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
  * certificate renewal.
+ * @member {string} [curve] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'P-256K'
  */
 export interface KeyProperties {
   exportable?: boolean;
   keyType?: string;
   keySize?: number;
   reuseKey?: boolean;
+  curve?: string;
 }
 
 /**
@@ -474,7 +495,9 @@ export interface X509CertificateProperties {
  *
  * @member {number} [lifetimePercentage] Percentage of lifetime at which to
  * trigger. Value should be between 1 and 99.
- * @member {number} [daysBeforeExpiry] Days before expiry.
+ * @member {number} [daysBeforeExpiry] Days before expiry to attempt renewal.
+ * Value should be between 1 and validity_in_months multiplied by 27. If
+ * validity_in_months is 36, then value should be between 1 and 972 (36 * 27).
  */
 export interface Trigger {
   lifetimePercentage?: number;
@@ -504,7 +527,10 @@ export interface Action {
  * @member {object} [trigger] The condition that will execute the action.
  * @member {number} [trigger.lifetimePercentage] Percentage of lifetime at
  * which to trigger. Value should be between 1 and 99.
- * @member {number} [trigger.daysBeforeExpiry] Days before expiry.
+ * @member {number} [trigger.daysBeforeExpiry] Days before expiry to attempt
+ * renewal. Value should be between 1 and validity_in_months multiplied by 27.
+ * If validity_in_months is 36, then value should be between 1 and 972 (36 *
+ * 27).
  * @member {object} [action] The action that will be executed.
  * @member {string} [action.actionType] The type of the action. Possible values
  * include: 'EmailContacts', 'AutoRenew'
@@ -524,10 +550,14 @@ export interface LifetimeAction {
  * names; for example, 'Self' or 'Unknown'.
  * @member {string} [certificateType] Type of certificate to be requested from
  * the issuer provider.
+ * @member {boolean} [certificateTransparency] Indicates if the certificates
+ * generated under this policy should be published to certificate transparency
+ * logs.
  */
 export interface IssuerParameters {
   name?: string;
   certificateType?: string;
+  certificateTransparency?: boolean;
 }
 
 /**
@@ -541,11 +571,16 @@ export interface IssuerParameters {
  * certificate.
  * @member {boolean} [keyProperties.exportable] Indicates if the private key
  * can be exported.
- * @member {string} [keyProperties.keyType] The key type.
- * @member {number} [keyProperties.keySize] The key size in bytes. For example;
- * 1024 or 2048.
+ * @member {string} [keyProperties.keyType] The type of key pair to be used for
+ * the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
+ * @member {number} [keyProperties.keySize] The key size in bits. For example:
+ * 2048, 3072, or 4096 for RSA.
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
  * will be used on certificate renewal.
+ * @member {string} [keyProperties.curve] Elliptic curve name. For valid
+ * values, see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+ * 'P-521', 'P-256K'
  * @member {object} [secretProperties] Properties of the secret backing a
  * certificate.
  * @member {string} [secretProperties.contentType] The media type (MIME type).
@@ -573,6 +608,9 @@ export interface IssuerParameters {
  * object or reserved names; for example, 'Self' or 'Unknown'.
  * @member {string} [issuerParameters.certificateType] Type of certificate to
  * be requested from the issuer provider.
+ * @member {boolean} [issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [attributes] The certificate attributes.
  * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
  * level currently in effect for certificates in the current vault. If it
@@ -607,11 +645,16 @@ export interface CertificatePolicy {
  * certificate.
  * @member {boolean} [policy.keyProperties.exportable] Indicates if the private
  * key can be exported.
- * @member {string} [policy.keyProperties.keyType] The key type.
- * @member {number} [policy.keyProperties.keySize] The key size in bytes. For
- * example;  1024 or 2048.
+ * @member {string} [policy.keyProperties.keyType] The type of key pair to be
+ * used for the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA',
+ * 'RSA-HSM', 'oct'
+ * @member {number} [policy.keyProperties.keySize] The key size in bits. For
+ * example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
  * pair will be used on certificate renewal.
+ * @member {string} [policy.keyProperties.curve] Elliptic curve name. For valid
+ * values, see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+ * 'P-521', 'P-256K'
  * @member {object} [policy.secretProperties] Properties of the secret backing
  * a certificate.
  * @member {string} [policy.secretProperties.contentType] The media type (MIME
@@ -645,6 +688,9 @@ export interface CertificatePolicy {
  * issuer object or reserved names; for example, 'Self' or 'Unknown'.
  * @member {string} [policy.issuerParameters.certificateType] Type of
  * certificate to be requested from the issuer provider.
+ * @member {boolean} [policy.issuerParameters.certificateTransparency]
+ * Indicates if the certificates generated under this policy should be
+ * published to certificate transparency logs.
  * @member {object} [policy.attributes] The certificate attributes.
  * @member {string} [policy.attributes.recoveryLevel] Reflects the deletion
  * recovery level currently in effect for certificates in the current vault. If
@@ -745,6 +791,9 @@ export interface ErrorModel {
  * object or reserved names; for example, 'Self' or 'Unknown'.
  * @member {string} [issuerParameters.certificateType] Type of certificate to
  * be requested from the issuer provider.
+ * @member {boolean} [issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {buffer} [csr] The certificate signing request (CSR) that is being
  * used in the certificate operation.
  * @member {boolean} [cancellationRequested] Indicates if cancellation was
@@ -905,7 +954,8 @@ export interface Contacts {
  * @member {string} kty The type of key to create. For valid values, see
  * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
  * 'oct'
- * @member {number} [keySize] The key size in bytes. For example, 1024 or 2048.
+ * @member {number} [keySize] The key size in bits. For example: 2048, 3072, or
+ * 4096 for RSA.
  * @member {array} [keyOps]
  * @member {object} [keyAttributes]
  * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
@@ -918,7 +968,7 @@ export interface Contacts {
  * key-value pairs.
  * @member {string} [curve] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  */
 export interface KeyCreateParameters {
   kty: string;
@@ -939,8 +989,9 @@ export interface KeyCreateParameters {
  * software key.
  * @member {object} key The Json web key
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
- * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
@@ -955,7 +1006,7 @@ export interface KeyCreateParameters {
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
  * @member {string} [key.crv] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  * @member {buffer} [key.x] X component of an EC public key.
  * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [keyAttributes] The key management attributes.
@@ -1000,7 +1051,7 @@ export interface KeyOperationsParameters {
  * For more information on possible algorithm types, see
  * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
  * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
- * 'ECDSA256'
+ * 'ES256K'
  * @member {buffer} value
  */
 export interface KeySignParameters {
@@ -1017,7 +1068,7 @@ export interface KeySignParameters {
  * @member {string} algorithm The signing/verification algorithm. For more
  * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
  * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
- * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
+ * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ES256K'
  * @member {buffer} digest The digest used for signing.
  * @member {buffer} signature The signature to be verified.
  */
@@ -1125,11 +1176,16 @@ export interface SecretUpdateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.keyType] The type of key
+ * pair to be used for the certificate. Possible values include: 'EC',
+ * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'P-256K'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1166,6 +1222,10 @@ export interface SecretUpdateParameters {
  * 'Unknown'.
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
+ * @member {boolean}
+ * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
  * deletion recovery level currently in effect for certificates in the current
@@ -1209,11 +1269,16 @@ export interface CertificateCreateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.keyType] The type of key
+ * pair to be used for the certificate. Possible values include: 'EC',
+ * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'P-256K'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1250,6 +1315,10 @@ export interface CertificateCreateParameters {
  * 'Unknown'.
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
+ * @member {boolean}
+ * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
  * deletion recovery level currently in effect for certificates in the current
@@ -1290,11 +1359,16 @@ export interface CertificateImportParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.keyType] The type of key
+ * pair to be used for the certificate. Possible values include: 'EC',
+ * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'P-256K'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1331,6 +1405,10 @@ export interface CertificateImportParameters {
  * 'Unknown'.
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
+ * @member {boolean}
+ * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+ * the certificates generated under this policy should be published to
+ * certificate transparency logs.
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
  * deletion recovery level currently in effect for certificates in the current
@@ -1505,6 +1583,19 @@ export interface BackupSecretResult {
 
 /**
  * @class
+ * Initializes a new instance of the BackupStorageResult class.
+ * @constructor
+ * The backup storage result, containing the backup blob.
+ *
+ * @member {buffer} [value] The backup blob containing the backed up storage
+ * account.
+ */
+export interface BackupStorageResult {
+  readonly value?: Buffer;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PendingCertificateSigningRequestResult class.
  * @constructor
  * The pending certificate signing request result.
@@ -1525,11 +1616,18 @@ export interface PendingCertificateSigningRequestResult {
  * @member {boolean} [enabled] the enabled state of the object.
  * @member {date} [created] Creation time in UTC.
  * @member {date} [updated] Last updated time in UTC.
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for storage accounts in the current vault. If it
+ * contains 'Purgeable' the storage account can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the storage account,
+ * at the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface StorageAccountAttributes {
   enabled?: boolean;
   readonly created?: Date;
   readonly updated?: Date;
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -1551,6 +1649,12 @@ export interface StorageAccountAttributes {
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for storage accounts in the current vault. If it
+ * contains 'Purgeable' the storage account can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the storage account,
+ * at the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs
  */
@@ -1562,6 +1666,26 @@ export interface StorageBundle {
   readonly regenerationPeriod?: string;
   readonly attributes?: StorageAccountAttributes;
   readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedStorageBundle class.
+ * @constructor
+ * A deleted storage account bundle consisting of its previous id, attributes
+ * and its tags, as well as information on when it will be purged.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted storage account.
+ * @member {date} [scheduledPurgeDate] The time when the storage account is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the storage account was deleted,
+ * in UTC
+ */
+export interface DeletedStorageBundle extends StorageBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
 }
 
 /**
@@ -1582,6 +1706,13 @@ export interface StorageBundle {
  * the object.
  * @member {date} [storageAccountAttributes.created] Creation time in UTC.
  * @member {date} [storageAccountAttributes.updated] Last updated time in UTC.
+ * @member {string} [storageAccountAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for storage accounts in the
+ * current vault. If it contains 'Purgeable' the storage account can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the storage account, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1612,6 +1743,13 @@ export interface StorageAccountCreateParameters {
  * the object.
  * @member {date} [storageAccountAttributes.created] Creation time in UTC.
  * @member {date} [storageAccountAttributes.updated] Last updated time in UTC.
+ * @member {string} [storageAccountAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for storage accounts in the
+ * current vault. If it contains 'Purgeable' the storage account can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the storage account, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1647,6 +1785,12 @@ export interface StorageAccountRegenerteKeyParameters {
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for storage accounts in the current vault. If it
+ * contains 'Purgeable' the storage account can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the storage account,
+ * at the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1659,6 +1803,26 @@ export interface StorageAccountItem {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedStorageAccountItem class.
+ * @constructor
+ * The deleted storage account item containing metadata about the deleted
+ * storage account.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted storage account.
+ * @member {date} [scheduledPurgeDate] The time when the storage account is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the storage account was deleted,
+ * in UTC
+ */
+export interface DeletedStorageAccountItem extends StorageAccountItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SasDefinitionAttributes class.
  * @constructor
  * The SAS definition management attributes.
@@ -1666,11 +1830,18 @@ export interface StorageAccountItem {
  * @member {boolean} [enabled] the enabled state of the object.
  * @member {date} [created] Creation time in UTC.
  * @member {date} [updated] Last updated time in UTC.
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for SAS definitions in the current vault. If it contains
+ * 'Purgeable' the SAS definition can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the SAS definition, at the end of
+ * the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface SasDefinitionAttributes {
   enabled?: boolean;
   readonly created?: Date;
   readonly updated?: Date;
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -1682,21 +1853,54 @@ export interface SasDefinitionAttributes {
  *
  * @member {string} [id] The SAS definition id.
  * @member {string} [secretId] Storage account SAS definition secret id.
- * @member {object} [parameters] The SAS definition metadata in the form of
- * key-value pairs.
+ * @member {string} [templateUri] The SAS definition token template signed with
+ * an arbitrary key.  Tokens created according to the SAS definition will have
+ * the same properties as the template.
+ * @member {string} [sasType] The type of SAS token the SAS definition will
+ * create. Possible values include: 'account', 'service'
+ * @member {string} [validityPeriod] The validity period of SAS tokens created
+ * according to the SAS definition.
  * @member {object} [attributes] The SAS definition attributes.
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for SAS definitions in the current vault. If it
+ * contains 'Purgeable' the SAS definition can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the SAS definition, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs
  */
 export interface SasDefinitionBundle {
   readonly id?: string;
   readonly secretId?: string;
-  readonly parameters?: { [propertyName: string]: string };
+  readonly templateUri?: string;
+  readonly sasType?: string;
+  readonly validityPeriod?: string;
   readonly attributes?: SasDefinitionAttributes;
   readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSasDefinitionBundle class.
+ * @constructor
+ * A deleted SAS definition bundle consisting of its previous id, attributes
+ * and its tags, as well as information on when it will be purged.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted SAS definition.
+ * @member {date} [scheduledPurgeDate] The time when the SAS definition is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the SAS definition was deleted,
+ * in UTC
+ */
+export interface DeletedSasDefinitionBundle extends SasDefinitionBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
 }
 
 /**
@@ -1711,6 +1915,12 @@ export interface SasDefinitionBundle {
  * @member {boolean} [attributes.enabled] the enabled state of the object.
  * @member {date} [attributes.created] Creation time in UTC.
  * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for SAS definitions in the current vault. If it
+ * contains 'Purgeable' the SAS definition can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the SAS definition, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
@@ -1723,23 +1933,57 @@ export interface SasDefinitionItem {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedSasDefinitionItem class.
+ * @constructor
+ * The deleted SAS definition item containing metadata about the deleted SAS
+ * definition.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted SAS definition.
+ * @member {date} [scheduledPurgeDate] The time when the SAS definition is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the SAS definition was deleted,
+ * in UTC
+ */
+export interface DeletedSasDefinitionItem extends SasDefinitionItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SasDefinitionCreateParameters class.
  * @constructor
  * The SAS definition create parameters.
  *
- * @member {object} parameters Sas definition creation metadata in the form of
- * key-value pairs.
+ * @member {string} templateUri The SAS definition token template signed with
+ * an arbitrary key.  Tokens created according to the SAS definition will have
+ * the same properties as the template.
+ * @member {string} sasType The type of SAS token the SAS definition will
+ * create. Possible values include: 'account', 'service'
+ * @member {string} validityPeriod The validity period of SAS tokens created
+ * according to the SAS definition.
  * @member {object} [sasDefinitionAttributes] The attributes of the SAS
  * definition.
  * @member {boolean} [sasDefinitionAttributes.enabled] the enabled state of the
  * object.
  * @member {date} [sasDefinitionAttributes.created] Creation time in UTC.
  * @member {date} [sasDefinitionAttributes.updated] Last updated time in UTC.
+ * @member {string} [sasDefinitionAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for SAS definitions in the
+ * current vault. If it contains 'Purgeable' the SAS definition can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the SAS definition, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
 export interface SasDefinitionCreateParameters {
-  parameters: { [propertyName: string]: string };
+  templateUri: string;
+  sasType: string;
+  validityPeriod: string;
   sasDefinitionAttributes?: SasDefinitionAttributes;
   tags?: { [propertyName: string]: string };
 }
@@ -1750,19 +1994,33 @@ export interface SasDefinitionCreateParameters {
  * @constructor
  * The SAS definition update parameters.
  *
- * @member {object} [parameters] Sas definition update metadata in the form of
- * key-value pairs.
+ * @member {string} [templateUri] The SAS definition token template signed with
+ * an arbitrary key.  Tokens created according to the SAS definition will have
+ * the same properties as the template.
+ * @member {string} [sasType] The type of SAS token the SAS definition will
+ * create. Possible values include: 'account', 'service'
+ * @member {string} [validityPeriod] The validity period of SAS tokens created
+ * according to the SAS definition.
  * @member {object} [sasDefinitionAttributes] The attributes of the SAS
  * definition.
  * @member {boolean} [sasDefinitionAttributes.enabled] the enabled state of the
  * object.
  * @member {date} [sasDefinitionAttributes.created] Creation time in UTC.
  * @member {date} [sasDefinitionAttributes.updated] Last updated time in UTC.
+ * @member {string} [sasDefinitionAttributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for SAS definitions in the
+ * current vault. If it contains 'Purgeable' the SAS definition can be
+ * permanently deleted by a privileged user; otherwise, only the system can
+ * purge the SAS definition, at the end of the retention interval. Possible
+ * values include: 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
  */
 export interface SasDefinitionUpdateParameters {
-  parameters?: { [propertyName: string]: string };
+  templateUri?: string;
+  sasType?: string;
+  validityPeriod?: string;
   sasDefinitionAttributes?: SasDefinitionAttributes;
   tags?: { [propertyName: string]: string };
 }
@@ -1780,6 +2038,32 @@ export interface SasDefinitionUpdateParameters {
  */
 export interface KeyVaultError {
   readonly error?: ErrorModel;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateRestoreParameters class.
+ * @constructor
+ * The certificate restore parameters.
+ *
+ * @member {buffer} certificateBundleBackup The backup blob associated with a
+ * certificate bundle.
+ */
+export interface CertificateRestoreParameters {
+  certificateBundleBackup: Buffer;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupCertificateResult class.
+ * @constructor
+ * The backup certificate result, containing the backup blob.
+ *
+ * @member {buffer} [value] The backup blob containing the backed up
+ * certificate.
+ */
+export interface BackupCertificateResult {
+  readonly value?: Buffer;
 }
 
 
@@ -1883,6 +2167,19 @@ export interface StorageListResult extends Array<StorageAccountItem> {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedStorageListResult class.
+ * @constructor
+ * The deleted storage account list result
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted storage
+ * accounts.
+ */
+export interface DeletedStorageListResult extends Array<DeletedStorageAccountItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SasDefinitionListResult class.
  * @constructor
  * The storage account SAS definition list result.
@@ -1890,5 +2187,18 @@ export interface StorageListResult extends Array<StorageAccountItem> {
  * @member {string} [nextLink] The URL to get the next set of SAS defintions.
  */
 export interface SasDefinitionListResult extends Array<SasDefinitionItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSasDefinitionListResult class.
+ * @constructor
+ * The deleted SAS definition list result
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted SAS
+ * definitions.
+ */
+export interface DeletedSasDefinitionListResult extends Array<DeletedSasDefinitionItem> {
   readonly nextLink?: string;
 }

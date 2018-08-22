@@ -15,7 +15,7 @@
     "Lu, Jianghao <jianghlu@microsoft.com>",
     "Krishnan, Balaji <Balaji.Krishnan@microsoft.com>"
   ],
-  "version": "2.3.0-preview",
+  "version": "2.3.1-preview",
   "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
@@ -111,6 +111,7 @@
     "azure-gallery": "^2.0.0-pre.20",
     "azure-graph": "^2.2.0",
     "azure-keyvault": "^3.0.4-preview",
+    "azure-loganalytics": "^0.1.0",
     "azure-monitoring": "^0.10.6",
     "azure-sb": "^0.10.6",
     "azure-scheduler": "^0.10.4",
