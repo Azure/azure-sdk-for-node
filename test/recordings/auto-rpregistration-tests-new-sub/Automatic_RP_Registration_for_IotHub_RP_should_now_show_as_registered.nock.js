@@ -9,7 +9,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/providers/Microsoft.Devices?api-version=2017-05-10')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/providers/Microsoft.Devices?api-version=2018-05-01')
   .reply(200, "{\"id\":\"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/providers/Microsoft.Devices\",\"namespace\":\"Microsoft.Devices\",\"resourceTypes\":[{\"resourceType\":\"checkNameAvailability\",\"locations\":[],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"]},{\"resourceType\":\"usages\",\"locations\":[],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"]},{\"resourceType\":\"IotHubs\",\"locations\":[\"West US\",\"North Europe\",\"East Asia\",\"East US\",\"West Europe\",\"Southeast Asia\",\"Japan East\",\"Japan West\",\"Australia East\",\"Australia Southeast\",\"West US 2\",\"West Central US\"],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"],\"capabilities\":\"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -26,7 +26,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/providers/Microsoft.Devices?api-version=2017-05-10')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/providers/Microsoft.Devices?api-version=2018-05-01')
   .reply(200, "{\"id\":\"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/providers/Microsoft.Devices\",\"namespace\":\"Microsoft.Devices\",\"resourceTypes\":[{\"resourceType\":\"checkNameAvailability\",\"locations\":[],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"]},{\"resourceType\":\"usages\",\"locations\":[],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"]},{\"resourceType\":\"operations\",\"locations\":[],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"]},{\"resourceType\":\"IotHubs\",\"locations\":[\"West US\",\"North Europe\",\"East Asia\",\"East US\",\"West Europe\",\"Southeast Asia\",\"Japan East\",\"Japan West\",\"Australia East\",\"Australia Southeast\",\"West US 2\",\"West Central US\"],\"apiVersions\":[\"2017-01-19\",\"2016-02-03\",\"2015-08-15-preview\"],\"capabilities\":\"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"}],\"registrationState\":\"Registered\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
