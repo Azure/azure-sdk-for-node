@@ -1849,14 +1849,14 @@ export interface IntegrationRuntimes {
      * linked integration runtime.
      *
      * @param {string} [createLinkedIntegrationRuntimeRequest.subscriptionId] The
-     * subscription ID for which the linked integration runtime belong to.
+     * ID of the subscription that the linked integration runtime belongs to.
      *
      * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryName] The
-     * name of the data factory for which the linked integration runtime belong to.
+     * name of the data factory that the linked integration runtime belongs to.
      *
      * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryLocation]
-     * The location of the data factory for which the linked integration runtime
-     * belong to.
+     * The location of the data factory that the linked integration runtime belongs
+     * to.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1887,14 +1887,14 @@ export interface IntegrationRuntimes {
      * linked integration runtime.
      *
      * @param {string} [createLinkedIntegrationRuntimeRequest.subscriptionId] The
-     * subscription ID for which the linked integration runtime belong to.
+     * ID of the subscription that the linked integration runtime belongs to.
      *
      * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryName] The
-     * name of the data factory for which the linked integration runtime belong to.
+     * name of the data factory that the linked integration runtime belongs to.
      *
      * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryLocation]
-     * The location of the data factory for which the linked integration runtime
-     * belong to.
+     * The location of the data factory that the linked integration runtime belongs
+     * to.
      *
      * @param {object} [options] Optional Parameters.
      *

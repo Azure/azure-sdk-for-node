@@ -360,12 +360,12 @@ export interface LinkedIntegrationRuntimeRequest {
  * The linked integration runtime information.
  *
  * @member {string} [name] The name of the linked integration runtime.
- * @member {string} [subscriptionId] The subscription ID for which the linked
- * integration runtime belong to.
- * @member {string} [dataFactoryName] The name of the data factory for which
- * the linked integration runtime belong to.
- * @member {string} [dataFactoryLocation] The location of the data factory for
- * which the linked integration runtime belong to.
+ * @member {string} [subscriptionId] The ID of the subscription that the linked
+ * integration runtime belongs to.
+ * @member {string} [dataFactoryName] The name of the data factory that the
+ * linked integration runtime belongs to.
+ * @member {string} [dataFactoryLocation] The location of the data factory that
+ * the linked integration runtime belongs to.
  */
 export interface CreateLinkedIntegrationRuntimeRequest {
   name?: string;
