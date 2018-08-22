@@ -18,35 +18,157 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
+ * Initializes a new instance of the Sku class.
  * @constructor
- * Error response of an operation failure
+ * The account SKU.
  *
- * @member {string} [code] Error code
- * @member {string} [message] Error message indicating why the operation
- * failed.
+ * @member {string} name Gets or sets the SKU name of the account. Possible
+ * values include: 'Free', 'Basic'
+ * @member {string} [family] Gets or sets the SKU family.
+ * @member {number} [capacity] Gets or sets the SKU capacity.
  */
-export interface ErrorResponse {
-  code?: string;
-  message?: string;
+export interface Sku {
+  name: string;
+  family?: string;
+  capacity?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the Key class.
+ * Initializes a new instance of the Resource class.
  * @constructor
- * Automation key which is used to register a DSC Node
+ * The core properties of ARM resources
  *
- * @member {string} [keyName] Automation key name. Possible values include:
- * 'primary', 'secondary'
- * @member {string} [permissions] Automation key permissions. Possible values
- * include: 'Full'
- * @member {string} [value] Value of the Automation Key used for registration.
+ * @member {string} [id] Fully qualified resource Id for the resource
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource.
  */
-export interface Key {
-  keyName?: string;
-  permissions?: string;
-  value?: string;
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} [location] The Azure Region where the resource lives
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
+  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomationAccount class.
+ * @constructor
+ * Definition of the automation account type.
+ *
+ * @member {object} [sku] Gets or sets the SKU of account.
+ * @member {string} [sku.name] Gets or sets the SKU name of the account.
+ * Possible values include: 'Free', 'Basic'
+ * @member {string} [sku.family] Gets or sets the SKU family.
+ * @member {number} [sku.capacity] Gets or sets the SKU capacity.
+ * @member {string} [lastModifiedBy] Gets or sets the last modified by.
+ * @member {string} [state] Gets status of account. Possible values include:
+ * 'Ok', 'Unavailable', 'Suspended'
+ * @member {date} [creationTime] Gets the creation time.
+ * @member {date} [lastModifiedTime] Gets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface AutomationAccount extends TrackedResource {
+  sku?: Sku;
+  lastModifiedBy?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomationAccountCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update automation account
+ * operation.
+ *
+ * @member {object} [sku] Gets or sets account SKU.
+ * @member {string} [sku.name] Gets or sets the SKU name of the account.
+ * Possible values include: 'Free', 'Basic'
+ * @member {string} [sku.family] Gets or sets the SKU family.
+ * @member {number} [sku.capacity] Gets or sets the SKU capacity.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface AutomationAccountCreateOrUpdateParameters {
+  sku?: Sku;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * Provider, Resource and Operation values
+ *
+ * @member {string} [provider] Service provider: Microsoft.Automation
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Runbooks, Jobs etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Automation REST API operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] Provider, Resource and Operation values
+ * @member {string} [display.provider] Service provider: Microsoft.Automation
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Runbooks, Jobs etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Statistics class.
+ * @constructor
+ * Definition of the statistic.
+ *
+ * @member {string} [counterProperty] Gets the property value of the statistic.
+ * @member {number} [counterValue] Gets the value of the statistic.
+ * @member {date} [startTime] Gets the startTime of the statistic.
+ * @member {date} [endTime] Gets the endTime of the statistic.
+ * @member {string} [id] Gets the id.
+ */
+export interface Statistics {
+  readonly counterProperty?: string;
+  readonly counterValue?: number;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly id?: string;
 }
 
 /**
@@ -91,58 +213,59 @@ export interface Usage {
 
 /**
  * @class
- * Initializes a new instance of the Statistics class.
+ * Initializes a new instance of the Key class.
  * @constructor
- * Definition of the statistic.
+ * Automation key which is used to register a DSC Node
  *
- * @member {string} [counterProperty] Gets the property value of the statistic.
- * @member {number} [counterValue] Gets the value of the statistic.
- * @member {date} [startTime] Gets the startTime of the statistic.
- * @member {date} [endTime] Gets the endTime of the statistic.
- * @member {string} [id] Gets the id.
+ * @member {string} [keyName] Automation key name. Possible values include:
+ * 'Primary', 'Secondary'
+ * @member {string} [permissions] Automation key permissions. Possible values
+ * include: 'Read', 'Full'
+ * @member {string} [value] Value of the Automation Key used for registration.
  */
-export interface Statistics {
-  readonly counterProperty?: string;
-  readonly counterValue?: number;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly id?: string;
+export interface Key {
+  readonly keyName?: string;
+  readonly permissions?: string;
+  readonly value?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the RunbookAssociationProperty class.
+ * Initializes a new instance of the KeyListResult class.
  * @constructor
- * The runbook property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the runbook.
+ * @member {array} [keys] Lists the automation keys.
  */
-export interface RunbookAssociationProperty {
+export interface KeyListResult {
+  keys?: Key[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomationAccountUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update automation account operation.
+ *
+ * @member {object} [sku] Gets or sets account SKU.
+ * @member {string} [sku.name] Gets or sets the SKU name of the account.
+ * Possible values include: 'Free', 'Basic'
+ * @member {string} [sku.family] Gets or sets the SKU family.
+ * @member {number} [sku.capacity] Gets or sets the SKU capacity.
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface AutomationAccountUpdateParameters {
+  sku?: Sku;
   name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The core properties of ARM resources
- *
- * @member {string} [id] Fully qualified resource Id for the resource
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource.
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
  * Initializes a new instance of the ProxyResource class.
  * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
+ * ARM proxy resource.
  *
  */
 export interface ProxyResource extends Resource {
@@ -150,149 +273,79 @@ export interface ProxyResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the Webhook class.
+ * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Definition of the webhook type.
+ * Error response of an operation failure
  *
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * the webhook. Default value: false .
- * @member {string} [uri] Gets or sets the webhook uri.
- * @member {date} [expiryTime] Gets or sets the expiry time.
- * @member {date} [lastInvokedTime] Gets or sets the last invoked time.
- * @member {object} [parameters] Gets or sets the parameters of the job that is
- * created when the webhook calls the runbook it is associated with.
- * @member {object} [runbook] Gets or sets the runbook the webhook is
- * associated with.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
+ * @member {string} [code] Error code
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
  */
-export interface Webhook extends ProxyResource {
-  isEnabled?: boolean;
-  uri?: string;
-  expiryTime?: Date;
-  lastInvokedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update or replace certificate
+ * operation.
+ *
+ * @member {string} name Gets or sets the name of the certificate.
+ * @member {string} base64Value Gets or sets the base64 encoded value of the
+ * certificate.
+ * @member {string} [description] Gets or sets the description of the
+ * certificate.
+ * @member {string} [thumbprint] Gets or sets the thumbprint of the
+ * certificate.
+ * @member {boolean} [isExportable] Gets or sets the is exportable flag of the
+ * certificate.
+ */
+export interface CertificateCreateOrUpdateParameters {
+  name: string;
+  base64Value: string;
   description?: string;
+  thumbprint?: string;
+  isExportable?: boolean;
 }
 
 /**
  * @class
- * Initializes a new instance of the Variable class.
+ * Initializes a new instance of the Certificate class.
  * @constructor
- * Definition of the varible.
+ * Definition of the certificate.
  *
- * @member {string} [value] Gets or sets the value of the variable.
- * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
- * variable.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Variable extends ProxyResource {
-  value?: string;
-  isEncrypted?: boolean;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobProvisioningStateProperty class.
- * @constructor
- * The provisioning state property.
- *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Failed', 'Succeeded', 'Suspended', 'Processing'
- */
-export interface JobProvisioningStateProperty {
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationAssociationProperty class.
- * @constructor
- * The Dsc configuration property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the Dsc configuration.
- */
-export interface DscConfigurationAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJob class.
- * @constructor
- * Definition of the Dsc Compilation job.
- *
- * @member {object} [configuration] Gets or sets the configuration.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {string} [startedBy] Gets the compilation job started by.
- * @member {uuid} [jobId] Gets the id of the job.
- * @member {date} [creationTime] Gets the creation time of the job.
- * @member {object} [provisioningState] The current provisioning state of the
- * job.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets the start time of the job.
- * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [exception] Gets the exception of the job.
- * @member {date} [lastModifiedTime] Gets the last modified time of the job.
- * @member {date} [lastStatusModifiedTime] Gets the last status modified time
- * of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- */
-export interface DscCompilationJob extends ProxyResource {
-  configuration?: DscConfigurationAssociationProperty;
-  readonly startedBy?: string;
-  readonly jobId?: string;
-  readonly creationTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
-  runOn?: string;
-  status?: string;
-  statusDetails?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly exception?: string;
-  readonly lastModifiedTime?: Date;
-  readonly lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Credential class.
- * @constructor
- * Definition of the credential.
- *
- * @member {string} [userName] Gets the user name of the credential.
+ * @member {string} [thumbprint] Gets the thumbprint of the certificate.
+ * @member {date} [expiryTime] Gets the expiry time of the certificate.
+ * @member {boolean} [isExportable] Gets the is exportable flag of the
+ * certificate.
  * @member {date} [creationTime] Gets the creation time.
  * @member {date} [lastModifiedTime] Gets the last modified time.
  * @member {string} [description] Gets or sets the description.
  */
-export interface Credential extends ProxyResource {
-  readonly userName?: string;
+export interface Certificate extends ProxyResource {
+  readonly thumbprint?: string;
+  readonly expiryTime?: Date;
+  readonly isExportable?: boolean;
   readonly creationTime?: Date;
   readonly lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update certificate operation.
+ *
+ * @member {string} [name] Gets or sets the name of the certificate.
+ * @member {string} [description] Gets or sets the description of the
+ * certificate.
+ */
+export interface CertificateUpdateParameters {
+  name?: string;
   description?: string;
 }
 
@@ -306,6 +359,29 @@ export interface Credential extends ProxyResource {
  */
 export interface ConnectionTypeAssociationProperty {
   name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update connection operation.
+ *
+ * @member {string} name Gets or sets the name of the connection.
+ * @member {string} [description] Gets or sets the description of the
+ * connection.
+ * @member {object} connectionType Gets or sets the connectionType of the
+ * connection.
+ * @member {string} [connectionType.name] Gets or sets the name of the
+ * connection type.
+ * @member {object} [fieldDefinitionValues] Gets or sets the field definition
+ * properties of the connection.
+ */
+export interface ConnectionCreateOrUpdateParameters {
+  name: string;
+  description?: string;
+  connectionType: ConnectionTypeAssociationProperty;
+  fieldDefinitionValues?: { [propertyName: string]: string };
 }
 
 /**
@@ -334,22 +410,119 @@ export interface Connection extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the Certificate class.
+ * Initializes a new instance of the ConnectionUpdateParameters class.
  * @constructor
- * Definition of the certificate.
+ * The parameters supplied to the update connection operation.
  *
- * @member {string} [thumbprint] Gets the thumbprint of the certificate.
- * @member {date} [expiryTime] Gets the expiry time of the certificate.
- * @member {boolean} [isExportable] Gets the is exportable flag of the
- * certificate.
+ * @member {string} [name] Gets or sets the name of the connection.
+ * @member {string} [description] Gets or sets the description of the
+ * connection.
+ * @member {object} [fieldDefinitionValues] Gets or sets the field definition
+ * values of the connection.
+ */
+export interface ConnectionUpdateParameters {
+  name?: string;
+  description?: string;
+  fieldDefinitionValues?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FieldDefinition class.
+ * @constructor
+ * Definition of the connection fields.
+ *
+ * @member {boolean} [isEncrypted] Gets or sets the isEncrypted flag of the
+ * connection field definition.
+ * @member {boolean} [isOptional] Gets or sets the isOptional flag of the
+ * connection field definition.
+ * @member {string} type Gets or sets the type of the connection field
+ * definition.
+ */
+export interface FieldDefinition {
+  isEncrypted?: boolean;
+  isOptional?: boolean;
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionType class.
+ * @constructor
+ * Definition of the connection type.
+ *
+ * @member {string} [id] Gets the id of the resource.
+ * @member {string} [name] Gets the name of the connection type.
+ * @member {string} [type] Resource type
+ * @member {boolean} [isGlobal] Gets or sets a Boolean value to indicate if the
+ * connection type is global.
+ * @member {object} [fieldDefinitions] Gets the field definitions of the
+ * connection type.
+ * @member {date} [creationTime] Gets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface ConnectionType {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  isGlobal?: boolean;
+  readonly fieldDefinitions?: { [propertyName: string]: FieldDefinition };
+  readonly creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionTypeCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update connection type operation.
+ *
+ * @member {string} name Gets or sets the name of the connection type.
+ * @member {boolean} [isGlobal] Gets or sets a Boolean value to indicate if the
+ * connection type is global.
+ * @member {object} fieldDefinitions Gets or sets the field definitions of the
+ * connection type.
+ */
+export interface ConnectionTypeCreateOrUpdateParameters {
+  name: string;
+  isGlobal?: boolean;
+  fieldDefinitions: { [propertyName: string]: FieldDefinition };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CredentialCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update credential operation.
+ *
+ * @member {string} name Gets or sets the name of the credential.
+ * @member {string} userName Gets or sets the user name of the credential.
+ * @member {string} password Gets or sets the password of the credential.
+ * @member {string} [description] Gets or sets the description of the
+ * credential.
+ */
+export interface CredentialCreateOrUpdateParameters {
+  name: string;
+  userName: string;
+  password: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Credential class.
+ * @constructor
+ * Definition of the credential.
+ *
+ * @member {string} [userName] Gets the user name of the credential.
  * @member {date} [creationTime] Gets the creation time.
  * @member {date} [lastModifiedTime] Gets the last modified time.
  * @member {string} [description] Gets or sets the description.
  */
-export interface Certificate extends ProxyResource {
-  readonly thumbprint?: string;
-  readonly expiryTime?: Date;
-  readonly isExportable?: boolean;
+export interface Credential extends ProxyResource {
+  readonly userName?: string;
   readonly creationTime?: Date;
   readonly lastModifiedTime?: Date;
   description?: string;
@@ -357,21 +530,21 @@ export interface Certificate extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the RunbookParameter class.
+ * Initializes a new instance of the CredentialUpdateParameters class.
  * @constructor
- * Definition of the runbook parameter type.
+ * The parameters supplied to the Update credential operation.
  *
- * @member {string} [type] Gets or sets the type of the parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
- * @member {number} [position] Get or sets the position of the parameter.
- * @member {string} [defaultValue] Gets or sets the default value of parameter.
+ * @member {string} [name] Gets or sets the name of the credential.
+ * @member {string} [userName] Gets or sets the user name of the credential.
+ * @member {string} [password] Gets or sets the password of the credential.
+ * @member {string} [description] Gets or sets the description of the
+ * credential.
  */
-export interface RunbookParameter {
-  type?: string;
-  isMandatory?: boolean;
-  position?: number;
-  defaultValue?: string;
+export interface CredentialUpdateParameters {
+  name?: string;
+  userName?: string;
+  password?: string;
+  description?: string;
 }
 
 /**
@@ -387,6 +560,451 @@ export interface RunbookParameter {
 export interface ContentHash {
   algorithm: string;
   value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContentSource class.
+ * @constructor
+ * Definition of the content source.
+ *
+ * @member {object} [hash] Gets or sets the hash.
+ * @member {string} [hash.algorithm] Gets or sets the content hash algorithm
+ * used to hash the content.
+ * @member {string} [hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [type] Gets or sets the content source type. Possible
+ * values include: 'embeddedContent', 'uri'
+ * @member {string} [value] Gets or sets the value of the content. This is
+ * based on the content source type.
+ * @member {string} [version] Gets or sets the version of the content.
+ */
+export interface ContentSource {
+  hash?: ContentHash;
+  type?: string;
+  value?: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationParameter class.
+ * @constructor
+ * Definition of the configuration parameter type.
+ *
+ * @member {string} [type] Gets or sets the type of the parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
+ * whether the parameter is madatory or not.
+ * @member {number} [position] Get or sets the position of the parameter.
+ * @member {string} [defaultValue] Gets or sets the default value of parameter.
+ */
+export interface DscConfigurationParameter {
+  type?: string;
+  isMandatory?: boolean;
+  position?: number;
+  defaultValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update configuration operation.
+ *
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {object} source Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {object} [parameters] Gets or sets the configuration parameters.
+ * @member {string} [description] Gets or sets the description of the
+ * configuration.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscConfigurationCreateOrUpdateParameters {
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  source: ContentSource;
+  parameters?: { [propertyName: string]: DscConfigurationParameter };
+  description?: string;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfiguration class.
+ * @constructor
+ * Definition of the configuration type.
+ *
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the configuration. Possible values include: 'Succeeded'
+ * @member {number} [jobCount] Gets or sets the job count of the configuration.
+ * @member {object} [parameters] Gets or sets the configuration parameters.
+ * @member {object} [source] Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {string} [state] Gets or sets the state of the configuration.
+ * Possible values include: 'New', 'Edit', 'Published'
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {number} [nodeConfigurationCount] Gets the number of compiled node
+ * configurations.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface DscConfiguration extends TrackedResource {
+  provisioningState?: string;
+  jobCount?: number;
+  parameters?: { [propertyName: string]: DscConfigurationParameter };
+  source?: ContentSource;
+  state?: string;
+  logVerbose?: boolean;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  nodeConfigurationCount?: number;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update configuration operation.
+ *
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {object} source Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {object} [parameters] Gets or sets the configuration parameters.
+ * @member {string} [description] Gets or sets the description of the
+ * configuration.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscConfigurationUpdateParameters {
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  source: ContentSource;
+  parameters?: { [propertyName: string]: DscConfigurationParameter };
+  description?: string;
+  name?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunAsCredentialAssociationProperty class.
+ * @constructor
+ * Definition of runas credential to use for hybrid worker.
+ *
+ * @member {string} [name] Gets or sets the name of the credential.
+ */
+export interface RunAsCredentialAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HybridRunbookWorker class.
+ * @constructor
+ * Definition of hybrid runbook worker.
+ *
+ * @member {string} [name] Gets or sets the worker machine name.
+ * @member {string} [ip] Gets or sets the assigned machine IP address.
+ * @member {date} [registrationTime] Gets or sets the registration time of the
+ * worker machine.
+ * @member {date} [lastSeenDateTime] Last Heartbeat from the Worker
+ */
+export interface HybridRunbookWorker {
+  name?: string;
+  ip?: string;
+  registrationTime?: Date;
+  lastSeenDateTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HybridRunbookWorkerGroup class.
+ * @constructor
+ * Definition of hybrid runbook worker group.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [name] Gets or sets the name of the group.
+ * @member {array} [hybridRunbookWorkers] Gets or sets the list of hybrid
+ * runbook workers.
+ * @member {object} [credential] Sets the credential of a worker group.
+ * @member {string} [credential.name] Gets or sets the name of the credential.
+ * @member {string} [groupType] Type of the HybridWorkerGroup. Possible values
+ * include: 'User', 'System'
+ */
+export interface HybridRunbookWorkerGroup {
+  id?: string;
+  name?: string;
+  hybridRunbookWorkers?: HybridRunbookWorker[];
+  credential?: RunAsCredentialAssociationProperty;
+  groupType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HybridRunbookWorkerGroupUpdateParameters class.
+ * @constructor
+ * Parameters supplied to the update operation.
+ *
+ * @member {object} [credential] Sets the credential of a worker group.
+ * @member {string} [credential.name] Gets or sets the name of the credential.
+ */
+export interface HybridRunbookWorkerGroupUpdateParameters {
+  credential?: RunAsCredentialAssociationProperty;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleAssociationProperty class.
+ * @constructor
+ * The schedule property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the Schedule.
+ */
+export interface ScheduleAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookAssociationProperty class.
+ * @constructor
+ * The runbook property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the runbook.
+ */
+export interface RunbookAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobSchedule class.
+ * @constructor
+ * Definition of the job schedule.
+ *
+ * @member {string} [id] Gets the id of the resource.
+ * @member {string} [name] Gets the name of the variable.
+ * @member {string} [type] Resource type
+ * @member {string} [jobScheduleId] Gets or sets the id of job schedule.
+ * @member {object} [schedule] Gets or sets the schedule.
+ * @member {string} [schedule.name] Gets or sets the name of the Schedule.
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the hybrid worker group that the
+ * scheduled job should run on.
+ * @member {object} [parameters] Gets or sets the parameters of the job
+ * schedule.
+ */
+export interface JobSchedule {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  jobScheduleId?: string;
+  schedule?: ScheduleAssociationProperty;
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create job schedule operation.
+ *
+ * @member {object} schedule Gets or sets the schedule.
+ * @member {string} [schedule.name] Gets or sets the name of the Schedule.
+ * @member {object} runbook Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the hybrid worker group that the
+ * scheduled job should run on.
+ * @member {object} [parameters] Gets or sets a list of job properties.
+ */
+export interface JobScheduleCreateParameters {
+  schedule: ScheduleAssociationProperty;
+  runbook: RunbookAssociationProperty;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedWorkspace class.
+ * @constructor
+ * Definition of the linked workspace.
+ *
+ * @member {string} [id] Gets the id of the linked workspace.
+ */
+export interface LinkedWorkspace {
+  readonly id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityParameterValidationSet class.
+ * @constructor
+ * Definition of the activity parameter validation set.
+ *
+ * @member {string} [memberValue] Gets or sets the name of the activity
+ * parameter validation set member.
+ */
+export interface ActivityParameterValidationSet {
+  memberValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityParameter class.
+ * @constructor
+ * Definition of the activity parameter.
+ *
+ * @member {string} [name] Gets or sets the name of the activity parameter.
+ * @member {string} [type] Gets or sets the type of the activity parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value that indicates
+ * true if the parameter is required. If the value is false, the parameter is
+ * optional.
+ * @member {boolean} [isDynamic] Gets or sets a Boolean value that indicates
+ * true if the parameter is dynamic.
+ * @member {number} [position] Gets or sets the position of the activity
+ * parameter.
+ * @member {boolean} [valueFromPipeline] Gets or sets a Boolean value that
+ * indicates true if the parameter can take values from the incoming pipeline
+ * objects. This setting is used if the cmdlet must access the complete input
+ * object. false indicates that the parameter cannot take values from the
+ * complete input object.
+ * @member {boolean} [valueFromPipelineByPropertyName] Gets or sets a Boolean
+ * value that indicates true if the parameter can be filled from a property of
+ * the incoming pipeline object that has the same name as this parameter. false
+ * indicates that the parameter cannot be filled from the incoming pipeline
+ * object property with the same name.
+ * @member {boolean} [valueFromRemainingArguments] Gets or sets a Boolean value
+ * that indicates true if the cmdlet parameter accepts all the remaining
+ * command-line arguments that are associated with this parameter in the form
+ * of an array. false if the cmdlet parameter does not accept all the remaining
+ * argument values.
+ * @member {string} [description] Gets or sets the description of the activity
+ * parameter.
+ * @member {array} [validationSet] Gets or sets the validation set of activity
+ * parameter.
+ */
+export interface ActivityParameter {
+  name?: string;
+  type?: string;
+  isMandatory?: boolean;
+  isDynamic?: boolean;
+  position?: number;
+  valueFromPipeline?: boolean;
+  valueFromPipelineByPropertyName?: boolean;
+  valueFromRemainingArguments?: boolean;
+  description?: string;
+  validationSet?: ActivityParameterValidationSet[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityParameterSet class.
+ * @constructor
+ * Definition of the activity parameter set.
+ *
+ * @member {string} [name] Gets or sets the name of the activity parameter set.
+ * @member {array} [parameters] Gets or sets the parameters of the activity
+ * parameter set.
+ */
+export interface ActivityParameterSet {
+  name?: string;
+  parameters?: ActivityParameter[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityOutputType class.
+ * @constructor
+ * Definition of the activity output type.
+ *
+ * @member {string} [name] Gets or sets the name of the activity output type.
+ * @member {string} [type] Gets or sets the type of the activity output type.
+ */
+export interface ActivityOutputType {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Activity class.
+ * @constructor
+ * Definition of the activity.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [name] Gets the name of the activity.
+ * @member {string} [definition] Gets or sets the user name of the activity.
+ * @member {array} [parameterSets] Gets or sets the parameter sets of the
+ * activity.
+ * @member {array} [outputTypes] Gets or sets the output types of the activity.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Activity {
+  id?: string;
+  readonly name?: string;
+  definition?: string;
+  parameterSets?: ActivityParameterSet[];
+  outputTypes?: ActivityOutputType[];
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleErrorInfo class.
+ * @constructor
+ * Definition of the module error info type.
+ *
+ * @member {string} [code] Gets or sets the error code.
+ * @member {string} [message] Gets or sets the error message.
+ */
+export interface ModuleErrorInfo {
+  code?: string;
+  message?: string;
 }
 
 /**
@@ -411,10 +1029,148 @@ export interface ContentLink {
 
 /**
  * @class
+ * Initializes a new instance of the Module class.
+ * @constructor
+ * Definition of the module type.
+ *
+ * @member {boolean} [isGlobal] Gets or sets the isGlobal flag of the module.
+ * @member {string} [version] Gets or sets the version of the module.
+ * @member {number} [sizeInBytes] Gets or sets the size in bytes of the module.
+ * @member {number} [activityCount] Gets or sets the activity count of the
+ * module.
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the module. Possible values include: 'Created', 'Creating',
+ * 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
+ * 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
+ * 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
+ * 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
+ * 'Cancelled', 'Updating'
+ * @member {object} [contentLink] Gets or sets the contentLink of the module.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {object} [error] Gets or sets the error info of the module.
+ * @member {string} [error.code] Gets or sets the error code.
+ * @member {string} [error.message] Gets or sets the error message.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ * @member {boolean} [isComposite] Gets or sets type of module, if its
+ * composite or not.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Module extends TrackedResource {
+  isGlobal?: boolean;
+  version?: string;
+  sizeInBytes?: number;
+  activityCount?: number;
+  provisioningState?: string;
+  contentLink?: ContentLink;
+  error?: ModuleErrorInfo;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+  isComposite?: boolean;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update module operation.
+ *
+ * @member {object} contentLink Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface ModuleCreateOrUpdateParameters {
+  contentLink: ContentLink;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update module operation.
+ *
+ * @member {object} [contentLink] Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface ModuleUpdateParameters {
+  contentLink?: ContentLink;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TypeField class.
+ * @constructor
+ * Information about a field of a type.
+ *
+ * @member {string} [name] Gets or sets the name of the field.
+ * @member {string} [type] Gets or sets the type of the field.
+ */
+export interface TypeField {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookParameter class.
+ * @constructor
+ * Definition of the runbook parameter type.
+ *
+ * @member {string} [type] Gets or sets the type of the parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
+ * whether the parameter is madatory or not.
+ * @member {number} [position] Get or sets the position of the parameter.
+ * @member {string} [defaultValue] Gets or sets the default value of parameter.
+ */
+export interface RunbookParameter {
+  type?: string;
+  isMandatory?: boolean;
+  position?: number;
+  defaultValue?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RunbookDraft class.
  * @constructor
- * Definition of the runbook type.
- *
  * @member {boolean} [inEdit] Gets or sets whether runbook is in edit mode.
  * @member {object} [draftContentLink] Gets or sets the draft runbook content
  * link.
@@ -441,20 +1197,6 @@ export interface RunbookDraft {
   lastModifiedTime?: Date;
   parameters?: { [propertyName: string]: RunbookParameter };
   outputTypes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * The resource model definition for a ARM tracked top level resource
- *
- * @member {object} [tags] Resource tags.
- * @member {string} [location] The Azure Region where the resource lives
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location?: string;
 }
 
 /**
@@ -536,1335 +1278,6 @@ export interface Runbook extends TrackedResource {
 
 /**
  * @class
- * Initializes a new instance of the ModuleErrorInfo class.
- * @constructor
- * Definition of the module error info type.
- *
- * @member {string} [code] Gets or sets the error code.
- * @member {string} [message] Gets or sets the error message.
- */
-export interface ModuleErrorInfo {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Module class.
- * @constructor
- * Definition of the module type.
- *
- * @member {boolean} [isGlobal] Gets or sets the isGlobal flag of the module.
- * @member {string} [version] Gets or sets the version of the module.
- * @member {number} [sizeInBytes] Gets or sets the size in bytes of the module.
- * @member {number} [activityCount] Gets or sets the activity count of the
- * module.
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the module. Possible values include: 'Created', 'Creating',
- * 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
- * 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
- * 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
- * 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
- * 'Cancelled', 'Updating'
- * @member {object} [contentLink] Gets or sets the contentLink of the module.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {object} [error] Gets or sets the error info of the module.
- * @member {string} [error.code] Gets or sets the error code.
- * @member {string} [error.message] Gets or sets the error message.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface Module extends TrackedResource {
-  isGlobal?: boolean;
-  version?: string;
-  sizeInBytes?: number;
-  activityCount?: number;
-  provisioningState?: string;
-  contentLink?: ContentLink;
-  error?: ModuleErrorInfo;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContentSource class.
- * @constructor
- * Definition of the content source.
- *
- * @member {object} [hash] Gets or sets the hash.
- * @member {string} [hash.algorithm] Gets or sets the content hash algorithm
- * used to hash the content.
- * @member {string} [hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [type] Gets or sets the content source type. Possible
- * values include: 'embeddedContent', 'uri'
- * @member {string} [value] Gets or sets the value of the content. This is
- * based on the content source type.
- * @member {string} [version] Gets or sets the version of the content.
- */
-export interface ContentSource {
-  hash?: ContentHash;
-  type?: string;
-  value?: string;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationParameter class.
- * @constructor
- * Definition of the configuration parameter type.
- *
- * @member {string} [type] Gets or sets the type of the parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
- * @member {number} [position] Get or sets the position of the parameter.
- * @member {string} [defaultValue] Gets or sets the default value of parameter.
- */
-export interface DscConfigurationParameter {
-  type?: string;
-  isMandatory?: boolean;
-  position?: number;
-  defaultValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfiguration class.
- * @constructor
- * Definition of the configuration type.
- *
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the configuration. Possible values include: 'Succeeded'
- * @member {number} [jobCount] Gets or sets the job count of the configuration.
- * @member {object} [parameters] Gets or sets the configuration parameters.
- * @member {object} [source] Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} [state] Gets or sets the state of the configuration.
- * Possible values include: 'New', 'Edit', 'Published'
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface DscConfiguration extends TrackedResource {
-  provisioningState?: string;
-  jobCount?: number;
-  parameters?: { [propertyName: string]: DscConfigurationParameter };
-  source?: ContentSource;
-  state?: string;
-  logVerbose?: boolean;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * The account SKU.
- *
- * @member {string} name Gets or sets the SKU name of the account. Possible
- * values include: 'Free', 'Basic'
- * @member {string} [family] Gets or sets the SKU family.
- * @member {number} [capacity] Gets or sets the SKU capacity.
- */
-export interface Sku {
-  name: string;
-  family?: string;
-  capacity?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the AutomationAccount class.
- * @constructor
- * Definition of the automation account type.
- *
- * @member {object} [sku] Gets or sets the SKU of account.
- * @member {string} [sku.name] Gets or sets the SKU name of the account.
- * Possible values include: 'Free', 'Basic'
- * @member {string} [sku.family] Gets or sets the SKU family.
- * @member {number} [sku.capacity] Gets or sets the SKU capacity.
- * @member {string} [lastModifiedBy] Gets or sets the last modified by.
- * @member {string} [state] Gets status of account. Possible values include:
- * 'Ok', 'Unavailable', 'Suspended'
- * @member {date} [creationTime] Gets the creation time.
- * @member {date} [lastModifiedTime] Gets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface AutomationAccount extends TrackedResource {
-  sku?: Sku;
-  lastModifiedBy?: string;
-  readonly state?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationDisplay class.
- * @constructor
- * Provider, Resource and Operation values
- *
- * @member {string} [provider] Service provider: Microsoft.Automation
- * @member {string} [resource] Resource on which the operation is performed:
- * Runbooks, Jobs etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
- */
-export interface OperationDisplay {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Operation class.
- * @constructor
- * Automation REST API operation
- *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] Provider, Resource and Operation values
- * @member {string} [display.provider] Service provider: Microsoft.Automation
- * @member {string} [display.resource] Resource on which the operation is
- * performed: Runbooks, Jobs etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
- * etc.
- */
-export interface Operation {
-  name?: string;
-  display?: OperationDisplay;
-}
-
-/**
- * @class
- * Initializes a new instance of the AutomationAccountCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update automation account
- * operation.
- *
- * @member {object} [sku] Gets or sets account SKU.
- * @member {string} [sku.name] Gets or sets the SKU name of the account.
- * Possible values include: 'Free', 'Basic'
- * @member {string} [sku.family] Gets or sets the SKU family.
- * @member {number} [sku.capacity] Gets or sets the SKU capacity.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface AutomationAccountCreateOrUpdateParameters {
-  sku?: Sku;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the AutomationAccountUpdateParameters class.
- * @constructor
- * The parameters supplied to the update automation account operation.
- *
- * @member {object} [sku] Gets or sets account SKU.
- * @member {string} [sku.name] Gets or sets the SKU name of the account.
- * Possible values include: 'Free', 'Basic'
- * @member {string} [sku.family] Gets or sets the SKU family.
- * @member {number} [sku.capacity] Gets or sets the SKU capacity.
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface AutomationAccountUpdateParameters {
-  sku?: Sku;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateUpdateParameters class.
- * @constructor
- * The parameters supplied to the update certificate operation.
- *
- * @member {string} [name] Gets or sets the name of the certificate.
- * @member {string} [description] Gets or sets the description of the
- * certificate.
- */
-export interface CertificateUpdateParameters {
-  name?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update or replace certificate
- * operation.
- *
- * @member {string} name Gets or sets the name of the certificate.
- * @member {string} base64Value Gets or sets the base64 encoded value of the
- * certificate.
- * @member {string} [description] Gets or sets the description of the
- * certificate.
- * @member {string} [thumbprint] Gets or sets the thumbprint of the
- * certificate.
- * @member {boolean} [isExportable] Gets or sets the is exportable flag of the
- * certificate.
- */
-export interface CertificateCreateOrUpdateParameters {
-  name: string;
-  base64Value: string;
-  description?: string;
-  thumbprint?: string;
-  isExportable?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionUpdateParameters class.
- * @constructor
- * The parameters supplied to the update connection operation.
- *
- * @member {string} [name] Gets or sets the name of the connection.
- * @member {string} [description] Gets or sets the description of the
- * connection.
- * @member {object} [fieldDefinitionValues] Gets or sets the field definition
- * values of the connection.
- */
-export interface ConnectionUpdateParameters {
-  name?: string;
-  description?: string;
-  fieldDefinitionValues?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update connection operation.
- *
- * @member {string} name Gets or sets the name of the connection.
- * @member {string} [description] Gets or sets the description of the
- * connection.
- * @member {object} connectionType Gets or sets the connectionType of the
- * connection.
- * @member {string} [connectionType.name] Gets or sets the name of the
- * connection type.
- * @member {object} [fieldDefinitionValues] Gets or sets the field definition
- * properties of the connection.
- */
-export interface ConnectionCreateOrUpdateParameters {
-  name: string;
-  description?: string;
-  connectionType: ConnectionTypeAssociationProperty;
-  fieldDefinitionValues?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the FieldDefinition class.
- * @constructor
- * Definition of the connection fields.
- *
- * @member {boolean} [isEncrypted] Gets or sets the isEncrypted flag of the
- * connection field definition.
- * @member {boolean} [isOptional] Gets or sets the isOptional flag of the
- * connection field definition.
- * @member {string} type Gets or sets the type of the connection field
- * definition.
- */
-export interface FieldDefinition {
-  isEncrypted?: boolean;
-  isOptional?: boolean;
-  type: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionType class.
- * @constructor
- * Definition of the connection type.
- *
- * @member {string} [id] Gets the id of the resource.
- * @member {string} [name] Gets the name of the connection type.
- * @member {string} [type] Resource type
- * @member {boolean} [isGlobal] Gets or sets a Boolean value to indicate if the
- * connection type is global.
- * @member {object} [fieldDefinitions] Gets the field definitions of the
- * connection type.
- * @member {date} [creationTime] Gets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface ConnectionType {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  isGlobal?: boolean;
-  readonly fieldDefinitions?: { [propertyName: string]: FieldDefinition };
-  readonly creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionTypeCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update connection type operation.
- *
- * @member {string} name Gets or sets the name of the connection type.
- * @member {boolean} [isGlobal] Gets or sets a Boolean value to indicate if the
- * connection type is global.
- * @member {object} fieldDefinitions Gets or sets the field definitions of the
- * connection type.
- */
-export interface ConnectionTypeCreateOrUpdateParameters {
-  name: string;
-  isGlobal?: boolean;
-  fieldDefinitions: { [propertyName: string]: FieldDefinition };
-}
-
-/**
- * @class
- * Initializes a new instance of the CredentialUpdateParameters class.
- * @constructor
- * The parameters supplied to the Update credential operation.
- *
- * @member {string} [name] Gets or sets the name of the credential.
- * @member {string} [userName] Gets or sets the user name of the credential.
- * @member {string} [password] Gets or sets the password of the credential.
- * @member {string} [description] Gets or sets the description of the
- * credential.
- */
-export interface CredentialUpdateParameters {
-  name?: string;
-  userName?: string;
-  password?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CredentialCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update credential operation.
- *
- * @member {string} name Gets or sets the name of the credential.
- * @member {string} userName Gets or sets the user name of the credential.
- * @member {string} password Gets or sets the password of the credential.
- * @member {string} [description] Gets or sets the description of the
- * credential.
- */
-export interface CredentialCreateOrUpdateParameters {
-  name: string;
-  userName: string;
-  password: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityParameter class.
- * @constructor
- * Definition of the activity parameter.
- *
- * @member {string} [name] Gets or sets the name of the activity parameter.
- * @member {string} [type] Gets or sets the type of the activity parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value that indicates
- * true if the parameter is required. If the value is false, the parameter is
- * optional.
- * @member {boolean} [isDynamic] Gets or sets a Boolean value that indicates
- * true if the parameter is dynamic.
- * @member {boolean} [position] Gets or sets the position of the activity
- * parameter.
- * @member {boolean} [valueFromPipeline] Gets or sets a Boolean value that
- * indicates true if the parameter can take values from the incoming pipeline
- * objects. This setting is used if the cmdlet must access the complete input
- * object. false indicates that the parameter cannot take values from the
- * complete input object.
- * @member {boolean} [valueFromPipelineByPropertyName] Gets or sets a Boolean
- * value that indicates true if the parameter can be filled from a property of
- * the incoming pipeline object that has the same name as this parameter. false
- * indicates that the parameter cannot be filled from the incoming pipeline
- * object property with the same name.
- * @member {boolean} [valueFromRemainingArguments] Gets or sets a Boolean value
- * that indicates true if the cmdlet parameter accepts all the remaining
- * command-line arguments that are associated with this parameter in the form
- * of an array. false if the cmdlet parameter does not accept all the remaining
- * argument values.
- */
-export interface ActivityParameter {
-  name?: string;
-  type?: string;
-  isMandatory?: boolean;
-  isDynamic?: boolean;
-  position?: boolean;
-  valueFromPipeline?: boolean;
-  valueFromPipelineByPropertyName?: boolean;
-  valueFromRemainingArguments?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityParameterSet class.
- * @constructor
- * Definition of the activity parameter set.
- *
- * @member {string} [name] Gets or sets the name of the activity parameter set.
- * @member {array} [parameters] Gets or sets the parameters of the activity
- * parameter set.
- */
-export interface ActivityParameterSet {
-  name?: string;
-  parameters?: ActivityParameter[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityOutputType class.
- * @constructor
- * Definition of the activity output type.
- *
- * @member {string} [name] Gets or sets the name of the activity output type.
- * @member {string} [type] Gets or sets the type of the activity output type.
- */
-export interface ActivityOutputType {
-  name?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Activity class.
- * @constructor
- * Definition of the activity.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [name] Gets the name of the activity.
- * @member {string} [definition] Gets or sets the user name of the activity.
- * @member {array} [parameterSets] Gets or sets the parameter sets of the
- * activity.
- * @member {array} [outputTypes] Gets or sets the output types of the activity.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Activity {
-  id?: string;
-  readonly name?: string;
-  definition?: string;
-  parameterSets?: ActivityParameterSet[];
-  outputTypes?: ActivityOutputType[];
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AdvancedScheduleMonthlyOccurrence class.
- * @constructor
- * The properties of the create advanced schedule monthly occurrence.
- *
- * @member {number} [occurrence] Occurrence of the week within the month. Must
- * be between 1 and 5
- * @member {string} [day] Day of the occurrence. Must be one of monday,
- * tuesday, wednesday, thursday, friday, saturday, sunday. Possible values
- * include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
- * 'Sunday'
- */
-export interface AdvancedScheduleMonthlyOccurrence {
-  occurrence?: number;
-  day?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AdvancedSchedule class.
- * @constructor
- * The properties of the create Advanced Schedule.
- *
- * @member {array} [weekDays] Days of the week that the job should execute on.
- * @member {array} [monthDays] Days of the month that the job should execute
- * on. Must be between 1 and 31.
- * @member {array} [monthlyOccurrences] Occurrences of days within a month.
- */
-export interface AdvancedSchedule {
-  weekDays?: string[];
-  monthDays?: number[];
-  monthlyOccurrences?: AdvancedScheduleMonthlyOccurrence[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AgentRegistrationKeys class.
- * @constructor
- * Definition of the agent registration keys.
- *
- * @member {string} [primary] Gets or sets the primary key.
- * @member {string} [secondary] Gets or sets the secondary key.
- */
-export interface AgentRegistrationKeys {
-  primary?: string;
-  secondary?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AgentRegistration class.
- * @constructor
- * Definition of the agent registration infomration type.
- *
- * @member {string} [dscMetaConfiguration] Gets or sets the dsc meta
- * configuration.
- * @member {string} [endpoint] Gets or sets the dsc server endpoint.
- * @member {object} [keys] Gets or sets the agent registration keys.
- * @member {string} [keys.primary] Gets or sets the primary key.
- * @member {string} [keys.secondary] Gets or sets the secondary key.
- * @member {string} [id] Gets or sets the id.
- */
-export interface AgentRegistration {
-  dscMetaConfiguration?: string;
-  endpoint?: string;
-  keys?: AgentRegistrationKeys;
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AgentRegistrationRegenerateKeyParameter class.
- * @constructor
- * The parameters supplied to the regenerate keys operation.
- *
- * @member {string} keyName Gets or sets the agent registration key name -
- * primary or secondary. Possible values include: 'primary', 'secondary'
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface AgentRegistrationRegenerateKeyParameter {
-  keyName: string;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJobCreateParameters class.
- * @constructor
- * The parameters supplied to the create compilation job operation.
- *
- * @member {object} configuration Gets or sets the configuration.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
- * version of NodeConfiguration is required.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscCompilationJobCreateParameters {
-  configuration: DscConfigurationAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  newNodeConfigurationBuildVersionRequired?: boolean;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update configuration operation.
- *
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {object} [parameters] Gets or sets the configuration parameters.
- * @member {string} [description] Gets or sets the description of the
- * configuration.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscConfigurationCreateOrUpdateParameters {
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  source: ContentSource;
-  parameters?: { [propertyName: string]: DscConfigurationParameter };
-  description?: string;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update configuration operation.
- *
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {object} [parameters] Gets or sets the configuration parameters.
- * @member {string} [description] Gets or sets the description of the
- * configuration.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscConfigurationUpdateParameters {
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  source: ContentSource;
-  parameters?: { [propertyName: string]: DscConfigurationParameter };
-  description?: string;
-  name?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DscMetaConfiguration class.
- * @constructor
- * Definition of the DSC Meta Configuration.
- *
- * @member {number} [configurationModeFrequencyMins] Gets or sets the
- * ConfigurationModeFrequencyMins value of the meta configuration.
- * @member {boolean} [rebootNodeIfNeeded] Gets or sets the RebootNodeIfNeeded
- * value of the meta configuration.
- * @member {string} [configurationMode] Gets or sets the ConfigurationMode
- * value of the meta configuration.
- * @member {string} [actionAfterReboot] Gets or sets the ActionAfterReboot
- * value of the meta configuration.
- * @member {string} [certificateId] Gets or sets the CertificateId value of the
- * meta configuration.
- * @member {number} [refreshFrequencyMins] Gets or sets the
- * RefreshFrequencyMins value of the meta configuration.
- * @member {boolean} [allowModuleOverwrite] Gets or sets the
- * AllowModuleOverwrite value of the meta configuration.
- */
-export interface DscMetaConfiguration {
-  configurationModeFrequencyMins?: number;
-  rebootNodeIfNeeded?: boolean;
-  configurationMode?: string;
-  actionAfterReboot?: string;
-  certificateId?: string;
-  refreshFrequencyMins?: number;
-  allowModuleOverwrite?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update node configuration
- * operation.
- *
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Gets or sets the type of the parameter.
- * @member {object} configuration Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
- * version of NodeConfiguration is required.
- */
-export interface DscNodeConfigurationCreateOrUpdateParameters {
-  source: ContentSource;
-  name: string;
-  configuration: DscConfigurationAssociationProperty;
-  newNodeConfigurationBuildVersionRequired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationAssociationProperty class.
- * @constructor
- * The dsc nodeconfiguration property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
- */
-export interface DscNodeConfigurationAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeExtensionHandlerAssociationProperty class.
- * @constructor
- * The dsc extensionHandler property associated with the node
- *
- * @member {string} [name] Gets or sets the name of the extension handler.
- * @member {string} [version] Gets or sets the version of the extension
- * handler.
- */
-export interface DscNodeExtensionHandlerAssociationProperty {
-  name?: string;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeUpdateParametersProperties class.
- * @constructor
- * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
- */
-export interface DscNodeUpdateParametersProperties {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeUpdateParameters class.
- * @constructor
- * The parameters supplied to the update dsc node operation.
- *
- * @member {string} [nodeId] Gets or sets the id of the dsc node.
- * @member {object} [nodeConfiguration] Gets or sets the configuration of the
- * node.
- * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
- * nodeconfiguration.
- * @member {object} [properties]
- * @member {string} [properties.name] Gets or sets the name of the dsc
- * nodeconfiguration.
- */
-export interface DscNodeUpdateParameters {
-  nodeId?: string;
-  nodeConfiguration?: DscNodeConfigurationAssociationProperty;
-  properties?: DscNodeUpdateParametersProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscReportError class.
- * @constructor
- * Definition of the dsc node report error type.
- *
- * @member {string} [errorSource] Gets or sets the source of the error.
- * @member {string} [resourceId] Gets or sets the resource ID which generated
- * the error.
- * @member {string} [errorCode] Gets or sets the error code.
- * @member {string} [errorMessage] Gets or sets the error message.
- * @member {string} [locale] Gets or sets the locale of the error.
- * @member {string} [errorDetails] Gets or sets the error details.
- */
-export interface DscReportError {
-  errorSource?: string;
-  resourceId?: string;
-  errorCode?: string;
-  errorMessage?: string;
-  locale?: string;
-  errorDetails?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscReportResourceNavigation class.
- * @constructor
- * Navigation for DSC Report Resource.
- *
- * @member {string} [resourceId] Gets or sets the ID of the resource to
- * navigate to.
- */
-export interface DscReportResourceNavigation {
-  resourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscReportResource class.
- * @constructor
- * Definition of the DSC Report Resource.
- *
- * @member {string} [resourceId] Gets or sets the ID of the resource.
- * @member {string} [sourceInfo] Gets or sets the source info of the resource.
- * @member {array} [dependsOn] Gets or sets the Resource Navigation values for
- * resources the resource depends on.
- * @member {string} [moduleName] Gets or sets the module name of the resource.
- * @member {string} [moduleVersion] Gets or sets the module version of the
- * resource.
- * @member {string} [resourceName] Gets or sets the name of the resource.
- * @member {string} [error] Gets or sets the error of the resource.
- * @member {string} [status] Gets or sets the status of the resource.
- * @member {number} [durationInSeconds] Gets or sets the duration in seconds
- * for the resource.
- * @member {date} [startDate] Gets or sets the start date of the resource.
- */
-export interface DscReportResource {
-  resourceId?: string;
-  sourceInfo?: string;
-  dependsOn?: DscReportResourceNavigation[];
-  moduleName?: string;
-  moduleVersion?: string;
-  resourceName?: string;
-  error?: string;
-  status?: string;
-  durationInSeconds?: number;
-  startDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeReport class.
- * @constructor
- * Definition of the dsc node report type.
- *
- * @member {date} [endTime] Gets or sets the end time of the node report.
- * @member {date} [lastModifiedTime] Gets or sets the lastModifiedTime of the
- * node report.
- * @member {date} [startTime] Gets or sets the start time of the node report.
- * @member {string} [type] Gets or sets the type of the node report.
- * @member {string} [reportId] Gets or sets the id of the node report.
- * @member {string} [status] Gets or sets the status of the node report.
- * @member {string} [refreshMode] Gets or sets the refreshMode of the node
- * report.
- * @member {string} [rebootRequested] Gets or sets the rebootRequested of the
- * node report.
- * @member {string} [reportFormatVersion] Gets or sets the reportFormatVersion
- * of the node report.
- * @member {string} [configurationVersion] Gets or sets the
- * configurationVersion of the node report.
- * @member {string} [id] Gets or sets the id.
- * @member {array} [errors] Gets or sets the errors for the node report.
- * @member {array} [resources] Gets or sets the resource for the node report.
- * @member {object} [metaConfiguration] Gets or sets the metaConfiguration of
- * the node at the time of the report.
- * @member {number} [metaConfiguration.configurationModeFrequencyMins] Gets or
- * sets the ConfigurationModeFrequencyMins value of the meta configuration.
- * @member {boolean} [metaConfiguration.rebootNodeIfNeeded] Gets or sets the
- * RebootNodeIfNeeded value of the meta configuration.
- * @member {string} [metaConfiguration.configurationMode] Gets or sets the
- * ConfigurationMode value of the meta configuration.
- * @member {string} [metaConfiguration.actionAfterReboot] Gets or sets the
- * ActionAfterReboot value of the meta configuration.
- * @member {string} [metaConfiguration.certificateId] Gets or sets the
- * CertificateId value of the meta configuration.
- * @member {number} [metaConfiguration.refreshFrequencyMins] Gets or sets the
- * RefreshFrequencyMins value of the meta configuration.
- * @member {boolean} [metaConfiguration.allowModuleOverwrite] Gets or sets the
- * AllowModuleOverwrite value of the meta configuration.
- * @member {string} [hostName] Gets or sets the hostname of the node that sent
- * the report.
- * @member {array} [iPV4Addresses] Gets or sets the IPv4 address of the node
- * that sent the report.
- * @member {array} [iPV6Addresses] Gets or sets the IPv6 address of the node
- * that sent the report.
- * @member {number} [numberOfResources] Gets or sets the number of resource in
- * the node report.
- * @member {string} [rawErrors] Gets or sets the unparsed errors for the node
- * report.
- */
-export interface DscNodeReport {
-  endTime?: Date;
-  lastModifiedTime?: Date;
-  startTime?: Date;
-  type?: string;
-  reportId?: string;
-  status?: string;
-  refreshMode?: string;
-  rebootRequested?: string;
-  reportFormatVersion?: string;
-  configurationVersion?: string;
-  id?: string;
-  errors?: DscReportError[];
-  resources?: DscReportResource[];
-  metaConfiguration?: DscMetaConfiguration;
-  hostName?: string;
-  iPV4Addresses?: string[];
-  iPV6Addresses?: string[];
-  numberOfResources?: number;
-  rawErrors?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HybridRunbookWorker class.
- * @constructor
- * Definition of hybrid runbook worker.
- *
- * @member {string} [name] Gets or sets the worker machine name.
- * @member {string} [ip] Gets or sets the assigned machine IP address.
- * @member {date} [registrationTime] Gets or sets the registration time of the
- * worker machine.
- */
-export interface HybridRunbookWorker {
-  name?: string;
-  ip?: string;
-  registrationTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunAsCredentialAssociationProperty class.
- * @constructor
- * Definition of runas credential to use for hybrid worker.
- *
- * @member {string} [name] Gets or sets the name of the credential.
- */
-export interface RunAsCredentialAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HybridRunbookWorkerGroup class.
- * @constructor
- * Definition of hybrid runbook worker group.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [name] Gets or sets the name of the group.
- * @member {array} [hybridRunbookWorkers] Gets or sets the list of hybrid
- * runbook workers.
- * @member {object} [credential] Sets the credential of a worker group.
- * @member {string} [credential.name] Gets or sets the name of the credential.
- */
-export interface HybridRunbookWorkerGroup {
-  id?: string;
-  name?: string;
-  hybridRunbookWorkers?: HybridRunbookWorker[];
-  credential?: RunAsCredentialAssociationProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the HybridRunbookWorkerGroupUpdateParameters class.
- * @constructor
- * Parameters supplied to the update operation.
- *
- * @member {object} [credential] Sets the credential of a worker group.
- * @member {string} [credential.name] Gets or sets the name of the credential.
- */
-export interface HybridRunbookWorkerGroupUpdateParameters {
-  credential?: RunAsCredentialAssociationProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the Job class.
- * @constructor
- * Definition of the job.
- *
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [startedBy] Gets or sets the job started by.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {uuid} [jobId] Gets or sets the id of the job.
- * @member {date} [creationTime] Gets or sets the creation time of the job.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets or sets the start time of the job.
- * @member {date} [endTime] Gets or sets the end time of the job.
- * @member {string} [exception] Gets or sets the exception of the job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {object} [provisioningState] The provisioning state of a resource.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
- */
-export interface Job extends ProxyResource {
-  runbook?: RunbookAssociationProperty;
-  startedBy?: string;
-  runOn?: string;
-  jobId?: string;
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  provisioningState?: JobProvisioningStateProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCreateParameters class.
- * @constructor
- * The parameters supplied to the create job operation.
- *
- * @member {object} runbook Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface JobCreateParameters {
-  runbook: RunbookAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {array} [value] Gets or sets a list of jobs.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobListResult {
-  value?: Job[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleAssociationProperty class.
- * @constructor
- * The schedule property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the schedule.
- */
-export interface ScheduleAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleCreateParameters class.
- * @constructor
- * The parameters supplied to the create job schedule operation.
- *
- * @member {object} schedule Gets or sets the schedule.
- * @member {string} [schedule.name] Gets or sets the name of the schedule.
- * @member {object} runbook Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the hybrid worker group that the
- * scheduled job should run on.
- * @member {object} [parameters] Gets or sets a list of job properties.
- */
-export interface JobScheduleCreateParameters {
-  schedule: ScheduleAssociationProperty;
-  runbook: RunbookAssociationProperty;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobSchedule class.
- * @constructor
- * Definition of the job schedule.
- *
- * @member {string} [id] Gets the id of the resource.
- * @member {string} [name] Gets the name of the variable.
- * @member {string} [type] Resource type
- * @member {string} [jobScheduleId] Gets or sets the id of job schedule.
- * @member {object} [schedule] Gets or sets the schedule.
- * @member {string} [schedule.name] Gets or sets the name of the schedule.
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the hybrid worker group that the
- * scheduled job should run on.
- * @member {object} [parameters] Gets or sets the parameters of the job
- * schedule.
- */
-export interface JobSchedule {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  jobScheduleId?: string;
-  schedule?: ScheduleAssociationProperty;
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStream class.
- * @constructor
- * Definition of the job stream.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobStreamId] Gets or sets the id of the job stream.
- * @member {date} [time] Gets or sets the creation time of the job.
- * @member {string} [streamType] Gets or sets the stream type. Possible values
- * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
- * @member {string} [streamText] Gets or sets the stream text.
- * @member {string} [summary] Gets or sets the summary.
- * @member {object} [value] Gets or sets the values of the job stream.
- */
-export interface JobStream {
-  id?: string;
-  jobStreamId?: string;
-  time?: Date;
-  streamType?: string;
-  streamText?: string;
-  summary?: string;
-  value?: { [propertyName: string]: any };
-}
-
-/**
- * @class
- * Initializes a new instance of the LinkedWorkspace class.
- * @constructor
- * Definition of the linked workspace.
- *
- * @member {string} [id] Gets the id of the linked workspace.
- */
-export interface LinkedWorkspace {
-  readonly id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update module operation.
- *
- * @member {object} contentLink Gets or sets the module content link.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface ModuleCreateOrUpdateParameters {
-  contentLink: ContentLink;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleUpdateParameters class.
- * @constructor
- * The parameters supplied to the update module operation.
- *
- * @member {object} [contentLink] Gets or sets the module content link.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface ModuleUpdateParameters {
-  contentLink?: ContentLink;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookDraftUndoEditResult class.
- * @constructor
- * The response model for the undoedit runbook operation.
- *
- * @member {string} [statusCode] Possible values include: 'Continue',
- * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
- * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
- * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
- * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
- * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
- * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
- * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
- * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
- * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
- * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
- * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
- * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
- * @member {string} [requestId]
- */
-export interface RunbookDraftUndoEditResult {
-  statusCode?: string;
-  requestId?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RunbookCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update runbook operation.
@@ -1928,6 +1341,110 @@ export interface RunbookCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the RunbookUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update runbook operation.
+ *
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface RunbookUpdateParameters {
+  description?: string;
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  logActivityTrace?: number;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookDraftUndoEditResult class.
+ * @constructor
+ * The response model for the undoedit runbook operation.
+ *
+ * @member {string} [statusCode] Possible values include: 'Continue',
+ * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
+ * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
+ * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
+ * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
+ * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
+ * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
+ * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
+ * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
+ * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
+ * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
+ * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
+ * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
+ * @member {string} [requestId]
+ */
+export interface RunbookDraftUndoEditResult {
+  statusCode?: string;
+  requestId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create test job operation.
+ *
+ * @member {object} [parameters] Gets or sets the parameters of the test job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ */
+export interface TestJobCreateParameters {
+  parameters?: { [propertyName: string]: string };
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestJob class.
+ * @constructor
+ * Definition of the test job.
+ *
+ * @member {date} [creationTime] Gets or sets the creation time of the test
+ * job.
+ * @member {string} [status] Gets or sets the status of the test job.
+ * @member {string} [statusDetails] Gets or sets the status details of the test
+ * job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {date} [startTime] Gets or sets the start time of the test job.
+ * @member {date} [endTime] Gets or sets the end time of the test job.
+ * @member {string} [exception] Gets or sets the exception of the test job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * test job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the test job.
+ * @member {object} [parameters] Gets or sets the parameters of the test job.
+ * @member {number} [logActivityTrace] The activity-level tracing options of
+ * the runbook.
+ */
+export interface TestJob {
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  runOn?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  logActivityTrace?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RunbookCreateOrUpdateDraftProperties class.
  * @constructor
  * The parameters supplied to the create or update dratft runbook properties.
@@ -1985,27 +1502,62 @@ export interface RunbookCreateOrUpdateDraftParameters {
 
 /**
  * @class
- * Initializes a new instance of the RunbookUpdateParameters class.
+ * Initializes a new instance of the JobStream class.
  * @constructor
- * The parameters supplied to the update runbook operation.
+ * Definition of the job stream.
  *
- * @member {string} [description] Gets or sets the description of the runbook.
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
- * options of the runbook.
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobStreamId] Gets or sets the id of the job stream.
+ * @member {date} [time] Gets or sets the creation time of the job.
+ * @member {string} [streamType] Gets or sets the stream type. Possible values
+ * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
+ * @member {string} [streamText] Gets or sets the stream text.
+ * @member {string} [summary] Gets or sets the summary.
+ * @member {object} [value] Gets or sets the values of the job stream.
  */
-export interface RunbookUpdateParameters {
-  description?: string;
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  logActivityTrace?: number;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface JobStream {
+  id?: string;
+  jobStreamId?: string;
+  time?: Date;
+  streamType?: string;
+  streamText?: string;
+  summary?: string;
+  value?: { [propertyName: string]: any };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdvancedScheduleMonthlyOccurrence class.
+ * @constructor
+ * The properties of the create advanced schedule monthly occurrence.
+ *
+ * @member {number} [occurrence] Occurrence of the week within the month. Must
+ * be between 1 and 5
+ * @member {string} [day] Day of the occurrence. Must be one of monday,
+ * tuesday, wednesday, thursday, friday, saturday, sunday. Possible values
+ * include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+ * 'Sunday'
+ */
+export interface AdvancedScheduleMonthlyOccurrence {
+  occurrence?: number;
+  day?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdvancedSchedule class.
+ * @constructor
+ * The properties of the create Advanced Schedule.
+ *
+ * @member {array} [weekDays] Days of the week that the job should execute on.
+ * @member {array} [monthDays] Days of the month that the job should execute
+ * on. Must be between 1 and 31.
+ * @member {array} [monthlyOccurrences] Occurrences of days within a month.
+ */
+export interface AdvancedSchedule {
+  weekDays?: string[];
+  monthDays?: number[];
+  monthlyOccurrences?: AdvancedScheduleMonthlyOccurrence[];
 }
 
 /**
@@ -2014,7 +1566,7 @@ export interface RunbookUpdateParameters {
  * @constructor
  * The parameters supplied to the create or update schedule operation.
  *
- * @member {string} name Gets or sets the name of the schedule.
+ * @member {string} name Gets or sets the name of the Schedule.
  * @member {string} [description] Gets or sets the description of the schedule.
  * @member {date} startTime Gets or sets the start time of the schedule.
  * @member {date} [expiryTime] Gets or sets the end time of the schedule.
@@ -2096,9 +1648,6 @@ export interface ScheduleProperties {
  * @constructor
  * Definition of the schedule.
  *
- * @member {string} [id] Gets the id of the resource.
- * @member {string} [name] Gets name of the schedule.
- * @member {string} [type] Resource type
  * @member {date} [startTime] Gets or sets the start time of the schedule.
  * @member {number} [startTimeOffsetMinutes] Gets the start time's offset in
  * minutes.
@@ -2125,10 +1674,7 @@ export interface ScheduleProperties {
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
  * @member {string} [description] Gets or sets the description.
  */
-export interface Schedule {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
+export interface Schedule extends ProxyResource {
   startTime?: Date;
   readonly startTimeOffsetMinutes?: number;
   expiryTime?: Date;
@@ -2151,7 +1697,7 @@ export interface Schedule {
  * @constructor
  * The parameters supplied to the update schedule operation.
  *
- * @member {string} [name] Gets or sets the name of the schedule.
+ * @member {string} [name] Gets or sets the name of the Schedule.
  * @member {string} [description] Gets or sets the description of the schedule.
  * @member {boolean} [isEnabled] Gets or sets a value indicating whether this
  * schedule is enabled.
@@ -2160,85 +1706,6 @@ export interface ScheduleUpdateParameters {
   name?: string;
   description?: string;
   isEnabled?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubResource class.
- * @constructor
- * The Sub Resource definition.
- *
- * @member {string} [id] Resource Id
- */
-export interface SubResource extends BaseResource {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestJobCreateParameters class.
- * @constructor
- * The parameters supplied to the create test job operation.
- *
- * @member {object} [parameters] Gets or sets the parameters of the test job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface TestJobCreateParameters {
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestJob class.
- * @constructor
- * Definition of the test job.
- *
- * @member {date} [creationTime] Gets or sets the creation time of the test
- * job.
- * @member {string} [status] Gets or sets the status of the test job.
- * @member {string} [statusDetails] Gets or sets the status details of the test
- * job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {date} [startTime] Gets or sets the start time of the test job.
- * @member {date} [endTime] Gets or sets the end time of the test job.
- * @member {string} [exception] Gets or sets the exception of the test job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * test job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the test job.
- * @member {object} [parameters] Gets or sets the parameters of the test job.
- * @member {number} [logActivityTrace] The activity-level tracing options of
- * the runbook.
- */
-export interface TestJob {
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  runOn?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  logActivityTrace?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the TypeField class.
- * @constructor
- * Information about a field of a type.
- *
- * @member {string} [name] Gets or sets the name of the field.
- * @member {string} [type] Gets or sets the type of the field.
- */
-export interface TypeField {
-  name?: string;
-  type?: string;
 }
 
 /**
@@ -2262,6 +1729,27 @@ export interface VariableCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the Variable class.
+ * @constructor
+ * Definition of the varible.
+ *
+ * @member {string} [value] Gets or sets the value of the variable.
+ * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
+ * variable.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Variable extends ProxyResource {
+  value?: string;
+  isEncrypted?: boolean;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VariableUpdateParameters class.
  * @constructor
  * The parameters supplied to the update variable operation.
@@ -2273,6 +1761,66 @@ export interface VariableCreateOrUpdateParameters {
 export interface VariableUpdateParameters {
   name?: string;
   value?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Webhook class.
+ * @constructor
+ * Definition of the webhook type.
+ *
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * the webhook. Default value: false .
+ * @member {string} [uri] Gets or sets the webhook uri.
+ * @member {date} [expiryTime] Gets or sets the expiry time.
+ * @member {date} [lastInvokedTime] Gets or sets the last invoked time.
+ * @member {object} [parameters] Gets or sets the parameters of the job that is
+ * created when the webhook calls the runbook it is associated with.
+ * @member {object} [runbook] Gets or sets the runbook the webhook is
+ * associated with.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * Webhook
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Webhook extends ProxyResource {
+  isEnabled?: boolean;
+  uri?: string;
+  expiryTime?: Date;
+  lastInvokedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  lastModifiedBy?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update webhook operation.
+ *
+ * @member {string} [name] Gets or sets the name of the webhook.
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * webhook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [description] Gets or sets the description of the webhook.
+ */
+export interface WebhookUpdateParameters {
+  name?: string;
+  isEnabled?: boolean;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
   description?: string;
 }
 
@@ -2305,58 +1853,50 @@ export interface WebhookCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the WebhookUpdateParameters class.
+ * Initializes a new instance of the Watcher class.
  * @constructor
- * The parameters supplied to the update webhook operation.
+ * Definition of the watcher type.
  *
- * @member {string} [name] Gets or sets the name of the webhook.
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * webhook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [description] Gets or sets the description of the webhook.
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [scriptName] Gets or sets the name of the script the
+ * watcher is attached to, i.e. the name of an existing runbook.
+ * @member {object} [scriptParameters] Gets or sets the parameters of the
+ * script.
+ * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
+ * group the watcher will run on.
+ * @member {string} [status] Gets the current status of the watcher.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * watcher.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
  */
-export interface WebhookUpdateParameters {
-  name?: string;
-  isEnabled?: boolean;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
+export interface Watcher extends TrackedResource {
+  executionFrequencyInSeconds?: number;
+  scriptName?: string;
+  scriptParameters?: { [propertyName: string]: string };
+  scriptRunOn?: string;
+  readonly status?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly lastModifiedBy?: string;
   description?: string;
+  etag?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobCollectionItem class.
+ * Initializes a new instance of the WatcherUpdateParameters class.
  * @constructor
- * Job collection item properties.
- *
- * @member {object} [runbook] The runbook association.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {uuid} [jobId] The id of the job.
- * @member {date} [creationTime] The creation time of the job.
- * @member {string} [status] The status of the job. Possible values include:
- * 'New', 'Activating', 'Running', 'Completed', 'Failed', 'Stopped', 'Blocked',
- * 'Suspended', 'Disconnected', 'Suspending', 'Stopping', 'Resuming',
- * 'Removing'
- * @member {date} [startTime] The start time of the job.
- * @member {date} [endTime] The end time of the job.
- * @member {date} [lastModifiedTime] The last modified time of the job.
- * @member {object} [provisioningState] The current provisioning state of the
- * job.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [name] Gets or sets the name of the resource.
  */
-export interface JobCollectionItem extends ProxyResource {
-  readonly runbook?: RunbookAssociationProperty;
-  readonly jobId?: string;
-  readonly creationTime?: Date;
-  readonly status?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly lastModifiedTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
+export interface WatcherUpdateParameters {
+  executionFrequencyInSeconds?: number;
+  name?: string;
 }
 
 /**
@@ -2372,10 +1912,16 @@ export interface JobCollectionItem extends ProxyResource {
  * 'Tools', 'Updates'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
  * update configuration.
+ * @member {array} [includedKbNumbers] KB numbers included from the software
+ * update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
+  includedKbNumbers?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2389,10 +1935,16 @@ export interface WindowsProperties {
  * 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {array} [includedPackageNameMasks] packages included from the
+ * software update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
+  includedPackageNameMasks?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2411,12 +1963,20 @@ export interface LinuxProperties {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
  * software update configuration.
+ * @member {array} [windows.includedKbNumbers] KB numbers included from the
+ * software update configuration.
+ * @member {string} [windows.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
  * values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {array} [linux.includedPackageNameMasks] packages included from the
+ * software update configuration.
+ * @member {string} [linux.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
  * PT[n]H[n]M[n]S as per ISO8601
@@ -2456,6 +2016,10 @@ export interface UpdateConfiguration {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
+ * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
+ * included from the software update configuration.
+ * @member {string} [updateConfiguration.windows.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
@@ -2463,6 +2027,10 @@ export interface UpdateConfiguration {
  * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
+ * @member {array} [updateConfiguration.linux.includedPackageNameMasks]
+ * packages included from the software update configuration.
+ * @member {string} [updateConfiguration.linux.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601
@@ -2620,19 +2188,6 @@ export interface UpdateConfigurationNavigation {
 
 /**
  * @class
- * Initializes a new instance of the JobNavigation class.
- * @constructor
- * Software update configuration machine run job navigation properties.
- *
- * @member {string} [id] Id of the job associated with the software update
- * configuration run
- */
-export interface JobNavigation {
-  readonly id?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SoftwareUpdateConfigurationRun class.
  * @constructor
  * Software update configuration Run properties.
@@ -2693,6 +2248,19 @@ export interface SoftwareUpdateConfigurationRun {
 export interface SoftwareUpdateConfigurationRunListResult {
   value?: SoftwareUpdateConfigurationRun[];
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobNavigation class.
+ * @constructor
+ * Software update configuration machine run job navigation properties.
+ *
+ * @member {string} [id] Id of the job associated with the software update
+ * configuration run
+ */
+export interface JobNavigation {
+  readonly id?: string;
 }
 
 /**
@@ -2775,47 +2343,10 @@ export interface SoftwareUpdateConfigurationMachineRunListResult {
 
 /**
  * @class
- * Initializes a new instance of the SourceControlCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update source control operation.
- *
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [sourceType] The source type. Must be one of VsoGit,
- * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
- * 'VsoTfvc', 'GitHub'
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
- * source control.
- */
-export interface SourceControlCreateOrUpdateParameters {
-  repoUrl?: string;
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  sourceType?: string;
-  securityToken?: string;
-  description?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SourceControl class.
  * @constructor
  * Definition of the source control.
  *
- * @member {string} [name] Resource name.
- * @member {string} [id] Resource Id.
- * @member {string} [type] Resource type.
  * @member {string} [repoUrl] Gets or sets the repo url of the source control.
  * @member {string} [branch] Gets or sets the repo branch of the source
  * control. Include branch as empty string for VsoTfvc.
@@ -2831,10 +2362,7 @@ export interface SourceControlCreateOrUpdateParameters {
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
  */
-export interface SourceControl extends BaseResource {
-  readonly name?: string;
-  readonly id?: string;
-  readonly type?: string;
+export interface SourceControl extends ProxyResource {
   repoUrl?: string;
   branch?: string;
   folderPath?: string;
@@ -2876,6 +2404,40 @@ export interface SourceControlUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update source control operation.
+ *
+ * @member {string} [repoUrl] Gets or sets the repo url of the source control.
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control. Include branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control. Path must be relative.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [sourceType] The source type. Must be one of VsoGit,
+ * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
+ * 'VsoTfvc', 'GitHub'
+ * @member {string} [securityToken] Gets or sets the authorization token for
+ * the repo of the source control.
+ * @member {string} [description] Gets or sets the user description of the
+ * source control.
+ */
+export interface SourceControlCreateOrUpdateParameters {
+  repoUrl?: string;
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  sourceType?: string;
+  securityToken?: string;
+  description?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlSyncJob class.
  * @constructor
  * Definition of the source control sync job.
@@ -2883,39 +2445,38 @@ export interface SourceControlUpdateParameters {
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
  * @member {string} [id] Resource id.
- * @member {string} [sourceControlSyncJobId] Gets the source control sync job
- * id.
+ * @member {string} [syncJobId] Gets the source control sync job id.
  * @member {date} [creationTime] Gets the creation time of the job.
  * @member {string} [provisioningState] Gets the provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] Gets the start time of the job.
  * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startedBy] Gets the user who started the sync job.
+ * @member {string} [startType] Gets the type of start for the sync job.
+ * Possible values include: 'AutoSync', 'ManualSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
   readonly type?: string;
   readonly id?: string;
-  sourceControlSyncJobId?: string;
+  syncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startedBy?: string;
+  startType?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the SourceControlSyncJobByIdErrors class.
+ * Initializes a new instance of the SourceControlSyncJobCreateParameters class.
  * @constructor
- * Error details of the source control sync job.
+ * The parameters supplied to the create source control sync job operation.
  *
- * @member {string} [code] Gets the error code for the job.
- * @member {string} [message] Gets the error message for the job.
+ * @member {string} [commitId] Sets the commit id of the source control sync
+ * job.
  */
-export interface SourceControlSyncJobByIdErrors {
-  code?: string;
-  message?: string;
+export interface SourceControlSyncJobCreateParameters {
+  commitId?: string;
 }
 
 /**
@@ -2925,27 +2486,393 @@ export interface SourceControlSyncJobByIdErrors {
  * Definition of the source control sync job.
  *
  * @member {string} [id] Gets the id of the job.
- * @member {string} [sourceControlSyncJobId] Gets the source control sync job
- * id.
+ * @member {string} [syncJobId] Gets the source control sync job id.
  * @member {date} [creationTime] Gets the creation time of the job.
  * @member {string} [provisioningState] Gets the provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] Gets the start time of the job.
  * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startedBy] Gets the user who started the sync job.
- * @member {object} [errors] Error details of the source control sync job.
- * @member {string} [errors.code] Gets the error code for the job.
- * @member {string} [errors.message] Gets the error message for the job.
+ * @member {string} [startType] Gets the type of start for the sync job.
+ * Possible values include: 'AutoSync', 'ManualSync'
+ * @member {string} [exception] Gets the exceptions that occured while running
+ * the sync job.
  */
 export interface SourceControlSyncJobById {
   id?: string;
-  sourceControlSyncJobId?: string;
+  syncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
+  startType?: string;
+  exception?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControlSyncJobStream class.
+ * @constructor
+ * Definition of the source control sync job stream.
+ *
+ * @member {string} [id] Resource id.
+ * @member {string} [syncJobStreamId] Gets the sync job stream id.
+ * @member {string} [summary] Gets the summary of the sync job stream.
+ * @member {date} [time] Gets the time of the sync job stream.
+ * @member {string} [streamType] Gets the type of the sync job stream. Possible
+ * values include: 'Error', 'Output'
+ */
+export interface SourceControlSyncJobStream {
+  readonly id?: string;
+  syncJobStreamId?: string;
+  summary?: string;
+  readonly time?: Date;
+  streamType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControlSyncJobStreamById class.
+ * @constructor
+ * Definition of the source control sync job stream by id.
+ *
+ * @member {string} [id] Resource id.
+ * @member {string} [syncJobStreamId] Gets the sync job stream id.
+ * @member {string} [summary] Gets the summary of the sync job stream.
+ * @member {date} [time] Gets the time of the sync job stream.
+ * @member {string} [streamType] Gets the type of the sync job stream. Possible
+ * values include: 'Error', 'Output'
+ * @member {string} [streamText] Gets the text of the sync job stream.
+ * @member {string} [value] Gets the value of the sync job stream.
+ */
+export interface SourceControlSyncJobStreamById {
+  readonly id?: string;
+  syncJobStreamId?: string;
+  summary?: string;
+  readonly time?: Date;
+  streamType?: string;
+  streamText?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Job class.
+ * @constructor
+ * Definition of the job.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [startedBy] Gets or sets the job started by.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {uuid} [jobId] Gets or sets the id of the job.
+ * @member {date} [creationTime] Gets or sets the creation time of the job.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets or sets the start time of the job.
+ * @member {date} [endTime] Gets or sets the end time of the job.
+ * @member {string} [exception] Gets or sets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [provisioningState] The current provisioning state of the
+ * job. Possible values include: 'Failed', 'Succeeded', 'Suspended',
+ * 'Processing'
+ */
+export interface Job extends ProxyResource {
+  runbook?: RunbookAssociationProperty;
   startedBy?: string;
-  errors?: SourceControlSyncJobByIdErrors;
+  runOn?: string;
+  jobId?: string;
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCollectionItem class.
+ * @constructor
+ * Job collection item properties.
+ *
+ * @member {object} [runbook] The runbook association.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {uuid} [jobId] The id of the job.
+ * @member {date} [creationTime] The creation time of the job.
+ * @member {string} [status] The status of the job. Possible values include:
+ * 'New', 'Activating', 'Running', 'Completed', 'Failed', 'Stopped', 'Blocked',
+ * 'Suspended', 'Disconnected', 'Suspending', 'Stopping', 'Resuming',
+ * 'Removing'
+ * @member {date} [startTime] The start time of the job.
+ * @member {date} [endTime] The end time of the job.
+ * @member {date} [lastModifiedTime] The last modified time of the job.
+ * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [runOn] Specifies the runOn group name where the job was
+ * executed.
+ */
+export interface JobCollectionItem extends ProxyResource {
+  readonly runbook?: RunbookAssociationProperty;
+  readonly jobId?: string;
+  readonly creationTime?: Date;
+  readonly status?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly provisioningState?: string;
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create job operation.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ */
+export interface JobCreateParameters {
+  runbook?: RunbookAssociationProperty;
+  parameters?: { [propertyName: string]: string };
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscReportError class.
+ * @constructor
+ * Definition of the dsc node report error type.
+ *
+ * @member {string} [errorSource] Gets or sets the source of the error.
+ * @member {string} [resourceId] Gets or sets the resource ID which generated
+ * the error.
+ * @member {string} [errorCode] Gets or sets the error code.
+ * @member {string} [errorMessage] Gets or sets the error message.
+ * @member {string} [locale] Gets or sets the locale of the error.
+ * @member {string} [errorDetails] Gets or sets the error details.
+ */
+export interface DscReportError {
+  errorSource?: string;
+  resourceId?: string;
+  errorCode?: string;
+  errorMessage?: string;
+  locale?: string;
+  errorDetails?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscReportResourceNavigation class.
+ * @constructor
+ * Navigation for DSC Report Resource.
+ *
+ * @member {string} [resourceId] Gets or sets the ID of the resource to
+ * navigate to.
+ */
+export interface DscReportResourceNavigation {
+  resourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscReportResource class.
+ * @constructor
+ * Definition of the DSC Report Resource.
+ *
+ * @member {string} [resourceId] Gets or sets the ID of the resource.
+ * @member {string} [sourceInfo] Gets or sets the source info of the resource.
+ * @member {array} [dependsOn] Gets or sets the Resource Navigation values for
+ * resources the resource depends on.
+ * @member {string} [moduleName] Gets or sets the module name of the resource.
+ * @member {string} [moduleVersion] Gets or sets the module version of the
+ * resource.
+ * @member {string} [resourceName] Gets or sets the name of the resource.
+ * @member {string} [error] Gets or sets the error of the resource.
+ * @member {string} [status] Gets or sets the status of the resource.
+ * @member {number} [durationInSeconds] Gets or sets the duration in seconds
+ * for the resource.
+ * @member {date} [startDate] Gets or sets the start date of the resource.
+ */
+export interface DscReportResource {
+  resourceId?: string;
+  sourceInfo?: string;
+  dependsOn?: DscReportResourceNavigation[];
+  moduleName?: string;
+  moduleVersion?: string;
+  resourceName?: string;
+  error?: string;
+  status?: string;
+  durationInSeconds?: number;
+  startDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscMetaConfiguration class.
+ * @constructor
+ * Definition of the DSC Meta Configuration.
+ *
+ * @member {number} [configurationModeFrequencyMins] Gets or sets the
+ * ConfigurationModeFrequencyMins value of the meta configuration.
+ * @member {boolean} [rebootNodeIfNeeded] Gets or sets the RebootNodeIfNeeded
+ * value of the meta configuration.
+ * @member {string} [configurationMode] Gets or sets the ConfigurationMode
+ * value of the meta configuration.
+ * @member {string} [actionAfterReboot] Gets or sets the ActionAfterReboot
+ * value of the meta configuration.
+ * @member {string} [certificateId] Gets or sets the CertificateId value of the
+ * meta configuration.
+ * @member {number} [refreshFrequencyMins] Gets or sets the
+ * RefreshFrequencyMins value of the meta configuration.
+ * @member {boolean} [allowModuleOverwrite] Gets or sets the
+ * AllowModuleOverwrite value of the meta configuration.
+ */
+export interface DscMetaConfiguration {
+  configurationModeFrequencyMins?: number;
+  rebootNodeIfNeeded?: boolean;
+  configurationMode?: string;
+  actionAfterReboot?: string;
+  certificateId?: string;
+  refreshFrequencyMins?: number;
+  allowModuleOverwrite?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeReport class.
+ * @constructor
+ * Definition of the dsc node report type.
+ *
+ * @member {date} [endTime] Gets or sets the end time of the node report.
+ * @member {date} [lastModifiedTime] Gets or sets the lastModifiedTime of the
+ * node report.
+ * @member {date} [startTime] Gets or sets the start time of the node report.
+ * @member {string} [type] Gets or sets the type of the node report.
+ * @member {string} [reportId] Gets or sets the id of the node report.
+ * @member {string} [status] Gets or sets the status of the node report.
+ * @member {string} [refreshMode] Gets or sets the refreshMode of the node
+ * report.
+ * @member {string} [rebootRequested] Gets or sets the rebootRequested of the
+ * node report.
+ * @member {string} [reportFormatVersion] Gets or sets the reportFormatVersion
+ * of the node report.
+ * @member {string} [configurationVersion] Gets or sets the
+ * configurationVersion of the node report.
+ * @member {string} [id] Gets or sets the id.
+ * @member {array} [errors] Gets or sets the errors for the node report.
+ * @member {array} [resources] Gets or sets the resource for the node report.
+ * @member {object} [metaConfiguration] Gets or sets the metaConfiguration of
+ * the node at the time of the report.
+ * @member {number} [metaConfiguration.configurationModeFrequencyMins] Gets or
+ * sets the ConfigurationModeFrequencyMins value of the meta configuration.
+ * @member {boolean} [metaConfiguration.rebootNodeIfNeeded] Gets or sets the
+ * RebootNodeIfNeeded value of the meta configuration.
+ * @member {string} [metaConfiguration.configurationMode] Gets or sets the
+ * ConfigurationMode value of the meta configuration.
+ * @member {string} [metaConfiguration.actionAfterReboot] Gets or sets the
+ * ActionAfterReboot value of the meta configuration.
+ * @member {string} [metaConfiguration.certificateId] Gets or sets the
+ * CertificateId value of the meta configuration.
+ * @member {number} [metaConfiguration.refreshFrequencyMins] Gets or sets the
+ * RefreshFrequencyMins value of the meta configuration.
+ * @member {boolean} [metaConfiguration.allowModuleOverwrite] Gets or sets the
+ * AllowModuleOverwrite value of the meta configuration.
+ * @member {string} [hostName] Gets or sets the hostname of the node that sent
+ * the report.
+ * @member {array} [iPV4Addresses] Gets or sets the IPv4 address of the node
+ * that sent the report.
+ * @member {array} [iPV6Addresses] Gets or sets the IPv6 address of the node
+ * that sent the report.
+ * @member {number} [numberOfResources] Gets or sets the number of resource in
+ * the node report.
+ * @member {string} [rawErrors] Gets or sets the unparsed errors for the node
+ * report.
+ */
+export interface DscNodeReport {
+  endTime?: Date;
+  lastModifiedTime?: Date;
+  startTime?: Date;
+  type?: string;
+  reportId?: string;
+  status?: string;
+  refreshMode?: string;
+  rebootRequested?: string;
+  reportFormatVersion?: string;
+  configurationVersion?: string;
+  id?: string;
+  errors?: DscReportError[];
+  resources?: DscReportResource[];
+  metaConfiguration?: DscMetaConfiguration;
+  hostName?: string;
+  iPV4Addresses?: string[];
+  iPV6Addresses?: string[];
+  numberOfResources?: number;
+  rawErrors?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AgentRegistrationKeys class.
+ * @constructor
+ * Definition of the agent registration keys.
+ *
+ * @member {string} [primary] Gets or sets the primary key.
+ * @member {string} [secondary] Gets or sets the secondary key.
+ */
+export interface AgentRegistrationKeys {
+  primary?: string;
+  secondary?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AgentRegistration class.
+ * @constructor
+ * Definition of the agent registration infomration type.
+ *
+ * @member {string} [dscMetaConfiguration] Gets or sets the dsc meta
+ * configuration.
+ * @member {string} [endpoint] Gets or sets the dsc server endpoint.
+ * @member {object} [keys] Gets or sets the agent registration keys.
+ * @member {string} [keys.primary] Gets or sets the primary key.
+ * @member {string} [keys.secondary] Gets or sets the secondary key.
+ * @member {string} [id] Gets or sets the id.
+ */
+export interface AgentRegistration {
+  dscMetaConfiguration?: string;
+  endpoint?: string;
+  keys?: AgentRegistrationKeys;
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeExtensionHandlerAssociationProperty class.
+ * @constructor
+ * The dsc extensionHandler property associated with the node
+ *
+ * @member {string} [name] Gets or sets the name of the extension handler.
+ * @member {string} [version] Gets or sets the version of the extension
+ * handler.
+ */
+export interface DscNodeExtensionHandlerAssociationProperty {
+  name?: string;
+  version?: string;
 }
 
 /**
@@ -2964,6 +2891,8 @@ export interface SourceControlSyncJobById {
  * @member {string} [status] Gets or sets the status of the node.
  * @member {string} [nodeId] Gets or sets the node id.
  * @member {string} [etag] Gets or sets the etag of the resource.
+ * @member {number} [totalCount] Gets the total number of records matching
+ * filter criteria.
  * @member {array} [extensionHandler] Gets or sets the list of extensionHandler
  * properties for a Node.
  */
@@ -2976,7 +2905,131 @@ export interface DscNode extends ProxyResource {
   status?: string;
   nodeId?: string;
   etag?: string;
+  totalCount?: number;
   extensionHandler?: DscNodeExtensionHandlerAssociationProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AgentRegistrationRegenerateKeyParameter class.
+ * @constructor
+ * The parameters supplied to the regenerate keys operation.
+ *
+ * @member {string} keyName Gets or sets the agent registration key name -
+ * primary or secondary. Possible values include: 'primary', 'secondary'
+ */
+export interface AgentRegistrationRegenerateKeyParameter {
+  keyName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeUpdateParametersProperties class.
+ * @constructor
+ * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
+ */
+export interface DscNodeUpdateParametersProperties {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update dsc node operation.
+ *
+ * @member {string} [nodeId] Gets or sets the id of the dsc node.
+ * @member {object} [properties]
+ * @member {string} [properties.name] Gets or sets the name of the dsc
+ * nodeconfiguration.
+ */
+export interface DscNodeUpdateParameters {
+  nodeId?: string;
+  properties?: DscNodeUpdateParametersProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationAssociationProperty class.
+ * @constructor
+ * The Dsc configuration property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the Dsc configuration.
+ */
+export interface DscConfigurationAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscCompilationJob class.
+ * @constructor
+ * Definition of the Dsc Compilation job.
+ *
+ * @member {object} [configuration] Gets or sets the configuration.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {string} [startedBy] Gets the compilation job started by.
+ * @member {uuid} [jobId] Gets the id of the job.
+ * @member {date} [creationTime] Gets the creation time of the job.
+ * @member {string} [provisioningState] The current provisioning state of the
+ * job. Possible values include: 'Failed', 'Succeeded', 'Suspended',
+ * 'Processing'
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets the start time of the job.
+ * @member {date} [endTime] Gets the end time of the job.
+ * @member {string} [exception] Gets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets the last modified time of the job.
+ * @member {date} [lastStatusModifiedTime] Gets the last status modified time
+ * of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ */
+export interface DscCompilationJob extends ProxyResource {
+  configuration?: DscConfigurationAssociationProperty;
+  readonly startedBy?: string;
+  readonly jobId?: string;
+  readonly creationTime?: Date;
+  provisioningState?: string;
+  runOn?: string;
+  status?: string;
+  statusDetails?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly exception?: string;
+  readonly lastModifiedTime?: Date;
+  readonly lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscCompilationJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create compilation job operation.
+ *
+ * @member {object} configuration Gets or sets the configuration.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscCompilationJobCreateParameters {
+  configuration: DscConfigurationAssociationProperty;
+  parameters?: { [propertyName: string]: string };
+  incrementNodeConfigurationBuild?: boolean;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -3007,7 +3060,7 @@ export interface DscNodeConfiguration extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParametersProperties class.
+ * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update node configuration
  * operation.
@@ -3023,18 +3076,60 @@ export interface DscNodeConfiguration extends ProxyResource {
  * @member {string} [source.value] Gets or sets the value of the content. This
  * is based on the content source type.
  * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Gets or sets the type of the parameter.
  * @member {object} configuration Gets or sets the configuration of the node.
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
  * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
  * of NodeConfiguration is required.
+ * @member {string} [name] Name of the node configuration.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
-export interface DscNodeConfigurationCreateOrUpdateParametersProperties {
+export interface DscNodeConfigurationCreateOrUpdateParameters {
   source: ContentSource;
-  name: string;
   configuration: DscConfigurationAssociationProperty;
   incrementNodeConfigurationBuild?: boolean;
+  name?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeCountProperties class.
+ * @constructor
+ * @member {number} [count] Gets the count for the name
+ */
+export interface NodeCountProperties {
+  count?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeCount class.
+ * @constructor
+ * Number of nodes based on the Filter
+ *
+ * @member {string} [name] Gets the name of a count type
+ * @member {object} [properties]
+ * @member {number} [properties.count] Gets the count for the name
+ */
+export interface NodeCount {
+  name?: string;
+  properties?: NodeCountProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeCounts class.
+ * @constructor
+ * Gets the count of nodes by count type
+ *
+ * @member {array} [value] Gets an array of counts
+ * @member {number} [totalCount] Gets the total number of records matching
+ * countType criteria.
+ */
+export interface NodeCounts {
+  value?: NodeCount[];
+  totalCount?: number;
 }
 
 
@@ -3078,14 +3173,6 @@ export interface StatisticsListResult extends Array<Statistics> {
  *
  */
 export interface UsageListResult extends Array<Usage> {
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyListResult class.
- * @constructor
- */
-export interface KeyListResult extends Array<Key> {
 }
 
 /**
@@ -3143,6 +3230,8 @@ export interface CredentialListResult extends Array<Credential> {
  * The response model for the list configuration operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets the total number of configurations
+ * matching filter criteria.
  */
 export interface DscConfigurationListResult extends Array<DscConfiguration> {
   nextLink?: string;
@@ -3268,6 +3357,18 @@ export interface WebhookListResult extends Array<Webhook> {
 
 /**
  * @class
+ * Initializes a new instance of the WatcherListResult class.
+ * @constructor
+ * The response model for the list watcher operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface WatcherListResult extends Array<Watcher> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlListResult class.
  * @constructor
  * The response model for the list source controls operation.
@@ -3292,6 +3393,18 @@ export interface SourceControlSyncJobListResult extends Array<SourceControlSyncJ
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlSyncJobStreamsListBySyncJob class.
+ * @constructor
+ * The response model for the list source control sync job streams operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface SourceControlSyncJobStreamsListBySyncJob extends Array<SourceControlSyncJobStream> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobListResultV2 class.
  * @constructor
  * The response model for the list job operation.
@@ -3309,6 +3422,8 @@ export interface JobListResultV2 extends Array<JobCollectionItem> {
  * The response model for the list dsc nodes operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets the total number of nodes matching filter
+ * criteria.
  */
 export interface DscNodeListResult extends Array<DscNode> {
   nextLink?: string;
@@ -3345,6 +3460,7 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * The response model for the list job operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
   nextLink?: string;
