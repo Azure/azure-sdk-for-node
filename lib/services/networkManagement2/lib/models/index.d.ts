@@ -6831,6 +6831,8 @@ export interface LocalNetworkGateway extends Resource {
  * @member {string} connectionType Gateway connection type. Possible values
  * are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values
  * include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+ * @member {string} [connectionProtocol] Connection protocol used for this
+ * connection. Possible values include: 'IKEv2', 'IKEv1'
  * @member {number} [routingWeight] The routing weight.
  * @member {string} [sharedKey] The IPSec shared key.
  * @member {string} [connectionStatus] Virtual network Gateway connection
@@ -6866,6 +6868,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   virtualNetworkGateway2?: VirtualNetworkGateway;
   localNetworkGateway2?: LocalNetworkGateway;
   connectionType: string;
+  connectionProtocol?: string;
   routingWeight?: number;
   sharedKey?: string;
   readonly connectionStatus?: string;
@@ -6982,6 +6985,8 @@ export interface VirtualNetworkConnectionGatewayReference {
  * @member {string} connectionType Gateway connection type. Possible values
  * are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible values
  * include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+ * @member {string} [connectionProtocol] Connection protocol used for this
+ * connection. Possible values include: 'IKEv2', 'IKEv1'
  * @member {number} [routingWeight] The routing weight.
  * @member {string} [sharedKey] The IPSec shared key.
  * @member {string} [connectionStatus] Virtual network Gateway connection
@@ -7017,6 +7022,7 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   virtualNetworkGateway2?: VirtualNetworkConnectionGatewayReference;
   localNetworkGateway2?: VirtualNetworkConnectionGatewayReference;
   connectionType: string;
+  connectionProtocol?: string;
   routingWeight?: number;
   sharedKey?: string;
   readonly connectionStatus?: string;
@@ -7051,6 +7057,133 @@ export interface VpnDeviceScriptParameters {
 
 /**
  * @class
+ * Initializes a new instance of the P2SVpnServerConfigVpnClientRootCertificate class.
+ * @constructor
+ * VPN client root certificate of P2SVpnServerConfiguration.
+ *
+ * @member {string} publicCertData The certificate public data.
+ * @member {string} [provisioningState] The provisioning state of the
+ * P2SVpnServerConfiguration VPN client root certificate resource. Possible
+ * values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface P2SVpnServerConfigVpnClientRootCertificate extends SubResource {
+  publicCertData: string;
+  readonly provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the P2SVpnServerConfigVpnClientRevokedCertificate class.
+ * @constructor
+ * VPN client revoked certificate of P2SVpnServerConfiguration.
+ *
+ * @member {string} [thumbprint] The revoked VPN client certificate thumbprint.
+ * @member {string} [provisioningState] The provisioning state of the VPN
+ * client revoked certificate resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface P2SVpnServerConfigVpnClientRevokedCertificate extends SubResource {
+  thumbprint?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the P2SVpnServerConfigRadiusServerRootCertificate class.
+ * @constructor
+ * Radius Server root certificate of P2SVpnServerConfiguration.
+ *
+ * @member {string} publicCertData The certificate public data.
+ * @member {string} [provisioningState] The provisioning state of the
+ * P2SVpnServerConfiguration Radius Server root certificate resource. Possible
+ * values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface P2SVpnServerConfigRadiusServerRootCertificate extends SubResource {
+  publicCertData: string;
+  readonly provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the P2SVpnServerConfigRadiusClientRootCertificate class.
+ * @constructor
+ * Radius client root certificate of P2SVpnServerConfiguration.
+ *
+ * @member {string} [thumbprint] The Radius client root certificate thumbprint.
+ * @member {string} [provisioningState] The provisioning state of the Radius
+ * client root certificate resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface P2SVpnServerConfigRadiusClientRootCertificate extends SubResource {
+  thumbprint?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the P2SVpnServerConfiguration class.
+ * @constructor
+ * P2SVpnServerConfiguration Resource.
+ *
+ * @member {array} [vpnProtocols] vpnProtocols for the
+ * P2SVpnServerConfiguration.
+ * @member {array} [p2sVpnServerConfigVpnClientRootCertificates] VPN client
+ * root certificate of P2SVpnServerConfiguration.
+ * @member {array} [p2sVpnServerConfigVpnClientRevokedCertificates] VPN client
+ * revoked certificate of P2SVpnServerConfiguration.
+ * @member {array} [p2sVpnServerConfigRadiusServerRootCertificates] Radius
+ * Server root certificate of P2SVpnServerConfiguration.
+ * @member {array} [p2sVpnServerConfigRadiusClientRootCertificates] Radius
+ * client root certificate of P2SVpnServerConfiguration.
+ * @member {array} [vspnClientIpsecPolicies] VpnClientIpsecPolicies for
+ * P2SVpnServerConfiguration.
+ * @member {string} [radiusServerAddress] The radius server address property of
+ * the P2SVpnServerConfiguration resource for point to site client connection.
+ * @member {string} [radiusServerSecret] The radius secret property of the
+ * P2SVpnServerConfiguration resource for for point to site client connection.
+ * @member {array} [p2sVpnGateways]
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface P2SVpnServerConfiguration extends Resource {
+  vpnProtocols?: string[];
+  p2sVpnServerConfigVpnClientRootCertificates?: P2SVpnServerConfigVpnClientRootCertificate[];
+  p2sVpnServerConfigVpnClientRevokedCertificates?: P2SVpnServerConfigVpnClientRevokedCertificate[];
+  p2sVpnServerConfigRadiusServerRootCertificates?: P2SVpnServerConfigRadiusServerRootCertificate[];
+  p2sVpnServerConfigRadiusClientRootCertificates?: P2SVpnServerConfigRadiusClientRootCertificate[];
+  vspnClientIpsecPolicies?: IpsecPolicy[];
+  radiusServerAddress?: string;
+  radiusServerSecret?: string;
+  readonly p2sVpnGateways?: SubResource[];
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualWAN class.
  * @constructor
  * VirtualWAN Resource.
@@ -7059,6 +7192,16 @@ export interface VpnDeviceScriptParameters {
  * not.
  * @member {array} [virtualHubs] List of VirtualHubs in the VirtualWAN.
  * @member {array} [vpnSites]
+ * @member {string} [securityProviderName] The Security Provider name.
+ * @member {boolean} [allowBranchToBranchTraffic] True if branch to branch
+ * traffic is allowed.
+ * @member {boolean} [allowVnetToVnetTraffic] True if Vnet to Vnet traffic is
+ * allowed.
+ * @member {string} [office365LocalBreakoutCategory] The office local breakout
+ * category. Possible values include: 'Optimize', 'OptimizeAndAllow', 'All',
+ * 'None'
+ * @member {array} [p2sVpnServerConfigurations] list of all
+ * P2SVpnServerConfigurationss to the virtual wan.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -7068,6 +7211,11 @@ export interface VirtualWAN extends Resource {
   disableVpnEncryption?: boolean;
   readonly virtualHubs?: SubResource[];
   readonly vpnSites?: SubResource[];
+  securityProviderName?: string;
+  allowBranchToBranchTraffic?: boolean;
+  allowVnetToVnetTraffic?: boolean;
+  office365LocalBreakoutCategory?: string;
+  p2sVpnServerConfigurations?: P2SVpnServerConfiguration[];
   provisioningState?: string;
   readonly etag?: string;
 }
@@ -7115,6 +7263,7 @@ export interface DeviceProperties {
  * learned from this BGP speaker.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {boolean} [isSecuritySite] IsSecuritySite flag
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -7126,6 +7275,7 @@ export interface VpnSite extends Resource {
   addressSpace?: AddressSpace;
   bgpProperties?: BgpSettings;
   provisioningState?: string;
+  isSecuritySite?: boolean;
   readonly etag?: string;
 }
 
@@ -7158,6 +7308,7 @@ export interface GetVpnSitesConfigurationRequest {
  * transit to enabled or not.
  * @member {boolean} [allowRemoteVnetToUseHubVnetGateways] Allow RemoteVnet to
  * use Virtual Hub's gateways.
+ * @member {boolean} [enableInternetSecurity] Enable internet security
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -7167,6 +7318,7 @@ export interface HubVirtualNetworkConnection extends Resource {
   remoteVirtualNetwork?: SubResource;
   allowHubToRemoteVnetTransit?: boolean;
   allowRemoteVnetToUseHubVnetGateways?: boolean;
+  enableInternetSecurity?: boolean;
   provisioningState?: string;
   readonly etag?: string;
 }
@@ -7179,7 +7331,7 @@ export interface HubVirtualNetworkConnection extends Resource {
  *
  * @member {object} [virtualWan] The VirtualWAN to which the VirtualHub belongs
  * @member {string} [virtualWan.id] Resource ID.
- * @member {array} [hubVirtualNetworkConnections] list of all vnet connections
+ * @member {array} [virtualNetworkConnections] list of all vnet connections
  * with this VirtualHub.
  * @member {string} [addressPrefix] Address-prefix for this VirtualHub.
  * @member {string} [provisioningState] The provisioning state of the resource.
@@ -7189,7 +7341,7 @@ export interface HubVirtualNetworkConnection extends Resource {
  */
 export interface VirtualHub extends Resource {
   virtualWan?: SubResource;
-  hubVirtualNetworkConnections?: HubVirtualNetworkConnection[];
+  virtualNetworkConnections?: HubVirtualNetworkConnection[];
   addressPrefix?: string;
   provisioningState?: string;
   readonly etag?: string;
@@ -7206,13 +7358,17 @@ export interface VirtualHub extends Resource {
  * @member {number} [routingWeight] routing weight for vpn connection.
  * @member {string} [connectionStatus] The connection status. Possible values
  * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
+ * @member {string} [connectionProtocol] Connection protocol used for this
+ * connection. Possible values include: 'IKEv2', 'IKEv1'
  * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
  * @member {number} [egressBytesTransferred] Egress bytes transferred.
- * @member {number} [connectionBandwidthInMbps] Expected bandwidth in MBPS.
+ * @member {number} [connectionBandwidth] Expected bandwidth in MBPS.
  * @member {string} [sharedKey] SharedKey for the vpn connection.
  * @member {boolean} [enableBgp] EnableBgp flag
  * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
  * connection.
+ * @member {boolean} [enableRateLimiting] EnableBgp flag
+ * @member {boolean} [enableInternetSecurity] Enable internet security
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -7222,30 +7378,17 @@ export interface VpnConnection extends Resource {
   remoteVpnSite?: SubResource;
   routingWeight?: number;
   connectionStatus?: string;
+  connectionProtocol?: string;
   readonly ingressBytesTransferred?: number;
   readonly egressBytesTransferred?: number;
-  readonly connectionBandwidthInMbps?: number;
+  readonly connectionBandwidth?: number;
   sharedKey?: string;
   enableBgp?: boolean;
   ipsecPolicies?: IpsecPolicy[];
+  enableRateLimiting?: boolean;
+  enableInternetSecurity?: boolean;
   provisioningState?: string;
   readonly etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Policies class.
- * @constructor
- * Policies for vpn gateway.
- *
- * @member {boolean} [allowBranchToBranchTraffic] True if branch to branch
- * traffic is allowed.
- * @member {boolean} [allowVnetToVnetTraffic] True if Vnet to Vnet traffic is
- * allowed.
- */
-export interface Policies {
-  allowBranchToBranchTraffic?: boolean;
-  allowVnetToVnetTraffic?: boolean;
 }
 
 /**
@@ -7265,11 +7408,7 @@ export interface Policies {
  * from this BGP speaker.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {object} [policies] The policies applied to this vpn gateway.
- * @member {boolean} [policies.allowBranchToBranchTraffic] True if branch to
- * branch traffic is allowed.
- * @member {boolean} [policies.allowVnetToVnetTraffic] True if Vnet to Vnet
- * traffic is allowed.
+ * @member {number} [vpnGatewayScaleUnit] The scale unit for this vpn gateway.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -7278,7 +7417,7 @@ export interface VpnGateway extends Resource {
   connections?: VpnConnection[];
   bgpSettings?: BgpSettings;
   provisioningState?: string;
-  policies?: Policies;
+  vpnGatewayScaleUnit?: number;
   readonly etag?: string;
 }
 
@@ -7293,6 +7432,112 @@ export interface VpnGateway extends Resource {
  */
 export interface VpnSiteId {
   readonly vpnSite?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualWanSecurityProvider class.
+ * @constructor
+ * Collection of SecurityProviders.
+ *
+ * @member {string} [name] Name of the security provider.
+ * @member {string} [url] Url of the security provider.
+ * @member {string} [type] Name of the security provider. Possible values
+ * include: 'External', 'Native'
+ */
+export interface VirtualWanSecurityProvider {
+  name?: string;
+  url?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualWanSecurityProviders class.
+ * @constructor
+ * Collection of SecurityProviders.
+ *
+ * @member {array} [supportedProviders]
+ */
+export interface VirtualWanSecurityProviders {
+  supportedProviders?: VirtualWanSecurityProvider[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnClientConnectionHealth class.
+ * @constructor
+ * VpnClientConnectionHealth properties
+ *
+ * @member {number} [totalIngressBytesTransferred] Total of the Ingress Bytes
+ * Transferred in this P2S Vpn connection
+ * @member {number} [totalEgressBytesTransferred] Total of the Egress Bytes
+ * Transferred in this connection
+ * @member {number} [vpnClientConnectionsCount] The total of p2s vpn clients
+ * connected at this time to this P2SVpnGateway.
+ * @member {array} [allocatedIpAddresses] List of allocated ip addresses to the
+ * connected p2s vpn clients.
+ */
+export interface VpnClientConnectionHealth {
+  readonly totalIngressBytesTransferred?: number;
+  readonly totalEgressBytesTransferred?: number;
+  vpnClientConnectionsCount?: number;
+  allocatedIpAddresses?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the P2SVpnGateway class.
+ * @constructor
+ * P2SVpnGateway Resource.
+ *
+ * @member {object} [virtualHub] The VirtualHub to which the gateway belongs
+ * @member {string} [virtualHub.id] Resource ID.
+ * @member {object} [bgpSettings] Local network gateway's BGP speaker settings.
+ * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
+ * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
+ * BGP identifier of this BGP speaker.
+ * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
+ * from this BGP speaker.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {number} [vpnGatewayScaleUnit] The scale unit for this p2s vpn
+ * gateway.
+ * @member {object} [p2sVpnServerConfiguration] The P2SVpnServerConfiguration
+ * to which the p2sVpnGateway is attached to.
+ * @member {string} [p2sVpnServerConfiguration.id] Resource ID.
+ * @member {object} [vpnClientAddressPool] The reference of the address space
+ * resource which represents Address space for P2S VpnClient.
+ * @member {array} [vpnClientAddressPool.addressPrefixes] A list of address
+ * blocks reserved for this virtual network in CIDR notation.
+ * @member {array} [vpnClientConnectionHealth] Collection of the all P2S
+ * vpnclients' connection health status.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface P2SVpnGateway extends Resource {
+  virtualHub?: SubResource;
+  bgpSettings?: BgpSettings;
+  provisioningState?: string;
+  vpnGatewayScaleUnit?: number;
+  p2sVpnServerConfiguration?: SubResource;
+  vpnClientAddressPool?: AddressSpace;
+  readonly vpnClientConnectionHealth?: VpnClientConnectionHealth[];
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the P2SVpnProfileParameters class.
+ * @constructor
+ * Vpn Client Parameters for package generation
+ *
+ * @member {string} [authenticationMethod] VPN client Authentication Method.
+ * Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values include:
+ * 'EAPTLS', 'EAPMSCHAPv2'
+ */
+export interface P2SVpnProfileParameters {
+  authenticationMethod?: string;
 }
 
 
@@ -7922,5 +8167,34 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListP2SVpnServerConfigurationsResult class.
+ * @constructor
+ * Result of the request to list all P2SVpnServerConfigurations associated to a
+ * VirtualWan. It contains a list of P2SVpnServerConfigurations and a URL
+ * nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListP2SVpnServerConfigurationsResult extends Array<P2SVpnServerConfiguration> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListP2SVpnGatewaysResult class.
+ * @constructor
+ * Result of the request to list P2SVpnGateways. It contains a list of
+ * P2SVpnGateways and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListP2SVpnGatewaysResult extends Array<P2SVpnGateway> {
   nextLink?: string;
 }
