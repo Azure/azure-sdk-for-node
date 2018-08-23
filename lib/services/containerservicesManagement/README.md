@@ -18,7 +18,7 @@ npm install azure-arm-containerservice
 
 ## How to use
 
-### Authentication, client creation and list containerServices as an example.
+### Authentication, client creation and list openShiftManagedClusters as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -26,7 +26,7 @@ const ContainerServiceClient = require("azure-arm-containerservice");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new ContainerServiceClient(creds, subscriptionId);
-    return client.containerServices.list().then((result) => {
+    return client.openShiftManagedClusters.list().then((result) => {
       console.log("The result is:");
       console.log(result);
     });
