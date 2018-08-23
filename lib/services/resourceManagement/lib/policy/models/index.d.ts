@@ -34,6 +34,23 @@ export interface PolicySku {
 
 /**
  * @class
+ * Initializes a new instance of the Identity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal ID of the resource identity.
+ * @member {string} [tenantId] The tenant ID of the resource identity.
+ * @member {string} [type] The identity type. Possible values include:
+ * 'SystemAssigned', 'None'
+ */
+export interface Identity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PolicyAssignment class.
  * @constructor
  * The policy assignment.
@@ -57,6 +74,15 @@ export interface PolicySku {
  * A0 and A1.
  * @member {string} [sku.tier] The policy sku tier. Possible values are Free
  * and Standard.
+ * @member {string} [location] The location of the policy assignment. Only
+ * required when utilizing managed identity.
+ * @member {object} [identity] The managed identity associated with the policy
+ * assignment.
+ * @member {string} [identity.principalId] The principal ID of the resource
+ * identity.
+ * @member {string} [identity.tenantId] The tenant ID of the resource identity.
+ * @member {string} [identity.type] The identity type. Possible values include:
+ * 'SystemAssigned', 'None'
  */
 export interface PolicyAssignment extends BaseResource {
   displayName?: string;
@@ -70,6 +96,8 @@ export interface PolicyAssignment extends BaseResource {
   readonly type?: string;
   readonly name?: string;
   sku?: PolicySku;
+  location?: string;
+  identity?: Identity;
 }
 
 /**
