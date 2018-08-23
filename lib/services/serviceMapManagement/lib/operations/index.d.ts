@@ -572,7 +572,8 @@ export interface Machines {
 
 
     /**
-     * Returns a collection of machine groups this machine belongs to.
+     * Returns a collection of machine groups this machine belongs to during the
+     * specified time interval.
      *
      * @param {string} resourceGroupName Resource group name within the specified
      * subscriptionId.
@@ -583,6 +584,13 @@ export interface Machines {
      * @param {string} machineName Machine resource name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] UTC date and time specifying the start
+     * time of an interval. When not specified the service uses DateTime.UtcNow -
+     * 10m
+     *
+     * @param {date} [options.endTime] UTC date and time specifying the end time of
+     * an interval. When not specified the service uses DateTime.UtcNow
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -593,10 +601,11 @@ export interface Machines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listMachineGroupMembershipWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, machineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroupCollection>>;
+    listMachineGroupMembershipWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, machineName: string, options?: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroupCollection>>;
 
     /**
-     * Returns a collection of machine groups this machine belongs to.
+     * Returns a collection of machine groups this machine belongs to during the
+     * specified time interval.
      *
      * @param {string} resourceGroupName Resource group name within the specified
      * subscriptionId.
@@ -607,6 +616,13 @@ export interface Machines {
      * @param {string} machineName Machine resource name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] UTC date and time specifying the start
+     * time of an interval. When not specified the service uses DateTime.UtcNow -
+     * 10m
+     *
+     * @param {date} [options.endTime] UTC date and time specifying the end time of
+     * an interval. When not specified the service uses DateTime.UtcNow
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -634,9 +650,9 @@ export interface Machines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listMachineGroupMembership(resourceGroupName: string, workspaceName: string, machineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MachineGroupCollection>;
+    listMachineGroupMembership(resourceGroupName: string, workspaceName: string, machineName: string, options?: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.MachineGroupCollection>;
     listMachineGroupMembership(resourceGroupName: string, workspaceName: string, machineName: string, callback: ServiceCallback<models.MachineGroupCollection>): void;
-    listMachineGroupMembership(resourceGroupName: string, workspaceName: string, machineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MachineGroupCollection>): void;
+    listMachineGroupMembership(resourceGroupName: string, workspaceName: string, machineName: string, options: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MachineGroupCollection>): void;
 
 
     /**
@@ -890,7 +906,8 @@ export interface Machines {
 
 
     /**
-     * Returns a collection of machine groups this machine belongs to.
+     * Returns a collection of machine groups this machine belongs to during the
+     * specified time interval.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -909,7 +926,8 @@ export interface Machines {
     listMachineGroupMembershipNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroupCollection>>;
 
     /**
-     * Returns a collection of machine groups this machine belongs to.
+     * Returns a collection of machine groups this machine belongs to during the
+     * specified time interval.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2379,7 +2397,7 @@ export interface MachineGroups {
 
 
     /**
-     * Returns all machine groups.
+     * Returns all machine groups during the specified time interval.
      *
      * @param {string} resourceGroupName Resource group name within the specified
      * subscriptionId.
@@ -2388,6 +2406,13 @@ export interface MachineGroups {
      * interest.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] UTC date and time specifying the start
+     * time of an interval. When not specified the service uses DateTime.UtcNow -
+     * 10m
+     *
+     * @param {date} [options.endTime] UTC date and time specifying the end time of
+     * an interval. When not specified the service uses DateTime.UtcNow
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2398,10 +2423,10 @@ export interface MachineGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroupCollection>>;
+    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroupCollection>>;
 
     /**
-     * Returns all machine groups.
+     * Returns all machine groups during the specified time interval.
      *
      * @param {string} resourceGroupName Resource group name within the specified
      * subscriptionId.
@@ -2410,6 +2435,13 @@ export interface MachineGroups {
      * interest.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] UTC date and time specifying the start
+     * time of an interval. When not specified the service uses DateTime.UtcNow -
+     * 10m
+     *
+     * @param {date} [options.endTime] UTC date and time specifying the end time of
+     * an interval. When not specified the service uses DateTime.UtcNow
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2437,9 +2469,9 @@ export interface MachineGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MachineGroupCollection>;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.MachineGroupCollection>;
     listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.MachineGroupCollection>): void;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MachineGroupCollection>): void;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MachineGroupCollection>): void;
 
 
     /**
@@ -2453,7 +2485,16 @@ export interface MachineGroups {
      *
      * @param {object} machineGroup Machine Group resource to create.
      *
-     * @param {string} [machineGroup.displayName] User defined name for the group
+     * @param {string} [machineGroup.groupType] Type of the machine group. Possible
+     * values include: 'unknown', 'azure-cs', 'azure-sf', 'azure-vmss',
+     * 'user-static'
+     *
+     * @param {string} machineGroup.displayName User defined name for the group
+     *
+     * @param {number} [machineGroup.count] Count of machines in this group. The
+     * value of count may be bigger than the number of machines in case of the
+     * group has been truncated due to exceeding the max number of machines a group
+     * can handle.
      *
      * @param {array} [machineGroup.machines] References of the machines in this
      * group. The hints within each reference do not represent the current value of
@@ -2488,7 +2529,16 @@ export interface MachineGroups {
      *
      * @param {object} machineGroup Machine Group resource to create.
      *
-     * @param {string} [machineGroup.displayName] User defined name for the group
+     * @param {string} [machineGroup.groupType] Type of the machine group. Possible
+     * values include: 'unknown', 'azure-cs', 'azure-sf', 'azure-vmss',
+     * 'user-static'
+     *
+     * @param {string} machineGroup.displayName User defined name for the group
+     *
+     * @param {number} [machineGroup.count] Count of machines in this group. The
+     * value of count may be bigger than the number of machines in case of the
+     * group has been truncated due to exceeding the max number of machines a group
+     * can handle.
      *
      * @param {array} [machineGroup.machines] References of the machines in this
      * group. The hints within each reference do not represent the current value of
@@ -2532,7 +2582,8 @@ export interface MachineGroups {
 
 
     /**
-     * Returns the specified machine group.
+     * Returns the specified machine group as it existed during the specified time
+     * interval.
      *
      * @param {string} resourceGroupName Resource group name within the specified
      * subscriptionId.
@@ -2543,6 +2594,13 @@ export interface MachineGroups {
      * @param {string} machineGroupName Machine Group resource name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] UTC date and time specifying the start
+     * time of an interval. When not specified the service uses DateTime.UtcNow -
+     * 10m
+     *
+     * @param {date} [options.endTime] UTC date and time specifying the end time of
+     * an interval. When not specified the service uses DateTime.UtcNow
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2553,10 +2611,11 @@ export interface MachineGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, machineGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroup>>;
+    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, machineGroupName: string, options?: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroup>>;
 
     /**
-     * Returns the specified machine group.
+     * Returns the specified machine group as it existed during the specified time
+     * interval.
      *
      * @param {string} resourceGroupName Resource group name within the specified
      * subscriptionId.
@@ -2567,6 +2626,13 @@ export interface MachineGroups {
      * @param {string} machineGroupName Machine Group resource name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] UTC date and time specifying the start
+     * time of an interval. When not specified the service uses DateTime.UtcNow -
+     * 10m
+     *
+     * @param {date} [options.endTime] UTC date and time specifying the end time of
+     * an interval. When not specified the service uses DateTime.UtcNow
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2593,9 +2659,9 @@ export interface MachineGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, workspaceName: string, machineGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MachineGroup>;
+    get(resourceGroupName: string, workspaceName: string, machineGroupName: string, options?: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.MachineGroup>;
     get(resourceGroupName: string, workspaceName: string, machineGroupName: string, callback: ServiceCallback<models.MachineGroup>): void;
-    get(resourceGroupName: string, workspaceName: string, machineGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MachineGroup>): void;
+    get(resourceGroupName: string, workspaceName: string, machineGroupName: string, options: { startTime? : Date, endTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MachineGroup>): void;
 
 
     /**
@@ -2611,7 +2677,16 @@ export interface MachineGroups {
      *
      * @param {object} machineGroup Machine Group resource to update.
      *
-     * @param {string} [machineGroup.displayName] User defined name for the group
+     * @param {string} [machineGroup.groupType] Type of the machine group. Possible
+     * values include: 'unknown', 'azure-cs', 'azure-sf', 'azure-vmss',
+     * 'user-static'
+     *
+     * @param {string} machineGroup.displayName User defined name for the group
+     *
+     * @param {number} [machineGroup.count] Count of machines in this group. The
+     * value of count may be bigger than the number of machines in case of the
+     * group has been truncated due to exceeding the max number of machines a group
+     * can handle.
      *
      * @param {array} [machineGroup.machines] References of the machines in this
      * group. The hints within each reference do not represent the current value of
@@ -2648,7 +2723,16 @@ export interface MachineGroups {
      *
      * @param {object} machineGroup Machine Group resource to update.
      *
-     * @param {string} [machineGroup.displayName] User defined name for the group
+     * @param {string} [machineGroup.groupType] Type of the machine group. Possible
+     * values include: 'unknown', 'azure-cs', 'azure-sf', 'azure-vmss',
+     * 'user-static'
+     *
+     * @param {string} machineGroup.displayName User defined name for the group
+     *
+     * @param {number} [machineGroup.count] Count of machines in this group. The
+     * value of count may be bigger than the number of machines in case of the
+     * group has been truncated due to exceeding the max number of machines a group
+     * can handle.
      *
      * @param {array} [machineGroup.machines] References of the machines in this
      * group. The hints within each reference do not represent the current value of
@@ -2758,7 +2842,7 @@ export interface MachineGroups {
 
 
     /**
-     * Returns all machine groups.
+     * Returns all machine groups during the specified time interval.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2777,7 +2861,7 @@ export interface MachineGroups {
     listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MachineGroupCollection>>;
 
     /**
-     * Returns all machine groups.
+     * Returns all machine groups during the specified time interval.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

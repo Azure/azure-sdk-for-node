@@ -30,6 +30,214 @@ export interface SubResource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the AzureFirewallIPConfiguration class.
+ * @constructor
+ * IP configuration of an Azure Firewall.
+ *
+ * @member {string} [privateIPAddress] The Firewall Internal Load Balancer IP
+ * to be used as the next hop in User Defined Routes.
+ * @member {object} [subnet] Reference of the subnet resource. This resource
+ * must be named 'AzureFirewallSubnet'.
+ * @member {string} [subnet.id] Resource ID.
+ * @member {object} [internalPublicIpAddress] Reference of the PublicIP
+ * resource. This field is a mandatory input.
+ * @member {string} [internalPublicIpAddress.id] Resource ID.
+ * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
+ * field is populated in the output.
+ * @member {string} [publicIPAddress.id] Resource ID.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface AzureFirewallIPConfiguration extends SubResource {
+  privateIPAddress?: string;
+  subnet?: SubResource;
+  internalPublicIpAddress?: SubResource;
+  publicIPAddress?: SubResource;
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallRCAction class.
+ * @constructor
+ * Properties of the AzureFirewallRCAction.
+ *
+ * @member {string} [type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ */
+export interface AzureFirewallRCAction {
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallApplicationRuleProtocol class.
+ * @constructor
+ * Properties of the application rule protocol.
+ *
+ * @member {string} [protocolType] Protocol type. Possible values include:
+ * 'Http', 'Https'
+ * @member {number} [port] Port number for the protocol, cannot be greater than
+ * 64000. This field is optional.
+ */
+export interface AzureFirewallApplicationRuleProtocol {
+  protocolType?: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallApplicationRule class.
+ * @constructor
+ * Properties of an application rule.
+ *
+ * @member {string} [name] Name of the application rule.
+ * @member {string} [description] Description of the rule.
+ * @member {array} [sourceAddresses] List of source IP addresses for this rule.
+ * @member {array} [protocols] Array of ApplicationRuleProtocols.
+ * @member {array} [targetUrls] List of URLs for this rule.
+ */
+export interface AzureFirewallApplicationRule {
+  name?: string;
+  description?: string;
+  sourceAddresses?: string[];
+  protocols?: AzureFirewallApplicationRuleProtocol[];
+  targetUrls?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallApplicationRuleCollection class.
+ * @constructor
+ * Application rule collection resource
+ *
+ * @member {number} [priority] Priority of the application rule collection
+ * resource.
+ * @member {object} [action] The action type of a rule collection
+ * @member {string} [action.type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [rules] Collection of rules used by a application rule
+ * collection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallApplicationRuleCollection extends SubResource {
+  priority?: number;
+  action?: AzureFirewallRCAction;
+  rules?: AzureFirewallApplicationRule[];
+  provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNetworkRule class.
+ * @constructor
+ * Properties of the network rule.
+ *
+ * @member {string} [name] Name of the network rule.
+ * @member {string} [description] Description of the rule.
+ * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
+ * @member {array} [sourceAddresses] List of source IP addresses for this rule.
+ * @member {array} [destinationAddresses] List of destination IP addresses.
+ * @member {array} [destinationPorts] List of destination ports.
+ */
+export interface AzureFirewallNetworkRule {
+  name?: string;
+  description?: string;
+  protocols?: string[];
+  sourceAddresses?: string[];
+  destinationAddresses?: string[];
+  destinationPorts?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNetworkRuleCollection class.
+ * @constructor
+ * Network rule collection resource
+ *
+ * @member {number} [priority] Priority of the network rule collection
+ * resource.
+ * @member {object} [action] The action type of a rule collection
+ * @member {string} [action.type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [rules] Collection of rules used by a network rule
+ * collection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallNetworkRuleCollection extends SubResource {
+  priority?: number;
+  action?: AzureFirewallRCAction;
+  rules?: AzureFirewallNetworkRule[];
+  provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * Common resource representation.
+ *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface Resource extends BaseResource {
+  id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewall class.
+ * @constructor
+ * Azure Firewall resource
+ *
+ * @member {array} [applicationRuleCollections] Collection of application rule
+ * collections used by a Azure Firewall.
+ * @member {array} [networkRuleCollections] Collection of network rule
+ * collections used by a Azure Firewall.
+ * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
+ * resource.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewall extends Resource {
+  applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
+  networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
+  ipConfigurations?: AzureFirewallIPConfiguration[];
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the BackendAddressPool class.
  * @constructor
  * Pool of backend IP addresses.
@@ -270,6 +478,8 @@ export interface BackendAddressPool extends SubResource {
  * resolves to this public IP address. If the reverseFqdn is specified, then a
  * PTR DNS record is created pointing from the IP address in the in-addr.arpa
  * domain to the reverse FQDN.
+ * @member {array} [backendIPConfiguration.publicIPAddress.ipTags] The list of
+ * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
  * @member {number}
@@ -328,26 +538,6 @@ export interface InboundNatRule extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * Common resource representation.
- *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
- */
-export interface Resource extends BaseResource {
-  id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -687,6 +877,22 @@ export interface PublicIPAddressDnsSettings {
 
 /**
  * @class
+ * Initializes a new instance of the IpTag class.
+ * @constructor
+ * Contains the IpTag associated with the public IP address
+ *
+ * @member {string} [ipTagType] Gets or sets the ipTag type: Example
+ * FirstPartyUsage.
+ * @member {string} [tag] Gets or sets value of the IpTag associated with the
+ * public IP. Example SQL, Storage etc
+ */
+export interface IpTag {
+  ipTagType?: string;
+  tag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddress class.
  * @constructor
  * Public IP address resource.
@@ -783,6 +989,8 @@ export interface PublicIPAddressDnsSettings {
  * user-visible, fully qualified domain name that resolves to this public IP
  * address. If the reverseFqdn is specified, then a PTR DNS record is created
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
@@ -802,6 +1010,7 @@ export interface PublicIPAddress extends Resource {
   publicIPAddressVersion?: string;
   readonly ipConfiguration?: IPConfiguration;
   dnsSettings?: PublicIPAddressDnsSettings;
+  ipTags?: IpTag[];
   ipAddress?: string;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
@@ -893,6 +1102,8 @@ export interface PublicIPAddress extends Resource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -1177,6 +1388,8 @@ export interface Subnet extends SubResource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -1242,8 +1455,8 @@ export interface ApplicationGatewayBackendAddress {
  * @member {string} [provisioningState] Provisioning state of the backend
  * address pool resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Resource that is unique within a resource group.
- * This name can be used to access the resource.
+ * @member {string} [name] Name of the backend address pool that is unique
+ * within an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1280,9 +1493,10 @@ export interface ApplicationGatewayConnectionDraining {
  * @constructor
  * Backend address pool settings of an application gateway.
  *
- * @member {number} [port] Port
- * @member {string} [protocol] Protocol. Possible values include: 'Http',
- * 'Https'
+ * @member {number} [port] The destination port on the backend.
+ * @member {string} [protocol] The protocol used to communicate with the
+ * backend. Possible values are 'Http' and 'Https'. Possible values include:
+ * 'Http', 'Https'
  * @member {string} [cookieBasedAffinity] Cookie based affinity. Possible
  * values include: 'Enabled', 'Disabled'
  * @member {number} [requestTimeout] Request timeout in seconds. Application
@@ -1312,8 +1526,8 @@ export interface ApplicationGatewayConnectionDraining {
  * @member {string} [provisioningState] Provisioning state of the backend http
  * settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the backend http settings that is unique
+ * within an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1536,6 +1750,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
+ * @member {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
+ * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
@@ -1577,9 +1793,11 @@ export interface ApplicationGatewayBackendHealthServer {
  *
  * @member {object} [backendHttpSettings] Reference of an
  * ApplicationGatewayBackendHttpSettings resource.
- * @member {number} [backendHttpSettings.port] Port
- * @member {string} [backendHttpSettings.protocol] Protocol. Possible values
- * include: 'Http', 'Https'
+ * @member {number} [backendHttpSettings.port] The destination port on the
+ * backend.
+ * @member {string} [backendHttpSettings.protocol] The protocol used to
+ * communicate with the backend. Possible values are 'Http' and 'Https'.
+ * Possible values include: 'Http', 'Https'
  * @member {string} [backendHttpSettings.cookieBasedAffinity] Cookie based
  * affinity. Possible values include: 'Enabled', 'Disabled'
  * @member {number} [backendHttpSettings.requestTimeout] Request timeout in
@@ -1613,9 +1831,8 @@ export interface ApplicationGatewayBackendHealthServer {
  * @member {string} [backendHttpSettings.provisioningState] Provisioning state
  * of the backend http settings resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [backendHttpSettings.name] Name of the resource that is
- * unique within a resource group. This name can be used to access the
- * resource.
+ * @member {string} [backendHttpSettings.name] Name of the backend http
+ * settings that is unique within an Application Gateway.
  * @member {string} [backendHttpSettings.etag] A unique read-only string that
  * changes whenever the resource is updated.
  * @member {string} [backendHttpSettings.type] Type of the resource.
@@ -1641,8 +1858,8 @@ export interface ApplicationGatewayBackendHealthHttpSettings {
  * @member {string} [backendAddressPool.provisioningState] Provisioning state
  * of the backend address pool resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [backendAddressPool.name] Resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [backendAddressPool.name] Name of the backend address pool
+ * that is unique within an Application Gateway.
  * @member {string} [backendAddressPool.etag] A unique read-only string that
  * changes whenever the resource is updated.
  * @member {string} [backendAddressPool.type] Type of the resource.
@@ -1674,9 +1891,9 @@ export interface ApplicationGatewayBackendHealth {
  *
  * @member {string} [name] Name of an application gateway SKU. Possible values
  * include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
- * 'WAF_Medium', 'WAF_Large'
+ * 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
  * @member {string} [tier] Tier of an application gateway. Possible values
- * include: 'Standard', 'WAF'
+ * include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
  * @member {number} [capacity] Capacity (instance count) of an application
  * gateway.
  */
@@ -1726,8 +1943,8 @@ export interface ApplicationGatewaySslPolicy {
  * @member {string} [provisioningState] Provisioning state of the application
  * gateway subnet resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the IP configuration that is unique within
+ * an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1750,8 +1967,8 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
  * @member {string} [provisioningState] Provisioning state of the
  * authentication certificate resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the authentication certificate that is
+ * unique within an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1779,8 +1996,8 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  * @member {string} [provisioningState] Provisioning state of the SSL
  * certificate resource Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the SSL certificate that is unique within an
+ * Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1811,8 +2028,8 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
  * @member {string} [publicIPAddress.id] Resource ID.
  * @member {string} [provisioningState] Provisioning state of the public IP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the frontend IP configuration that is unique
+ * within an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1837,8 +2054,8 @@ export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
  * @member {number} [port] Frontend port
  * @member {string} [provisioningState] Provisioning state of the frontend port
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the frontend port that is unique within an
+ * Application Gateway
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1863,8 +2080,8 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * @member {object} [frontendPort] Frontend port resource of an application
  * gateway.
  * @member {string} [frontendPort.id] Resource ID.
- * @member {string} [protocol] Protocol. Possible values include: 'Http',
- * 'Https'
+ * @member {string} [protocol] Protocol of the HTTP listener. Possible values
+ * are 'Http' and 'Https'. Possible values include: 'Http', 'Https'
  * @member {string} [hostName] Host name of HTTP listener.
  * @member {object} [sslCertificate] SSL certificate resource of an application
  * gateway.
@@ -1873,8 +2090,8 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * is https. Enables SNI for multi-hosting.
  * @member {string} [provisioningState] Provisioning state of the HTTP listener
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the HTTP listener that is unique within an
+ * Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1910,8 +2127,8 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @member {string} [redirectConfiguration.id] Resource ID.
  * @member {string} [provisioningState] Path rule of URL path map resource.
  * Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the path rule that is unique within an
+ * Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -1949,8 +2166,8 @@ export interface ApplicationGatewayProbeHealthResponseMatch {
  * @constructor
  * Probe of the application gateway.
  *
- * @member {string} [protocol] Protocol. Possible values include: 'Http',
- * 'Https'
+ * @member {string} [protocol] The protocol used for the probe. Possible values
+ * are 'Http' and 'Https'. Possible values include: 'Http', 'Https'
  * @member {string} [host] Host name to send the probe to.
  * @member {string} [path] Relative path of probe. Valid path starts from '/'.
  * Probe is sent to <Protocol>://<host>:<port><path>
@@ -1976,8 +2193,8 @@ export interface ApplicationGatewayProbeHealthResponseMatch {
  * @member {string} [provisioningState] Provisioning state of the backend http
  * settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the probe that is unique within an
+ * Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -2009,7 +2226,7 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @member {object} [backendAddressPool] Backend address pool resource of the
  * application gateway.
  * @member {string} [backendAddressPool.id] Resource ID.
- * @member {object} [backendHttpSettings] Frontend port resource of the
+ * @member {object} [backendHttpSettings] Backend http settings resource of the
  * application gateway.
  * @member {string} [backendHttpSettings.id] Resource ID.
  * @member {object} [httpListener] Http listener resource of the application
@@ -2024,8 +2241,8 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @member {string} [provisioningState] Provisioning state of the request
  * routing rule resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the request routing rule that is unique
+ * within an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -2064,8 +2281,8 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
  * @member {array} [urlPathMaps] Url path maps specifying default redirect
  * configuration.
  * @member {array} [pathRules] Path rules specifying redirect configuration.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the redirect configuration that is unique
+ * within an Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -2104,8 +2321,8 @@ export interface ApplicationGatewayRedirectConfiguration extends SubResource {
  * @member {string} [provisioningState] Provisioning state of the backend http
  * settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [name] Name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
+ * @member {string} [name] Name of the URL path map that is unique within an
+ * Application Gateway.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  * @member {string} [type] Type of the resource.
@@ -2151,6 +2368,9 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * set. Possible values are: 'OWASP'.
  * @member {string} ruleSetVersion The version of the rule set type.
  * @member {array} [disabledRuleGroups] The disabled rule groups.
+ * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
+ * Body.
+ * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -2158,6 +2378,39 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   ruleSetType: string;
   ruleSetVersion: string;
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
+  requestBodyCheck?: boolean;
+  maxRequestBodySize?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAutoscaleBounds class.
+ * @constructor
+ * Application Gateway autoscale bounds on number of Application Gateway
+ * instance.
+ *
+ * @member {number} min Lower bound on number of Application Gateway instances.
+ * @member {number} max Upper bound on number of Application Gateway instances.
+ */
+export interface ApplicationGatewayAutoscaleBounds {
+  min: number;
+  max: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAutoscaleConfiguration class.
+ * @constructor
+ * Application Gateway autoscale configuration.
+ *
+ * @member {object} bounds Autoscale bounds
+ * @member {number} [bounds.min] Lower bound on number of Application Gateway
+ * instances.
+ * @member {number} [bounds.max] Upper bound on number of Application Gateway
+ * instances.
+ */
+export interface ApplicationGatewayAutoscaleConfiguration {
+  bounds: ApplicationGatewayAutoscaleBounds;
 }
 
 /**
@@ -2169,9 +2422,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * @member {object} [sku] SKU of the application gateway resource.
  * @member {string} [sku.name] Name of an application gateway SKU. Possible
  * values include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
- * 'WAF_Medium', 'WAF_Large'
+ * 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
  * @member {string} [sku.tier] Tier of an application gateway. Possible values
- * include: 'Standard', 'WAF'
+ * include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
  * @member {number} [sku.capacity] Capacity (instance count) of an application
  * gateway.
  * @member {object} [sslPolicy] SSL policy of the application gateway resource.
@@ -2226,14 +2479,28 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * version of the rule set type.
  * @member {array} [webApplicationFirewallConfiguration.disabledRuleGroups] The
  * disabled rule groups.
+ * @member {boolean} [webApplicationFirewallConfiguration.requestBodyCheck]
+ * Whether allow WAF to check request Body.
+ * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
+ * Maxium request body size for WAF.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
+ * @member {boolean} [enableFips] Whether FIPS is enabled on the application
+ * gateway resource.
+ * @member {object} [autoscaleConfiguration] Autoscale Configuration.
+ * @member {object} [autoscaleConfiguration.bounds] Autoscale bounds
+ * @member {number} [autoscaleConfiguration.bounds.min] Lower bound on number
+ * of Application Gateway instances.
+ * @member {number} [autoscaleConfiguration.bounds.max] Upper bound on number
+ * of Application Gateway instances.
  * @member {string} [resourceGuid] Resource GUID property of the application
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
  * gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting where the
+ * resource needs to come from.
  */
 export interface ApplicationGateway extends Resource {
   sku?: ApplicationGatewaySku;
@@ -2253,9 +2520,12 @@ export interface ApplicationGateway extends Resource {
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   enableHttp2?: boolean;
+  enableFips?: boolean;
+  autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
+  zones?: string[];
 }
 
 /**
@@ -2353,7 +2623,7 @@ export interface ApplicationGatewayAvailableSslOptions extends Resource {
  * @constructor
  * An Ssl predefined policy
  *
- * @member {string} [name] Name of Ssl predefined policy.
+ * @member {string} [name] Name of the Ssl predefined policy.
  * @member {array} [cipherSuites] Ssl cipher suites to be enabled in the
  * specified order for application gateway.
  * @member {string} [minProtocolVersion] Minimum version of Ssl protocol to be
@@ -2388,6 +2658,41 @@ export interface TagsObject {
  */
 export interface DnsNameAvailabilityResult {
   available?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DdosProtectionPlan class.
+ * @constructor
+ * A DDoS protection plan in a resource group.
+ *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location.
+ * @member {object} [tags] Resource tags.
+ * @member {string} [resourceGuid] The resource GUID property of the DDoS
+ * protection plan resource. It uniquely identifies the resource, even if the
+ * user changes its name or migrate the resource across subscriptions or
+ * resource groups.
+ * @member {string} [provisioningState] The provisioning state of the DDoS
+ * protection plan resource. Possible values are: 'Succeeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {array} [virtualNetworks] The list of virtual networks associated
+ * with the DDoS protection plan resource. This list is read-only.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface DdosProtectionPlan extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
+  readonly virtualNetworks?: SubResource[];
+  readonly etag?: string;
 }
 
 /**
@@ -2475,7 +2780,6 @@ export interface ExpressRouteCircuitPeeringConfig {
  * @member {string} [location] Resource location.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
- * @member {object} [tags] Resource tags.
  */
 export interface RouteFilterRule extends SubResource {
   access: string;
@@ -2484,7 +2788,6 @@ export interface RouteFilterRule extends SubResource {
   name?: string;
   location?: string;
   readonly etag?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -2507,16 +2810,51 @@ export interface ExpressRouteCircuitStats {
 
 /**
  * @class
+ * Initializes a new instance of the ExpressRouteCircuitConnection class.
+ * @constructor
+ * Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+ *
+ * @member {object} [expressRouteCircuitPeering] Reference to Express Route
+ * Circuit Private Peering Resource of the circuit initiating connection.
+ * @member {string} [expressRouteCircuitPeering.id] Resource ID.
+ * @member {object} [peerExpressRouteCircuitPeering] Reference to Express Route
+ * Circuit Private Peering Resource of the peered circuit.
+ * @member {string} [peerExpressRouteCircuitPeering.id] Resource ID.
+ * @member {string} [addressPrefix] /29 IP address space to carve out Customer
+ * addresses for tunnels.
+ * @member {string} [authorizationKey] The authorization key.
+ * @member {string} [circuitConnectionStatus] Express Route Circuit Connection
+ * State. Possible values are: 'Connected' and 'Disconnected'. Possible values
+ * include: 'Connected', 'Connecting', 'Disconnected'
+ * @member {string} [provisioningState] Provisioning state of the circuit
+ * connection resource. Possible values are: 'Succeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteCircuitConnection extends SubResource {
+  expressRouteCircuitPeering?: SubResource;
+  peerExpressRouteCircuitPeering?: SubResource;
+  addressPrefix?: string;
+  authorizationKey?: string;
+  readonly circuitConnectionStatus?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExpressRouteCircuitPeering class.
  * @constructor
  * Peering in an ExpressRouteCircuit resource.
  *
- * @member {string} [peeringType] The PeeringType. Possible values are:
- * 'AzurePublicPeering', 'AzurePrivatePeering', and 'MicrosoftPeering'.
- * Possible values include: 'AzurePublicPeering', 'AzurePrivatePeering',
- * 'MicrosoftPeering'
- * @member {string} [state] The state of peering. Possible values are:
- * 'Disabled' and 'Enabled'. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [peeringType] The peering type. Possible values include:
+ * 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
+ * @member {string} [state] The peering state. Possible values include:
+ * 'Disabled', 'Enabled'
  * @member {number} [azureASN] The Azure ASN.
  * @member {number} [peerASN] The peer ASN.
  * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
@@ -2603,6 +2941,8 @@ export interface ExpressRouteCircuitStats {
  * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
  * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
  * 'Enabled'
+ * @member {array} [connections] The list of circuit connections associated
+ * with Azure Private Peering for this circuit.
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -2626,6 +2966,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   lastModifiedBy?: string;
   routeFilter?: RouteFilter;
   ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
+  connections?: ExpressRouteCircuitConnection[];
   name?: string;
   readonly etag?: string;
 }
@@ -2793,8 +3134,8 @@ export interface ExpressRouteCircuit extends Resource {
  * @constructor
  * The ARP table associated with the ExpressRouteCircuit.
  *
- * @member {number} [age] Age
- * @member {string} [interfaceProperty] Interface
+ * @member {number} [age] Entry age in minutes
+ * @member {string} [interfaceProperty] Interface address
  * @member {string} [ipAddress] The IP address.
  * @member {string} [macAddress] The MAC address.
  */
@@ -2825,11 +3166,12 @@ export interface ExpressRouteCircuitsArpTableListResult {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit
  *
- * @member {string} [network] network
- * @member {string} [nextHop] nextHop
- * @member {string} [locPrf] locPrf
- * @member {number} [weight] weight.
- * @member {string} [path] path
+ * @member {string} [network] IP address of a network entity
+ * @member {string} [nextHop] NextHop address
+ * @member {string} [locPrf] Local preference value as set with the set
+ * local-preference route-map configuration command
+ * @member {number} [weight] Route Weight.
+ * @member {string} [path] Autonomous system paths to the destination network.
  */
 export interface ExpressRouteCircuitRoutesTable {
   network?: string;
@@ -2859,7 +3201,7 @@ export interface ExpressRouteCircuitsRoutesTableListResult {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit.
  *
- * @member {string} [neighbor] Neighbor
+ * @member {string} [neighbor] IP address of the neighbor.
  * @member {number} [v] BGP version number spoken to the neighbor.
  * @member {number} [as] Autonomous system number.
  * @member {string} [upDown] The length of time that the BGP session has been
@@ -2919,6 +3261,201 @@ export interface ExpressRouteServiceProvider extends Resource {
   peeringLocations?: string[];
   bandwidthsOffered?: ExpressRouteServiceProviderBandwidthsOffered[];
   provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionRoutesTableSummary class.
+ * @constructor
+ * The routes table associated with the ExpressRouteCircuit.
+ *
+ * @member {string} [neighbor] IP address of Neighbor router
+ * @member {number} [asn] Autonomous system number.
+ * @member {string} [upDown] The length of time that the BGP session has been
+ * in the Established state, or the current status if not in the Established
+ * state.
+ * @member {string} [stateOrPrefixesReceived] Current state of the BGP session,
+ * and the number of prefixes that have been received from a neighbor or peer
+ * group.
+ */
+export interface ExpressRouteCrossConnectionRoutesTableSummary {
+  neighbor?: string;
+  asn?: number;
+  upDown?: string;
+  stateOrPrefixesReceived?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionsRoutesTableSummaryListResult class.
+ * @constructor
+ * Response for ListRoutesTable associated with the Express Route Cross
+ * Connections.
+ *
+ * @member {array} [value] A list of the routes table.
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteCrossConnectionsRoutesTableSummaryListResult {
+  value?: ExpressRouteCrossConnectionRoutesTableSummary[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCircuitReference class.
+ * @constructor
+ * @member {string} [id] Corresponding Express Route Circuit Id.
+ */
+export interface ExpressRouteCircuitReference {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionPeering class.
+ * @constructor
+ * Peering in an ExpressRoute Cross Connection resource.
+ *
+ * @member {string} [peeringType] The peering type. Possible values include:
+ * 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
+ * @member {string} [state] The peering state. Possible values include:
+ * 'Disabled', 'Enabled'
+ * @member {number} [azureASN] The Azure ASN.
+ * @member {number} [peerASN] The peer ASN.
+ * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
+ * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
+ * @member {string} [primaryAzurePort] The primary port.
+ * @member {string} [secondaryAzurePort] The secondary port.
+ * @member {string} [sharedKey] The shared key.
+ * @member {number} [vlanId] The VLAN ID.
+ * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * configuration.
+ * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
+ * peering.
+ * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
+ * peering.
+ * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ * @member {string} [provisioningState] Gets the provisioning state of the
+ * public IP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @member {string} [lastModifiedBy] Gets whether the provider or the customer
+ * last modified the peering.
+ * @member {object} [ipv6PeeringConfig] The IPv6 peering configuration.
+ * @member {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+ * address prefix.
+ * @member {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+ * secondary address prefix.
+ * @member {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
+ * peering configuration.
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+ * legacy mode of the peering.
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+ * CustomerASN of the peering.
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ * @member {object} [ipv6PeeringConfig.routeFilter] The reference of the
+ * RouteFilter resource.
+ * @member {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
+ * RouteFilterRules contained within a route filter.
+ * @member {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
+ * references to express route circuit peerings.
+ * @member {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
+ * provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', 'Succeeded' and 'Failed'.
+ * @member {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
+ * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
+ * 'Enabled'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteCrossConnectionPeering extends SubResource {
+  peeringType?: string;
+  state?: string;
+  readonly azureASN?: number;
+  peerASN?: number;
+  primaryPeerAddressPrefix?: string;
+  secondaryPeerAddressPrefix?: string;
+  readonly primaryAzurePort?: string;
+  readonly secondaryAzurePort?: string;
+  sharedKey?: string;
+  vlanId?: number;
+  microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
+  readonly provisioningState?: string;
+  gatewayManagerEtag?: string;
+  lastModifiedBy?: string;
+  ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnection class.
+ * @constructor
+ * ExpressRouteCrossConnection resource
+ *
+ * @member {string} [primaryAzurePort] The name of the primary  port.
+ * @member {string} [secondaryAzurePort] The name of the secondary  port.
+ * @member {number} [sTag] The identifier of the circuit traffic.
+ * @member {string} [peeringLocation] The peering location of the ExpressRoute
+ * circuit.
+ * @member {number} [bandwidthInMbps] The circuit bandwidth In Mbps.
+ * @member {object} [expressRouteCircuit] The ExpressRouteCircuit
+ * @member {string} [expressRouteCircuit.id] Corresponding Express Route
+ * Circuit Id.
+ * @member {string} [serviceProviderProvisioningState] The provisioning state
+ * of the circuit in the connectivity provider system. Possible values are
+ * 'NotProvisioned', 'Provisioning', 'Provisioned'. Possible values include:
+ * 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
+ * @member {string} [serviceProviderNotes] Additional read only notes set by
+ * the connectivity provider.
+ * @member {string} [provisioningState] Gets the provisioning state of the
+ * public IP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {array} [peerings] The list of peerings.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface ExpressRouteCrossConnection extends Resource {
+  readonly primaryAzurePort?: string;
+  readonly secondaryAzurePort?: string;
+  readonly sTag?: number;
+  peeringLocation?: string;
+  bandwidthInMbps?: number;
+  expressRouteCircuit?: ExpressRouteCircuitReference;
+  serviceProviderProvisioningState?: string;
+  serviceProviderNotes?: string;
+  readonly provisioningState?: string;
+  peerings?: ExpressRouteCrossConnectionPeering[];
+  readonly etag?: string;
 }
 
 /**
@@ -3101,6 +3638,8 @@ export interface LoadBalancerSku {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -3208,10 +3747,10 @@ export interface LoadBalancingRule extends SubResource {
  * @member {array} [loadBalancingRules] The load balancer rules that use this
  * probe.
  * @member {string} protocol The protocol of the end point. Possible values
- * are: 'Http' or 'Tcp'. If 'Tcp' is specified, a received ACK is required for
- * the probe to be successful. If 'Http' is specified, a 200 OK response from
- * the specifies URI is required for the probe to be successful. Possible
- * values include: 'Http', 'Tcp'
+ * are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is
+ * required for the probe to be successful. If 'Http' or 'Https' is specified,
+ * a 200 OK response from the specifies URI is required for the probe to be
+ * successful. Possible values include: 'Http', 'Tcp', 'Https'
  * @member {number} port The port for communicating the probe. Possible values
  * range from 1 to 65535, inclusive.
  * @member {number} [intervalInSeconds] The interval, in seconds, for how
@@ -3265,6 +3804,14 @@ export interface Probe extends SubResource {
  * with a load balancer. Acceptable values range between 1 and 65535.
  * @member {number} backendPort The port used for internal connections on the
  * endpoint. Acceptable values are between 1 and 65535.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection. The value can be set between 4 and 30 minutes. The default value
+ * is 4 minutes. This element is only used when the protocol is set to TCP.
+ * @member {boolean} [enableFloatingIP] Configures a virtual machine's endpoint
+ * for the floating IP capability required to configure a SQL AlwaysOn
+ * Availability Group. This setting is required when using the SQL AlwaysOn
+ * Availability Groups in SQL server. This setting can't be changed after you
+ * create the endpoint.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3279,6 +3826,8 @@ export interface InboundNatPool extends SubResource {
   frontendPortRangeStart: number;
   frontendPortRangeEnd: number;
   backendPort: number;
+  idleTimeoutInMinutes?: number;
+  enableFloatingIP?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4198,10 +4747,11 @@ export interface RetentionPolicyParameters {
  * @class
  * Initializes a new instance of the FlowLogStatusParameters class.
  * @constructor
- * Parameters that define a resource to query flow log status.
+ * Parameters that define a resource to query flow log and traffic analytics
+ * (optional) status.
  *
  * @member {string} targetResourceId The target resource where getting the flow
- * logging status.
+ * log and traffic analytics (optional) status.
  */
 export interface FlowLogStatusParameters {
   targetResourceId: string;
@@ -4209,12 +4759,52 @@ export interface FlowLogStatusParameters {
 
 /**
  * @class
+ * Initializes a new instance of the TrafficAnalyticsConfigurationProperties class.
+ * @constructor
+ * Parameters that define the configuration of traffic analytics.
+ *
+ * @member {boolean} enabled Flag to enable/disable traffic analytics.
+ * @member {string} workspaceId The resource guid of the attached workspace
+ * @member {string} workspaceRegion The location of the attached workspace
+ * @member {string} workspaceResourceId Resource Id of the attached workspace
+ */
+export interface TrafficAnalyticsConfigurationProperties {
+  enabled: boolean;
+  workspaceId: string;
+  workspaceRegion: string;
+  workspaceResourceId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrafficAnalyticsProperties class.
+ * @constructor
+ * Parameters that define the configuration of traffic analytics.
+ *
+ * @member {object} networkWatcherFlowAnalyticsConfiguration
+ * @member {boolean} [networkWatcherFlowAnalyticsConfiguration.enabled] Flag to
+ * enable/disable traffic analytics.
+ * @member {string} [networkWatcherFlowAnalyticsConfiguration.workspaceId] The
+ * resource guid of the attached workspace
+ * @member {string} [networkWatcherFlowAnalyticsConfiguration.workspaceRegion]
+ * The location of the attached workspace
+ * @member {string}
+ * [networkWatcherFlowAnalyticsConfiguration.workspaceResourceId] Resource Id
+ * of the attached workspace
+ */
+export interface TrafficAnalyticsProperties {
+  networkWatcherFlowAnalyticsConfiguration: TrafficAnalyticsConfigurationProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FlowLogInformation class.
  * @constructor
- * Information on the configuration of flow log.
+ * Information on the configuration of flow log and traffic analytics
+ * (optional) .
  *
  * @member {string} targetResourceId The ID of the resource to configure for
- * flow logging.
+ * flow log and traffic analytics (optional) .
  * @member {string} storageId ID of the storage account which is used to store
  * the flow log.
  * @member {boolean} enabled Flag to enable/disable flow logging.
@@ -4223,12 +4813,28 @@ export interface FlowLogStatusParameters {
  * records.
  * @member {boolean} [retentionPolicy.enabled] Flag to enable/disable
  * retention.
+ * @member {object} [flowAnalyticsConfiguration]
+ * @member {object}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration]
+ * @member {boolean}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.enabled]
+ * Flag to enable/disable traffic analytics.
+ * @member {string}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceId]
+ * The resource guid of the attached workspace
+ * @member {string}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceRegion]
+ * The location of the attached workspace
+ * @member {string}
+ * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration.workspaceResourceId]
+ * Resource Id of the attached workspace
  */
 export interface FlowLogInformation {
   targetResourceId: string;
   storageId: string;
   enabled: boolean;
   retentionPolicy?: RetentionPolicyParameters;
+  flowAnalyticsConfiguration?: TrafficAnalyticsProperties;
 }
 
 /**
@@ -4267,6 +4873,52 @@ export interface ConnectivityDestination {
 
 /**
  * @class
+ * Initializes a new instance of the HTTPHeader class.
+ * @constructor
+ * Describes the HTTP header.
+ *
+ * @member {string} [name] The name in HTTP header.
+ * @member {string} [value] The value in HTTP header.
+ */
+export interface HTTPHeader {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HTTPConfiguration class.
+ * @constructor
+ * HTTP configuration of the connectivity check.
+ *
+ * @member {string} [method] HTTP method. Possible values include: 'Get'
+ * @member {array} [headers] List of HTTP headers.
+ * @member {array} [validStatusCodes] Valid status codes.
+ */
+export interface HTTPConfiguration {
+  method?: string;
+  headers?: HTTPHeader[];
+  validStatusCodes?: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtocolConfiguration class.
+ * @constructor
+ * Configuration of the protocol.
+ *
+ * @member {object} [hTTPConfiguration]
+ * @member {string} [hTTPConfiguration.method] HTTP method. Possible values
+ * include: 'Get'
+ * @member {array} [hTTPConfiguration.headers] List of HTTP headers.
+ * @member {array} [hTTPConfiguration.validStatusCodes] Valid status codes.
+ */
+export interface ProtocolConfiguration {
+  hTTPConfiguration?: HTTPConfiguration;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ConnectivityParameters class.
  * @constructor
  * Parameters that determine how the connectivity check will be performed.
@@ -4283,10 +4935,22 @@ export interface ConnectivityDestination {
  * which a connection attempt will be made.
  * @member {number} [destination.port] Port on which check connectivity will be
  * performed.
+ * @member {string} [protocol] Network protocol. Possible values include:
+ * 'Tcp', 'Http', 'Https', 'Icmp'
+ * @member {object} [protocolConfiguration]
+ * @member {object} [protocolConfiguration.hTTPConfiguration]
+ * @member {string} [protocolConfiguration.hTTPConfiguration.method] HTTP
+ * method. Possible values include: 'Get'
+ * @member {array} [protocolConfiguration.hTTPConfiguration.headers] List of
+ * HTTP headers.
+ * @member {array} [protocolConfiguration.hTTPConfiguration.validStatusCodes]
+ * Valid status codes.
  */
 export interface ConnectivityParameters {
   source: ConnectivitySource;
   destination: ConnectivityDestination;
+  protocol?: string;
+  protocolConfiguration?: ProtocolConfiguration;
 }
 
 /**
@@ -4530,6 +5194,190 @@ export interface AvailableProvidersList {
 
 /**
  * @class
+ * Initializes a new instance of the ConnectionMonitorSource class.
+ * @constructor
+ * Describes the source of connection monitor.
+ *
+ * @member {string} resourceId The ID of the resource used as the source by
+ * connection monitor.
+ * @member {number} [port] The source port used by connection monitor.
+ */
+export interface ConnectionMonitorSource {
+  resourceId: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorDestination class.
+ * @constructor
+ * Describes the destination of connection monitor.
+ *
+ * @member {string} [resourceId] The ID of the resource used as the destination
+ * by connection monitor.
+ * @member {string} [address] Address of the connection monitor destination (IP
+ * or domain name).
+ * @member {number} [port] The destination port used by connection monitor.
+ */
+export interface ConnectionMonitorDestination {
+  resourceId?: string;
+  address?: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorParameters class.
+ * @constructor
+ * Parameters that define the operation to create a connection monitor.
+ *
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ */
+export interface ConnectionMonitorParameters {
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitor class.
+ * @constructor
+ * Parameters that define the operation to create a connection monitor.
+ *
+ * @member {string} [location] Connection monitor location.
+ * @member {object} [tags] Connection monitor tags.
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ */
+export interface ConnectionMonitor {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorResult class.
+ * @constructor
+ * Information about the connection monitor.
+ *
+ * @member {string} [name] Name of the connection monitor.
+ * @member {string} [id] ID of the connection monitor.
+ * @member {string} [etag] Default value: 'A unique read-only string that
+ * changes whenever the resource is updated.' .
+ * @member {string} [type] Connection monitor type.
+ * @member {string} [location] Connection monitor location.
+ * @member {object} [tags] Connection monitor tags.
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ * @member {string} [provisioningState] The provisioning state of the
+ * connection monitor. Possible values include: 'Succeeded', 'Updating',
+ * 'Deleting', 'Failed'
+ * @member {date} [startTime] The date and time when the connection monitor was
+ * started.
+ * @member {string} [monitoringStatus] The monitoring status of the connection
+ * monitor.
+ */
+export interface ConnectionMonitorResult extends BaseResource {
+  readonly name?: string;
+  readonly id?: string;
+  etag?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+  provisioningState?: string;
+  startTime?: Date;
+  monitoringStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionStateSnapshot class.
+ * @constructor
+ * Connection state snapshot.
+ *
+ * @member {string} [connectionState] The connection state. Possible values
+ * include: 'Reachable', 'Unreachable', 'Unknown'
+ * @member {date} [startTime] The start time of the connection snapshot.
+ * @member {date} [endTime] The end time of the connection snapshot.
+ * @member {string} [evaluationState] Connectivity analysis evaluation state.
+ * Possible values include: 'NotStarted', 'InProgress', 'Completed'
+ * @member {array} [hops] List of hops between the source and the destination.
+ */
+export interface ConnectionStateSnapshot {
+  connectionState?: string;
+  startTime?: Date;
+  endTime?: Date;
+  evaluationState?: string;
+  readonly hops?: ConnectivityHop[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorQueryResult class.
+ * @constructor
+ * List of connection states snaphots.
+ *
+ * @member {string} [sourceStatus] Status of connection monitor source.
+ * Possible values include: 'Uknown', 'Active', 'Inactive'
+ * @member {array} [states] Information about connection states.
+ */
+export interface ConnectionMonitorQueryResult {
+  sourceStatus?: string;
+  states?: ConnectionStateSnapshot[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
@@ -4692,7 +5540,6 @@ export interface Operation {
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
- * @member {object} [tags] Resource tags.
  */
 export interface PatchRouteFilterRule extends SubResource {
   access: string;
@@ -4700,7 +5547,6 @@ export interface PatchRouteFilterRule extends SubResource {
   readonly provisioningState?: string;
   readonly name?: string;
   readonly etag?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -4909,9 +5755,13 @@ export interface DhcpOptions {
  * @member {string} [provisioningState] The provisioning state of the PublicIP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {boolean} [enableDdosProtection] Indicates if DDoS protection is
- * enabled for all the protected resources in a Virtual Network.
- * @member {boolean} [enableVmProtection] Indicates if Vm protection is enabled
- * for all the subnets in a Virtual Network.
+ * enabled for all the protected resources in the virtual network. It requires
+ * a DDoS protection plan associated with the resource. Default value: false .
+ * @member {boolean} [enableVmProtection] Indicates if VM protection is enabled
+ * for all the subnets in the virtual network. Default value: false .
+ * @member {object} [ddosProtectionPlan] The DDoS protection plan associated
+ * with the virtual network.
+ * @member {string} [ddosProtectionPlan.id] Resource ID.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -4924,6 +5774,7 @@ export interface VirtualNetwork extends Resource {
   provisioningState?: string;
   enableDdosProtection?: boolean;
   enableVmProtection?: boolean;
+  ddosProtectionPlan?: SubResource;
   etag?: string;
 }
 
@@ -5018,10 +5869,12 @@ export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
  *
  * @member {string} [name] Gateway SKU name. Possible values include: 'Basic',
  * 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1', 'VpnGw2',
- * 'VpnGw3'
+ * 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ',
+ * 'ErGw3AZ'
  * @member {string} [tier] Gateway SKU tier. Possible values include: 'Basic',
  * 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1', 'VpnGw2',
- * 'VpnGw3'
+ * 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ',
+ * 'ErGw3AZ'
  * @member {number} [capacity] The capacity.
  */
 export interface VirtualNetworkGatewaySku {
@@ -5076,6 +5929,48 @@ export interface VpnClientRevokedCertificate extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the IpsecPolicy class.
+ * @constructor
+ * An IPSec Policy configuration for a virtual network gateway connection
+ *
+ * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
+ * tunnel.
+ * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
+ * tunnel.
+ * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
+ * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+ * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
+ * 'GCMAES256'
+ * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
+ * 'GCMAES256', 'GCMAES128'
+ * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
+ * 'GCMAES128'
+ * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
+ * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+ * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
+ * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+ */
+export interface IpsecPolicy {
+  saLifeTimeSeconds: number;
+  saDataSizeKilobytes: number;
+  ipsecEncryption: string;
+  ipsecIntegrity: string;
+  ikeEncryption: string;
+  ikeIntegrity: string;
+  dhGroup: string;
+  pfsGroup: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VpnClientConfiguration class.
  * @constructor
  * VpnClientConfiguration for P2S client.
@@ -5090,6 +5985,8 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * for Virtual network gateway.
  * @member {array} [vpnClientProtocols] VpnClientProtocols for Virtual network
  * gateway.
+ * @member {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for virtual
+ * network gateway P2S client.
  * @member {string} [radiusServerAddress] The radius server address property of
  * the VirtualNetworkGateway resource for vpn client connection.
  * @member {string} [radiusServerSecret] The radius secret property of the
@@ -5100,6 +5997,7 @@ export interface VpnClientConfiguration {
   vpnClientRootCertificates?: VpnClientRootCertificate[];
   vpnClientRevokedCertificates?: VpnClientRevokedCertificate[];
   vpnClientProtocols?: string[];
+  vpnClientIpsecPolicies?: IpsecPolicy[];
   radiusServerAddress?: string;
   radiusServerSecret?: string;
 }
@@ -5200,10 +6098,12 @@ export interface GatewayRoute {
  * resource which represents the SKU selected for Virtual network gateway.
  * @member {string} [sku.name] Gateway SKU name. Possible values include:
  * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
- * 'VpnGw2', 'VpnGw3'
+ * 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
+ * 'ErGw2AZ', 'ErGw3AZ'
  * @member {string} [sku.tier] Gateway SKU tier. Possible values include:
  * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
- * 'VpnGw2', 'VpnGw3'
+ * 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
+ * 'ErGw2AZ', 'ErGw3AZ'
  * @member {number} [sku.capacity] The capacity.
  * @member {object} [vpnClientConfiguration] The reference of the
  * VpnClientConfiguration resource which represents the P2S VpnClient
@@ -5220,6 +6120,8 @@ export interface GatewayRoute {
  * VpnClientRevokedCertificate for Virtual network gateway.
  * @member {array} [vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array} [vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string} [vpnClientConfiguration.radiusServerAddress] The radius
  * server address property of the VirtualNetworkGateway resource for vpn client
  * connection.
@@ -5368,46 +6270,6 @@ export interface LocalNetworkGateway extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IpsecPolicy class.
- * @constructor
- * An IPSec Policy configuration for a virtual network gateway connection
- *
- * @member {number} saLifeTimeSeconds The IPSec Security Association (also
- * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
- * tunnel.
- * @member {number} saDataSizeKilobytes The IPSec Security Association (also
- * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
- * tunnel.
- * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
- * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
- * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
- * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
- * 'GCMAES256'
- * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
- * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256'
- * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384'
- * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
- * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
- * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
- * @member {string} pfsGroup The DH Groups used in IKE Phase 2 for new child
- * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
- * 'ECP384', 'PFS24'
- */
-export interface IpsecPolicy {
-  saLifeTimeSeconds: number;
-  saDataSizeKilobytes: number;
-  ipsecEncryption: string;
-  ipsecIntegrity: string;
-  ikeEncryption: string;
-  ikeIntegrity: string;
-  dhGroup: string;
-  pfsGroup: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the VirtualNetworkGatewayConnection class.
  * @constructor
  * A common class for general resource information
@@ -5436,10 +6298,12 @@ export interface IpsecPolicy {
  * Virtual network gateway.
  * @member {string} [virtualNetworkGateway1.sku.name] Gateway SKU name.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
- * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3'
+ * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
+ * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
  * @member {string} [virtualNetworkGateway1.sku.tier] Gateway SKU tier.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
- * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3'
+ * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
+ * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
  * @member {number} [virtualNetworkGateway1.sku.capacity] The capacity.
  * @member {object} [virtualNetworkGateway1.vpnClientConfiguration] The
  * reference of the VpnClientConfiguration resource which represents the P2S
@@ -5460,6 +6324,9 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string}
  * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
@@ -5506,10 +6373,12 @@ export interface IpsecPolicy {
  * Virtual network gateway.
  * @member {string} [virtualNetworkGateway2.sku.name] Gateway SKU name.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
- * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3'
+ * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
+ * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
  * @member {string} [virtualNetworkGateway2.sku.tier] Gateway SKU tier.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard',
- * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3'
+ * 'UltraPerformance', 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ',
+ * 'VpnGw3AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
  * @member {number} [virtualNetworkGateway2.sku.capacity] The capacity.
  * @member {object} [virtualNetworkGateway2.vpnClientConfiguration] The
  * reference of the VpnClientConfiguration resource which represents the P2S
@@ -5530,6 +6399,9 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string}
  * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
@@ -5649,8 +6521,48 @@ export interface ConnectionResetSharedKey {
  *
  * @member {string} value The virtual network connection shared key value.
  */
-export interface ConnectionSharedKey {
+export interface ConnectionSharedKey extends SubResource {
   value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnClientIPsecParameters class.
+ * @constructor
+ * An IPSec parameters for a virtual network gateway P2S connection.
+ *
+ * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
+ * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
+ * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
+ * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+ * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
+ * 'GCMAES256'
+ * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
+ * 'GCMAES256', 'GCMAES128'
+ * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
+ * 'GCMAES128'
+ * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
+ * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+ * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
+ * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+ */
+export interface VpnClientIPsecParameters {
+  saLifeTimeSeconds: number;
+  saDataSizeKilobytes: number;
+  ipsecEncryption: string;
+  ipsecIntegrity: string;
+  ikeEncryption: string;
+  ikeIntegrity: string;
+  dhGroup: string;
+  pfsGroup: string;
 }
 
 /**
@@ -5752,6 +6664,264 @@ export interface VpnDeviceScriptParameters {
   firmwareVersion?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the VirtualWAN class.
+ * @constructor
+ * VirtualWAN Resource.
+ *
+ * @member {boolean} [disableVpnEncryption] Vpn encryption to be disabled or
+ * not.
+ * @member {array} [virtualHubs] List of VirtualHubs in the VirtualWAN.
+ * @member {array} [vpnSites]
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VirtualWAN extends Resource {
+  disableVpnEncryption?: boolean;
+  readonly virtualHubs?: SubResource[];
+  readonly vpnSites?: SubResource[];
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeviceProperties class.
+ * @constructor
+ * List of properties of the device.
+ *
+ * @member {string} [deviceVendor] Name of the device Vendor.
+ * @member {string} [deviceModel] Model of the device.
+ * @member {number} [linkSpeedInMbps] Link speed.
+ */
+export interface DeviceProperties {
+  deviceVendor?: string;
+  deviceModel?: string;
+  linkSpeedInMbps?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnSite class.
+ * @constructor
+ * VpnSite Resource.
+ *
+ * @member {object} [virtualWAN] The VirtualWAN to which the vpnSite belongs
+ * @member {string} [virtualWAN.id] Resource ID.
+ * @member {object} [deviceProperties] The device properties
+ * @member {string} [deviceProperties.deviceVendor] Name of the device Vendor.
+ * @member {string} [deviceProperties.deviceModel] Model of the device.
+ * @member {number} [deviceProperties.linkSpeedInMbps] Link speed.
+ * @member {string} [ipAddress] The ip-address for the vpn-site.
+ * @member {string} [siteKey] The key for vpn-site that can be used for
+ * connections.
+ * @member {object} [addressSpace] The AddressSpace that contains an array of
+ * IP address ranges.
+ * @member {array} [addressSpace.addressPrefixes] A list of address blocks
+ * reserved for this virtual network in CIDR notation.
+ * @member {object} [bgpProperties] The set of bgp properties.
+ * @member {number} [bgpProperties.asn] The BGP speaker's ASN.
+ * @member {string} [bgpProperties.bgpPeeringAddress] The BGP peering address
+ * and BGP identifier of this BGP speaker.
+ * @member {number} [bgpProperties.peerWeight] The weight added to routes
+ * learned from this BGP speaker.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VpnSite extends Resource {
+  virtualWAN?: SubResource;
+  deviceProperties?: DeviceProperties;
+  ipAddress?: string;
+  siteKey?: string;
+  addressSpace?: AddressSpace;
+  bgpProperties?: BgpSettings;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetVpnSitesConfigurationRequest class.
+ * @constructor
+ * List of Vpn-Sites
+ *
+ * @member {array} [vpnSites] List of resource-ids of the vpn-sites for which
+ * config is to be downloaded.
+ * @member {string} [outputBlobSasUrl] The sas-url to download the
+ * configurations for vpn-sites
+ */
+export interface GetVpnSitesConfigurationRequest {
+  vpnSites?: SubResource[];
+  outputBlobSasUrl?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HubVirtualNetworkConnection class.
+ * @constructor
+ * HubVirtualNetworkConnection Resource.
+ *
+ * @member {object} [remoteVirtualNetwork] Reference to the remote virtual
+ * network.
+ * @member {string} [remoteVirtualNetwork.id] Resource ID.
+ * @member {boolean} [allowHubToRemoteVnetTransit] VirtualHub to RemoteVnet
+ * transit to enabled or not.
+ * @member {boolean} [allowRemoteVnetToUseHubVnetGateways] Allow RemoteVnet to
+ * use Virtual Hub's gateways.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface HubVirtualNetworkConnection extends Resource {
+  remoteVirtualNetwork?: SubResource;
+  allowHubToRemoteVnetTransit?: boolean;
+  allowRemoteVnetToUseHubVnetGateways?: boolean;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualHub class.
+ * @constructor
+ * VirtualHub Resource.
+ *
+ * @member {object} [virtualWan] The VirtualWAN to which the VirtualHub belongs
+ * @member {string} [virtualWan.id] Resource ID.
+ * @member {array} [hubVirtualNetworkConnections] list of all vnet connections
+ * with this VirtualHub.
+ * @member {string} [addressPrefix] Address-prefix for this VirtualHub.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VirtualHub extends Resource {
+  virtualWan?: SubResource;
+  hubVirtualNetworkConnections?: HubVirtualNetworkConnection[];
+  addressPrefix?: string;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnConnection class.
+ * @constructor
+ * VpnConnection Resource.
+ *
+ * @member {object} [remoteVpnSite] Id of the connected vpn site.
+ * @member {string} [remoteVpnSite.id] Resource ID.
+ * @member {number} [routingWeight] routing weight for vpn connection.
+ * @member {string} [connectionStatus] The connection status. Possible values
+ * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
+ * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
+ * @member {number} [egressBytesTransferred] Egress bytes transferred.
+ * @member {number} [connectionBandwidthInMbps] Expected bandwidth in MBPS.
+ * @member {string} [sharedKey] SharedKey for the vpn connection.
+ * @member {boolean} [enableBgp] EnableBgp flag
+ * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
+ * connection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VpnConnection extends Resource {
+  remoteVpnSite?: SubResource;
+  routingWeight?: number;
+  connectionStatus?: string;
+  readonly ingressBytesTransferred?: number;
+  readonly egressBytesTransferred?: number;
+  readonly connectionBandwidthInMbps?: number;
+  sharedKey?: string;
+  enableBgp?: boolean;
+  ipsecPolicies?: IpsecPolicy[];
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Policies class.
+ * @constructor
+ * Policies for vpn gateway.
+ *
+ * @member {boolean} [allowBranchToBranchTraffic] True if branch to branch
+ * traffic is allowed.
+ * @member {boolean} [allowVnetToVnetTraffic] True if Vnet to Vnet traffic is
+ * allowed.
+ */
+export interface Policies {
+  allowBranchToBranchTraffic?: boolean;
+  allowVnetToVnetTraffic?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnGateway class.
+ * @constructor
+ * VpnGateway Resource.
+ *
+ * @member {object} [virtualHub] The VirtualHub to which the gateway belongs
+ * @member {string} [virtualHub.id] Resource ID.
+ * @member {array} [connections] list of all vpn connections to the gateway.
+ * @member {object} [bgpSettings] Local network gateway's BGP speaker settings.
+ * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
+ * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
+ * BGP identifier of this BGP speaker.
+ * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
+ * from this BGP speaker.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {object} [policies] The policies applied to this vpn gateway.
+ * @member {boolean} [policies.allowBranchToBranchTraffic] True if branch to
+ * branch traffic is allowed.
+ * @member {boolean} [policies.allowVnetToVnetTraffic] True if Vnet to Vnet
+ * traffic is allowed.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VpnGateway extends Resource {
+  virtualHub?: SubResource;
+  connections?: VpnConnection[];
+  bgpSettings?: BgpSettings;
+  provisioningState?: string;
+  policies?: Policies;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnSiteId class.
+ * @constructor
+ * VpnSite Resource.
+ *
+ * @member {string} [vpnSite] The resource-uri of the vpn-site for which config
+ * is to be fetched.
+ */
+export interface VpnSiteId {
+  readonly vpnSite?: string;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallListResult class.
+ * @constructor
+ * Response for ListAzureFirewalls API service call.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ */
+export interface AzureFirewallListResult extends Array<AzureFirewall> {
+  nextLink?: string;
+}
 
 /**
  * @class
@@ -5786,6 +6956,18 @@ export interface ApplicationGatewayAvailableSslPredefinedPolicies extends Array<
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface ApplicationSecurityGroupListResult extends Array<ApplicationSecurityGroup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DdosProtectionPlanListResult class.
+ * @constructor
+ * A list of DDoS protection plans.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface DdosProtectionPlanListResult extends Array<DdosProtectionPlan> {
   readonly nextLink?: string;
 }
 
@@ -5849,6 +7031,31 @@ export interface ExpressRouteCircuitListResult extends Array<ExpressRouteCircuit
  */
 export interface ExpressRouteServiceProviderListResult extends Array<ExpressRouteServiceProvider> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionListResult class.
+ * @constructor
+ * Response for ListExpressRouteCrossConnection API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteCrossConnectionListResult extends Array<ExpressRouteCrossConnection> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionPeeringList class.
+ * @constructor
+ * Response for ListPeering API service call retrieves all peerings that belong
+ * to an ExpressRouteCrossConnection.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRouteCrossConnectionPeering> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -6002,6 +7209,16 @@ export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
  *
  */
 export interface PacketCaptureListResult extends Array<PacketCaptureResult> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorListResult class.
+ * @constructor
+ * List of connection monitors.
+ *
+ */
+export interface ConnectionMonitorListResult extends Array<ConnectionMonitorResult> {
 }
 
 /**
@@ -6198,4 +7415,89 @@ export interface VirtualNetworkGatewayConnectionListResult extends Array<Virtual
  */
 export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVirtualWANsResult class.
+ * @constructor
+ * Result of the request to list VirtualWANs. It contains a list of VirtualWANs
+ * and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVirtualWANsResult extends Array<VirtualWAN> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVpnSitesResult class.
+ * @constructor
+ * Result of the request to list VpnSites. It contains a list of VpnSites and a
+ * URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVpnSitesResult extends Array<VpnSite> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVirtualHubsResult class.
+ * @constructor
+ * Result of the request to list VirtualHubs. It contains a list of VirtualHubs
+ * and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVirtualHubsResult extends Array<VirtualHub> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListHubVirtualNetworkConnectionsResult class.
+ * @constructor
+ * List of HubVirtualNetworkConnections and a URL nextLink to get the next set
+ * of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListHubVirtualNetworkConnectionsResult extends Array<HubVirtualNetworkConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVpnGatewaysResult class.
+ * @constructor
+ * Result of the request to list VpnGateways. It contains a list of VpnGateways
+ * and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVpnGatewaysResult extends Array<VpnGateway> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVpnConnectionsResult class.
+ * @constructor
+ * Result of the request to list all vpn connections to a virtual wan vpn
+ * gateway. It contains a list of Vpn Connections and a URL nextLink to get the
+ * next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
 }

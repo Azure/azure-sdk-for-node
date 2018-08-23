@@ -70,167 +70,102 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
+ * Initializes a new instance of the Annotation class.
  * @constructor
- * An azure resource object
+ * Annotation associated with an application insights resource.
  *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @member {string} [annotationName] Name of annotation
+ * @member {string} [category] Category of annotation, free form
+ * @member {date} [eventTime] Time when event occurred
+ * @member {string} [id] Unique Id for annotation
+ * @member {string} [properties] Serialized JSON object for detailed properties
+ * @member {string} [relatedAnnotation] Related parent annotation if any.
+ * Default value: 'null' .
  */
-export interface Resource extends BaseResource {
+export interface Annotation {
+  annotationName?: string;
+  category?: string;
+  eventTime?: Date;
+  id?: string;
+  properties?: string;
+  relatedAnnotation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InnerError class.
+ * @constructor
+ * Inner error
+ *
+ * @member {string} [diagnosticcontext] Provides correlation for request
+ * @member {date} [time] Request time
+ */
+export interface InnerError {
+  diagnosticcontext?: string;
+  time?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AnnotationError class.
+ * @constructor
+ * Error associated with trying to create annotation with Id that already exist
+ *
+ * @member {string} [code] Error detail code and explanation
+ * @member {string} [message] Error message
+ * @member {object} [innererror]
+ * @member {string} [innererror.diagnosticcontext] Provides correlation for
+ * request
+ * @member {date} [innererror.time] Request time
+ */
+export interface AnnotationError {
+  code?: string;
+  message?: string;
+  innererror?: InnerError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the APIKeyRequest class.
+ * @constructor
+ * An Application Insights component API Key createion request definition.
+ *
+ * @member {string} [name] The name of the API Key.
+ * @member {array} [linkedReadProperties] The read access rights of this API
+ * Key.
+ * @member {array} [linkedWriteProperties] The write access rights of this API
+ * Key.
+ */
+export interface APIKeyRequest {
+  name?: string;
+  linkedReadProperties?: string[];
+  linkedWriteProperties?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAPIKey class.
+ * @constructor
+ * Properties that define an API key of an Application Insights Component.
+ *
+ * @member {string} [id] The unique ID of the API key inside an Applciation
+ * Insights component. It is auto generated when the API key is created.
+ * @member {string} [apiKey] The API key value. It will be only return once
+ * when the API Key was created.
+ * @member {string} [createdDate] The create date of this API key.
+ * @member {string} [name] The name of the API key.
+ * @member {array} [linkedReadProperties] The read access rights of this API
+ * Key.
+ * @member {array} [linkedWriteProperties] The write access rights of this API
+ * Key.
+ */
+export interface ApplicationInsightsComponentAPIKey {
   readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the TagsResource class.
- * @constructor
- * A container holding only the Tags for a resource, allowing the user to
- * update the tags on a WebTest instance.
- *
- * @member {object} [tags] Resource tags
- */
-export interface TagsResource {
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationInsightsComponent class.
- * @constructor
- * An Application Insights component definition.
- *
- * @member {string} kind The kind of application that this component refers to,
- * used to customize UI. This value is a freeform string, values should
- * typically be one of the following: web, ios, other, store, java, phone.
- * @member {string} [applicationId] The unique ID of your application. This
- * field mirrors the 'Name' field and cannot be changed.
- * @member {string} [appId] Application Insights Unique ID for your
- * Application.
- * @member {string} applicationType Type of application being monitored.
- * Possible values include: 'web', 'other'. Default value: 'web' .
- * @member {string} [flowType] Used by the Application Insights system to
- * determine what kind of flow this component was created by. This is to be set
- * to 'Bluefield' when creating/updating a component via the REST API. Possible
- * values include: 'Bluefield'. Default value: 'Bluefield' .
- * @member {string} [requestSource] Describes what tool created this
- * Application Insights component. Customers using this API should set this to
- * the default 'rest'. Possible values include: 'rest'. Default value: 'rest' .
- * @member {string} [instrumentationKey] Application Insights Instrumentation
- * key. A read-only value that applications can use to identify the destination
- * for all telemetry sent to Azure Application Insights. This value will be
- * supplied upon construction of each new Application Insights component.
- * @member {date} [creationDate] Creation Date for the Application Insights
- * component, in ISO 8601 format.
- * @member {string} [tenantId] Azure Tenant Id.
- * @member {string} [hockeyAppId] The unique application ID created when a new
- * application is added to HockeyApp, used for communications with HockeyApp.
- * @member {string} [hockeyAppToken] Token used to authenticate communications
- * with between Application Insights and HockeyApp.
- * @member {string} [provisioningState] Current state of this component:
- * whether or not is has been provisioned within the resource group it is
- * defined. Users cannot change this value but are able to read from it. Values
- * will include Succeeded, Deploying, Canceled, and Failed.
- * @member {number} [samplingPercentage] Percentage of the data produced by the
- * application being monitored that is being sampled for Application Insights
- * telemetry.
- */
-export interface ApplicationInsightsComponent extends Resource {
-  kind: string;
-  readonly applicationId?: string;
-  readonly appId?: string;
-  applicationType: string;
-  flowType?: string;
-  requestSource?: string;
-  readonly instrumentationKey?: string;
-  readonly creationDate?: Date;
-  readonly tenantId?: string;
-  hockeyAppId?: string;
-  readonly hockeyAppToken?: string;
-  readonly provisioningState?: string;
-  samplingPercentage?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebTestGeolocation class.
- * @constructor
- * Geo-physical location to run a web test from. You must specify one or more
- * locations for the test to run from.
- *
- * @member {string} [location] Location ID for the webtest to run from.
- */
-export interface WebTestGeolocation {
-  location?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebTestPropertiesConfiguration class.
- * @constructor
- * An XML configuration specification for a WebTest.
- *
- * @member {string} [webTest] The XML specification of a WebTest to run against
- * an application.
- */
-export interface WebTestPropertiesConfiguration {
-  webTest?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebTest class.
- * @constructor
- * An Application Insights web test definition.
- *
- * @member {string} [kind] The kind of web test that this web test watches.
- * Choices are ping and multistep. Possible values include: 'ping',
- * 'multistep'. Default value: 'ping' .
- * @member {string} syntheticMonitorId Unique ID of this WebTest. This is
- * typically the same value as the Name field.
- * @member {string} webTestName User defined name if this WebTest.
- * @member {string} [description] Purpose/user defined descriptive test for
- * this WebTest.
- * @member {boolean} [enabled] Is the test actively being monitored.
- * @member {number} [frequency] Interval in seconds between test runs for this
- * WebTest. Default value is 300. Default value: 300 .
- * @member {number} [timeout] Seconds until this WebTest will timeout and fail.
- * Default value is 30. Default value: 30 .
- * @member {string} webTestKind The kind of web test this is, valid choices are
- * ping and multistep. Possible values include: 'ping', 'multistep'. Default
- * value: 'ping' .
- * @member {boolean} [retryEnabled] Allow for retries should this WebTest fail.
- * @member {array} locations A list of where to physically run the tests from
- * to give global coverage for accessibility of your application.
- * @member {object} [configuration] An XML configuration specification for a
- * WebTest.
- * @member {string} [configuration.webTest] The XML specification of a WebTest
- * to run against an application.
- * @member {string} [provisioningState] Current state of this component,
- * whether or not is has been provisioned within the resource group it is
- * defined. Users cannot change this value but are able to read from it. Values
- * will include Succeeded, Deploying, Canceled, and Failed.
- */
-export interface WebTest extends Resource {
-  kind?: string;
-  syntheticMonitorId: string;
-  webTestName: string;
-  description?: string;
-  enabled?: boolean;
-  frequency?: number;
-  timeout?: number;
-  webTestKind: string;
-  retryEnabled?: boolean;
-  locations: WebTestGeolocation[];
-  configuration?: WebTestPropertiesConfiguration;
-  readonly provisioningState?: string;
+  readonly apiKey?: string;
+  createdDate?: string;
+  name?: string;
+  linkedReadProperties?: string[];
+  linkedWriteProperties?: string[];
 }
 
 /**
@@ -414,46 +349,721 @@ export interface ApplicationInsightsComponentQuotaStatus {
 
 /**
  * @class
- * Initializes a new instance of the APIKeyRequest class.
+ * Initializes a new instance of the ApplicationInsightsComponentFeatureCapabilities class.
  * @constructor
- * An Application Insights component API Key createion request definition.
+ * An Application Insights component feature capabilities
  *
- * @member {string} [name] The name of the API Key.
- * @member {array} [linkedReadProperties] The read access rights of this API
- * Key.
- * @member {array} [linkedWriteProperties] The write access rights of this API
- * Key.
+ * @member {boolean} [supportExportData] Whether allow to use continuous export
+ * feature.
+ * @member {string} [burstThrottlePolicy] Reserved, not used now.
+ * @member {string} [metadataClass] Reserved, not used now.
+ * @member {boolean} [liveStreamMetrics] Reserved, not used now.
+ * @member {boolean} [applicationMap] Reserved, not used now.
+ * @member {boolean} [workItemIntegration] Whether allow to use work item
+ * integration feature.
+ * @member {boolean} [powerBIIntegration] Reserved, not used now.
+ * @member {boolean} [openSchema] Reserved, not used now.
+ * @member {boolean} [proactiveDetection] Reserved, not used now.
+ * @member {boolean} [analyticsIntegration] Reserved, not used now.
+ * @member {boolean} [multipleStepWebTest] Whether allow to use multiple steps
+ * web test feature.
+ * @member {string} [apiAccessLevel] Reserved, not used now.
+ * @member {string} [trackingType] The applciation insights component used
+ * tracking type.
+ * @member {number} [dailyCap] Daily data volume cap in GB.
+ * @member {number} [dailyCapResetTime] Daily data volume cap UTC reset hour.
+ * @member {number} [throttleRate] Reserved, not used now.
  */
-export interface APIKeyRequest {
-  name?: string;
-  linkedReadProperties?: string[];
-  linkedWriteProperties?: string[];
+export interface ApplicationInsightsComponentFeatureCapabilities {
+  readonly supportExportData?: boolean;
+  readonly burstThrottlePolicy?: string;
+  readonly metadataClass?: string;
+  readonly liveStreamMetrics?: boolean;
+  readonly applicationMap?: boolean;
+  readonly workItemIntegration?: boolean;
+  readonly powerBIIntegration?: boolean;
+  readonly openSchema?: boolean;
+  readonly proactiveDetection?: boolean;
+  readonly analyticsIntegration?: boolean;
+  readonly multipleStepWebTest?: boolean;
+  readonly apiAccessLevel?: string;
+  readonly trackingType?: string;
+  readonly dailyCap?: number;
+  readonly dailyCapResetTime?: number;
+  readonly throttleRate?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplicationInsightsComponentAPIKey class.
+ * Initializes a new instance of the ApplicationInsightsComponentFeatureCapability class.
  * @constructor
- * Properties that define an API key of an Application Insights Component.
+ * An Application Insights component feature capability
  *
- * @member {string} [id] The unique ID of the API key inside an Applciation
- * Insights component. It is auto generated when the API key is created.
- * @member {string} [apiKey] The API key value. It will be only return once
- * when the API Key was created.
- * @member {string} [createdDate] The create date of this API key.
- * @member {string} [name] The name of the API key.
- * @member {array} [linkedReadProperties] The read access rights of this API
- * Key.
- * @member {array} [linkedWriteProperties] The write access rights of this API
- * Key.
+ * @member {string} [name] The name of the capability.
+ * @member {string} [description] The description of the capability.
+ * @member {string} [value] The vaule of the capability.
+ * @member {string} [unit] The unit of the capability.
+ * @member {string} [meterId] The meter used for the capability.
+ * @member {string} [meterRateFrequency] The meter rate of the meter.
  */
-export interface ApplicationInsightsComponentAPIKey {
-  readonly id?: string;
-  readonly apiKey?: string;
-  createdDate?: string;
+export interface ApplicationInsightsComponentFeatureCapability {
+  readonly name?: string;
+  readonly description?: string;
+  readonly value?: string;
+  readonly unit?: string;
+  readonly meterId?: string;
+  readonly meterRateFrequency?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentFeature class.
+ * @constructor
+ * An Application Insights component daily data volume cap status
+ *
+ * @member {string} [featureName] The pricing feature name.
+ * @member {string} [meterId] The meter id used for the feature.
+ * @member {string} [meterRateFrequency] The meter meter rate for the feature's
+ * meter.
+ * @member {string} [resouceId] Reserved, not used now.
+ * @member {boolean} [isHidden] Reserved, not used now.
+ * @member {array} [capabilities] A list of Application Insigths component
+ * feature capability.
+ * @member {string} [title] Desplay name of the feature.
+ * @member {boolean} [isMainFeature] Whether can apply addon feature on to it.
+ * @member {string} [supportedAddonFeatures] The add on features on main
+ * feature.
+ */
+export interface ApplicationInsightsComponentFeature {
+  readonly featureName?: string;
+  readonly meterId?: string;
+  readonly meterRateFrequency?: string;
+  readonly resouceId?: string;
+  readonly isHidden?: boolean;
+  readonly capabilities?: ApplicationInsightsComponentFeatureCapability[];
+  readonly title?: string;
+  readonly isMainFeature?: boolean;
+  readonly supportedAddonFeatures?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAvailableFeatures class.
+ * @constructor
+ * An Application Insights component available features.
+ *
+ * @member {array} [result] A list of Application Insigths component feature.
+ */
+export interface ApplicationInsightsComponentAvailableFeatures {
+  readonly result?: ApplicationInsightsComponentFeature[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions class.
+ * @constructor
+ * Static definitions of the ProactiveDetection configuration rule (same values
+ * for all components).
+ *
+ * @member {string} [name] The rule name
+ * @member {string} [displayName] The rule name as it is displayed in UI
+ * @member {string} [description] The rule description
+ * @member {string} [helpUrl] URL which displays aditional info about the
+ * proactive detection rule
+ * @member {boolean} [isHidden] A flag indicating whether the rule is hidden
+ * (from the UI)
+ * @member {boolean} [isEnabledByDefault] A flag indicating whether the rule is
+ * enabled by default
+ * @member {boolean} [isInPreview] A flag indicating whether the rule is in
+ * preview
+ * @member {boolean} [supportsEmailNotifications] A flag indicating whether
+ * email notifications are supported for detections for this rule
+ */
+export interface ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions {
   name?: string;
-  linkedReadProperties?: string[];
-  linkedWriteProperties?: string[];
+  displayName?: string;
+  description?: string;
+  helpUrl?: string;
+  isHidden?: boolean;
+  isEnabledByDefault?: boolean;
+  isInPreview?: boolean;
+  supportsEmailNotifications?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentProactiveDetectionConfiguration class.
+ * @constructor
+ * Properties that define a ProactiveDetection configuration.
+ *
+ * @member {string} [name] The rule name
+ * @member {boolean} [enabled] A flag that indicates whether this rule is
+ * enabled by the user
+ * @member {boolean} [sendEmailsToSubscriptionOwners] A flag that indicated
+ * whether notifications on this rule should be sent to subscription owners
+ * @member {array} [customEmails] Custom email addresses for this rule
+ * notifications
+ * @member {string} [lastUpdatedTime] The last time this rule was updated
+ * @member {object} [ruleDefinitions] Static definitions of the
+ * ProactiveDetection configuration rule (same values for all components).
+ * @member {string} [ruleDefinitions.name] The rule name
+ * @member {string} [ruleDefinitions.displayName] The rule name as it is
+ * displayed in UI
+ * @member {string} [ruleDefinitions.description] The rule description
+ * @member {string} [ruleDefinitions.helpUrl] URL which displays aditional info
+ * about the proactive detection rule
+ * @member {boolean} [ruleDefinitions.isHidden] A flag indicating whether the
+ * rule is hidden (from the UI)
+ * @member {boolean} [ruleDefinitions.isEnabledByDefault] A flag indicating
+ * whether the rule is enabled by default
+ * @member {boolean} [ruleDefinitions.isInPreview] A flag indicating whether
+ * the rule is in preview
+ * @member {boolean} [ruleDefinitions.supportsEmailNotifications] A flag
+ * indicating whether email notifications are supported for detections for this
+ * rule
+ */
+export interface ApplicationInsightsComponentProactiveDetectionConfiguration extends BaseResource {
+  name?: string;
+  enabled?: boolean;
+  sendEmailsToSubscriptionOwners?: boolean;
+  customEmails?: string[];
+  lastUpdatedTime?: string;
+  ruleDefinitions?: ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComponentsResource class.
+ * @constructor
+ * An azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} location Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface ComponentsResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagsResource class.
+ * @constructor
+ * A container holding only the Tags for a resource, allowing the user to
+ * update the tags on a WebTest instance.
+ *
+ * @member {object} [tags] Resource tags
+ */
+export interface TagsResource {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponent class.
+ * @constructor
+ * An Application Insights component definition.
+ *
+ * @member {string} kind The kind of application that this component refers to,
+ * used to customize UI. This value is a freeform string, values should
+ * typically be one of the following: web, ios, other, store, java, phone.
+ * @member {string} [applicationId] The unique ID of your application. This
+ * field mirrors the 'Name' field and cannot be changed.
+ * @member {string} [appId] Application Insights Unique ID for your
+ * Application.
+ * @member {string} applicationType Type of application being monitored.
+ * Possible values include: 'web', 'other'. Default value: 'web' .
+ * @member {string} [flowType] Used by the Application Insights system to
+ * determine what kind of flow this component was created by. This is to be set
+ * to 'Bluefield' when creating/updating a component via the REST API. Possible
+ * values include: 'Bluefield'. Default value: 'Bluefield' .
+ * @member {string} [requestSource] Describes what tool created this
+ * Application Insights component. Customers using this API should set this to
+ * the default 'rest'. Possible values include: 'rest'. Default value: 'rest' .
+ * @member {string} [instrumentationKey] Application Insights Instrumentation
+ * key. A read-only value that applications can use to identify the destination
+ * for all telemetry sent to Azure Application Insights. This value will be
+ * supplied upon construction of each new Application Insights component.
+ * @member {date} [creationDate] Creation Date for the Application Insights
+ * component, in ISO 8601 format.
+ * @member {string} [tenantId] Azure Tenant Id.
+ * @member {string} [hockeyAppId] The unique application ID created when a new
+ * application is added to HockeyApp, used for communications with HockeyApp.
+ * @member {string} [hockeyAppToken] Token used to authenticate communications
+ * with between Application Insights and HockeyApp.
+ * @member {string} [provisioningState] Current state of this component:
+ * whether or not is has been provisioned within the resource group it is
+ * defined. Users cannot change this value but are able to read from it. Values
+ * will include Succeeded, Deploying, Canceled, and Failed.
+ * @member {number} [samplingPercentage] Percentage of the data produced by the
+ * application being monitored that is being sampled for Application Insights
+ * telemetry.
+ */
+export interface ApplicationInsightsComponent extends ComponentsResource {
+  kind: string;
+  readonly applicationId?: string;
+  readonly appId?: string;
+  applicationType: string;
+  flowType?: string;
+  requestSource?: string;
+  readonly instrumentationKey?: string;
+  readonly creationDate?: Date;
+  readonly tenantId?: string;
+  hockeyAppId?: string;
+  readonly hockeyAppToken?: string;
+  readonly provisioningState?: string;
+  samplingPercentage?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComponentPurgeBodyFilters class.
+ * @constructor
+ * User-defined filters to return data which will be purged from the table.
+ *
+ * @member {string} [column] The column of the table over which the given query
+ * should run
+ * @member {string} [operator] A query operator to evaluate over the provided
+ * column and value(s).
+ * @member {object} [value] the value for the operator to function over. This
+ * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
+ * of values.
+ */
+export interface ComponentPurgeBodyFilters {
+  column?: string;
+  operator?: string;
+  value?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComponentPurgeBody class.
+ * @constructor
+ * Describes the body of a purge request for an App Insights component
+ *
+ * @member {string} table Table from which to purge data.
+ * @member {array} filters The set of columns and filters (queries) to run over
+ * them to purge the resulting data.
+ */
+export interface ComponentPurgeBody {
+  table: string;
+  filters: ComponentPurgeBodyFilters[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComponentPurgeResponse class.
+ * @constructor
+ * Response containing operationId for a specific purge action.
+ *
+ * @member {string} operationId Id to use when querying for status for a
+ * particular purge operation.
+ */
+export interface ComponentPurgeResponse {
+  operationId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComponentPurgeStatusResponse class.
+ * @constructor
+ * Response containing status for a specific purge operation.
+ *
+ * @member {string} status Status of the operation represented by the requested
+ * Id. Possible values include: 'pending', 'completed'
+ */
+export interface ComponentPurgeStatusResponse {
+  status: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkItemConfiguration class.
+ * @constructor
+ * Work item configuration associated with an application insights resource.
+ *
+ * @member {string} [connectorId] Connector identifier where work item is
+ * created
+ * @member {string} [configDisplayName] Configuration friendly name
+ * @member {boolean} [isDefault] Boolean value indicating whether configuration
+ * is default
+ * @member {string} [id] Unique Id for work item
+ * @member {string} [configProperties] Serialized JSON object for detailed
+ * properties
+ */
+export interface WorkItemConfiguration {
+  connectorId?: string;
+  configDisplayName?: string;
+  isDefault?: boolean;
+  id?: string;
+  configProperties?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkItemCreateConfiguration class.
+ * @constructor
+ * Work item configuration creation payload
+ *
+ * @member {string} [connectorId] Unique connector id
+ * @member {string} [connectorDataConfiguration] Serialized JSON object for
+ * detaile d properties
+ * @member {boolean} [validateOnly] Boolean indicating validate only
+ * @member {string} [workItemProperties] Custom work item properties
+ */
+export interface WorkItemCreateConfiguration {
+  connectorId?: string;
+  connectorDataConfiguration?: string;
+  validateOnly?: boolean;
+  workItemProperties?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkItemConfigurationError class.
+ * @constructor
+ * Error associated with trying to get work item configuration or
+ * configurations
+ *
+ * @member {string} [code] Error detail code and explanation
+ * @member {string} [message] Error message
+ * @member {object} [innererror]
+ * @member {string} [innererror.diagnosticcontext] Provides correlation for
+ * request
+ * @member {date} [innererror.time] Request time
+ */
+export interface WorkItemConfigurationError {
+  code?: string;
+  message?: string;
+  innererror?: InnerError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentFavorite class.
+ * @constructor
+ * Properties that define a favorite that is associated to an Application
+ * Insights component.
+ *
+ * @member {string} [name] The user-defined name of the favorite.
+ * @member {string} [config] Configuration of this particular favorite, which
+ * are driven by the Azure portal UX. Configuration data is a string containing
+ * valid JSON
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added that can be marked favorite. Current
+ * examples include MetricsExplorer (ME) and Search.
+ * @member {string} [favoriteId] Internally assigned unique id of the favorite
+ * definition.
+ * @member {string} [favoriteType] Enum indicating if this favorite definition
+ * is owned by a specific user or is shared between all users with access to
+ * the Application Insights component. Possible values include: 'shared',
+ * 'user'
+ * @member {string} [sourceType] The source of the favorite definition.
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this favorite definition.
+ * @member {array} [tags] A list of 0 or more tags that are associated with
+ * this favorite definition
+ * @member {string} [category] Favorite category, as defined by the user at
+ * creation time.
+ * @member {boolean} [isGeneratedFromTemplate] Flag denoting wether or not this
+ * favorite was generated from a template.
+ * @member {string} [userId] Unique user id of the specific user that owns this
+ * favorite.
+ */
+export interface ApplicationInsightsComponentFavorite {
+  name?: string;
+  config?: string;
+  version?: string;
+  readonly favoriteId?: string;
+  favoriteType?: string;
+  sourceType?: string;
+  readonly timeModified?: string;
+  tags?: string[];
+  category?: string;
+  isGeneratedFromTemplate?: boolean;
+  readonly userId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentWebTestLocation class.
+ * @constructor
+ * Properties that define a web test location available to an Application
+ * Insights Component.
+ *
+ * @member {string} [displayName] The display name of the web test location.
+ * @member {string} [tag] Internally defined geographic location tag.
+ */
+export interface ApplicationInsightsComponentWebTestLocation {
+  readonly displayName?: string;
+  readonly tag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebtestsResource class.
+ * @constructor
+ * An azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} location Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface WebtestsResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebTestGeolocation class.
+ * @constructor
+ * Geo-physical location to run a web test from. You must specify one or more
+ * locations for the test to run from.
+ *
+ * @member {string} [location] Location ID for the webtest to run from.
+ */
+export interface WebTestGeolocation {
+  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebTestPropertiesConfiguration class.
+ * @constructor
+ * An XML configuration specification for a WebTest.
+ *
+ * @member {string} [webTest] The XML specification of a WebTest to run against
+ * an application.
+ */
+export interface WebTestPropertiesConfiguration {
+  webTest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebTest class.
+ * @constructor
+ * An Application Insights web test definition.
+ *
+ * @member {string} [kind] The kind of web test that this web test watches.
+ * Choices are ping and multistep. Possible values include: 'ping',
+ * 'multistep'. Default value: 'ping' .
+ * @member {string} syntheticMonitorId Unique ID of this WebTest. This is
+ * typically the same value as the Name field.
+ * @member {string} webTestName User defined name if this WebTest.
+ * @member {string} [description] Purpose/user defined descriptive test for
+ * this WebTest.
+ * @member {boolean} [enabled] Is the test actively being monitored.
+ * @member {number} [frequency] Interval in seconds between test runs for this
+ * WebTest. Default value is 300. Default value: 300 .
+ * @member {number} [timeout] Seconds until this WebTest will timeout and fail.
+ * Default value is 30. Default value: 30 .
+ * @member {string} webTestKind The kind of web test this is, valid choices are
+ * ping and multistep. Possible values include: 'ping', 'multistep'. Default
+ * value: 'ping' .
+ * @member {boolean} [retryEnabled] Allow for retries should this WebTest fail.
+ * @member {array} locations A list of where to physically run the tests from
+ * to give global coverage for accessibility of your application.
+ * @member {object} [configuration] An XML configuration specification for a
+ * WebTest.
+ * @member {string} [configuration.webTest] The XML specification of a WebTest
+ * to run against an application.
+ * @member {string} [provisioningState] Current state of this component,
+ * whether or not is has been provisioned within the resource group it is
+ * defined. Users cannot change this value but are able to read from it. Values
+ * will include Succeeded, Deploying, Canceled, and Failed.
+ */
+export interface WebTest extends WebtestsResource {
+  kind?: string;
+  syntheticMonitorId: string;
+  webTestName: string;
+  description?: string;
+  enabled?: boolean;
+  frequency?: number;
+  timeout?: number;
+  webTestKind: string;
+  retryEnabled?: boolean;
+  locations: WebTestGeolocation[];
+  configuration?: WebTestPropertiesConfiguration;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItemProperties class.
+ * @constructor
+ * A set of properties that can be defined in the context of a specific item
+ * type. Each type may have its own properties.
+ *
+ * @member {string} [functionAlias] A function alias, used when the type of the
+ * item is Function
+ */
+export interface ApplicationInsightsComponentAnalyticsItemProperties {
+  functionAlias?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItem class.
+ * @constructor
+ * Properties that define an Analytics item that is associated to an
+ * Application Insights component.
+ *
+ * @member {string} [id] Internally assigned unique id of the item definition.
+ * @member {string} [name] The user-defined name of the item.
+ * @member {string} [content] The content of this item
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added.
+ * @member {string} [scope] Enum indicating if this item definition is owned by
+ * a specific user or is shared between all users with access to the
+ * Application Insights component. Possible values include: 'shared', 'user'
+ * @member {string} [type] Enum indicating the type of the Analytics item.
+ * Possible values include: 'query', 'function', 'folder', 'recent'
+ * @member {string} [timeCreated] Date and time in UTC when this item was
+ * created.
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this item.
+ * @member {object} [properties]
+ * @member {string} [properties.functionAlias] A function alias, used when the
+ * type of the item is Function
+ */
+export interface ApplicationInsightsComponentAnalyticsItem {
+  id?: string;
+  name?: string;
+  content?: string;
+  readonly version?: string;
+  scope?: string;
+  type?: string;
+  readonly timeCreated?: string;
+  readonly timeModified?: string;
+  properties?: ApplicationInsightsComponentAnalyticsItemProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookResource class.
+ * @constructor
+ * An azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} [location] Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface WorkbookResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Workbook class.
+ * @constructor
+ * An Application Insights workbook definition.
+ *
+ * @member {string} [kind] The kind of workbook. Choices are user and shared.
+ * Possible values include: 'user', 'shared'
+ * @member {string} workbookName The user-defined name of the workbook.
+ * @member {string} serializedData Configuration of this particular workbook.
+ * Configuration data is a string containing valid JSON
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added that can be marked workbook.
+ * @member {string} workbookId Internally assigned unique id of the workbook
+ * definition.
+ * @member {string} sharedTypeKind Enum indicating if this workbook definition
+ * is owned by a specific user or is shared between all users with access to
+ * the Application Insights component. Possible values include: 'user',
+ * 'shared'. Default value: 'shared' .
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this workbook definition.
+ * @member {string} category Workbook category, as defined by the user at
+ * creation time.
+ * @member {array} [workbookTags] A list of 0 or more tags that are associated
+ * with this workbook definition
+ * @member {string} userId Unique user id of the specific user that owns this
+ * workbook.
+ * @member {string} [sourceResourceId] Optional resourceId for a source
+ * resource.
+ */
+export interface Workbook extends WorkbookResource {
+  kind?: string;
+  workbookName: string;
+  serializedData: string;
+  version?: string;
+  workbookId: string;
+  sharedTypeKind: string;
+  readonly timeModified?: string;
+  category: string;
+  workbookTags?: string[];
+  userId: string;
+  sourceResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkProperties class.
+ * @constructor
+ * Contains a sourceId and workbook resource id to link two resources.
+ *
+ * @member {string} [sourceId] The source Azure resource id
+ * @member {string} [targetId] The workbook Azure resource id
+ * @member {string} [category] The category of workbook
+ */
+export interface LinkProperties {
+  sourceId?: string;
+  targetId?: string;
+  category?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorFieldContract class.
+ * @constructor
+ * Error Field contract.
+ *
+ * @member {string} [code] Property level error code.
+ * @member {string} [message] Human-readable representation of property-level
+ * error.
+ * @member {string} [target] Property name.
+ */
+export interface ErrorFieldContract {
+  code?: string;
+  message?: string;
+  target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookError class.
+ * @constructor
+ * Error message body that will indicate why the operation failed.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface WorkbookError {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
 }
 
 
@@ -473,6 +1083,26 @@ export interface OperationListResult extends Array<Operation> {
 
 /**
  * @class
+ * Initializes a new instance of the AnnotationsListResult class.
+ * @constructor
+ * Annotations list result.
+ *
+ */
+export interface AnnotationsListResult extends Array<Annotation> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAPIKeyListResult class.
+ * @constructor
+ * Describes the list of API Keys of an Application Insights Component.
+ *
+ */
+export interface ApplicationInsightsComponentAPIKeyListResult extends Array<ApplicationInsightsComponentAPIKey> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationInsightsComponentListResult class.
  * @constructor
  * Describes the list of Application Insights Resources.
@@ -483,6 +1113,27 @@ export interface OperationListResult extends Array<Operation> {
  */
 export interface ApplicationInsightsComponentListResult extends Array<ApplicationInsightsComponent> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkItemConfigurationsListResult class.
+ * @constructor
+ * Work item configuration list result.
+ *
+ */
+export interface WorkItemConfigurationsListResult extends Array<WorkItemConfiguration> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsWebTestLocationsListResult class.
+ * @constructor
+ * Describes the list of web test locations available to an Application
+ * Insights Component.
+ *
+ */
+export interface ApplicationInsightsWebTestLocationsListResult extends Array<ApplicationInsightsComponentWebTestLocation> {
 }
 
 /**
@@ -501,10 +1152,10 @@ export interface WebTestListResult extends Array<WebTest> {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationInsightsComponentAPIKeyListResult class.
+ * Initializes a new instance of the WorkbooksListResult class.
  * @constructor
- * Describes the list of API Keys of an Application Insights Component.
+ * Workbook list result.
  *
  */
-export interface ApplicationInsightsComponentAPIKeyListResult extends Array<ApplicationInsightsComponentAPIKey> {
+export interface WorkbooksListResult extends Array<Workbook> {
 }

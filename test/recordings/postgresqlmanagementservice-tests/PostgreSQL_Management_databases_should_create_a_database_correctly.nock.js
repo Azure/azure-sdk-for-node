@@ -9,15 +9,15 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-04-30-preview', '*')
+  .put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-12-01', '*')
   .reply(202, "{\"operation\":\"UpsertElasticServerDatabase\",\"startTime\":\"2017-05-25T00:08:00.613Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '82',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-04-30-preview',
+  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-12-01',
   'retry-after': '15',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-04-30-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-12-01',
   'x-ms-request-id': '941ffd02-b315-48fc-9461-23f2e2f304f3',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
@@ -31,15 +31,15 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-04-30-preview', '*')
+  .put('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-12-01', '*')
   .reply(202, "{\"operation\":\"UpsertElasticServerDatabase\",\"startTime\":\"2017-05-25T00:08:00.613Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '82',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-04-30-preview',
+  location: 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/operationResults/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-12-01',
   'retry-after': '15',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-04-30-preview',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-12-01',
   'x-ms-request-id': '941ffd02-b315-48fc-9461-23f2e2f304f3',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1197',
@@ -52,7 +52,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-12-01')
   .reply(200, "{\"name\":\"941ffd02-b315-48fc-9461-23f2e2f304f3\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:08:00.613Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '107',
@@ -70,7 +70,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/providers/Microsoft.DBforPostgreSQL/locations/westus/azureAsyncOperation/941ffd02-b315-48fc-9461-23f2e2f304f3?api-version=2017-12-01')
   .reply(200, "{\"name\":\"941ffd02-b315-48fc-9461-23f2e2f304f3\",\"status\":\"Succeeded\",\"startTime\":\"2017-05-25T00:08:00.613Z\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '107',
@@ -88,7 +88,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-12-01')
   .reply(200, "{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417\",\"name\":\"testdb4417\",\"type\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"properties\":{\"charset\":\"UTF8\",\"collation\":\"English_United States.1252\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '319',
@@ -106,7 +106,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417?api-version=2017-12-01')
   .reply(200, "{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417\",\"name\":\"testdb4417\",\"type\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"properties\":{\"charset\":\"UTF8\",\"collation\":\"English_United States.1252\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '319',

@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class UsageManagementClient extends AzureServiceClient {
+export default class UsageManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the UsageManagementClient class.
    * @constructor
@@ -59,4 +60,4 @@ declare class UsageManagementClient extends AzureServiceClient {
   rateCard: operations.RateCard;
 }
 
-export = UsageManagementClient;
+export { UsageManagementClient, models as UsageManagementModels };

@@ -33,7 +33,7 @@ npm install azure-arm-datalake-store
   var pathToEnumerate = '/myfolder';
   var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, 'your-subscription-id');
   var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials, 'azuredatalakestore.net');
-  filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function(err, result, request, response) {
+  filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, function(err, result, request, response) {
     if (err) console.log(err);
     console.log(result);
   });
@@ -84,7 +84,7 @@ var options = {
   streamContents: new Buffer('some string content')
 }
 
-filesystemClient.filesystem.listFileStatus(accountName, fileToCreate, options, function (err, result, request, response) {
+filesystemClient.fileSystem.listFileStatus(accountName, fileToCreate, options, function (err, result, request, response) {
   if (err) {
     console.log(err);
   } else {
@@ -100,7 +100,7 @@ filesystemClient.filesystem.listFileStatus(accountName, fileToCreate, options, f
 var util = require('util');
 var accountName = 'testadlsacct';
 var pathToEnumerate = '/myfolder';
-filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function (err, result, request, response) {
+filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, function (err, result, request, response) {
   if (err) {
     console.log(err);
   } else {

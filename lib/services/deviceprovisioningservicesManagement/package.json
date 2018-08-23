@@ -1,0 +1,22 @@
+{
+  "name": "azure-arm-deviceprovisioningservices",
+  "author": "Microsoft Corporation",
+  "description": "IotDpsClient Library with typescript type definitions for node",
+  "version": "2.0.0",
+  "dependencies": {
+    "ms-rest": "^2.3.2",
+    "ms-rest-azure": "^2.5.5"
+  },
+  "keywords": [ "node", "azure" ],
+  "license": "MIT",
+  "main": "./lib/iotDpsClient.js",
+  "types": "./lib/iotDpsClient.d.ts",
+  "homepage": "http://github.com/azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  }
+}

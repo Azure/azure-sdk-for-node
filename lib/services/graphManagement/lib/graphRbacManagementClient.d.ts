@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class GraphRbacManagementClient extends AzureServiceClient {
+export default class GraphRbacManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the GraphRbacManagementClient class.
    * @constructor
@@ -63,4 +64,4 @@ declare class GraphRbacManagementClient extends AzureServiceClient {
   domains: operations.Domains;
 }
 
-export = GraphRbacManagementClient;
+export { GraphRbacManagementClient, models as GraphRbacManagementModels };

@@ -7,7 +7,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2017-07-01')
+  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2018-04-01')
   .reply(200, "{\"value\":[{\"keyName\":\"iothubowner\",\"primaryKey\":\"3LbtFAGcdRoYyXL5ienvKvA1IBixD9RWOPxKINsG8Dk=\",\"secondaryKey\":\"NMtLh9A6LdoGkNOKsvBxmm5qGa0LY9SMvFVwaeTH8lU=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"},{\"keyName\":\"service\",\"primaryKey\":\"xtfyIf0xDDnGQXrjx3DRkdmVkwl2LjM4Ri83MA7Lmck=\",\"secondaryKey\":\"1p6qCJaduQyBBesKA/Elh8ViaQ+89qa/GEcYrRyEBSs=\",\"rights\":\"ServiceConnect\"},{\"keyName\":\"device\",\"primaryKey\":\"GLxk1UQHUrR5UnVxLEk5Bz8j/pG7DPiY4G+7iHt3M3w=\",\"secondaryKey\":\"6nDaVYjDRXzxUzo11jS9mF8w+Xi7NPDYuqBasN3wLxw=\",\"rights\":\"DeviceConnect\"},{\"keyName\":\"registryRead\",\"primaryKey\":\"3SVf0EipWggJUN93q2KQUVv0U7CyNY6L/6Yt1yl2Eq8=\",\"secondaryKey\":\"kMiQWIdTY5R1hUZ0Ap6c5EVvDAxITTjcdpv9X0rfskE=\",\"rights\":\"RegistryRead\"},{\"keyName\":\"registryReadWrite\",\"primaryKey\":\"/lql+PkiYLyrWa+3Ou3uit3mgLWxVDRmL0wSFmQ+eYo=\",\"secondaryKey\":\"vEE0rYUV1IP9wKbs9q+fzCpMXrKvY2rRofI8QLyoJTM=\",\"rights\":\"RegistryWrite\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '905',
@@ -25,7 +25,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2017-07-01')
+  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2018-04-01')
   .reply(200, "{\"value\":[{\"keyName\":\"iothubowner\",\"primaryKey\":\"3LbtFAGcdRoYyXL5ienvKvA1IBixD9RWOPxKINsG8Dk=\",\"secondaryKey\":\"NMtLh9A6LdoGkNOKsvBxmm5qGa0LY9SMvFVwaeTH8lU=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"},{\"keyName\":\"service\",\"primaryKey\":\"xtfyIf0xDDnGQXrjx3DRkdmVkwl2LjM4Ri83MA7Lmck=\",\"secondaryKey\":\"1p6qCJaduQyBBesKA/Elh8ViaQ+89qa/GEcYrRyEBSs=\",\"rights\":\"ServiceConnect\"},{\"keyName\":\"device\",\"primaryKey\":\"GLxk1UQHUrR5UnVxLEk5Bz8j/pG7DPiY4G+7iHt3M3w=\",\"secondaryKey\":\"6nDaVYjDRXzxUzo11jS9mF8w+Xi7NPDYuqBasN3wLxw=\",\"rights\":\"DeviceConnect\"},{\"keyName\":\"registryRead\",\"primaryKey\":\"3SVf0EipWggJUN93q2KQUVv0U7CyNY6L/6Yt1yl2Eq8=\",\"secondaryKey\":\"kMiQWIdTY5R1hUZ0Ap6c5EVvDAxITTjcdpv9X0rfskE=\",\"rights\":\"RegistryRead\"},{\"keyName\":\"registryReadWrite\",\"primaryKey\":\"/lql+PkiYLyrWa+3Ou3uit3mgLWxVDRmL0wSFmQ+eYo=\",\"secondaryKey\":\"vEE0rYUV1IP9wKbs9q+fzCpMXrKvY2rRofI8QLyoJTM=\",\"rights\":\"RegistryWrite\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '905',

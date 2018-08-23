@@ -159,6 +159,26 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionInfo.labels] List of user defined labels.
      *
+     * @param {string} [eventSubscriptionInfo.eventDeliverySchema] The event
+     * delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionInfo.retryPolicy] The retry policy for
+     * events. This can be used to configure maximum number of delivery attempts
+     * and time to live for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.maxDeliveryAttempts]
+     * Maximum number of delivery retry attempts for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionInfo.deadLetterDestination] The DeadLetter
+     * destination of the event subscription.
+     *
+     * @param {string} eventSubscriptionInfo.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -228,6 +248,26 @@ export interface EventSubscriptions {
      * should be compared in a case sensitive manner.
      *
      * @param {array} [eventSubscriptionInfo.labels] List of user defined labels.
+     *
+     * @param {string} [eventSubscriptionInfo.eventDeliverySchema] The event
+     * delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionInfo.retryPolicy] The retry policy for
+     * events. This can be used to configure maximum number of delivery attempts
+     * and time to live for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.maxDeliveryAttempts]
+     * Maximum number of delivery retry attempts for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionInfo.deadLetterDestination] The DeadLetter
+     * destination of the event subscription.
+     *
+     * @param {string} eventSubscriptionInfo.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -358,7 +398,7 @@ export interface EventSubscriptions {
      * for an EventGrid topic.
      *
      * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created
+     * updated
      *
      * @param {object} eventSubscriptionUpdateParameters Updated event subscription
      * information
@@ -397,6 +437,29 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.labels] List of user
      * defined labels.
+     *
+     * @param {string} [eventSubscriptionUpdateParameters.eventDeliverySchema] The
+     * event delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.retryPolicy] The retry
+     * policy for events. This can be used to configure maximum number of delivery
+     * attempts and time to live for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.maxDeliveryAttempts] Maximum
+     * number of delivery retry attempts for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.deadLetterDestination]
+     * The DeadLetter destination of the event subscription.
+     *
+     * @param {string}
+     * eventSubscriptionUpdateParameters.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -428,7 +491,7 @@ export interface EventSubscriptions {
      * for an EventGrid topic.
      *
      * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created
+     * updated
      *
      * @param {object} eventSubscriptionUpdateParameters Updated event subscription
      * information
@@ -467,6 +530,29 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.labels] List of user
      * defined labels.
+     *
+     * @param {string} [eventSubscriptionUpdateParameters.eventDeliverySchema] The
+     * event delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.retryPolicy] The retry
+     * policy for events. This can be used to configure maximum number of delivery
+     * attempts and time to live for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.maxDeliveryAttempts] Maximum
+     * number of delivery retry attempts for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.deadLetterDestination]
+     * The DeadLetter destination of the event subscription.
+     *
+     * @param {string}
+     * eventSubscriptionUpdateParameters.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1245,6 +1331,26 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionInfo.labels] List of user defined labels.
      *
+     * @param {string} [eventSubscriptionInfo.eventDeliverySchema] The event
+     * delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionInfo.retryPolicy] The retry policy for
+     * events. This can be used to configure maximum number of delivery attempts
+     * and time to live for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.maxDeliveryAttempts]
+     * Maximum number of delivery retry attempts for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionInfo.deadLetterDestination] The DeadLetter
+     * destination of the event subscription.
+     *
+     * @param {string} eventSubscriptionInfo.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1314,6 +1420,26 @@ export interface EventSubscriptions {
      * should be compared in a case sensitive manner.
      *
      * @param {array} [eventSubscriptionInfo.labels] List of user defined labels.
+     *
+     * @param {string} [eventSubscriptionInfo.eventDeliverySchema] The event
+     * delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionInfo.retryPolicy] The retry policy for
+     * events. This can be used to configure maximum number of delivery attempts
+     * and time to live for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.maxDeliveryAttempts]
+     * Maximum number of delivery retry attempts for events.
+     *
+     * @param {number} [eventSubscriptionInfo.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionInfo.deadLetterDestination] The DeadLetter
+     * destination of the event subscription.
+     *
+     * @param {string} eventSubscriptionInfo.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1444,7 +1570,7 @@ export interface EventSubscriptions {
      * for an EventGrid topic.
      *
      * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created
+     * updated
      *
      * @param {object} eventSubscriptionUpdateParameters Updated event subscription
      * information
@@ -1483,6 +1609,29 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.labels] List of user
      * defined labels.
+     *
+     * @param {string} [eventSubscriptionUpdateParameters.eventDeliverySchema] The
+     * event delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.retryPolicy] The retry
+     * policy for events. This can be used to configure maximum number of delivery
+     * attempts and time to live for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.maxDeliveryAttempts] Maximum
+     * number of delivery retry attempts for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.deadLetterDestination]
+     * The DeadLetter destination of the event subscription.
+     *
+     * @param {string}
+     * eventSubscriptionUpdateParameters.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1514,7 +1663,7 @@ export interface EventSubscriptions {
      * for an EventGrid topic.
      *
      * @param {string} eventSubscriptionName Name of the event subscription to be
-     * created
+     * updated
      *
      * @param {object} eventSubscriptionUpdateParameters Updated event subscription
      * information
@@ -1553,6 +1702,29 @@ export interface EventSubscriptions {
      *
      * @param {array} [eventSubscriptionUpdateParameters.labels] List of user
      * defined labels.
+     *
+     * @param {string} [eventSubscriptionUpdateParameters.eventDeliverySchema] The
+     * event delivery schema for the event subscription. Possible values include:
+     * 'EventGridSchema', 'InputEventSchema', 'CloudEventV01Schema'
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.retryPolicy] The retry
+     * policy for events. This can be used to configure maximum number of delivery
+     * attempts and time to live for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.maxDeliveryAttempts] Maximum
+     * number of delivery retry attempts for events.
+     *
+     * @param {number}
+     * [eventSubscriptionUpdateParameters.retryPolicy.eventTimeToLiveInMinutes]
+     * Time To Live (in minutes) for events.
+     *
+     * @param {object} [eventSubscriptionUpdateParameters.deadLetterDestination]
+     * The DeadLetter destination of the event subscription.
+     *
+     * @param {string}
+     * eventSubscriptionUpdateParameters.deadLetterDestination.endpointType
+     * Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1738,6 +1910,19 @@ export interface Topics {
      *
      * @param {object} topicInfo Topic information
      *
+     * @param {string} [topicInfo.inputSchema] This determines the format that
+     * Event Grid should expect for incoming events published to the topic.
+     * Possible values include: 'EventGridSchema', 'CustomEventSchema',
+     * 'CloudEventV01Schema'
+     *
+     * @param {object} [topicInfo.inputSchemaMapping] This enables publishing using
+     * custom event schemas. An InputSchemaMapping can be specified to map various
+     * properties of a source schema to various required properties of the
+     * EventGridEvent schema.
+     *
+     * @param {string} topicInfo.inputSchemaMapping.inputSchemaMappingType
+     * Polymorphic Discriminator
+     *
      * @param {string} topicInfo.location Location of the resource
      *
      * @param {object} [topicInfo.tags] Tags of the resource
@@ -1766,6 +1951,19 @@ export interface Topics {
      * @param {string} topicName Name of the topic
      *
      * @param {object} topicInfo Topic information
+     *
+     * @param {string} [topicInfo.inputSchema] This determines the format that
+     * Event Grid should expect for incoming events published to the topic.
+     * Possible values include: 'EventGridSchema', 'CustomEventSchema',
+     * 'CloudEventV01Schema'
+     *
+     * @param {object} [topicInfo.inputSchemaMapping] This enables publishing using
+     * custom event schemas. An InputSchemaMapping can be specified to map various
+     * properties of a source schema to various required properties of the
+     * EventGridEvent schema.
+     *
+     * @param {string} topicInfo.inputSchemaMapping.inputSchemaMappingType
+     * Polymorphic Discriminator
      *
      * @param {string} topicInfo.location Location of the resource
      *
@@ -2281,6 +2479,19 @@ export interface Topics {
      *
      * @param {object} topicInfo Topic information
      *
+     * @param {string} [topicInfo.inputSchema] This determines the format that
+     * Event Grid should expect for incoming events published to the topic.
+     * Possible values include: 'EventGridSchema', 'CustomEventSchema',
+     * 'CloudEventV01Schema'
+     *
+     * @param {object} [topicInfo.inputSchemaMapping] This enables publishing using
+     * custom event schemas. An InputSchemaMapping can be specified to map various
+     * properties of a source schema to various required properties of the
+     * EventGridEvent schema.
+     *
+     * @param {string} topicInfo.inputSchemaMapping.inputSchemaMappingType
+     * Polymorphic Discriminator
+     *
      * @param {string} topicInfo.location Location of the resource
      *
      * @param {object} [topicInfo.tags] Tags of the resource
@@ -2309,6 +2520,19 @@ export interface Topics {
      * @param {string} topicName Name of the topic
      *
      * @param {object} topicInfo Topic information
+     *
+     * @param {string} [topicInfo.inputSchema] This determines the format that
+     * Event Grid should expect for incoming events published to the topic.
+     * Possible values include: 'EventGridSchema', 'CustomEventSchema',
+     * 'CloudEventV01Schema'
+     *
+     * @param {object} [topicInfo.inputSchemaMapping] This enables publishing using
+     * custom event schemas. An InputSchemaMapping can be specified to map various
+     * properties of a source schema to various required properties of the
+     * EventGridEvent schema.
+     *
+     * @param {string} topicInfo.inputSchemaMapping.inputSchemaMappingType
+     * Polymorphic Discriminator
      *
      * @param {string} topicInfo.location Location of the resource
      *
