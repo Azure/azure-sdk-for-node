@@ -1115,7 +1115,7 @@ export interface Registries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBuildSourceUploadUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceUploadDefinition>>;
+    getBuildSourceUploadUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceUploadDefinition>>;
 
     /**
      * Get the upload location for the user to be able to upload the source.
@@ -1153,9 +1153,9 @@ export interface Registries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceUploadDefinition>;
-    listBuildSourceUploadUrl(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.SourceUploadDefinition>): void;
-    listBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceUploadDefinition>): void;
+    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceUploadDefinition>;
+    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.SourceUploadDefinition>): void;
+    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceUploadDefinition>): void;
 
 
     /**
@@ -3659,9 +3659,6 @@ export interface Runs {
      * @param {number} [options.top] $top is supported for get list of runs, which
      * limits the maximum number of runs to return.
      *
-     * @param {string} [options.skipToken] $skipToken is supported on get list of
-     * runs, which provides the next page in the list of runs.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3671,7 +3668,7 @@ export interface Runs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunListResult>>;
 
     /**
      * Gets all the runs for a registry.
@@ -3689,9 +3686,6 @@ export interface Runs {
      *
      * @param {number} [options.top] $top is supported for get list of runs, which
      * limits the maximum number of runs to return.
-     *
-     * @param {string} [options.skipToken] $skipToken is supported on get list of
-     * runs, which provides the next page in the list of runs.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3718,9 +3712,9 @@ export interface Runs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RunListResult>;
+    list(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RunListResult>;
     list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RunListResult>): void;
-    list(resourceGroupName: string, registryName: string, options: { filter? : string, top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunListResult>): void;
 
 
     /**
@@ -3884,7 +3878,7 @@ export interface Runs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listLogSasUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunGetLogResult>>;
+    getLogSasUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunGetLogResult>>;
 
     /**
      * Gets a link to download the run logs.
@@ -3923,9 +3917,9 @@ export interface Runs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunGetLogResult>;
-    listLogSasUrl(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.RunGetLogResult>): void;
-    listLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunGetLogResult>): void;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunGetLogResult>;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.RunGetLogResult>): void;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunGetLogResult>): void;
 
 
     /**
@@ -4754,7 +4748,7 @@ export interface Tasks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listDetailsWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+    getDetailsWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
      * Returns a task with extended information that includes all secrets.
@@ -4793,9 +4787,9 @@ export interface Tasks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listDetails(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
-    listDetails(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<models.Task>): void;
-    listDetails(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<models.Task>): void;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
