@@ -1237,7 +1237,7 @@ export interface AuthInfo {
  * Possible values include: 'Github', 'VisualStudioTeamService'
  * @member {string} repositoryUrl The full URL to the source code respository
  * @member {string} [branch] The branch name of the source code.
- * @member {object} sourceControlAuthProperties The authorization properties
+ * @member {object} [sourceControlAuthProperties] The authorization properties
  * for accessing the source code repository and to set up
  * webhooks for notifications.
  * @member {string} [sourceControlAuthProperties.tokenType] The type of Auth
@@ -1255,7 +1255,7 @@ export interface SourceProperties {
   sourceControlType: string;
   repositoryUrl: string;
   branch?: string;
-  sourceControlAuthProperties: AuthInfo;
+  sourceControlAuthProperties?: AuthInfo;
 }
 
 /**
