@@ -1161,6 +1161,34 @@ export interface RoutingMessage {
 
 /**
  * @class
+ * Initializes a new instance of the RoutingTwinProperties class.
+ * @constructor
+ * @member {object} [desiredProperties] Twin desired properties
+ * @member {object} [reportedProperties] Twin desired properties
+ */
+export interface RoutingTwinProperties {
+  desiredProperties?: any;
+  reportedProperties?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingTwin class.
+ * @constructor
+ * Twin reference input parameter. This is an optional parameter
+ *
+ * @member {object} [tags] Twin Tags
+ * @member {object} [properties]
+ * @member {object} [properties.desiredProperties] Twin desired properties
+ * @member {object} [properties.reportedProperties] Twin desired properties
+ */
+export interface RoutingTwin {
+  tags?: any;
+  properties?: RoutingTwinProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TestAllRoutesInput class.
  * @constructor
  * Input for testing all routes
@@ -1172,10 +1200,17 @@ export interface RoutingMessage {
  * @member {string} [message.body] Body of routing message
  * @member {object} [message.appProperties] App properties
  * @member {object} [message.systemProperties] System properties
+ * @member {object} [twin] Routing Twin Reference
+ * @member {object} [twin.tags] Twin Tags
+ * @member {object} [twin.properties]
+ * @member {object} [twin.properties.desiredProperties] Twin desired properties
+ * @member {object} [twin.properties.reportedProperties] Twin desired
+ * properties
  */
 export interface TestAllRoutesInput {
   routingSource?: string;
   message?: RoutingMessage;
+  twin?: RoutingTwin;
 }
 
 /**
@@ -1245,10 +1280,17 @@ export interface TestAllRoutesResult {
  * is allowed.
  * @member {boolean} [route.isEnabled] Used to specify whether a route is
  * enabled.
+ * @member {object} [twin] Routing Twin Reference
+ * @member {object} [twin.tags] Twin Tags
+ * @member {object} [twin.properties]
+ * @member {object} [twin.properties.desiredProperties] Twin desired properties
+ * @member {object} [twin.properties.reportedProperties] Twin desired
+ * properties
  */
 export interface TestRouteInput {
   message?: RoutingMessage;
   route: RouteProperties;
+  twin?: RoutingTwin;
 }
 
 /**
