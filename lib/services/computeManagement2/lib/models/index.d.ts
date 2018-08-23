@@ -1083,10 +1083,16 @@ export interface SshConfiguration {
  * @member {object} [ssh] Specifies the ssh key configuration for a Linux OS.
  * @member {array} [ssh.publicKeys] The list of SSH public keys used to
  * authenticate with linux based VMs.
+ * @member {boolean} [provisionVMAgent] Indicates whether virtual machine agent
+ * should be provisioned on the virtual machine. <br><br> When this property is
+ * not specified in the request body, default behavior is to set it to true.
+ * This will ensure that VM Agent is installed on the VM so that extensions can
+ * be added to the VM later.
  */
 export interface LinuxConfiguration {
   disablePasswordAuthentication?: boolean;
   ssh?: SshConfiguration;
+  provisionVMAgent?: boolean;
 }
 
 /**
@@ -1211,8 +1217,16 @@ export interface VaultSecretGroup {
  * configuration for a Linux OS.
  * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
  * keys used to authenticate with linux based VMs.
+ * @member {boolean} [linuxConfiguration.provisionVMAgent] Indicates whether
+ * virtual machine agent should be provisioned on the virtual machine. <br><br>
+ * When this property is not specified in the request body, default behavior is
+ * to set it to true.  This will ensure that VM Agent is installed on the VM so
+ * that extensions can be added to the VM later.
  * @member {array} [secrets] Specifies set of certificates that should be
  * installed onto the virtual machine.
+ * @member {boolean} [allowExtensionOperations] Specifies whether extension
+ * operations should be allowed on the virtual machine. <br><br>This may only
+ * be set to False when no extensions are present on the virtual machine.
  */
 export interface OSProfile {
   computerName?: string;
@@ -1222,6 +1236,7 @@ export interface OSProfile {
   windowsConfiguration?: WindowsConfiguration;
   linuxConfiguration?: LinuxConfiguration;
   secrets?: VaultSecretGroup[];
+  allowExtensionOperations?: boolean;
 }
 
 /**
@@ -1368,6 +1383,18 @@ export interface BootDiagnosticsInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface VirtualMachineIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineIdentity class.
  * @constructor
  * Identity for the virtual machine.
@@ -1381,16 +1408,16 @@ export interface BootDiagnosticsInstanceView {
  * identity and a set of user assigned identities. The type 'None' will remove
  * any identities from the virtual machine. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
- * @member {array} [identityIds] The list of user identities associated with
- * the Virtual Machine. The user identity references will be ARM resource ids
- * in the form:
- * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the Virtual Machine. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface VirtualMachineIdentity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
-  identityIds?: string[];
+  userAssignedIdentities?: { [propertyName: string]: VirtualMachineIdentityUserAssignedIdentitiesValue };
 }
 
 /**
@@ -1741,8 +1768,17 @@ export interface VirtualMachineInstanceView {
  * configuration for a Linux OS.
  * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
  * SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean} [osProfile.linuxConfiguration.provisionVMAgent] Indicates
+ * whether virtual machine agent should be provisioned on the virtual machine.
+ * <br><br> When this property is not specified in the request body, default
+ * behavior is to set it to true.  This will ensure that VM Agent is installed
+ * on the VM so that extensions can be added to the VM later.
  * @member {array} [osProfile.secrets] Specifies set of certificates that
  * should be installed onto the virtual machine.
+ * @member {boolean} [osProfile.allowExtensionOperations] Specifies whether
+ * extension operations should be allowed on the virtual machine. <br><br>This
+ * may only be set to False when no extensions are present on the virtual
+ * machine.
  * @member {object} [networkProfile] Specifies the network interfaces of the
  * virtual machine.
  * @member {array} [networkProfile.networkInterfaces] Specifies the list of
@@ -1857,10 +1893,10 @@ export interface VirtualMachineInstanceView {
  * created identity and a set of user assigned identities. The type 'None' will
  * remove any identities from the virtual machine. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
- * @member {array} [identity.identityIds] The list of user identities
- * associated with the Virtual Machine. The user identity references will be
- * ARM resource ids in the form:
- * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the Virtual Machine. The user identity dictionary
+ * key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  * @member {array} [zones] The virtual machine zones.
  */
 export interface VirtualMachine extends Resource {
@@ -2128,8 +2164,17 @@ export interface VirtualMachine extends Resource {
  * configuration for a Linux OS.
  * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
  * SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean} [osProfile.linuxConfiguration.provisionVMAgent] Indicates
+ * whether virtual machine agent should be provisioned on the virtual machine.
+ * <br><br> When this property is not specified in the request body, default
+ * behavior is to set it to true.  This will ensure that VM Agent is installed
+ * on the VM so that extensions can be added to the VM later.
  * @member {array} [osProfile.secrets] Specifies set of certificates that
  * should be installed onto the virtual machine.
+ * @member {boolean} [osProfile.allowExtensionOperations] Specifies whether
+ * extension operations should be allowed on the virtual machine. <br><br>This
+ * may only be set to False when no extensions are present on the virtual
+ * machine.
  * @member {object} [networkProfile] Specifies the network interfaces of the
  * virtual machine.
  * @member {array} [networkProfile.networkInterfaces] Specifies the list of
@@ -2243,10 +2288,10 @@ export interface VirtualMachine extends Resource {
  * created identity and a set of user assigned identities. The type 'None' will
  * remove any identities from the virtual machine. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
- * @member {array} [identity.identityIds] The list of user identities
- * associated with the Virtual Machine. The user identity references will be
- * ARM resource ids in the form:
- * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the Virtual Machine. The user identity dictionary
+ * key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  * @member {array} [zones] The virtual machine zones.
  */
 export interface VirtualMachineUpdate extends UpdateResource {
@@ -2599,6 +2644,18 @@ export interface ImageUpdate extends UpdateResource {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetIdentity class.
  * @constructor
  * Identity for the virtual machine scale set.
@@ -2615,16 +2672,16 @@ export interface ImageUpdate extends UpdateResource {
  * 'None' will remove any identities from the virtual machine scale set.
  * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
  * UserAssigned', 'None'
- * @member {array} [identityIds] The list of user identities associated with
- * the virtual machine scale set. The user identity references will be ARM
- * resource ids in the form:
- * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the virtual machine scale set. The user identity dictionary
+ * key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface VirtualMachineScaleSetIdentity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
-  identityIds?: string[];
+  userAssignedIdentities?: { [propertyName: string]: VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue };
 }
 
 /**
@@ -2702,6 +2759,11 @@ export interface VirtualMachineScaleSetIdentity {
  * configuration for a Linux OS.
  * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
  * keys used to authenticate with linux based VMs.
+ * @member {boolean} [linuxConfiguration.provisionVMAgent] Indicates whether
+ * virtual machine agent should be provisioned on the virtual machine. <br><br>
+ * When this property is not specified in the request body, default behavior is
+ * to set it to true.  This will ensure that VM Agent is installed on the VM so
+ * that extensions can be added to the VM later.
  * @member {array} [secrets] Specifies set of certificates that should be
  * installed onto the virtual machines in the scale set.
  */
@@ -2748,6 +2810,11 @@ export interface VirtualMachineScaleSetOSProfile {
  * configuration for a Linux OS.
  * @member {array} [linuxConfiguration.ssh.publicKeys] The list of SSH public
  * keys used to authenticate with linux based VMs.
+ * @member {boolean} [linuxConfiguration.provisionVMAgent] Indicates whether
+ * virtual machine agent should be provisioned on the virtual machine. <br><br>
+ * When this property is not specified in the request body, default behavior is
+ * to set it to true.  This will ensure that VM Agent is installed on the VM so
+ * that extensions can be added to the VM later.
  * @member {array} [secrets] The List of certificates for addition to the VM.
  */
 export interface VirtualMachineScaleSetUpdateOSProfile {
@@ -3074,12 +3141,16 @@ export interface VirtualMachineScaleSetIpTag {
  * labels of the PublicIPAddress resources that will be created
  * @member {array} [ipTags] The list of IP tags associated with the public IP
  * address.
+ * @member {object} [publicIPPrefix] The PublicIPPrefix from which to allocate
+ * publicIP addresses.
+ * @member {string} [publicIPPrefix.id] Resource Id
  */
 export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
   name: string;
   idleTimeoutInMinutes?: number;
   dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
   ipTags?: VirtualMachineScaleSetIpTag[];
+  publicIPPrefix?: SubResource;
 }
 
 /**
@@ -3130,6 +3201,10 @@ export interface VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
  * will be created
  * @member {array} [publicIPAddressConfiguration.ipTags] The list of IP tags
  * associated with the public IP address.
+ * @member {object} [publicIPAddressConfiguration.publicIPPrefix] The
+ * PublicIPPrefix from which to allocate publicIP addresses.
+ * @member {string} [publicIPAddressConfiguration.publicIPPrefix.id] Resource
+ * Id
  * @member {string} [privateIPAddressVersion] Available from Api-Version
  * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
  * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
@@ -3138,6 +3213,8 @@ export interface VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
  * of references to backend address pools of application gateways. A scale set
  * can reference backend address pools of multiple application gateways.
  * Multiple scale sets cannot use the same application gateway.
+ * @member {array} [applicationSecurityGroups] Specifies an array of references
+ * to application security group.
  * @member {array} [loadBalancerBackendAddressPools] Specifies an array of
  * references to backend address pools of load balancers. A scale set can
  * reference backend address pools of one public and one internal load
@@ -3154,6 +3231,7 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
   publicIPAddressConfiguration?: VirtualMachineScaleSetPublicIPAddressConfiguration;
   privateIPAddressVersion?: string;
   applicationGatewayBackendAddressPools?: SubResource[];
+  applicationSecurityGroups?: SubResource[];
   loadBalancerBackendAddressPools?: SubResource[];
   loadBalancerInboundNatPools?: SubResource[];
 }
@@ -3188,6 +3266,8 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
  * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
  * @member {array} [applicationGatewayBackendAddressPools] The application
  * gateway backend address pools.
+ * @member {array} [applicationSecurityGroups] Specifies an array of references
+ * to application security group.
  * @member {array} [loadBalancerBackendAddressPools] The load balancer backend
  * address pools.
  * @member {array} [loadBalancerInboundNatPools] The load balancer inbound nat
@@ -3200,6 +3280,7 @@ export interface VirtualMachineScaleSetUpdateIPConfiguration extends SubResource
   publicIPAddressConfiguration?: VirtualMachineScaleSetUpdatePublicIPAddressConfiguration;
   privateIPAddressVersion?: string;
   applicationGatewayBackendAddressPools?: SubResource[];
+  applicationSecurityGroups?: SubResource[];
   loadBalancerBackendAddressPools?: SubResource[];
   loadBalancerInboundNatPools?: SubResource[];
 }
@@ -3455,6 +3536,11 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * configuration for a Linux OS.
  * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
  * SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean} [osProfile.linuxConfiguration.provisionVMAgent] Indicates
+ * whether virtual machine agent should be provisioned on the virtual machine.
+ * <br><br> When this property is not specified in the request body, default
+ * behavior is to set it to true.  This will ensure that VM Agent is installed
+ * on the VM so that extensions can be added to the VM later.
  * @member {array} [osProfile.secrets] Specifies set of certificates that
  * should be installed onto the virtual machines in the scale set.
  * @member {object} [storageProfile] Specifies the storage settings for the
@@ -3613,6 +3699,11 @@ export interface VirtualMachineScaleSetVMProfile {
  * configuration for a Linux OS.
  * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
  * SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean} [osProfile.linuxConfiguration.provisionVMAgent] Indicates
+ * whether virtual machine agent should be provisioned on the virtual machine.
+ * <br><br> When this property is not specified in the request body, default
+ * behavior is to set it to true.  This will ensure that VM Agent is installed
+ * on the VM so that extensions can be added to the VM later.
  * @member {array} [osProfile.secrets] The List of certificates for addition to
  * the VM.
  * @member {object} [storageProfile] The virtual machine scale set storage
@@ -3838,6 +3929,12 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * @member {array}
  * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] The list
  * of SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
  * @member {array} [virtualMachineProfile.osProfile.secrets] Specifies set of
  * certificates that should be installed onto the virtual machines in the scale
  * set.
@@ -3993,10 +4090,10 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * 'None' will remove any identities from the virtual machine scale set.
  * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
  * UserAssigned', 'None'
- * @member {array} [identity.identityIds] The list of user identities
- * associated with the virtual machine scale set. The user identity references
- * will be ARM resource ids in the form:
- * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the virtual machine scale set. The user identity
+ * dictionary key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  * @member {array} [zones] The virtual machine scale set zones.
  */
 export interface VirtualMachineScaleSet extends Resource {
@@ -4117,6 +4214,12 @@ export interface VirtualMachineScaleSet extends Resource {
  * @member {array}
  * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] The list
  * of SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean}
+ * [virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+ * Indicates whether virtual machine agent should be provisioned on the virtual
+ * machine. <br><br> When this property is not specified in the request body,
+ * default behavior is to set it to true.  This will ensure that VM Agent is
+ * installed on the VM so that extensions can be added to the VM later.
  * @member {array} [virtualMachineProfile.osProfile.secrets] The List of
  * certificates for addition to the VM.
  * @member {object} [virtualMachineProfile.storageProfile] The virtual machine
@@ -4210,10 +4313,10 @@ export interface VirtualMachineScaleSet extends Resource {
  * 'None' will remove any identities from the virtual machine scale set.
  * Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
  * UserAssigned', 'None'
- * @member {array} [identity.identityIds] The list of user identities
- * associated with the virtual machine scale set. The user identity references
- * will be ARM resource ids in the form:
- * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the virtual machine scale set. The user identity
+ * dictionary key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface VirtualMachineScaleSetUpdate extends UpdateResource {
   sku?: Sku;
@@ -5043,8 +5146,17 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * configuration for a Linux OS.
  * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] The list of
  * SSH public keys used to authenticate with linux based VMs.
+ * @member {boolean} [osProfile.linuxConfiguration.provisionVMAgent] Indicates
+ * whether virtual machine agent should be provisioned on the virtual machine.
+ * <br><br> When this property is not specified in the request body, default
+ * behavior is to set it to true.  This will ensure that VM Agent is installed
+ * on the VM so that extensions can be added to the VM later.
  * @member {array} [osProfile.secrets] Specifies set of certificates that
  * should be installed onto the virtual machine.
+ * @member {boolean} [osProfile.allowExtensionOperations] Specifies whether
+ * extension operations should be allowed on the virtual machine. <br><br>This
+ * may only be set to False when no extensions are present on the virtual
+ * machine.
  * @member {object} [networkProfile] Specifies the network interfaces of the
  * virtual machine.
  * @member {array} [networkProfile.networkInterfaces] Specifies the list of
