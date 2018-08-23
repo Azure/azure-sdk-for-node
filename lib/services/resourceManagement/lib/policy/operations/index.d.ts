@@ -154,6 +154,15 @@ export interface PolicyAssignments {
      * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
      * are Free and Standard.
      *
+     * @param {string} [parameters.location] The location of the policy assignment.
+     * Only required when utilizing managed identity.
+     *
+     * @param {object} [parameters.identity] The managed identity associated with
+     * the policy assignment.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned', 'None'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -214,6 +223,15 @@ export interface PolicyAssignments {
      *
      * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
      * are Free and Standard.
+     *
+     * @param {string} [parameters.location] The location of the policy assignment.
+     * Only required when utilizing managed identity.
+     *
+     * @param {object} [parameters.identity] The managed identity associated with
+     * the policy assignment.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -787,6 +805,15 @@ export interface PolicyAssignments {
      * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
      * are Free and Standard.
      *
+     * @param {string} [parameters.location] The location of the policy assignment.
+     * Only required when utilizing managed identity.
+     *
+     * @param {object} [parameters.identity] The managed identity associated with
+     * the policy assignment.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned', 'None'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -849,6 +876,15 @@ export interface PolicyAssignments {
      *
      * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
      * are Free and Standard.
+     *
+     * @param {string} [parameters.location] The location of the policy assignment.
+     * Only required when utilizing managed identity.
+     *
+     * @param {object} [parameters.identity] The managed identity associated with
+     * the policy assignment.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned', 'None'
      *
      * @param {object} [options] Optional Parameters.
      *
