@@ -1398,7 +1398,9 @@ export interface HostNameSslState {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
+ * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
+ * .
+ * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -1657,6 +1659,7 @@ export interface Site extends Resource {
   serverFarmId?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -1794,7 +1797,9 @@ export interface SkuDescription {
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
@@ -1838,6 +1843,7 @@ export interface AppServicePlan extends Resource {
   readonly resourceGroup?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
@@ -4335,6 +4341,7 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
+ * @member {string} [backupName] Name of the backup.
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
  * @member {string} storageAccountUrl SAS URL to the container.
@@ -4359,6 +4366,7 @@ export interface BackupSchedule {
  * @member {array} [databases] Databases included in the backup.
  */
 export interface BackupRequest extends ProxyOnlyResource {
+  backupName?: string;
   enabled?: boolean;
   storageAccountUrl: string;
   backupSchedule?: BackupSchedule;
@@ -5806,7 +5814,9 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
+ * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
+ * .
+ * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -6057,6 +6067,7 @@ export interface SitePatchResource extends ProxyOnlyResource {
   serverFarmId?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -6886,7 +6897,9 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
@@ -6910,6 +6923,7 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly resourceGroup?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
