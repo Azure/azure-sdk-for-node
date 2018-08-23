@@ -899,34 +899,16 @@ export interface Event extends EventInfo {
 
 /**
  * @class
- * Initializes a new instance of the Argument class.
- * @constructor
- * The properties of a run argument.
- *
- * @member {string} name The name of the argument.
- * @member {string} value The value of the argument.
- * @member {boolean} [isSecret] Flag to indicate whether the argument
- * represents a secret and want to be removed from build logs. Default value:
- * false .
- */
-export interface Argument {
-  name: string;
-  value: string;
-  isSecret?: boolean;
-}
-
-/**
- * @class
  * Initializes a new instance of the RunRequest class.
  * @constructor
  * The request parameters for scheduling a run.
  *
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing the run.
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled for the run or not. Default value: false .
  * @member {string} type Polymorphic Discriminator
  */
 export interface RunRequest {
-  argumentsProperty?: Argument[];
+  isArchiveEnabled?: boolean;
   type: string;
 }
 
@@ -966,19 +948,23 @@ export interface ImageUpdateTrigger {
 
 /**
  * @class
- * Initializes a new instance of the GitCommitTrigger class.
+ * Initializes a new instance of the SourceTriggerDescriptor class.
  * @constructor
- * The git commit trigger that caused a build.
+ * The source trigger that caused a run.
  *
  * @member {string} [id] The unique ID of the trigger.
+ * @member {string} [eventType] The event type of the trigger.
  * @member {string} [commitId] The unique ID that identifies a commit.
+ * @member {string} [pullRequestId] The unique ID that identifies pull request.
  * @member {string} [repositoryUrl] The repository URL.
  * @member {string} [branchName] The branch name in the repository.
  * @member {string} [providerType] The source control provider type.
  */
-export interface GitCommitTrigger {
+export interface SourceTriggerDescriptor {
   id?: string;
+  eventType?: string;
   commitId?: string;
+  pullRequestId?: string;
   repositoryUrl?: string;
   branchName?: string;
   providerType?: string;
@@ -1059,15 +1045,17 @@ export interface ProxyResource extends BaseResource {
  * update happened.
  * @member {array} [imageUpdateTrigger.images] The list of image updates that
  * caused the build.
- * @member {object} [gitCommitTrigger] The git commit trigger that caused the
- * run.
- * @member {string} [gitCommitTrigger.id] The unique ID of the trigger.
- * @member {string} [gitCommitTrigger.commitId] The unique ID that identifies a
+ * @member {object} [sourceTrigger] The source trigger that caused the run.
+ * @member {string} [sourceTrigger.id] The unique ID of the trigger.
+ * @member {string} [sourceTrigger.eventType] The event type of the trigger.
+ * @member {string} [sourceTrigger.commitId] The unique ID that identifies a
  * commit.
- * @member {string} [gitCommitTrigger.repositoryUrl] The repository URL.
- * @member {string} [gitCommitTrigger.branchName] The branch name in the
+ * @member {string} [sourceTrigger.pullRequestId] The unique ID that identifies
+ * pull request.
+ * @member {string} [sourceTrigger.repositoryUrl] The repository URL.
+ * @member {string} [sourceTrigger.branchName] The branch name in the
  * repository.
- * @member {string} [gitCommitTrigger.providerType] The source control provider
+ * @member {string} [sourceTrigger.providerType] The source control provider
  * type.
  * @member {boolean} [isArchiveEnabled] The value that indicates whether
  * archiving is enabled or not. Default value: false .
@@ -1098,7 +1086,7 @@ export interface Run extends ProxyResource {
   outputImages?: ImageDescriptor[];
   task?: string;
   imageUpdateTrigger?: ImageUpdateTrigger;
-  gitCommitTrigger?: GitCommitTrigger;
+  sourceTrigger?: SourceTriggerDescriptor;
   isArchiveEnabled?: boolean;
   platform?: PlatformProperties;
   agentConfiguration?: AgentProperties;
@@ -1182,13 +1170,37 @@ export interface RunGetLogResult {
 
 /**
  * @class
+ * Initializes a new instance of the BaseImageDependency class.
+ * @constructor
+ * Properties that describe a base image dependency.
+ *
+ * @member {string} [type] The type of the base image dependency. Possible
+ * values include: 'BuildTime', 'RunTime'
+ * @member {string} [registry] The registry login server.
+ * @member {string} [repository] The repository name.
+ * @member {string} [tag] The tag name.
+ * @member {string} [digest] The sha256-based digest of the image manifest.
+ */
+export interface BaseImageDependency {
+  type?: string;
+  registry?: string;
+  repository?: string;
+  tag?: string;
+  digest?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TaskStepProperties class.
  * @constructor
  * Base properties for any task step.
  *
+ * @member {array} [baseImageDependencies] List of base image dependencies for
+ * a step.
  * @member {string} type Polymorphic Discriminator
  */
 export interface TaskStepProperties {
+  readonly baseImageDependencies?: BaseImageDependency[];
   type: string;
 }
 
@@ -1355,6 +1367,8 @@ export interface TriggerProperties {
  * number of cores required for the run.
  * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
  * @member {object} step The properties of a task step.
+ * @member {array} [step.baseImageDependencies] List of base image dependencies
+ * for a step.
  * @member {string} [step.type] Polymorphic Discriminator
  * @member {object} [trigger] The properties that describe all triggers for the
  * task.
@@ -1595,6 +1609,24 @@ export interface TaskUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the Argument class.
+ * @constructor
+ * The properties of a run argument.
+ *
+ * @member {string} name The name of the argument.
+ * @member {string} value The value of the argument.
+ * @member {boolean} [isSecret] Flag to indicate whether the argument
+ * represents a secret and want to be removed from build logs. Default value:
+ * false .
+ */
+export interface Argument {
+  name: string;
+  value: string;
+  isSecret?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DockerBuildRequest class.
  * @constructor
  * The parameters for a docker quick build.
@@ -1608,6 +1640,8 @@ export interface TaskUpdateParameters {
  * image cache is enabled or not. Default value: false .
  * @member {string} dockerFilePath The Docker file path relative to the source
  * location.
+ * @member {array} [argumentsProperty] The collection of override arguments to
+ * be used when executing the run.
  * @member {string} sourceLocation The URL(absolute or relative) of the source
  * that needs to be built. For Docker build, it can be an URL to a tar or
  * github repoistory as supported by Docker.
@@ -1632,10 +1666,28 @@ export interface DockerBuildRequest extends RunRequest {
   isPushEnabled?: boolean;
   noCache?: boolean;
   dockerFilePath: string;
+  argumentsProperty?: Argument[];
   sourceLocation: string;
   timeout?: number;
   platform: PlatformProperties;
   agentConfiguration?: AgentProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SetValue class.
+ * @constructor
+ * The properties of a overridable value that can be passed to a task template.
+ *
+ * @member {string} name The name of the overridable value.
+ * @member {string} value The overridable value.
+ * @member {boolean} [isSecret] Flag to indicate whether the value represents a
+ * secret or not. Default value: false .
+ */
+export interface SetValue {
+  name: string;
+  value: string;
+  isSecret?: boolean;
 }
 
 /**
@@ -1648,6 +1700,8 @@ export interface DockerBuildRequest extends RunRequest {
  * relative to the source.
  * @member {string} [valuesFilePath] The values/parameters file path relative
  * to the source.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  * @member {string} sourceLocation The URL(absolute or relative) of the source
  * that needs to be built. For Docker build, it can be an URL to a tar or
  * github repoistory as supported by Docker.
@@ -1670,6 +1724,7 @@ export interface DockerBuildRequest extends RunRequest {
 export interface BuildTaskRequest extends RunRequest {
   definitionFilePath: string;
   valuesFilePath?: string;
+  values?: SetValue[];
   sourceLocation: string;
   timeout?: number;
   platform: PlatformProperties;
@@ -1684,9 +1739,12 @@ export interface BuildTaskRequest extends RunRequest {
  *
  * @member {string} taskName The name of task against which run has to be
  * queued.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  */
 export interface TaskRunRequest extends RunRequest {
   taskName: string;
+  values?: SetValue[];
 }
 
 /**
@@ -1699,6 +1757,8 @@ export interface TaskRunRequest extends RunRequest {
  * template/definition file content.
  * @member {string} [valuesContent] Base64 encoded value of the
  * parameters/values file content.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
  * @member {object} platform The platform properties against which the build
  * will happen.
@@ -1716,30 +1776,10 @@ export interface TaskRunRequest extends RunRequest {
 export interface QuickTaskRunRequest extends RunRequest {
   taskDefinitionContent: string;
   valuesContent?: string;
+  values?: SetValue[];
   timeout?: number;
   platform: PlatformProperties;
   agentConfiguration?: AgentProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the BaseImageDependency class.
- * @constructor
- * Properties that describe a base image dependency.
- *
- * @member {string} [type] The type of the base image dependency. Possible
- * values include: 'BuildTime', 'RunTime'
- * @member {string} [registry] The registry login server.
- * @member {string} [repository] The repository name.
- * @member {string} [tag] The tag name.
- * @member {string} [digest] The sha256-based digest of the image manifest.
- */
-export interface BaseImageDependency {
-  type?: string;
-  registry?: string;
-  repository?: string;
-  tag?: string;
-  digest?: string;
 }
 
 /**
@@ -1757,23 +1797,20 @@ export interface BaseImageDependency {
  * image cache is enabled or not. Default value: false .
  * @member {string} dockerFilePath The Docker file path relative to the source
  * context.
+ * @member {array} [argumentsProperty] The collection of override arguments to
+ * be used when executing this build step.
  * @member {string} [contextPath] The URL(absolute or relative) of the source
  * context for the build task.
  * If it is relative, the context will be relative to the source repository URL
  * of the build task.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing this build step.
- * @member {array} [baseImageDependencies] List of base image dependencies for
- * a step.
  */
 export interface DockerBuildStep extends TaskStepProperties {
   imageNames?: string[];
   isPushEnabled?: boolean;
   noCache?: boolean;
   dockerFilePath: string;
-  contextPath?: string;
   argumentsProperty?: Argument[];
-  baseImageDependencies?: BaseImageDependency[];
+  contextPath?: string;
 }
 
 /**
@@ -1786,21 +1823,18 @@ export interface DockerBuildStep extends TaskStepProperties {
  * path relative to the source context.
  * @member {string} [valuesFilePath] The task values/parameters file path
  * relative to the source context.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  * @member {string} [contextPath] The URL(absolute or relative) of the source
  * context for the build task.
  * If it is relative, the context will be relative to the source repository URL
  * of the build task.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing this build step.
- * @member {array} [baseImageDependencies] List of base image dependencies for
- * a step.
  */
 export interface BuildTaskStep extends TaskStepProperties {
   definitionFilePath: string;
   valuesFilePath?: string;
+  values?: SetValue[];
   contextPath?: string;
-  argumentsProperty?: Argument[];
-  baseImageDependencies?: BaseImageDependency[];
 }
 
 /**
@@ -1813,10 +1847,13 @@ export interface BuildTaskStep extends TaskStepProperties {
  * template/definition file content.
  * @member {string} [valuesContent] Base64 encoded value of the
  * parameters/values file content.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  */
 export interface RunTaskStep extends TaskStepProperties {
   taskDefinitionContent: string;
   valuesContent?: string;
+  values?: SetValue[];
 }
 
 /**
@@ -1833,20 +1870,20 @@ export interface RunTaskStep extends TaskStepProperties {
  * image cache is enabled or not.
  * @member {string} [dockerFilePath] The Docker file path relative to the
  * source context.
+ * @member {array} [argumentsProperty] The collection of override arguments to
+ * be used when executing this build step.
  * @member {string} [contextPath] The URL(absolute or relative) of the source
  * context for the build task.
  * If it is relative, the context will be relative to the source repository URL
  * of the build task.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing this build step.
  */
 export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameters {
   imageNames?: string[];
   isPushEnabled?: boolean;
   noCache?: boolean;
   dockerFilePath?: string;
-  contextPath?: string;
   argumentsProperty?: Argument[];
+  contextPath?: string;
 }
 
 /**
@@ -1859,18 +1896,18 @@ export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameter
  * file path relative to the source context.
  * @member {string} [valuesFilePath] The task values/parameters file path
  * relative to the source context.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  * @member {string} [contextPath] The URL(absolute or relative) of the source
  * context for the build task.
  * If it is relative, the context will be relative to the source repository URL
  * of the build task.
- * @member {array} [argumentsProperty] The collection of override arguments to
- * be used when executing this build step.
  */
 export interface BuildTaskStepUpdateParameters extends TaskStepUpdateParameters {
   definitionFilePath?: string;
   valuesFilePath?: string;
+  values?: SetValue[];
   contextPath?: string;
-  argumentsProperty?: Argument[];
 }
 
 /**
@@ -1883,10 +1920,13 @@ export interface BuildTaskStepUpdateParameters extends TaskStepUpdateParameters 
  * template/definition file content.
  * @member {string} [valuesContent] Base64 encoded value of the
  * parameters/values file content.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
  */
 export interface RunTaskStepUpdateParameters extends TaskStepUpdateParameters {
   taskDefinitionContent?: string;
   valuesContent?: string;
+  values?: SetValue[];
 }
 
 

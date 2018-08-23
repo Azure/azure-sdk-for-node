@@ -1030,8 +1030,8 @@ export interface Registries {
      *
      * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {array} [runRequest.argumentsProperty] The collection of override
-     * arguments to be used when executing the run.
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
      *
      * @param {string} runRequest.type Polymorphic Discriminator
      *
@@ -1059,8 +1059,8 @@ export interface Registries {
      *
      * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {array} [runRequest.argumentsProperty] The collection of override
-     * arguments to be used when executing the run.
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
      *
      * @param {string} runRequest.type Polymorphic Discriminator
      *
@@ -1668,8 +1668,8 @@ export interface Registries {
      *
      * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {array} [runRequest.argumentsProperty] The collection of override
-     * arguments to be used when executing the run.
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
      *
      * @param {string} runRequest.type Polymorphic Discriminator
      *
@@ -1697,8 +1697,8 @@ export interface Registries {
      *
      * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {array} [runRequest.argumentsProperty] The collection of override
-     * arguments to be used when executing the run.
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
      *
      * @param {string} runRequest.type Polymorphic Discriminator
      *
