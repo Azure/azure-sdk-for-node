@@ -818,6 +818,9 @@ export interface RoleAssignments {
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID, e.g. user, service principal.
+     *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
      *
@@ -856,6 +859,9 @@ export interface RoleAssignments {
      * @param {string} [parameters.principalId] The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
+     *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID, e.g. user, service principal.
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
@@ -1020,6 +1026,9 @@ export interface RoleAssignments {
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID, e.g. user, service principal.
+     *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
      *
@@ -1049,6 +1058,9 @@ export interface RoleAssignments {
      * @param {string} [parameters.principalId] The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
+     *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID, e.g. user, service principal.
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
