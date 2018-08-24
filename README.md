@@ -34,13 +34,13 @@ so that we may prioritize it in the backlog.
 ## Documentation
 
 Documentation of the supported sdks can be found at two places:
-- https://azure.github.io/azure-sdk-for-node - This website primarily provides sdk documentation for 
+- https://azure.github.io/azure-sdk-for-node - This website primarily provides sdk documentation for
   - ASM based services (azure-**asm**-*)
   - some old data plane sdks like `azure-sb`, `azure-scheduler`, `azure-storage-legacy`, `azure-monitoring`, etc.
   - runtime sdks like `ms-rest`, `ms-rest-azure`, `azure-common`
 - https://aka.ms/azure-node-sdk - This website primarily provides sdk documentation for
   - ARM based services (azure-**arm**-*)
-  - newer data plane sdks like `azure-batch`, `azure-graph`, `azure-monitor`, etc.
+  - newer data plane sdks like `azure-batch`, `azure-graph`, etc.
 
 ## Authenticating
 
@@ -49,7 +49,7 @@ There are three ways to authenticate against Azure while using the management pl
 
 ## AzureNodeEssentials VSCode extension
 
-The [AzureNodeEssentials](https://marketplace.visualstudio.com/items?itemName=azuresdkteam.azurenodeessentials) extension helps you easily interact with Azure. 
+The [AzureNodeEssentials](https://marketplace.visualstudio.com/items?itemName=azuresdkteam.azurenodeessentials) extension helps you easily interact with Azure.
 It helps you:
 - create a project scaffolding
 - install correct dependencies
@@ -69,7 +69,6 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)      | `npm install azure-servicefabric` |
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
-| [Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/)           | `npm install azure-monitor`       |
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
 | **Azure Resource Management (ARM) (Control plane)**                                                                                         |
 | [Advisor](https://docs.microsoft.com/en-us/rest/api/advisor/) | `npm install azure-arm-advisor`    |

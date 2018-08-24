@@ -9,12 +9,12 @@ const isBuffer = require('is-buffer');
 const utils = require('./utils');
 
 /**
- * Serializes the JSON Object. It serializes Buffer object to a 
- * 'base64' encoded string and a Date Object to a string 
+ * Serializes the JSON Object. It serializes Buffer object to a
+ * 'base64' encoded string and a Date Object to a string
  * compliant with ISO8601 format.
- * 
+ *
  * @param {Object} toSerialize
- * 
+ *
  * @returns {Object} serializedObject
  */
 exports.serializeObject = function (toSerialize) {
@@ -58,16 +58,41 @@ exports.serialize = function (mapper, object, objectName) {
   let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
-  //Throw if required and object is null or undefined
-  if (mapper.required && (object === null || object === undefined) && !mapper.isConstant) {
-    throw new Error(`${objectName} cannot be null or undefined.`);
-  }
   //Set Defaults
   if ((mapper.defaultValue !== null && mapper.defaultValue !== undefined) &&
     (object === null || object === undefined)) {
     object = mapper.defaultValue;
   }
   if (mapper.isConstant) object = mapper.defaultValue;
+
+  // This table of allowed values should help explain
+  // the mapper.required and mapper.nullable properties.
+  // X means "neither undefined or null are allowed".
+  //           || required
+  //           || true      | false
+  //  nullable || ==========================
+  //      true || null      | undefined/null
+  //     false || X         | undefined
+  // undefined || X         | undefined/null
+
+  const required = mapper.required;
+  const nullable = mapper.nullable;
+
+  if (required && nullable && object === undefined) {
+    throw new Error(`${objectName} cannot be undefined.`);
+  }
+  if (required && !nullable && object == undefined) {
+    throw new Error(`${objectName} cannot be null or undefined.`);
+  }
+  if (!required && nullable === false && object === null) {
+    throw new Error(`${objectName} cannot be null.`);
+  }
+
+  // if null or undefined, the only validation is from the checks against the required and nullable properties.
+  if (object == undefined) {
+    return object;
+  }
+
   //Validate Constraints if any
   validateConstraints.call(this, mapper, object, objectName);
   if (mapperType.match(/^any$/ig) !== null) {
@@ -197,7 +222,7 @@ function serializeCompositeType(mapper, object, objectName) {
       if (!mapper.type.className) {
         throw new Error(`Class name for model "${objectName}" is not provided in the mapper "${JSON.stringify(mapper, null, 2)}".`);
       }
-      //get the mapper if modelProperties of the CompositeType is not present and 
+      //get the mapper if modelProperties of the CompositeType is not present and
       //then get the modelProperties from it.
       modelMapper = new this.models[mapper.type.className]().mapper();
       if (!modelMapper) {
@@ -228,9 +253,6 @@ function serializeCompositeType(mapper, object, objectName) {
           if (modelProps[key].isPolymorphicDiscriminator){
             //add expected polymorphic discriminator when serializing if it is missing
             object[key] = mapper.serializedName;
-          } else if (modelProps[key].required && !modelProps[key].isConstant) {
-            //required properties of the CompositeType must be present
-            throw new Error(`${key}" cannot be null or undefined in "${objectName}".`);
           }
         }
 
@@ -238,9 +260,8 @@ function serializeCompositeType(mapper, object, objectName) {
         if (modelProps[key].readOnly) {
           continue;
         }
-        //serialize the property if it is present in the provided object instance
-        if (((parentObject !== null && parentObject !== undefined) && (modelProps[key].defaultValue !== null && modelProps[key].defaultValue !== undefined)) ||
-          (object[key] !== null && object[key] !== undefined)) {
+
+        if (parentObject !== null && parentObject !== undefined) {
           let propertyObjectName = objectName;
           if (modelProps[key].serializedName !== '') propertyObjectName = objectName + '.' + modelProps[key].serializedName;
           let propertyMapper = modelProps[key];
@@ -264,11 +285,11 @@ function serializeCompositeType(mapper, object, objectName) {
         let serializedValue = exports.serializeObject(objectToSerialize);
         // Validates whether the additional properties are of the specified type
         serializedValue = exports.serialize.call(this, additionalPropertiesMapper, serializedValue , objectName);
-        
+
         for (let prop in serializedValue) {
           if (payload[prop]) {
             let msg = `AdditionalProperty "${prop}" is already present in the serialized payload ${JSON.stringify(payload)}, which creates a conflict.`;
-           throw new Error(msg); 
+           throw new Error(msg);
           } else {
             payload[prop] = serializedValue[prop];
           }
@@ -372,7 +393,7 @@ function serializeDateTypes(typeName, value, objectName) {
       }
       value = dateToUnixTime(value);
     } else if (typeName.match(/^TimeSpan$/ig) !== null) {
-      if (!(moment.isDuration(value) || 
+      if (!(moment.isDuration(value) ||
       (value.constructor && value.constructor.name === 'Duration' && value.isValid && value.isValid()))) {
         throw new Error(`${objectName} must be a TimeSpan/Duration.`);
       }
@@ -395,7 +416,7 @@ function serializeDateTypes(typeName, value, objectName) {
  */
 exports.deserialize = function (mapper, responseBody, objectName) {
   if (responseBody === null || responseBody === undefined) {
-    if (mapper && mapper.isConstant) { 
+    if (mapper && mapper.isConstant) {
       responseBody = mapper.defaultValue;
     } else {
       return responseBody;
@@ -415,7 +436,7 @@ exports.deserialize = function (mapper, responseBody, objectName) {
   } else if (mapperType.match(/^UnixTime$/ig) !== null) {
     payload = unixTimeToDate(responseBody);
   } else if (mapperType.match(/^ByteArray$/ig) !== null) {
-    payload = new Buffer(responseBody, 'base64');
+    payload = Buffer.from(responseBody, 'base64');
   } else if (mapperType.match(/^Base64Url$/ig) !== null) {
     payload = base64UrlToBuffer(responseBody);
   } else if (mapperType.match(/^Sequence$/ig) !== null) {
@@ -481,7 +502,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
       if (!mapper.type.className) {
         throw new Error(`Class name for model "${objectName}" is not provided in the mapper "${JSON.stringify(mapper)}"`);
       }
-      //get the mapper if modelProperties of the CompositeType is not present and 
+      //get the mapper if modelProperties of the CompositeType is not present and
       //then get the modelProperties from it.
       modelMapper = new this.models[mapper.type.className]().mapper();
       if (!modelMapper) {
@@ -502,7 +523,7 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
           jpath.push(`["${item}"]`);
         });
         serializedpropertyNamesInMapper[modelProps[key].serializedName] = paths;
-        
+
         //deserialize the property if it is present in the provided responseBody instance
         let propertyInstance;
         try {
@@ -554,14 +575,14 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
         for (let prop in serializedValue) {
           if (instance[prop]) {
             let msg = `AdditionalProperty "${prop}" is already present in the deserialized instance ${JSON.stringify(instance)}, which creates a conflict.`;
-           throw new Error(msg); 
+           throw new Error(msg);
           } else {
             instance[prop] = serializedValue[prop];
           }
         }
       }
     }
-    
+
     return instance;
   }
   return responseBody;
@@ -588,14 +609,14 @@ function splitSerializeName(prop) {
 function getPolymorphicMapper(mapper, object, objectName, mode) {
   /*jshint validthis: true */
   //check for polymorphic discriminator
-  //Until version 1.15.1, 'polymorphicDiscriminator' in the mapper was a string. This method was not effective when the 
-  //polymorphicDiscriminator property had a dot in it's name. So we have comeup with a desgin where polymorphicDiscriminator  
-  //will be an object that contains the clientName (normalized property name, ex: 'odatatype') and 
-  //the serializedName (ex: 'odata.type') (We do not escape the dots with double backslash in this case as it is not required). 
+  //Until version 1.15.1, 'polymorphicDiscriminator' in the mapper was a string. This method was not effective when the
+  //polymorphicDiscriminator property had a dot in it's name. So we have comeup with a desgin where polymorphicDiscriminator
+  //will be an object that contains the clientName (normalized property name, ex: 'odatatype') and
+  //the serializedName (ex: 'odata.type') (We do not escape the dots with double backslash in this case as it is not required).
   //Thus when serializing, the user will give us an object which will contain the normalizedProperty hence we will lookup
-  //the clientName of the polmorphicDiscriminator in the mapper and during deserialization from the responseBody we will 
+  //the clientName of the polmorphicDiscriminator in the mapper and during deserialization from the responseBody we will
   //lookup the serializedName of the polmorphicDiscriminator in the mapper. This will help us in selecting the correct mapper
-  //for the model that needs to be serializes or deserialized. 
+  //for the model that needs to be serializes or deserialized.
   //We need this routing for backwards compatibility. This will absorb the breaking change in the mapper and allow new versions
   //of the runtime to work seamlessly with older version (>= 0.17.0-Nightly20161008) of Autorest generated node.js clients.
   if (mapper.type.polymorphicDiscriminator) {
@@ -704,7 +725,7 @@ function base64UrlToBuffer(str) {
   // Base64Url to Base64.
   str = str.replace(/\-/g, '+').replace(/\_/g, '/');
   // Base64 to Buffer.
-  return new Buffer(str, 'base64');
+  return Buffer.from(str, 'base64');
 }
 
 function dateToUnixTime(d) {

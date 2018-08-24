@@ -1,3 +1,10 @@
+## 2018.06.24 version 2.3.1-preview
+* Added client library for Log Analytics
+
+## 2018.06.12 version 2.3.0-preview
+* Updated dependencies based on `npm audit` warnings
+* Removed deprecated `azure-monitor` from `azure` package
+
 ## 2017.10.11 version 2.2.1-preview
 * Restricting dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0. Updated packages are:
   * azure
@@ -29,7 +36,7 @@
   * VisualStudio Management ([azure-arm-visualstudio](https://www.npmjs.com/search?q=azure-arm-visualstudio))
 * **Deprecated some** client libraries:
   * [azure-arm-intune](https://www.npmjs.com/search?q=azure-arm-intune) has been deprecated as the service has been deprecated.
-  * [azure-arm-insights](https://www.npmjs.com/search?q=azure-arm-insights) and [azure-insights](https://www.npmjs.com/search?q=azure-insights) have been deprecated and replaced with [azure-arm-monitor](https://www.npmjs.com/search?q=azure-arm-monitor) and [azure-monitor](https://www.npmjs.com/search?q=azure-arm-monitor) respectively.
+  * [azure-arm-insights](https://www.npmjs.com/search?q=azure-arm-insights) and [azure-insights](https://www.npmjs.com/search?q=azure-insights) have been deprecated and replaced with [azure-arm-monitor](https://www.npmjs.com/search?q=azure-arm-monitor)(https://www.npmjs.com/search?q=azure-arm-monitor).
   * [azure-arm-documentdb](https://www.npmjs.com/search?q=azure-arm-documentdb) has been deprecated and replaced with [azure-arm-cosmosdb](https://www.npmjs.com/search?q=azure-arm-cosmosdb).
 * **Runtime** (ms-rest and ms-rest-azure) updates:
   * Added support for MSI Authentication. #2224
@@ -116,7 +123,7 @@
 
 ## 2014.10.02 Version 0.10.0
 * Switch to use "azure-storage" from "azure-storage-legacy"
-* Fix retry logic on http status code 408 
+* Fix retry logic on http status code 408
 
 ## 2014.09.10 Version 0.9.16
 * Release new azure authorization clients

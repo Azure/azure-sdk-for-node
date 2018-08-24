@@ -312,6 +312,9 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -437,6 +440,9 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
+     *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1276,8 +1282,8 @@ export interface StorageAccounts {
      * @param {string} parameters.canonicalizedResource The canonical path to the
      * signed resource.
      *
-     * @param {string} parameters.resource The signed services accessible with the
-     * service SAS. Possible values include: Blob (b), Container (c), File (f),
+     * @param {string} [parameters.resource] The signed services accessible with
+     * the service SAS. Possible values include: Blob (b), Container (c), File (f),
      * Share (s). Possible values include: 'b', 'c', 'f', 's'
      *
      * @param {string} [parameters.permissions] The signed permissions for the
@@ -1356,8 +1362,8 @@ export interface StorageAccounts {
      * @param {string} parameters.canonicalizedResource The canonical path to the
      * signed resource.
      *
-     * @param {string} parameters.resource The signed services accessible with the
-     * service SAS. Possible values include: Blob (b), Container (c), File (f),
+     * @param {string} [parameters.resource] The signed services accessible with
+     * the service SAS. Possible values include: Blob (b), Container (c), File (f),
      * Share (s). Possible values include: 'b', 'c', 'f', 's'
      *
      * @param {string} [parameters.permissions] The signed permissions for the
@@ -1757,6 +1763,9 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1882,6 +1891,9 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
+     *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *

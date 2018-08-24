@@ -10,7 +10,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2017-07-01', '*')
+.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2018-04-01', '*')
   .reply(409, "{\"error\":{\"code\":\"MissingSubscriptionRegistration\",\"message\":\"The subscription is not registered to use namespace 'Microsoft.Devices'. See https://aka.ms/rps-not-found for how to register subscriptions.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2017-07-01', '*')
+.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2018-04-01', '*')
   .reply(409, "{\"error\":{\"code\":\"MissingSubscriptionRegistration\",\"message\":\"The subscription is not registered to use namespace 'Microsoft.Devices'. See https://aka.ms/rps-not-found for how to register subscriptions.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -148,13 +148,13 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2017-07-01', '*')
+.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2018-04-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412\",\"name\":\"testiot7412\",\"type\":\"Microsoft.Devices/IotHubs\",\"location\":\"westus\",\"tags\":{},\"subscriptionid\":\"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\"resourcegroup\":\"testg1012\",\"properties\":{\"state\":\"Activating\",\"provisioningState\":\"Accepted\",\"enableFileUploadNotifications\":false,\"cloudToDevice\":{\"maxDeliveryCount\":10,\"defaultTtlAsIso8601\":\"PT1H\",\"feedback\":{\"lockDurationAsIso8601\":\"PT1M\",\"ttlAsIso8601\":\"PT1H\",\"maxDeliveryCount\":10}},\"features\":\"None\",\"generationNumber\":0},\"sku\":{\"name\":\"S1\",\"tier\":\"Standard\",\"capacity\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '655',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-resource-requests': '4999',
   'x-ms-request-id': '2655cd72-0963-431b-8089-08eb942cf783',
@@ -168,13 +168,13 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2017-07-01', '*')
+.put('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2018-04-01', '*')
   .reply(201, "{\"id\":\"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412\",\"name\":\"testiot7412\",\"type\":\"Microsoft.Devices/IotHubs\",\"location\":\"westus\",\"tags\":{},\"subscriptionid\":\"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\"resourcegroup\":\"testg1012\",\"properties\":{\"state\":\"Activating\",\"provisioningState\":\"Accepted\",\"enableFileUploadNotifications\":false,\"cloudToDevice\":{\"maxDeliveryCount\":10,\"defaultTtlAsIso8601\":\"PT1H\",\"feedback\":{\"lockDurationAsIso8601\":\"PT1M\",\"ttlAsIso8601\":\"PT1H\",\"maxDeliveryCount\":10}},\"features\":\"None\",\"generationNumber\":0},\"sku\":{\"name\":\"S1\",\"tier\":\"Standard\",\"capacity\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '655',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-resource-requests': '4999',
   'x-ms-request-id': '2655cd72-0963-431b-8089-08eb942cf783',
@@ -187,7 +187,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -205,7 +205,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -223,7 +223,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -241,7 +241,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -259,7 +259,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -277,7 +277,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -295,7 +295,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
@@ -313,7 +313,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2017-07-01&asyncinfo')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412/operationResults/NWRkYWJiOTctZGMyYS00YjZiLTg2M2QtMzM3YjI2YzI3ZDNl?api-version=2018-04-01&asyncinfo')
   .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '22',
@@ -331,7 +331,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2017-07-01')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2018-04-01')
   .reply(200, "{\"id\":\"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412\",\"name\":\"testiot7412\",\"type\":\"Microsoft.Devices/IotHubs\",\"location\":\"westus\",\"tags\":{},\"subscriptionid\":\"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\"resourcegroup\":\"testg1012\",\"etag\":\"AAAAAAEIW4A=\",\"properties\":{\"state\":\"Active\",\"provisioningState\":\"Succeeded\",\"ipFilterRules\":[],\"hostName\":\"testiot7412.azure-devices.net\",\"eventHubEndpoints\":{\"events\":{\"retentionTimeInDays\":1,\"partitionCount\":4,\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"],\"path\":\"testiot7412\",\"endpoint\":\"sb://iothub-ns-testiot741-186812-e6669b9ad6.servicebus.windows.net/\"},\"operationsMonitoringEvents\":{\"retentionTimeInDays\":1,\"partitionCount\":4,\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"],\"path\":\"testiot7412-operationmonitoring\",\"endpoint\":\"sb://iothub-ns-testiot741-186812-e6669b9ad6.servicebus.windows.net/\"}},\"routing\":{\"endpoints\":{\"serviceBusQueues\":[],\"serviceBusTopics\":[],\"eventHubs\":[]},\"routes\":[],\"fallbackRoute\":{\"name\":\"$fallback\",\"source\":\"DeviceMessages\",\"condition\":\"true\",\"endpointNames\":[\"events\"],\"isEnabled\":true}},\"storageEndpoints\":{\"$default\":{\"sasTtlAsIso8601\":\"PT1H\",\"connectionString\":\"\",\"containerName\":\"\"}},\"messagingEndpoints\":{\"fileNotifications\":{\"lockDurationAsIso8601\":\"PT1M\",\"ttlAsIso8601\":\"PT1H\",\"maxDeliveryCount\":10}},\"enableFileUploadNotifications\":false,\"cloudToDevice\":{\"maxDeliveryCount\":10,\"defaultTtlAsIso8601\":\"PT1H\",\"feedback\":{\"lockDurationAsIso8601\":\"PT1M\",\"ttlAsIso8601\":\"PT1H\",\"maxDeliveryCount\":10}},\"operationsMonitoringProperties\":{\"events\":{\"None\":\"None\",\"Connections\":\"None\",\"DeviceTelemetry\":\"None\",\"C2DCommands\":\"None\",\"DeviceIdentityOperations\":\"None\",\"FileUploadOperations\":\"None\",\"Routes\":\"None\"}},\"features\":\"None\",\"generationNumber\":0},\"sku\":{\"name\":\"S1\",\"tier\":\"Standard\",\"capacity\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1826',
@@ -349,7 +349,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2017-07-01')
+  .get('/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412?api-version=2018-04-01')
   .reply(200, "{\"id\":\"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8/resourceGroups/testg1012/providers/Microsoft.Devices/IotHubs/testiot7412\",\"name\":\"testiot7412\",\"type\":\"Microsoft.Devices/IotHubs\",\"location\":\"westus\",\"tags\":{},\"subscriptionid\":\"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\"resourcegroup\":\"testg1012\",\"etag\":\"AAAAAAEIW4A=\",\"properties\":{\"state\":\"Active\",\"provisioningState\":\"Succeeded\",\"ipFilterRules\":[],\"hostName\":\"testiot7412.azure-devices.net\",\"eventHubEndpoints\":{\"events\":{\"retentionTimeInDays\":1,\"partitionCount\":4,\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"],\"path\":\"testiot7412\",\"endpoint\":\"sb://iothub-ns-testiot741-186812-e6669b9ad6.servicebus.windows.net/\"},\"operationsMonitoringEvents\":{\"retentionTimeInDays\":1,\"partitionCount\":4,\"partitionIds\":[\"0\",\"1\",\"2\",\"3\"],\"path\":\"testiot7412-operationmonitoring\",\"endpoint\":\"sb://iothub-ns-testiot741-186812-e6669b9ad6.servicebus.windows.net/\"}},\"routing\":{\"endpoints\":{\"serviceBusQueues\":[],\"serviceBusTopics\":[],\"eventHubs\":[]},\"routes\":[],\"fallbackRoute\":{\"name\":\"$fallback\",\"source\":\"DeviceMessages\",\"condition\":\"true\",\"endpointNames\":[\"events\"],\"isEnabled\":true}},\"storageEndpoints\":{\"$default\":{\"sasTtlAsIso8601\":\"PT1H\",\"connectionString\":\"\",\"containerName\":\"\"}},\"messagingEndpoints\":{\"fileNotifications\":{\"lockDurationAsIso8601\":\"PT1M\",\"ttlAsIso8601\":\"PT1H\",\"maxDeliveryCount\":10}},\"enableFileUploadNotifications\":false,\"cloudToDevice\":{\"maxDeliveryCount\":10,\"defaultTtlAsIso8601\":\"PT1H\",\"feedback\":{\"lockDurationAsIso8601\":\"PT1M\",\"ttlAsIso8601\":\"PT1H\",\"maxDeliveryCount\":10}},\"operationsMonitoringProperties\":{\"events\":{\"None\":\"None\",\"Connections\":\"None\",\"DeviceTelemetry\":\"None\",\"C2DCommands\":\"None\",\"DeviceIdentityOperations\":\"None\",\"FileUploadOperations\":\"None\",\"Routes\":\"None\"}},\"features\":\"None\",\"generationNumber\":0},\"sku\":{\"name\":\"S1\",\"tier\":\"Standard\",\"capacity\":2}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '1826',

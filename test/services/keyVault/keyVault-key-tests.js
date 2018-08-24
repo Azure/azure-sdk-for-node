@@ -16,13 +16,14 @@
 
 'use strict';
 
-var Testutil = require('../../util/util');
-var KeyVault = Testutil.libRequire('services/keyVault');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
-var KvUtils = require('./kv-test-utils.js');
-var Crypto = require('crypto');
-var util = require('util');
-var should = require('should');
+const Testutil = require('../../util/util');
+const KeyVault = Testutil.libRequire('services/keyVault');
+const msRestAzure = require('../../../runtime/ms-rest-azure');
+const MockedTestUtils = require('../../framework/mocked-test-utils');
+const KvUtils = require('./kv-test-utils.js');
+const Crypto = require('crypto');
+const util = require('util');
+const should = require('should');
 
 var series = KvUtils.series;
 var assertExactly = KvUtils.assertExactly;
@@ -35,7 +36,7 @@ var random = KvUtils.getRandom();
 
 var vaultUri = process.env['AZURE_KV_VAULT'];
 if (!vaultUri) {
-    vaultUri = 'https://sdktestvault0511.vault.azure.net';
+    vaultUri = 'https://sdktestvault74.vault.azure.net';
 }
 
 var standardVaultOnly = process.env['AZURE_KV_STANDARD_VAULT_ONLY'];
@@ -52,7 +53,7 @@ describe('Key Vault keys', function () {
   var suiteUtil;
 
   before(function (done) {
-    var credentials = new KeyVault.KeyVaultCredentials(KvUtils.authenticator);
+    var credentials = new msRestAzure.KeyVaultCredentials(KvUtils.authenticator);
     client = new KeyVault.KeyVaultClient(credentials);
 
     suiteUtil = new MockedTestUtils(client, 'keyVault-key-tests');
@@ -131,7 +132,7 @@ describe('Key Vault keys', function () {
       }
 
       function getKeyWOVersion(next) {
-        client.getKey(keyId.baseIdentifier, function (err, keyBundle) {
+        client.getKey(keyId.vault, keyId.name, '', function (err, keyBundle) {
           if (err) throw err;
           compareObjects(createdBundle, keyBundle);
           next();
@@ -139,20 +140,20 @@ describe('Key Vault keys', function () {
       }
 
       function getKeyWithVersion(next) {
-        client.getKey(keyId.identifier, function (err, keyBundle) {
+        client.getKey(keyId.vault, keyId.name, keyId.version, function (err, keyBundle) {
           if (err) throw err;
           compareObjects(createdBundle, keyBundle);
           next();
         });
       }
 
-      function updateKey(keyUri, next) {
+      function updateKey(version, next) {
         var updatingBundle = KvUtils.clone(createdBundle);
         updatingBundle.attributes.expires = new Date('2050-02-02T08:00:00.000Z');
         updatingBundle.key.keyOps = ['encrypt', 'decrypt'];
         updatingBundle.tags = { foo: random.hex(100) };
         var request = { keyOps: updatingBundle.key.keyOps, keyAttributes: updatingBundle.attributes, tags: updatingBundle.tags };
-        client.updateKey(keyUri, request, function (err, keyBundle) {
+        client.updateKey(keyId.vault, keyId.name, version, request, function (err, keyBundle) {
           if (err) throw err;
           updatingBundle.attributes.updated = keyBundle.attributes.updated;
           compareObjects(updatingBundle, keyBundle);
@@ -162,11 +163,11 @@ describe('Key Vault keys', function () {
       }
 
       function updateKeyWOVersion(next) {
-        return updateKey(keyId.baseIdentifier, next);
+        return updateKey('', next);
       }
 
       function updateKeyWithVersion(next) {
-        return updateKey(keyId.identifier, next);
+        return updateKey(keyId.version, next);
       }
 
       function deleteKey(next) {
@@ -178,7 +179,7 @@ describe('Key Vault keys', function () {
       }
 
       function getKeyReturnsNotFound(next) {
-        client.getKey(keyId.baseIdentifier, function (err, keyBundle) {
+        client.getKey(keyId.vault, keyId.name, '', function (err, keyBundle) {
           if (!err || !err.code || err.code !== 'KeyNotFound' || !err.statusCode || err.statusCode !== 404) {
             throw new Error('Unexpected error object: ' + JSON.stringify(err, null, ' '));
           }
@@ -460,7 +461,7 @@ describe('Key Vault keys', function () {
       }
 
       function encryptWOVersion(next) {
-        client.encrypt(keyId.baseIdentifier, 'RSA-OAEP', plainText, function (err, result) {
+        client.encrypt(keyId.vault, keyId.name, '', 'RSA-OAEP', plainText, function (err, result) {
           if (err) throw err;
           cipherText = result.result;
           next();
@@ -468,7 +469,7 @@ describe('Key Vault keys', function () {
       }
 
       function decryptWOVersion(next) {
-        client.decrypt(keyId.baseIdentifier, 'RSA-OAEP', cipherText, function (err, result) {
+        client.decrypt(keyId.vault, keyId.name, '', 'RSA-OAEP', cipherText, function (err, result) {
           if (err) throw err;
           compareObjects(plainText, result.result);
           next();
@@ -476,7 +477,7 @@ describe('Key Vault keys', function () {
       }
 
       function encryptWithVersion(next) {
-        client.encrypt(keyId.identifier, 'RSA-OAEP', plainText, function (err, result) {
+        client.encrypt(keyId.vault, keyId.name, keyId.version, 'RSA-OAEP', plainText, function (err, result) {
           if (err) throw err;
           cipherText = result.result;
           next();
@@ -484,7 +485,7 @@ describe('Key Vault keys', function () {
       }
 
       function decryptWithVersion(next) {
-        client.decrypt(keyId.identifier, 'RSA-OAEP', cipherText, function (err, result) {
+        client.decrypt(keyId.vault, keyId.name, keyId.version, 'RSA-OAEP', cipherText, function (err, result) {
           if (err) throw err;
           compareObjects(plainText, result.result);
           next();
@@ -521,7 +522,7 @@ describe('Key Vault keys', function () {
       }
 
       function wrapWOVersion(next) {
-        client.wrapKey(keyId.baseIdentifier, 'RSA-OAEP', plainText, function (err, result) {
+        client.wrapKey(keyId.vault, keyId.name, '', 'RSA-OAEP', plainText, function (err, result) {
           if (err) throw err;
           cipherText = result.result;
           next();
@@ -529,7 +530,7 @@ describe('Key Vault keys', function () {
       }
 
       function unwrapWOVersion(next) {
-        client.unwrapKey(keyId.baseIdentifier, 'RSA-OAEP', cipherText, function (err, result) {
+        client.unwrapKey(keyId.vault, keyId.name, '', 'RSA-OAEP', cipherText, function (err, result) {
           if (err) throw err;
           compareObjects(plainText, result.result);
           next();
@@ -537,7 +538,7 @@ describe('Key Vault keys', function () {
       }
 
       function wrapWithVersion(next) {
-        client.wrapKey(keyId.identifier, 'RSA-OAEP', plainText, function (err, result) {
+        client.wrapKey(keyId.vault, keyId.name, keyId.version, 'RSA-OAEP', plainText, function (err, result) {
           if (err) throw err;
           cipherText = result.result;
           next();
@@ -545,7 +546,7 @@ describe('Key Vault keys', function () {
       }
 
       function unwrapWithVersion(next) {
-        client.unwrapKey(keyId.identifier, 'RSA-OAEP', cipherText, function (err, result) {
+        client.unwrapKey(keyId.vault, keyId.name, keyId.version, 'RSA-OAEP', cipherText, function (err, result) {
           if (err) throw err;
           compareObjects(plainText, result.result);
           next();
@@ -585,7 +586,7 @@ describe('Key Vault keys', function () {
       }
 
       function signWOVersion(next) {
-        client.sign(keyId.baseIdentifier, 'RS256', digest, function (err, result) {
+        client.sign(keyId.vault, keyId.name, '', 'RS256', digest, function (err, result) {
           if (err) throw err;
           signature = result.result;
           next();
@@ -593,7 +594,7 @@ describe('Key Vault keys', function () {
       }
 
       function verifyWOVersion(next) {
-        client.verify(keyId.baseIdentifier, 'RS256', digest, signature, function (err, result) {
+        client.verify(keyId.vault, keyId.name, '', 'RS256', digest, signature, function (err, result) {
           if (err) throw err;
           if (!result.value) {
             throw new Error('Expected {value:true}, but found ' + JSON.stringify(result));
@@ -603,7 +604,7 @@ describe('Key Vault keys', function () {
       }
 
       function signWithVersion(next) {
-        client.sign(keyId.identifier, 'RS256', digest, function (err, result) {
+        client.sign(keyId.vault, keyId.name, keyId.version, 'RS256', digest, function (err, result) {
           if (err) throw err;
           signature = result.result;
           next();
@@ -611,7 +612,7 @@ describe('Key Vault keys', function () {
       }
 
       function verifyWithVersion(next) {
-        client.verify(keyId.identifier, 'RS256', digest, signature, function (err, result) {
+        client.verify(keyId.vault, keyId.name, keyId.version, 'RS256', digest, signature, function (err, result) {
           if (err) throw err;
           if (!result.value) {
             throw new Error('Expected {value:true}, but found ' + JSON.stringify(result));
