@@ -7594,6 +7594,18 @@ export interface P2SVpnProfileParameters {
   authenticationMethod?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the VpnProfileResponse class.
+ * @constructor
+ * Vpn Profile Response for package generation
+ *
+ * @member {string} [profileUrl] URL to the VPN profile
+ */
+export interface VpnProfileResponse {
+  profileUrl?: string;
+}
+
 
 /**
  * @class
