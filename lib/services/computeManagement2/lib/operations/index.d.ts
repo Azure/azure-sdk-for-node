@@ -2248,7 +2248,8 @@ export interface VirtualMachineSizes {
 
 
     /**
-     * Lists all available virtual machine sizes for a subscription in a location.
+     * This API is deprecated. Use [Resources
+     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
      *
      * @param {string} location The location upon which virtual-machine-sizes is
      * queried.
@@ -2267,7 +2268,8 @@ export interface VirtualMachineSizes {
     listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
 
     /**
-     * Lists all available virtual machine sizes for a subscription in a location.
+     * This API is deprecated. Use [Resources
+     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
      *
      * @param {string} location The location upon which virtual-machine-sizes is
      * queried.
