@@ -35904,6 +35904,11 @@ export interface VirtualHubs {
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
      *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -35948,6 +35953,11 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
+     *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -36246,6 +36256,11 @@ export interface VirtualHubs {
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
      *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
+     *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -36290,6 +36305,11 @@ export interface VirtualHubs {
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
+     *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',

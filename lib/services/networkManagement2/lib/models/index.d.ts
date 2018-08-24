@@ -7325,6 +7325,32 @@ export interface HubVirtualNetworkConnection extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualHubRoute class.
+ * @constructor
+ * VirtualHub route
+ *
+ * @member {array} [addressPrefixes] list of all addressPrefixes.
+ * @member {string} [nextHopIpAddress] NextHop ip address.
+ */
+export interface VirtualHubRoute {
+  addressPrefixes?: string[];
+  nextHopIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualHubRouteTable class.
+ * @constructor
+ * VirtualHub route table
+ *
+ * @member {array} [routes] list of all routes.
+ */
+export interface VirtualHubRouteTable {
+  routes?: VirtualHubRoute[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualHub class.
  * @constructor
  * VirtualHub Resource.
@@ -7334,6 +7360,9 @@ export interface HubVirtualNetworkConnection extends Resource {
  * @member {array} [virtualNetworkConnections] list of all vnet connections
  * with this VirtualHub.
  * @member {string} [addressPrefix] Address-prefix for this VirtualHub.
+ * @member {object} [routeTable] The routeTable associated with this virtual
+ * hub.
+ * @member {array} [routeTable.routes] list of all routes.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -7343,6 +7372,7 @@ export interface VirtualHub extends Resource {
   virtualWan?: SubResource;
   virtualNetworkConnections?: HubVirtualNetworkConnection[];
   addressPrefix?: string;
+  routeTable?: VirtualHubRouteTable;
   provisioningState?: string;
   readonly etag?: string;
 }
