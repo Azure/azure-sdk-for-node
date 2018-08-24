@@ -355,6 +355,27 @@ export interface LinkedIntegrationRuntimeRequest {
 
 /**
  * @class
+ * Initializes a new instance of the CreateLinkedIntegrationRuntimeRequest class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The ID of the subscription that the linked
+ * integration runtime belongs to.
+ * @member {string} [dataFactoryName] The name of the data factory that the
+ * linked integration runtime belongs to.
+ * @member {string} [dataFactoryLocation] The location of the data factory that
+ * the linked integration runtime belongs to.
+ */
+export interface CreateLinkedIntegrationRuntimeRequest {
+  name?: string;
+  subscriptionId?: string;
+  dataFactoryName?: string;
+  dataFactoryLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ParameterSpecification class.
  * @constructor
  * Definition of a single parameter for an entity.
@@ -6800,7 +6821,7 @@ export interface LinkedIntegrationRuntime {
  * @member {date} [lastStartTime] The time the node last started up.
  * @member {date} [lastStopTime] The integration runtime node last stop time.
  * @member {string} [lastUpdateResult] The result of the last integration
- * runtime node update. Possible values include: 'Succeed', 'Fail'
+ * runtime node update. Possible values include: 'None', 'Succeed', 'Fail'
  * @member {date} [lastStartUpdateTime] The last time for the integration
  * runtime node update start.
  * @member {date} [lastEndUpdateTime] The last time for the integration runtime
@@ -6870,6 +6891,8 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [pushedVersion] The version that the integration runtime is
  * going to update to.
  * @member {string} [latestVersion] The latest version on download center.
+ * @member {date} [autoUpdateETA] The estimated time when the self-hosted
+ * integration runtime will be updated.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6887,6 +6910,7 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   links?: LinkedIntegrationRuntime[];
   readonly pushedVersion?: string;
   readonly latestVersion?: string;
+  readonly autoUpdateETA?: Date;
 }
 
 /**
