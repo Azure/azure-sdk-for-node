@@ -27610,6 +27610,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
      *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -27707,6 +27710,9 @@ export interface Subnets {
      *
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
+     *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
      *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -27946,6 +27952,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
      *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -28043,6 +28052,9 @@ export interface Subnets {
      *
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
+     *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
      *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -38311,7 +38323,7 @@ export interface P2SVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2sVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vspnClientIpsecPolicies]
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
@@ -38375,7 +38387,7 @@ export interface P2SVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2sVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vspnClientIpsecPolicies]
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
@@ -38585,7 +38597,7 @@ export interface P2SVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2sVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vspnClientIpsecPolicies]
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
@@ -38649,7 +38661,7 @@ export interface P2SVpnServerConfigurations {
      * [p2SVpnServerConfigurationParameters.p2sVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
-     * @param {array} [p2SVpnServerConfigurationParameters.vspnClientIpsecPolicies]
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
