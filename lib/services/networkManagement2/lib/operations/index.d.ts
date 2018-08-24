@@ -27610,6 +27610,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
      *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -27707,6 +27710,9 @@ export interface Subnets {
      *
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
+     *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
      *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -27946,6 +27952,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
      *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -28043,6 +28052,9 @@ export interface Subnets {
      *
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
+     *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
      *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
