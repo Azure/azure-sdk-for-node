@@ -647,6 +647,31 @@ export interface HybridConnection extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedSite class.
+ * @constructor
+ * A deleted app.
+ *
+ * @member {number} [deletedSiteId] Numeric id for the deleted site
+ * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
+ * @member {string} [subscription] Subscription containing the deleted site
+ * @member {string} [resourceGroup] ResourceGroup that contained the deleted
+ * site
+ * @member {string} [deletedSiteName] Name of the deleted site
+ * @member {string} [slot] Slot of the deleted site
+ * @member {string} [deletedSiteKind] Kind of site that was deleted
+ */
+export interface DeletedSite extends ProxyOnlyResource {
+  readonly deletedSiteId?: number;
+  readonly deletedTimestamp?: string;
+  readonly subscription?: string;
+  readonly resourceGroup?: string;
+  readonly deletedSiteName?: string;
+  readonly slot?: string;
+  readonly deletedSiteKind?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedServiceIdentity class.
  * @constructor
  * Managed service identity.
@@ -1398,7 +1423,9 @@ export interface HostNameSslState {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
+ * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
+ * .
+ * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -1657,6 +1684,7 @@ export interface Site extends Resource {
   serverFarmId?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -1794,7 +1822,9 @@ export interface SkuDescription {
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
@@ -1838,6 +1868,7 @@ export interface AppServicePlan extends Resource {
   readonly resourceGroup?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
@@ -3029,29 +3060,6 @@ export interface CsmUsageQuota {
   currentValue?: number;
   limit?: number;
   name?: LocalizableString;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedSite class.
- * @constructor
- * A deleted app.
- *
- * @member {number} [deletedSiteId] Numeric id for the deleted site
- * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
- * @member {string} [subscription] Subscription containing the deleted site
- * @member {string} [resourceGroup] ResourceGroup that contained the deleted
- * site
- * @member {string} [deletedSiteName] Name of the deleted site
- * @member {string} [slot] Slot of the deleted site
- */
-export interface DeletedSite {
-  readonly deletedSiteId?: number;
-  readonly deletedTimestamp?: string;
-  readonly subscription?: string;
-  readonly resourceGroup?: string;
-  readonly deletedSiteName?: string;
-  readonly slot?: string;
 }
 
 /**
@@ -5808,7 +5816,9 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
+ * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
+ * .
+ * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -6059,6 +6069,7 @@ export interface SitePatchResource extends ProxyOnlyResource {
   serverFarmId?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -6888,7 +6899,9 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
@@ -6912,6 +6925,7 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly resourceGroup?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
