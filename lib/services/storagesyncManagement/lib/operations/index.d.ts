@@ -209,8 +209,8 @@ export interface StorageSyncServices {
     /**
      * Create a new StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -233,8 +233,8 @@ export interface StorageSyncServices {
     /**
      * Create a new StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -276,8 +276,8 @@ export interface StorageSyncServices {
     /**
      * Get a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -298,8 +298,8 @@ export interface StorageSyncServices {
     /**
      * Get a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -339,8 +339,8 @@ export interface StorageSyncServices {
     /**
      * Patch a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -363,8 +363,8 @@ export interface StorageSyncServices {
     /**
      * Patch a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -406,8 +406,8 @@ export interface StorageSyncServices {
     /**
      * Delete a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -428,8 +428,8 @@ export interface StorageSyncServices {
     /**
      * Delete a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -468,8 +468,8 @@ export interface StorageSyncServices {
     /**
      * Get a StorageSyncService list by Resource group name.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -487,8 +487,8 @@ export interface StorageSyncServices {
     /**
      * Get a StorageSyncService list by Resource group name.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -587,8 +587,8 @@ export interface SyncGroups {
     /**
      * Get a SyncGroup List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -609,8 +609,8 @@ export interface SyncGroups {
     /**
      * Get a SyncGroup List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -650,8 +650,8 @@ export interface SyncGroups {
     /**
      * Create a new SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -678,8 +678,8 @@ export interface SyncGroups {
     /**
      * Create a new SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -725,8 +725,8 @@ export interface SyncGroups {
     /**
      * Get a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -749,8 +749,8 @@ export interface SyncGroups {
     /**
      * Get a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -792,8 +792,8 @@ export interface SyncGroups {
     /**
      * Delete a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -816,8 +816,8 @@ export interface SyncGroups {
     /**
      * Delete a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -867,8 +867,8 @@ export interface CloudEndpoints {
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -919,8 +919,8 @@ export interface CloudEndpoints {
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -990,8 +990,8 @@ export interface CloudEndpoints {
     /**
      * Get a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1016,8 +1016,8 @@ export interface CloudEndpoints {
     /**
      * Get a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1061,8 +1061,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1087,8 +1087,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1131,8 +1131,8 @@ export interface CloudEndpoints {
     /**
      * Get a CloudEndpoint List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1155,8 +1155,8 @@ export interface CloudEndpoints {
     /**
      * Get a CloudEndpoint List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1198,8 +1198,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1228,8 +1228,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1276,8 +1276,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1306,8 +1306,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1355,8 +1355,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1406,8 +1406,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1475,8 +1475,8 @@ export interface CloudEndpoints {
     /**
      * Restore Heartbeat a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1501,8 +1501,8 @@ export interface CloudEndpoints {
     /**
      * Restore Heartbeat a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1545,8 +1545,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1593,8 +1593,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1659,8 +1659,8 @@ export interface CloudEndpoints {
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1711,8 +1711,8 @@ export interface CloudEndpoints {
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1782,8 +1782,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1808,8 +1808,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1852,8 +1852,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1882,8 +1882,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1930,8 +1930,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1960,8 +1960,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2009,8 +2009,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2060,8 +2060,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2129,8 +2129,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2177,8 +2177,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2252,8 +2252,8 @@ export interface ServerEndpoints {
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2301,8 +2301,8 @@ export interface ServerEndpoints {
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2369,8 +2369,8 @@ export interface ServerEndpoints {
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2421,8 +2421,8 @@ export interface ServerEndpoints {
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2492,8 +2492,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2518,8 +2518,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2563,8 +2563,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2589,8 +2589,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2633,8 +2633,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2657,8 +2657,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2700,8 +2700,8 @@ export interface ServerEndpoints {
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2726,8 +2726,8 @@ export interface ServerEndpoints {
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2770,8 +2770,8 @@ export interface ServerEndpoints {
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2819,8 +2819,8 @@ export interface ServerEndpoints {
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2887,8 +2887,8 @@ export interface ServerEndpoints {
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2939,8 +2939,8 @@ export interface ServerEndpoints {
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3010,8 +3010,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3036,8 +3036,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3080,8 +3080,8 @@ export interface ServerEndpoints {
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3106,8 +3106,8 @@ export interface ServerEndpoints {
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3159,8 +3159,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3181,8 +3181,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3222,8 +3222,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3246,8 +3246,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3289,8 +3289,8 @@ export interface RegisteredServers {
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3355,8 +3355,8 @@ export interface RegisteredServers {
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3440,8 +3440,8 @@ export interface RegisteredServers {
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3464,8 +3464,8 @@ export interface RegisteredServers {
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3506,8 +3506,8 @@ export interface RegisteredServers {
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3572,8 +3572,8 @@ export interface RegisteredServers {
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3657,8 +3657,8 @@ export interface RegisteredServers {
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3681,8 +3681,8 @@ export interface RegisteredServers {
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3732,8 +3732,8 @@ export interface Workflows {
     /**
      * Get Workflows resource
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3756,8 +3756,8 @@ export interface Workflows {
     /**
      * Get Workflows resource
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3799,8 +3799,8 @@ export interface Workflows {
     /**
      * Abort the given workflow.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3823,8 +3823,8 @@ export interface Workflows {
     /**
      * Abort the given workflow.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
