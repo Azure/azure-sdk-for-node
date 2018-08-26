@@ -5067,8 +5067,8 @@ export interface StreamingLocators {
      * created or use one of the predefined streaming polices. The predefined
      * streaming policies available are: 'Predefined_DownloadOnly',
      * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
-     * 'Predefined_ClearKey', 'Predefined_SecureStreaming' and
-     * 'Predefined_SecureStreamingWithFairPlay'
+     * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
+     * 'Predefined_MultiDrmStreaming'
      *
      * @param {string} [parameters.defaultContentKeyPolicyName] Default
      * ContentKeyPolicy used by this Streaming Locator
@@ -5124,8 +5124,8 @@ export interface StreamingLocators {
      * created or use one of the predefined streaming polices. The predefined
      * streaming policies available are: 'Predefined_DownloadOnly',
      * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
-     * 'Predefined_ClearKey', 'Predefined_SecureStreaming' and
-     * 'Predefined_SecureStreamingWithFairPlay'
+     * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
+     * 'Predefined_MultiDrmStreaming'
      *
      * @param {string} [parameters.defaultContentKeyPolicyName] Default
      * ContentKeyPolicy used by this Streaming Locator

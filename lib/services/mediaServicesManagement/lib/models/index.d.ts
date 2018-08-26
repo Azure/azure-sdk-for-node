@@ -1104,7 +1104,12 @@ export interface AacAudio extends Audio {
  * input using the BCP-47 format of 'language tag-region' (e.g: 'en-US'). The
  * list of supported languages are, 'en-US', 'en-GB', 'es-ES', 'es-MX',
  * 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN', 'de-DE', 'ar-EG', 'ru-RU',
- * 'hi-IN'.
+ * 'hi-IN'. If not specified, automatic language detection would be employed.
+ * This feature currently supports English, Chinese, French, German, Italian,
+ * Japanese, Spanish, Russian, and Portuguese. The automatic detection works
+ * best with audio recordings with clearly discernable speech. If automatic
+ * detection fails to find the language, transcription would fallback to
+ * English.
  */
 export interface AudioAnalyzerPreset extends Preset {
   audioLanguage?: string;
@@ -1649,11 +1654,14 @@ export interface StandardEncoderPreset extends Preset {
  * A video analyzer preset that extracts insights (rich metadata) from both
  * audio and video, and outputs a JSON format file.
  *
- * @member {boolean} [audioInsightsOnly] Whether to only extract audio insights
- * when processing a video file.
+ * @member {string} [insightsToExtract] The type of insights to be extracted.
+ * If not set then based on the content the type will selected.  If the content
+ * is audi only then only audio insights are extraced and if it is video only.
+ * Possible values include: 'AudioInsightsOnly', 'VideoInsightsOnly',
+ * 'AllInsights'
  */
 export interface VideoAnalyzerPreset extends AudioAnalyzerPreset {
-  audioInsightsOnly?: boolean;
+  insightsToExtract?: string;
 }
 
 /**
@@ -1720,7 +1728,9 @@ export interface VideoOverlay extends Overlay {
  * @member {string} [onError] A Transform can define more than one outputs.
  * This property defines what the service should do when one output fails -
  * either continue to produce other outputs, or, stop the other outputs. The
- * default is stop. Possible values include: 'StopProcessingJob', 'ContinueJob'
+ * overall Job state will not reflect failures of outputs that are specified
+ * with 'ContinueJob'. The default is 'StopProcessingJob'. Possible values
+ * include: 'StopProcessingJob', 'ContinueJob'
  * @member {string} [relativePriority] Sets the relative priority of the
  * TransformOutputs within a Transform. This sets the priority that the service
  * uses for processing TransformOutputs. The default priority is Normal.
@@ -2475,7 +2485,8 @@ export interface StreamingPolicy extends ProxyResource {
  * @member {string} [type] Encryption type of Content Key. Possible values
  * include: 'CommonEncryptionCenc', 'CommonEncryptionCbcs',
  * 'EnvelopeEncryption'
- * @member {string} [label] Label of Content Key
+ * @member {string} [labelReferenceInStreamingPolicy] Label of Content Key as
+ * specified in the Streaming Policy
  * @member {string} [value] Value of  of Content Key
  * @member {string} [policyName] ContentKeyPolicy used by Content Key
  * @member {array} [tracks] Tracks which use this Content Key
@@ -2483,7 +2494,7 @@ export interface StreamingPolicy extends ProxyResource {
 export interface StreamingLocatorContentKey {
   id: string;
   readonly type?: string;
-  label?: string;
+  labelReferenceInStreamingPolicy?: string;
   value?: string;
   readonly policyName?: string;
   readonly tracks?: TrackSelection[];
@@ -2553,8 +2564,8 @@ export interface ListPathsResponse {
  * or use one of the predefined streaming polices. The predefined streaming
  * policies available are: 'Predefined_DownloadOnly',
  * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
- * 'Predefined_ClearKey', 'Predefined_SecureStreaming' and
- * 'Predefined_SecureStreamingWithFairPlay'
+ * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
+ * 'Predefined_MultiDrmStreaming'
  * @member {string} [defaultContentKeyPolicyName] Default ContentKeyPolicy used
  * by this Streaming Locator
  * @member {array} [contentKeys] ContentKeys used by this Streaming Locator
