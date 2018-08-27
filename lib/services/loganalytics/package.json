@@ -1,0 +1,24 @@
+{
+  "name": "azure-loganalytics",
+  "author": "Microsoft Corporation",
+  "description": "LogAnalyticsClient Library with typescript type definitions for node",
+  "version": "0.1.1",
+  "dependencies": {
+    "ms-rest": "^2.3.3"
+  },
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "license": "MIT",
+  "main": "./lib/logAnalyticsClient.js",
+  "types": "./lib/logAnalyticsClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/loganalytics",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  }
+}

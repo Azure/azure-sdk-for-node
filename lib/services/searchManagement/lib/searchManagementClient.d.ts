@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class SearchManagementClient extends AzureServiceClient {
+export default class SearchManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the SearchManagementClient class.
    * @constructor
@@ -55,9 +56,10 @@ declare class SearchManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   adminKeys: operations.AdminKeys;
   queryKeys: operations.QueryKeys;
   services: operations.Services;
 }
 
-export = SearchManagementClient;
+export { SearchManagementClient, models as SearchManagementModels };
