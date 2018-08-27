@@ -186,6 +186,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.authenticationCertificates] Authentication
      * certificates of the application gateway resource.
      *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
+     * certificates of the application gateway resource.
+     *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
      * application gateway resource.
      *
@@ -340,6 +343,9 @@ export interface ApplicationGateways {
      * the gateway resource.
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
+     * certificates of the application gateway resource.
+     *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
      * certificates of the application gateway resource.
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
@@ -1150,6 +1156,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.authenticationCertificates] Authentication
      * certificates of the application gateway resource.
      *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
+     * certificates of the application gateway resource.
+     *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
      * application gateway resource.
      *
@@ -1304,6 +1313,9 @@ export interface ApplicationGateways {
      * the gateway resource.
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
+     * certificates of the application gateway resource.
+     *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
      * certificates of the application gateway resource.
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the

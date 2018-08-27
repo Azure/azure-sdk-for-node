@@ -1417,6 +1417,8 @@ export interface ApplicationGatewayConnectionDraining {
  * @member {string} [probe.id] Resource ID.
  * @member {array} [authenticationCertificates] Array of references to
  * application gateway authentication certificates.
+ * @member {array} [trustedRootCertificates] Array of references to application
+ * gateway trusted root certificates.
  * @member {object} [connectionDraining] Connection draining of the backend
  * http settings resource.
  * @member {boolean} [connectionDraining.enabled] Whether connection draining
@@ -1450,6 +1452,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
   requestTimeout?: number;
   probe?: SubResource;
   authenticationCertificates?: SubResource[];
+  trustedRootCertificates?: SubResource[];
   connectionDraining?: ApplicationGatewayConnectionDraining;
   hostName?: string;
   pickHostNameFromBackendAddress?: boolean;
@@ -1734,6 +1737,8 @@ export interface ApplicationGatewayBackendHealthServer {
  * @member {string} [backendHttpSettings.probe.id] Resource ID.
  * @member {array} [backendHttpSettings.authenticationCertificates] Array of
  * references to application gateway authentication certificates.
+ * @member {array} [backendHttpSettings.trustedRootCertificates] Array of
+ * references to application gateway trusted root certificates.
  * @member {object} [backendHttpSettings.connectionDraining] Connection
  * draining of the backend http settings resource.
  * @member {boolean} [backendHttpSettings.connectionDraining.enabled] Whether
@@ -1900,6 +1905,32 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
  */
 export interface ApplicationGatewayAuthenticationCertificate extends SubResource {
   data?: string;
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayTrustedRootCertificate class.
+ * @constructor
+ * Trusted Root certificates of an application gateway.
+ *
+ * @member {string} [data] Certificate public data.
+ * @member {string} [keyvaultSecretId] KeyVault Secret Id for certificate.
+ * @member {string} [provisioningState] Provisioning state of the trusted root
+ * certificate resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [name] Name of the trusted root certificate that is unique
+ * within an Application Gateway.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {string} [type] Type of the resource.
+ */
+export interface ApplicationGatewayTrustedRootCertificate extends SubResource {
+  data?: string;
+  keyvaultSecretId?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -2372,6 +2403,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * resource.
  * @member {array} [authenticationCertificates] Authentication certificates of
  * the application gateway resource.
+ * @member {array} [trustedRootCertificates] Trusted Root certificates of the
+ * application gateway resource.
  * @member {array} [sslCertificates] SSL certificates of the application
  * gateway resource.
  * @member {array} [frontendIPConfigurations] Frontend IP addresses of the
@@ -2433,6 +2466,7 @@ export interface ApplicationGateway extends Resource {
   readonly operationalState?: string;
   gatewayIPConfigurations?: ApplicationGatewayIPConfiguration[];
   authenticationCertificates?: ApplicationGatewayAuthenticationCertificate[];
+  trustedRootCertificates?: ApplicationGatewayTrustedRootCertificate[];
   sslCertificates?: ApplicationGatewaySslCertificate[];
   frontendIPConfigurations?: ApplicationGatewayFrontendIPConfiguration[];
   frontendPorts?: ApplicationGatewayFrontendPort[];
