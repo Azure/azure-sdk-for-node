@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#files\",\"value\":[\r\n    {\r\n      \"name\":\"applications\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/applications\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"shared\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/shared\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"startup\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/startup\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"workitems\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/workitems\",\"isDirectory\":true\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#files\",\"value\":[\r\n    {\r\n      \"name\":\"applications\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/applications\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"shared\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/shared\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"startup\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/startup\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"workitems\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/workitems\",\"isDirectory\":true\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '200d0573-69aa-44d8-99e6-4260e3633295',
+  'request-id': '69646b9b-fb7f-4c17-b5c8-f3f812d2e9c7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:03:04 GMT',
+  date: 'Tue, 21 Aug 2018 20:29:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#files\",\"value\":[\r\n    {\r\n      \"name\":\"applications\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/applications\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"shared\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/shared\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"startup\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/startup\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"workitems\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_3-20180309t224543z/files/workitems\",\"isDirectory\":true\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#files\",\"value\":[\r\n    {\r\n      \"name\":\"applications\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/applications\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"shared\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/shared\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"startup\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/startup\",\"isDirectory\":true\r\n    },{\r\n      \"name\":\"workitems\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_3-20180821t200555z/files/workitems\",\"isDirectory\":true\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '200d0573-69aa-44d8-99e6-4260e3633295',
+  'request-id': '69646b9b-fb7f-4c17-b5c8-f3f812d2e9c7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:03:04 GMT',
+  date: 'Tue, 21 Aug 2018 20:29:05 GMT',
   connection: 'close' });
  return result; }]];
