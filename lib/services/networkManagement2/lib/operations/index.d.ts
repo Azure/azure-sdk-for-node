@@ -13936,27 +13936,58 @@ export interface NetworkInterfaceTapConfigurations {
      * The reference to the private IP Address of the collector nic that will
      * receive the tap
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
-     * The reference of the subnet resource.
+     * Subnet bound to the IP configuration.
+     *
+     * @param {boolean}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.primary]
+     * Gets whether this is a primary customer address on the network interface.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * The reference of the public IP resource.
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.name]
@@ -13992,6 +14023,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -14282,27 +14317,58 @@ export interface NetworkInterfaceTapConfigurations {
      * The reference to the private IP Address of the collector nic that will
      * receive the tap
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
-     * The reference of the subnet resource.
+     * Subnet bound to the IP configuration.
+     *
+     * @param {boolean}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.primary]
+     * Gets whether this is a primary customer address on the network interface.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * The reference of the public IP resource.
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.name]
@@ -14338,6 +14404,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -14770,27 +14840,58 @@ export interface NetworkInterfaceTapConfigurations {
      * The reference to the private IP Address of the collector nic that will
      * receive the tap
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
-     * The reference of the subnet resource.
+     * Subnet bound to the IP configuration.
+     *
+     * @param {boolean}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.primary]
+     * Gets whether this is a primary customer address on the network interface.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * The reference of the public IP resource.
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.name]
@@ -14826,6 +14927,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -15116,27 +15221,58 @@ export interface NetworkInterfaceTapConfigurations {
      * The reference to the private IP Address of the collector nic that will
      * receive the tap
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
-     * The private IP address of the IP configuration.
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet]
-     * The reference of the subnet resource.
+     * Subnet bound to the IP configuration.
+     *
+     * @param {boolean}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.primary]
+     * Gets whether this is a primary customer address on the network interface.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
-     * The reference of the public IP resource.
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.name]
@@ -15172,6 +15308,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -29349,6 +29489,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
      *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -29446,6 +29589,9 @@ export interface Subnets {
      *
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
+     *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
      *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -29685,6 +29831,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
      *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -29782,6 +29931,9 @@ export interface Subnets {
      *
      * @param {string} [subnetParameters.addressPrefix] The address prefix for the
      * subnet.
+     *
+     * @param {array} [subnetParameters.addressPrefixes] List of  address prefixes
+     * for the subnet.
      *
      * @param {object} [subnetParameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -30752,27 +30904,58 @@ export interface VirtualNetworkTaps {
      * reference to the private IP Address of the collector nic that will receive
      * the tap
      *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress] The
-     * private IP address of the IP configuration.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] The reference
-     * of the subnet resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress] The
-     * reference of the public IP resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
      * The name of the resource that is unique within a resource group. This name
@@ -30804,6 +30987,10 @@ export interface VirtualNetworkTaps {
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -31073,27 +31260,58 @@ export interface VirtualNetworkTaps {
      * reference to the private IP Address of the collector nic that will receive
      * the tap
      *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress] The
-     * private IP address of the IP configuration.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] The reference
-     * of the subnet resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress] The
-     * reference of the public IP resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
      * The name of the resource that is unique within a resource group. This name
@@ -31125,6 +31343,10 @@ export interface VirtualNetworkTaps {
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -31648,27 +31870,58 @@ export interface VirtualNetworkTaps {
      * reference to the private IP Address of the collector nic that will receive
      * the tap
      *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress] The
-     * private IP address of the IP configuration.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] The reference
-     * of the subnet resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress] The
-     * reference of the public IP resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
      * The name of the resource that is unique within a resource group. This name
@@ -31700,6 +31953,10 @@ export interface VirtualNetworkTaps {
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
@@ -31969,27 +32226,58 @@ export interface VirtualNetworkTaps {
      * reference to the private IP Address of the collector nic that will receive
      * the tap
      *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.virtualNetworkTaps]
+     * The reference to Virtual Network Taps.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationGatewayBackendAddressPools]
+     * The reference of ApplicationGatewayBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerBackendAddressPools]
+     * The reference of LoadBalancerBackendAddressPool resource.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.loadBalancerInboundNatRules]
+     * A list of references of LoadBalancerInboundNatRules.
+     *
      * @param {string}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress] The
-     * private IP address of the IP configuration.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddress]
+     * Private IP address of the IP configuration.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAllocationMethod]
-     * The private IP allocation method. Possible values are 'Static' and
-     * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     * Defines how a private IP address is assigned. Possible values are: 'Static'
+     * and 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+     *
+     * @param {string}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.privateIPAddressVersion]
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+     * 'IPv6'
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] The reference
-     * of the subnet resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.subnet] Subnet bound
+     * to the IP configuration.
+     *
+     * @param {boolean}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.primary] Gets whether
+     * this is a primary customer address on the network interface.
      *
      * @param {object}
-     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress] The
-     * reference of the public IP resource.
+     * [parameters.destinationNetworkInterfaceIPConfiguration.publicIPAddress]
+     * Public IP address bound to the IP configuration.
+     *
+     * @param {array}
+     * [parameters.destinationNetworkInterfaceIPConfiguration.applicationSecurityGroups]
+     * Application security groups in which the IP configuration is included.
      *
      * @param {string}
      * [parameters.destinationNetworkInterfaceIPConfiguration.provisioningState]
-     * Gets the provisioning state of the public IP resource. Possible values are:
-     * 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the network interface IP configuration. Possible
+     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string} [parameters.destinationNetworkInterfaceIPConfiguration.name]
      * The name of the resource that is unique within a resource group. This name
@@ -32021,6 +32309,10 @@ export interface VirtualNetworkTaps {
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefix]
      * The address prefix for the subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.addressPrefixes]
+     * List of  address prefixes for the subnet.
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.networkSecurityGroup]
