@@ -729,8 +729,8 @@ export interface ManagementGroupAggregatedCostResult extends Resource {
  *
  * @member {string} [billingPeriodId] The id of the billing period resource
  * that the charge belongs to.
- * @member {string} [startDate] Start date.
- * @member {string} [endDate] End date.
+ * @member {string} [usageStart] Usage start date.
+ * @member {string} [usageEnd] Usage end date.
  * @member {number} [azureCharges] Azure Charges.
  * @member {number} [chargesBilledSeparately] Charges Billed separately.
  * @member {number} [marketplaceCharges] Marketplace Charges.
@@ -738,8 +738,8 @@ export interface ManagementGroupAggregatedCostResult extends Resource {
  */
 export interface ChargeSummaryByEnrollmentAccount extends Resource {
   readonly billingPeriodId?: string;
-  readonly startDate?: string;
-  readonly endDate?: string;
+  readonly usageStart?: string;
+  readonly usageEnd?: string;
   readonly azureCharges?: number;
   readonly chargesBilledSeparately?: number;
   readonly marketplaceCharges?: number;
@@ -766,8 +766,8 @@ export interface ChargesListResultByEnrollmentAccount {
  *
  * @member {string} [billingPeriodId] The id of the billing period resource
  * that the charge belongs to.
- * @member {string} [startDate] Start date.
- * @member {string} [endDate] End date.
+ * @member {string} [usageStart] Usage start date.
+ * @member {string} [usageEnd] Usage end date.
  * @member {number} [azureCharges] Azure Charges.
  * @member {number} [chargesBilledSeparately] Charges Billed separately.
  * @member {number} [marketplaceCharges] Marketplace Charges.
@@ -775,8 +775,8 @@ export interface ChargesListResultByEnrollmentAccount {
  */
 export interface ChargeSummaryByDepartment extends Resource {
   readonly billingPeriodId?: string;
-  readonly startDate?: string;
-  readonly endDate?: string;
+  readonly usageStart?: string;
+  readonly usageEnd?: string;
   readonly azureCharges?: number;
   readonly chargesBilledSeparately?: number;
   readonly marketplaceCharges?: number;
@@ -803,8 +803,8 @@ export interface ChargesListResultByDepartment {
  *
  * @member {string} [billingPeriodId] The id of the billing period resource
  * that the charge belongs to.
- * @member {string} [startDate] Start date.
- * @member {string} [endDate] End date.
+ * @member {string} [usageStart] Usage start date.
+ * @member {string} [usageEnd] Usage end date.
  * @member {number} [azureCharges] Azure Charges.
  * @member {number} [chargesBilledSeparately] Charges Billed separately.
  * @member {number} [marketplaceCharges] Marketplace Charges.
@@ -812,8 +812,8 @@ export interface ChargesListResultByDepartment {
  */
 export interface ChargeSummaryProperties {
   readonly billingPeriodId?: string;
-  readonly startDate?: string;
-  readonly endDate?: string;
+  readonly usageStart?: string;
+  readonly usageEnd?: string;
   readonly azureCharges?: number;
   readonly chargesBilledSeparately?: number;
   readonly marketplaceCharges?: number;
