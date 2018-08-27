@@ -196,8 +196,8 @@ export interface UsageDetail extends Resource {
  * item. By default this is not populated, unless it's specified in $expand.
  * @member {string} [publisherName] The name of publisher.
  * @member {string} [planName] The name of plan.
- * @member {string} [additionalInfo] Additional info of this usage item.
- * @member {boolean} [isRecurringCharge]
+ * @member {boolean} [isRecurringCharge] Flag indicating whether this is a
+ * recurring charge or not.
  */
 export interface Marketplace extends Resource {
   readonly billingPeriodId?: string;
@@ -224,7 +224,6 @@ export interface Marketplace extends Resource {
   readonly additionalProperties?: string;
   readonly publisherName?: string;
   readonly planName?: string;
-  readonly additionalInfo?: string;
   readonly isRecurringCharge?: boolean;
 }
 
