@@ -146,6 +146,25 @@ export interface CloudEndpoint extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the ServerEndpointUpdateParameters class.
+ * @constructor
+ * Parameters for updating an Server Endpoint.
+ *
+ * @member {object} [tags] The user-specified tags associated with the server
+ * endpoint.
+ * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * 'on', 'off'
+ * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * maintained by Cloud Tiering if it is enabled.
+ */
+export interface ServerEndpointUpdateParameters {
+  tags?: { [propertyName: string]: string };
+  cloudTiering?: string;
+  volumeFreeSpacePercent?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServerEndpoint class.
  * @constructor
  * Server Endpoint object.
@@ -463,6 +482,21 @@ export interface PostBackupResponse {
  */
 export interface WorkflowArray {
   value?: Workflow[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSyncServiceUpdateParameters class.
+ * @constructor
+ * Parameters for updating an Storage sync service.
+ *
+ * @member {object} [tags] The user-specified tags associated with the storage
+ * sync service.
+ * @member {object} [properties] The properties of the storage sync service.
+ */
+export interface StorageSyncServiceUpdateParameters {
+  tags?: { [propertyName: string]: string };
+  properties?: any;
 }
 
 /**

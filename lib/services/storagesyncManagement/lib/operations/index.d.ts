@@ -349,6 +349,12 @@ export interface StorageSyncServices {
      *
      * @param {object} [options.parameters] Storage Sync Service resource.
      *
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the storage sync service.
+     *
+     * @param {object} [options.parameters.properties] The properties of the
+     * storage sync service.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -358,7 +364,7 @@ export interface StorageSyncServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncServiceUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
 
     /**
      * Patch a given StorageSyncService.
@@ -372,6 +378,12 @@ export interface StorageSyncServices {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.parameters] Storage Sync Service resource.
+     *
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the storage sync service.
+     *
+     * @param {object} [options.parameters.properties] The properties of the
+     * storage sync service.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -398,9 +410,9 @@ export interface StorageSyncServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
+    update(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncServiceUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
     update(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.StorageSyncService>): void;
-    update(resourceGroupName: string, storageSyncServiceName: string, options: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
+    update(resourceGroupName: string, storageSyncServiceName: string, options: { parameters? : models.StorageSyncServiceUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
 
 
     /**
@@ -2384,28 +2396,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2416,7 +2414,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Patch a given ServerEndpoint.
@@ -2436,28 +2434,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2484,9 +2468,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
     update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<models.ServerEndpoint>): void;
-    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -2902,28 +2886,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2934,7 +2904,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Patch a given ServerEndpoint.
@@ -2954,28 +2924,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3002,9 +2958,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
     beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<models.ServerEndpoint>): void;
-    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
