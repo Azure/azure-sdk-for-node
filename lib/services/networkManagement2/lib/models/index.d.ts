@@ -2687,82 +2687,6 @@ export interface AzureFirewallApplicationRuleCollection extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the AzureFirewallNetworkRule class.
- * @constructor
- * Properties of the network rule.
- *
- * @member {string} [name] Name of the network rule.
- * @member {string} [description] Description of the rule.
- * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
- * @member {array} [sourceAddresses] List of source IP addresses for this rule.
- * @member {array} [destinationAddresses] List of destination IP addresses.
- * @member {array} [destinationPorts] List of destination ports.
- */
-export interface AzureFirewallNetworkRule {
-  name?: string;
-  description?: string;
-  protocols?: string[];
-  sourceAddresses?: string[];
-  destinationAddresses?: string[];
-  destinationPorts?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallNetworkRuleCollection class.
- * @constructor
- * Network rule collection resource
- *
- * @member {number} [priority] Priority of the network rule collection
- * resource.
- * @member {object} [action] The action type of a rule collection
- * @member {string} [action.type] The type of action. Possible values include:
- * 'Allow', 'Deny'
- * @member {array} [rules] Collection of rules used by a network rule
- * collection.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- */
-export interface AzureFirewallNetworkRuleCollection extends SubResource {
-  priority?: number;
-  action?: AzureFirewallRCAction;
-  rules?: AzureFirewallNetworkRule[];
-  provisioningState?: string;
-  name?: string;
-  readonly etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewall class.
- * @constructor
- * Azure Firewall resource
- *
- * @member {array} [applicationRuleCollections] Collection of application rule
- * collections used by a Azure Firewall.
- * @member {array} [networkRuleCollections] Collection of network rule
- * collections used by a Azure Firewall.
- * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
- * resource.
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- */
-export interface AzureFirewall extends Resource {
-  applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
-  networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
-  ipConfigurations?: AzureFirewallIPConfiguration[];
-  provisioningState?: string;
-  readonly etag?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AzureFirewallNatRCAction class.
  * @constructor
  * AzureFirewall NAT Rule Collection Action.
@@ -2827,6 +2751,85 @@ export interface AzureFirewallNatRuleCollection extends SubResource {
   rules?: AzureFirewallNatRule[];
   provisioningState?: string;
   name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNetworkRule class.
+ * @constructor
+ * Properties of the network rule.
+ *
+ * @member {string} [name] Name of the network rule.
+ * @member {string} [description] Description of the rule.
+ * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols.
+ * @member {array} [sourceAddresses] List of source IP addresses for this rule.
+ * @member {array} [destinationAddresses] List of destination IP addresses.
+ * @member {array} [destinationPorts] List of destination ports.
+ */
+export interface AzureFirewallNetworkRule {
+  name?: string;
+  description?: string;
+  protocols?: string[];
+  sourceAddresses?: string[];
+  destinationAddresses?: string[];
+  destinationPorts?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNetworkRuleCollection class.
+ * @constructor
+ * Network rule collection resource
+ *
+ * @member {number} [priority] Priority of the network rule collection
+ * resource.
+ * @member {object} [action] The action type of a rule collection
+ * @member {string} [action.type] The type of action. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [rules] Collection of rules used by a network rule
+ * collection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallNetworkRuleCollection extends SubResource {
+  priority?: number;
+  action?: AzureFirewallRCAction;
+  rules?: AzureFirewallNetworkRule[];
+  provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewall class.
+ * @constructor
+ * Azure Firewall resource
+ *
+ * @member {array} [applicationRuleCollections] Collection of application rule
+ * collections used by a Azure Firewall.
+ * @member {array} [natRuleCollections] Collection of NAT rule collections used
+ * by a Azure Firewall.
+ * @member {array} [networkRuleCollections] Collection of network rule
+ * collections used by a Azure Firewall.
+ * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
+ * resource.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewall extends Resource {
+  applicationRuleCollections?: AzureFirewallApplicationRuleCollection[];
+  natRuleCollections?: AzureFirewallNatRuleCollection[];
+  networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
+  ipConfigurations?: AzureFirewallIPConfiguration[];
+  provisioningState?: string;
   readonly etag?: string;
 }
 
