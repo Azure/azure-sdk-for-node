@@ -20,7 +20,7 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the PolicySku class.
  * @constructor
- * The policy sku.
+ * The policy sku. This property is optional, obsolete, and will be ignored.
  *
  * @member {string} name The name of the policy sku. Possible values are A0 and
  * A1.
@@ -34,12 +34,30 @@ export interface PolicySku {
 
 /**
  * @class
+ * Initializes a new instance of the Identity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal ID of the resource identity.
+ * @member {string} [tenantId] The tenant ID of the resource identity.
+ * @member {string} [type] The identity type. Possible values include:
+ * 'SystemAssigned', 'None'
+ */
+export interface Identity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PolicyAssignment class.
  * @constructor
  * The policy assignment.
  *
  * @member {string} [displayName] The display name of the policy assignment.
- * @member {string} [policyDefinitionId] The ID of the policy definition.
+ * @member {string} [policyDefinitionId] The ID of the policy definition or
+ * policy set definition being assigned.
  * @member {string} [scope] The scope for the policy assignment.
  * @member {array} [notScopes] The policy's excluded scopes.
  * @member {object} [parameters] Required if a parameter is used in policy
@@ -50,11 +68,21 @@ export interface PolicySku {
  * @member {string} [id] The ID of the policy assignment.
  * @member {string} [type] The type of the policy assignment.
  * @member {string} [name] The name of the policy assignment.
- * @member {object} [sku] The policy sku.
+ * @member {object} [sku] The policy sku. This property is optional, obsolete,
+ * and will be ignored.
  * @member {string} [sku.name] The name of the policy sku. Possible values are
  * A0 and A1.
  * @member {string} [sku.tier] The policy sku tier. Possible values are Free
  * and Standard.
+ * @member {string} [location] The location of the policy assignment. Only
+ * required when utilizing managed identity.
+ * @member {object} [identity] The managed identity associated with the policy
+ * assignment.
+ * @member {string} [identity.principalId] The principal ID of the resource
+ * identity.
+ * @member {string} [identity.tenantId] The tenant ID of the resource identity.
+ * @member {string} [identity.type] The identity type. Possible values include:
+ * 'SystemAssigned', 'None'
  */
 export interface PolicyAssignment extends BaseResource {
   displayName?: string;
@@ -68,14 +96,16 @@ export interface PolicyAssignment extends BaseResource {
   readonly type?: string;
   readonly name?: string;
   sku?: PolicySku;
+  location?: string;
+  identity?: Identity;
 }
 
 /**
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error reponse indicates ARM is not able to process the incoming request. The
- * reason is provided in the error message.
+ * Error reponse indicates Azure Resource Manager is not able to process the
+ * incoming request. The reason is provided in the error message.
  *
  * @member {string} [httpStatus] Http status code.
  * @member {string} [errorCode] Error code.
@@ -86,6 +116,42 @@ export interface ErrorResponse {
   httpStatus?: string;
   errorCode?: string;
   errorMessage?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyDefinition class.
+ * @constructor
+ * The policy definition.
+ *
+ * @member {string} [policyType] The type of policy definition. Possible values
+ * are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * 'NotSpecified', 'BuiltIn', 'Custom'
+ * @member {string} [mode] The policy definition mode. Possible values are
+ * NotSpecified, Indexed, and All. Possible values include: 'NotSpecified',
+ * 'Indexed', 'All'
+ * @member {string} [displayName] The display name of the policy definition.
+ * @member {string} [description] The policy definition description.
+ * @member {object} [policyRule] The policy rule.
+ * @member {object} [metadata] The policy definition metadata.
+ * @member {object} [parameters] Required if a parameter is used in policy
+ * rule.
+ * @member {string} [id] The ID of the policy definition.
+ * @member {string} [name] The name of the policy definition.
+ * @member {string} [type] The type of the resource
+ * (Microsoft.Authorization/policyDefinitions).
+ */
+export interface PolicyDefinition extends BaseResource {
+  policyType?: string;
+  mode?: string;
+  displayName?: string;
+  description?: string;
+  policyRule?: any;
+  metadata?: any;
+  parameters?: any;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
 }
 
 /**
@@ -137,39 +203,6 @@ export interface PolicySetDefinition extends BaseResource {
   readonly type?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the PolicyDefinition class.
- * @constructor
- * The policy definition.
- *
- * @member {string} [policyType] The type of policy definition. Possible values
- * are NotSpecified, BuiltIn, and Custom. Possible values include:
- * 'NotSpecified', 'BuiltIn', 'Custom'
- * @member {string} [mode] The policy definition mode. Possible values are
- * NotSpecified, Indexed, and All. Possible values include: 'NotSpecified',
- * 'Indexed', 'All'
- * @member {string} [displayName] The display name of the policy definition.
- * @member {string} [description] The policy definition description.
- * @member {object} [policyRule] The policy rule.
- * @member {object} [metadata] The policy definition metadata.
- * @member {object} [parameters] Required if a parameter is used in policy
- * rule.
- * @member {string} [id] The ID of the policy definition.
- * @member {string} [name] The name of the policy definition.
- */
-export interface PolicyDefinition extends BaseResource {
-  policyType?: string;
-  mode?: string;
-  displayName?: string;
-  description?: string;
-  policyRule?: any;
-  metadata?: any;
-  parameters?: any;
-  readonly id?: string;
-  readonly name?: string;
-}
-
 
 /**
  * @class
@@ -186,19 +219,6 @@ export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
 
 /**
  * @class
- * Initializes a new instance of the PolicySetDefinitionListResult class.
- * @constructor
- * List of policy set definitions.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PolicySetDefinitionListResult extends Array<PolicySetDefinition> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the PolicyDefinitionListResult class.
  * @constructor
  * List of policy definitions.
@@ -207,5 +227,18 @@ export interface PolicySetDefinitionListResult extends Array<PolicySetDefinition
  * results.
  */
 export interface PolicyDefinitionListResult extends Array<PolicyDefinition> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicySetDefinitionListResult class.
+ * @constructor
+ * List of policy set definitions.
+ *
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface PolicySetDefinitionListResult extends Array<PolicySetDefinition> {
   nextLink?: string;
 }
