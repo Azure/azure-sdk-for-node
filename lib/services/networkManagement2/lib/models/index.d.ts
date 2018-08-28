@@ -2812,11 +2812,11 @@ export interface AzureFirewallNetworkRuleCollection extends SubResource {
  * Azure Firewall resource
  *
  * @member {array} [applicationRuleCollections] Collection of application rule
- * collections used by a Azure Firewall.
+ * collections used by Azure Firewall.
  * @member {array} [natRuleCollections] Collection of NAT rule collections used
- * by a Azure Firewall.
+ * by Azure Firewall.
  * @member {array} [networkRuleCollections] Collection of network rule
- * collections used by a Azure Firewall.
+ * collections used by Azure Firewall.
  * @member {array} [ipConfigurations] IP configuration of the Azure Firewall
  * resource.
  * @member {string} [provisioningState] The provisioning state of the resource.

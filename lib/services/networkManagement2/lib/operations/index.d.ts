@@ -2573,13 +2573,13 @@ export interface AzureFirewalls {
      * Firewall operation.
      *
      * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
+     * application rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.natRuleCollections] Collection of NAT rule
-     * collections used by a Azure Firewall.
+     * collections used by Azure Firewall.
      *
      * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
+     * rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
      * Firewall resource.
@@ -2618,13 +2618,13 @@ export interface AzureFirewalls {
      * Firewall operation.
      *
      * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
+     * application rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.natRuleCollections] Collection of NAT rule
-     * collections used by a Azure Firewall.
+     * collections used by Azure Firewall.
      *
      * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
+     * rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
      * Firewall resource.
@@ -2848,13 +2848,13 @@ export interface AzureFirewalls {
      * Firewall operation.
      *
      * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
+     * application rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.natRuleCollections] Collection of NAT rule
-     * collections used by a Azure Firewall.
+     * collections used by Azure Firewall.
      *
      * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
+     * rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
      * Firewall resource.
@@ -2893,13 +2893,13 @@ export interface AzureFirewalls {
      * Firewall operation.
      *
      * @param {array} [parameters.applicationRuleCollections] Collection of
-     * application rule collections used by a Azure Firewall.
+     * application rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.natRuleCollections] Collection of NAT rule
-     * collections used by a Azure Firewall.
+     * collections used by Azure Firewall.
      *
      * @param {array} [parameters.networkRuleCollections] Collection of network
-     * rule collections used by a Azure Firewall.
+     * rule collections used by Azure Firewall.
      *
      * @param {array} [parameters.ipConfigurations] IP configuration of the Azure
      * Firewall resource.
