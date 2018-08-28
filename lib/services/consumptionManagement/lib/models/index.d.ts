@@ -699,6 +699,8 @@ export interface Forecast extends Resource {
  * @constructor
  * A management group aggregated cost resource.
  *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the aggregated cost belongs to.
  * @member {date} [usageStart] The start of the date time range covered by
  * aggregated cost.
  * @member {date} [usageEnd] The end of the date time range covered by the
@@ -711,6 +713,7 @@ export interface Forecast extends Resource {
  * @member {array} [children] Children of a management group
  */
 export interface ManagementGroupAggregatedCostResult extends Resource {
+  readonly billingPeriodId?: string;
   readonly usageStart?: Date;
   readonly usageEnd?: Date;
   readonly azureCharges?: number;
