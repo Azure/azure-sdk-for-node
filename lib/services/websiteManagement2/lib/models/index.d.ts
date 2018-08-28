@@ -647,6 +647,31 @@ export interface HybridConnection extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedSite class.
+ * @constructor
+ * A deleted app.
+ *
+ * @member {number} [deletedSiteId] Numeric id for the deleted site
+ * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
+ * @member {string} [subscription] Subscription containing the deleted site
+ * @member {string} [resourceGroup] ResourceGroup that contained the deleted
+ * site
+ * @member {string} [deletedSiteName] Name of the deleted site
+ * @member {string} [slot] Slot of the deleted site
+ * @member {string} [deletedSiteKind] Kind of site that was deleted
+ */
+export interface DeletedSite extends ProxyOnlyResource {
+  readonly deletedSiteId?: number;
+  readonly deletedTimestamp?: string;
+  readonly subscription?: string;
+  readonly resourceGroup?: string;
+  readonly deletedSiteName?: string;
+  readonly slot?: string;
+  readonly deletedSiteKind?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedServiceIdentity class.
  * @constructor
  * Managed service identity.
@@ -3035,29 +3060,6 @@ export interface CsmUsageQuota {
   currentValue?: number;
   limit?: number;
   name?: LocalizableString;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedSite class.
- * @constructor
- * A deleted app.
- *
- * @member {number} [deletedSiteId] Numeric id for the deleted site
- * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
- * @member {string} [subscription] Subscription containing the deleted site
- * @member {string} [resourceGroup] ResourceGroup that contained the deleted
- * site
- * @member {string} [deletedSiteName] Name of the deleted site
- * @member {string} [slot] Slot of the deleted site
- */
-export interface DeletedSite {
-  readonly deletedSiteId?: number;
-  readonly deletedTimestamp?: string;
-  readonly subscription?: string;
-  readonly resourceGroup?: string;
-  readonly deletedSiteName?: string;
-  readonly slot?: string;
 }
 
 /**
@@ -6944,6 +6946,22 @@ export interface HybridConnectionLimits extends ProxyOnlyResource {
   readonly maximum?: number;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadata class.
+ * @constructor
+ * Used for getting ResourceHealthCheck settings.
+ *
+ * @member {string} [category] The category that the resource matches in the
+ * RHC Policy File
+ * @member {boolean} [signalAvailability] Is there a health signal for the
+ * resource
+ */
+export interface ResourceHealthMetadata extends ProxyOnlyResource {
+  category?: string;
+  signalAvailability?: boolean;
+}
+
 
 /**
  * @class
@@ -7568,5 +7586,17 @@ export interface ResourceCollection extends Array<string> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface HybridConnectionCollection extends Array<HybridConnection> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadataCollection class.
+ * @constructor
+ * Collection of resource health metadata.
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface ResourceHealthMetadataCollection extends Array<ResourceHealthMetadata> {
   readonly nextLink?: string;
 }
