@@ -2646,14 +2646,14 @@ export interface AzureFirewallApplicationRuleProtocol {
  * @member {string} [description] Description of the rule.
  * @member {array} [sourceAddresses] List of source IP addresses for this rule.
  * @member {array} [protocols] Array of ApplicationRuleProtocols.
- * @member {array} [targetUrls] List of URLs for this rule.
+ * @member {array} [targetFqdns] List of FQDNs for this rule.
  */
 export interface AzureFirewallApplicationRule {
   name?: string;
   description?: string;
   sourceAddresses?: string[];
   protocols?: AzureFirewallApplicationRuleProtocol[];
-  targetUrls?: string[];
+  targetFqdns?: string[];
 }
 
 /**
