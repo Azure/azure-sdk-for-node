@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2018-03-01.6.1')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2018-08-01.7.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '0ac4ae9e-3753-43e3-a3d2-7a8d07b4116e',
+  'request-id': 'a7ed87e9-6378-45e6-b57c-7ae5c287a590',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2018-03-01.6.1')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2018-08-01.7.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '0ac4ae9e-3753-43e3-a3d2-7a8d07b4116e',
+  'request-id': 'a7ed87e9-6378-45e6-b57c-7ae5c287a590',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; }]];

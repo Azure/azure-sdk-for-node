@@ -61,7 +61,7 @@ export interface ResourceLinkProperties {
  * resource in the link.
  * @member {string} [properties.notes] Notes about the resource link.
  */
-export interface ResourceLink {
+export interface ResourceLink extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   properties?: ResourceLinkProperties;
