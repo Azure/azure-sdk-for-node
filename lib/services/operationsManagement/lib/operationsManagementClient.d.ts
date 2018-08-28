@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class OperationsManagementClient extends AzureServiceClient {
+export default class OperationsManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the OperationsManagementClient class.
    * @constructor
@@ -22,7 +23,11 @@ declare class OperationsManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
-   * @param {string} solutionName - User Solution Name.
+   * @param {string} providerName - Provider name for the parent resource.
+   *
+   * @param {string} resourceType - Resource type for the parent resource
+   *
+   * @param {string} resourceName - Parent resource name.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -35,14 +40,14 @@ declare class OperationsManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, solutionName: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, providerName: string, resourceType: string, resourceName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
@@ -50,7 +55,11 @@ declare class OperationsManagementClient extends AzureServiceClient {
 
   apiVersion: string;
 
-  solutionName: string;
+  providerName: string;
+
+  resourceType: string;
+
+  resourceName: string;
 
   acceptLanguage: string;
 
@@ -60,7 +69,9 @@ declare class OperationsManagementClient extends AzureServiceClient {
 
   // Operation groups
   solutions: operations.Solutions;
+  managementAssociations: operations.ManagementAssociations;
+  managementConfigurations: operations.ManagementConfigurations;
   operations: operations.Operations;
 }
 
-export = OperationsManagementClient;
+export { OperationsManagementClient, models as OperationsManagementModels };
