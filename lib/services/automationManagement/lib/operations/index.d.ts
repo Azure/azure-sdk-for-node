@@ -2919,11 +2919,11 @@ export interface DscConfigurationOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * Retrieve the configuration script identified by configuration name.
@@ -2946,7 +2946,7 @@ export interface DscConfigurationOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2954,15 +2954,15 @@ export interface DscConfigurationOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<string>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
