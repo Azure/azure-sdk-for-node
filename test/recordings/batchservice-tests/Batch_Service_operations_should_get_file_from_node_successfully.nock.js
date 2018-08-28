@@ -9,36 +9,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/files/startup%2Fwd%2Fhello.txt?api-version=2018-03-01.6.1')
+  .get('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/files/startup%2Fwd%2Fhello.txt?api-version=2018-08-01.7.0')
   .reply(200, "hello \r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Fri, 09 Mar 2018 23:04:41 GMT',
+  'last-modified': 'Tue, 21 Aug 2018 20:30:11 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '364c716e-1b53-4980-a6a8-6c5adcd68196',
+  'request-id': 'e09cb7e8-8ca2-4d38-9c32-c80c18543751',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Fri, 09 Mar 2018 23:04:41 GMT',
+  'ocp-creation-time': 'Tue, 21 Aug 2018 20:30:11 GMT',
   'ocp-batch-file-isdirectory': 'False',
-  'ocp-batch-file-url': 'https%3A%2F%2Flchency4.westcentralus.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-3840119875_2-20180309t224543z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
-  date: 'Fri, 09 Mar 2018 23:05:07 GMT',
+  'ocp-batch-file-url': 'https%3A%2F%2Flchency4.westcentralus.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-14141481_2-20180821t200555z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
+  date: 'Tue, 21 Aug 2018 20:30:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/files/startup%2Fwd%2Fhello.txt?api-version=2018-03-01.6.1')
+  .get('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/files/startup%2Fwd%2Fhello.txt?api-version=2018-08-01.7.0')
   .reply(200, "hello \r\n", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Fri, 09 Mar 2018 23:04:41 GMT',
+  'last-modified': 'Tue, 21 Aug 2018 20:30:11 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '364c716e-1b53-4980-a6a8-6c5adcd68196',
+  'request-id': 'e09cb7e8-8ca2-4d38-9c32-c80c18543751',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Fri, 09 Mar 2018 23:04:41 GMT',
+  'ocp-creation-time': 'Tue, 21 Aug 2018 20:30:11 GMT',
   'ocp-batch-file-isdirectory': 'False',
-  'ocp-batch-file-url': 'https%3A%2F%2Flchency4.westcentralus.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-3840119875_2-20180309t224543z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
-  date: 'Fri, 09 Mar 2018 23:05:07 GMT',
+  'ocp-batch-file-url': 'https%3A%2F%2Flchency4.westcentralus.batch.azure.com%2Fpools%2Fnodesdktestpool1%2Fnodes%2Ftvm-14141481_2-20180821t200555z%2Ffiles%2Fstartup%2Fwd%2Fhello.txt',
+  date: 'Tue, 21 Aug 2018 20:30:58 GMT',
   connection: 'close' });
  return result; }]];

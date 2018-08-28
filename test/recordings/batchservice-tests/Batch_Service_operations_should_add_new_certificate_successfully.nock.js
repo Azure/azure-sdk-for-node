@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/certificates?api-version=2018-03-01.6.1', '*')
+.post('/certificates?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location: 'https://lchency4.westcentralus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '10a94544-9847-4152-ac17-84808d885708',
+  'request-id': '0b81a406-bf7f-4fd0-b6d2-79b02e3bea15',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
-  date: 'Fri, 09 Mar 2018 22:44:03 GMT',
+  date: 'Tue, 21 Aug 2018 20:05:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/certificates?api-version=2018-03-01.6.1', '*')
+.post('/certificates?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location: 'https://lchency4.westcentralus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '10a94544-9847-4152-ac17-84808d885708',
+  'request-id': '0b81a406-bf7f-4fd0-b6d2-79b02e3bea15',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
-  date: 'Fri, 09 Mar 2018 22:44:03 GMT',
+  date: 'Tue, 21 Aug 2018 20:05:03 GMT',
   connection: 'close' });
  return result; }]];
