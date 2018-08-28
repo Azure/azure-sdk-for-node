@@ -355,6 +355,27 @@ export interface LinkedIntegrationRuntimeRequest {
 
 /**
  * @class
+ * Initializes a new instance of the CreateLinkedIntegrationRuntimeRequest class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The ID of the subscription that the linked
+ * integration runtime belongs to.
+ * @member {string} [dataFactoryName] The name of the data factory that the
+ * linked integration runtime belongs to.
+ * @member {string} [dataFactoryLocation] The location of the data factory that
+ * the linked integration runtime belongs to.
+ */
+export interface CreateLinkedIntegrationRuntimeRequest {
+  name?: string;
+  subscriptionId?: string;
+  dataFactoryName?: string;
+  dataFactoryLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ParameterSpecification class.
  * @constructor
  * Definition of a single parameter for an entity.
@@ -423,6 +444,19 @@ export interface LinkedServiceResource extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the DatasetFolder class.
+ * @constructor
+ * The folder that this Dataset is in. If not specified, Dataset will appear at
+ * the root level.
+ *
+ * @member {string} [name] The name of the folder that this Dataset is in.
+ */
+export interface DatasetFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Dataset class.
  * @constructor
  * The Azure Data Factory nested object which identifies data within different
@@ -439,6 +473,10 @@ export interface LinkedServiceResource extends SubResource {
  * @member {object} [parameters] Parameters for dataset.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Dataset.
+ * @member {object} [folder] The folder that this Dataset is in. If not
+ * specified, Dataset will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Dataset is
+ * in.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Dataset {
@@ -447,6 +485,7 @@ export interface Dataset {
   linkedServiceName: LinkedServiceReference;
   parameters?: { [propertyName: string]: ParameterSpecification };
   annotations?: any[];
+  folder?: DatasetFolder;
   type: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -474,6 +513,10 @@ export interface Dataset {
  * @member {object} [properties.parameters] Parameters for dataset.
  * @member {array} [properties.annotations] List of tags that can be used for
  * describing the Dataset.
+ * @member {object} [properties.folder] The folder that this Dataset is in. If
+ * not specified, Dataset will appear at the root level.
+ * @member {string} [properties.folder.name] The name of the folder that this
+ * Dataset is in.
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface DatasetResource extends SubResource {
@@ -501,6 +544,21 @@ export interface ActivityDependency {
 
 /**
  * @class
+ * Initializes a new instance of the UserProperty class.
+ * @constructor
+ * User property.
+ *
+ * @member {string} name User proprety name.
+ * @member {object} value User proprety value. Type: string (or Expression with
+ * resultType string).
+ */
+export interface UserProperty {
+  name: string;
+  value: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Activity class.
  * @constructor
  * A pipeline activity.
@@ -508,20 +566,33 @@ export interface ActivityDependency {
  * @member {string} name Activity name.
  * @member {string} [description] Activity description.
  * @member {array} [dependsOn] Activity depends on condition.
- * @member {object} [userProperties] Activity user properties.
+ * @member {array} [userProperties] Activity user properties.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Activity {
   name: string;
   description?: string;
   dependsOn?: ActivityDependency[];
-  userProperties?: { [propertyName: string]: string };
+  userProperties?: UserProperty[];
   type: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
    */
   [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PipelineFolder class.
+ * @constructor
+ * The folder that this Pipeline is in. If not specified, Pipeline will appear
+ * at the root level.
+ *
+ * @member {string} [name] The name of the folder that this Pipeline is in.
+ */
+export interface PipelineFolder {
+  name?: string;
 }
 
 /**
@@ -537,6 +608,10 @@ export interface Activity {
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Pipeline.
+ * @member {object} [folder] The folder that this Pipeline is in. If not
+ * specified, Pipeline will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Pipeline is
+ * in.
  */
 export interface PipelineResource extends SubResource {
   description?: string;
@@ -544,6 +619,7 @@ export interface PipelineResource extends SubResource {
   parameters?: { [propertyName: string]: ParameterSpecification };
   concurrency?: number;
   annotations?: any[];
+  folder?: PipelineFolder;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -624,10 +700,11 @@ export interface FactoryVSTSConfiguration extends FactoryRepoConfiguration {
  * @constructor
  * Factory's GitHub repo information.
  *
- * @member {string} [hostName] GitHub repo host name.
+ * @member {string} [hostName] GitHub Enterprise host name. For example:
+ * https://github.mydomain.com
  */
 export interface FactoryGitHubConfiguration extends FactoryRepoConfiguration {
-  readonly hostName?: string;
+  hostName?: string;
 }
 
 /**
@@ -3457,6 +3534,65 @@ export interface AzureSqlDWLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the AzureTableStorageLinkedService class.
+ * @constructor
+ * The azure table storage linked service.
+ *
+ * @member {object} [connectionString] The connection string. It is mutually
+ * exclusive with sasUri property. Type: string, SecureString or
+ * AzureKeyVaultSecretReference.
+ * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
+ * mutually exclusive with connectionString property.
+ * @member {string} [sasUri.type] Polymorphic Discriminator
+ * @member {string} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzureTableStorageLinkedService extends LinkedService {
+  connectionString?: any;
+  sasUri?: SecretBase;
+  encryptedCredential?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureBlobStorageLinkedService class.
+ * @constructor
+ * The azure blob storage linked service.
+ *
+ * @member {object} [connectionString] The connection string. It is mutually
+ * exclusive with sasUri, serviceEndpoint property. Type: string, SecureString
+ * or AzureKeyVaultSecretReference.
+ * @member {object} [sasUri] SAS URI of the Azure Blob Storage resource. It is
+ * mutually exclusive with connectionString, serviceEndpoint property.
+ * @member {string} [sasUri.type] Polymorphic Discriminator
+ * @member {string} [serviceEndpoint] Blob service endpoint of the Azure Blob
+ * Storage resource. It is mutually exclusive with connectionString, sasUri
+ * property.
+ * @member {object} [servicePrincipalId] The ID of the service principal used
+ * to authenticate against Azure SQL Data Warehouse. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [servicePrincipalKey] The key of the service principal used
+ * to authenticate against Azure SQL Data Warehouse.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [tenant] The name or ID of the tenant to which the service
+ * principal belongs. Type: string (or Expression with resultType string).
+ * @member {string} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzureBlobStorageLinkedService extends LinkedService {
+  connectionString?: any;
+  sasUri?: SecretBase;
+  serviceEndpoint?: string;
+  servicePrincipalId?: any;
+  servicePrincipalKey?: SecretBase;
+  tenant?: any;
+  encryptedCredential?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureStorageLinkedService class.
  * @constructor
  * The storage account linked service.
@@ -3467,14 +3603,14 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
  * mutually exclusive with connectionString property.
  * @member {string} [sasUri.type] Polymorphic Discriminator
- * @member {object} [encryptedCredential] The encrypted credential used for
+ * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
   connectionString?: any;
   sasUri?: SecretBase;
-  encryptedCredential?: any;
+  encryptedCredential?: string;
 }
 
 /**
@@ -4393,10 +4529,9 @@ export interface DependencyReference {
  * Self referenced tumbling window trigger dependency.
  *
  * @member {string} offset Timespan applied to the start time of a tumbling
- * window when evaluating dependency, .Net timespan format.
+ * window when evaluating dependency.
  * @member {string} [size] The size of the window when evaluating the
- * dependency. If undefined the frequency of the tumbling window will be used,
- * .Net timespan format.
+ * dependency. If undefined the frequency of the tumbling window will be used.
  */
 export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
   offset: string;
@@ -4435,10 +4570,9 @@ export interface TriggerDependencyReference extends DependencyReference {
  * Referenced tumbling window trigger dependency.
  *
  * @member {string} [offset] Timespan applied to the start time of a tumbling
- * window when evaluating dependency, .Net timespan format.
+ * window when evaluating dependency.
  * @member {string} [size] The size of the window when evaluating the
- * dependency. If undefined the frequency of the tumbling window will be used,
- * .Net timespan format.
+ * dependency. If undefined the frequency of the tumbling window will be used.
  */
 export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
   offset?: string;
@@ -6799,7 +6933,7 @@ export interface LinkedIntegrationRuntime {
  * @member {date} [lastStartTime] The time the node last started up.
  * @member {date} [lastStopTime] The integration runtime node last stop time.
  * @member {string} [lastUpdateResult] The result of the last integration
- * runtime node update. Possible values include: 'Succeed', 'Fail'
+ * runtime node update. Possible values include: 'None', 'Succeed', 'Fail'
  * @member {date} [lastStartUpdateTime] The last time for the integration
  * runtime node update start.
  * @member {date} [lastEndUpdateTime] The last time for the integration runtime
@@ -6869,6 +7003,8 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [pushedVersion] The version that the integration runtime is
  * going to update to.
  * @member {string} [latestVersion] The latest version on download center.
+ * @member {date} [autoUpdateETA] The estimated time when the self-hosted
+ * integration runtime will be updated.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6886,6 +7022,7 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   links?: LinkedIntegrationRuntime[];
   readonly pushedVersion?: string;
   readonly latestVersion?: string;
+  readonly autoUpdateETA?: Date;
 }
 
 /**
