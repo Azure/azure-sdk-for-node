@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users/NodeSDKTestUser?api-version=2018-03-01.6.1')
+  .delete('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users/NodeSDKTestUser?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'eba87bf1-45c2-4ce0-83de-21ac1f821f04',
+  'request-id': '6cbfc50b-3a4e-4489-aee1-bcd88041a203',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:14 GMT',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/users/NodeSDKTestUser?api-version=2018-03-01.6.1')
+  .delete('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/users/NodeSDKTestUser?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'eba87bf1-45c2-4ce0-83de-21ac1f821f04',
+  'request-id': '6cbfc50b-3a4e-4489-aee1-bcd88041a203',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:14 GMT',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; }]];
