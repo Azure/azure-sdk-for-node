@@ -2763,6 +2763,75 @@ export interface AzureFirewall extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the AzureFirewallNatRCAction class.
+ * @constructor
+ * AzureFirewall NAT Rule Collection Action.
+ *
+ * @member {string} [type] The type of action. Possible values include: 'Snat',
+ * 'Dnat'
+ */
+export interface AzureFirewallNatRCAction {
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNatRule class.
+ * @constructor
+ * Properties of a NAT rule.
+ *
+ * @member {string} [name] Name of the NAT rule.
+ * @member {string} [description] Description of the rule.
+ * @member {array} [sourceAddresses] List of source IP addresses for this rule.
+ * @member {array} [destinationAddresses] List of destination IP addresses for
+ * this rule.
+ * @member {array} [destinationPorts] List of destination ports.
+ * @member {array} [protocols] Array of AzureFirewallNetworkRuleProtocols
+ * applicable to this NAT rule.
+ * @member {string} [translatedAddress] The translated address for this NAT
+ * rule.
+ * @member {string} [translatedPort] The translated port for this NAT rule.
+ */
+export interface AzureFirewallNatRule {
+  name?: string;
+  description?: string;
+  sourceAddresses?: string[];
+  destinationAddresses?: string[];
+  destinationPorts?: string[];
+  protocols?: string[];
+  translatedAddress?: string;
+  translatedPort?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallNatRuleCollection class.
+ * @constructor
+ * NAT rule collection resource
+ *
+ * @member {number} [priority] Priority of the NAT rule collection resource.
+ * @member {object} [action] The action type of a NAT rule collection
+ * @member {string} [action.type] The type of action. Possible values include:
+ * 'Snat', 'Dnat'
+ * @member {array} [rules] Collection of rules used by a NAT rule collection.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallNatRuleCollection extends SubResource {
+  priority?: number;
+  action?: AzureFirewallNatRCAction;
+  rules?: AzureFirewallNatRule[];
+  provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DnsNameAvailabilityResult class.
  * @constructor
  * Response for the CheckDnsNameAvailability API service call.
