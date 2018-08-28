@@ -2604,7 +2604,7 @@ export interface AzureFirewallIPConfiguration extends SubResource {
   publicIPAddress?: SubResource;
   provisioningState?: string;
   name?: string;
-  etag?: string;
+  readonly etag?: string;
 }
 
 /**
