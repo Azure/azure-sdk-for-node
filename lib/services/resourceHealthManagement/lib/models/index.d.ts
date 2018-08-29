@@ -260,7 +260,7 @@ export interface AvailabilityStatus {
  *
  * @member {string} [provider] Provider name.
  * @member {string} [resource] Resource name.
- * @member {string} [operation] Operation.
+ * @member {string} [operation] Operation name.
  * @member {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
@@ -280,7 +280,7 @@ export interface OperationDisplay {
  * @member {object} [display] Properties of the operation.
  * @member {string} [display.provider] Provider name.
  * @member {string} [display.resource] Resource name.
- * @member {string} [display.operation] Operation.
+ * @member {string} [display.operation] Operation name.
  * @member {string} [display.description] Description of the operation.
  */
 export interface Operation {

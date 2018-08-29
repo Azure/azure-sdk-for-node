@@ -10,29 +10,29 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2018-03-01.6.1', '*')
-  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:8ca4d2df-fbdc-4618-8481-9d416b104ef4\\nTime:2018-03-09T22:52:26.4812731Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property subnetId with value /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1 is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '582',
+.post('/pools?api-version=2018-08-01.7.0', '*')
+  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:6f9e6709-7ff8-490d-9572-add29e5fe3b0\\nTime:2018-08-21T20:16:22.3010945Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property subnetId with value /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1 is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '582',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8ca4d2df-fbdc-4618-8481-9d416b104ef4',
+  'request-id': '6f9e6709-7ff8-490d-9572-add29e5fe3b0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:26 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2018-03-01.6.1', '*')
-  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:8ca4d2df-fbdc-4618-8481-9d416b104ef4\\nTime:2018-03-09T22:52:26.4812731Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property subnetId with value /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1 is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '582',
+.post('/pools?api-version=2018-08-01.7.0', '*')
+  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:6f9e6709-7ff8-490d-9572-add29e5fe3b0\\nTime:2018-08-21T20:16:22.3010945Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property subnetId with value /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1 is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '582',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '8ca4d2df-fbdc-4618-8481-9d416b104ef4',
+  'request-id': '6f9e6709-7ff8-490d-9572-add29e5fe3b0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:26 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:21 GMT',
   connection: 'close' });
  return result; }]];
