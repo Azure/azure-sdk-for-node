@@ -111,7 +111,7 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
  * @class
  * Initializes a new instance of the ServerPropertiesForRestore class.
  * @constructor
- * The properties to a new server by restoring from a backup.
+ * The properties used to create a new server by restoring from a backup.
  *
  * @member {string} sourceServerId The source server id to restore from.
  * @member {date} restorePointInTime Restore point creation time (ISO8601
@@ -120,6 +120,19 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
 export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
   sourceServerId: string;
   restorePointInTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerPropertiesForGeoRestore class.
+ * @constructor
+ * The properties used to create a new server by restoring to a different
+ * region from a geo replicated backup.
+ *
+ * @member {string} sourceServerId The source server id to restore from.
+ */
+export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate {
+  sourceServerId: string;
 }
 
 /**
@@ -290,6 +303,25 @@ export interface ServerUpdateParameters {
 export interface FirewallRule extends ProxyResource {
   startIpAddress: string;
   endIpAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * A virtual network rule.
+ *
+ * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * network subnet.
+ * @member {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
+ * before the virtual network has vnet service endpoint enabled.
+ * @member {string} [state] Virtual Network Rule State. Possible values
+ * include: 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
+ */
+export interface VirtualNetworkRule extends ProxyResource {
+  virtualNetworkSubnetId: string;
+  ignoreMissingVnetServiceEndpoint?: boolean;
+  readonly state?: string;
 }
 
 /**
@@ -480,6 +512,39 @@ export interface NameAvailability {
   reason?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ServerSecurityAlertPolicy class.
+ * @constructor
+ * A server security alert policy.
+ *
+ * @member {string} state Specifies the state of the policy, whether it is
+ * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {array} [disabledAlerts] Specifies an array of alerts that are
+ * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
+ * Access_Anomaly
+ * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * which the alert is sent.
+ * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators.
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). This blob storage will hold all
+ * Threat Detection audit logs.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * Threat Detection audit logs.
+ */
+export interface ServerSecurityAlertPolicy extends ProxyResource {
+  state: string;
+  disabledAlerts?: string[];
+  emailAddresses?: string[];
+  emailAccountAdmins?: boolean;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+}
+
 
 /**
  * @class
@@ -499,6 +564,18 @@ export interface ServerListResult extends Array<Server> {
  *
  */
 export interface FirewallRuleListResult extends Array<FirewallRule> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRuleListResult class.
+ * @constructor
+ * A list of virtual network rules.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
+  readonly nextLink?: string;
 }
 
 /**

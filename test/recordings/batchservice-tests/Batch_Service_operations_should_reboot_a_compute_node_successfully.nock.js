@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/reboot?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/reboot?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f341955d-5318-47e7-9302-da9520a4bb3f',
+  'request-id': '6151433e-d0df-4043-9c5d-24c489df5986',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/reboot',
-  date: 'Fri, 09 Mar 2018 22:59:18 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/reboot',
+  date: 'Tue, 21 Aug 2018 20:23:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/reboot?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/reboot?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f341955d-5318-47e7-9302-da9520a4bb3f',
+  'request-id': '6151433e-d0df-4043-9c5d-24c489df5986',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_1-20180309t224543z/reboot',
-  date: 'Fri, 09 Mar 2018 22:59:18 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_1-20180821t200555z/reboot',
+  date: 'Tue, 21 Aug 2018 20:23:11 GMT',
   connection: 'close' });
  return result; }]];

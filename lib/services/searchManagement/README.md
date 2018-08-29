@@ -1,8 +1,14 @@
-# Microsoft Azure SDK for Node.js - SearchManagement
+---
+uid: azure-arm-search
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Search.
-## API-Version: 2015-08-19
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - SearchManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -10,28 +16,24 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-search
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing services as an example
+### Authentication, client creation and list operations as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const SearchManagement = require("azure-arm-search");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new SearchManagement(credentials, 'your-subscription-id');
-   return client.services.listByResourceGroup('testrg');
- }).then((services) => {
-  console.log('List of services:');
-  console.dir(services, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const SearchManagementClient = require("azure-arm-search");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new SearchManagementClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 

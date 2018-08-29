@@ -73,19 +73,70 @@ export interface Frames {
 
 /**
  * @class
+ * Initializes a new instance of the ClassificationCategory1 class.
+ * @constructor
+ * The category1 score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ *
+ * @member {number} [score] The category1 score.
+ */
+export interface ClassificationCategory1 {
+  score?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClassificationCategory2 class.
+ * @constructor
+ * The category2 score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ *
+ * @member {number} [score] The category2 score.
+ */
+export interface ClassificationCategory2 {
+  score?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClassificationCategory3 class.
+ * @constructor
+ * The category3 score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ *
+ * @member {number} [score] The category3 score.
+ */
+export interface ClassificationCategory3 {
+  score?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Classification class.
  * @constructor
  * The classification details of the text.
  *
- * @member {number} [adultScore] The adult score.
- * @member {number} [racyScore] The racy score.
- * @member {number} [offensiveScore] The offensive score.
+ * @member {object} [category1] The category1 score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ * @member {number} [category1.score] The category1 score.
+ * @member {object} [category2] The category2 score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ * @member {number} [category2.score] The category2 score.
+ * @member {object} [category3] The category3 score details of the text. <a
+ * href="https://aka.ms/textClassifyCategories">Click here</a> for more details
+ * on category classification.
+ * @member {number} [category3.score] The category3 score.
  * @member {boolean} [reviewRecommended] The review recommended flag.
  */
 export interface Classification {
-  adultScore?: number;
-  racyScore?: number;
-  offensiveScore?: number;
+  category1?: ClassificationCategory1;
+  category2?: ClassificationCategory2;
+  category3?: ClassificationCategory3;
   reviewRecommended?: boolean;
 }
 
@@ -121,6 +172,21 @@ export interface Status {
 export interface Email {
   detected?: string;
   subType?: string;
+  text?: string;
+  index?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSN class.
+ * @constructor
+ * Detected SSN details.
+ *
+ * @member {string} [text] Detected SSN in the input text content.
+ * @member {number} [index] Index(Location) of the SSN in the input text
+ * content.
+ */
+export interface SSN {
   text?: string;
   index?: number;
 }
@@ -181,12 +247,14 @@ export interface Address {
  * Personal Identifier Information details.
  *
  * @member {array} [email]
+ * @member {array} [sSN]
  * @member {array} [iPA]
  * @member {array} [phone]
  * @member {array} [address]
  */
 export interface PII {
   email?: Email[];
+  sSN?: SSN[];
   iPA?: IPA[];
   phone?: Phone[];
   address?: Address[];
@@ -223,9 +291,18 @@ export interface DetectedTerms {
  * @member {string} [autoCorrectedText] The autocorrected text
  * @member {array} [misrepresentation] The misrepresentation text.
  * @member {object} [classification] The classification details of the text.
- * @member {number} [classification.adultScore] The adult score.
- * @member {number} [classification.racyScore] The racy score.
- * @member {number} [classification.offensiveScore] The offensive score.
+ * @member {object} [classification.category1] The category1 score details of
+ * the text. <a href="https://aka.ms/textClassifyCategories">Click here</a> for
+ * more details on category classification.
+ * @member {number} [classification.category1.score] The category1 score.
+ * @member {object} [classification.category2] The category2 score details of
+ * the text. <a href="https://aka.ms/textClassifyCategories">Click here</a> for
+ * more details on category classification.
+ * @member {number} [classification.category2.score] The category2 score.
+ * @member {object} [classification.category3] The category3 score details of
+ * the text. <a href="https://aka.ms/textClassifyCategories">Click here</a> for
+ * more details on category classification.
+ * @member {number} [classification.category3.score] The category3 score.
  * @member {boolean} [classification.reviewRecommended] The review recommended
  * flag.
  * @member {object} [status] The evaluate status.
@@ -234,6 +311,7 @@ export interface DetectedTerms {
  * @member {string} [status.exception] Exception status.
  * @member {object} [pII] Personal Identifier Information details.
  * @member {array} [pII.email]
+ * @member {array} [pII.sSN]
  * @member {array} [pII.iPA]
  * @member {array} [pII.phone]
  * @member {array} [pII.address]
