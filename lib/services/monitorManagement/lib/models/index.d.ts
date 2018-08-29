@@ -290,6 +290,12 @@ export interface RecurrentSchedule {
  * The repeating times at which this profile begins. This element is not used
  * if the FixedDate element is used.
  *
+ * @member {string} frequency the recurrence frequency. How often the schedule
+ * profile should take effect. This value must be Week, meaning each week will
+ * have the same set of profiles. For example, to set a daily schedule, set
+ * **schedule** to every day of the week. The frequency property specifies that
+ * the schedule is repeated weekly. Possible values include: 'None', 'Second',
+ * 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
  * @member {object} schedule the scheduling constraints for when the profile
  * begins.
  * @member {string} [schedule.timeZone] the timezone for the hours of the
@@ -338,6 +344,7 @@ export interface RecurrentSchedule {
  * profile takes effect at.
  */
 export interface Recurrence {
+  frequency: string;
   schedule: RecurrentSchedule;
 }
 
@@ -406,6 +413,12 @@ export interface Recurrence {
  * format.
  * @member {object} [recurrence] the repeating times at which this profile
  * begins. This element is not used if the FixedDate element is used.
+ * @member {string} [recurrence.frequency] the recurrence frequency. How often
+ * the schedule profile should take effect. This value must be Week, meaning
+ * each week will have the same set of profiles. For example, to set a daily
+ * schedule, set **schedule** to every day of the week. The frequency property
+ * specifies that the schedule is repeated weekly. Possible values include:
+ * 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
  * @member {object} [recurrence.schedule] the scheduling constraints for when
  * the profile begins.
  * @member {string} [recurrence.schedule.timeZone] the timezone for the hours
