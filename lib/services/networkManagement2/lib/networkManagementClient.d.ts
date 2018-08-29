@@ -34,11 +34,11 @@ export default class NetworkManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -47,8 +47,6 @@ export default class NetworkManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -56,6 +54,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  azureFirewalls: operations.AzureFirewalls;
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
   ddosProtectionPlans: operations.DdosProtectionPlans;
@@ -85,6 +84,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   connectionMonitors: operations.ConnectionMonitors;
   operations: operations.Operations;
   publicIPAddresses: operations.PublicIPAddresses;
+  publicIPPrefixes: operations.PublicIPPrefixes;
   routeFilters: operations.RouteFilters;
   routeFilterRules: operations.RouteFilterRules;
   routeTables: operations.RouteTables;
@@ -97,6 +97,15 @@ export default class NetworkManagementClient extends AzureServiceClient {
   virtualNetworkGateways: operations.VirtualNetworkGateways;
   virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
   localNetworkGateways: operations.LocalNetworkGateways;
+  virtualWANs: operations.VirtualWANs;
+  vpnSites: operations.VpnSites;
+  vpnSitesConfiguration: operations.VpnSitesConfiguration;
+  virtualHubs: operations.VirtualHubs;
+  hubVirtualNetworkConnections: operations.HubVirtualNetworkConnections;
+  vpnGateways: operations.VpnGateways;
+  vpnConnections: operations.VpnConnections;
+  serviceEndpointPolicies: operations.ServiceEndpointPolicies;
+  serviceEndpointPolicyDefinitions: operations.ServiceEndpointPolicyDefinitions;
 
 
   /**
