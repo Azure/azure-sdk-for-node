@@ -34082,7 +34082,7 @@ export interface VirtualWANs {
      * 'OptimizeAndAllow', 'All', 'None'
      *
      * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
-     * P2SVpnServerConfigurationss to the virtual wan.
+     * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
@@ -34136,7 +34136,7 @@ export interface VirtualWANs {
      * 'OptimizeAndAllow', 'All', 'None'
      *
      * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
-     * P2SVpnServerConfigurationss to the virtual wan.
+     * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
@@ -34440,7 +34440,7 @@ export interface VirtualWANs {
      * 'OptimizeAndAllow', 'All', 'None'
      *
      * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
-     * P2SVpnServerConfigurationss to the virtual wan.
+     * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
@@ -34494,7 +34494,7 @@ export interface VirtualWANs {
      * 'OptimizeAndAllow', 'All', 'None'
      *
      * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
-     * P2SVpnServerConfigurationss to the virtual wan.
+     * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
@@ -38346,12 +38346,11 @@ export interface P2SVpnServerConfigurations {
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
      * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
-     *
-     * @param {string} [p2SVpnServerConfigurationParameters.location] Resource
-     * location.
-     *
-     * @param {object} [p2SVpnServerConfigurationParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38410,12 +38409,11 @@ export interface P2SVpnServerConfigurations {
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
      * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
-     *
-     * @param {string} [p2SVpnServerConfigurationParameters.location] Resource
-     * location.
-     *
-     * @param {object} [p2SVpnServerConfigurationParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38620,12 +38618,11 @@ export interface P2SVpnServerConfigurations {
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
      * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
-     *
-     * @param {string} [p2SVpnServerConfigurationParameters.location] Resource
-     * location.
-     *
-     * @param {object} [p2SVpnServerConfigurationParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38684,12 +38681,11 @@ export interface P2SVpnServerConfigurations {
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
      * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
-     *
-     * @param {string} [p2SVpnServerConfigurationParameters.location] Resource
-     * location.
-     *
-     * @param {object} [p2SVpnServerConfigurationParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38933,6 +38929,8 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
+     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -38942,6 +38940,44 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * radius server address property of the P2SVpnServerConfiguration resource for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
      *
      * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
      * Resource ID.
@@ -38988,6 +39024,8 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
+     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -38997,6 +39035,44 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * radius server address property of the P2SVpnServerConfiguration resource for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
      *
      * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
      * Resource ID.
@@ -39378,6 +39454,8 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
+     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -39387,6 +39465,44 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * radius server address property of the P2SVpnServerConfiguration resource for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
      *
      * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
      * Resource ID.
@@ -39433,6 +39549,8 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
+     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -39442,6 +39560,44 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2sVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * radius server address property of the P2SVpnServerConfiguration resource for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * name of the resource that is unique within a resource group. This name can
+     * be used to access the resource.
      *
      * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
      * Resource ID.

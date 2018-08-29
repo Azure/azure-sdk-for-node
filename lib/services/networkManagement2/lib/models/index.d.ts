@@ -7190,10 +7190,12 @@ export interface P2SVpnServerConfigRadiusClientRootCertificate extends SubResour
  * @member {string} [radiusServerSecret] The radius secret property of the
  * P2SVpnServerConfiguration resource for for point to site client connection.
  * @member {array} [p2sVpnGateways]
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
-export interface P2SVpnServerConfiguration extends Resource {
+export interface P2SVpnServerConfiguration extends SubResource {
   vpnProtocols?: string[];
   p2sVpnServerConfigVpnClientRootCertificates?: P2SVpnServerConfigVpnClientRootCertificate[];
   p2sVpnServerConfigVpnClientRevokedCertificates?: P2SVpnServerConfigVpnClientRevokedCertificate[];
@@ -7203,6 +7205,7 @@ export interface P2SVpnServerConfiguration extends Resource {
   radiusServerAddress?: string;
   radiusServerSecret?: string;
   readonly p2sVpnGateways?: SubResource[];
+  name?: string;
   readonly etag?: string;
 }
 
@@ -7225,7 +7228,7 @@ export interface P2SVpnServerConfiguration extends Resource {
  * category. Possible values include: 'Optimize', 'OptimizeAndAllow', 'All',
  * 'None'
  * @member {array} [p2sVpnServerConfigurations] list of all
- * P2SVpnServerConfigurationss to the virtual wan.
+ * P2SVpnServerConfigurations associated with the virtual wan.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -7559,7 +7562,34 @@ export interface VpnClientConnectionHealth {
  * gateway.
  * @member {object} [p2sVpnServerConfiguration] The P2SVpnServerConfiguration
  * to which the p2sVpnGateway is attached to.
- * @member {string} [p2sVpnServerConfiguration.id] Resource ID.
+ * @member {array} [p2sVpnServerConfiguration.vpnProtocols] vpnProtocols for
+ * the P2SVpnServerConfiguration.
+ * @member {array}
+ * [p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRootCertificates] VPN
+ * client root certificate of P2SVpnServerConfiguration.
+ * @member {array}
+ * [p2sVpnServerConfiguration.p2sVpnServerConfigVpnClientRevokedCertificates]
+ * VPN client revoked certificate of P2SVpnServerConfiguration.
+ * @member {array}
+ * [p2sVpnServerConfiguration.p2sVpnServerConfigRadiusServerRootCertificates]
+ * Radius Server root certificate of P2SVpnServerConfiguration.
+ * @member {array}
+ * [p2sVpnServerConfiguration.p2sVpnServerConfigRadiusClientRootCertificates]
+ * Radius client root certificate of P2SVpnServerConfiguration.
+ * @member {array} [p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+ * @member {string} [p2sVpnServerConfiguration.radiusServerAddress] The radius
+ * server address property of the P2SVpnServerConfiguration resource for point
+ * to site client connection.
+ * @member {string} [p2sVpnServerConfiguration.radiusServerSecret] The radius
+ * secret property of the P2SVpnServerConfiguration resource for for point to
+ * site client connection.
+ * @member {array} [p2sVpnServerConfiguration.p2sVpnGateways]
+ * @member {string} [p2sVpnServerConfiguration.name] The name of the resource
+ * that is unique within a resource group. This name can be used to access the
+ * resource.
+ * @member {string} [p2sVpnServerConfiguration.etag] Gets a unique read-only
+ * string that changes whenever the resource is updated.
  * @member {object} [vpnClientAddressPool] The reference of the address space
  * resource which represents Address space for P2S VpnClient.
  * @member {array} [vpnClientAddressPool.addressPrefixes] A list of address
@@ -7573,7 +7603,7 @@ export interface P2SVpnGateway extends Resource {
   virtualHub?: SubResource;
   provisioningState?: string;
   vpnGatewayScaleUnit?: number;
-  p2sVpnServerConfiguration?: SubResource;
+  p2sVpnServerConfiguration?: P2SVpnServerConfiguration;
   vpnClientAddressPool?: AddressSpace;
   readonly vpnClientConnectionHealth?: VpnClientConnectionHealth[];
   readonly etag?: string;
