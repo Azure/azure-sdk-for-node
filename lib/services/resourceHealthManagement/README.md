@@ -1,7 +1,14 @@
-# Microsoft Azure SDK for Node.js - ResourceHealth Management
+---
+uid: azure-arm-resourcehealth
+summary: *content
 
-This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+---
+# Microsoft Azure SDK for Node.js - MicrosoftResourceHealth
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -9,29 +16,26 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 npm install azure-arm-resourcehealth
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing availabilityStatuses as an example
+### Authentication, client creation and listBySubscriptionId availabilityStatuses as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var ResourceHealthClient = require("azure-arm-resourcehealth");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin(function(err, credentials) {
-  let client = new ResourceHealthClient(credentials, 'your-subscription-id');
-  client.availabilityStatuses.listBySubscriptionId().then((availabilityStatuses) => {
-    console.log('List of availabilityStatuses:');
-    console.dir(availabilityStatuses, {depth: null, colors: true});
-   });
-  }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
-  });
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const MicrosoftResourceHealth = require("azure-arm-resourcehealth");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new MicrosoftResourceHealth(creds, subscriptionId);
+    const filter = "testfilter";
+    const expand = "testexpand";
+    return client.availabilityStatuses.listBySubscriptionId(filter, expand).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
 });
-```
 
 ## Related projects
 

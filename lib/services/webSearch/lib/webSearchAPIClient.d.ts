@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class WebSearchAPIClient extends ServiceClient {
+export default class WebSearchAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the WebSearchAPIClient class.
@@ -39,4 +40,4 @@ declare class WebSearchAPIClient extends ServiceClient {
   web: operations.Web;
 }
 
-export = WebSearchAPIClient;
+export { WebSearchAPIClient, models as WebSearchAPIModels };

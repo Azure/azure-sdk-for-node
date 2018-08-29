@@ -1,4 +1,3 @@
-lib/common/node_modules/*
-lib/services/*/node_modules/*
+**/node_modules/*
 packages
 .git

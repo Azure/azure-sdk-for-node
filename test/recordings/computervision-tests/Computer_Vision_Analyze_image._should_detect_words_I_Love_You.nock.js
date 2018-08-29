@@ -9,12 +9,12 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://westus.api.cognitive.microsoft.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/vision/v1.0/recognizeText?detectHandwriting=false', '*')
+.post('/vision/v2.0/recognizeText?mode=Printed', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'operation-location': 'https://westus.api.cognitive.microsoft.com/vision/v1.0/textOperations/59af55bf-2e0e-43f7-a4aa-ec0b8e2ae978',
+  'operation-location': 'https://westus.api.cognitive.microsoft.com/vision/v2.0/textOperations/59af55bf-2e0e-43f7-a4aa-ec0b8e2ae978',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'apim-request-id': '537a1743-3545-4372-9378-94db04de93dc',
@@ -26,7 +26,7 @@ nock('https://westus.api.cognitive.microsoft.com:443')
 function (nock) { 
 var result = 
 nock('https://westus.api.cognitive.microsoft.com:443')
-  .get('/vision/v1.0/textOperations/59af55bf-2e0e-43f7-a4aa-ec0b8e2ae978')
+  .get('/vision/v2.0/textOperations/59af55bf-2e0e-43f7-a4aa-ec0b8e2ae978')
   .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '20',
@@ -43,7 +43,7 @@ nock('https://westus.api.cognitive.microsoft.com:443')
 function (nock) { 
 var result = 
 nock('https://westus.api.cognitive.microsoft.com:443')
-  .get('/vision/v1.0/textOperations/59af55bf-2e0e-43f7-a4aa-ec0b8e2ae978')
+  .get('/vision/v2.0/textOperations/59af55bf-2e0e-43f7-a4aa-ec0b8e2ae978')
   .reply(200, "{\"status\":\"Succeeded\",\"recognitionResult\":{\"lines\":[{\"boundingBox\":[64,55,445,58,444,120,63,118],\"text\":\"I Love You\",\"words\":[{\"boundingBox\":[65,58,110,58,110,122,65,122],\"text\":\"I\"},{\"boundingBox\":[88,58,293,58,293,122,89,122],\"text\":\"Love\"},{\"boundingBox\":[279,58,455,58,455,122,279,122],\"text\":\"You\"}]}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '308',

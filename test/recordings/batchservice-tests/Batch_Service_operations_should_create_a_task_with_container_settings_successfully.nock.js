@@ -10,97 +10,97 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2018-03-01.6.1', '*')
+.post('/jobs?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:24 GMT',
-  etag: '0x8D5861166CDE804',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:24 GMT',
+  etag: '0x8D607A439A76693',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '056ecdad-85bd-4873-ae78-a40fec5c9706',
+  'request-id': '8c1629a1-6b0a-41a8-b07a-908a6cb46b51',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/job-1',
-  date: 'Fri, 09 Mar 2018 22:59:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2018-03-01.6.1', '*')
+.post('/jobs?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:24 GMT',
-  etag: '0x8D5861166CDE804',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:24 GMT',
+  etag: '0x8D607A439A76693',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '056ecdad-85bd-4873-ae78-a40fec5c9706',
+  'request-id': '8c1629a1-6b0a-41a8-b07a-908a6cb46b51',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/job-1',
-  date: 'Fri, 09 Mar 2018 22:59:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/ContainerJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/ContainerJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:24 GMT',
-  etag: '0x8D58611670640EA',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:24 GMT',
+  etag: '0x8D607A439BE4963',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/ContainerJobNodeSDKTest/tasks/ContainerNodeSDKTestTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e958ae69-18cf-4779-aee6-b8962e355ae3',
+  'request-id': '8ed01ce5-ca1b-4a8d-91bf-a5eb7d28e89e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/ContainerJobNodeSDKTest/tasks/ContainerNodeSDKTestTask',
-  date: 'Fri, 09 Mar 2018 22:59:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/ContainerJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/ContainerJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:24 GMT',
-  etag: '0x8D58611670640EA',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:24 GMT',
+  etag: '0x8D607A439BE4963',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/ContainerJobNodeSDKTest/tasks/ContainerNodeSDKTestTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e958ae69-18cf-4779-aee6-b8962e355ae3',
+  'request-id': '8ed01ce5-ca1b-4a8d-91bf-a5eb7d28e89e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/ContainerJobNodeSDKTest/tasks/ContainerNodeSDKTestTask',
-  date: 'Fri, 09 Mar 2018 22:59:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/jobs/ContainerJobNodeSDKTest?api-version=2018-03-01.6.1')
+  .delete('/jobs/ContainerJobNodeSDKTest?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6a531b9a-f121-4654-a289-4ad04df630d4',
+  'request-id': '615df23b-468d-404f-938f-089d90517196',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/jobs/ContainerJobNodeSDKTest?api-version=2018-03-01.6.1')
+  .delete('/jobs/ContainerJobNodeSDKTest?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6a531b9a-f121-4654-a289-4ad04df630d4',
+  'request-id': '615df23b-468d-404f-938f-089d90517196',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:24 GMT',
   connection: 'close' });
  return result; }]];

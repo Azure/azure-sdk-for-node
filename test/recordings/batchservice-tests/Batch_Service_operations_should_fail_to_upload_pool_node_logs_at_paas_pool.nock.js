@@ -10,29 +10,29 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/uploadbatchservicelogs?api-version=2018-03-01.6.1', '*')
-  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TVMCurrentOperationUnsupported\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified compute node does not support the current operation.\\nRequestId:6d4bdc65-94c8-4913-8207-ce038396a24a\\nTime:2018-03-10T00:32:40.4967814Z\"\r\n  }\r\n}", { 'content-length': '386',
+.post('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/uploadbatchservicelogs?api-version=2018-08-01.7.0', '*')
+  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TVMCurrentOperationUnsupported\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified compute node does not support the current operation.\\nRequestId:62a7e811-f7c3-45fd-86e2-93bfc52af41c\\nTime:2018-08-21T20:23:12.4967814Z\"\r\n  }\r\n}", { 'content-length': '386',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6d4bdc65-94c8-4913-8207-ce038396a24a',
+  'request-id': '62a7e811-f7c3-45fd-86e2-93bfc52af41c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Sat, 10 Mar 2018 00:32:40 GMT',
+  date: 'Tue, 21 Aug 2018 20:23:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/uploadbatchservicelogs?api-version=2018-03-01.6.1', '*')
-  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TVMCurrentOperationUnsupported\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified compute node does not support the current operation.\\nRequestId:6d4bdc65-94c8-4913-8207-ce038396a24a\\nTime:2018-03-10T00:32:40.4967814Z\"\r\n  }\r\n}", { 'content-length': '386',
+.post('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/uploadbatchservicelogs?api-version=2018-08-01.7.0', '*')
+  .reply(403, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"TVMCurrentOperationUnsupported\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified compute node does not support the current operation.\\nRequestId:62a7e811-f7c3-45fd-86e2-93bfc52af41c\\nTime:2018-08-21T20:23:12.4967814Z\"\r\n  }\r\n}", { 'content-length': '386',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6d4bdc65-94c8-4913-8207-ce038396a24a',
+  'request-id': '62a7e811-f7c3-45fd-86e2-93bfc52af41c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Sat, 10 Mar 2018 00:32:40 GMT',
+  date: 'Tue, 21 Aug 2018 20:23:12 GMT',
   connection: 'close' });
  return result; }]];

@@ -18,6 +18,160 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the CertificateVerificationDescription class.
+ * @constructor
+ * The JSON-serialized leaf certificate
+ *
+ * @member {string} [certificate] base-64 representation of X509 certificate
+ * .cer file or just .pem file content.
+ */
+export interface CertificateVerificationDescription {
+  certificate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateProperties class.
+ * @constructor
+ * The description of an X509 CA Certificate.
+ *
+ * @member {string} [subject] The certificate's subject name.
+ * @member {date} [expiry] The certificate's expiration date and time.
+ * @member {string} [thumbprint] The certificate's thumbprint.
+ * @member {boolean} [isVerified] Determines whether certificate has been
+ * verified.
+ * @member {date} [created] The certificate's create date and time.
+ * @member {date} [updated] The certificate's last update date and time.
+ * @member {string} [certificate] The certificate content
+ */
+export interface CertificateProperties {
+  readonly subject?: string;
+  readonly expiry?: Date;
+  readonly thumbprint?: string;
+  readonly isVerified?: boolean;
+  readonly created?: Date;
+  readonly updated?: Date;
+  certificate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateDescription class.
+ * @constructor
+ * The X509 Certificate.
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.subject] The certificate's subject name.
+ * @member {date} [properties.expiry] The certificate's expiration date and
+ * time.
+ * @member {string} [properties.thumbprint] The certificate's thumbprint.
+ * @member {boolean} [properties.isVerified] Determines whether certificate has
+ * been verified.
+ * @member {date} [properties.created] The certificate's create date and time.
+ * @member {date} [properties.updated] The certificate's last update date and
+ * time.
+ * @member {string} [properties.certificate] The certificate content
+ * @member {string} [id] The resource identifier.
+ * @member {string} [name] The name of the certificate.
+ * @member {string} [etag] The entity tag.
+ * @member {string} [type] The resource type.
+ */
+export interface CertificateDescription extends BaseResource {
+  properties?: CertificateProperties;
+  readonly id?: string;
+  readonly name?: string;
+  readonly etag?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateListDescription class.
+ * @constructor
+ * The JSON-serialized array of Certificate objects.
+ *
+ * @member {array} [value] The array of Certificate objects.
+ */
+export interface CertificateListDescription {
+  value?: CertificateDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateBodyDescription class.
+ * @constructor
+ * The JSON-serialized X509 Certificate.
+ *
+ * @member {string} [certificate] base-64 representation of the X509 leaf
+ * certificate .cer file or just .pem file content.
+ */
+export interface CertificateBodyDescription {
+  certificate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificatePropertiesWithNonce class.
+ * @constructor
+ * The description of an X509 CA Certificate including the challenge nonce
+ * issued for the Proof-Of-Possession flow.
+ *
+ * @member {string} [subject] The certificate's subject name.
+ * @member {date} [expiry] The certificate's expiration date and time.
+ * @member {string} [thumbprint] The certificate's thumbprint.
+ * @member {boolean} [isVerified] Determines whether certificate has been
+ * verified.
+ * @member {date} [created] The certificate's create date and time.
+ * @member {date} [updated] The certificate's last update date and time.
+ * @member {string} [verificationCode] The certificate's verification code that
+ * will be used for proof of possession.
+ * @member {string} [certificate] The certificate content
+ */
+export interface CertificatePropertiesWithNonce {
+  readonly subject?: string;
+  readonly expiry?: Date;
+  readonly thumbprint?: string;
+  readonly isVerified?: boolean;
+  readonly created?: Date;
+  readonly updated?: Date;
+  readonly verificationCode?: string;
+  readonly certificate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateWithNonceDescription class.
+ * @constructor
+ * The X509 Certificate.
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.subject] The certificate's subject name.
+ * @member {date} [properties.expiry] The certificate's expiration date and
+ * time.
+ * @member {string} [properties.thumbprint] The certificate's thumbprint.
+ * @member {boolean} [properties.isVerified] Determines whether certificate has
+ * been verified.
+ * @member {date} [properties.created] The certificate's create date and time.
+ * @member {date} [properties.updated] The certificate's last update date and
+ * time.
+ * @member {string} [properties.verificationCode] The certificate's
+ * verification code that will be used for proof of possession.
+ * @member {string} [properties.certificate] The certificate content
+ * @member {string} [id] The resource identifier.
+ * @member {string} [name] The name of the certificate.
+ * @member {string} [etag] The entity tag.
+ * @member {string} [type] The resource type.
+ */
+export interface CertificateWithNonceDescription extends BaseResource {
+  properties?: CertificatePropertiesWithNonce;
+  readonly id?: string;
+  readonly name?: string;
+  readonly etag?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SharedAccessSignatureAuthorizationRule class.
  * @constructor
  * The properties of an IoT hub shared access policy.
@@ -71,7 +225,7 @@ export interface IpFilterRule {
  * @member {number} [retentionTimeInDays] The retention time for
  * device-to-cloud messages in days. See:
  * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
- * @member {number} [partitionCount] The number of paritions for receiving
+ * @member {number} [partitionCount] The number of partitions for receiving
  * device-to-cloud messages in the Event Hub-compatible endpoint. See:
  * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages.
  * @member {array} [partitionIds] The partition ids in the Event Hub-compatible
@@ -245,8 +399,9 @@ export interface RoutingEndpoints {
  * alphanumeric characters, periods, underscores, hyphens, has a maximum length
  * of 64 characters, and must be unique.
  * @member {string} source The source that the routing rule is to be applied
- * to, such as DeviceMessages. Possible values include: 'DeviceMessages',
- * 'TwinChangeEvents', 'DeviceLifecycleEvents', 'DeviceJobLifecycleEvents'
+ * to, such as DeviceMessages. Possible values include: 'Invalid',
+ * 'DeviceMessages', 'TwinChangeEvents', 'DeviceLifecycleEvents',
+ * 'DeviceJobLifecycleEvents'
  * @member {string} [condition] The condition that is evaluated to apply the
  * routing rule. If no condition is provided, it evaluates to true by default.
  * For grammar, see:
@@ -270,6 +425,9 @@ export interface RouteProperties {
  * The properties of the fallback route. IoT Hub uses these properties when it
  * routes messages to the fallback endpoint.
  *
+ * @member {string} [name] The name of the route. The name can only include
+ * alphanumeric characters, periods, underscores, hyphens, has a maximum length
+ * of 64 characters, and must be unique.
  * @member {string} [condition] The condition which is evaluated in order to
  * apply the fallback route. If the condition is not provided it will evaluate
  * to true by default. For grammar, See:
@@ -281,6 +439,7 @@ export interface RouteProperties {
  * enabled.
  */
 export interface FallbackRouteProperties {
+  name?: string;
   condition?: string;
   endpointNames: string[];
   isEnabled: boolean;
@@ -313,6 +472,9 @@ export interface FallbackRouteProperties {
  * section are met. This is an optional parameter. When this property is not
  * set, the messages which do not meet any of the conditions specified in the
  * 'routes' section get routed to the built-in eventhub endpoint.
+ * @member {string} [fallbackRoute.name] The name of the route. The name can
+ * only include alphanumeric characters, periods, underscores, hyphens, has a
+ * maximum length of 64 characters, and must be unique.
  * @member {string} [fallbackRoute.condition] The condition which is evaluated
  * in order to apply the fallback route. If the condition is not provided it
  * will evaluate to true by default. For grammar, See:
@@ -448,6 +610,7 @@ export interface OperationsMonitoringProperties {
  * use to secure a connection to the IoT hub.
  * @member {array} [ipFilterRules] The IP filter rules.
  * @member {string} [provisioningState] The provisioning state.
+ * @member {string} [state] Thehub state state.
  * @member {string} [hostName] The name of the host.
  * @member {object} [eventHubEndpoints] The Event Hub-compatible endpoint
  * properties. The possible keys to this dictionary are events and
@@ -476,6 +639,9 @@ export interface OperationsMonitoringProperties {
  * 'routes' section are met. This is an optional parameter. When this property
  * is not set, the messages which do not meet any of the conditions specified
  * in the 'routes' section get routed to the built-in eventhub endpoint.
+ * @member {string} [routing.fallbackRoute.name] The name of the route. The
+ * name can only include alphanumeric characters, periods, underscores,
+ * hyphens, has a maximum length of 64 characters, and must be unique.
  * @member {string} [routing.fallbackRoute.condition] The condition which is
  * evaluated in order to apply the fallback route. If the condition is not
  * provided it will evaluate to true by default. For grammar, See:
@@ -523,6 +689,7 @@ export interface IotHubProperties {
   authorizationPolicies?: SharedAccessSignatureAuthorizationRule[];
   ipFilterRules?: IpFilterRule[];
   readonly provisioningState?: string;
+  readonly state?: string;
   readonly hostName?: string;
   eventHubEndpoints?: { [propertyName: string]: EventHubProperties };
   routing?: RoutingProperties;
@@ -542,16 +709,16 @@ export interface IotHubProperties {
  * Information about the SKU of the IoT hub.
  *
  * @member {string} name The name of the SKU. Possible values include: 'F1',
- * 'S1', 'S2', 'S3'
+ * 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
  * @member {string} [tier] The billing tier for the IoT hub. Possible values
- * include: 'Free', 'Standard'
- * @member {number} capacity The number of provisioned IoT Hub units. See:
+ * include: 'Free', 'Standard', 'Basic'
+ * @member {number} [capacity] The number of provisioned IoT Hub units. See:
  * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
  */
 export interface IotHubSkuInfo {
   name: string;
   readonly tier?: string;
-  capacity: number;
+  capacity?: number;
 }
 
 /**
@@ -580,18 +747,15 @@ export interface Resource extends BaseResource {
  * @constructor
  * The description of the IoT hub.
  *
- * @member {string} subscriptionid The subscription identifier.
- * @member {string} resourcegroup The name of the resource group that contains
- * the IoT hub. A resource group name uniquely identifies the resource group
- * within the subscription.
  * @member {string} [etag] The Etag field is *not* required. If it is provided
  * in the response body, it must also be provided as a header per the normal
  * ETag convention.
- * @member {object} [properties]
+ * @member {object} [properties] IotHub properties
  * @member {array} [properties.authorizationPolicies] The shared access
  * policies you can use to secure a connection to the IoT hub.
  * @member {array} [properties.ipFilterRules] The IP filter rules.
  * @member {string} [properties.provisioningState] The provisioning state.
+ * @member {string} [properties.state] Thehub state state.
  * @member {string} [properties.hostName] The name of the host.
  * @member {object} [properties.eventHubEndpoints] The Event Hub-compatible
  * endpoint properties. The possible keys to this dictionary are events and
@@ -621,6 +785,10 @@ export interface Resource extends BaseResource {
  * When this property is not set, the messages which do not meet any of the
  * conditions specified in the 'routes' section get routed to the built-in
  * eventhub endpoint.
+ * @member {string} [properties.routing.fallbackRoute.name] The name of the
+ * route. The name can only include alphanumeric characters, periods,
+ * underscores, hyphens, has a maximum length of 64 characters, and must be
+ * unique.
  * @member {string} [properties.routing.fallbackRoute.condition] The condition
  * which is evaluated in order to apply the fallback route. If the condition is
  * not provided it will evaluate to true by default. For grammar, See:
@@ -665,18 +833,16 @@ export interface Resource extends BaseResource {
  * @member {object} [properties.operationsMonitoringProperties.events]
  * @member {string} [properties.features] The capabilities and features enabled
  * for the IoT hub. Possible values include: 'None', 'DeviceManagement'
- * @member {object} sku
+ * @member {object} sku IotHub SKU info
  * @member {string} [sku.name] The name of the SKU. Possible values include:
- * 'F1', 'S1', 'S2', 'S3'
+ * 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
  * @member {string} [sku.tier] The billing tier for the IoT hub. Possible
- * values include: 'Free', 'Standard'
+ * values include: 'Free', 'Standard', 'Basic'
  * @member {number} [sku.capacity] The number of provisioned IoT Hub units.
  * See:
  * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
  */
 export interface IotHubDescription extends Resource {
-  subscriptionid: string;
-  resourcegroup: string;
   etag?: string;
   properties?: IotHubProperties;
   sku: IotHubSkuInfo;
@@ -748,6 +914,21 @@ export interface IotHubQuotaMetricInfo {
   readonly name?: string;
   readonly currentValue?: number;
   readonly maxValue?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointHealthData class.
+ * @constructor
+ * The health data for an endpoint
+ *
+ * @member {string} [endpointId] Id of the endpoint
+ * @member {string} [healthStatus] Health status. Possible values include:
+ * 'unknown', 'healthy', 'unhealthy', 'dead'
+ */
+export interface EndpointHealthData {
+  endpointId?: string;
+  healthStatus?: string;
 }
 
 /**
@@ -826,15 +1007,15 @@ export interface IotHubCapacity {
  * SKU properties.
  *
  * @member {string} [resourceType] The type of the resource.
- * @member {object} sku
+ * @member {object} sku The type of the resource.
  * @member {string} [sku.name] The name of the SKU. Possible values include:
- * 'F1', 'S1', 'S2', 'S3'
+ * 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
  * @member {string} [sku.tier] The billing tier for the IoT hub. Possible
- * values include: 'Free', 'Standard'
+ * values include: 'Free', 'Standard', 'Basic'
  * @member {number} [sku.capacity] The number of provisioned IoT Hub units.
  * See:
  * https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
- * @member {object} capacity
+ * @member {object} capacity IotHub capacity
  * @member {number} [capacity.minimum] The minimum number of units.
  * @member {number} [capacity.maximum] The maximum number of units.
  * @member {number} [capacity.default] The default number of units.
@@ -849,18 +1030,35 @@ export interface IotHubSkuDescription {
 
 /**
  * @class
+ * Initializes a new instance of the TagsResource class.
+ * @constructor
+ * A container holding only the Tags for a resource, allowing the user to
+ * update the tags on an IoT Hub instance.
+ *
+ * @member {object} [tags] Resource tags
+ */
+export interface TagsResource {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the EventHubConsumerGroupInfo class.
  * @constructor
  * The properties of the EventHubConsumerGroupInfo object.
  *
- * @member {object} [tags] The tags.
+ * @member {object} [properties] The tags.
  * @member {string} [id] The Event Hub-compatible consumer group identifier.
  * @member {string} [name] The Event Hub-compatible consumer group name.
+ * @member {string} [type] the resource type.
+ * @member {string} [etag] The etag.
  */
-export interface EventHubConsumerGroupInfo {
-  tags?: { [propertyName: string]: string };
-  id?: string;
-  name?: string;
+export interface EventHubConsumerGroupInfo extends BaseResource {
+  properties?: { [propertyName: string]: string };
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly etag?: string;
 }
 
 /**
@@ -891,6 +1089,252 @@ export interface IotHubNameAvailabilityInfo {
   readonly nameAvailable?: boolean;
   readonly reason?: string;
   message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Name class.
+ * @constructor
+ * Name of Iot Hub type
+ *
+ * @member {string} [value] IotHub type
+ * @member {string} [localizedValue] Localized value of name
+ */
+export interface Name {
+  value?: string;
+  localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserSubscriptionQuota class.
+ * @constructor
+ * User subscription quota response
+ *
+ * @member {string} [id] IotHub type id
+ * @member {string} [type] Response type
+ * @member {string} [unit] Unit of IotHub type
+ * @member {number} [currentValue] Current number of IotHub type
+ * @member {number} [limit] Numerical limit on IotHub type
+ * @member {object} [name] IotHub type
+ * @member {string} [name.value] IotHub type
+ * @member {string} [name.localizedValue] Localized value of name
+ */
+export interface UserSubscriptionQuota {
+  id?: string;
+  type?: string;
+  unit?: string;
+  currentValue?: number;
+  limit?: number;
+  name?: Name;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserSubscriptionQuotaListResult class.
+ * @constructor
+ * Json-serialized array of User subscription quota response
+ *
+ * @member {array} [value]
+ * @member {string} [nextLink]
+ */
+export interface UserSubscriptionQuotaListResult {
+  value?: UserSubscriptionQuota[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingMessage class.
+ * @constructor
+ * Routing message
+ *
+ * @member {string} [body] Body of routing message
+ * @member {object} [appProperties] App properties
+ * @member {object} [systemProperties] System properties
+ */
+export interface RoutingMessage {
+  body?: string;
+  appProperties?: { [propertyName: string]: string };
+  systemProperties?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestAllRoutesInput class.
+ * @constructor
+ * Input for testing all routes
+ *
+ * @member {string} [routingSource] Routing source. Possible values include:
+ * 'Invalid', 'DeviceMessages', 'TwinChangeEvents', 'DeviceLifecycleEvents',
+ * 'DeviceJobLifecycleEvents'
+ * @member {object} [message] Routing message
+ * @member {string} [message.body] Body of routing message
+ * @member {object} [message.appProperties] App properties
+ * @member {object} [message.systemProperties] System properties
+ */
+export interface TestAllRoutesInput {
+  routingSource?: string;
+  message?: RoutingMessage;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MatchedRoute class.
+ * @constructor
+ * Routes that matched
+ *
+ * @member {object} [properties] Properties of routes that matched
+ * @member {string} [properties.name] The name of the route. The name can only
+ * include alphanumeric characters, periods, underscores, hyphens, has a
+ * maximum length of 64 characters, and must be unique.
+ * @member {string} [properties.source] The source that the routing rule is to
+ * be applied to, such as DeviceMessages. Possible values include: 'Invalid',
+ * 'DeviceMessages', 'TwinChangeEvents', 'DeviceLifecycleEvents',
+ * 'DeviceJobLifecycleEvents'
+ * @member {string} [properties.condition] The condition that is evaluated to
+ * apply the routing rule. If no condition is provided, it evaluates to true by
+ * default. For grammar, see:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ * @member {array} [properties.endpointNames] The list of endpoints to which
+ * messages that satisfy the condition are routed. Currently only one endpoint
+ * is allowed.
+ * @member {boolean} [properties.isEnabled] Used to specify whether a route is
+ * enabled.
+ */
+export interface MatchedRoute {
+  properties?: RouteProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestAllRoutesResult class.
+ * @constructor
+ * Result of testing all routes
+ *
+ * @member {array} [routes] JSON-serialized array of matched routes
+ */
+export interface TestAllRoutesResult {
+  routes?: MatchedRoute[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestRouteInput class.
+ * @constructor
+ * Input for testing route
+ *
+ * @member {object} [message] Routing message
+ * @member {string} [message.body] Body of routing message
+ * @member {object} [message.appProperties] App properties
+ * @member {object} [message.systemProperties] System properties
+ * @member {object} route Route properties
+ * @member {string} [route.name] The name of the route. The name can only
+ * include alphanumeric characters, periods, underscores, hyphens, has a
+ * maximum length of 64 characters, and must be unique.
+ * @member {string} [route.source] The source that the routing rule is to be
+ * applied to, such as DeviceMessages. Possible values include: 'Invalid',
+ * 'DeviceMessages', 'TwinChangeEvents', 'DeviceLifecycleEvents',
+ * 'DeviceJobLifecycleEvents'
+ * @member {string} [route.condition] The condition that is evaluated to apply
+ * the routing rule. If no condition is provided, it evaluates to true by
+ * default. For grammar, see:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ * @member {array} [route.endpointNames] The list of endpoints to which
+ * messages that satisfy the condition are routed. Currently only one endpoint
+ * is allowed.
+ * @member {boolean} [route.isEnabled] Used to specify whether a route is
+ * enabled.
+ */
+export interface TestRouteInput {
+  message?: RoutingMessage;
+  route: RouteProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RouteErrorPosition class.
+ * @constructor
+ * Position where the route error happened
+ *
+ * @member {number} [line] Line where the route error happened
+ * @member {number} [column] Column where the route error happened
+ */
+export interface RouteErrorPosition {
+  line?: number;
+  column?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RouteErrorRange class.
+ * @constructor
+ * Range of route errors
+ *
+ * @member {object} [start] Start where the route error happened
+ * @member {number} [start.line] Line where the route error happened
+ * @member {number} [start.column] Column where the route error happened
+ * @member {object} [end] End where the route error happened
+ * @member {number} [end.line] Line where the route error happened
+ * @member {number} [end.column] Column where the route error happened
+ */
+export interface RouteErrorRange {
+  start?: RouteErrorPosition;
+  end?: RouteErrorPosition;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RouteCompilationError class.
+ * @constructor
+ * Compilation error when evaluating route
+ *
+ * @member {string} [message] Route error message
+ * @member {string} [severity] Severity of the route error. Possible values
+ * include: 'error', 'warning'
+ * @member {object} [location] Location where the route error happened
+ * @member {object} [location.start] Start where the route error happened
+ * @member {number} [location.start.line] Line where the route error happened
+ * @member {number} [location.start.column] Column where the route error
+ * happened
+ * @member {object} [location.end] End where the route error happened
+ * @member {number} [location.end.line] Line where the route error happened
+ * @member {number} [location.end.column] Column where the route error happened
+ */
+export interface RouteCompilationError {
+  message?: string;
+  severity?: string;
+  location?: RouteErrorRange;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestRouteResultDetails class.
+ * @constructor
+ * Detailed result of testing a route
+ *
+ * @member {array} [compilationErrors] JSON-serialized list of route
+ * compilation errors
+ */
+export interface TestRouteResultDetails {
+  compilationErrors?: RouteCompilationError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestRouteResult class.
+ * @constructor
+ * Result of testing one route
+ *
+ * @member {string} [result] Result of testing route. Possible values include:
+ * 'undefined', 'false', 'true'
+ * @member {object} [details] Detailed result of testing route
+ * @member {array} [details.compilationErrors] JSON-serialized list of route
+ * compilation errors
+ */
+export interface TestRouteResult {
+  result?: string;
+  details?: TestRouteResultDetails;
 }
 
 /**
@@ -972,7 +1416,7 @@ export interface IotHubSkuDescriptionListResult extends Array<IotHubSkuDescripti
  *
  * @member {string} [nextLink] The next link.
  */
-export interface EventHubConsumerGroupsListResult extends Array<string> {
+export interface EventHubConsumerGroupsListResult extends Array<EventHubConsumerGroupInfo> {
   readonly nextLink?: string;
 }
 
@@ -997,6 +1441,18 @@ export interface JobResponseListResult extends Array<JobResponse> {
  * @member {string} [nextLink] The next link.
  */
 export interface IotHubQuotaMetricInfoListResult extends Array<IotHubQuotaMetricInfo> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointHealthDataListResult class.
+ * @constructor
+ * The JSON-serialized array of EndpointHealthData objects with a next link.
+ *
+ * @member {string} [nextLink] Link to more results
+ */
+export interface EndpointHealthDataListResult extends Array<EndpointHealthData> {
   readonly nextLink?: string;
 }
 

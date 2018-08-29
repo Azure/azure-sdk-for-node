@@ -16,12 +16,13 @@
 
 'use strict';
 
-var Testutil = require('../../util/util');
-var KeyVault = Testutil.libRequire('services/keyVault');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
-var KvUtils = require('./kv-test-utils.js');
-var util = require('util');
-var should = require('should');
+const Testutil = require('../../util/util');
+const KeyVault = Testutil.libRequire('services/keyVault');
+const msRestAzure = require('../../../runtime/ms-rest-azure');
+const MockedTestUtils = require('../../framework/mocked-test-utils');
+const KvUtils = require('./kv-test-utils.js');
+const util = require('util');
+const should = require('should');
 
 var series = KvUtils.series;
 var assertExactly = KvUtils.assertExactly;
@@ -32,7 +33,7 @@ var random = KvUtils.getRandom();
 
 var vaultUri = process.env['AZURE_KV_VAULT'];
 if (!vaultUri) {
-    vaultUri = 'https://sdktestvault0511.vault.azure.net';
+    vaultUri = 'https://sdktestvault74.vault.azure.net';
 }
 
 var SECRET_NAME = 'nodeSecret';
@@ -45,7 +46,7 @@ describe('Key Vault secrets', function () {
   var suiteUtil;
 
   before(function (done) {
-    var credentials = new KeyVault.KeyVaultCredentials(KvUtils.authenticator);
+    var credentials = new msRestAzure.KeyVaultCredentials(KvUtils.authenticator);
     client = new KeyVault.KeyVaultClient(credentials);
 
     suiteUtil = new MockedTestUtils(client, 'keyVault-secret-tests');
@@ -124,7 +125,7 @@ describe('Key Vault secrets', function () {
       }
 
       function getSecretWOVersion(next) {
-        client.getSecret(secretId.baseIdentifier, function (err, secretBundle) {
+        client.getSecret(secretId.vault, secretId.name, '', function (err, secretBundle) {
           if (err) throw err;
           compareObjects(createdBundle, secretBundle);
           next();
@@ -132,20 +133,20 @@ describe('Key Vault secrets', function () {
       }
 
       function getSecretWithVersion(next) {
-        client.getSecret(secretId.identifier, function (err, secretBundle) {
+        client.getSecret(secretId.vault, secretId.name, secretId.version, function (err, secretBundle) {
           if (err) throw err;
           compareObjects(createdBundle, secretBundle);
           next();
         });
       }
 
-      function updateSecret(secretUri, next) {
+      function updateSecret(version, next) {
         var updatingBundle = KvUtils.clone(createdBundle);
         updatingBundle.contentType = 'text/plain';
         updatingBundle.attributes.expires = new Date('2050-02-02T08:00:00.000Z');
         updatingBundle.tags = { foo: random.hex(100) };
         var request = { contentType: updatingBundle.contentType, secretAttributes: updatingBundle.attributes, tags: updatingBundle.tags };
-        client.updateSecret(secretUri, request, function (err, secretBundle) {
+        client.updateSecret(secretId.vault, secretId.name, version, request, function (err, secretBundle) {
           if (err) throw err;
           delete updatingBundle.value;
           updatingBundle.attributes.updated = secretBundle.attributes.updated;
@@ -156,11 +157,11 @@ describe('Key Vault secrets', function () {
       }
 
       function updateSecretWOVersion(next) {
-        return updateSecret(secretId.baseIdentifier, next);
+        return updateSecret('', next);
       }
 
       function updateSecretWithVersion(next) {
-        return updateSecret(secretId.identifier, next);
+        return updateSecret(secretId.version, next);
       }
 
       function deleteSecret(next) {
@@ -172,7 +173,7 @@ describe('Key Vault secrets', function () {
       }
 
       function getSecretReturnsNotFound(next) {
-        client.getSecret(secretId.baseIdentifier, function (err, secretBundle) {
+        client.getSecret(secretId.vault, secretId.name, '', function (err, secretBundle) {
           if (!err || !err.code || err.code !== 'SecretNotFound' || !err.statusCode || err.statusCode !== 404) throw new Error('Unexpected error object: ' + JSON.stringify(err, null, ' '));
           next();
         });
@@ -211,7 +212,7 @@ describe('Key Vault secrets', function () {
       }
 
       function getDisabledSecret(next) {
-        client.getSecret(secretId.identifier, function (err, secretBundle) {
+        client.getSecret(secretId.vault, secretId.name, secretId.version, function (err, secretBundle) {
           if (!err || !err.body.error.code || !err.body.error.innerError.code) throw new Error('Unexpected error object: ' + JSON.stringify(err, null, ' '));
           next();
         });

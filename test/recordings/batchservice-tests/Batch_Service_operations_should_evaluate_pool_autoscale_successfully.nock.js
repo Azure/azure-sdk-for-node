@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2018-03-01.6.1', '*')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2018-03-09T22:59:20.3729087Z\",\"results\":\"$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2018-08-01.7.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2018-08-21T20:25:20.7341237Z\",\"results\":\"$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e187fac2-abcb-47c5-8f8f-8ef841479375',
+  'request-id': '1c7147f6-079d-465c-abba-39c5065cc622',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/evaluateautoscale',
-  date: 'Fri, 09 Mar 2018 22:59:20 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2018-03-01.6.1', '*')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2018-03-09T22:59:20.3729087Z\",\"results\":\"$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2018-08-01.7.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2018-08-21T20:25:20.7341237Z\",\"results\":\"$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e187fac2-abcb-47c5-8f8f-8ef841479375',
+  'request-id': '1c7147f6-079d-465c-abba-39c5065cc622',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/evaluateautoscale',
-  date: 'Fri, 09 Mar 2018 22:59:20 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:20 GMT',
   connection: 'close' });
  return result; }]];
