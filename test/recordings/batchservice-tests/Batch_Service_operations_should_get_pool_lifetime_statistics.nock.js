@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-03-09T22:00:00Z\",\"dedicatedCoreTime\":\"P29DT17H23M3.542S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"diskReadIOps\":\"2026168\",\"diskWriteIOps\":\"24680454\",\"lastUpdateTime\":\"2018-03-09T22:00:00Z\",\"avgCPUPercentage\":0.013433526011359182,\"avgMemoryGiB\":0.9990966150533126,\"peakMemoryGiB\":3.8065605163574219,\"avgDiskGiB\":1.6973685467908632,\"peakDiskGiB\":2.39752197265625,\"diskReadGiB\":94.81925106048584,\"diskWriteGiB\":252.62272644042969,\"networkReadGiB\":11.063987102359533,\"networkWriteGiB\":6.1005959436297417\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimepoolstats?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-08-21T19:30:00Z\",\"dedicatedCoreTime\":\"P842DT15H44M4.782S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"diskReadIOps\":\"4333098\",\"diskWriteIOps\":\"217500288\",\"lastUpdateTime\":\"2018-08-21T19:30:00Z\",\"avgCPUPercentage\":0.11879342572208607,\"avgMemoryGiB\":0.76116733185640628,\"peakMemoryGiB\":3.8065605163574219,\"avgDiskGiB\":2.4733423606074521,\"peakDiskGiB\":16.662128448486328,\"diskReadGiB\":159.07264709472656,\"diskWriteGiB\":2209.7888917922974,\"networkReadGiB\":323.3932627197355,\"networkWriteGiB\":219.14907851628959\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1aeb7eb9-e02d-494f-bf23-fb75bc413b30',
+  'request-id': 'cebbd73e-dba3-4693-9362-1dd4bcddc0da',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-03-09T22:00:00Z\",\"dedicatedCoreTime\":\"P29DT17H23M3.542S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"diskReadIOps\":\"2026168\",\"diskWriteIOps\":\"24680454\",\"lastUpdateTime\":\"2018-03-09T22:00:00Z\",\"avgCPUPercentage\":0.013433526011359182,\"avgMemoryGiB\":0.9990966150533126,\"peakMemoryGiB\":3.8065605163574219,\"avgDiskGiB\":1.6973685467908632,\"peakDiskGiB\":2.39752197265625,\"diskReadGiB\":94.81925106048584,\"diskWriteGiB\":252.62272644042969,\"networkReadGiB\":11.063987102359533,\"networkWriteGiB\":6.1005959436297417\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimepoolstats?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"lastUpdateTime\":\"2018-08-21T19:30:00Z\",\"dedicatedCoreTime\":\"P842DT15H44M4.782S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-10-23T18:57:56.5958966Z\",\"diskReadIOps\":\"4333098\",\"diskWriteIOps\":\"217500288\",\"lastUpdateTime\":\"2018-08-21T19:30:00Z\",\"avgCPUPercentage\":0.11879342572208607,\"avgMemoryGiB\":0.76116733185640628,\"peakMemoryGiB\":3.8065605163574219,\"avgDiskGiB\":2.4733423606074521,\"peakDiskGiB\":16.662128448486328,\"diskReadGiB\":159.07264709472656,\"diskWriteGiB\":2209.7888917922974,\"networkReadGiB\":323.3932627197355,\"networkWriteGiB\":219.14907851628959\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '1aeb7eb9-e02d-494f-bf23-fb75bc413b30',
+  'request-id': 'cebbd73e-dba3-4693-9362-1dd4bcddc0da',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:59:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:23 GMT',
   connection: 'close' });
  return result; }]];

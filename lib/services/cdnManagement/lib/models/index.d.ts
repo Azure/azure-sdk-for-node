@@ -25,7 +25,7 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [name] Name of the pricing tier. Possible values include:
  * 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon', 'Standard_Akamai',
- * 'Standard_ChinaCdn'
+ * 'Standard_ChinaCdn', 'Standard_Microsoft'
  */
 export interface Sku {
   name?: string;
@@ -72,7 +72,7 @@ export interface TrackedResource extends Resource {
  * and rate) of the CDN profile.
  * @member {string} [sku.name] Name of the pricing tier. Possible values
  * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
- * 'Standard_Akamai', 'Standard_ChinaCdn'
+ * 'Standard_Akamai', 'Standard_ChinaCdn', 'Standard_Microsoft'
  * @member {string} [resourceState] Resource status of the profile. Possible
  * values include: 'Creating', 'Active', 'Deleting', 'Disabled'
  * @member {string} [provisioningState] Provisioning status of the profile.
