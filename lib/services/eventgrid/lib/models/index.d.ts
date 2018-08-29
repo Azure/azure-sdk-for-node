@@ -343,6 +343,114 @@ export interface ResourceDeleteCancelData {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceActionSuccessData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Resources.ResourceActionSuccess event. This is raised when a
+ * resource action operation succeeds.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionSuccessData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceActionFailureData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Resources.ResourceActionFailure event. This is raised when a
+ * resource action operation fails.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionFailureData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceActionCancelData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for an
+ * Microsoft.Resources.ResourceActionCancel event. This is raised when a
+ * resource action operation is canceled.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionCancelData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EventGridEvent class.
  * @constructor
  * Properties of an event published to an Event Grid topic.
@@ -431,15 +539,11 @@ export interface SubscriptionDeletedEventData {
  * @member {string} [deviceId] The unique identifier of the device. This
  * case-sensitive string can be up to 128 characters long, and supports ASCII
  * 7-bit alphanumeric characters plus the following special characters: - : . +
- * % _ # * ? ! ( ) , = @ ; $ '.
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
  * @member {string} [hubName] Name of the IoT Hub where the device was created
  * or deleted.
- * @member {string} [opType] The event type specified for this operation by the
- * IoT Hub.
- * @member {string} [operationTimestamp] The ISO8601 timestamp of the
- * operation.
  * @member {object} [twin] Information about the device twin, which is the
- * cloud represenation of application device metadata.
+ * cloud representation of application device metadata.
  * @member {string} [twin.authenticationType] Authentication type used for this
  * device: either SAS, SelfSigned, or CertificateAuthority.
  * @member {number} [twin.cloudToDeviceMessageCount] Count of cloud to device
@@ -487,8 +591,6 @@ export interface SubscriptionDeletedEventData {
 export interface DeviceLifeCycleEventProperties {
   deviceId?: string;
   hubName?: string;
-  opType?: string;
-  operationTimestamp?: string;
   twin?: DeviceTwinInfo;
 }
 
@@ -510,6 +612,58 @@ export interface IotHubDeviceCreatedEventData extends DeviceLifeCycleEventProper
  *
  */
 export interface IotHubDeviceDeletedEventData extends DeviceLifeCycleEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeviceConnectionStateEventProperties class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a device connection
+ * state event (DeviceConnected, DeviceDisconnected).
+ *
+ * @member {string} [deviceId] The unique identifier of the device. This
+ * case-sensitive string can be up to 128 characters long, and supports ASCII
+ * 7-bit alphanumeric characters plus the following special characters: - : . +
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
+ * @member {string} [moduleId] The unique identifier of the module. This
+ * case-sensitive string can be up to 128 characters long, and supports ASCII
+ * 7-bit alphanumeric characters plus the following special characters: - : . +
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
+ * @member {string} [hubName] Name of the IoT Hub where the device was created
+ * or deleted.
+ * @member {object} [deviceConnectionStateEventInfo] Information about the
+ * device connection state event.
+ * @member {string} [deviceConnectionStateEventInfo.sequenceNumber] Sequence
+ * number is string representation of a hexadecimal number. string compare can
+ * be used to identify the larger number because both in ASCII and HEX numbers
+ * come after alphabets. If you are converting the string to hex, then the
+ * number is a 256 bit number.
+ */
+export interface DeviceConnectionStateEventProperties {
+  deviceId?: string;
+  moduleId?: string;
+  hubName?: string;
+  deviceConnectionStateEventInfo?: DeviceConnectionStateEventInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IotHubDeviceConnectedEventData class.
+ * @constructor
+ * Event data for Microsoft.Devices.DeviceConnected event.
+ *
+ */
+export interface IotHubDeviceConnectedEventData extends DeviceConnectionStateEventProperties {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IotHubDeviceDisconnectedEventData class.
+ * @constructor
+ * Event data for Microsoft.Devices.DeviceDisconnected event.
+ *
+ */
+export interface IotHubDeviceDisconnectedEventData extends DeviceConnectionStateEventProperties {
 }
 
 /**
@@ -592,7 +746,7 @@ export interface DeviceTwinInfoX509Thumbprint {
  * @class
  * Initializes a new instance of the DeviceTwinInfo class.
  * @constructor
- * Information about the device twin, which is the cloud represenation of
+ * Information about the device twin, which is the cloud representation of
  * application device metadata.
  *
  * @member {string} [authenticationType] Authentication type used for this
@@ -649,6 +803,21 @@ export interface DeviceTwinInfo {
   statusUpdateTime?: string;
   version?: number;
   x509Thumbprint?: DeviceTwinInfoX509Thumbprint;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeviceConnectionStateEventInfo class.
+ * @constructor
+ * Information about the device connection state event.
+ *
+ * @member {string} [sequenceNumber] Sequence number is string representation
+ * of a hexadecimal number. string compare can be used to identify the larger
+ * number because both in ASCII and HEX numbers come after alphabets. If you
+ * are converting the string to hex, then the number is a 256 bit number.
+ */
+export interface DeviceConnectionStateEventInfo {
+  sequenceNumber?: string;
 }
 
 /**

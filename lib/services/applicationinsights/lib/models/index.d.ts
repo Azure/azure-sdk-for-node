@@ -1017,18 +1017,6 @@ export interface Workbook extends WorkbookResource {
 
 /**
  * @class
- * Initializes a new instance of the Workbooks class.
- * @constructor
- * Workbook list result.
- *
- * @member {array} [value] An array of workbooks.
- */
-export interface Workbooks {
-  value?: Workbook[];
-}
-
-/**
- * @class
  * Initializes a new instance of the LinkProperties class.
  * @constructor
  * Contains a sourceId and workbook resource id to link two resources.
@@ -1095,6 +1083,16 @@ export interface OperationListResult extends Array<Operation> {
 
 /**
  * @class
+ * Initializes a new instance of the AnnotationsListResult class.
+ * @constructor
+ * Annotations list result.
+ *
+ */
+export interface AnnotationsListResult extends Array<Annotation> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationInsightsComponentAPIKeyListResult class.
  * @constructor
  * Describes the list of API Keys of an Application Insights Component.
@@ -1115,6 +1113,16 @@ export interface ApplicationInsightsComponentAPIKeyListResult extends Array<Appl
  */
 export interface ApplicationInsightsComponentListResult extends Array<ApplicationInsightsComponent> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkItemConfigurationsListResult class.
+ * @constructor
+ * Work item configuration list result.
+ *
+ */
+export interface WorkItemConfigurationsListResult extends Array<WorkItemConfiguration> {
 }
 
 /**
@@ -1140,4 +1148,14 @@ export interface ApplicationInsightsWebTestLocationsListResult extends Array<App
  */
 export interface WebTestListResult extends Array<WebTest> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbooksListResult class.
+ * @constructor
+ * Workbook list result.
+ *
+ */
+export interface WorkbooksListResult extends Array<Workbook> {
 }
