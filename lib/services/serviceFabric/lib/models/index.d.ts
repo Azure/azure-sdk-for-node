@@ -41,7 +41,8 @@ export interface AadMetadata {
  * cluster.
  *
  * @member {string} [type] The client authentication method.
- * @member {object} [metadata]
+ * @member {object} [metadata] Azure Active Directory metadata used for secured
+ * connection to cluster.
  * @member {string} [metadata.authority] The AAD authority url.
  * @member {string} [metadata.client] The AAD client application Id.
  * @member {string} [metadata.cluster] The AAD cluster application Id.
@@ -57,13 +58,66 @@ export interface AadMetadataObject {
 
 /**
  * @class
+ * Initializes a new instance of the AnalysisEventMetadata class.
+ * @constructor
+ * Metadata about an Analysis Event.
+ *
+ * @member {moment.duration} [delay] The analysis delay.
+ * @member {moment.duration} [duration] The duration of analysis.
+ */
+export interface AnalysisEventMetadata {
+  delay?: moment.Duration;
+  duration?: moment.Duration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricEvent class.
+ * @constructor
+ * Represents the base for all Fabric Events.
+ *
+ * @member {uuid} eventInstanceId The identifier for the FabricEvent instance.
+ * @member {date} timeStamp The time event was logged.
+ * @member {boolean} [hasCorrelatedEvents] Shows there is existing related
+ * events available.
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface FabricEvent {
+  eventInstanceId: string;
+  timeStamp: Date;
+  hasCorrelatedEvents?: boolean;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationEvent class.
+ * @constructor
+ * Represents the base for all Application Events.
+ *
+ * @member {string} applicationId The identity of the application. This is an
+ * encoded representation of the application name. This is used in the REST
+ * APIs to identify the application resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the application name is "fabric:/myapp/app1",
+ * the application identity would be "myapp\~app1" in 6.0+ and "myapp/app1" in
+ * previous versions.
+ */
+export interface ApplicationEvent extends FabricEvent {
+  applicationId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EntityHealthState class.
  * @constructor
  * A base type for the health state of various entities in the cluster. It
  * contains the aggregated health state.
  *
- * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
- * 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [aggregatedHealthState] The health state of a Service
+ * Fabric entity such as Cluster, Node, Application, Service, Partition,
+ * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
  */
 export interface EntityHealthState {
   aggregatedHealthState?: string;
@@ -76,7 +130,8 @@ export interface EntityHealthState {
  * Represents the health state of a service, which contains the service
  * identifier and its aggregated health state.
  *
- * @member {string} [serviceName]
+ * @member {string} [serviceName] Name of the service whose health state is
+ * represented by this object.
  */
 export interface ServiceHealthState extends EntityHealthState {
   serviceName?: string;
@@ -89,8 +144,10 @@ export interface ServiceHealthState extends EntityHealthState {
  * Represents the health state of a deployed application, which contains the
  * entity identifier and the aggregated health state.
  *
- * @member {string} [nodeName]
- * @member {string} [applicationName]
+ * @member {string} [nodeName] Name of the node on which the service package is
+ * deployed.
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
  */
 export interface DeployedApplicationHealthState extends EntityHealthState {
   nodeName?: string;
@@ -104,13 +161,18 @@ export interface DeployedApplicationHealthState extends EntityHealthState {
  * Health information common to all entities in the cluster. It contains the
  * aggregated health state, health events and unhealthy evaluation.
  *
- *
- * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
- * 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [aggregatedHealthState] The HealthState representing the
+ * aggregated health state of the entity computed by Health Manager.
+ * The health evaluation of the entity reflects all events reported on the
+ * entity and its children (if any).
+ * The aggregation is done by applying the desired health policy. Possible
+ * values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * @member {array} [healthEvents] The list of health events reported on the
  * entity.
- * @member {array} [unhealthyEvaluations]
- * @member {object} [healthStatistics]
+ * @member {array} [unhealthyEvaluations] The unhealthy evaluations that show
+ * why the current aggregated health state was returned by Health Manager.
+ * @member {object} [healthStatistics] Shows the health statistics for all
+ * children types of the queried entity.
  * @member {array} [healthStatistics.healthStateCountList] List of health state
  * counts per entity kind, which keeps track of how many children of the
  * queried entity are in Ok, Warning and Error state.
@@ -130,7 +192,8 @@ export interface EntityHealth {
  * aggregated health state and the service and deployed application health
  * states.
  *
- * @member {string} [name]
+ * @member {string} [name] The name of the application, including the 'fabric:'
+ * URI scheme.
  * @member {array} [serviceHealthStates] Service health states as found in the
  * health store.
  * @member {array} [deployedApplicationHealthStates] Deployed application
@@ -149,8 +212,10 @@ export interface ApplicationHealth extends EntityHealth {
  * Represents a health evaluation which describes the data and the algorithm
  * used by health manager to evaluate the health of an entity.
  *
- * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
- * 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [aggregatedHealthState] The health state of a Service
+ * Fabric entity such as Cluster, Node, Application, Service, Partition,
+ * Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
  * @member {string} [description] Description of the health evaluation, which
  * represents a summary of the evaluation process.
  * @member {string} kind Polymorphic Discriminator
@@ -167,9 +232,13 @@ export interface HealthEvaluation {
  * @constructor
  * Wrapper object for health evaluation.
  *
- * @member {object} [healthEvaluation]
- * @member {string} [healthEvaluation.aggregatedHealthState] Possible values
- * include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {object} [healthEvaluation] Represents a health evaluation which
+ * describes the data and the algorithm used by health manager to evaluate the
+ * health of an entity.
+ * @member {string} [healthEvaluation.aggregatedHealthState] The health state
+ * of a Service Fabric entity such as Cluster, Node, Application, Service,
+ * Partition, Replica etc. Possible values include: 'Invalid', 'Ok', 'Warning',
+ * 'Error', 'Unknown'
  * @member {string} [healthEvaluation.description] Description of the health
  * evaluation, which represents a summary of the evaluation process.
  * @member {string} [healthEvaluation.kind] Polymorphic Discriminator
@@ -186,8 +255,12 @@ export interface HealthEvaluationWrapper {
  * about the data and the algorithm used by the health store to evaluate
  * health.
  *
- * @member {string} [applicationName]
- * @member {array} [unhealthyEvaluations]
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state of the application. The types of
+ * the unhealthy evaluations can be DeployedApplicationsHealthEvaluation,
+ * ServicesHealthEvaluation or EventHealthEvaluation.
  */
 export interface ApplicationHealthEvaluation extends HealthEvaluation {
   applicationName?: string;
@@ -201,7 +274,6 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * Represents the health policy used to evaluate the health of services
  * belonging to a service type.
  *
- *
  * @member {number} [maxPercentUnhealthyPartitionsPerService] The maximum
  * allowed percentage of unhealthy partitions per service. Allowed values are
  * Byte values from zero to 100
@@ -213,8 +285,7 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * The percentage is calculated by dividing the number of unhealthy partitions
  * over the total number of partitions in the service.
  * The computation rounds up to tolerate one failure on small numbers of
- * partitions. Default percentage is zero.
- * . Default value: 0 .
+ * partitions. Default percentage is zero. Default value: 0 .
  * @member {number} [maxPercentUnhealthyReplicasPerPartition] The maximum
  * allowed percentage of unhealthy replicas per partition. Allowed values are
  * Byte values from zero to 100.
@@ -226,8 +297,7 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * The percentage is calculated by dividing the number of unhealthy replicas
  * over the total number of replicas in the partition.
  * The computation rounds up to tolerate one failure on small numbers of
- * replicas. Default percentage is zero.
- * . Default value: 0 .
+ * replicas. Default percentage is zero. Default value: 0 .
  * @member {number} [maxPercentUnhealthyServices] The maximum maximum allowed
  * percentage of unhealthy services. Allowed values are Byte values from zero
  * to 100.
@@ -240,8 +310,7 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * specific service type over the total number of services of the specific
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
- * services. Default percentage is zero.
- * . Default value: 0 .
+ * services. Default percentage is zero. Default value: 0 .
  */
 export interface ServiceTypeHealthPolicy {
   maxPercentUnhealthyPartitionsPerService?: number;
@@ -255,10 +324,10 @@ export interface ServiceTypeHealthPolicy {
  * @constructor
  * Defines an item in ServiceTypeHealthPolicyMap.
  *
- *
  * @member {string} key The key of the service type health policy map item.
  * This is the name of the service type.
- * @member {object} value
+ * @member {object} value The value of the service type health policy map item.
+ * This is the ServiceTypeHealthPolicy for this service type.
  * @member {number} [value.maxPercentUnhealthyPartitionsPerService] The maximum
  * allowed percentage of unhealthy partitions per service. Allowed values are
  * Byte values from zero to 100
@@ -309,7 +378,6 @@ export interface ServiceTypeHealthPolicyMapItem {
  * Defines a health policy used to evaluate the health of an application or one
  * of its children entities.
  *
- *
  * @member {boolean} [considerWarningAsError] Indicates whether warnings are
  * treated with the same severity as errors. Default value: false .
  * @member {number} [maxPercentUnhealthyDeployedApplications] The maximum
@@ -322,9 +390,9 @@ export interface ServiceTypeHealthPolicyMapItem {
  * over the number of nodes where the application is currently deployed on in
  * the cluster.
  * The computation rounds up to tolerate one failure on small numbers of nodes.
- * Default percentage is zero.
- * . Default value: 0 .
- * @member {object} [defaultServiceTypeHealthPolicy]
+ * Default percentage is zero. Default value: 0 .
+ * @member {object} [defaultServiceTypeHealthPolicy] The health policy used by
+ * default to evaluate the health of a service type.
  * @member {number}
  * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService] The
  * maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -365,7 +433,8 @@ export interface ServiceTypeHealthPolicyMapItem {
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
- * @member {array} [serviceTypeHealthPolicyMap]
+ * @member {array} [serviceTypeHealthPolicyMap] The map with service type
+ * health policy per service type name. The map is empty by default.
  */
 export interface ApplicationHealthPolicy {
   considerWarningAsError?: boolean;
@@ -380,9 +449,10 @@ export interface ApplicationHealthPolicy {
  * @constructor
  * Defines an item in ApplicationHealthPolicyMap.
  *
- *
- * @member {string} key
- * @member {object} value
+ * @member {string} key The key of the application health policy map item. This
+ * is the name of the application.
+ * @member {object} value The value of the application health policy map item.
+ * This is the ApplicationHealthPolicy for this application.
  * @member {boolean} [value.considerWarningAsError] Indicates whether warnings
  * are treated with the same severity as errors.
  * @member {number} [value.maxPercentUnhealthyDeployedApplications] The maximum
@@ -396,7 +466,8 @@ export interface ApplicationHealthPolicy {
  * the cluster.
  * The computation rounds up to tolerate one failure on small numbers of nodes.
  * Default percentage is zero.
- * @member {object} [value.defaultServiceTypeHealthPolicy]
+ * @member {object} [value.defaultServiceTypeHealthPolicy] The health policy
+ * used by default to evaluate the health of a service type.
  * @member {number}
  * [value.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
  * The maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -437,7 +508,8 @@ export interface ApplicationHealthPolicy {
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
- * @member {array} [value.serviceTypeHealthPolicyMap]
+ * @member {array} [value.serviceTypeHealthPolicyMap] The map with service type
+ * health policy per service type name. The map is empty by default.
  */
 export interface ApplicationHealthPolicyMapItem {
   key: string;
@@ -451,8 +523,9 @@ export interface ApplicationHealthPolicyMapItem {
  * Defines the application health policy map used to evaluate the health of an
  * application or one of its children entities.
  *
- *
- * @member {array} [applicationHealthPolicyMap]
+ * @member {array} [applicationHealthPolicyMap] The wrapper that contains the
+ * map with application health policies used to evaluate specific applications
+ * in the cluster.
  */
 export interface ApplicationHealthPolicies {
   applicationHealthPolicyMap?: ApplicationHealthPolicyMapItem[];
@@ -465,8 +538,8 @@ export interface ApplicationHealthPolicies {
  * Represents the health state of an application, which contains the
  * application identifier and the aggregated health state.
  *
- *
- * @member {string} [name]
+ * @member {string} [name] The name of the application, including the 'fabric:'
+ * URI scheme.
  */
 export interface ApplicationHealthState extends EntityHealthState {
   name?: string;
@@ -479,8 +552,9 @@ export interface ApplicationHealthState extends EntityHealthState {
  * A base type for the health state chunk of various entities in the cluster.
  * It contains the aggregated health state.
  *
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  */
 export interface EntityHealthStateChunk {
   healthState?: string;
@@ -495,8 +569,16 @@ export interface EntityHealthStateChunk {
  * The replica health state contains the replica ID and its aggregated health
  * state.
  *
- *
- * @member {string} [replicaOrInstanceId]
+ * @member {string} [replicaOrInstanceId] Id of a stateful service replica or a
+ * stateless service instance. This ID is used in the queries that apply to
+ * both stateful and stateless services. It is used by Service Fabric to
+ * uniquely identify a replica of a partition of a stateful service or an
+ * instance of a stateless service partition. It is unique within a partition
+ * and does not change for the lifetime of the replica or the instance. If a
+ * stateful replica gets dropped and another replica gets created on the same
+ * node for the same partition, it will get a different value for the ID. If a
+ * stateless instance is failed over on the same or different node it will get
+ * a different value for the ID.
  */
 export interface ReplicaHealthStateChunk extends EntityHealthStateChunk {
   replicaOrInstanceId?: string;
@@ -508,7 +590,6 @@ export interface ReplicaHealthStateChunk extends EntityHealthStateChunk {
  * @constructor
  * The list of replica health state chunks that respect the input filters in
  * the chunk query. Returned by get cluster health state chunks query.
- *
  *
  * @member {array} [items] The list of replica health state chunks that respect
  * the input filters in the chunk query.
@@ -522,12 +603,13 @@ export interface ReplicaHealthStateChunkList {
  * Initializes a new instance of the PartitionHealthStateChunk class.
  * @constructor
  * Represents the health state chunk of a partition, which contains the
- * partition id, its aggregated health state and any replicas that respect the
+ * partition ID, its aggregated health state and any replicas that respect the
  * filters in the cluster health chunk query description.
  *
- *
- * @member {uuid} [partitionId]
- * @member {object} [replicaHealthStateChunks]
+ * @member {uuid} [partitionId] The Id of the partition.
+ * @member {object} [replicaHealthStateChunks] The list of replica health state
+ * chunks belonging to the partition that respect the filters in the cluster
+ * health chunk query description.
  * @member {array} [replicaHealthStateChunks.items] The list of replica health
  * state chunks that respect the input filters in the chunk query.
  */
@@ -545,7 +627,6 @@ export interface PartitionHealthStateChunk extends EntityHealthStateChunk {
  * Returned by get cluster health state chunks query as part of the parent
  * application hierarchy.
  *
- *
  * @member {array} [items] The list of partition health state chunks that
  * respect the input filters in the chunk query.
  */
@@ -561,9 +642,11 @@ export interface PartitionHealthStateChunkList {
  * name, its aggregated health state and any partitions that respect the
  * filters in the cluster health chunk query description.
  *
- *
- * @member {string} [serviceName]
- * @member {object} [partitionHealthStateChunks]
+ * @member {string} [serviceName] The name of the service whose health state
+ * chunk is provided in this object.
+ * @member {object} [partitionHealthStateChunks] The list of partition health
+ * state chunks belonging to the service that respect the filters in the
+ * cluster health chunk query description.
  * @member {array} [partitionHealthStateChunks.items] The list of partition
  * health state chunks that respect the input filters in the chunk query.
  */
@@ -578,7 +661,6 @@ export interface ServiceHealthStateChunk extends EntityHealthStateChunk {
  * @constructor
  * The list of service health state chunks that respect the input filters in
  * the chunk query. Returned by get cluster health state chunks query.
- *
  *
  * @member {array} [items] The list of service health state chunks that respect
  * the input filters in the chunk query.
@@ -595,9 +677,13 @@ export interface ServiceHealthStateChunkList {
  * contains the service manifest name and the service package aggregated health
  * state.
  *
- *
- * @member {string} [serviceManifestName]
- * @member {string} [servicePackageActivationId]
+ * @member {string} [serviceManifestName] The name of the service manifest.
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
  */
 export interface DeployedServicePackageHealthStateChunk extends EntityHealthStateChunk {
   serviceManifestName?: string;
@@ -611,7 +697,6 @@ export interface DeployedServicePackageHealthStateChunk extends EntityHealthStat
  * The list of deployed service package health state chunks that respect the
  * input filters in the chunk query. Returned by get cluster health state
  * chunks query.
- *
  *
  * @member {array} [items] The list of deployed service package health state
  * chunks that respect the input filters in the chunk query.
@@ -629,10 +714,12 @@ export interface DeployedServicePackageHealthStateChunkList {
  * any deployed service packages that respect the chunk query description
  * filters.
  *
- *
  * @member {string} [nodeName] The name of node where the application is
  * deployed.
- * @member {object} [deployedServicePackageHealthStateChunks]
+ * @member {object} [deployedServicePackageHealthStateChunks] The list of
+ * deployed service package health state chunks belonging to the deployed
+ * application that respect the filters in the cluster health chunk query
+ * description.
  * @member {array} [deployedServicePackageHealthStateChunks.items] The list of
  * deployed service package health state chunks that respect the input filters
  * in the chunk query.
@@ -650,7 +737,6 @@ export interface DeployedApplicationHealthStateChunk extends EntityHealthStateCh
  * filters in the chunk query. Returned by get cluster health state chunks
  * query.
  *
- *
  * @member {array} [items] The list of deployed application health state chunks
  * that respect the input filters in the chunk query.
  */
@@ -667,13 +753,18 @@ export interface DeployedApplicationHealthStateChunkList {
  * aggregated health state and any children services and deployed applications
  * that respect the filters in cluster health chunk query description.
  *
- *
- * @member {string} [applicationName]
- * @member {string} [applicationTypeName]
- * @member {object} [serviceHealthStateChunks]
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {string} [applicationTypeName] The application type name as defined
+ * in the application manifest.
+ * @member {object} [serviceHealthStateChunks] The list of service health state
+ * chunks in the cluster that respect the filters in the cluster health chunk
+ * query description.
  * @member {array} [serviceHealthStateChunks.items] The list of service health
  * state chunks that respect the input filters in the chunk query.
- * @member {object} [deployedApplicationHealthStateChunks]
+ * @member {object} [deployedApplicationHealthStateChunks] The list of deployed
+ * application health state chunks in the cluster that respect the filters in
+ * the cluster health chunk query description.
  * @member {array} [deployedApplicationHealthStateChunks.items] The list of
  * deployed application health state chunks that respect the input filters in
  * the chunk query.
@@ -708,7 +799,6 @@ export interface EntityHealthStateChunkList {
  * input filters in the chunk query. Returned by get cluster health state
  * chunks query.
  *
- *
  * @member {array} [items] The list of application health state chunks that
  * respect the input filters in the chunk query.
  */
@@ -729,9 +819,8 @@ export interface ApplicationHealthStateChunkList extends EntityHealthStateChunkL
  * One filter can match zero, one or multiple replicas, depending on its
  * properties.
  *
- *
  * @member {string} [replicaOrInstanceIdFilter] Id of the stateful service
- * replica or stateles service instance that matches the filter. The filter is
+ * replica or stateless service instance that matches the filter. The filter is
  * applied only to the specified replica, if it exists.
  * If the replica doesn't exist, no replica is returned in the cluster health
  * chunk based on this filter.
@@ -746,10 +835,10 @@ export interface ApplicationHealthStateChunkList extends EntityHealthStateChunkL
  * The possible values are integer value of one of the following health states.
  * Only replicas that match the filter are returned. All replicas are used to
  * evaluate the parent partition aggregated health state.
- * If not specified, default value is None, unless the replica id is specified.
- * If the filter has default value and replica id is specified, the matching
+ * If not specified, default value is None, unless the replica ID is specified.
+ * If the filter has default value and replica ID is specified, the matching
  * replica is returned.
- * The state values are flag based enumeration, so the value could be a
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches replicas with
  * HealthState value of OK (2) and Warning (4).
@@ -763,8 +852,7 @@ export interface ApplicationHealthStateChunkList extends EntityHealthStateChunkL
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  */
 export interface ReplicaHealthStateFilter {
   replicaOrInstanceIdFilter?: string;
@@ -783,7 +871,6 @@ export interface ReplicaHealthStateFilter {
  * One filter can match zero, one or multiple partitions, depending on its
  * properties.
  *
- *
  * @member {uuid} [partitionIdFilter] ID of the partition that matches the
  * filter. The filter is applied only to the specified partition, if it exists.
  * If the partition doesn't exist, no partition is returned in the cluster
@@ -799,10 +886,10 @@ export interface ReplicaHealthStateFilter {
  * The possible values are integer value of one of the following health states.
  * Only partitions that match the filter are returned. All partitions are used
  * to evaluate the cluster aggregated health state.
- * If not specified, default value is None, unless the partition id is
- * specified. If the filter has default value and partition id is specified,
+ * If not specified, default value is None, unless the partition ID is
+ * specified. If the filter has default value and partition ID is specified,
  * the matching partition is returned.
- * The state values are flag based enumeration, so the value could be a
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches partitions with
  * HealthState value of OK (2) and Warning (4).
@@ -816,8 +903,7 @@ export interface ReplicaHealthStateFilter {
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  * @member {array} [replicaFilters] Defines a list of filters that specify
  * which replicas to be included in the returned cluster health chunk as
  * children of the parent partition. The replicas are returned only if the
@@ -847,7 +933,6 @@ export interface PartitionHealthStateFilter {
  * One filter can match zero, one or multiple services, depending on its
  * properties.
  *
- *
  * @member {string} [serviceNameFilter] The name of the service that matches
  * the filter. The filter is applied only to the specified service, if it
  * exists.
@@ -867,7 +952,7 @@ export interface PartitionHealthStateFilter {
  * If not specified, default value is None, unless the service name is
  * specified. If the filter has default value and service name is specified,
  * the matching service is returned.
- * The state values are flag based enumeration, so the value could be a
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches services with
  * HealthState value of OK (2) and Warning (4).
@@ -881,8 +966,7 @@ export interface PartitionHealthStateFilter {
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  * @member {array} [partitionFilters] Defines a list of filters that specify
  * which partitions to be included in the returned cluster health chunk as
  * children of the service. The partitions are returned only if the parent
@@ -893,7 +977,7 @@ export interface PartitionHealthStateFilter {
  * The service filter may specify multiple partition filters.
  * For example, it can specify a filter to return all partitions with health
  * state Error and another filter to always include a partition identified by
- * its partition id.
+ * its partition ID.
  */
 export interface ServiceHealthStateFilter {
   serviceNameFilter?: string;
@@ -914,7 +998,6 @@ export interface ServiceHealthStateFilter {
  * cluster health chunk.
  * One filter can match zero, one or multiple deployed service packages,
  * depending on its properties.
- *
  *
  * @member {string} [serviceManifestNameFilter] The name of the service
  * manifest which identifies the deployed service packages that matches the
@@ -942,9 +1025,9 @@ export interface ServiceHealthStateFilter {
  * deployed service packages are used to evaluate the parent deployed
  * application aggregated health state.
  * If not specified, default value is None, unless the deployed service package
- * id is specified. If the filter has default value and deployed service
- * package id is specified, the matching deployed service package is returned.
- * The state values are flag based enumeration, so the value could be a
+ * ID is specified. If the filter has default value and deployed service
+ * package ID is specified, the matching deployed service package is returned.
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches deployed service
  * packages with HealthState value of OK (2) and Warning (4).
@@ -958,8 +1041,7 @@ export interface ServiceHealthStateFilter {
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  */
 export interface DeployedServicePackageHealthStateFilter {
   serviceManifestNameFilter?: string;
@@ -977,7 +1059,6 @@ export interface DeployedServicePackageHealthStateFilter {
  * matches a filter specified in the cluster health chunk query description.
  * One filter can match zero, one or multiple deployed applications, depending
  * on its properties.
- *
  *
  * @member {string} [nodeNameFilter] The name of the node where the application
  * is deployed in order to match the filter.
@@ -1000,7 +1081,7 @@ export interface DeployedServicePackageHealthStateFilter {
  * If not specified, default value is None, unless the node name is specified.
  * If the filter has default value and node name is specified, the matching
  * deployed application is returned.
- * The state values are flag based enumeration, so the value could be a
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches deployed applications
  * with HealthState value of OK (2) and Warning (4).
@@ -1014,8 +1095,7 @@ export interface DeployedServicePackageHealthStateFilter {
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  * @member {array} [deployedServicePackageFilters] Defines a list of filters
  * that specify which deployed service packages to be included in the returned
  * cluster health chunk as children of the parent deployed application. The
@@ -1045,7 +1125,6 @@ export interface DeployedApplicationHealthStateFilter {
  * One filter can match zero, one or multiple applications, depending on its
  * properties.
  *
- *
  * @member {string} [applicationNameFilter] The name of the application that
  * matches the filter, as a fabric uri. The filter is applied only to the
  * specified application, if it exists.
@@ -1074,7 +1153,7 @@ export interface DeployedApplicationHealthStateFilter {
  * If not specified, default value is None, unless the application name or the
  * application type name are specified. If the filter has default value and
  * application name is specified, the matching application is returned.
- * The state values are flag based enumeration, so the value could be a
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches applications with
  * HealthState value of OK (2) and Warning (4).
@@ -1088,8 +1167,7 @@ export interface DeployedApplicationHealthStateFilter {
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  * @member {array} [serviceFilters] Defines a list of filters that specify
  * which services to be included in the returned cluster health chunk as
  * children of the application. The services are returned only if the parent
@@ -1142,17 +1220,29 @@ export interface ApplicationParameter {
  * @constructor
  * Information about a Service Fabric application.
  *
- * @member {string} [id]
- * @member {string} [name]
- * @member {string} [typeName]
- * @member {string} [typeVersion]
- * @member {string} [status] Possible values include: 'Invalid', 'Ready',
- * 'Upgrading', 'Creating', 'Deleting', 'Failed'
- * @member {array} [parameters]
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * @member {string} [applicationDefinitionKind] Possible values include:
- * 'Invalid', 'ServiceFabricApplicationDescription', 'Compose'
+ * @member {string} [id] The identity of the application. This is an encoded
+ * representation of the application name. This is used in the REST APIs to
+ * identify the application resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the application name is "fabric:/myapp/app1",
+ * the application identity would be "myapp\~app1" in 6.0+ and "myapp/app1" in
+ * previous versions.
+ * @member {string} [name] The name of the application, including the 'fabric:'
+ * URI scheme.
+ * @member {string} [typeName] The application type name as defined in the
+ * application manifest.
+ * @member {string} [typeVersion] The version of the application type as
+ * defined in the application manifest.
+ * @member {string} [status] The status of the application. Possible values
+ * include: 'Invalid', 'Ready', 'Upgrading', 'Creating', 'Deleting', 'Failed'
+ * @member {array} [parameters] List of application parameters with overridden
+ * values from their default values specified in the application manifest.
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [applicationDefinitionKind] The mechanism used to define a
+ * Service Fabric application. Possible values include: 'Invalid',
+ * 'ServiceFabricApplicationDescription', 'Compose'
  */
 export interface ApplicationInfo {
   id?: string;
@@ -1172,7 +1262,6 @@ export interface ApplicationInfo {
  * Describes capacity information for a custom resource balancing metric. This
  * can be used to limit the total consumption of this metric by the services of
  * this application.
- *
  *
  * @member {string} [name] The name of the metric.
  * @member {number} [maximumCapacity] The maximum node capacity for Service
@@ -1219,7 +1308,13 @@ export interface ApplicationMetricDescription {
  * @constructor
  * Load Information about a Service Fabric application.
  *
- * @member {string} [id]
+ * @member {string} [id] The identity of the application. This is an encoded
+ * representation of the application name. This is used in the REST APIs to
+ * identify the application resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the application name is "fabric:/myapp/app1",
+ * the application identity would be "myapp\~app1" in 6.0+ and "myapp/app1" in
+ * previous versions.
  * @member {number} [minimumNodes] The minimum number of nodes for this
  * application.
  * It is the number of nodes where Service Fabric will reserve Capacity in the
@@ -1236,7 +1331,8 @@ export interface ApplicationMetricDescription {
  * is instantiated.
  * For applications that do not have application capacity defined this value
  * will be zero.
- * @member {array} [applicationLoadMetricInformation]
+ * @member {array} [applicationLoadMetricInformation] List of application
+ * capacity metric description.
  */
 export interface ApplicationLoadInfo {
   id?: string;
@@ -1252,8 +1348,15 @@ export interface ApplicationLoadInfo {
  * @constructor
  * Information about the application name.
  *
- * @member {string} [id]
- * @member {string} [name]
+ * @member {string} [id] The identity of the application. This is an encoded
+ * representation of the application name. This is used in the REST APIs to
+ * identify the application resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the application name is "fabric:/myapp/app1",
+ * the application identity would be "myapp\~app1" in 6.0+ and "myapp/app1" in
+ * previous versions.
+ * @member {string} [name] The name of the application, including the 'fabric:'
+ * URI scheme.
  */
 export interface ApplicationNameInfo {
   id?: string;
@@ -1272,7 +1375,9 @@ export interface ApplicationNameInfo {
  * percentage of unhealthy applications from the ClusterHealthPolicy.
  * @member {number} [totalCount] Total number of applications from the health
  * store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * ApplicationHealthEvaluation that impacted the aggregated health.
  */
 export interface ApplicationsHealthEvaluation extends HealthEvaluation {
   maxPercentUnhealthyApplications?: number;
@@ -1291,13 +1396,17 @@ export interface ApplicationsHealthEvaluation extends HealthEvaluation {
  * application of the included application type that impacted current
  * aggregated health state.
  *
- * @member {string} [applicationTypeName]
+ * @member {string} [applicationTypeName] The application type name as defined
+ * in the application manifest.
  * @member {number} [maxPercentUnhealthyApplications] Maximum allowed
  * percentage of unhealthy applications for the application type, specified as
  * an entry in ApplicationTypeHealthPolicyMap.
  * @member {number} [totalCount] Total number of applications of the
  * application type found in the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * ApplicationHealthEvaluation of this application type that impacted the
+ * aggregated health.
  */
 export interface ApplicationTypeApplicationsHealthEvaluation extends HealthEvaluation {
   applicationTypeName?: string;
@@ -1311,7 +1420,6 @@ export interface ApplicationTypeApplicationsHealthEvaluation extends HealthEvalu
  * Initializes a new instance of the ApplicationTypeHealthPolicyMapItem class.
  * @constructor
  * Defines an item in ApplicationTypeHealthPolicyMap.
- *
  *
  * @member {string} key The key of the application type health policy map item.
  * This is the name of the application type.
@@ -1331,13 +1439,19 @@ export interface ApplicationTypeHealthPolicyMapItem {
  * @constructor
  * Information about an application type.
  *
- * @member {string} [name]
- * @member {string} [version]
- * @member {array} [defaultParameterList]
- * @member {string} [status] Possible values include: 'Invalid',
- * 'Provisioning', 'Available', 'Unprovisioning', 'Failed'
- * @member {string} [statusDetails]
- * @member {string} [applicationTypeDefinitionKind] Possible values include:
+ * @member {string} [name] The application type name as defined in the
+ * application manifest.
+ * @member {string} [version] The version of the application type as defined in
+ * the application manifest.
+ * @member {array} [defaultParameterList] List of application type parameters
+ * that can be overridden when creating or updating the application.
+ * @member {string} [status] The status of the application type. Possible
+ * values include: 'Invalid', 'Provisioning', 'Available', 'Unprovisioning',
+ * 'Failed'
+ * @member {string} [statusDetails] Additional detailed information about the
+ * status of the application type.
+ * @member {string} [applicationTypeDefinitionKind] The mechanism used to
+ * define a Service Fabric application type. Possible values include:
  * 'Invalid', 'ServiceFabricApplicationPackage', 'Compose'
  */
 export interface ApplicationTypeInfo {
@@ -1358,8 +1472,13 @@ export interface ApplicationTypeInfo {
  * single message. The next set of results can be obtained by executing the
  * same query with the continuation token provided in this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of application type information.
  */
 export interface PagedApplicationTypeInfoList {
   continuationToken?: string;
@@ -1385,13 +1504,37 @@ export interface ApplicationTypeManifest {
  * @constructor
  * Describes the parameters for monitoring an upgrade in Monitored mode.
  *
- * @member {string} [failureAction] Possible values include: 'Invalid',
- * 'Rollback', 'Manual'
- * @member {string} [healthCheckWaitDurationInMilliseconds]
- * @member {string} [healthCheckStableDurationInMilliseconds]
- * @member {string} [healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [upgradeTimeoutInMilliseconds]
- * @member {string} [upgradeDomainTimeoutInMilliseconds]
+ * @member {string} [failureAction] The compensating action to perform when a
+ * Monitored upgrade encounters monitoring policy or health policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
+ * @member {string} [healthCheckWaitDurationInMilliseconds] The amount of time
+ * to wait after completing an upgrade domain before applying health policies.
+ * It is first interpreted as a string representing an ISO 8601 duration. If
+ * that fails, then it is interpreted as a number representing the total number
+ * of milliseconds.
+ * @member {string} [healthCheckStableDurationInMilliseconds] The amount of
+ * time that the application or cluster must remain healthy before the upgrade
+ * proceeds to the next upgrade domain. It is first interpreted as a string
+ * representing an ISO 8601 duration. If that fails, then it is interpreted as
+ * a number representing the total number of milliseconds.
+ * @member {string} [healthCheckRetryTimeoutInMilliseconds] The amount of time
+ * to retry health evaluation when the application or cluster is unhealthy
+ * before FailureAction is executed. It is first interpreted as a string
+ * representing an ISO 8601 duration. If that fails, then it is interpreted as
+ * a number representing the total number of milliseconds.
+ * @member {string} [upgradeTimeoutInMilliseconds] The amount of time the
+ * overall upgrade has to complete before FailureAction is executed. It is
+ * first interpreted as a string representing an ISO 8601 duration. If that
+ * fails, then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [upgradeDomainTimeoutInMilliseconds] The amount of time
+ * each upgrade domain has to complete before FailureAction is executed. It is
+ * first interpreted as a string representing an ISO 8601 duration. If that
+ * fails, then it is interpreted as a number representing the total number of
+ * milliseconds.
  */
 export interface MonitoringPolicyDescription {
   failureAction?: string;
@@ -1406,35 +1549,76 @@ export interface MonitoringPolicyDescription {
  * @class
  * Initializes a new instance of the ApplicationUpgradeDescription class.
  * @constructor
- * Describes the parameters for an application upgrade. Please note that
- * upgrade description replaces the existing application description. This
- * means that if the parameters are not specified, the existing parameters on
- * the applications will be overwritten with the empty parameters list. This
- * would results in application using the default value of the parameters from
- * the application manifest. If you do not want to change any existing
- * parameter values, please get the application parameters first using the
+ * Describes the parameters for an application upgrade. Note that upgrade
+ * description replaces the existing application description. This means that
+ * if the parameters are not specified, the existing parameters on the
+ * applications will be overwritten with the empty parameters list. This would
+ * result in the application using the default value of the parameters from the
+ * application manifest. If you do not want to change any existing parameter
+ * values, please get the application parameters first using the
  * GetApplicationInfo query and then supply those values as Parameters in this
  * ApplicationUpgradeDescription.
  *
- * @member {string} name
- * @member {string} targetApplicationTypeVersion
- * @member {array} parameters
- * @member {string} upgradeKind Possible values include: 'Invalid', 'Rolling'.
- * Default value: 'Rolling' .
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {boolean} [forceRestart]
- * @member {object} [monitoringPolicy]
- * @member {string} [monitoringPolicy.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * @member {string} name The name of the target application, including the
+ * 'fabric:' URI scheme.
+ * @member {string} targetApplicationTypeVersion The target application type
+ * version (found in the application manifest) for the application upgrade.
+ * @member {array} parameters List of application parameters with overridden
+ * values from their default values specified in the application manifest.
+ * @member {string} upgradeKind The kind of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling'. Default
+ * value: 'Rolling' .
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The maximum amount
+ * of time to block processing of an upgrade domain and prevent loss of
+ * availability when there are unexpected issues. When this timeout expires,
+ * processing of the upgrade domain will proceed regardless of availability
+ * loss issues. The timeout is reset at the start of each upgrade domain. Valid
+ * values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {object} [monitoringPolicy] Describes the parameters for monitoring
+ * an upgrade in Monitored mode.
+ * @member {string} [monitoringPolicy.failureAction] The compensating action to
+ * perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [applicationHealthPolicy]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [applicationHealthPolicy] Defines a health policy used to
+ * evaluate the health of an application or one of its children entities.
  * @member {boolean} [applicationHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number}
@@ -1450,6 +1634,7 @@ export interface MonitoringPolicyDescription {
  * The computation rounds up to tolerate one failure on small numbers of nodes.
  * Default percentage is zero.
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The health policy used by default to evaluate the health of a service type.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
  * The maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -1490,7 +1675,9 @@ export interface MonitoringPolicyDescription {
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
- * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap]
+ * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap] The map
+ * with service type health policy per service type name. The map is empty by
+ * default.
  */
 export interface ApplicationUpgradeDescription {
   name: string;
@@ -1510,9 +1697,9 @@ export interface ApplicationUpgradeDescription {
  * @constructor
  * Information about an upgrade domain.
  *
- * @member {string} [name]
- * @member {string} [state] Possible values include: 'Invalid', 'Pending',
- * 'InProgress', 'Completed'
+ * @member {string} [name] The name of the upgrade domain
+ * @member {string} [state] The state of the upgrade domain. Possible values
+ * include: 'Invalid', 'Pending', 'InProgress', 'Completed'
  */
 export interface UpgradeDomainInfo {
   name?: string;
@@ -1541,7 +1728,9 @@ export interface SafetyCheck {
  * service fabric before continuing with the operations. These checks ensure
  * the availability of the service and the reliability of the state.
  *
- * @member {object} [safetyCheck]
+ * @member {object} [safetyCheck] Represents a safety check performed by
+ * service fabric before continuing with the operations. These checks ensure
+ * the availability of the service and the reliability of the state.
  * @member {string} [safetyCheck.kind] Polymorphic Discriminator
  */
 export interface SafetyCheckWrapper {
@@ -1554,10 +1743,11 @@ export interface SafetyCheckWrapper {
  * @constructor
  * Information about the upgrading node and its status
  *
- * @member {string} [nodeName]
- * @member {string} [upgradePhase] Possible values include: 'Invalid',
- * 'PreUpgradeSafetyCheck', 'Upgrading', 'PostUpgradeSafetyCheck'
- * @member {array} [pendingSafetyChecks]
+ * @member {string} [nodeName] The name of a Service Fabric node.
+ * @member {string} [upgradePhase] The state of the upgrading node. Possible
+ * values include: 'Invalid', 'PreUpgradeSafetyCheck', 'Upgrading',
+ * 'PostUpgradeSafetyCheck'
+ * @member {array} [pendingSafetyChecks] List of pending safety checks
  */
 export interface NodeUpgradeProgressInfo {
   nodeName?: string;
@@ -1571,8 +1761,9 @@ export interface NodeUpgradeProgressInfo {
  * @constructor
  * Information about the current in-progress upgrade domain.
  *
- * @member {string} [domainName]
- * @member {array} [nodeUpgradeProgressList]
+ * @member {string} [domainName] The name of the upgrade domain
+ * @member {array} [nodeUpgradeProgressList] List of upgrading nodes and their
+ * statuses
  */
 export interface CurrentUpgradeDomainProgressInfo {
   domainName?: string;
@@ -1586,8 +1777,9 @@ export interface CurrentUpgradeDomainProgressInfo {
  * Information about the upgrade domain progress at the time of upgrade
  * failure.
  *
- * @member {string} [domainName]
- * @member {array} [nodeUpgradeProgressList]
+ * @member {string} [domainName] The name of the upgrade domain
+ * @member {array} [nodeUpgradeProgressList] List of upgrading nodes and their
+ * statuses
  */
 export interface FailureUpgradeDomainProgressInfo {
   domainName?: string;
@@ -1600,41 +1792,100 @@ export interface FailureUpgradeDomainProgressInfo {
  * @constructor
  * Describes the parameters for an application upgrade.
  *
- * @member {string} [name]
- * @member {string} [typeName]
- * @member {string} [targetApplicationTypeVersion]
- * @member {array} [upgradeDomains]
- * @member {string} [upgradeState] Possible values include: 'Invalid',
- * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
- * 'RollingForwardInProgress', 'RollingForwardCompleted', 'Failed'
- * @member {string} [nextUpgradeDomain]
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {object} [upgradeDescription]
- * @member {string} [upgradeDescription.name]
- * @member {string} [upgradeDescription.targetApplicationTypeVersion]
- * @member {array} [upgradeDescription.parameters]
- * @member {string} [upgradeDescription.upgradeKind] Possible values include:
- * 'Invalid', 'Rolling'
- * @member {string} [upgradeDescription.rollingUpgradeMode] Possible values
- * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * @member {string} [name] The name of the target application, including the
+ * 'fabric:' URI scheme.
+ * @member {string} [typeName] The application type name as defined in the
+ * application manifest.
+ * @member {string} [targetApplicationTypeVersion] The target application type
+ * version (found in the application manifest) for the application upgrade.
+ * @member {array} [upgradeDomains] List of upgrade domains and their statuses.
+ * @member {string} [upgradeState] The state of the upgrade domain. Possible
+ * values include: 'Invalid', 'RollingBackInProgress', 'RollingBackCompleted',
+ * 'RollingForwardPending', 'RollingForwardInProgress',
+ * 'RollingForwardCompleted', 'Failed'
+ * @member {string} [nextUpgradeDomain] The name of the next upgrade domain to
+ * be processed.
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {object} [upgradeDescription] Describes the parameters for an
+ * application upgrade. Note that upgrade description replaces the existing
+ * application description. This means that if the parameters are not
+ * specified, the existing parameters on the applications will be overwritten
+ * with the empty parameters list. This would result in the application using
+ * the default value of the parameters from the application manifest. If you do
+ * not want to change any existing parameter values, please get the application
+ * parameters first using the GetApplicationInfo query and then supply those
+ * values as Parameters in this ApplicationUpgradeDescription.
+ * @member {string} [upgradeDescription.name] The name of the target
+ * application, including the 'fabric:' URI scheme.
+ * @member {string} [upgradeDescription.targetApplicationTypeVersion] The
+ * target application type version (found in the application manifest) for the
+ * application upgrade.
+ * @member {array} [upgradeDescription.parameters] List of application
+ * parameters with overridden values from their default values specified in the
+ * application manifest.
+ * @member {string} [upgradeDescription.upgradeKind] The kind of upgrade out of
+ * the following possible values. Possible values include: 'Invalid', 'Rolling'
+ * @member {string} [upgradeDescription.rollingUpgradeMode] The mode used to
+ * monitor health during a rolling upgrade. The values are UnmonitoredAuto,
+ * UnmonitoredManual, and Monitored. Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * @member {number} [upgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {boolean} [upgradeDescription.forceRestart]
- * @member {object} [upgradeDescription.monitoringPolicy]
- * @member {string} [upgradeDescription.monitoringPolicy.failureAction]
- * Possible values include: 'Invalid', 'Rollback', 'Manual'
+ * The maximum amount of time to block processing of an upgrade domain and
+ * prevent loss of availability when there are unexpected issues. When this
+ * timeout expires, processing of the upgrade domain will proceed regardless of
+ * availability loss issues. The timeout is reset at the start of each upgrade
+ * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+ * 32-bit integer).
+ * @member {boolean} [upgradeDescription.forceRestart] If true, then processes
+ * are forcefully restarted during upgrade even when the code version has not
+ * changed (the upgrade only changes configuration or data).
+ * @member {object} [upgradeDescription.monitoringPolicy] Describes the
+ * parameters for monitoring an upgrade in Monitored mode.
+ * @member {string} [upgradeDescription.monitoringPolicy.failureAction] The
+ * compensating action to perform when a Monitored upgrade encounters
+ * monitoring policy or health policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string}
  * [upgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string}
  * [upgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string}
  * [upgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string}
- * [upgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+ * [upgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds] The
+ * amount of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
  * @member {string}
- * [upgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [upgradeDescription.applicationHealthPolicy]
+ * [upgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [upgradeDescription.applicationHealthPolicy] Defines a
+ * health policy used to evaluate the health of an application or one of its
+ * children entities.
  * @member {boolean}
  * [upgradeDescription.applicationHealthPolicy.considerWarningAsError]
  * Indicates whether warnings are treated with the same severity as errors.
@@ -1652,6 +1903,7 @@ export interface FailureUpgradeDomainProgressInfo {
  * Default percentage is zero.
  * @member {object}
  * [upgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The health policy used by default to evaluate the health of a service type.
  * @member {number}
  * [upgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
  * The maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -1693,24 +1945,35 @@ export interface FailureUpgradeDomainProgressInfo {
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
  * @member {array}
- * [upgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+ * [upgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap] The
+ * map with service type health policy per service type name. The map is empty
+ * by default.
  * @member {string} [upgradeDurationInMilliseconds] The estimated total amount
  * of time spent processing the overall upgrade.
  * @member {string} [upgradeDomainDurationInMilliseconds] The estimated total
  * amount of time spent processing the current upgrade domain.
- * @member {array} [unhealthyEvaluations]
- * @member {object} [currentUpgradeDomainProgress]
- * @member {string} [currentUpgradeDomainProgress.domainName]
- * @member {array} [currentUpgradeDomainProgress.nodeUpgradeProgressList]
+ * @member {array} [unhealthyEvaluations] List of health evaluations that
+ * resulted in the current aggregated health state.
+ * @member {object} [currentUpgradeDomainProgress] Information about the
+ * current in-progress upgrade domain.
+ * @member {string} [currentUpgradeDomainProgress.domainName] The name of the
+ * upgrade domain
+ * @member {array} [currentUpgradeDomainProgress.nodeUpgradeProgressList] List
+ * of upgrading nodes and their statuses
  * @member {string} [startTimestampUtc] The estimated UTC datetime when the
  * upgrade started.
  * @member {string} [failureTimestampUtc] The estimated UTC datetime when the
  * upgrade failed and FailureAction was executed.
- * @member {string} [failureReason] Possible values include: 'None',
- * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout', 'UpgradeTimeout'
- * @member {object} [upgradeDomainProgressAtFailure]
- * @member {string} [upgradeDomainProgressAtFailure.domainName]
+ * @member {string} [failureReason] The cause of an upgrade failure that
+ * resulted in FailureAction being executed. Possible values include: 'None',
+ * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
+ * 'OverallUpgradeTimeout'
+ * @member {object} [upgradeDomainProgressAtFailure] Information about the
+ * upgrade domain progress at the time of upgrade failure.
+ * @member {string} [upgradeDomainProgressAtFailure.domainName] The name of the
+ * upgrade domain
  * @member {array} [upgradeDomainProgressAtFailure.nodeUpgradeProgressList]
+ * List of upgrading nodes and their statuses
  * @member {string} [upgradeStatusDetails] Additional detailed information
  * about the status of the pending upgrade.
  */
@@ -1749,6 +2012,16 @@ export interface ClusterConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the ClusterEvent class.
+ * @constructor
+ * Represents the base for all Cluster Events.
+ *
+ */
+export interface ClusterEvent extends FabricEvent {
+}
+
+/**
+ * @class
  * Initializes a new instance of the NodeId class.
  * @constructor
  * An internal ID used by Service Fabric to uniquely identify a node. Node Id
@@ -1767,8 +2040,9 @@ export interface NodeId {
  * Represents the health state of a node, which contains the node identifier
  * and its aggregated health state.
  *
- * @member {string} [name]
- * @member {object} [id]
+ * @member {string} [name] The name of a Service Fabric node.
+ * @member {object} [id] An internal ID used by Service Fabric to uniquely
+ * identify a node. Node Id is deterministically generated from node name.
  * @member {string} [id.id] Value of the node Id. This is a 128 bit integer.
  */
 export interface NodeHealthState extends EntityHealthState {
@@ -1784,7 +2058,6 @@ export interface NodeHealthState extends EntityHealthState {
  * Contains the cluster aggregated health state, the cluster application and
  * node health states as well as the health events and the unhealthy
  * evaluations.
- *
  *
  * @member {array} [nodeHealthStates] Cluster node health states as found in
  * the health store.
@@ -1803,8 +2076,7 @@ export interface ClusterHealth extends EntityHealth {
  * Represents the health state chunk of a node, which contains the node name
  * and its aggregated health state.
  *
- *
- * @member {string} [nodeName]
+ * @member {string} [nodeName] The name of a Service Fabric node.
  */
 export interface NodeHealthStateChunk extends EntityHealthStateChunk {
   nodeName?: string;
@@ -1817,7 +2089,6 @@ export interface NodeHealthStateChunk extends EntityHealthStateChunk {
  * The list of node health state chunks in the cluster that respect the input
  * filters in the chunk query. Returned by get cluster health state chunks
  * query.
- *
  *
  * @member {array} [items] The list of node health state chunks that respect
  * the input filters in the chunk query.
@@ -1834,13 +2105,21 @@ export interface NodeHealthStateChunkList extends EntityHealthStateChunkList {
  * Contains the cluster aggregated health state, and the cluster entities that
  * respect the input filter.
  *
- *
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * @member {string} [healthState] The HealthState representing the aggregated
+ * health state of the cluster computed by Health Manager.
+ * The health evaluation of the entity reflects all events reported on the
+ * entity and its children (if any).
+ * The aggregation is done by applying the desired cluster health policy and
+ * the application health policies. Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- * @member {object} [nodeHealthStateChunks]
+ * @member {object} [nodeHealthStateChunks] The list of node health state
+ * chunks in the cluster that respect the filters in the cluster health chunk
+ * query description.
  * @member {array} [nodeHealthStateChunks.items] The list of node health state
  * chunks that respect the input filters in the chunk query.
- * @member {object} [applicationHealthStateChunks]
+ * @member {object} [applicationHealthStateChunks] The list of application
+ * health state chunks in the cluster that respect the filters in the cluster
+ * health chunk query description.
  * @member {array} [applicationHealthStateChunks.items] The list of application
  * health state chunks that respect the input filters in the chunk query.
  */
@@ -1860,7 +2139,6 @@ export interface ClusterHealthChunk {
  * properties.
  * Can be specified in the cluster health chunk query description.
  *
- *
  * @member {string} [nodeNameFilter] Name of the node that matches the filter.
  * The filter is applied only to the specified node, if it exists.
  * If the node doesn't exist, no node is returned in the cluster health chunk
@@ -1878,7 +2156,7 @@ export interface ClusterHealthChunk {
  * If not specified, default value is None, unless the node name is specified.
  * If the filter has default value and node name is specified, the matching
  * node is returned.
- * The state values are flag based enumeration, so the value could be a
+ * The state values are flag-based enumeration, so the value could be a
  * combination of these values obtained using bitwise 'OR' operator.
  * For example, if the provided value is 6, it matches nodes with HealthState
  * value of OK (2) and Warning (4).
@@ -1892,8 +2170,7 @@ export interface ClusterHealthChunk {
  * - Error - Filter that matches input with HealthState value Error. The value
  * is 8.
  * - All - Filter that matches input with any HealthState value. The value is
- * 65535.
- * . Default value: 0 .
+ * 65535. Default value: 0 .
  */
 export interface NodeHealthStateFilter {
   nodeNameFilter?: string;
@@ -1906,7 +2183,6 @@ export interface NodeHealthStateFilter {
  * @constructor
  * Defines a health policy used to evaluate the health of the cluster or of a
  * cluster node.
- *
  *
  * @member {boolean} [considerWarningAsError] Indicates whether warnings are
  * treated with the same severity as errors. Default value: false .
@@ -1924,8 +2200,7 @@ export interface NodeHealthStateFilter {
  * Default percentage is zero.
  *
  * In large clusters, some nodes will always be down or out for repairs, so
- * this percentage should be configured to tolerate that.
- * . Default value: 0 .
+ * this percentage should be configured to tolerate that. Default value: 0 .
  * @member {number} [maxPercentUnhealthyApplications] The maximum allowed
  * percentage of unhealthy applications before reporting an error. For example,
  * to allow 10% of applications to be unhealthy, this value would be 10.
@@ -1939,9 +2214,29 @@ export interface NodeHealthStateFilter {
  * of application types that are included in the
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
- * applications. Default percentage is zero.
- * . Default value: 0 .
- * @member {array} [applicationTypeHealthPolicyMap]
+ * applications. Default percentage is zero. Default value: 0 .
+ * @member {array} [applicationTypeHealthPolicyMap] Defines a map with max
+ * percentage unhealthy applications for specific application types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
  */
 export interface ClusterHealthPolicy {
   considerWarningAsError?: boolean;
@@ -1976,7 +2271,8 @@ export interface ClusterHealthPolicy {
  * For example, it can specify a filter to return all applications with health
  * state Error and another filter to always include applications of a specified
  * application type.
- * @member {object} [clusterHealthPolicy]
+ * @member {object} [clusterHealthPolicy] Defines a health policy used to
+ * evaluate the health of the cluster or of a cluster node.
  * @member {boolean} [clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number} [clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
@@ -2009,9 +2305,35 @@ export interface ClusterHealthPolicy {
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
- * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {object} [applicationHealthPolicies]
- * @member {array} [applicationHealthPolicies.applicationHealthPolicyMap]
+ * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [applicationHealthPolicies] Defines the application health
+ * policy map used to evaluate the health of an application or one of its
+ * children entities.
+ * @member {array} [applicationHealthPolicies.applicationHealthPolicyMap] The
+ * wrapper that contains the map with application health policies used to
+ * evaluate specific applications in the cluster.
  */
 export interface ClusterHealthChunkQueryDescription {
   nodeFilters?: NodeHealthStateFilter[];
@@ -2026,8 +2348,17 @@ export interface ClusterHealthChunkQueryDescription {
  * @constructor
  * Health policies to evaluate cluster health.
  *
- * @member {array} [applicationHealthPolicyMap]
- * @member {object} [clusterHealthPolicy]
+ * @member {array} [applicationHealthPolicyMap] Defines a map that contains
+ * specific application health policies for different applications.
+ * Each entry specifies as key the application name and as value an
+ * ApplicationHealthPolicy used to evaluate the application health.
+ * If an application is not specified in the map, the application health
+ * evaluation uses the ApplicationHealthPolicy found in its application
+ * manifest or the default application health policy (if no health policy is
+ * defined in the manifest).
+ * The map is empty by default.
+ * @member {object} [clusterHealthPolicy] Defines a health policy used to
+ * evaluate the health of the cluster or of a cluster node.
  * @member {boolean} [clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number} [clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
@@ -2060,7 +2391,29 @@ export interface ClusterHealthChunkQueryDescription {
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
- * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap]
+ * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
  */
 export interface ClusterHealthPolicies {
   applicationHealthPolicyMap?: ApplicationHealthPolicyMapItem[];
@@ -2081,18 +2434,79 @@ export interface ClusterManifest {
 
 /**
  * @class
+ * Initializes a new instance of the ContainerApiRequestBody class.
+ * @constructor
+ * parameters for making container API call.
+ *
+ * @member {string} [httpVerb] HTTP verb of container REST API, defaults to
+ * "GET"
+ * @member {string} uriPath URI path of container REST API
+ * @member {string} [contentType] Content type of container REST API request,
+ * defaults to "application/json"
+ * @member {string} [body] HTTP request body of container REST API
+ */
+export interface ContainerApiRequestBody {
+  httpVerb?: string;
+  uriPath: string;
+  contentType?: string;
+  body?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerApiResult class.
+ * @constructor
+ * Container API result.
+ *
+ * @member {number} status HTTP status code returned by the target container
+ * API
+ * @member {string} [contentType] HTTP content type
+ * @member {string} [contentEncoding] HTTP content encoding
+ * @member {string} [body] container API result body
+ */
+export interface ContainerApiResult {
+  status: number;
+  contentType?: string;
+  contentEncoding?: string;
+  body?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerApiResponse class.
+ * @constructor
+ * Response body that wraps container API result.
+ *
+ * @member {object} containerApiResult Container API result.
+ * @member {number} [containerApiResult.status] HTTP status code returned by
+ * the target container API
+ * @member {string} [containerApiResult.contentType] HTTP content type
+ * @member {string} [containerApiResult.contentEncoding] HTTP content encoding
+ * @member {string} [containerApiResult.body] container API result body
+ */
+export interface ContainerApiResponse {
+  containerApiResult: ContainerApiResult;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerInstanceEvent class.
+ * @constructor
+ * Represents the base for all Container Events.
+ *
+ */
+export interface ContainerInstanceEvent extends FabricEvent {
+}
+
+/**
+ * @class
  * Initializes a new instance of the DeactivationIntentDescription class.
  * @constructor
  * Describes the intent or reason for deactivating the node.
  *
  * @member {string} [deactivationIntent] Describes the intent or reason for
- * deactivating the node. The possible values are following.
- * - Pause - Indicates that the node should be paused. The value is 1.
- * - Restart - Indicates that the intent is for the node to be restarted after
- * a short period of time. The value is 2.
- * - RemoveData - Indicates the intent is for the node to remove data. The
- * value is 3.
- * . Possible values include: 'Pause', 'Restart', 'RemoveData'
+ * deactivating the node. The possible values are following. Possible values
+ * include: 'Pause', 'Restart', 'RemoveData'
  */
 export interface DeactivationIntentDescription {
   deactivationIntent?: string;
@@ -2107,7 +2521,6 @@ export interface DeactivationIntentDescription {
  * Can be returned during cluster upgrade when the aggregated health state of
  * the cluster is Warning or Error.
  *
- *
  * @member {number} [baselineErrorCount] Number of nodes with aggregated heath
  * state Error in the health store at the beginning of the cluster upgrade.
  * @member {number} [baselineTotalCount] Total number of nodes in the health
@@ -2115,7 +2528,10 @@ export interface DeactivationIntentDescription {
  * @member {number} [maxPercentDeltaUnhealthyNodes] Maximum allowed percentage
  * of delta unhealthy nodes from the ClusterUpgradeHealthPolicy.
  * @member {number} [totalCount] Total number of nodes in the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state.
+ * Includes all the unhealthy NodeHealthEvaluation that impacted the aggregated
+ * health.
  */
 export interface DeltaNodesCheckHealthEvaluation extends HealthEvaluation {
   baselineErrorCount?: number;
@@ -2132,10 +2548,18 @@ export interface DeltaNodesCheckHealthEvaluation extends HealthEvaluation {
  * Represents the health state of a deployed service package, containing the
  * entity identifier and the aggregated health state.
  *
- * @member {string} [nodeName]
- * @member {string} [applicationName]
- * @member {string} [serviceManifestName]
- * @member {string} [servicePackageActivationId]
+ * @member {string} [nodeName] Name of the node on which the service package is
+ * deployed.
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {string} [serviceManifestName] Name of the manifest describing the
+ * service package.
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
  */
 export interface DeployedServicePackageHealthState extends EntityHealthState {
   nodeName?: string;
@@ -2151,9 +2575,13 @@ export interface DeployedServicePackageHealthState extends EntityHealthState {
  * Information about the health of an application deployed on a Service Fabric
  * node.
  *
- * @member {string} [name]
- * @member {string} [nodeName]
- * @member {array} [deployedServicePackageHealthStates]
+ * @member {string} [name] Name of the application deployed on the node whose
+ * health information is described by this object.
+ * @member {string} [nodeName] Name of the node where this application is
+ * deployed.
+ * @member {array} [deployedServicePackageHealthStates] Deployed service
+ * package health states for the current deployed application as found in the
+ * health store.
  */
 export interface DeployedApplicationHealth extends EntityHealth {
   name?: string;
@@ -2169,10 +2597,14 @@ export interface DeployedApplicationHealth extends EntityHealth {
  * information about the data and the algorithm used by the health store to
  * evaluate health.
  *
- *
- * @member {string} [nodeName]
- * @member {string} [applicationName]
- * @member {array} [unhealthyEvaluations]
+ * @member {string} [nodeName] Name of the node where the application is
+ * deployed to.
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {array} [unhealthyEvaluations] List of  unhealthy evaluations that
+ * led to the current aggregated health state of the deployed application.
+ * The types of the unhealthy evaluations can be
+ * DeployedServicePackagesHealthEvaluation or EventHealthEvaluation.
  */
 export interface DeployedApplicationHealthEvaluation extends HealthEvaluation {
   nodeName?: string;
@@ -2186,11 +2618,20 @@ export interface DeployedApplicationHealthEvaluation extends HealthEvaluation {
  * @constructor
  * Information about application deployed on the node.
  *
- * @member {string} [id]
- * @member {string} [name]
- * @member {string} [typeName]
- * @member {string} [status] Possible values include: 'Invalid', 'Downloading',
- * 'Activating', 'Active', 'Upgrading', 'Deactivating'
+ * @member {string} [id] The identity of the application. This is an encoded
+ * representation of the application name. This is used in the REST APIs to
+ * identify the application resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the application name is "fabric:/myapp/app1",
+ * the application identity would be "myapp\~app1" in 6.0+ and "myapp/app1" in
+ * previous versions.
+ * @member {string} [name] The name of the application, including the 'fabric:'
+ * URI scheme.
+ * @member {string} [typeName] The application type name as defined in the
+ * application manifest.
+ * @member {string} [status] The status of the application deployed on the
+ * node. Following are the possible values. Possible values include: 'Invalid',
+ * 'Downloading', 'Activating', 'Active', 'Upgrading', 'Deactivating'
  * @member {string} [workDirectory] The work directory of the application on
  * the node. The work directory can be used to store application data.
  * @member {string} [logDirectory] The log directory of the application on the
@@ -2198,6 +2639,9 @@ export interface DeployedApplicationHealthEvaluation extends HealthEvaluation {
  * @member {string} [tempDirectory] The temp directory of the application on
  * the node. The code packages belonging to the application are forked with
  * this directory set as their temporary directory.
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  */
 export interface DeployedApplicationInfo {
   id?: string;
@@ -2207,6 +2651,7 @@ export interface DeployedApplicationInfo {
   workDirectory?: string;
   logDirectory?: string;
   tempDirectory?: string;
+  healthState?: string;
 }
 
 /**
@@ -2219,13 +2664,14 @@ export interface DeployedApplicationInfo {
  * Can be returned when evaluating application health and the aggregated health
  * state is either Error or Warning.
  *
- *
  * @member {number} [maxPercentUnhealthyDeployedApplications] Maximum allowed
  * percentage of unhealthy deployed applications from the
  * ApplicationHealthPolicy.
  * @member {number} [totalCount] Total number of deployed applications of the
  * application in the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * DeployedApplicationHealthEvaluation that impacted the aggregated health.
  */
 export interface DeployedApplicationsHealthEvaluation extends HealthEvaluation {
   maxPercentUnhealthyDeployedApplications?: number;
@@ -2240,9 +2686,11 @@ export interface DeployedApplicationsHealthEvaluation extends HealthEvaluation {
  * Information about the health of a service package for a specific application
  * deployed on a Service Fabric node.
  *
- * @member {string} [applicationName]
- * @member {string} [serviceManifestName]
- * @member {string} [nodeName]
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {string} [serviceManifestName] Name of the service manifest.
+ * @member {string} [nodeName] Name of the node where this service package is
+ * deployed.
  */
 export interface DeployedServicePackageHealth extends EntityHealth {
   applicationName?: string;
@@ -2259,10 +2707,13 @@ export interface DeployedServicePackageHealth extends EntityHealth {
  * evaluate health. The evaluation is returned only when the aggregated health
  * state is either Error or Warning.
  *
- * @member {string} [nodeName]
- * @member {string} [applicationName]
- * @member {string} [serviceManifestName]
- * @member {array} [unhealthyEvaluations]
+ * @member {string} [nodeName] The name of a Service Fabric node.
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {string} [serviceManifestName] The name of the service manifest.
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state. The type of the unhealthy
+ * evaluations can be EventHealthEvaluation.
  */
 export interface DeployedServicePackageHealthEvaluation extends HealthEvaluation {
   nodeName?: string;
@@ -2283,7 +2734,9 @@ export interface DeployedServicePackageHealthEvaluation extends HealthEvaluation
  *
  * @member {number} [totalCount] Total number of deployed service packages of
  * the deployed application in the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * DeployedServicePackageHealthEvaluation that impacted the aggregated health.
  */
 export interface DeployedServicePackagesHealthEvaluation extends HealthEvaluation {
   totalCount?: number;
@@ -2296,19 +2749,33 @@ export interface DeployedServicePackagesHealthEvaluation extends HealthEvaluatio
  * @constructor
  * Information about a Service Fabric service replica deployed on a node.
  *
- * @member {string} [serviceName]
- * @member {string} [serviceTypeName]
- * @member {string} [serviceManifestName]
- * @member {string} [codePackageName]
- * @member {uuid} [partitionId]
- * @member {string} [replicaStatus] Possible values include: 'Invalid',
- * 'InBuild', 'Standby', 'Ready', 'Down', 'Dropped'
+ * @member {string} [serviceName] The full name of the service with 'fabric:'
+ * URI scheme.
+ * @member {string} [serviceTypeName] Name of the service type as specified in
+ * the service manifest.
+ * @member {string} [serviceManifestName] The name of the service manifest in
+ * which this service type is defined.
+ * @member {string} [codePackageName] The name of the code package that hosts
+ * this replica.
+ * @member {uuid} [partitionId] An internal ID used by Service Fabric to
+ * uniquely identify a partition. This is a randomly generated GUID when the
+ * service was created. The partition ID is unique and does not change for the
+ * lifetime of the service. If the same service was deleted and recreated the
+ * IDs of its partitions would be different.
+ * @member {string} [replicaStatus] The status of a replica of a service.
+ * Possible values include: 'Invalid', 'InBuild', 'Standby', 'Ready', 'Down',
+ * 'Dropped'
  * @member {string} [address] The last address returned by the replica in Open
  * or ChangeRole.
- * @member {string} [servicePackageActivationId]
- * @member {string} [hostProcessId] Host process id of the process that is
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
+ * @member {string} [hostProcessId] Host process ID of the process that is
  * hosting the replica. This will be zero if the replica is down. In hyper-v
- * containers this host process id will be from different kernel.
+ * containers this host process ID will be from different kernel.
  * @member {string} serviceKind Polymorphic Discriminator
  */
 export interface DeployedServiceReplicaInfo {
@@ -2331,12 +2798,17 @@ export interface DeployedServiceReplicaInfo {
  * Information about current reconfiguration like phase, type, previous
  * configuration role of replica and reconfiguration start date time.
  *
- * @member {string} [previousConfigurationRole] Possible values include:
- * 'Unknown', 'None', 'Primary', 'IdleSecondary', 'ActiveSecondary'
- * @member {string} [reconfigurationPhase] Possible values include: 'Unknown',
- * 'None', 'Phase0', 'Phase1', 'Phase2', 'Phase3', 'Phase4', 'AbortPhaseZero'
- * @member {string} [reconfigurationType] Possible values include: 'Unknown',
- * 'SwapPrimary', 'Failover', 'Other'
+ * @member {string} [previousConfigurationRole] Replica role before
+ * reconfiguration started. Possible values include: 'Unknown', 'None',
+ * 'Primary', 'IdleSecondary', 'ActiveSecondary'
+ * @member {string} [reconfigurationPhase] Current phase of ongoing
+ * reconfiguration. If no reconfiguration is taking place then this value will
+ * be "None". Possible values include: 'Unknown', 'None', 'Phase0', 'Phase1',
+ * 'Phase2', 'Phase3', 'Phase4', 'AbortPhaseZero'
+ * @member {string} [reconfigurationType] Type of current ongoing
+ * reconfiguration. If no reconfiguration is taking place then this value will
+ * be "None". Possible values include: 'Unknown', 'SwapPrimary', 'Failover',
+ * 'Other'
  * @member {date} [reconfigurationStartTimeUtc] Start time (in UTC) of the
  * ongoing reconfiguration. If no reconfiguration is taking place then this
  * value will be zero date-time.
@@ -2354,18 +2826,30 @@ export interface ReconfigurationInformation {
  * @constructor
  * Information about a stateful service replica deployed on a node.
  *
- * @member {string} [replicaId]
- * @member {string} [replicaRole] Possible values include: 'Unknown', 'None',
- * 'Primary', 'IdleSecondary', 'ActiveSecondary'
- * @member {object} [reconfigurationInformation]
- * @member {string} [reconfigurationInformation.previousConfigurationRole]
+ * @member {string} [replicaId] Id of a stateful service replica. ReplicaId is
+ * used by Service Fabric to uniquely identify a replica of a partition. It is
+ * unique within a partition and does not change for the lifetime of the
+ * replica. If a replica gets dropped and another replica gets created on the
+ * same node for the same partition, it will get a different value for the id.
+ * Sometimes the id of a stateless service instance is also referred as a
+ * replica id.
+ * @member {string} [replicaRole] The role of a replica of a stateful service.
  * Possible values include: 'Unknown', 'None', 'Primary', 'IdleSecondary',
  * 'ActiveSecondary'
- * @member {string} [reconfigurationInformation.reconfigurationPhase] Possible
- * values include: 'Unknown', 'None', 'Phase0', 'Phase1', 'Phase2', 'Phase3',
- * 'Phase4', 'AbortPhaseZero'
- * @member {string} [reconfigurationInformation.reconfigurationType] Possible
- * values include: 'Unknown', 'SwapPrimary', 'Failover', 'Other'
+ * @member {object} [reconfigurationInformation] Information about current
+ * reconfiguration like phase, type, previous configuration role of replica and
+ * reconfiguration start date time.
+ * @member {string} [reconfigurationInformation.previousConfigurationRole]
+ * Replica role before reconfiguration started. Possible values include:
+ * 'Unknown', 'None', 'Primary', 'IdleSecondary', 'ActiveSecondary'
+ * @member {string} [reconfigurationInformation.reconfigurationPhase] Current
+ * phase of ongoing reconfiguration. If no reconfiguration is taking place then
+ * this value will be "None". Possible values include: 'Unknown', 'None',
+ * 'Phase0', 'Phase1', 'Phase2', 'Phase3', 'Phase4', 'AbortPhaseZero'
+ * @member {string} [reconfigurationInformation.reconfigurationType] Type of
+ * current ongoing reconfiguration. If no reconfiguration is taking place then
+ * this value will be "None". Possible values include: 'Unknown',
+ * 'SwapPrimary', 'Failover', 'Other'
  * @member {date} [reconfigurationInformation.reconfigurationStartTimeUtc]
  * Start time (in UTC) of the ongoing reconfiguration. If no reconfiguration is
  * taking place then this value will be zero date-time.
@@ -2382,7 +2866,11 @@ export interface DeployedStatefulServiceReplicaInfo extends DeployedServiceRepli
  * @constructor
  * Information about a stateless service instance deployed on a node.
  *
- * @member {string} [instanceId]
+ * @member {string} [instanceId] Id of a stateless service instance. InstanceId
+ * is used by Service Fabric to uniquely identify an instance of a partition of
+ * a stateless service. It is unique within a partition and does not change for
+ * the lifetime of the instance. If the instance has failed over on the same or
+ * different node, it will get a different value for the InstanceId.
  */
 export interface DeployedStatelessServiceInstanceInfo extends DeployedServiceReplicaInfo {
   instanceId?: string;
@@ -2396,9 +2884,8 @@ export interface DeployedStatelessServiceInstanceInfo extends DeployedServiceRep
  * reports sent to health store and in all health events returned by health
  * queries.
  *
- *
- * @member {string} sourceId The source name which identifies the
- * client/watchdog/system component which generated the health information.
+ * @member {string} sourceId The source name that identifies the
+ * client/watchdog/system component that generated the health information.
  * @member {string} property The property of the health information. An entity
  * can have health reports for different properties.
  * The property is a string and not a fixed enumeration to allow the reporter
@@ -2413,11 +2900,12 @@ export interface DeployedStatelessServiceInstanceInfo extends DeployedServiceRep
  *
  * Together with the SourceId, the property uniquely identifies the health
  * information.
- * @member {string} healthState Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
+ * @member {string} healthState The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * @member {moment.duration} [timeToLiveInMilliSeconds] The duration for which
- * this health report is valid. This field is using ISO8601 format for
- * specifying the duration.
+ * this health report is valid. This field uses ISO8601 format for specifying
+ * the duration.
  * When clients report periodically, they should send reports with higher
  * frequency than time to live.
  * If clients report on transition, they can set the time to live to infinite.
@@ -2445,7 +2933,7 @@ export interface DeployedStatelessServiceInstanceInfo extends DeployedServiceRep
  * when a report is added.
  * @member {boolean} [removeWhenExpired] Value that indicates whether the
  * report is removed from health store when it expires.
- * If set to true, the report is remopved from the health store after it
+ * If set to true, the report is removed from the health store after it
  * expires.
  * If set to false, the report is treated as an error when expired. The value
  * of this property is false by default.
@@ -2471,7 +2959,6 @@ export interface HealthInformation {
  * @constructor
  * Represents health information reported on a health entity, such as cluster,
  * application or node, with additional metadata added by the Health Manager.
- *
  *
  * @member {boolean} [isExpired] Returns true if the health event is expired,
  * otherwise false.
@@ -2531,7 +3018,6 @@ export interface HealthEvent extends HealthInformation {
  * Represents information about how many health entities are in Ok, Warning and
  * Error health state.
  *
- *
  * @member {number} [okCount] The number of health entities with aggregated
  * health state Ok.
  * @member {number} [warningCount] The number of health entities with
@@ -2551,10 +3037,12 @@ export interface HealthStateCount {
  * @constructor
  * Represents health state count for entities of the specified entity kind.
  *
- * @member {string} [entityKind] Possible values include: 'Invalid', 'Node',
- * 'Partition', 'Service', 'Application', 'Replica', 'DeployedApplication',
+ * @member {string} [entityKind] The entity kind for which health states are
+ * evaluated. Possible values include: 'Invalid', 'Node', 'Partition',
+ * 'Service', 'Application', 'Replica', 'DeployedApplication',
  * 'DeployedServicePackage', 'Cluster'
- * @member {object} [healthStateCount]
+ * @member {object} [healthStateCount] The health state count for the entities
+ * of the specified kind.
  * @member {number} [healthStateCount.okCount] The number of health entities
  * with aggregated health state Ok.
  * @member {number} [healthStateCount.warningCount] The number of health
@@ -2580,7 +3068,6 @@ export interface EntityKindHealthStateCount {
  * applications and deployed service packages.
  * For partition, the health statistics include health counts for replicas.
  *
- *
  * @member {array} [healthStateCountList] List of health state counts per
  * entity kind, which keeps track of how many children of the queried entity
  * are in Ok, Warning and Error state.
@@ -2599,7 +3086,6 @@ export interface HealthStatistics {
  * replica are said to be a new Epoch from the ones which were sent by the old
  * Primary replica.
  *
- *
  * @member {string} [configurationVersion] The current configuration number of
  * this Epoch. The configuration number is an increasing value that is updated
  * whenever the configuration of this replica set changes.
@@ -2615,6 +3101,29 @@ export interface Epoch {
 
 /**
  * @class
+ * Initializes a new instance of the BackupEpoch class.
+ * @constructor
+ * An Epoch is a configuration number for the partition as a whole. When the
+ * configuration of the replica set changes, for example when the Primary
+ * replica changes, the operations that are replicated from the new Primary
+ * replica are said to be a new Epoch from the ones which were sent by the old
+ * Primary replica.
+ *
+ * @member {string} [configurationNumber] The current configuration number of
+ * this Epoch. The configuration number is an increasing value that is updated
+ * whenever the configuration of this replica set changes.
+ * @member {string} [dataLossNumber] The current dataloss number of this Epoch.
+ * The data loss number property is an increasing value which is updated
+ * whenever data loss is suspected, as when loss of a quorum of replicas in the
+ * replica set that includes the Primary replica.
+ */
+export interface BackupEpoch {
+  configurationNumber?: string;
+  dataLossNumber?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EventHealthEvaluation class.
  * @constructor
  * Represents health evaluation of a HealthEvent that was reported on the
@@ -2622,11 +3131,12 @@ export interface Epoch {
  * The health evaluation is returned when evaluating health of an entity
  * results in Error or Warning.
  *
- *
  * @member {boolean} [considerWarningAsError] Indicates whether warnings are
  * treated with the same severity as errors. The field is specified in the
  * health policy used to evaluate the entity.
- * @member {object} [unhealthyEvent]
+ * @member {object} [unhealthyEvent] Represents health information reported on
+ * a health entity, such as cluster, application or node, with additional
+ * metadata added by the Health Manager.
  * @member {boolean} [unhealthyEvent.isExpired] Returns true if the health
  * event is expired, otherwise false.
  * @member {date} [unhealthyEvent.sourceUtcTimestamp] The date and time when
@@ -2705,7 +3215,112 @@ export interface FabricConfigVersionInfo {
  * @constructor
  * Error object containing error code and error message.
  *
- * @member {string} code Possible values include:
+ * @member {string} code Defines the fabric error codes that be returned as
+ * part of the error object in response to Service Fabric API operations that
+ * are not successful. Following are the error code values that can be returned
+ * for a specific HTTP status code.
+ *
+ * - Possible values of the error code for HTTP status code 400 (Bad Request)
+ * - "FABRIC_E_INVALID_PARTITION_KEY"
+ * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_ADDRESS"
+ * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
+ * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_FABRIC_NOT_UPGRADING"
+ * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_CONFIGURATION"
+ * - "FABRIC_E_INVALID_NAME_URI"
+ * - "FABRIC_E_PATH_TOO_LONG"
+ * - "FABRIC_E_KEY_TOO_LARGE"
+ * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
+ * - "FABRIC_E_INVALID_ATOMIC_GROUP"
+ * - "FABRIC_E_VALUE_EMPTY"
+ * - "FABRIC_E_BACKUP_IS_ENABLED"
+ * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
+ * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
+ * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
+ * - "E_INVALIDARG"
+ *
+ * - Possible values of the error code for HTTP status code 404 (Not Found)
+ * - "FABRIC_E_NODE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
+ * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
+ * - "FABRIC_E_PARTITION_NOT_FOUND"
+ * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
+ * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
+ * - "FABRIC_E_DIRECTORY_NOT_FOUND"
+ * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
+ * - "FABRIC_E_FILE_NOT_FOUND"
+ * - "FABRIC_E_NAME_DOES_NOT_EXIST"
+ * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
+ * - "FABRIC_E_ENUMERATION_COMPLETED"
+ * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
+ * - "FABRIC_E_KEY_NOT_FOUND"
+ * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
+ * - "FABRIC_E_BACKUP_NOT_ENABLED"
+ * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
+ * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 409 (Conflict)
+ * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
+ * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
+ * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
+ * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
+ * - "FABRIC_E_FABRIC_VERSION_IN_USE"
+ * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_NAME_ALREADY_EXISTS"
+ * - "FABRIC_E_NAME_NOT_EMPTY"
+ * - "FABRIC_E_PROPERTY_CHECK_FAILED"
+ * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
+ * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
+ * - "FABRIC_E_HEALTH_STALE_REPORT"
+ * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
+ * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
+ * - "FABRIC_E_INSTANCE_ID_MISMATCH"
+ * - "FABRIC_E_BACKUP_IN_PROGRESS"
+ * - "FABRIC_E_RESTORE_IN_PROGRESS"
+ * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 413 (Request Entity
+ * Too Large)
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 500 (Internal
+ * Server Error)
+ * - "FABRIC_E_NODE_IS_UP"
+ * - "E_FAIL"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
+ * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "SerializationError"
+ *
+ * - Possible values of the error code for HTTP status code 503 (Service
+ * Unavailable)
+ * - "FABRIC_E_NO_WRITE_QUORUM"
+ * - "FABRIC_E_NOT_PRIMARY"
+ * - "FABRIC_E_NOT_READY"
+ * - "FABRIC_E_RECONFIGURATION_PENDING"
+ * - "FABRIC_E_SERVICE_OFFLINE"
+ * - "E_ABORT"
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 504 (Gateway
+ * Timeout)
+ * - "FABRIC_E_COMMUNICATION_ERROR"
+ * - "FABRIC_E_OPERATION_NOT_COMPLETE"
+ * - "FABRIC_E_TIMEOUT". Possible values include:
  * 'FABRIC_E_INVALID_PARTITION_KEY', 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR',
  * 'FABRIC_E_INVALID_ADDRESS', 'FABRIC_E_APPLICATION_NOT_UPGRADING',
  * 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
@@ -2744,7 +3359,19 @@ export interface FabricConfigVersionInfo {
  * 'FABRIC_E_NOT_PRIMARY', 'FABRIC_E_NOT_READY',
  * 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE', 'E_ABORT',
  * 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
- * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP'
+ * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL',
+ * 'FABRIC_E_BACKUP_IS_ENABLED',
+ * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
+ * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
+ * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING',
+ * 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
+ * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
+ * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING',
+ * 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY', 'E_INVALIDARG',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND',
+ * 'FABRIC_E_VOLUME_ALREADY_EXISTS', 'FABRIC_E_VOLUME_NOT_FOUND',
+ * 'SerializationError'
  * @member {string} [message] Error message.
  */
 export interface FabricErrorError {
@@ -2760,9 +3387,113 @@ export interface FabricErrorError {
  * codes. This type defines the additional information returned from the
  * Service Fabric API operations that are not successful.
  *
+ * @member {object} error Error object containing error code and error message.
+ * @member {string} [error.code] Defines the fabric error codes that be
+ * returned as part of the error object in response to Service Fabric API
+ * operations that are not successful. Following are the error code values that
+ * can be returned for a specific HTTP status code.
  *
- * @member {object} error
- * @member {string} [error.code] Possible values include:
+ * - Possible values of the error code for HTTP status code 400 (Bad Request)
+ * - "FABRIC_E_INVALID_PARTITION_KEY"
+ * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_ADDRESS"
+ * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
+ * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_FABRIC_NOT_UPGRADING"
+ * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_CONFIGURATION"
+ * - "FABRIC_E_INVALID_NAME_URI"
+ * - "FABRIC_E_PATH_TOO_LONG"
+ * - "FABRIC_E_KEY_TOO_LARGE"
+ * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
+ * - "FABRIC_E_INVALID_ATOMIC_GROUP"
+ * - "FABRIC_E_VALUE_EMPTY"
+ * - "FABRIC_E_BACKUP_IS_ENABLED"
+ * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
+ * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
+ * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
+ * - "E_INVALIDARG"
+ *
+ * - Possible values of the error code for HTTP status code 404 (Not Found)
+ * - "FABRIC_E_NODE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
+ * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
+ * - "FABRIC_E_PARTITION_NOT_FOUND"
+ * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
+ * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
+ * - "FABRIC_E_DIRECTORY_NOT_FOUND"
+ * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
+ * - "FABRIC_E_FILE_NOT_FOUND"
+ * - "FABRIC_E_NAME_DOES_NOT_EXIST"
+ * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
+ * - "FABRIC_E_ENUMERATION_COMPLETED"
+ * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
+ * - "FABRIC_E_KEY_NOT_FOUND"
+ * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
+ * - "FABRIC_E_BACKUP_NOT_ENABLED"
+ * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
+ * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 409 (Conflict)
+ * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
+ * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
+ * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
+ * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
+ * - "FABRIC_E_FABRIC_VERSION_IN_USE"
+ * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_NAME_ALREADY_EXISTS"
+ * - "FABRIC_E_NAME_NOT_EMPTY"
+ * - "FABRIC_E_PROPERTY_CHECK_FAILED"
+ * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
+ * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
+ * - "FABRIC_E_HEALTH_STALE_REPORT"
+ * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
+ * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
+ * - "FABRIC_E_INSTANCE_ID_MISMATCH"
+ * - "FABRIC_E_BACKUP_IN_PROGRESS"
+ * - "FABRIC_E_RESTORE_IN_PROGRESS"
+ * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 413 (Request Entity
+ * Too Large)
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 500 (Internal
+ * Server Error)
+ * - "FABRIC_E_NODE_IS_UP"
+ * - "E_FAIL"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
+ * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "SerializationError"
+ *
+ * - Possible values of the error code for HTTP status code 503 (Service
+ * Unavailable)
+ * - "FABRIC_E_NO_WRITE_QUORUM"
+ * - "FABRIC_E_NOT_PRIMARY"
+ * - "FABRIC_E_NOT_READY"
+ * - "FABRIC_E_RECONFIGURATION_PENDING"
+ * - "FABRIC_E_SERVICE_OFFLINE"
+ * - "E_ABORT"
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 504 (Gateway
+ * Timeout)
+ * - "FABRIC_E_COMMUNICATION_ERROR"
+ * - "FABRIC_E_OPERATION_NOT_COMPLETE"
+ * - "FABRIC_E_TIMEOUT". Possible values include:
  * 'FABRIC_E_INVALID_PARTITION_KEY', 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR',
  * 'FABRIC_E_INVALID_ADDRESS', 'FABRIC_E_APPLICATION_NOT_UPGRADING',
  * 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
@@ -2801,7 +3532,19 @@ export interface FabricErrorError {
  * 'FABRIC_E_NOT_PRIMARY', 'FABRIC_E_NOT_READY',
  * 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE', 'E_ABORT',
  * 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
- * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP'
+ * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL',
+ * 'FABRIC_E_BACKUP_IS_ENABLED',
+ * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
+ * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
+ * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING',
+ * 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
+ * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
+ * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING',
+ * 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY', 'E_INVALIDARG',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND',
+ * 'FABRIC_E_VOLUME_ALREADY_EXISTS', 'FABRIC_E_VOLUME_NOT_FOUND',
+ * 'SerializationError'
  * @member {string} [error.message] Error message.
  */
 export interface FabricError {
@@ -2814,9 +3557,10 @@ export interface FabricError {
  * @constructor
  * Information about a standalone cluster configuration upgrade status.
  *
- * @member {string} [upgradeState] Possible values include: 'Invalid',
- * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
- * 'RollingForwardInProgress', 'RollingForwardCompleted', 'Failed'
+ * @member {string} [upgradeState] The state of the upgrade domain. Possible
+ * values include: 'Invalid', 'RollingBackInProgress', 'RollingBackCompleted',
+ * 'RollingForwardPending', 'RollingForwardInProgress',
+ * 'RollingForwardCompleted', 'Failed'
  * @member {number} [progressStatus] The cluster manifest version.
  * @member {string} [configVersion] The cluster configuration version.
  * @member {string} [details] The cluster upgrade status details.
@@ -2835,7 +3579,11 @@ export interface ClusterConfigurationUpgradeStatusInfo {
  * Information about the partition identity, partitioning scheme and keys
  * supported by it.
  *
- * @member {uuid} [id]
+ * @member {uuid} [id] An internal ID used by Service Fabric to uniquely
+ * identify a partition. This is a randomly generated GUID when the service was
+ * created. The partition ID is unique and does not change for the lifetime of
+ * the service. If the same service was deleted and recreated the IDs of its
+ * partitions would be different.
  * @member {string} servicePartitionKind Polymorphic Discriminator
  */
 export interface PartitionInformation {
@@ -2880,8 +3628,9 @@ export interface NamedPartitionInformation extends PartitionInformation {
  * Identity of the task related to deactivation operation on the node.
  *
  * @member {string} [id] Value of the task id.
- * @member {string} [nodeDeactivationTaskType] Possible values include:
- * 'Invalid', 'Infrastructure', 'Repair', 'Client'
+ * @member {string} [nodeDeactivationTaskType] The type of the task that
+ * performed the node deactivation. Following are the possible values. Possible
+ * values include: 'Invalid', 'Infrastructure', 'Repair', 'Client'
  */
 export interface NodeDeactivationTaskId {
   id?: string;
@@ -2894,12 +3643,16 @@ export interface NodeDeactivationTaskId {
  * @constructor
  * The task representing the deactivation operation on the node.
  *
- * @member {object} [nodeDeactivationTaskId]
+ * @member {object} [nodeDeactivationTaskId] Identity of the task related to
+ * deactivation operation on the node.
  * @member {string} [nodeDeactivationTaskId.id] Value of the task id.
- * @member {string} [nodeDeactivationTaskId.nodeDeactivationTaskType] Possible
- * values include: 'Invalid', 'Infrastructure', 'Repair', 'Client'
- * @member {string} [nodeDeactivationIntent] Possible values include:
- * 'Invalid', 'Pause', 'Restart', 'RemoveData', 'RemoveNode'
+ * @member {string} [nodeDeactivationTaskId.nodeDeactivationTaskType] The type
+ * of the task that performed the node deactivation. Following are the possible
+ * values. Possible values include: 'Invalid', 'Infrastructure', 'Repair',
+ * 'Client'
+ * @member {string} [nodeDeactivationIntent] The intent or the reason for
+ * deactivating the node. Following are the possible values for it. Possible
+ * values include: 'Invalid', 'Pause', 'Restart', 'RemoveData', 'RemoveNode'
  */
 export interface NodeDeactivationTask {
   nodeDeactivationTaskId?: NodeDeactivationTaskId;
@@ -2913,12 +3666,15 @@ export interface NodeDeactivationTask {
  * Information about the node deactivation. This information is valid for a
  * node that is undergoing deactivation or has already been deactivated.
  *
- * @member {string} [nodeDeactivationIntent] Possible values include:
- * 'Invalid', 'Pause', 'Restart', 'RemoveData', 'RemoveNode'
- * @member {string} [nodeDeactivationStatus] Possible values include: 'None',
- * 'SafetyCheckInProgress', 'SafetyCheckComplete', 'Completed'
- * @member {array} [nodeDeactivationTask]
- * @member {array} [pendingSafetyChecks]
+ * @member {string} [nodeDeactivationIntent] The intent or the reason for
+ * deactivating the node. Following are the possible values for it. Possible
+ * values include: 'Invalid', 'Pause', 'Restart', 'RemoveData', 'RemoveNode'
+ * @member {string} [nodeDeactivationStatus] The status of node deactivation
+ * operation. Following are the possible values. Possible values include:
+ * 'None', 'SafetyCheckInProgress', 'SafetyCheckComplete', 'Completed'
+ * @member {array} [nodeDeactivationTask] List of tasks representing the
+ * deactivation operation on the node.
+ * @member {array} [pendingSafetyChecks] List of pending safety checks
  */
 export interface NodeDeactivationInfo {
   nodeDeactivationIntent?: string;
@@ -2929,11 +3685,24 @@ export interface NodeDeactivationInfo {
 
 /**
  * @class
+ * Initializes a new instance of the NodeEvent class.
+ * @constructor
+ * Represents the base for all Node Events.
+ *
+ * @member {string} nodeName The name of a Service Fabric node.
+ */
+export interface NodeEvent extends FabricEvent {
+  nodeName: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NodeHealth class.
  * @constructor
  * Information about the health of a Service Fabric node.
  *
- * @member {string} [name]
+ * @member {string} [name] Name of the node whose health information is
+ * described by this object.
  */
 export interface NodeHealth extends EntityHealth {
   name?: string;
@@ -2948,8 +3717,10 @@ export interface NodeHealth extends EntityHealth {
  * evaluation is returned only when the aggregated health state is either Error
  * or Warning.
  *
- * @member {string} [nodeName]
- * @member {array} [unhealthyEvaluations]
+ * @member {string} [nodeName] The name of a Service Fabric node.
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state of the node. The types of the
+ * unhealthy evaluations can be EventHealthEvaluation.
  */
 export interface NodeHealthEvaluation extends HealthEvaluation {
   nodeName?: string;
@@ -2962,7 +3733,7 @@ export interface NodeHealthEvaluation extends HealthEvaluation {
  * @constructor
  * Information about a node in Service Fabric cluster.
  *
- * @member {string} [name]
+ * @member {string} [name] The name of a Service Fabric node.
  * @member {string} [ipAddressOrFQDN] The IP address or fully qualified domain
  * name of the node.
  * @member {string} [type] The type of the node.
@@ -2970,31 +3741,41 @@ export interface NodeHealthEvaluation extends HealthEvaluation {
  * the node is running.
  * @member {string} [configVersion] The version of Service Fabric cluster
  * manifest that the node is using.
- * @member {string} [nodeStatus] Possible values include: 'Invalid', 'Up',
- * 'Down', 'Enabling', 'Disabling', 'Disabled', 'Unknown', 'Removed'
+ * @member {string} [nodeStatus] The status of the node. Possible values
+ * include: 'Invalid', 'Up', 'Down', 'Enabling', 'Disabling', 'Disabled',
+ * 'Unknown', 'Removed'
  * @member {string} [nodeUpTimeInSeconds] Time in seconds since the node has
- * been in NodeStatus Up. Value ero indicates that the node is not Up.
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
+ * been in NodeStatus Up. Value zero indicates that the node is not Up.
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * @member {boolean} [isSeedNode] Indicates if the node is a seed node or not.
  * Returns true if the node is a seed node, otherwise false. A quorum of seed
  * nodes are required for proper operation of Service Fabric cluster.
  * @member {string} [upgradeDomain] The upgrade domain of the node.
  * @member {string} [faultDomain] The fault domain of the node.
- * @member {object} [id]
+ * @member {object} [id] An internal ID used by Service Fabric to uniquely
+ * identify a node. Node Id is deterministically generated from node name.
  * @member {string} [id.id] Value of the node Id. This is a 128 bit integer.
- * @member {string} [instanceId] The id representing the node instance. While
- * the Id of the node is deterministically generated from the node name and
+ * @member {string} [instanceId] The ID representing the node instance. While
+ * the ID of the node is deterministically generated from the node name and
  * remains same across restarts, the InstanceId changes every time node
  * restarts.
- * @member {object} [nodeDeactivationInfo]
- * @member {string} [nodeDeactivationInfo.nodeDeactivationIntent] Possible
- * values include: 'Invalid', 'Pause', 'Restart', 'RemoveData', 'RemoveNode'
- * @member {string} [nodeDeactivationInfo.nodeDeactivationStatus] Possible
+ * @member {object} [nodeDeactivationInfo] Information about the node
+ * deactivation. This information is valid for a node that is undergoing
+ * deactivation or has already been deactivated.
+ * @member {string} [nodeDeactivationInfo.nodeDeactivationIntent] The intent or
+ * the reason for deactivating the node. Following are the possible values for
+ * it. Possible values include: 'Invalid', 'Pause', 'Restart', 'RemoveData',
+ * 'RemoveNode'
+ * @member {string} [nodeDeactivationInfo.nodeDeactivationStatus] The status of
+ * node deactivation operation. Following are the possible values. Possible
  * values include: 'None', 'SafetyCheckInProgress', 'SafetyCheckComplete',
  * 'Completed'
- * @member {array} [nodeDeactivationInfo.nodeDeactivationTask]
- * @member {array} [nodeDeactivationInfo.pendingSafetyChecks]
+ * @member {array} [nodeDeactivationInfo.nodeDeactivationTask] List of tasks
+ * representing the deactivation operation on the node.
+ * @member {array} [nodeDeactivationInfo.pendingSafetyChecks] List of pending
+ * safety checks
  * @member {boolean} [isStopped] Indicates if the node is stopped by calling
  * stop node API or not. Returns true if the node is stopped, otherwise false.
  * @member {string} [nodeDownTimeInSeconds] Time in seconds since the node has
@@ -3062,7 +3843,8 @@ export interface NodeLoadMetricInformation {
  * Information about load on a Service Fabric node. It holds a summary of all
  * metrics and their load on a node.
  *
- * @member {string} [nodeName]
+ * @member {string} [nodeName] Name of the node for which the load information
+ * is provided by this object.
  * @member {array} [nodeLoadMetricInformation] List that contains metrics and
  * their load information on this node.
  */
@@ -3084,7 +3866,9 @@ export interface NodeLoadInfo {
  * unhealthy nodes from the ClusterHealthPolicy.
  * @member {number} [totalCount] Total number of nodes found in the health
  * store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * NodeHealthEvaluation that impacted the aggregated health.
  */
 export interface NodesHealthEvaluation extends HealthEvaluation {
   maxPercentUnhealthyNodes?: number;
@@ -3101,12 +3885,40 @@ export interface NodesHealthEvaluation extends HealthEvaluation {
  * obtained by executing the same query with the continuation token provided in
  * this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of application information.
  */
 export interface PagedApplicationInfoList {
   continuationToken?: string;
   items?: ApplicationInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedDeployedApplicationInfoList class.
+ * @constructor
+ * The list of deployed applications in activating, downloading, or active
+ * states on a node.
+ * The list is paged when all of the results cannot fit in a single message.
+ * The next set of results can be obtained by executing the same query with the
+ * continuation token provided in this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of deployed application information.
+ */
+export interface PagedDeployedApplicationInfoList {
+  continuationToken?: string;
+  items?: DeployedApplicationInfo[];
 }
 
 /**
@@ -3117,8 +3929,13 @@ export interface PagedApplicationInfoList {
  * cannot fit in a single message. The next set of results can be obtained by
  * executing the same query with the continuation token provided in this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of node information.
  */
 export interface PagedNodeInfoList {
   continuationToken?: string;
@@ -3131,12 +3948,19 @@ export interface PagedNodeInfoList {
  * @constructor
  * Information about a partition of a Service Fabric service.
  *
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * @member {string} [partitionStatus] Possible values include: 'Invalid',
- * 'Ready', 'NotReady', 'InQuorumLoss', 'Reconfiguring', 'Deleting'
- * @member {object} [partitionInformation]
- * @member {uuid} [partitionInformation.id]
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [partitionStatus] The status of the service fabric service
+ * partition. Possible values include: 'Invalid', 'Ready', 'NotReady',
+ * 'InQuorumLoss', 'Reconfiguring', 'Deleting'
+ * @member {object} [partitionInformation] Information about the partition
+ * identity, partitioning scheme and keys supported by it.
+ * @member {uuid} [partitionInformation.id] An internal ID used by Service
+ * Fabric to uniquely identify a partition. This is a randomly generated GUID
+ * when the service was created. The partition ID is unique and does not change
+ * for the lifetime of the service. If the same service was deleted and
+ * recreated the IDs of its partitions would be different.
  * @member {string} [partitionInformation.servicePartitionKind] Polymorphic
  * Discriminator
  * @member {string} serviceKind Polymorphic Discriminator
@@ -3157,8 +3981,13 @@ export interface ServicePartitionInfo {
  * can be obtained by executing the same query with the continuation token
  * provided in this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of service partition information.
  */
 export interface PagedServicePartitionInfoList {
   continuationToken?: string;
@@ -3172,11 +4001,13 @@ export interface PagedServicePartitionInfoList {
  * Information about the identity, status, health, node name, uptime, and other
  * details about the replica.
  *
- * @member {string} [replicaStatus] Possible values include: 'Invalid',
- * 'InBuild', 'Standby', 'Ready', 'Down', 'Dropped'
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * @member {string} [nodeName]
+ * @member {string} [replicaStatus] The status of a replica of a service.
+ * Possible values include: 'Invalid', 'InBuild', 'Standby', 'Ready', 'Down',
+ * 'Dropped'
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [nodeName] The name of a Service Fabric node.
  * @member {string} [address] The address the replica is listening on.
  * @member {string} [lastInBuildDurationInSeconds] The last in build duration
  * of the replica in seconds.
@@ -3200,8 +4031,13 @@ export interface ReplicaInfo {
  * results can be obtained by executing the same query with the continuation
  * token provided in this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of replica information.
  */
 export interface PagedReplicaInfoList {
   continuationToken?: string;
@@ -3214,14 +4050,24 @@ export interface PagedReplicaInfoList {
  * @constructor
  * Information about a Service Fabric service.
  *
- * @member {string} [id]
- * @member {string} [name]
- * @member {string} [typeName]
+ * @member {string} [id] The identity of the service. This ID is an encoded
+ * representation of the service name. This is used in the REST APIs to
+ * identify the service resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the service name is "fabric:/myapp/app1/svc1",
+ * the service identity would be "myapp~app1\~svc1" in 6.0+ and
+ * "myapp/app1/svc1" in previous versions.
+ * @member {string} [name] The full name of the service with 'fabric:' URI
+ * scheme.
+ * @member {string} [typeName] Name of the service type as specified in the
+ * service manifest.
  * @member {string} [manifestVersion] The version of the service manifest.
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * @member {string} [serviceStatus] Possible values include: 'Unknown',
- * 'Active', 'Upgrading', 'Deleting', 'Creating', 'Failed'
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [serviceStatus] The status of the application. Possible
+ * values include: 'Unknown', 'Active', 'Upgrading', 'Deleting', 'Creating',
+ * 'Failed'
  * @member {boolean} [isServiceGroup] Whether the service is in a service
  * group.
  * @member {string} serviceKind Polymorphic Discriminator
@@ -3246,12 +4092,47 @@ export interface ServiceInfo {
  * results can be obtained by executing the same query with the continuation
  * token provided in this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of service information.
  */
 export interface PagedServiceInfoList {
   continuationToken?: string;
   items?: ServiceInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionEvent class.
+ * @constructor
+ * Represents the base for all Partition Events.
+ *
+ * @member {uuid} partitionId An internal ID used by Service Fabric to uniquely
+ * identify a partition. This is a randomly generated GUID when the service was
+ * created. The partition ID is unique and does not change for the lifetime of
+ * the service. If the same service was deleted and recreated the IDs of its
+ * partitions would be different.
+ */
+export interface PartitionEvent extends FabricEvent {
+  partitionId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionAnalysisEvent class.
+ * @constructor
+ * Represents the base for all Partition Analysis Events.
+ *
+ * @member {object} metadata Metadata about an Analysis Event.
+ * @member {moment.duration} [metadata.delay] The analysis delay.
+ * @member {moment.duration} [metadata.duration] The duration of analysis.
+ */
+export interface PartitionAnalysisEvent extends PartitionEvent {
+  metadata: AnalysisEventMetadata;
 }
 
 /**
@@ -3261,7 +4142,8 @@ export interface PagedServiceInfoList {
  * Represents a base class for stateful service replica or stateless service
  * instance health state.
  *
- * @member {uuid} [partitionId]
+ * @member {uuid} [partitionId] The ID of the partition to which this replica
+ * belongs.
  * @member {string} serviceKind Polymorphic Discriminator
  */
 export interface ReplicaHealthState extends EntityHealthState {
@@ -3275,7 +4157,8 @@ export interface ReplicaHealthState extends EntityHealthState {
  * @constructor
  * Information about the health of a Service Fabric partition.
  *
- * @member {uuid} [partitionId]
+ * @member {uuid} [partitionId] ID of the partition whose health information is
+ * described by this object.
  * @member {array} [replicaHealthStates] The list of replica health states
  * associated with the partition.
  */
@@ -3293,8 +4176,12 @@ export interface PartitionHealth extends EntityHealth {
  * evaluation is returned only when the aggregated health state is either Error
  * or Warning.
  *
- * @member {uuid} [partitionId]
- * @member {array} [unhealthyEvaluations]
+ * @member {uuid} [partitionId] Id of the partition whose health evaluation is
+ * described by this object.
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state of the partition. The types of
+ * the unhealthy evaluations can be ReplicasHealthEvaluation or
+ * EventHealthEvaluation.
  */
 export interface PartitionHealthEvaluation extends HealthEvaluation {
   partitionId?: string;
@@ -3308,7 +4195,8 @@ export interface PartitionHealthEvaluation extends HealthEvaluation {
  * Represents the health state of a partition, which contains the partition
  * identifier and its aggregated health state.
  *
- * @member {uuid} [partitionId]
+ * @member {uuid} [partitionId] Id of the partition whose health state is
+ * described by this object.
  */
 export interface PartitionHealthState extends EntityHealthState {
   partitionId?: string;
@@ -3326,6 +4214,71 @@ export interface PartitionHealthState extends EntityHealthState {
 export interface ProvisionFabricDescription {
   codeFilePath?: string;
   clusterManifestFilePath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProvisionApplicationTypeDescriptionBase class.
+ * @constructor
+ * Represents the type of registration or provision requested, and if the
+ * operation needs to be asynchronous or not. Supported types of provision
+ * operations are from either image store or external store.
+ *
+ * @member {boolean} async Indicates whether or not provisioning should occur
+ * asynchronously. When set to true, the provision operation returns when the
+ * request is accepted by the system, and the provision operation continues
+ * without any timeout limit. The default value is false. For large application
+ * packages, we recommend setting the value to true.
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface ProvisionApplicationTypeDescriptionBase {
+  async: boolean;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProvisionApplicationTypeDescription class.
+ * @constructor
+ * Describes the operation to register or provision an application type using
+ * an application package uploaded to the Service Fabric image store.
+ *
+ * @member {string} applicationTypeBuildPath The relative path for the
+ * application package in the image store specified during the prior upload
+ * operation.
+ * @member {string} [applicationPackageCleanupPolicy] The kind of action that
+ * needs to be taken for cleaning up the application package after successful
+ * provision. Possible values include: 'Invalid', 'Default', 'Automatic',
+ * 'Manual'
+ */
+export interface ProvisionApplicationTypeDescription extends ProvisionApplicationTypeDescriptionBase {
+  applicationTypeBuildPath: string;
+  applicationPackageCleanupPolicy?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExternalStoreProvisionApplicationTypeDescription class.
+ * @constructor
+ * Describes the operation to register or provision an application type using
+ * an application package from an external store instead of a package uploaded
+ * to the Service Fabric image store.
+ *
+ * @member {string} applicationPackageDownloadUri The path to the '.sfpkg'
+ * application package from where the application package can be downloaded
+ * using HTTP or HTTPS protocols. The application package can be stored in an
+ * external store that provides GET operation to download the file. Supported
+ * protocols are HTTP and HTTPS, and the path must allow READ access.
+ * @member {string} applicationTypeName The application type name represents
+ * the name of the application type found in the application manifest.
+ * @member {string} applicationTypeVersion The application type version
+ * represents the version of the application type found in the application
+ * manifest.
+ */
+export interface ExternalStoreProvisionApplicationTypeDescription extends ProvisionApplicationTypeDescriptionBase {
+  applicationPackageDownloadUri: string;
+  applicationTypeName: string;
+  applicationTypeVersion: string;
 }
 
 /**
@@ -3391,22 +4344,60 @@ export interface ClusterUpgradeHealthPolicyObject {
  *
  * @member {string} [codeVersion] The cluster code version.
  * @member {string} [configVersion] The cluster configuration version.
- * @member {string} [upgradeKind] Possible values include: 'Invalid',
- * 'Rolling'. Default value: 'Rolling' .
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {boolean} [forceRestart]
- * @member {object} [monitoringPolicy]
- * @member {string} [monitoringPolicy.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * @member {string} [upgradeKind] The kind of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling'. Default
+ * value: 'Rolling' .
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The maximum amount
+ * of time to block processing of an upgrade domain and prevent loss of
+ * availability when there are unexpected issues. When this timeout expires,
+ * processing of the upgrade domain will proceed regardless of availability
+ * loss issues. The timeout is reset at the start of each upgrade domain. Valid
+ * values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {object} [monitoringPolicy] Describes the parameters for monitoring
+ * an upgrade in Monitored mode.
+ * @member {string} [monitoringPolicy.failureAction] The compensating action to
+ * perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [clusterHealthPolicy]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [clusterHealthPolicy] Defines a health policy used to
+ * evaluate the health of the cluster or of a cluster node.
  * @member {boolean} [clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number} [clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
@@ -3439,11 +4430,34 @@ export interface ClusterUpgradeHealthPolicyObject {
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
- * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap]
+ * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
  * @member {boolean} [enableDeltaHealthEvaluation] When true, enables delta
  * health evaluation rather than absolute health evaluation after completion of
  * each upgrade domain.
- * @member {object} [clusterUpgradeHealthPolicy]
+ * @member {object} [clusterUpgradeHealthPolicy] Defines a health policy used
+ * to evaluate the health of the cluster during a cluster upgrade.
  * @member {number} [clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
  * The maximum allowed percentage of nodes health degradation allowed during
  * cluster upgrades. The delta is measured between the state of the nodes at
@@ -3460,8 +4474,12 @@ export interface ClusterUpgradeHealthPolicyObject {
  * performed after every upgrade domain upgrade completion for all completed
  * upgrade domains to make sure the state of the upgrade domains is within
  * tolerated limits. The default value is 15%.
- * @member {object} [applicationHealthPolicyMap]
- * @member {array} [applicationHealthPolicyMap.applicationHealthPolicyMap]
+ * @member {object} [applicationHealthPolicyMap] Defines the application health
+ * policy map used to evaluate the health of an application or one of its
+ * children entities.
+ * @member {array} [applicationHealthPolicyMap.applicationHealthPolicyMap] The
+ * wrapper that contains the map with application health policies used to
+ * evaluate specific applications in the cluster.
  */
 export interface StartClusterUpgradeDescription {
   codeVersion?: string;
@@ -3484,18 +4502,50 @@ export interface StartClusterUpgradeDescription {
  * Describes the parameters for updating a rolling upgrade of application or
  * cluster.
  *
- * @member {string} rollingUpgradeMode Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {boolean} [forceRestart]
- * @member {number} [replicaSetCheckTimeoutInMilliseconds]
- * @member {string} [failureAction] Possible values include: 'Invalid',
- * 'Rollback', 'Manual'
- * @member {string} [healthCheckWaitDurationInMilliseconds]
- * @member {string} [healthCheckStableDurationInMilliseconds]
- * @member {string} [healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [upgradeTimeoutInMilliseconds]
- * @member {string} [upgradeDomainTimeoutInMilliseconds]
+ * @member {string} rollingUpgradeMode The mode used to monitor health during a
+ * rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {number} [replicaSetCheckTimeoutInMilliseconds] The maximum amount
+ * of time to block processing of an upgrade domain and prevent loss of
+ * availability when there are unexpected issues. When this timeout expires,
+ * processing of the upgrade domain will proceed regardless of availability
+ * loss issues. The timeout is reset at the start of each upgrade domain. Valid
+ * values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
+ * @member {string} [failureAction] The compensating action to perform when a
+ * Monitored upgrade encounters monitoring policy or health policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
+ * @member {string} [healthCheckWaitDurationInMilliseconds] The amount of time
+ * to wait after completing an upgrade domain before applying health policies.
+ * It is first interpreted as a string representing an ISO 8601 duration. If
+ * that fails, then it is interpreted as a number representing the total number
+ * of milliseconds.
+ * @member {string} [healthCheckStableDurationInMilliseconds] The amount of
+ * time that the application or cluster must remain healthy before the upgrade
+ * proceeds to the next upgrade domain. It is first interpreted as a string
+ * representing an ISO 8601 duration. If that fails, then it is interpreted as
+ * a number representing the total number of milliseconds.
+ * @member {string} [healthCheckRetryTimeoutInMilliseconds] The amount of time
+ * to retry health evaluation when the application or cluster is unhealthy
+ * before FailureAction is executed. It is first interpreted as a string
+ * representing an ISO 8601 duration. If that fails, then it is interpreted as
+ * a number representing the total number of milliseconds.
+ * @member {string} [upgradeTimeoutInMilliseconds] The amount of time the
+ * overall upgrade has to complete before FailureAction is executed. It is
+ * first interpreted as a string representing an ISO 8601 duration. If that
+ * fails, then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [upgradeDomainTimeoutInMilliseconds] The amount of time
+ * each upgrade domain has to complete before FailureAction is executed. It is
+ * first interpreted as a string representing an ISO 8601 duration. If that
+ * fails, then it is interpreted as a number representing the total number of
+ * milliseconds.
  */
 export interface RollingUpgradeUpdateDescription {
   rollingUpgradeMode: string;
@@ -3515,21 +4565,61 @@ export interface RollingUpgradeUpdateDescription {
  * @constructor
  * Parameters for updating a cluster upgrade.
  *
- * @member {string} [upgradeKind] Possible values include: 'Invalid',
- * 'Rolling', 'Rolling_ForceRestart'. Default value: 'Rolling' .
- * @member {object} [updateDescription]
- * @member {string} [updateDescription.rollingUpgradeMode] Possible values
- * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
- * @member {boolean} [updateDescription.forceRestart]
+ * @member {string} [upgradeKind] The type of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling',
+ * 'Rolling_ForceRestart'. Default value: 'Rolling' .
+ * @member {object} [updateDescription] Describes the parameters for updating a
+ * rolling upgrade of application or cluster.
+ * @member {string} [updateDescription.rollingUpgradeMode] The mode used to
+ * monitor health during a rolling upgrade. The values are UnmonitoredAuto,
+ * UnmonitoredManual, and Monitored. Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * @member {boolean} [updateDescription.forceRestart] If true, then processes
+ * are forcefully restarted during upgrade even when the code version has not
+ * changed (the upgrade only changes configuration or data).
  * @member {number} [updateDescription.replicaSetCheckTimeoutInMilliseconds]
- * @member {string} [updateDescription.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * The maximum amount of time to block processing of an upgrade domain and
+ * prevent loss of availability when there are unexpected issues. When this
+ * timeout expires, processing of the upgrade domain will proceed regardless of
+ * availability loss issues. The timeout is reset at the start of each upgrade
+ * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+ * 32-bit integer).
+ * @member {string} [updateDescription.failureAction] The compensating action
+ * to perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [updateDescription.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [updateDescription.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [updateDescription.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [updateDescription.upgradeTimeoutInMilliseconds]
- * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [clusterHealthPolicy]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [updateDescription.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [clusterHealthPolicy] Defines a health policy used to
+ * evaluate the health of the cluster or of a cluster node.
  * @member {boolean} [clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number} [clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
@@ -3562,9 +4652,34 @@ export interface RollingUpgradeUpdateDescription {
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
- * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {boolean} [enableDeltaHealthEvaluation]
- * @member {object} [clusterUpgradeHealthPolicy]
+ * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {boolean} [enableDeltaHealthEvaluation] When true, enables delta
+ * health evaluation rather than absolute health evaluation after completion of
+ * each upgrade domain.
+ * @member {object} [clusterUpgradeHealthPolicy] Defines a health policy used
+ * to evaluate the health of the cluster during a cluster upgrade.
  * @member {number} [clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
  * The maximum allowed percentage of nodes health degradation allowed during
  * cluster upgrades. The delta is measured between the state of the nodes at
@@ -3581,8 +4696,12 @@ export interface RollingUpgradeUpdateDescription {
  * performed after every upgrade domain upgrade completion for all completed
  * upgrade domains to make sure the state of the upgrade domains is within
  * tolerated limits. The default value is 15%.
- * @member {object} [applicationHealthPolicyMap]
- * @member {array} [applicationHealthPolicyMap.applicationHealthPolicyMap]
+ * @member {object} [applicationHealthPolicyMap] Defines the application health
+ * policy map used to evaluate the health of an application or one of its
+ * children entities.
+ * @member {array} [applicationHealthPolicyMap.applicationHealthPolicyMap] The
+ * wrapper that contains the map with application health policies used to
+ * evaluate specific applications in the cluster.
  */
 export interface UpdateClusterUpgradeDescription {
   upgradeKind?: string;
@@ -3600,7 +4719,8 @@ export interface UpdateClusterUpgradeDescription {
  * Represents a safety check for the service partition being performed by
  * service fabric before continuing with operations.
  *
- * @member {uuid} [partitionId]
+ * @member {uuid} [partitionId] Id of the partition which is undergoing the
+ * safety check.
  */
 export interface PartitionSafetyCheck extends SafetyCheck {
   partitionId?: string;
@@ -3654,12 +4774,38 @@ export interface SeedNodeSafetyCheck extends SafetyCheck {
  * ServiceTypeHealthPolicy.
  * @member {number} [totalCount] Total number of partitions of the service from
  * the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * PartitionHealthEvaluation that impacted the aggregated health.
  */
 export interface PartitionsHealthEvaluation extends HealthEvaluation {
   maxPercentUnhealthyPartitionsPerService?: number;
   totalCount?: number;
   unhealthyEvaluations?: HealthEvaluationWrapper[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicaEvent class.
+ * @constructor
+ * Represents the base for all Replica Events.
+ *
+ * @member {uuid} partitionId An internal ID used by Service Fabric to uniquely
+ * identify a partition. This is a randomly generated GUID when the service was
+ * created. The partition ID is unique and does not change for the lifetime of
+ * the service. If the same service was deleted and recreated the IDs of its
+ * partitions would be different.
+ * @member {number} replicaId Id of a stateful service replica. ReplicaId is
+ * used by Service Fabric to uniquely identify a replica of a partition. It is
+ * unique within a partition and does not change for the lifetime of the
+ * replica. If a replica gets dropped and another replica gets created on the
+ * same node for the same partition, it will get a different value for the id.
+ * Sometimes the id of a stateless service instance is also referred as a
+ * replica id.
+ */
+export interface ReplicaEvent extends FabricEvent {
+  partitionId: string;
+  replicaId: number;
 }
 
 /**
@@ -3671,8 +4817,8 @@ export interface PartitionsHealthEvaluation extends HealthEvaluation {
  * Contains the replica aggregated health state, the health events and the
  * unhealthy evaluations.
  *
- *
- * @member {uuid} [partitionId]
+ * @member {uuid} [partitionId] Id of the partition to which this replica
+ * belongs.
  * @member {string} serviceKind Polymorphic Discriminator
  */
 export interface ReplicaHealth extends EntityHealth {
@@ -3689,9 +4835,21 @@ export interface ReplicaHealth extends EntityHealth {
  * evaluation is returned only when the aggregated health state is either Error
  * or Warning.
  *
- * @member {uuid} [partitionId]
- * @member {string} [replicaOrInstanceId]
- * @member {array} [unhealthyEvaluations]
+ * @member {uuid} [partitionId] Id of the partition to which the replica
+ * belongs.
+ * @member {string} [replicaOrInstanceId] Id of a stateful service replica or a
+ * stateless service instance. This ID is used in the queries that apply to
+ * both stateful and stateless services. It is used by Service Fabric to
+ * uniquely identify a replica of a partition of a stateful service or an
+ * instance of a stateless service partition. It is unique within a partition
+ * and does not change for the lifetime of the replica or the instance. If a
+ * stateful replica gets dropped and another replica gets created on the same
+ * node for the same partition, it will get a different value for the ID. If a
+ * stateless instance is failed over on the same or different node it will get
+ * a different value for the ID.
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state of the replica. The types of the
+ * unhealthy evaluations can be EventHealthEvaluation.
  */
 export interface ReplicaHealthEvaluation extends HealthEvaluation {
   partitionId?: string;
@@ -3713,7 +4871,9 @@ export interface ReplicaHealthEvaluation extends HealthEvaluation {
  * ApplicationHealthPolicy.
  * @member {number} [totalCount] Total number of replicas in the partition from
  * the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * ReplicaHealthEvaluation that impacted the aggregated health.
  */
 export interface ReplicasHealthEvaluation extends HealthEvaluation {
   maxPercentUnhealthyReplicasPerPartition?: number;
@@ -3727,13 +4887,13 @@ export interface ReplicasHealthEvaluation extends HealthEvaluation {
  * @constructor
  * Describes the parameters to restart a Service Fabric node.
  *
- * @member {string} nodeInstanceId The instance id of the target node. If
- * instance id is specified the node is restarted only if it matches with the
+ * @member {string} nodeInstanceId The instance ID of the target node. If
+ * instance ID is specified the node is restarted only if it matches with the
  * current instance of the node. A default value of "0" would match any
- * instance id. The instance id can be obtained using get node query. Default
+ * instance ID. The instance ID can be obtained using get node query. Default
  * value: '0' .
  * @member {string} [createFabricDump] Specify True to create a dump of the
- * fabric node process. This is case sensitive. Possible values include:
+ * fabric node process. This is case-sensitive. Possible values include:
  * 'False', 'True'. Default value: 'False' .
  */
 export interface RestartNodeDescription {
@@ -3743,17 +4903,39 @@ export interface RestartNodeDescription {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEvent class.
+ * @constructor
+ * Represents the base for all Service Events.
+ *
+ * @member {string} serviceId The identity of the service. This ID is an
+ * encoded representation of the service name. This is used in the REST APIs to
+ * identify the service resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the service name is "fabric:/myapp/app1/svc1",
+ * the service identity would be "myapp~app1\~svc1" in 6.0+ and
+ * "myapp/app1/svc1" in previous versions.
+ */
+export interface ServiceEvent extends FabricEvent {
+  serviceId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServiceFromTemplateDescription class.
  * @constructor
  * Defines description for creating a Service Fabric service from a template
  * defined in the application manifest.
  *
- *
- * @member {string} applicationName
- * @member {string} serviceName
- * @member {string} serviceTypeName
- * @member {array} [initializationData]
- * @member {string} [servicePackageActivationMode] Possible values include:
+ * @member {string} applicationName The name of the application, including the
+ * 'fabric:' URI scheme.
+ * @member {string} serviceName The full name of the service with 'fabric:' URI
+ * scheme.
+ * @member {string} serviceTypeName Name of the service type as specified in
+ * the service manifest.
+ * @member {array} [initializationData] The initialization data for the newly
+ * created service instance.
+ * @member {string} [servicePackageActivationMode] The activation mode of
+ * service package to be used for a service. Possible values include:
  * 'SharedProcess', 'ExclusiveProcess'
  * @member {string} [serviceDnsName] The DNS name of the service. It requires
  * the DNS system service to be enabled in Service Fabric cluster.
@@ -3776,8 +4958,12 @@ export interface ServiceFromTemplateDescription {
  * evaluation is returned only when the aggregated health state is either Error
  * or Warning.
  *
- * @member {string} [serviceName]
- * @member {array} [unhealthyEvaluations]
+ * @member {string} [serviceName] Name of the service whose health evaluation
+ * is described by this object.
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state of the service. The types of the
+ * unhealthy evaluations can be PartitionsHealthEvaluation or
+ * EventHealthEvaluation.
  */
 export interface ServiceHealthEvaluation extends HealthEvaluation {
   serviceName?: string;
@@ -3790,7 +4976,8 @@ export interface ServiceHealthEvaluation extends HealthEvaluation {
  * @constructor
  * Information about the health of a Service Fabric service.
  *
- * @member {string} [name]
+ * @member {string} [name] The name of the service whose health information is
+ * described by this object.
  * @member {array} [partitionHealthStates] The list of partition health states
  * associated with the service.
  */
@@ -3805,8 +4992,15 @@ export interface ServiceHealth extends EntityHealth {
  * @constructor
  * Information about the service name.
  *
- * @member {string} [id]
- * @member {string} [name]
+ * @member {string} [id] The identity of the service. This ID is an encoded
+ * representation of the service name. This is used in the REST APIs to
+ * identify the service resource.
+ * Starting in version 6.0, hierarchical names are delimited with the "\~"
+ * character. For example, if the service name is "fabric:/myapp/app1/svc1",
+ * the service identity would be "myapp~app1\~svc1" in 6.0+ and
+ * "myapp/app1/svc1" in previous versions.
+ * @member {string} [name] The full name of the service with 'fabric:' URI
+ * scheme.
  */
 export interface ServiceNameInfo {
   id?: string;
@@ -3848,7 +5042,6 @@ export interface ServicePlacementInvalidDomainPolicyDescription extends ServiceP
  * where all replicas must be able to be placed in order for any replicas to be
  * created.
  *
- *
  */
 export interface ServicePlacementNonPartiallyPlaceServicePolicyDescription extends ServicePlacementPolicyDescription {
 }
@@ -3868,7 +5061,6 @@ export interface ServicePlacementNonPartiallyPlaceServicePolicyDescription exten
  * regional or datacenter boundaries. Note that since this is an optimization
  * it is possible that the Primary replica may not end up located in this
  * domain due to failures, capacity limits, or other constraints.
- *
  *
  * @member {string} [domainName] The name of the domain that should used for
  * placement as per this policy.
@@ -3909,7 +5101,6 @@ export interface ServicePlacementRequiredDomainPolicyDescription extends Service
  * the remaining datacenters. If this is not desirable then this policy should
  * be set.
  *
- *
  * @member {string} [domainName] The name of the domain that should used for
  * placement as per this policy.
  */
@@ -3932,13 +5123,44 @@ export interface ServicePlacementRequireDomainDistributionPolicyDescription exte
  * unhealthy services from the ServiceTypeHealthPolicy.
  * @member {number} [totalCount] Total number of services of the current
  * service type in the application from the health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * ServiceHealthEvaluation that impacted the aggregated health.
  */
 export interface ServicesHealthEvaluation extends HealthEvaluation {
   serviceTypeName?: string;
   maxPercentUnhealthyServices?: number;
   totalCount?: number;
   unhealthyEvaluations?: HealthEvaluationWrapper[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceLoadMetricDescription class.
+ * @constructor
+ * Specifies a metric to load balance a service during runtime.
+ *
+ * @member {string} name The name of the metric. If the service chooses to
+ * report load during runtime, the load metric name should match the name that
+ * is specified in Name exactly. Note that metric names are case-sensitive.
+ * @member {string} [weight] The service load metric relative weight, compared
+ * to other metrics configured for this service, as a number. Possible values
+ * include: 'Zero', 'Low', 'Medium', 'High'
+ * @member {number} [primaryDefaultLoad] Used only for Stateful services. The
+ * default amount of load, as a number, that this service creates for this
+ * metric when it is a Primary replica.
+ * @member {number} [secondaryDefaultLoad] Used only for Stateful services. The
+ * default amount of load, as a number, that this service creates for this
+ * metric when it is a Secondary replica.
+ * @member {number} [defaultLoad] Used only for Stateless services. The default
+ * amount of load, as a number, that this service creates for this metric.
+ */
+export interface ServiceLoadMetricDescription {
+  name: string;
+  weight?: string;
+  primaryDefaultLoad?: number;
+  secondaryDefaultLoad?: number;
+  defaultLoad?: number;
 }
 
 /**
@@ -3960,23 +5182,27 @@ export interface ServiceTypeExtensionDescription {
  * Initializes a new instance of the ServiceTypeDescription class.
  * @constructor
  * Describes a service type defined in the service manifest of a provisioned
- * application type. The properties the the ones defined in the service
- * manifest.
+ * application type. The properties the ones defined in the service manifest.
  *
  * @member {boolean} [isStateful] Indicates whether the service type is a
  * stateful service type or a stateless service type. This property is true if
  * the service type is a stateful service type, false otherwise.
- * @member {string} [serviceTypeName]
+ * @member {string} [serviceTypeName] Name of the service type as specified in
+ * the service manifest.
  * @member {string} [placementConstraints] The placement constraint to be used
  * when instantiating this service in a Service Fabric cluster.
- * @member {array} [servicePlacementPolicies]
- * @member {array} [extensions]
+ * @member {array} [loadMetrics] The service load metrics is given as an array
+ * of ServiceLoadMetricDescription objects.
+ * @member {array} [servicePlacementPolicies] List of service placement policy
+ * descriptions.
+ * @member {array} [extensions] List of service type extensions.
  * @member {string} kind Polymorphic Discriminator
  */
 export interface ServiceTypeDescription {
   isStateful?: boolean;
   serviceTypeName?: string;
   placementConstraints?: string;
+  loadMetrics?: ServiceLoadMetricDescription[];
   servicePlacementPolicies?: ServicePlacementPolicyDescription[];
   extensions?: ServiceTypeExtensionDescription[];
   kind: string;
@@ -3989,19 +5215,27 @@ export interface ServiceTypeDescription {
  * Information about a service type that is defined in a service manifest of a
  * provisioned application type.
  *
- * @member {object} [serviceTypeDescription]
+ * @member {object} [serviceTypeDescription] Describes a service type defined
+ * in the service manifest of a provisioned application type. The properties
+ * the ones defined in the service manifest.
  * @member {boolean} [serviceTypeDescription.isStateful] Indicates whether the
  * service type is a stateful service type or a stateless service type. This
  * property is true if the service type is a stateful service type, false
  * otherwise.
- * @member {string} [serviceTypeDescription.serviceTypeName]
+ * @member {string} [serviceTypeDescription.serviceTypeName] Name of the
+ * service type as specified in the service manifest.
  * @member {string} [serviceTypeDescription.placementConstraints] The placement
  * constraint to be used when instantiating this service in a Service Fabric
  * cluster.
- * @member {array} [serviceTypeDescription.servicePlacementPolicies]
- * @member {array} [serviceTypeDescription.extensions]
+ * @member {array} [serviceTypeDescription.loadMetrics] The service load
+ * metrics is given as an array of ServiceLoadMetricDescription objects.
+ * @member {array} [serviceTypeDescription.servicePlacementPolicies] List of
+ * service placement policy descriptions.
+ * @member {array} [serviceTypeDescription.extensions] List of service type
+ * extensions.
  * @member {string} [serviceTypeDescription.kind] Polymorphic Discriminator
- * @member {string} [serviceManifestName]
+ * @member {string} [serviceManifestName] The name of the service manifest in
+ * which this service type is defined.
  * @member {string} [serviceManifestVersion] The version of the service
  * manifest in which this service type is defined.
  * @member {boolean} [isServiceGroup] Indicates whether the service is a
@@ -4031,9 +5265,9 @@ export interface ServiceTypeManifest {
  * @class
  * Initializes a new instance of the SingletonPartitionInformation class.
  * @constructor
- * Information about a partition that is singleton. The services with
- * singletone partitioning scheme are effectively non-partitioned. They only
- * have one partition.
+ * Information about a partition that is singleton. The services with singleton
+ * partitioning scheme are effectively non-partitioned. They only have one
+ * partition.
  *
  */
 export interface SingletonPartitionInformation extends PartitionInformation {
@@ -4066,7 +5300,11 @@ export interface StatefulServiceInfo extends ServiceInfo {
  * this partition was in quorum loss. If the partition is currently in quorum
  * loss, it returns the duration since it has been in that state. This field is
  * using ISO8601 format for specifying the duration.
- * @member {object} [currentConfigurationEpoch]
+ * @member {object} [currentConfigurationEpoch] An Epoch is a configuration
+ * number for the partition as a whole. When the configuration of the replica
+ * set changes, for example when the Primary replica changes, the operations
+ * that are replicated from the new Primary replica are said to be a new Epoch
+ * from the ones which were sent by the old Primary replica.
  * @member {string} [currentConfigurationEpoch.configurationVersion] The
  * current configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
@@ -4092,8 +5330,13 @@ export interface StatefulServicePartitionInfo extends ServicePartitionInfo {
  * Contains the replica aggregated health state, the health events and the
  * unhealthy evaluations.
  *
- *
- * @member {string} [replicaId]
+ * @member {string} [replicaId] Id of a stateful service replica. ReplicaId is
+ * used by Service Fabric to uniquely identify a replica of a partition. It is
+ * unique within a partition and does not change for the lifetime of the
+ * replica. If a replica gets dropped and another replica gets created on the
+ * same node for the same partition, it will get a different value for the id.
+ * Sometimes the id of a stateless service instance is also referred as a
+ * replica id.
  */
 export interface StatefulServiceReplicaHealth extends ReplicaHealth {
   replicaId?: string;
@@ -4104,9 +5347,15 @@ export interface StatefulServiceReplicaHealth extends ReplicaHealth {
  * Initializes a new instance of the StatefulServiceReplicaHealthState class.
  * @constructor
  * Represents the health state of the stateful service replica, which contains
- * the replica id and the aggregated health state.
+ * the replica ID and the aggregated health state.
  *
- * @member {string} [replicaId]
+ * @member {string} [replicaId] Id of a stateful service replica. ReplicaId is
+ * used by Service Fabric to uniquely identify a replica of a partition. It is
+ * unique within a partition and does not change for the lifetime of the
+ * replica. If a replica gets dropped and another replica gets created on the
+ * same node for the same partition, it will get a different value for the id.
+ * Sometimes the id of a stateless service instance is also referred as a
+ * replica id.
  */
 export interface StatefulServiceReplicaHealthState extends ReplicaHealthState {
   replicaId?: string;
@@ -4141,12 +5390,15 @@ export interface StatelessServiceInfo extends ServiceInfo {
  * @class
  * Initializes a new instance of the StatelessServiceInstanceHealth class.
  * @constructor
- * Represents the health of the statelss service instance.
+ * Represents the health of the stateless service instance.
  * Contains the instance aggregated health state, the health events and the
  * unhealthy evaluations.
  *
- *
- * @member {string} [instanceId]
+ * @member {string} [instanceId] Id of a stateless service instance. InstanceId
+ * is used by Service Fabric to uniquely identify an instance of a partition of
+ * a stateless service. It is unique within a partition and does not change for
+ * the lifetime of the instance. If the instance has failed over on the same or
+ * different node, it will get a different value for the InstanceId.
  */
 export interface StatelessServiceInstanceHealth extends ReplicaHealth {
   instanceId?: string;
@@ -4157,9 +5409,10 @@ export interface StatelessServiceInstanceHealth extends ReplicaHealth {
  * Initializes a new instance of the StatelessServiceInstanceHealthState class.
  * @constructor
  * Represents the health state of the stateless service instance, which
- * contains the instance id and the aggregated health state.
+ * contains the instance ID and the aggregated health state.
  *
- * @member {string} [replicaId]
+ * @member {string} [replicaId] Id of the stateless service instance on the
+ * wire this field is called ReplicaId.
  */
 export interface StatelessServiceInstanceHealthState extends ReplicaHealthState {
   replicaId?: string;
@@ -4202,7 +5455,11 @@ export interface StatelessServiceTypeDescription extends ServiceTypeDescription 
  * evaluate health. The evaluation is returned only when the aggregated health
  * state of the cluster is either Error or Warning.
  *
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the current aggregated health state of the system application. The
+ * types of the unhealthy evaluations can be
+ * DeployedApplicationsHealthEvaluation, ServicesHealthEvaluation or
+ * EventHealthEvaluation.
  */
 export interface SystemApplicationHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: HealthEvaluationWrapper[];
@@ -4218,7 +5475,6 @@ export interface SystemApplicationHealthEvaluation extends HealthEvaluation {
  * Can be returned during cluster upgrade when cluster aggregated health state
  * is Warning or Error.
  *
- *
  * @member {string} [upgradeDomainName] Name of the upgrade domain where nodes
  * health is currently evaluated.
  * @member {number} [baselineErrorCount] Number of upgrade domain nodes with
@@ -4230,7 +5486,9 @@ export interface SystemApplicationHealthEvaluation extends HealthEvaluation {
  * of upgrade domain delta unhealthy nodes from the ClusterUpgradeHealthPolicy.
  * @member {number} [totalCount] Total number of upgrade domain nodes in the
  * health store.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * NodeHealthEvaluation that impacted the aggregated health.
  */
 export interface UpgradeDomainDeltaNodesCheckHealthEvaluation extends HealthEvaluation {
   upgradeDomainName?: string;
@@ -4257,7 +5515,9 @@ export interface UpgradeDomainDeltaNodesCheckHealthEvaluation extends HealthEval
  * unhealthy nodes from the ClusterHealthPolicy.
  * @member {number} [totalCount] Total number of nodes in the current upgrade
  * domain.
- * @member {array} [unhealthyEvaluations]
+ * @member {array} [unhealthyEvaluations] List of unhealthy evaluations that
+ * led to the aggregated health state. Includes all the unhealthy
+ * NodeHealthEvaluation that impacted the aggregated health.
  */
 export interface UpgradeDomainNodesHealthEvaluation extends HealthEvaluation {
   upgradeDomainName?: string;
@@ -4271,9 +5531,9 @@ export interface UpgradeDomainNodesHealthEvaluation extends HealthEvaluation {
  * Initializes a new instance of the WaitForInbuildReplicaSafetyCheck class.
  * @constructor
  * Safety check that waits for the replica build operation to finish. This
- * indiciates that there is a replica that is going through the copy or is
+ * indicates that there is a replica that is going through the copy or is
  * providing data for building another replica. Bring the node down will abort
- * this copy operation which are typoically expensive involving data movements.
+ * this copy operation which are typically expensive involving data movements.
  *
  */
 export interface WaitForInbuildReplicaSafetyCheck extends PartitionSafetyCheck {
@@ -4341,8 +5601,7 @@ export interface LoadMetricReport {
  * default load for the service of the partition.
  * For default loads, LoadMetricReport's LastReportedUtc is set to 0.
  *
- *
- * @member {uuid} [partitionId]
+ * @member {uuid} [partitionId] Id of the partition.
  * @member {array} [primaryLoadMetricReports] Array of load reports from the
  * primary replica for this partition.
  * @member {array} [secondaryLoadMetricReports] Array of aggregated load
@@ -4363,9 +5622,16 @@ export interface PartitionLoadInformation {
  * identity, role, status, health, node name, uptime, and other details about
  * the replica.
  *
- * @member {string} [replicaRole] Possible values include: 'Unknown', 'None',
- * 'Primary', 'IdleSecondary', 'ActiveSecondary'
- * @member {string} [replicaId]
+ * @member {string} [replicaRole] The role of a replica of a stateful service.
+ * Possible values include: 'Unknown', 'None', 'Primary', 'IdleSecondary',
+ * 'ActiveSecondary'
+ * @member {string} [replicaId] Id of a stateful service replica. ReplicaId is
+ * used by Service Fabric to uniquely identify a replica of a partition. It is
+ * unique within a partition and does not change for the lifetime of the
+ * replica. If a replica gets dropped and another replica gets created on the
+ * same node for the same partition, it will get a different value for the id.
+ * Sometimes the id of a stateless service instance is also referred as a
+ * replica id.
  */
 export interface StatefulServiceReplicaInfo extends ReplicaInfo {
   replicaRole?: string;
@@ -4380,7 +5646,11 @@ export interface StatefulServiceReplicaInfo extends ReplicaInfo {
  * identity, status, health, node name, uptime, and other details about the
  * instance.
  *
- * @member {string} [instanceId]
+ * @member {string} [instanceId] Id of a stateless service instance. InstanceId
+ * is used by Service Fabric to uniquely identify an instance of a partition of
+ * a stateless service. It is unique within a partition and does not change for
+ * the lifetime of the instance. If the instance has failed over on the same or
+ * different node, it will get a different value for the InstanceId.
  */
 export interface StatelessServiceInstanceInfo extends ReplicaInfo {
   instanceId?: string;
@@ -4392,25 +5662,67 @@ export interface StatelessServiceInstanceInfo extends ReplicaInfo {
  * @constructor
  * Represents a ServiceFabric cluster upgrade
  *
- * @member {string} [configVersion]
- * @member {string} [codeVersion]
- * @member {string} [upgradeKind] Possible values include: 'Invalid',
- * 'Rolling'. Default value: 'Rolling' .
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {boolean} [forceRestart]
- * @member {boolean} [enableDeltaHealthEvaluation]
- * @member {object} [monitoringPolicy]
- * @member {string} [monitoringPolicy.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * @member {string} [configVersion] The cluster configuration version
+ * (specified in the cluster manifest).
+ * @member {string} [codeVersion] The ServiceFabric code version of the
+ * cluster.
+ * @member {string} [upgradeKind] The kind of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling'. Default
+ * value: 'Rolling' .
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The maximum amount
+ * of time to block processing of an upgrade domain and prevent loss of
+ * availability when there are unexpected issues. When this timeout expires,
+ * processing of the upgrade domain will proceed regardless of availability
+ * loss issues. The timeout is reset at the start of each upgrade domain. Valid
+ * values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {boolean} [enableDeltaHealthEvaluation] When true, enables delta
+ * health evaluation rather than absolute health evaluation after completion of
+ * each upgrade domain.
+ * @member {object} [monitoringPolicy] Describes the parameters for monitoring
+ * an upgrade in Monitored mode.
+ * @member {string} [monitoringPolicy.failureAction] The compensating action to
+ * perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [clusterHealthPolicy]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [clusterHealthPolicy] Defines a health policy used to
+ * evaluate the health of the cluster or of a cluster node.
  * @member {boolean} [clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number} [clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
@@ -4443,8 +5755,31 @@ export interface StatelessServiceInstanceInfo extends ReplicaInfo {
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
- * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {object} [clusterUpgradeHealthPolicy]
+ * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [clusterUpgradeHealthPolicy] Defines a health policy used
+ * to evaluate the health of the cluster during a cluster upgrade.
  * @member {number} [clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
  * The maximum allowed percentage of nodes health degradation allowed during
  * cluster upgrades. The delta is measured between the state of the nodes at
@@ -4461,7 +5796,15 @@ export interface StatelessServiceInstanceInfo extends ReplicaInfo {
  * performed after every upgrade domain upgrade completion for all completed
  * upgrade domains to make sure the state of the upgrade domains is within
  * tolerated limits. The default value is 15%.
- * @member {array} [applicationHealthPolicyMap]
+ * @member {array} [applicationHealthPolicyMap] Defines a map that contains
+ * specific application health policies for different applications.
+ * Each entry specifies as key the application name and as value an
+ * ApplicationHealthPolicy used to evaluate the application health.
+ * If an application is not specified in the map, the application health
+ * evaluation uses the ApplicationHealthPolicy found in its application
+ * manifest or the default application health policy (if no health policy is
+ * defined in the manifest).
+ * The map is empty by default.
  */
 export interface ClusterUpgradeDescriptionObject {
   configVersion?: string;
@@ -4484,8 +5827,9 @@ export interface ClusterUpgradeDescriptionObject {
  * The detailed upgrade progress for nodes in the current upgrade domain at the
  * point of failure.
  *
- * @member {string} [domainName]
- * @member {array} [nodeUpgradeProgressList]
+ * @member {string} [domainName] The name of the upgrade domain
+ * @member {array} [nodeUpgradeProgressList] List of upgrading nodes and their
+ * statuses
  */
 export interface FailedUpgradeDomainProgressObject {
   domainName?: string;
@@ -4498,40 +5842,89 @@ export interface FailedUpgradeDomainProgressObject {
  * @constructor
  * Information about a cluster upgrade.
  *
- * @member {string} [codeVersion]
- * @member {string} [configVersion]
- * @member {array} [upgradeDomains]
- * @member {string} [upgradeState] Possible values include: 'Invalid',
- * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
- * 'RollingForwardInProgress', 'RollingForwardCompleted', 'Failed'
- * @member {string} [nextUpgradeDomain]
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {object} [upgradeDescription]
- * @member {string} [upgradeDescription.configVersion]
- * @member {string} [upgradeDescription.codeVersion]
- * @member {string} [upgradeDescription.upgradeKind] Possible values include:
- * 'Invalid', 'Rolling'
- * @member {string} [upgradeDescription.rollingUpgradeMode] Possible values
- * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * @member {string} [codeVersion] The ServiceFabric code version of the
+ * cluster.
+ * @member {string} [configVersion] The cluster configuration version
+ * (specified in the cluster manifest).
+ * @member {array} [upgradeDomains] List of upgrade domains and their statuses.
+ * @member {string} [upgradeState] The state of the upgrade domain. Possible
+ * values include: 'Invalid', 'RollingBackInProgress', 'RollingBackCompleted',
+ * 'RollingForwardPending', 'RollingForwardInProgress',
+ * 'RollingForwardCompleted', 'Failed'
+ * @member {string} [nextUpgradeDomain] The name of the next upgrade domain to
+ * be processed.
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {object} [upgradeDescription] Represents a ServiceFabric cluster
+ * upgrade
+ * @member {string} [upgradeDescription.configVersion] The cluster
+ * configuration version (specified in the cluster manifest).
+ * @member {string} [upgradeDescription.codeVersion] The ServiceFabric code
+ * version of the cluster.
+ * @member {string} [upgradeDescription.upgradeKind] The kind of upgrade out of
+ * the following possible values. Possible values include: 'Invalid', 'Rolling'
+ * @member {string} [upgradeDescription.rollingUpgradeMode] The mode used to
+ * monitor health during a rolling upgrade. The values are UnmonitoredAuto,
+ * UnmonitoredManual, and Monitored. Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * @member {number} [upgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {boolean} [upgradeDescription.forceRestart]
- * @member {boolean} [upgradeDescription.enableDeltaHealthEvaluation]
- * @member {object} [upgradeDescription.monitoringPolicy]
- * @member {string} [upgradeDescription.monitoringPolicy.failureAction]
- * Possible values include: 'Invalid', 'Rollback', 'Manual'
+ * The maximum amount of time to block processing of an upgrade domain and
+ * prevent loss of availability when there are unexpected issues. When this
+ * timeout expires, processing of the upgrade domain will proceed regardless of
+ * availability loss issues. The timeout is reset at the start of each upgrade
+ * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+ * 32-bit integer).
+ * @member {boolean} [upgradeDescription.forceRestart] If true, then processes
+ * are forcefully restarted during upgrade even when the code version has not
+ * changed (the upgrade only changes configuration or data).
+ * @member {boolean} [upgradeDescription.enableDeltaHealthEvaluation] When
+ * true, enables delta health evaluation rather than absolute health evaluation
+ * after completion of each upgrade domain.
+ * @member {object} [upgradeDescription.monitoringPolicy] Describes the
+ * parameters for monitoring an upgrade in Monitored mode.
+ * @member {string} [upgradeDescription.monitoringPolicy.failureAction] The
+ * compensating action to perform when a Monitored upgrade encounters
+ * monitoring policy or health policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string}
  * [upgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string}
  * [upgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string}
  * [upgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string}
- * [upgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+ * [upgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds] The
+ * amount of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
  * @member {string}
- * [upgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [upgradeDescription.clusterHealthPolicy]
+ * [upgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [upgradeDescription.clusterHealthPolicy] Defines a health
+ * policy used to evaluate the health of the cluster or of a cluster node.
  * @member {boolean}
  * [upgradeDescription.clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
@@ -4569,7 +5962,31 @@ export interface FailedUpgradeDomainProgressObject {
  * applications. Default percentage is zero.
  * @member {array}
  * [upgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {object} [upgradeDescription.clusterUpgradeHealthPolicy]
+ * Defines a map with max percentage unhealthy applications for specific
+ * application types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [upgradeDescription.clusterUpgradeHealthPolicy] Defines a
+ * health policy used to evaluate the health of the cluster during a cluster
+ * upgrade.
  * @member {number}
  * [upgradeDescription.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
  * The maximum allowed percentage of nodes health degradation allowed during
@@ -4587,20 +6004,41 @@ export interface FailedUpgradeDomainProgressObject {
  * performed after every upgrade domain upgrade completion for all completed
  * upgrade domains to make sure the state of the upgrade domains is within
  * tolerated limits. The default value is 15%.
- * @member {array} [upgradeDescription.applicationHealthPolicyMap]
- * @member {string} [upgradeDurationInMilliseconds]
- * @member {string} [upgradeDomainDurationInMilliseconds]
- * @member {array} [unhealthyEvaluations]
- * @member {object} [currentUpgradeDomainProgress]
- * @member {string} [currentUpgradeDomainProgress.domainName]
- * @member {array} [currentUpgradeDomainProgress.nodeUpgradeProgressList]
- * @member {string} [startTimestampUtc]
- * @member {string} [failureTimestampUtc]
- * @member {string} [failureReason] Possible values include: 'None',
- * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout', 'UpgradeTimeout'
- * @member {object} [upgradeDomainProgressAtFailure]
- * @member {string} [upgradeDomainProgressAtFailure.domainName]
+ * @member {array} [upgradeDescription.applicationHealthPolicyMap] Defines a
+ * map that contains specific application health policies for different
+ * applications.
+ * Each entry specifies as key the application name and as value an
+ * ApplicationHealthPolicy used to evaluate the application health.
+ * If an application is not specified in the map, the application health
+ * evaluation uses the ApplicationHealthPolicy found in its application
+ * manifest or the default application health policy (if no health policy is
+ * defined in the manifest).
+ * The map is empty by default.
+ * @member {string} [upgradeDurationInMilliseconds] The estimated elapsed time
+ * spent processing the current overall upgrade.
+ * @member {string} [upgradeDomainDurationInMilliseconds] The estimated elapsed
+ * time spent processing the current upgrade domain.
+ * @member {array} [unhealthyEvaluations] List of health evaluations that
+ * resulted in the current aggregated health state.
+ * @member {object} [currentUpgradeDomainProgress] Information about the
+ * current in-progress upgrade domain.
+ * @member {string} [currentUpgradeDomainProgress.domainName] The name of the
+ * upgrade domain
+ * @member {array} [currentUpgradeDomainProgress.nodeUpgradeProgressList] List
+ * of upgrading nodes and their statuses
+ * @member {string} [startTimestampUtc] The start time of the upgrade in UTC.
+ * @member {string} [failureTimestampUtc] The failure time of the upgrade in
+ * UTC.
+ * @member {string} [failureReason] The cause of an upgrade failure that
+ * resulted in FailureAction being executed. Possible values include: 'None',
+ * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
+ * 'OverallUpgradeTimeout'
+ * @member {object} [upgradeDomainProgressAtFailure] The detailed upgrade
+ * progress for nodes in the current upgrade domain at the point of failure.
+ * @member {string} [upgradeDomainProgressAtFailure.domainName] The name of the
+ * upgrade domain
  * @member {array} [upgradeDomainProgressAtFailure.nodeUpgradeProgressList]
+ * List of upgrading nodes and their statuses
  */
 export interface ClusterUpgradeProgressObject {
   codeVersion?: string;
@@ -4653,6 +6091,12 @@ export interface ClusterUpgradeProgressObject {
  * allowed percentage of upgrade domain delta health degradation during the
  * upgrade. Allowed values are integer values from zero to 100. Default value:
  * 0 .
+ * @member {object} [applicationHealthPolicies] Defines the application health
+ * policy map used to evaluate the health of an application or one of its
+ * children entities.
+ * @member {array} [applicationHealthPolicies.applicationHealthPolicyMap] The
+ * wrapper that contains the map with application health policies used to
+ * evaluate specific applications in the cluster.
  */
 export interface ClusterConfigurationUpgradeDescription {
   clusterConfig: string;
@@ -4665,6 +6109,45 @@ export interface ClusterConfigurationUpgradeDescription {
   maxPercentUnhealthyNodes?: number;
   maxPercentDeltaUnhealthyNodes?: number;
   maxPercentUpgradeDomainDeltaUnhealthyNodes?: number;
+  applicationHealthPolicies?: ApplicationHealthPolicies;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpgradeOrchestrationServiceState class.
+ * @constructor
+ * Service state of Service Fabric Upgrade Orchestration Service.
+ *
+ * @member {string} [serviceState] The state of Service Fabric Upgrade
+ * Orchestration Service.
+ */
+export interface UpgradeOrchestrationServiceState {
+  serviceState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpgradeOrchestrationServiceStateSummary class.
+ * @constructor
+ * Service state summary of Service Fabric Upgrade Orchestration Service.
+ *
+ * @member {string} [currentCodeVersion] The current code version of the
+ * cluster.
+ * @member {string} [currentManifestVersion] The current manifest version of
+ * the cluster.
+ * @member {string} [targetCodeVersion] The target code version of  the
+ * cluster.
+ * @member {string} [targetManifestVersion] The target manifest version of the
+ * cluster.
+ * @member {string} [pendingUpgradeType] The type of the pending upgrade of the
+ * cluster.
+ */
+export interface UpgradeOrchestrationServiceStateSummary {
+  currentCodeVersion?: string;
+  currentManifestVersion?: string;
+  targetCodeVersion?: string;
+  targetManifestVersion?: string;
+  pendingUpgradeType?: string;
 }
 
 /**
@@ -4683,14 +6166,23 @@ export interface ApplicationTypeImageStorePath {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationTypeImageStoreVersion class.
+ * Initializes a new instance of the UnprovisionApplicationTypeDescriptionInfo class.
  * @constructor
- * A version description for the application type
+ * Describes the operation to unregister or unprovision an application type and
+ * its version that was registered with the Service Fabric.
  *
- * @member {string} applicationTypeVersion
+ * @member {string} applicationTypeVersion The version of the application type
+ * as defined in the application manifest.
+ * @member {boolean} [async] The flag indicating whether or not unprovision
+ * should occur asynchronously. When set to true, the unprovision operation
+ * returns when the request is accepted by the system, and the unprovision
+ * operation continues without any timeout limit. The default value is false.
+ * However, we recommend setting it to true for large application packages that
+ * were provisioned.
  */
-export interface ApplicationTypeImageStoreVersion {
+export interface UnprovisionApplicationTypeDescriptionInfo {
   applicationTypeVersion: string;
+  async?: boolean;
 }
 
 /**
@@ -4744,10 +6236,11 @@ export interface CodePackageEntryPointStatistics {
  *
  * @member {string} [entryPointLocation] The location of entry point executable
  * on the node.
- * @member {string} [processId] The process id of the entry point.
+ * @member {string} [processId] The process ID of the entry point.
  * @member {string} [runAsUserName] The user name under which entry point
  * executable is run on the node.
- * @member {object} [codePackageEntryPointStatistics]
+ * @member {object} [codePackageEntryPointStatistics] Statistics about setup or
+ * main entry point  of a code package deployed on a Service Fabric node.
  * @member {string} [codePackageEntryPointStatistics.lastExitCode] The last
  * exit code of the entry point.
  * @member {date} [codePackageEntryPointStatistics.lastActivationTime] The last
@@ -4773,11 +6266,15 @@ export interface CodePackageEntryPointStatistics {
  * @member {string}
  * [codePackageEntryPointStatistics.continuousExitFailureCount] Number of times
  * the entry point continuously failed to exit gracefully.
- * @member {string} [status] Possible values include: 'Invalid', 'Pending',
- * 'Starting', 'Started', 'Stopping', 'Stopped'
+ * @member {string} [status] Specifies the status of the code package entry
+ * point deployed on a Service Fabric node. Possible values include: 'Invalid',
+ * 'Pending', 'Starting', 'Started', 'Stopping', 'Stopped'
  * @member {date} [nextActivationTime] The time (in UTC) when the entry point
  * executable will be run next.
- * @member {string} [instanceId]
+ * @member {string} [instanceId] The instance ID for current running entry
+ * point. For a code package setup entry point (if specified) runs first and
+ * after it finishes main entry point is started. Each time entry point
+ * executable is run, its instance id will change.
  */
 export interface CodePackageEntryPoint {
   entryPointLocation?: string;
@@ -4795,27 +6292,42 @@ export interface CodePackageEntryPoint {
  * @constructor
  * Information about code package deployed on a Service Fabric node.
  *
- * @member {string} [name]
+ * @member {string} [name] The name of the code package.
  * @member {string} [version] The version of the code package specified in
  * service manifest.
- * @member {string} [serviceManifestName]
- * @member {string} [servicePackageActivationId]
- * @member {string} [hostType] Possible values include: 'Invalid', 'ExeHost',
- * 'ContainerHost'
- * @member {string} [hostIsolationMode] Possible values include: 'None',
- * 'Process', 'HyperV'
- * @member {string} [status] Possible values include: 'Invalid', 'Downloading',
- * 'Activating', 'Active', 'Upgrading', 'Deactivating'
+ * @member {string} [serviceManifestName] The name of service manifest that
+ * specified this code package.
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
+ * @member {string} [hostType] Specifies the type of host for main entry point
+ * of a code package as specified in service manifest. Possible values include:
+ * 'Invalid', 'ExeHost', 'ContainerHost'
+ * @member {string} [hostIsolationMode] Specifies the isolation mode of main
+ * entry point of a code package when it's host type is ContainerHost. This is
+ * specified as part of container host policies in application manifest while
+ * importing service manifest. Possible values include: 'None', 'Process',
+ * 'HyperV'
+ * @member {string} [status] Specifies the status of a deployed application or
+ * service package on a Service Fabric node. Possible values include:
+ * 'Invalid', 'Downloading', 'Activating', 'Active', 'Upgrading',
+ * 'Deactivating'
  * @member {string} [runFrequencyInterval] The interval at which code package
  * is run. This is used for periodic code package.
- * @member {object} [setupEntryPoint]
+ * @member {object} [setupEntryPoint] Information about setup or main entry
+ * point of a code package deployed on a Service Fabric node.
  * @member {string} [setupEntryPoint.entryPointLocation] The location of entry
  * point executable on the node.
- * @member {string} [setupEntryPoint.processId] The process id of the entry
+ * @member {string} [setupEntryPoint.processId] The process ID of the entry
  * point.
  * @member {string} [setupEntryPoint.runAsUserName] The user name under which
  * entry point executable is run on the node.
  * @member {object} [setupEntryPoint.codePackageEntryPointStatistics]
+ * Statistics about setup or main entry point  of a code package deployed on a
+ * Service Fabric node.
  * @member {string}
  * [setupEntryPoint.codePackageEntryPointStatistics.lastExitCode] The last exit
  * code of the entry point.
@@ -4848,19 +6360,26 @@ export interface CodePackageEntryPoint {
  * @member {string}
  * [setupEntryPoint.codePackageEntryPointStatistics.continuousExitFailureCount]
  * Number of times the entry point continuously failed to exit gracefully.
- * @member {string} [setupEntryPoint.status] Possible values include:
- * 'Invalid', 'Pending', 'Starting', 'Started', 'Stopping', 'Stopped'
+ * @member {string} [setupEntryPoint.status] Specifies the status of the code
+ * package entry point deployed on a Service Fabric node. Possible values
+ * include: 'Invalid', 'Pending', 'Starting', 'Started', 'Stopping', 'Stopped'
  * @member {date} [setupEntryPoint.nextActivationTime] The time (in UTC) when
  * the entry point executable will be run next.
- * @member {string} [setupEntryPoint.instanceId]
- * @member {object} [mainEntryPoint]
+ * @member {string} [setupEntryPoint.instanceId] The instance ID for current
+ * running entry point. For a code package setup entry point (if specified)
+ * runs first and after it finishes main entry point is started. Each time
+ * entry point executable is run, its instance id will change.
+ * @member {object} [mainEntryPoint] Information about setup or main entry
+ * point of a code package deployed on a Service Fabric node.
  * @member {string} [mainEntryPoint.entryPointLocation] The location of entry
  * point executable on the node.
- * @member {string} [mainEntryPoint.processId] The process id of the entry
+ * @member {string} [mainEntryPoint.processId] The process ID of the entry
  * point.
  * @member {string} [mainEntryPoint.runAsUserName] The user name under which
  * entry point executable is run on the node.
- * @member {object} [mainEntryPoint.codePackageEntryPointStatistics]
+ * @member {object} [mainEntryPoint.codePackageEntryPointStatistics] Statistics
+ * about setup or main entry point  of a code package deployed on a Service
+ * Fabric node.
  * @member {string}
  * [mainEntryPoint.codePackageEntryPointStatistics.lastExitCode] The last exit
  * code of the entry point.
@@ -4892,11 +6411,15 @@ export interface CodePackageEntryPoint {
  * @member {string}
  * [mainEntryPoint.codePackageEntryPointStatistics.continuousExitFailureCount]
  * Number of times the entry point continuously failed to exit gracefully.
- * @member {string} [mainEntryPoint.status] Possible values include: 'Invalid',
- * 'Pending', 'Starting', 'Started', 'Stopping', 'Stopped'
+ * @member {string} [mainEntryPoint.status] Specifies the status of the code
+ * package entry point deployed on a Service Fabric node. Possible values
+ * include: 'Invalid', 'Pending', 'Starting', 'Started', 'Stopping', 'Stopped'
  * @member {date} [mainEntryPoint.nextActivationTime] The time (in UTC) when
  * the entry point executable will be run next.
- * @member {string} [mainEntryPoint.instanceId]
+ * @member {string} [mainEntryPoint.instanceId] The instance ID for current
+ * running entry point. For a code package setup entry point (if specified)
+ * runs first and after it finishes main entry point is started. Each time
+ * entry point executable is run, its instance id will change.
  */
 export interface DeployedCodePackageInfo {
   name?: string;
@@ -4913,21 +6436,6 @@ export interface DeployedCodePackageInfo {
 
 /**
  * @class
- * Initializes a new instance of the ChaosContextMapItem class.
- * @constructor
- * Describes an item in the ChaosContextMap in ChaosParameters.
- *
- *
- * @member {string} key The key for a ChaosContextMapItem.
- * @member {string} value The value for a ChaosContextMapItem.
- */
-export interface ChaosContextMapItem {
-  key: string;
-  value: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ChaosContext class.
  * @constructor
  * Describes a map, which is a collection of (string, string) type key-value
@@ -4937,11 +6445,70 @@ export interface ChaosContextMapItem {
  * This map is set by the starter of the Chaos run to optionally store the
  * context about the specific run.
  *
- *
- * @member {object} [map]
+ * @member {object} [map] Describes a map that contains a collection of
+ * ChaosContextMapItem's.
  */
 export interface ChaosContext {
-  map?: any;
+  map?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosTargetFilter class.
+ * @constructor
+ * Defines all filters for targeted Chaos faults, for example, faulting only
+ * certain node types or faulting only certain applications.
+ * If ChaosTargetFilter is not used, Chaos faults all cluster entities. If
+ * ChaosTargetFilter is used, Chaos faults only the entities that meet the
+ * ChaosTargetFilter
+ * specification. NodeTypeInclusionList and ApplicationInclusionList allow a
+ * union semantics only. It is not possible to specify an intersection
+ * of NodeTypeInclusionList and ApplicationInclusionList. For example, it is
+ * not possible to specify "fault this application only when it is on that node
+ * type."
+ * Once an entity is included in either NodeTypeInclusionList or
+ * ApplicationInclusionList, that entity cannot be excluded using
+ * ChaosTargetFilter. Even if
+ * applicationX does not appear in ApplicationInclusionList, in some Chaos
+ * iteration applicationX can be faulted because it happens to be on a node of
+ * nodeTypeY that is included
+ * in NodeTypeInclusionList. If both NodeTypeInclusionList and
+ * ApplicationInclusionList are null or empty, an ArgumentException is thrown.
+ *
+ * @member {array} [nodeTypeInclusionList] A list of node types to include in
+ * Chaos faults.
+ * All types of faults (restart node, restart code package, remove replica,
+ * restart replica, move primary, and move secondary) are enabled for the nodes
+ * of these node types.
+ * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * then node level faults (like NodeRestart) will never be enabled for the
+ * nodes of
+ * NodeTypeX, but code package and replica faults can still be enabled for
+ * NodeTypeX if an application in the ApplicationInclusionList.
+ * happens to reside on a node of NodeTypeX.
+ * At most 100 node type names can be included in this list, to increase this
+ * number, a config upgrade is required for
+ * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+ * @member {array} [applicationInclusionList] A list of application URI's to
+ * include in Chaos faults.
+ * All replicas belonging to services of these applications are amenable to
+ * replica faults (restart replica, remove replica, move primary, and move
+ * secondary) by Chaos.
+ * Chaos may restart a code package only if the code package hosts replicas of
+ * these applications only.
+ * If an application does not appear in this list, it can still be faulted in
+ * some Chaos iteration if the application ends up on a node of a node type
+ * that is included in NodeTypeInclusionList.
+ * However, if applicationX is tied to nodeTypeY through placement constraints
+ * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+ * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+ * At most 1000 application names can be included in this list, to increase
+ * this number, a config upgrade is required for
+ * MaxNumberOfApplicationsInChaosEntityFilter configuration.
+ */
+export interface ChaosTargetFilter {
+  nodeTypeInclusionList?: string[];
+  applicationInclusionList?: string[];
 }
 
 /**
@@ -4950,43 +6517,41 @@ export interface ChaosContext {
  * @constructor
  * Defines all the parameters to configure a Chaos run.
  *
- *
  * @member {string} [timeToRunInSeconds] Total time (in seconds) for which
  * Chaos will run before automatically stopping. The maximum allowed value is
- * 4,294,967,295 (System.UInt32.MaxValue).
- * . Default value: '4294967295' .
+ * 4,294,967,295 (System.UInt32.MaxValue). Default value: '4294967295' .
  * @member {number} [maxClusterStabilizationTimeoutInSeconds] The maximum
  * amount of time to wait for all cluster entities to become stable and
  * healthy. Chaos executes in iterations and at the start of each iteration it
  * validates the health of cluster entities.
  * During validation if a cluster entity is not stable and healthy within
  * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
- * event.
- * . Default value: 60 .
+ * event. Default value: 60 .
  * @member {number} [maxConcurrentFaults] MaxConcurrentFaults is the maximum
  * number of concurrent faults induced per iteration.
  * Chaos executes in iterations and two consecutive iterations are separated by
  * a validation phase.
- * The higher the concurrency, the more aggressive the injection of faults --
- * inducing more complex series of states to uncover bugs.
+ * The higher the concurrency, the more aggressive the injection of faults,
+ * leading to inducing more complex series of states to uncover bugs.
  * The recommendation is to start with a value of 2 or 3 and to exercise
- * caution while moving up.
- * . Default value: 1 .
+ * caution while moving up. Default value: 1 .
  * @member {boolean} [enableMoveReplicaFaults] Enables or disables the move
- * primary and move secondary faults.
- * . Default value: true .
+ * primary and move secondary faults. Default value: true .
  * @member {number} [waitTimeBetweenFaultsInSeconds] Wait time (in seconds)
  * between consecutive faults within a single iteration.
  * The larger the value, the lower the overlapping between faults and the
  * simpler the sequence of state transitions that the cluster goes through.
  * The recommendation is to start with a value between 1 and 5 and exercise
- * caution while moving up.
- * . Default value: 20 .
+ * caution while moving up. Default value: 20 .
  * @member {number} [waitTimeBetweenIterationsInSeconds] Time-separation (in
  * seconds) between two consecutive iterations of Chaos.
- * The larger the value, the lower the fault injection rate.
- * . Default value: 30 .
- * @member {object} [clusterHealthPolicy]
+ * The larger the value, the lower the fault injection rate. Default value: 30
+ * .
+ * @member {object} [clusterHealthPolicy] Passed-in cluster health policy is
+ * used to validate health of the cluster in between Chaos iterations. If the
+ * cluster health is in error or if an unexpected exception happens during
+ * fault execution--to provide the cluster with some time to recuperate--Chaos
+ * will wait for 30 minutes before the next health-check.
  * @member {boolean} [clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number} [clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
@@ -5019,9 +6584,75 @@ export interface ChaosContext {
  * ApplicationTypeHealthPolicyMap.
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
- * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {object} [context]
- * @member {object} [context.map]
+ * @member {array} [clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [context] Describes a map, which is a collection of
+ * (string, string) type key-value pairs. The map can be used to record
+ * information about
+ * the Chaos run. There cannot be more than 100 such pairs and each string (key
+ * or value) can be at most 4095 characters long.
+ * This map is set by the starter of the Chaos run to optionally store the
+ * context about the specific run.
+ * @member {object} [context.map] Describes a map that contains a collection of
+ * ChaosContextMapItem's.
+ * @member {object} [chaosTargetFilter] List of cluster entities to target for
+ * Chaos faults.
+ * This filter can be used to target Chaos faults only to certain node types or
+ * only to certain application instances. If ChaosTargetFilter is not used,
+ * Chaos faults all cluster entities.
+ * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
+ * ChaosTargetFilter specification.
+ * @member {array} [chaosTargetFilter.nodeTypeInclusionList] A list of node
+ * types to include in Chaos faults.
+ * All types of faults (restart node, restart code package, remove replica,
+ * restart replica, move primary, and move secondary) are enabled for the nodes
+ * of these node types.
+ * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * then node level faults (like NodeRestart) will never be enabled for the
+ * nodes of
+ * NodeTypeX, but code package and replica faults can still be enabled for
+ * NodeTypeX if an application in the ApplicationInclusionList.
+ * happens to reside on a node of NodeTypeX.
+ * At most 100 node type names can be included in this list, to increase this
+ * number, a config upgrade is required for
+ * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+ * @member {array} [chaosTargetFilter.applicationInclusionList] A list of
+ * application URI's to include in Chaos faults.
+ * All replicas belonging to services of these applications are amenable to
+ * replica faults (restart replica, remove replica, move primary, and move
+ * secondary) by Chaos.
+ * Chaos may restart a code package only if the code package hosts replicas of
+ * these applications only.
+ * If an application does not appear in this list, it can still be faulted in
+ * some Chaos iteration if the application ends up on a node of a node type
+ * that is included in NodeTypeInclusionList.
+ * However, if applicationX is tied to nodeTypeY through placement constraints
+ * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+ * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+ * At most 1000 application names can be included in this list, to increase
+ * this number, a config upgrade is required for
+ * MaxNumberOfApplicationsInChaosEntityFilter configuration.
  */
 export interface ChaosParameters {
   timeToRunInSeconds?: string;
@@ -5032,6 +6663,315 @@ export interface ChaosParameters {
   waitTimeBetweenIterationsInSeconds?: number;
   clusterHealthPolicy?: ClusterHealthPolicy;
   context?: ChaosContext;
+  chaosTargetFilter?: ChaosTargetFilter;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Chaos class.
+ * @constructor
+ * Contains a description of Chaos.
+ *
+ * @member {object} [chaosParameters] If Chaos is running, these are the
+ * parameters Chaos is running with.
+ * @member {string} [chaosParameters.timeToRunInSeconds] Total time (in
+ * seconds) for which Chaos will run before automatically stopping. The maximum
+ * allowed value is 4,294,967,295 (System.UInt32.MaxValue).
+ * @member {number} [chaosParameters.maxClusterStabilizationTimeoutInSeconds]
+ * The maximum amount of time to wait for all cluster entities to become stable
+ * and healthy. Chaos executes in iterations and at the start of each iteration
+ * it validates the health of cluster entities.
+ * During validation if a cluster entity is not stable and healthy within
+ * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
+ * event.
+ * @member {number} [chaosParameters.maxConcurrentFaults] MaxConcurrentFaults
+ * is the maximum number of concurrent faults induced per iteration.
+ * Chaos executes in iterations and two consecutive iterations are separated by
+ * a validation phase.
+ * The higher the concurrency, the more aggressive the injection of faults,
+ * leading to inducing more complex series of states to uncover bugs.
+ * The recommendation is to start with a value of 2 or 3 and to exercise
+ * caution while moving up.
+ * @member {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
+ * disables the move primary and move secondary faults.
+ * @member {number} [chaosParameters.waitTimeBetweenFaultsInSeconds] Wait time
+ * (in seconds) between consecutive faults within a single iteration.
+ * The larger the value, the lower the overlapping between faults and the
+ * simpler the sequence of state transitions that the cluster goes through.
+ * The recommendation is to start with a value between 1 and 5 and exercise
+ * caution while moving up.
+ * @member {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
+ * Time-separation (in seconds) between two consecutive iterations of Chaos.
+ * The larger the value, the lower the fault injection rate.
+ * @member {object} [chaosParameters.clusterHealthPolicy] Passed-in cluster
+ * health policy is used to validate health of the cluster in between Chaos
+ * iterations. If the cluster health is in error or if an unexpected exception
+ * happens during fault execution--to provide the cluster with some time to
+ * recuperate--Chaos will wait for 30 minutes before the next health-check.
+ * @member {boolean}
+ * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
+ * whether warnings are treated with the same severity as errors.
+ * @member {number}
+ * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
+ * allowed percentage of unhealthy nodes before reporting an error. For
+ * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+ *
+ * The percentage represents the maximum tolerated percentage of nodes that can
+ * be unhealthy before the cluster is considered in error.
+ * If the percentage is respected but there is at least one unhealthy node, the
+ * health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy nodes over
+ * the total number of nodes in the cluster.
+ * The computation rounds up to tolerate one failure on small numbers of nodes.
+ * Default percentage is zero.
+ *
+ * In large clusters, some nodes will always be down or out for repairs, so
+ * this percentage should be configured to tolerate that.
+ * @member {number}
+ * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyApplications] The
+ * maximum allowed percentage of unhealthy applications before reporting an
+ * error. For example, to allow 10% of applications to be unhealthy, this value
+ * would be 10.
+ *
+ * The percentage represents the maximum tolerated percentage of applications
+ * that can be unhealthy before the cluster is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * application, the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy applications over the
+ * total number of application instances in the cluster, excluding applications
+ * of application types that are included in the
+ * ApplicationTypeHealthPolicyMap.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * applications. Default percentage is zero.
+ * @member {array}
+ * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [chaosParameters.context] Describes a map, which is a
+ * collection of (string, string) type key-value pairs. The map can be used to
+ * record information about
+ * the Chaos run. There cannot be more than 100 such pairs and each string (key
+ * or value) can be at most 4095 characters long.
+ * This map is set by the starter of the Chaos run to optionally store the
+ * context about the specific run.
+ * @member {object} [chaosParameters.context.map] Describes a map that contains
+ * a collection of ChaosContextMapItem's.
+ * @member {object} [chaosParameters.chaosTargetFilter] List of cluster
+ * entities to target for Chaos faults.
+ * This filter can be used to target Chaos faults only to certain node types or
+ * only to certain application instances. If ChaosTargetFilter is not used,
+ * Chaos faults all cluster entities.
+ * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
+ * ChaosTargetFilter specification.
+ * @member {array} [chaosParameters.chaosTargetFilter.nodeTypeInclusionList] A
+ * list of node types to include in Chaos faults.
+ * All types of faults (restart node, restart code package, remove replica,
+ * restart replica, move primary, and move secondary) are enabled for the nodes
+ * of these node types.
+ * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * then node level faults (like NodeRestart) will never be enabled for the
+ * nodes of
+ * NodeTypeX, but code package and replica faults can still be enabled for
+ * NodeTypeX if an application in the ApplicationInclusionList.
+ * happens to reside on a node of NodeTypeX.
+ * At most 100 node type names can be included in this list, to increase this
+ * number, a config upgrade is required for
+ * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+ * @member {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
+ * A list of application URI's to include in Chaos faults.
+ * All replicas belonging to services of these applications are amenable to
+ * replica faults (restart replica, remove replica, move primary, and move
+ * secondary) by Chaos.
+ * Chaos may restart a code package only if the code package hosts replicas of
+ * these applications only.
+ * If an application does not appear in this list, it can still be faulted in
+ * some Chaos iteration if the application ends up on a node of a node type
+ * that is included in NodeTypeInclusionList.
+ * However, if applicationX is tied to nodeTypeY through placement constraints
+ * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+ * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+ * At most 1000 application names can be included in this list, to increase
+ * this number, a config upgrade is required for
+ * MaxNumberOfApplicationsInChaosEntityFilter configuration.
+ * @member {string} [status] Current status of the Chaos run. Possible values
+ * include: 'Invalid', 'Running', 'Stopped'
+ * @member {string} [scheduleStatus] Current status of the schedule. Possible
+ * values include: 'Invalid', 'Stopped', 'Active', 'Expired', 'Pending'
+ */
+export interface Chaos {
+  chaosParameters?: ChaosParameters;
+  status?: string;
+  scheduleStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosParametersDictionaryItem class.
+ * @constructor
+ * Defines an item in ChaosParametersDictionary of the Chaos Schedule.
+ *
+ * @member {string} key The key identifying the Chaos Parameter in the
+ * dictionary. This key is referenced by Chaos Schedule Jobs.
+ * @member {object} value Defines all the parameters to configure a Chaos run.
+ * @member {string} [value.timeToRunInSeconds] Total time (in seconds) for
+ * which Chaos will run before automatically stopping. The maximum allowed
+ * value is 4,294,967,295 (System.UInt32.MaxValue).
+ * @member {number} [value.maxClusterStabilizationTimeoutInSeconds] The maximum
+ * amount of time to wait for all cluster entities to become stable and
+ * healthy. Chaos executes in iterations and at the start of each iteration it
+ * validates the health of cluster entities.
+ * During validation if a cluster entity is not stable and healthy within
+ * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
+ * event.
+ * @member {number} [value.maxConcurrentFaults] MaxConcurrentFaults is the
+ * maximum number of concurrent faults induced per iteration.
+ * Chaos executes in iterations and two consecutive iterations are separated by
+ * a validation phase.
+ * The higher the concurrency, the more aggressive the injection of faults,
+ * leading to inducing more complex series of states to uncover bugs.
+ * The recommendation is to start with a value of 2 or 3 and to exercise
+ * caution while moving up.
+ * @member {boolean} [value.enableMoveReplicaFaults] Enables or disables the
+ * move primary and move secondary faults.
+ * @member {number} [value.waitTimeBetweenFaultsInSeconds] Wait time (in
+ * seconds) between consecutive faults within a single iteration.
+ * The larger the value, the lower the overlapping between faults and the
+ * simpler the sequence of state transitions that the cluster goes through.
+ * The recommendation is to start with a value between 1 and 5 and exercise
+ * caution while moving up.
+ * @member {number} [value.waitTimeBetweenIterationsInSeconds] Time-separation
+ * (in seconds) between two consecutive iterations of Chaos.
+ * The larger the value, the lower the fault injection rate.
+ * @member {object} [value.clusterHealthPolicy] Passed-in cluster health policy
+ * is used to validate health of the cluster in between Chaos iterations. If
+ * the cluster health is in error or if an unexpected exception happens during
+ * fault execution--to provide the cluster with some time to recuperate--Chaos
+ * will wait for 30 minutes before the next health-check.
+ * @member {boolean} [value.clusterHealthPolicy.considerWarningAsError]
+ * Indicates whether warnings are treated with the same severity as errors.
+ * @member {number} [value.clusterHealthPolicy.maxPercentUnhealthyNodes] The
+ * maximum allowed percentage of unhealthy nodes before reporting an error. For
+ * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+ *
+ * The percentage represents the maximum tolerated percentage of nodes that can
+ * be unhealthy before the cluster is considered in error.
+ * If the percentage is respected but there is at least one unhealthy node, the
+ * health is evaluated as Warning.
+ * The percentage is calculated by dividing the number of unhealthy nodes over
+ * the total number of nodes in the cluster.
+ * The computation rounds up to tolerate one failure on small numbers of nodes.
+ * Default percentage is zero.
+ *
+ * In large clusters, some nodes will always be down or out for repairs, so
+ * this percentage should be configured to tolerate that.
+ * @member {number} [value.clusterHealthPolicy.maxPercentUnhealthyApplications]
+ * The maximum allowed percentage of unhealthy applications before reporting an
+ * error. For example, to allow 10% of applications to be unhealthy, this value
+ * would be 10.
+ *
+ * The percentage represents the maximum tolerated percentage of applications
+ * that can be unhealthy before the cluster is considered in error.
+ * If the percentage is respected but there is at least one unhealthy
+ * application, the health is evaluated as Warning.
+ * This is calculated by dividing the number of unhealthy applications over the
+ * total number of application instances in the cluster, excluding applications
+ * of application types that are included in the
+ * ApplicationTypeHealthPolicyMap.
+ * The computation rounds up to tolerate one failure on small numbers of
+ * applications. Default percentage is zero.
+ * @member {array} [value.clusterHealthPolicy.applicationTypeHealthPolicyMap]
+ * Defines a map with max percentage unhealthy applications for specific
+ * application types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [value.context] Describes a map, which is a collection of
+ * (string, string) type key-value pairs. The map can be used to record
+ * information about
+ * the Chaos run. There cannot be more than 100 such pairs and each string (key
+ * or value) can be at most 4095 characters long.
+ * This map is set by the starter of the Chaos run to optionally store the
+ * context about the specific run.
+ * @member {object} [value.context.map] Describes a map that contains a
+ * collection of ChaosContextMapItem's.
+ * @member {object} [value.chaosTargetFilter] List of cluster entities to
+ * target for Chaos faults.
+ * This filter can be used to target Chaos faults only to certain node types or
+ * only to certain application instances. If ChaosTargetFilter is not used,
+ * Chaos faults all cluster entities.
+ * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
+ * ChaosTargetFilter specification.
+ * @member {array} [value.chaosTargetFilter.nodeTypeInclusionList] A list of
+ * node types to include in Chaos faults.
+ * All types of faults (restart node, restart code package, remove replica,
+ * restart replica, move primary, and move secondary) are enabled for the nodes
+ * of these node types.
+ * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * then node level faults (like NodeRestart) will never be enabled for the
+ * nodes of
+ * NodeTypeX, but code package and replica faults can still be enabled for
+ * NodeTypeX if an application in the ApplicationInclusionList.
+ * happens to reside on a node of NodeTypeX.
+ * At most 100 node type names can be included in this list, to increase this
+ * number, a config upgrade is required for
+ * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+ * @member {array} [value.chaosTargetFilter.applicationInclusionList] A list of
+ * application URI's to include in Chaos faults.
+ * All replicas belonging to services of these applications are amenable to
+ * replica faults (restart replica, remove replica, move primary, and move
+ * secondary) by Chaos.
+ * Chaos may restart a code package only if the code package hosts replicas of
+ * these applications only.
+ * If an application does not appear in this list, it can still be faulted in
+ * some Chaos iteration if the application ends up on a node of a node type
+ * that is included in NodeTypeInclusionList.
+ * However, if applicationX is tied to nodeTypeY through placement constraints
+ * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+ * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+ * At most 1000 application names can be included in this list, to increase
+ * this number, a config upgrade is required for
+ * MaxNumberOfApplicationsInChaosEntityFilter configuration.
+ */
+export interface ChaosParametersDictionaryItem {
+  key: string;
+  value: ChaosParameters;
 }
 
 /**
@@ -5040,7 +6980,8 @@ export interface ChaosParameters {
  * @constructor
  * Represents an event generated during a Chaos run.
  *
- * @member {date} timeStampUtc
+ * @member {date} timeStampUtc The UTC timestamp when this Chaos event was
+ * generated.
  * @member {string} kind Polymorphic Discriminator
  */
 export interface ChaosEvent {
@@ -5054,8 +6995,10 @@ export interface ChaosEvent {
  * @constructor
  * Wrapper object for Chaos event.
  *
- * @member {object} [chaosEvent]
- * @member {date} [chaosEvent.timeStampUtc]
+ * @member {object} [chaosEvent] Represents an event generated during a Chaos
+ * run.
+ * @member {date} [chaosEvent.timeStampUtc] The UTC timestamp when this Chaos
+ * event was generated.
  * @member {string} [chaosEvent.kind] Polymorphic Discriminator
  */
 export interface ChaosEventWrapper {
@@ -5064,97 +7007,173 @@ export interface ChaosEventWrapper {
 
 /**
  * @class
- * Initializes a new instance of the ChaosReport class.
+ * Initializes a new instance of the ChaosEventsSegment class.
  * @constructor
- * Contains detailed Chaos report.
+ * Contains the list of Chaos events and the continuation token to get the next
+ * segment.
  *
- *
- * @member {object} [chaosParameters]
- * @member {string} [chaosParameters.timeToRunInSeconds] Total time (in
- * seconds) for which Chaos will run before automatically stopping. The maximum
- * allowed value is 4,294,967,295 (System.UInt32.MaxValue).
- * @member {number} [chaosParameters.maxClusterStabilizationTimeoutInSeconds]
- * The maximum amount of time to wait for all cluster entities to become stable
- * and healthy. Chaos executes in iterations and at the start of each iteration
- * it validates the health of cluster entities.
- * During validation if a cluster entity is not stable and healthy within
- * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
- * event.
- * @member {number} [chaosParameters.maxConcurrentFaults] MaxConcurrentFaults
- * is the maximum number of concurrent faults induced per iteration.
- * Chaos executes in iterations and two consecutive iterations are separated by
- * a validation phase.
- * The higher the concurrency, the more aggressive the injection of faults --
- * inducing more complex series of states to uncover bugs.
- * The recommendation is to start with a value of 2 or 3 and to exercise
- * caution while moving up.
- * @member {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
- * disables the move primary and move secondary faults.
- * @member {number} [chaosParameters.waitTimeBetweenFaultsInSeconds] Wait time
- * (in seconds) between consecutive faults within a single iteration.
- * The larger the value, the lower the overlapping between faults and the
- * simpler the sequence of state transitions that the cluster goes through.
- * The recommendation is to start with a value between 1 and 5 and exercise
- * caution while moving up.
- * @member {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
- * Time-separation (in seconds) between two consecutive iterations of Chaos.
- * The larger the value, the lower the fault injection rate.
- * @member {object} [chaosParameters.clusterHealthPolicy]
- * @member {boolean}
- * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
- * whether warnings are treated with the same severity as errors.
- * @member {number}
- * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyNodes] The maximum
- * allowed percentage of unhealthy nodes before reporting an error. For
- * example, to allow 10% of nodes to be unhealthy, this value would be 10.
- *
- * The percentage represents the maximum tolerated percentage of nodes that can
- * be unhealthy before the cluster is considered in error.
- * If the percentage is respected but there is at least one unhealthy node, the
- * health is evaluated as Warning.
- * The percentage is calculated by dividing the number of unhealthy nodes over
- * the total number of nodes in the cluster.
- * The computation rounds up to tolerate one failure on small numbers of nodes.
- * Default percentage is zero.
- *
- * In large clusters, some nodes will always be down or out for repairs, so
- * this percentage should be configured to tolerate that.
- * @member {number}
- * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyApplications] The
- * maximum allowed percentage of unhealthy applications before reporting an
- * error. For example, to allow 10% of applications to be unhealthy, this value
- * would be 10.
- *
- * The percentage represents the maximum tolerated percentage of applications
- * that can be unhealthy before the cluster is considered in error.
- * If the percentage is respected but there is at least one unhealthy
- * application, the health is evaluated as Warning.
- * This is calculated by dividing the number of unhealthy applications over the
- * total number of application instances in the cluster, excluding applications
- * of application types that are included in the
- * ApplicationTypeHealthPolicyMap.
- * The computation rounds up to tolerate one failure on small numbers of
- * applications. Default percentage is zero.
- * @member {array}
- * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {object} [chaosParameters.context]
- * @member {object} [chaosParameters.context.map]
- * @member {string} [status] Current status of the Chaos run.
- *
- * - Invalid - Indicates an invalid Chaos status. All Service Fabric
- * enumerations have the invalid type.
- * The valus is zero.
- * - Running - Indicates that Chaos is not stopped.
- * - Stopped - Indicates that Chaos is not scheduling futher faults. Possible
- * values include: 'Invalid', 'Running', 'Stopped'
- * @member {string} [continuationToken]
- * @member {array} [history]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [history] List of Chaos events that meet the user-supplied
+ * criteria.
  */
-export interface ChaosReport {
-  chaosParameters?: ChaosParameters;
-  status?: string;
+export interface ChaosEventsSegment {
   continuationToken?: string;
   history?: ChaosEventWrapper[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosScheduleJobActiveDaysOfWeek class.
+ * @constructor
+ * Defines the days of the week that a Chaos Schedule Job will run for.
+ *
+ * @member {boolean} [sunday] Indicates if the Chaos Schedule Job will run on
+ * Sunday. Default value: false .
+ * @member {boolean} [monday] Indicates if the Chaos Schedule Job will run on
+ * Monday. Default value: false .
+ * @member {boolean} [tuesday] Indicates if the Chaos Schedule Job will run on
+ * Tuesday. Default value: false .
+ * @member {boolean} [wednesday] Indicates if the Chaos Schedule Job will run
+ * on Wednesday. Default value: false .
+ * @member {boolean} [thursday] Indicates if the Chaos Schedule Job will run on
+ * Thursday. Default value: false .
+ * @member {boolean} [friday] Indicates if the Chaos Schedule Job will run on
+ * Friday. Default value: false .
+ * @member {boolean} [saturday] Indicates if the Chaos Schedule Job will run on
+ * Saturday. Default value: false .
+ */
+export interface ChaosScheduleJobActiveDaysOfWeek {
+  sunday?: boolean;
+  monday?: boolean;
+  tuesday?: boolean;
+  wednesday?: boolean;
+  thursday?: boolean;
+  friday?: boolean;
+  saturday?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeOfDay class.
+ * @constructor
+ * Defines an hour and minute of the day specified in 24 hour time.
+ *
+ * @member {number} [hour] Represents the hour of the day. Value must be
+ * between 0 and 23 inclusive.
+ * @member {number} [minute] Represents the minute of the hour. Value must be
+ * between 0 to 59 inclusive.
+ */
+export interface TimeOfDay {
+  hour?: number;
+  minute?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeRange class.
+ * @constructor
+ * Defines a time range in a 24 hour day specified by a start and end time.
+ *
+ * @member {object} [startTime] Defines an hour and minute of the day specified
+ * in 24 hour time.
+ * @member {number} [startTime.hour] Represents the hour of the day. Value must
+ * be between 0 and 23 inclusive.
+ * @member {number} [startTime.minute] Represents the minute of the hour. Value
+ * must be between 0 to 59 inclusive.
+ * @member {object} [endTime] Defines an hour and minute of the day specified
+ * in 24 hour time.
+ * @member {number} [endTime.hour] Represents the hour of the day. Value must
+ * be between 0 and 23 inclusive.
+ * @member {number} [endTime.minute] Represents the minute of the hour. Value
+ * must be between 0 to 59 inclusive.
+ */
+export interface TimeRange {
+  startTime?: TimeOfDay;
+  endTime?: TimeOfDay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosScheduleJob class.
+ * @constructor
+ * Defines a repetition rule and parameters of Chaos to be used with the Chaos
+ * Schedule.
+ *
+ * @member {string} [chaosParameters] A reference to which Chaos Parameters of
+ * the Chaos Schedule to use.
+ * @member {object} [days] Defines the days of the week that a Chaos Schedule
+ * Job will run for.
+ * @member {boolean} [days.sunday] Indicates if the Chaos Schedule Job will run
+ * on Sunday
+ * @member {boolean} [days.monday] Indicates if the Chaos Schedule Job will run
+ * on Monday
+ * @member {boolean} [days.tuesday] Indicates if the Chaos Schedule Job will
+ * run on Tuesday
+ * @member {boolean} [days.wednesday] Indicates if the Chaos Schedule Job will
+ * run on Wednesday
+ * @member {boolean} [days.thursday] Indicates if the Chaos Schedule Job will
+ * run on Thursday
+ * @member {boolean} [days.friday] Indicates if the Chaos Schedule Job will run
+ * on Friday
+ * @member {boolean} [days.saturday] Indicates if the Chaos Schedule Job will
+ * run on Saturday
+ * @member {array} [times] A list of Time Ranges that specify when during
+ * active days that this job will run. The times are interpreted as UTC.
+ */
+export interface ChaosScheduleJob {
+  chaosParameters?: string;
+  days?: ChaosScheduleJobActiveDaysOfWeek;
+  times?: TimeRange[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosSchedule class.
+ * @constructor
+ * Defines the schedule used by Chaos.
+ *
+ * @member {date} [startDate] The date and time Chaos will start using this
+ * schedule. Default value: new Date('1601-01-01T00:00:00Z') .
+ * @member {date} [expiryDate] The date and time Chaos will continue to use
+ * this schedule until. Default value: new Date('9999-12-31T23:59:59.999Z') .
+ * @member {array} [chaosParametersDictionary] A mapping of string names to
+ * Chaos Parameters to be referenced by Chaos Schedule Jobs.
+ * @member {array} [jobs] A list of all Chaos Schedule Jobs that will be
+ * automated by the schedule.
+ */
+export interface ChaosSchedule {
+  startDate?: Date;
+  expiryDate?: Date;
+  chaosParametersDictionary?: ChaosParametersDictionaryItem[];
+  jobs?: ChaosScheduleJob[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosScheduleDescription class.
+ * @constructor
+ * Defines the Chaos Schedule used by Chaos and the version of the Chaos
+ * Schedule. The version value wraps back to 0 after surpassing 2,147,483,647.
+ *
+ * @member {number} [version] The version number of the Schedule.
+ * @member {object} [schedule] Defines the schedule used by Chaos.
+ * @member {date} [schedule.startDate] The date and time Chaos will start using
+ * this schedule.
+ * @member {date} [schedule.expiryDate] The date and time Chaos will continue
+ * to use this schedule until.
+ * @member {array} [schedule.chaosParametersDictionary] A mapping of string
+ * names to Chaos Parameters to be referenced by Chaos Schedule Jobs.
+ * @member {array} [schedule.jobs] A list of all Chaos Schedule Jobs that will
+ * be automated by the schedule.
+ */
+export interface ChaosScheduleDescription {
+  version?: number;
+  schedule?: ChaosSchedule;
 }
 
 /**
@@ -5165,7 +7184,8 @@ export interface ChaosReport {
  * faults for an iteration. This Chaos event contains the details of the faults
  * as a list of strings.
  *
- * @member {array} [faults]
+ * @member {array} [faults] List of string description of the faults that Chaos
+ * decided to execute in an iteration.
  */
 export interface ExecutingFaultsChaosEvent extends ChaosEvent {
   faults?: string[];
@@ -5177,7 +7197,8 @@ export interface ExecutingFaultsChaosEvent extends ChaosEvent {
  * @constructor
  * Describes a Chaos event that gets generated when Chaos is started.
  *
- * @member {object} [chaosParameters]
+ * @member {object} [chaosParameters] Defines all the parameters to configure a
+ * Chaos run.
  * @member {string} [chaosParameters.timeToRunInSeconds] Total time (in
  * seconds) for which Chaos will run before automatically stopping. The maximum
  * allowed value is 4,294,967,295 (System.UInt32.MaxValue).
@@ -5192,8 +7213,8 @@ export interface ExecutingFaultsChaosEvent extends ChaosEvent {
  * is the maximum number of concurrent faults induced per iteration.
  * Chaos executes in iterations and two consecutive iterations are separated by
  * a validation phase.
- * The higher the concurrency, the more aggressive the injection of faults --
- * inducing more complex series of states to uncover bugs.
+ * The higher the concurrency, the more aggressive the injection of faults,
+ * leading to inducing more complex series of states to uncover bugs.
  * The recommendation is to start with a value of 2 or 3 and to exercise
  * caution while moving up.
  * @member {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
@@ -5207,7 +7228,11 @@ export interface ExecutingFaultsChaosEvent extends ChaosEvent {
  * @member {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
  * Time-separation (in seconds) between two consecutive iterations of Chaos.
  * The larger the value, the lower the fault injection rate.
- * @member {object} [chaosParameters.clusterHealthPolicy]
+ * @member {object} [chaosParameters.clusterHealthPolicy] Passed-in cluster
+ * health policy is used to validate health of the cluster in between Chaos
+ * iterations. If the cluster health is in error or if an unexpected exception
+ * happens during fault execution--to provide the cluster with some time to
+ * recuperate--Chaos will wait for 30 minutes before the next health-check.
  * @member {boolean}
  * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
@@ -5244,9 +7269,75 @@ export interface ExecutingFaultsChaosEvent extends ChaosEvent {
  * The computation rounds up to tolerate one failure on small numbers of
  * applications. Default percentage is zero.
  * @member {array}
- * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap]
- * @member {object} [chaosParameters.context]
- * @member {object} [chaosParameters.context.map]
+ * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
+ * a map with max percentage unhealthy applications for specific application
+ * types.
+ * Each entry specifies as key the application type name and as value an
+ * integer that represents the MaxPercentUnhealthyApplications percentage used
+ * to evaluate the applications of the specified application type.
+ *
+ * The application type health policy map can be used during cluster health
+ * evaluation to describe special application types.
+ * The application types included in the map are evaluated against the
+ * percentage specified in the map, and not with the global
+ * MaxPercentUnhealthyApplications defined in the cluster health policy.
+ * The applications of application types specified in the map are not counted
+ * against the global pool of applications.
+ * For example, if some applications of a type are critical, the cluster
+ * administrator can add an entry to the map for that application type
+ * and assign it a value of 0% (that is, do not tolerate any failures).
+ * All other applications can be evaluated with MaxPercentUnhealthyApplications
+ * set to 20% to tolerate some failures out of the thousands of application
+ * instances.
+ * The application type health policy map is used only if the cluster manifest
+ * enables application type health evaluation using the configuration entry for
+ * HealthManager/EnableApplicationTypeHealthEvaluation.
+ * @member {object} [chaosParameters.context] Describes a map, which is a
+ * collection of (string, string) type key-value pairs. The map can be used to
+ * record information about
+ * the Chaos run. There cannot be more than 100 such pairs and each string (key
+ * or value) can be at most 4095 characters long.
+ * This map is set by the starter of the Chaos run to optionally store the
+ * context about the specific run.
+ * @member {object} [chaosParameters.context.map] Describes a map that contains
+ * a collection of ChaosContextMapItem's.
+ * @member {object} [chaosParameters.chaosTargetFilter] List of cluster
+ * entities to target for Chaos faults.
+ * This filter can be used to target Chaos faults only to certain node types or
+ * only to certain application instances. If ChaosTargetFilter is not used,
+ * Chaos faults all cluster entities.
+ * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
+ * ChaosTargetFilter specification.
+ * @member {array} [chaosParameters.chaosTargetFilter.nodeTypeInclusionList] A
+ * list of node types to include in Chaos faults.
+ * All types of faults (restart node, restart code package, remove replica,
+ * restart replica, move primary, and move secondary) are enabled for the nodes
+ * of these node types.
+ * If a nodetype (say NodeTypeX) does not appear in the NodeTypeInclusionList,
+ * then node level faults (like NodeRestart) will never be enabled for the
+ * nodes of
+ * NodeTypeX, but code package and replica faults can still be enabled for
+ * NodeTypeX if an application in the ApplicationInclusionList.
+ * happens to reside on a node of NodeTypeX.
+ * At most 100 node type names can be included in this list, to increase this
+ * number, a config upgrade is required for
+ * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
+ * @member {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
+ * A list of application URI's to include in Chaos faults.
+ * All replicas belonging to services of these applications are amenable to
+ * replica faults (restart replica, remove replica, move primary, and move
+ * secondary) by Chaos.
+ * Chaos may restart a code package only if the code package hosts replicas of
+ * these applications only.
+ * If an application does not appear in this list, it can still be faulted in
+ * some Chaos iteration if the application ends up on a node of a node type
+ * that is included in NodeTypeInclusionList.
+ * However, if applicationX is tied to nodeTypeY through placement constraints
+ * and applicationX is absent from ApplicationInclusionList and nodeTypeY is
+ * absent from NodeTypeInclusionList, then applicationX will never be faulted.
+ * At most 1000 application names can be included in this list, to increase
+ * this number, a config upgrade is required for
+ * MaxNumberOfApplicationsInChaosEntityFilter configuration.
  */
 export interface StartedChaosEvent extends ChaosEvent {
   chaosParameters?: ChaosParameters;
@@ -5259,7 +7350,9 @@ export interface StartedChaosEvent extends ChaosEvent {
  * Describes a Chaos event that gets generated when Chaos stops because either
  * the user issued a stop or the time to run was up.
  *
- * @member {string} [reason]
+ * @member {string} [reason] Describes why Chaos stopped. Chaos can stop
+ * because of StopChaos API call or the timeToRun provided in ChaosParameters
+ * is over.
  */
 export interface StoppedChaosEvent extends ChaosEvent {
   reason?: string;
@@ -5272,11 +7365,13 @@ export interface StoppedChaosEvent extends ChaosEvent {
  * Describes a Chaos event that gets generated when an unexpected event occurs
  * in the Chaos engine.
  * For example, due to the cluster snapshot being inconsistent, while faulting
- * a faultable entity, Chaos found that the entity was alreay faulted -- which
- * would be an unexpected event.
+ * an entity, Chaos found that the entity was already faulted -- which would be
+ * an unexpected event.
  *
- *
- * @member {string} [reason]
+ * @member {string} [reason] Describes why TestErrorChaosEvent was generated.
+ * For example, Chaos tries to fault a partition but finds that the partition
+ * is no longer fault tolerant, then a TestErrorEvent gets generated with the
+ * reason stating that the partition is not fault tolerant.
  */
 export interface TestErrorChaosEvent extends ChaosEvent {
   reason?: string;
@@ -5288,7 +7383,10 @@ export interface TestErrorChaosEvent extends ChaosEvent {
  * @constructor
  * Chaos event corresponding to a failure during validation.
  *
- * @member {string} [reason]
+ * @member {string} [reason] Describes why the ValidationFailedChaosEvent was
+ * generated. This may happen because more than MaxPercentUnhealthyNodes are
+ * unhealthy for more than MaxClusterStabilizationTimeout. This reason will be
+ * in the Reason property of the ValidationFailedChaosEvent as a string.
  */
 export interface ValidationFailedChaosEvent extends ChaosEvent {
   reason?: string;
@@ -5302,7 +7400,8 @@ export interface ValidationFailedChaosEvent extends ChaosEvent {
  * cluster to become ready for faulting, for example, Chaos may be waiting for
  * the on-going upgrade to finish.
  *
- * @member {string} [reason]
+ * @member {string} [reason] Describes why the WaitingChaosEvent was generated,
+ * for example, due to a cluster upgrade.
  */
 export interface WaitingChaosEvent extends ChaosEvent {
   reason?: string;
@@ -5320,7 +7419,6 @@ export interface WaitingChaosEvent extends ChaosEvent {
  * - Limiting the custom capacity metrics to limit the total consumption of
  * this metric by the services of this application
  *
- *
  * @member {number} [minimumNodes] The minimum number of nodes where Service
  * Fabric will reserve capacity for this application. Note that this does not
  * mean that the services of this application will be placed on all of those
@@ -5332,7 +7430,8 @@ export interface WaitingChaosEvent extends ChaosEvent {
  * mean that the services of this application will be placed on all of those
  * nodes. By default, the value of this property is zero and it means that the
  * services can be placed on any node. Default value: 0 .
- * @member {array} [applicationMetrics]
+ * @member {array} [applicationMetrics] List of application capacity metric
+ * description.
  */
 export interface ApplicationCapacityDescription {
   minimumNodes?: number;
@@ -5346,11 +7445,23 @@ export interface ApplicationCapacityDescription {
  * @constructor
  * Describes a Service Fabric application.
  *
- * @member {string} name
- * @member {string} typeName
- * @member {string} typeVersion
- * @member {array} [parameterList]
- * @member {object} [applicationCapacity]
+ * @member {string} name The name of the application, including the 'fabric:'
+ * URI scheme.
+ * @member {string} typeName The application type name as defined in the
+ * application manifest.
+ * @member {string} typeVersion The version of the application type as defined
+ * in the application manifest.
+ * @member {array} [parameterList] List of application parameters with
+ * overridden values from their default values specified in the application
+ * manifest.
+ * @member {object} [applicationCapacity] Describes capacity information for
+ * services of this application. This description can be used for describing
+ * the following.
+ * - Reserving the capacity for the services on the nodes
+ * - Limiting the total number of nodes that services of this application can
+ * run on
+ * - Limiting the custom capacity metrics to limit the total consumption of
+ * this metric by the services of this application
  * @member {number} [applicationCapacity.minimumNodes] The minimum number of
  * nodes where Service Fabric will reserve capacity for this application. Note
  * that this does not mean that the services of this application will be placed
@@ -5362,7 +7473,8 @@ export interface ApplicationCapacityDescription {
  * that this does not mean that the services of this application will be placed
  * on all of those nodes. By default, the value of this property is zero and it
  * means that the services can be placed on any node.
- * @member {array} [applicationCapacity.applicationMetrics]
+ * @member {array} [applicationCapacity.applicationMetrics] List of application
+ * capacity metric description.
  */
 export interface ApplicationDescription {
   name: string;
@@ -5378,11 +7490,12 @@ export interface ApplicationDescription {
  * @constructor
  * Information about a Service Fabric compose deployment.
  *
- * @member {string} [name]
- * @member {string} [applicationName]
- * @member {string} [status] Possible values include: 'Invalid',
- * 'Provisioning', 'Creating', 'Ready', 'Unprovisioning', 'Deleting', 'Failed',
- * 'Upgrading'
+ * @member {string} [name] The name of the deployment.
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {string} [status] The status of the compose deployment. Possible
+ * values include: 'Invalid', 'Provisioning', 'Creating', 'Ready',
+ * 'Unprovisioning', 'Deleting', 'Failed', 'Upgrading'
  * @member {string} [statusDetails] The status details of compose deployment
  * including failure message.
  */
@@ -5418,32 +7531,71 @@ export interface RegistryCredential {
  * @constructor
  * Describes the parameters for a compose deployment upgrade.
  *
- * @member {string} deploymentName
+ * @member {string} deploymentName The name of the deployment.
  * @member {string} composeFileContent The content of the compose file that
  * describes the deployment to create.
- * @member {object} [registryCredential]
+ * @member {object} [registryCredential] Credential information to connect to
+ * container registry.
  * @member {string} [registryCredential.registryUserName] The user name to
  * connect to container registry.
  * @member {string} [registryCredential.registryPassword] The password for
  * supplied username to connect to container registry.
  * @member {boolean} [registryCredential.passwordEncrypted] Indicates that
  * supplied container registry password is encrypted.
- * @member {string} upgradeKind Possible values include: 'Invalid', 'Rolling'.
- * Default value: 'Rolling' .
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {boolean} [forceRestart]
- * @member {object} [monitoringPolicy]
- * @member {string} [monitoringPolicy.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * @member {string} upgradeKind The kind of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling'. Default
+ * value: 'Rolling' .
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The maximum amount
+ * of time to block processing of an upgrade domain and prevent loss of
+ * availability when there are unexpected issues. When this timeout expires,
+ * processing of the upgrade domain will proceed regardless of availability
+ * loss issues. The timeout is reset at the start of each upgrade domain. Valid
+ * values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {object} [monitoringPolicy] Describes the parameters for monitoring
+ * an upgrade in Monitored mode.
+ * @member {string} [monitoringPolicy.failureAction] The compensating action to
+ * perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [applicationHealthPolicy]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [applicationHealthPolicy] Defines a health policy used to
+ * evaluate the health of an application or one of its children entities.
  * @member {boolean} [applicationHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number}
@@ -5459,6 +7611,7 @@ export interface RegistryCredential {
  * The computation rounds up to tolerate one failure on small numbers of nodes.
  * Default percentage is zero.
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The health policy used by default to evaluate the health of a service type.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
  * The maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -5499,7 +7652,9 @@ export interface RegistryCredential {
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
- * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap]
+ * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap] The map
+ * with service type health policy per service type name. The map is empty by
+ * default.
  */
 export interface ComposeDeploymentUpgradeDescription {
   deploymentName: string;
@@ -5519,29 +7674,70 @@ export interface ComposeDeploymentUpgradeDescription {
  * @constructor
  * Describes the parameters for a compose deployment upgrade.
  *
- * @member {string} [deploymentName]
- * @member {string} [applicationName]
- * @member {string} [upgradeState] Possible values include: 'Invalid',
- * 'ProvisioningTarget', 'RollingForwardInProgress', 'RollingForwardPending',
+ * @member {string} [deploymentName] The name of the target deployment.
+ * @member {string} [applicationName] The name of the target application,
+ * including the 'fabric:' URI scheme.
+ * @member {string} [upgradeState] The state of the compose deployment upgrade.
+ * Possible values include: 'Invalid', 'ProvisioningTarget',
+ * 'RollingForwardInProgress', 'RollingForwardPending',
  * 'UnprovisioningCurrent', 'RollingForwardCompleted', 'RollingBackInProgress',
  * 'UnprovisioningTarget', 'RollingBackCompleted', 'Failed'
- * @member {string} [upgradeStatusDetails]
- * @member {string} [upgradeKind] Possible values include: 'Invalid',
- * 'Rolling'. Default value: 'Rolling' .
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'. Default value:
- * 'UnmonitoredAuto' .
- * @member {boolean} [forceRestart]
- * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- * @member {object} [monitoringPolicy]
- * @member {string} [monitoringPolicy.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * @member {string} [upgradeStatusDetails] Additional detailed information
+ * about the status of the pending upgrade.
+ * @member {string} [upgradeKind] The kind of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling'. Default
+ * value: 'Rolling' .
+ * @member {string} [rollingUpgradeMode] The mode used to monitor health during
+ * a rolling upgrade. The values are UnmonitoredAuto, UnmonitoredManual, and
+ * Monitored. Possible values include: 'Invalid', 'UnmonitoredAuto',
+ * 'UnmonitoredManual', 'Monitored'. Default value: 'UnmonitoredAuto' .
+ * @member {boolean} [forceRestart] If true, then processes are forcefully
+ * restarted during upgrade even when the code version has not changed (the
+ * upgrade only changes configuration or data).
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The maximum amount
+ * of time to block processing of an upgrade domain and prevent loss of
+ * availability when there are unexpected issues. When this timeout expires,
+ * processing of the upgrade domain will proceed regardless of availability
+ * loss issues. The timeout is reset at the start of each upgrade domain. Valid
+ * values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
+ * @member {object} [monitoringPolicy] Describes the parameters for monitoring
+ * an upgrade in Monitored mode.
+ * @member {string} [monitoringPolicy.failureAction] The compensating action to
+ * perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [monitoringPolicy.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds]
- * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- * @member {object} [applicationHealthPolicy]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {object} [applicationHealthPolicy] Defines a health policy used to
+ * evaluate the health of an application or one of its children entities.
  * @member {boolean} [applicationHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number}
@@ -5557,6 +7753,7 @@ export interface ComposeDeploymentUpgradeDescription {
  * The computation rounds up to tolerate one failure on small numbers of nodes.
  * Default percentage is zero.
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The health policy used by default to evaluate the health of a service type.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
  * The maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -5597,22 +7794,43 @@ export interface ComposeDeploymentUpgradeDescription {
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
- * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap]
- * @member {string} [targetApplicationTypeVersion]
- * @member {string} [upgradeDuration]
- * @member {string} [currentUpgradeDomainDuration]
- * @member {array} [applicationUnhealthyEvaluations]
- * @member {object} [currentUpgradeDomainProgress]
- * @member {string} [currentUpgradeDomainProgress.domainName]
- * @member {array} [currentUpgradeDomainProgress.nodeUpgradeProgressList]
- * @member {string} [startTimestampUtc]
- * @member {string} [failureTimestampUtc]
- * @member {string} [failureReason] Possible values include: 'None',
- * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout', 'UpgradeTimeout'
- * @member {object} [upgradeDomainProgressAtFailure]
- * @member {string} [upgradeDomainProgressAtFailure.domainName]
+ * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap] The map
+ * with service type health policy per service type name. The map is empty by
+ * default.
+ * @member {string} [targetApplicationTypeVersion] The target application type
+ * version (found in the application manifest) for the application upgrade.
+ * @member {string} [upgradeDuration] The estimated amount of time that the
+ * overall upgrade elapsed. It is first interpreted as a string representing an
+ * ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
+ * @member {string} [currentUpgradeDomainDuration] The estimated amount of time
+ * spent processing current Upgrade Domain. It is first interpreted as a string
+ * representing an ISO 8601 duration. If that fails, then it is interpreted as
+ * a number representing the total number of milliseconds.
+ * @member {array} [applicationUnhealthyEvaluations] List of health evaluations
+ * that resulted in the current aggregated health state.
+ * @member {object} [currentUpgradeDomainProgress] Information about the
+ * current in-progress upgrade domain.
+ * @member {string} [currentUpgradeDomainProgress.domainName] The name of the
+ * upgrade domain
+ * @member {array} [currentUpgradeDomainProgress.nodeUpgradeProgressList] List
+ * of upgrading nodes and their statuses
+ * @member {string} [startTimestampUtc] The estimated UTC datetime when the
+ * upgrade started.
+ * @member {string} [failureTimestampUtc] The estimated UTC datetime when the
+ * upgrade failed and FailureAction was executed.
+ * @member {string} [failureReason] The cause of an upgrade failure that
+ * resulted in FailureAction being executed. Possible values include: 'None',
+ * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
+ * 'OverallUpgradeTimeout'
+ * @member {object} [upgradeDomainProgressAtFailure] Information about the
+ * upgrade domain progress at the time of upgrade failure.
+ * @member {string} [upgradeDomainProgressAtFailure.domainName] The name of the
+ * upgrade domain
  * @member {array} [upgradeDomainProgressAtFailure.nodeUpgradeProgressList]
- * @member {string} [applicationUpgradeStatusDetails]
+ * List of upgrading nodes and their statuses
+ * @member {string} [applicationUpgradeStatusDetails] Additional details of
+ * application upgrade including failure message.
  */
 export interface ComposeDeploymentUpgradeProgressInfo {
   deploymentName?: string;
@@ -5646,8 +7864,13 @@ export interface ComposeDeploymentUpgradeProgressInfo {
  * be obtained by executing the same query with the continuation token provided
  * in this list.
  *
- * @member {string} [continuationToken]
- * @member {array} [items]
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of compose deployment status information.
  */
 export interface PagedComposeDeploymentStatusInfoList {
   continuationToken?: string;
@@ -5660,11 +7883,11 @@ export interface PagedComposeDeploymentStatusInfoList {
  * @constructor
  * Defines description for creating a Service Fabric compose deployment.
  *
- *
- * @member {string} deploymentName
+ * @member {string} deploymentName The name of the deployment.
  * @member {string} composeFileContent The content of the compose file that
  * describes the deployment to create.
- * @member {object} [registryCredential]
+ * @member {object} [registryCredential] Credential information to connect to
+ * container registry.
  * @member {string} [registryCredential.registryUserName] The user name to
  * connect to container registry.
  * @member {string} [registryCredential.registryPassword] The password for
@@ -5684,12 +7907,20 @@ export interface CreateComposeDeploymentDescription {
  * @constructor
  * Information about service package deployed on a Service Fabric node.
  *
- * @member {string} [name]
+ * @member {string} [name] The name of the service package as specified in the
+ * service manifest.
  * @member {string} [version] The version of the service package specified in
  * service manifest.
- * @member {string} [status] Possible values include: 'Invalid', 'Downloading',
- * 'Activating', 'Active', 'Upgrading', 'Deactivating'
- * @member {string} [servicePackageActivationId]
+ * @member {string} [status] Specifies the status of a deployed application or
+ * service package on a Service Fabric node. Possible values include:
+ * 'Invalid', 'Downloading', 'Activating', 'Active', 'Upgrading',
+ * 'Deactivating'
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
  */
 export interface DeployedServicePackageInfo {
   name?: string;
@@ -5704,41 +7935,16 @@ export interface DeployedServicePackageInfo {
  * @constructor
  * Creates a particular correlation between services.
  *
- * @member {string} scheme Possible values include: 'Invalid', 'Affinity',
- * 'AlignedAffinity', 'NonAlignedAffinity'
- * @member {string} serviceName
+ * @member {string} scheme The ServiceCorrelationScheme which describes the
+ * relationship between this service and the service specified via ServiceName.
+ * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
+ * @member {string} serviceName The name of the service that the correlation
+ * relationship is established with.
  */
 export interface ServiceCorrelationDescription {
   scheme: string;
   serviceName: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceLoadMetricDescription class.
- * @constructor
- * Specifies a metric to load balance a service during runtime.
- *
- * @member {string} name The name of the metric. If the service chooses to
- * report load during runtime, the load metric name should match the name that
- * is specified in Name exactly. Note that metric names are case sensitive.
- * @member {string} [weight] Possible values include: 'Zero', 'Low', 'Medium',
- * 'High'
- * @member {number} [primaryDefaultLoad] Used only for Stateful services. The
- * default amount of load, as a number, that this service creates for this
- * metric when it is a Primary replica.
- * @member {number} [secondaryDefaultLoad] Used only for Stateful services. The
- * default amount of load, as a number, that this service creates for this
- * metric when it is a Secondary replica.
- * @member {number} [defaultLoad] Used only for Stateless services. The default
- * amount of load, as a number, that this service creates for this metric.
- */
-export interface ServiceLoadMetricDescription {
-  name: string;
-  weight?: string;
-  primaryDefaultLoad?: number;
-  secondaryDefaultLoad?: number;
-  defaultLoad?: number;
 }
 
 /**
@@ -5789,10 +7995,10 @@ export interface SingletonPartitionSchemeDescription extends PartitionSchemeDesc
  * @member {number} count The number of partitions.
  * @member {string} lowKey String indicating the lower bound of the partition
  * key range that
- * should be split between the partition ‘Count’
+ * should be split between the partitions.
  * @member {string} highKey String indicating the upper bound of the partition
  * key range that
- * should be split between the partition ‘Count’
+ * should be split between the partitions.
  */
 export interface UniformInt64RangePartitionSchemeDescription extends PartitionSchemeDescription {
   count: number;
@@ -5802,16 +8008,64 @@ export interface UniformInt64RangePartitionSchemeDescription extends PartitionSc
 
 /**
  * @class
+ * Initializes a new instance of the ScalingTriggerDescription class.
+ * @constructor
+ * Describes the trigger for performing a scaling operation.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface ScalingTriggerDescription {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScalingMechanismDescription class.
+ * @constructor
+ * Describes the mechanism for performing a scaling operation.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface ScalingMechanismDescription {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScalingPolicyDescription class.
+ * @constructor
+ * Describes how the scaling should be performed
+ *
+ * @member {object} scalingTrigger Specifies the trigger associated with this
+ * scaling policy
+ * @member {string} [scalingTrigger.kind] Polymorphic Discriminator
+ * @member {object} scalingMechanism Specifies the mechanism associated with
+ * this scaling policy
+ * @member {string} [scalingMechanism.kind] Polymorphic Discriminator
+ */
+export interface ScalingPolicyDescription {
+  scalingTrigger: ScalingTriggerDescription;
+  scalingMechanism: ScalingMechanismDescription;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServiceDescription class.
  * @constructor
  * A ServiceDescription contains all of the information necessary to create a
  * service.
  *
- * @member {string} [applicationName]
- * @member {string} serviceName
- * @member {string} serviceTypeName
- * @member {array} [initializationData]
- * @member {object} partitionDescription
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ * @member {string} serviceName The full name of the service with 'fabric:' URI
+ * scheme.
+ * @member {string} serviceTypeName Name of the service type as specified in
+ * the service manifest.
+ * @member {array} [initializationData] The initialization data as an array of
+ * bytes. Initialization data is passed to service instances or replicas when
+ * they are created.
+ * @member {object} partitionDescription The partition description as an
+ * object.
  * @member {string} [partitionDescription.partitionScheme] Polymorphic
  * Discriminator
  * @member {string} [placementConstraints] The placement constraints as a
@@ -5819,17 +8073,19 @@ export interface UniformInt64RangePartitionSchemeDescription extends PartitionSc
  * allow for restricting a service to particular nodes based on the service
  * requirements. For example, to place a service on nodes where NodeType is
  * blue specify the following: "NodeColor == blue)".
- * @member {array} [correlationScheme]
- * @member {array} [serviceLoadMetrics]
- * @member {array} [servicePlacementPolicies]
- * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
- * 'Medium', 'High'
+ * @member {array} [correlationScheme] The correlation scheme.
+ * @member {array} [serviceLoadMetrics] The service load metrics.
+ * @member {array} [servicePlacementPolicies] The service placement policies.
+ * @member {string} [defaultMoveCost] The move cost for the service. Possible
+ * values include: 'Zero', 'Low', 'Medium', 'High'
  * @member {boolean} [isDefaultMoveCostSpecified] Indicates if the
  * DefaultMoveCost property is specified.
- * @member {string} [servicePackageActivationMode] Possible values include:
+ * @member {string} [servicePackageActivationMode] The activation mode of
+ * service package to be used for a service. Possible values include:
  * 'SharedProcess', 'ExclusiveProcess'
  * @member {string} [serviceDnsName] The DNS name of the service. It requires
  * the DNS system service to be enabled in Service Fabric cluster.
+ * @member {array} [scalingPolicies] Scaling policies for this service.
  * @member {string} serviceKind Polymorphic Discriminator
  */
 export interface ServiceDescription {
@@ -5846,6 +8102,7 @@ export interface ServiceDescription {
   isDefaultMoveCostSpecified?: boolean;
   servicePackageActivationMode?: string;
   serviceDnsName?: string;
+  scalingPolicies?: ScalingPolicyDescription[];
   serviceKind: string;
 }
 
@@ -5917,7 +8174,6 @@ export interface StatelessServiceDescription extends ServiceDescription {
  * Depending on the role of the replicator, the properties in this type imply
  * different meanings.
  *
- *
  * @member {number} [queueUtilizationPercentage] Represents the utilization of
  * the queue. A value of 0 indicates that the queue is empty and a value of 100
  * indicates the queue is full.
@@ -5959,7 +8215,6 @@ export interface ReplicatorQueueStatus {
  * replication/copy queue utilization, last acknowledgement received timestamp,
  * etc.
  *
- *
  * @member {string} kind Polymorphic Discriminator
  */
 export interface ReplicatorStatus {
@@ -5997,7 +8252,9 @@ export interface RemoteReplicatorAcknowledgementDetail {
  * Provides details about the remote replicators from the primary replicator's
  * point of view.
  *
- * @member {object} [replicationStreamAcknowledgementDetail]
+ * @member {object} [replicationStreamAcknowledgementDetail] Details about the
+ * acknowledgements for operations that are part of the replication stream
+ * data.
  * @member {string}
  * [replicationStreamAcknowledgementDetail.averageReceiveDuration] Represents
  * the average duration it takes for the remote replicator to receive an
@@ -6012,7 +8269,8 @@ export interface RemoteReplicatorAcknowledgementDetail {
  * [replicationStreamAcknowledgementDetail.receivedAndNotAppliedCount]
  * Represents the number of operations received and not yet applied by a remote
  * replicator.
- * @member {object} [copyStreamAcknowledgementDetail]
+ * @member {object} [copyStreamAcknowledgementDetail] Details about the
+ * acknowledgements for operations that are part of the copy stream data.
  * @member {string} [copyStreamAcknowledgementDetail.averageReceiveDuration]
  * Represents the average duration it takes for the remote replicator to
  * receive an operation.
@@ -6037,8 +8295,8 @@ export interface RemoteReplicatorAcknowledgementStatus {
  * Represents the state of the secondary replicator from the primary
  * replicator’s point of view.
  *
- *
- * @member {string} [replicaId]
+ * @member {string} [replicaId] Represents the replica ID of the remote
+ * secondary replicator.
  * @member {date} [lastAcknowledgementProcessedTimeUtc] The last timestamp (in
  * UTC) when an acknowledgement from the secondary replicator was processed on
  * the primary.
@@ -6059,9 +8317,12 @@ export interface RemoteReplicatorAcknowledgementStatus {
  * sequence number that the secondary has applied to its state.
  * A value of -1 implies that the secondary has applied all copy operations and
  * the copy process is complete.
- * @member {object} [remoteReplicatorAcknowledgementStatus]
+ * @member {object} [remoteReplicatorAcknowledgementStatus] Represents the
+ * acknowledgment status for the remote secondary replicator.
  * @member {object}
  * [remoteReplicatorAcknowledgementStatus.replicationStreamAcknowledgementDetail]
+ * Details about the acknowledgements for operations that are part of the
+ * replication stream data.
  * @member {string}
  * [remoteReplicatorAcknowledgementStatus.replicationStreamAcknowledgementDetail.averageReceiveDuration]
  * Represents the average duration it takes for the remote replicator to
@@ -6079,6 +8340,8 @@ export interface RemoteReplicatorAcknowledgementStatus {
  * replicator.
  * @member {object}
  * [remoteReplicatorAcknowledgementStatus.copyStreamAcknowledgementDetail]
+ * Details about the acknowledgements for operations that are part of the copy
+ * stream data.
  * @member {string}
  * [remoteReplicatorAcknowledgementStatus.copyStreamAcknowledgementDetail.averageReceiveDuration]
  * Represents the average duration it takes for the remote replicator to
@@ -6110,7 +8373,11 @@ export interface RemoteReplicatorStatus {
  * @class
  * Initializes a new instance of the PrimaryReplicatorStatus class.
  * @constructor
- * @member {object} [replicationQueueStatus]
+ * Provides statistics about the Service Fabric Replicator, when it is
+ * functioning in a Primary role.
+ *
+ * @member {object} [replicationQueueStatus] Details about the replication
+ * queue on the primary replicator.
  * @member {number} [replicationQueueStatus.queueUtilizationPercentage]
  * Represents the utilization of the queue. A value of 0 indicates that the
  * queue is empty and a value of 100 indicates the queue is full.
@@ -6134,7 +8401,8 @@ export interface RemoteReplicatorStatus {
  * of the in-order operation received from the primary.
  * @member {string} [replicationQueueStatus.lastSequenceNumber] Represents the
  * latest sequence number of the operation that is available in the queue.
- * @member {array} [remoteReplicators]
+ * @member {array} [remoteReplicators] The status of all the active and idle
+ * secondary replicators that the primary is aware of.
  */
 export interface PrimaryReplicatorStatus extends ReplicatorStatus {
   replicationQueueStatus?: ReplicatorQueueStatus;
@@ -6145,7 +8413,11 @@ export interface PrimaryReplicatorStatus extends ReplicatorStatus {
  * @class
  * Initializes a new instance of the SecondaryReplicatorStatus class.
  * @constructor
- * @member {object} [replicationQueueStatus]
+ * Provides statistics about the Service Fabric Replicator, when it is
+ * functioning in a ActiveSecondary role.
+ *
+ * @member {object} [replicationQueueStatus] Details about the replication
+ * queue on the secondary replicator.
  * @member {number} [replicationQueueStatus.queueUtilizationPercentage]
  * Represents the utilization of the queue. A value of 0 indicates that the
  * queue is empty and a value of 100 indicates the queue is full.
@@ -6175,7 +8447,8 @@ export interface PrimaryReplicatorStatus extends ReplicatorStatus {
  * message was never received.
  * @member {boolean} [isInBuild] Value that indicates whether the replica is
  * currently being built.
- * @member {object} [copyQueueStatus]
+ * @member {object} [copyQueueStatus] Details about the copy queue on the
+ * secondary replicator.
  * @member {number} [copyQueueStatus.queueUtilizationPercentage] Represents the
  * utilization of the queue. A value of 0 indicates that the queue is empty and
  * a value of 100 indicates the queue is full.
@@ -6261,13 +8534,20 @@ export interface LoadMetricReportInfo {
  * @constructor
  * Information about a Service Fabric service replica deployed on a node.
  *
- * @member {string} [serviceName]
- * @member {uuid} [partitionId]
- * @member {string} [currentServiceOperation] Possible values include:
- * 'Unknown', 'None', 'Open', 'ChangeRole', 'Close', 'Abort'
+ * @member {string} [serviceName] Full hierarchical name of the service in URI
+ * format starting with `fabric:`.
+ * @member {uuid} [partitionId] An internal ID used by Service Fabric to
+ * uniquely identify a partition. This is a randomly generated GUID when the
+ * service was created. The partition ID is unique and does not change for the
+ * lifetime of the service. If the same service was deleted and recreated the
+ * IDs of its partitions would be different.
+ * @member {string} [currentServiceOperation] Specifies the current active
+ * life-cycle operation on a stateful service replica or stateless service
+ * instance. Possible values include: 'Unknown', 'None', 'Open', 'ChangeRole',
+ * 'Close', 'Abort'
  * @member {date} [currentServiceOperationStartTimeUtc] The start time of the
  * current service operation in UTC format.
- * @member {array} [reportedLoad]
+ * @member {array} [reportedLoad] List of load reported by replica.
  * @member {string} serviceKind Polymorphic Discriminator
  */
 export interface DeployedServiceReplicaDetailInfo {
@@ -6322,21 +8602,35 @@ export interface KeyValueStoreReplicaStatus extends ReplicaStatusBase {
  * @class
  * Initializes a new instance of the DeployedStatefulServiceReplicaDetailInfo class.
  * @constructor
- * Information about a stateful replica running in a code package. Please note
+ * Information about a stateful replica running in a code package. Note
  * DeployedServiceReplicaQueryResult will contain duplicate data like
  * ServiceKind, ServiceName, PartitionId and replicaId.
  *
- * @member {string} [replicaId]
- * @member {string} [currentReplicatorOperation] Possible values include:
+ * @member {string} [replicaId] Id of a stateful service replica. ReplicaId is
+ * used by Service Fabric to uniquely identify a replica of a partition. It is
+ * unique within a partition and does not change for the lifetime of the
+ * replica. If a replica gets dropped and another replica gets created on the
+ * same node for the same partition, it will get a different value for the id.
+ * Sometimes the id of a stateless service instance is also referred as a
+ * replica id.
+ * @member {string} [currentReplicatorOperation] Specifies the operation
+ * currently being executed by the Replicator. Possible values include:
  * 'Invalid', 'None', 'Open', 'ChangeRole', 'UpdateEpoch', 'Close', 'Abort',
  * 'OnDataLoss', 'WaitForCatchup', 'Build'
- * @member {string} [readStatus] Possible values include: 'Invalid', 'Granted',
- * 'ReconfigurationPending', 'NotPrimary', 'NoWriteQuorum'
- * @member {string} [writeStatus] Possible values include: 'Invalid',
- * 'Granted', 'ReconfigurationPending', 'NotPrimary', 'NoWriteQuorum'
- * @member {object} [replicatorStatus]
+ * @member {string} [readStatus] Specifies the access status of the partition.
+ * Possible values include: 'Invalid', 'Granted', 'ReconfigurationPending',
+ * 'NotPrimary', 'NoWriteQuorum'
+ * @member {string} [writeStatus] Specifies the access status of the partition.
+ * Possible values include: 'Invalid', 'Granted', 'ReconfigurationPending',
+ * 'NotPrimary', 'NoWriteQuorum'
+ * @member {object} [replicatorStatus] Represents a base class for primary or
+ * secondary replicator status.
+ * Contains information about the service fabric replicator like the
+ * replication/copy queue utilization, last acknowledgement received timestamp,
+ * etc.
  * @member {string} [replicatorStatus.kind] Polymorphic Discriminator
- * @member {object} [replicaStatus]
+ * @member {object} [replicaStatus] Key value store related information for the
+ * replica.
  * @member {string} [replicaStatus.databaseRowCountEstimate] Value indicating
  * the estimated number of rows in the underlying database.
  * @member {string} [replicaStatus.databaseLogicalSizeEstimate] Value
@@ -6349,24 +8643,36 @@ export interface KeyValueStoreReplicaStatus extends ReplicaStatusBase {
  * there is no pending callback.
  * @member {string} [replicaStatus.statusDetails] Value indicating the current
  * status details of the replica.
- * @member {object} [deployedServiceReplicaQueryResult]
- * @member {string} [deployedServiceReplicaQueryResult.replicaId]
- * @member {string} [deployedServiceReplicaQueryResult.replicaRole] Possible
- * values include: 'Unknown', 'None', 'Primary', 'IdleSecondary',
- * 'ActiveSecondary'
+ * @member {object} [deployedServiceReplicaQueryResult] Information about a
+ * stateful service replica deployed on a node.
+ * @member {string} [deployedServiceReplicaQueryResult.replicaId] Id of a
+ * stateful service replica. ReplicaId is used by Service Fabric to uniquely
+ * identify a replica of a partition. It is unique within a partition and does
+ * not change for the lifetime of the replica. If a replica gets dropped and
+ * another replica gets created on the same node for the same partition, it
+ * will get a different value for the id. Sometimes the id of a stateless
+ * service instance is also referred as a replica id.
+ * @member {string} [deployedServiceReplicaQueryResult.replicaRole] The role of
+ * a replica of a stateful service. Possible values include: 'Unknown', 'None',
+ * 'Primary', 'IdleSecondary', 'ActiveSecondary'
  * @member {object}
- * [deployedServiceReplicaQueryResult.reconfigurationInformation]
+ * [deployedServiceReplicaQueryResult.reconfigurationInformation] Information
+ * about current reconfiguration like phase, type, previous configuration role
+ * of replica and reconfiguration start date time.
  * @member {string}
  * [deployedServiceReplicaQueryResult.reconfigurationInformation.previousConfigurationRole]
- * Possible values include: 'Unknown', 'None', 'Primary', 'IdleSecondary',
- * 'ActiveSecondary'
+ * Replica role before reconfiguration started. Possible values include:
+ * 'Unknown', 'None', 'Primary', 'IdleSecondary', 'ActiveSecondary'
  * @member {string}
  * [deployedServiceReplicaQueryResult.reconfigurationInformation.reconfigurationPhase]
- * Possible values include: 'Unknown', 'None', 'Phase0', 'Phase1', 'Phase2',
- * 'Phase3', 'Phase4', 'AbortPhaseZero'
+ * Current phase of ongoing reconfiguration. If no reconfiguration is taking
+ * place then this value will be "None". Possible values include: 'Unknown',
+ * 'None', 'Phase0', 'Phase1', 'Phase2', 'Phase3', 'Phase4', 'AbortPhaseZero'
  * @member {string}
  * [deployedServiceReplicaQueryResult.reconfigurationInformation.reconfigurationType]
- * Possible values include: 'Unknown', 'SwapPrimary', 'Failover', 'Other'
+ * Type of current ongoing reconfiguration. If no reconfiguration is taking
+ * place then this value will be "None". Possible values include: 'Unknown',
+ * 'SwapPrimary', 'Failover', 'Other'
  * @member {date}
  * [deployedServiceReplicaQueryResult.reconfigurationInformation.reconfigurationStartTimeUtc]
  * Start time (in UTC) of the ongoing reconfiguration. If no reconfiguration is
@@ -6386,13 +8692,23 @@ export interface DeployedStatefulServiceReplicaDetailInfo extends DeployedServic
  * @class
  * Initializes a new instance of the DeployedStatelessServiceInstanceDetailInfo class.
  * @constructor
- * Information about a stateless instance running in a code package. Please
- * note that DeployedServiceReplicaQueryResult will contain duplicate data like
+ * Information about a stateless instance running in a code package. Note that
+ * DeployedServiceReplicaQueryResult will contain duplicate data like
  * ServiceKind, ServiceName, PartitionId and InstanceId.
  *
- * @member {string} [instanceId]
- * @member {object} [deployedServiceReplicaQueryResult]
- * @member {string} [deployedServiceReplicaQueryResult.instanceId]
+ * @member {string} [instanceId] Id of a stateless service instance. InstanceId
+ * is used by Service Fabric to uniquely identify an instance of a partition of
+ * a stateless service. It is unique within a partition and does not change for
+ * the lifetime of the instance. If the instance has failed over on the same or
+ * different node, it will get a different value for the InstanceId.
+ * @member {object} [deployedServiceReplicaQueryResult] Information about a
+ * stateless service instance deployed on a node.
+ * @member {string} [deployedServiceReplicaQueryResult.instanceId] Id of a
+ * stateless service instance. InstanceId is used by Service Fabric to uniquely
+ * identify an instance of a partition of a stateless service. It is unique
+ * within a partition and does not change for the lifetime of the instance. If
+ * the instance has failed over on the same or different node, it will get a
+ * different value for the InstanceId.
  */
 export interface DeployedStatelessServiceInstanceDetailInfo extends DeployedServiceReplicaDetailInfo {
   instanceId?: string;
@@ -6436,16 +8752,19 @@ export interface DeployedStatelessServiceInstanceDetailInfo extends DeployedServ
  * 256.
  * - DefaultMoveCost - Indicates the DefaultMoveCost property is set. The value
  * is 512.
+ * - ScalingPolicy - Indicates the ScalingPolicies property is set. The value
+ * is 1024.
  * @member {string} [placementConstraints] The placement constraints as a
  * string. Placement constraints are boolean expressions on node properties and
  * allow for restricting a service to particular nodes based on the service
  * requirements. For example, to place a service on nodes where NodeType is
  * blue specify the following: "NodeColor == blue)".
- * @member {array} [correlationScheme]
- * @member {array} [loadMetrics]
- * @member {array} [servicePlacementPolicies]
- * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
- * 'Medium', 'High'
+ * @member {array} [correlationScheme] The correlation scheme.
+ * @member {array} [loadMetrics] The service load metrics.
+ * @member {array} [servicePlacementPolicies] The service placement policies.
+ * @member {string} [defaultMoveCost] The move cost for the service. Possible
+ * values include: 'Zero', 'Low', 'Medium', 'High'
+ * @member {array} [scalingPolicies] Scaling policies for this service.
  * @member {string} serviceKind Polymorphic Discriminator
  */
 export interface ServiceUpdateDescription {
@@ -6455,6 +8774,7 @@ export interface ServiceUpdateDescription {
   loadMetrics?: ServiceLoadMetricDescription[];
   servicePlacementPolicies?: ServicePlacementPolicyDescription[];
   defaultMoveCost?: string;
+  scalingPolicies?: ScalingPolicyDescription[];
   serviceKind: string;
 }
 
@@ -6501,14 +8821,18 @@ export interface StatelessServiceUpdateDescription extends ServiceUpdateDescript
  * @constructor
  * Information about the version of image store file.
  *
- * @member {string} [versionNumber] The current iamge store version number for
+ * @member {string} [versionNumber] The current image store version number for
  * the file is used in image store for checking whether it need to be updated.
  * @member {string} [epochDataLossNumber] The epoch data loss number of image
- * store file is used to indicate the status of data loss.
+ * store replica when this file entry was updated or created.
+ * @member {string} [epochConfigurationNumber] The epoch configuration version
+ * number of the image store replica when this file entry was created or
+ * updated.
  */
 export interface FileVersion {
   versionNumber?: string;
   epochDataLossNumber?: string;
+  epochConfigurationNumber?: string;
 }
 
 /**
@@ -6518,12 +8842,16 @@ export interface FileVersion {
  * Information about a image store file.
  *
  * @member {string} [fileSize] The size of file in bytes.
- * @member {object} [fileVersion]
- * @member {string} [fileVersion.versionNumber] The current iamge store version
+ * @member {object} [fileVersion] Information about the version of image store
+ * file.
+ * @member {string} [fileVersion.versionNumber] The current image store version
  * number for the file is used in image store for checking whether it need to
  * be updated.
  * @member {string} [fileVersion.epochDataLossNumber] The epoch data loss
- * number of image store file is used to indicate the status of data loss.
+ * number of image store replica when this file entry was updated or created.
+ * @member {string} [fileVersion.epochConfigurationNumber] The epoch
+ * configuration version number of the image store replica when this file entry
+ * was created or updated.
  * @member {date} [modifiedDate] The date and time when the image store file
  * was last modified.
  * @member {string} [storeRelativePath] The file path relative to the image
@@ -6540,11 +8868,12 @@ export interface FileInfo {
  * @class
  * Initializes a new instance of the FolderInfo class.
  * @constructor
- * Information about a image store folder. It inclues how many files this
+ * Information about a image store folder. It includes how many files this
  * folder contains and its image store relative path.
  *
- * @member {string} [storeRelativePath]
- * @member {uuid} [fileCount] The number of files from within the image store
+ * @member {string} [storeRelativePath] The remote location within image store.
+ * This path is relative to the image store root.
+ * @member {string} [fileCount] The number of files from within the image store
  * folder.
  */
 export interface FolderInfo {
@@ -6560,7 +8889,7 @@ export interface FolderInfo {
  *
  * @member {array} [storeFiles] The list of image store file info objects
  * represents files found under the given image store relative path.
- * @member {array} [storeFolders] The list of image store folder info objectes
+ * @member {array} [storeFolders] The list of image store folder info objects
  * represents subfolders found under the given image store relative path.
  */
 export interface ImageStoreContent {
@@ -6598,14 +8927,29 @@ export interface ImageStoreCopyDescription {
  * @class
  * Initializes a new instance of the RestartDeployedCodePackageDescription class.
  * @constructor
- * Defines description for restarting a deloyed code package on Service Fabric
+ * Defines description for restarting a deployed code package on Service Fabric
  * node.
  *
- *
- * @member {string} serviceManifestName
- * @member {string} [servicePackageActivationId]
- * @member {string} codePackageName
- * @member {string} codePackageInstanceId
+ * @member {string} serviceManifestName The name of service manifest that
+ * specified this code package.
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
+ * @member {string} codePackageName The name of the code package defined in the
+ * service manifest.
+ * @member {string} codePackageInstanceId The instance ID for currently running
+ * entry point. For a code package setup entry point (if specified) runs first
+ * and after it finishes main entry point is started.
+ * Each time entry point executable is run, its instance ID will change. If 0
+ * is passed in as the code package instance ID, the API will restart the code
+ * package with whatever instance ID it is currently running.
+ * If an instance ID other than 0 is passed in, the API will restart the code
+ * package only if the current Instance ID matches the passed in instance ID.
+ * Note, passing in the exact instance ID (not 0) in the API is safer, because
+ * if ensures at most one restart of the code package.
  */
 export interface RestartDeployedCodePackageDescription {
   serviceManifestName: string;
@@ -6621,12 +8965,21 @@ export interface RestartDeployedCodePackageDescription {
  * Information about service type deployed on a node, information such as the
  * status of the service type registration on a node.
  *
- * @member {string} [serviceTypeName]
- * @member {string} [serviceManifestName]
- * @member {string} [codePackageName]
- * @member {string} [status] Possible values include: 'Invalid', 'Disabled',
- * 'Enabled', 'Registered'
- * @member {string} [servicePackageActivationId]
+ * @member {string} [serviceTypeName] Name of the service type as specified in
+ * the service manifest.
+ * @member {string} [serviceManifestName] The name of the service manifest in
+ * which this service type is defined.
+ * @member {string} [codePackageName] The name of the code package that
+ * registered the service type.
+ * @member {string} [status] The status of the service type registration on the
+ * node. Possible values include: 'Invalid', 'Disabled', 'Enabled',
+ * 'Registered'
+ * @member {string} [servicePackageActivationId] The ActivationId of a deployed
+ * service package. If ServicePackageActivationMode specified at the time of
+ * creating the service
+ * is 'SharedProcess' (or if it is not specified, in which case it defaults to
+ * 'SharedProcess'), then value of ServicePackageActivationId
+ * is always an empty string.
  */
 export interface DeployedServiceTypeInfo {
   serviceTypeName?: string;
@@ -6642,7 +8995,8 @@ export interface DeployedServiceTypeInfo {
  * @constructor
  * Endpoint of a resolved service partition.
  *
- * @member {string} [kind] Possible values include: 'Invalid', 'Stateless',
+ * @member {string} [kind] The role of the replica where the endpoint is
+ * reported. Possible values include: 'Invalid', 'Stateless',
  * 'StatefulPrimary', 'StatefulSecondary'
  * @member {string} [address] The address of the endpoint. If the endpoint has
  * multiple listeners the address is a JSON object with one property per
@@ -6659,12 +9013,19 @@ export interface ResolvedServiceEndpoint {
  * @constructor
  * Information about a service partition and its associated endpoints.
  *
- * @member {string} name
- * @member {object} partitionInformation
- * @member {uuid} [partitionInformation.id]
+ * @member {string} name The full name of the service with 'fabric:' URI
+ * scheme.
+ * @member {object} partitionInformation A representation of the resolved
+ * partition.
+ * @member {uuid} [partitionInformation.id] An internal ID used by Service
+ * Fabric to uniquely identify a partition. This is a randomly generated GUID
+ * when the service was created. The partition ID is unique and does not change
+ * for the lifetime of the service. If the same service was deleted and
+ * recreated the IDs of its partitions would be different.
  * @member {string} [partitionInformation.servicePartitionKind] Polymorphic
  * Discriminator
- * @member {array} endpoints
+ * @member {array} endpoints List of resolved service endpoints of a service
+ * partition.
  * @member {string} version The version of this resolved service partition
  * result. This version should be passed in the next time the ResolveService
  * call is made via the PreviousRspVersion query parameter.
@@ -6683,8 +9044,13 @@ export interface ResolvedServicePartition {
  * This class returns information about the partition that the user-induced
  * operation acted upon.
  *
- * @member {string} [serviceName]
- * @member {uuid} [partitionId]
+ * @member {string} [serviceName] The name of the service the partition belongs
+ * to.
+ * @member {uuid} [partitionId] An internal ID used by Service Fabric to
+ * uniquely identify a partition. This is a randomly generated GUID when the
+ * service was created. The partition ID is unique and does not change for the
+ * lifetime of the service. If the same service was deleted and recreated the
+ * IDs of its partitions would be different.
  */
 export interface SelectedPartition {
   serviceName?: string;
@@ -6700,9 +9066,15 @@ export interface SelectedPartition {
  *
  * @member {number} [errorCode] If OperationState is Completed, this is 0.  If
  * OperationState is Faulted, this is an error code indicating the reason.
- * @member {object} [selectedPartition]
- * @member {string} [selectedPartition.serviceName]
- * @member {uuid} [selectedPartition.partitionId]
+ * @member {object} [selectedPartition] This class returns information about
+ * the partition that the user-induced operation acted upon.
+ * @member {string} [selectedPartition.serviceName] The name of the service the
+ * partition belongs to.
+ * @member {uuid} [selectedPartition.partitionId] An internal ID used by
+ * Service Fabric to uniquely identify a partition. This is a randomly
+ * generated GUID when the service was created. The partition ID is unique and
+ * does not change for the lifetime of the service. If the same service was
+ * deleted and recreated the IDs of its partitions would be different.
  */
 export interface InvokeDataLossResult {
   errorCode?: number;
@@ -6718,9 +9090,15 @@ export interface InvokeDataLossResult {
  *
  * @member {number} [errorCode] If OperationState is Completed, this is 0.  If
  * OperationState is Faulted, this is an error code indicating the reason.
- * @member {object} [selectedPartition]
- * @member {string} [selectedPartition.serviceName]
- * @member {uuid} [selectedPartition.partitionId]
+ * @member {object} [selectedPartition] This class returns information about
+ * the partition that the user-induced operation acted upon.
+ * @member {string} [selectedPartition.serviceName] The name of the service the
+ * partition belongs to.
+ * @member {uuid} [selectedPartition.partitionId] An internal ID used by
+ * Service Fabric to uniquely identify a partition. This is a randomly
+ * generated GUID when the service was created. The partition ID is unique and
+ * does not change for the lifetime of the service. If the same service was
+ * deleted and recreated the IDs of its partitions would be different.
  */
 export interface InvokeQuorumLossResult {
   errorCode?: number;
@@ -6734,7 +9112,7 @@ export interface InvokeQuorumLossResult {
  * Contains information about a node that was targeted by a user-induced
  * operation.
  *
- * @member {string} [nodeName]
+ * @member {string} [nodeName] The name of a Service Fabric node.
  * @member {string} [nodeInstanceId] The node instance id.
  */
 export interface NodeResult {
@@ -6751,8 +9129,9 @@ export interface NodeResult {
  *
  * @member {number} [errorCode] If OperationState is Completed, this is 0.  If
  * OperationState is Faulted, this is an error code indicating the reason.
- * @member {object} [nodeResult]
- * @member {string} [nodeResult.nodeName]
+ * @member {object} [nodeResult] Contains information about a node that was
+ * targeted by a user-induced operation.
+ * @member {string} [nodeResult.nodeName] The name of a Service Fabric node.
  * @member {string} [nodeResult.nodeInstanceId] The node instance id.
  */
 export interface NodeTransitionResult {
@@ -6769,15 +9148,18 @@ export interface NodeTransitionResult {
  * valid until OperationState
  * is Completed or Faulted.
  *
- *
- * @member {string} [state] Possible values include: 'Invalid', 'Running',
- * 'RollingBack', 'Completed', 'Faulted', 'Cancelled', 'ForceCancelled'
- * @member {object} [nodeTransitionResult]
+ * @member {string} [state] The state of the operation. Possible values
+ * include: 'Invalid', 'Running', 'RollingBack', 'Completed', 'Faulted',
+ * 'Cancelled', 'ForceCancelled'
+ * @member {object} [nodeTransitionResult] Represents information about an
+ * operation in a terminal state (Completed or Faulted).
  * @member {number} [nodeTransitionResult.errorCode] If OperationState is
  * Completed, this is 0.  If OperationState is Faulted, this is an error code
  * indicating the reason.
- * @member {object} [nodeTransitionResult.nodeResult]
- * @member {string} [nodeTransitionResult.nodeResult.nodeName]
+ * @member {object} [nodeTransitionResult.nodeResult] Contains information
+ * about a node that was targeted by a user-induced operation.
+ * @member {string} [nodeTransitionResult.nodeResult.nodeName] The name of a
+ * Service Fabric node.
  * @member {string} [nodeTransitionResult.nodeResult.nodeInstanceId] The node
  * instance id.
  */
@@ -6793,11 +9175,13 @@ export interface NodeTransitionProgress {
  * Contains the OperationId, OperationState, and OperationType for user-induced
  * operations.
  *
- * @member {uuid} [operationId]
- * @member {string} [state] Possible values include: 'Invalid', 'Running',
- * 'RollingBack', 'Completed', 'Faulted', 'Cancelled', 'ForceCancelled'
- * @member {string} [type] Possible values include: 'Invalid',
- * 'PartitionDataLoss', 'PartitionQuorumLoss', 'PartitionRestart',
+ * @member {uuid} [operationId] A GUID that identifies a call to this API.
+ * This is also passed into the corresponding GetProgress API.
+ * @member {string} [state] The state of the operation. Possible values
+ * include: 'Invalid', 'Running', 'RollingBack', 'Completed', 'Faulted',
+ * 'Cancelled', 'ForceCancelled'
+ * @member {string} [type] The type of the operation. Possible values include:
+ * 'Invalid', 'PartitionDataLoss', 'PartitionQuorumLoss', 'PartitionRestart',
  * 'NodeTransition'
  */
 export interface OperationStatus {
@@ -6812,15 +9196,24 @@ export interface OperationStatus {
  * @constructor
  * Information about a partition data loss user-induced operation.
  *
- * @member {string} [state] Possible values include: 'Invalid', 'Running',
- * 'RollingBack', 'Completed', 'Faulted', 'Cancelled', 'ForceCancelled'
- * @member {object} [invokeDataLossResult]
+ * @member {string} [state] The state of the operation. Possible values
+ * include: 'Invalid', 'Running', 'RollingBack', 'Completed', 'Faulted',
+ * 'Cancelled', 'ForceCancelled'
+ * @member {object} [invokeDataLossResult] Represents information about an
+ * operation in a terminal state (Completed or Faulted).
  * @member {number} [invokeDataLossResult.errorCode] If OperationState is
  * Completed, this is 0.  If OperationState is Faulted, this is an error code
  * indicating the reason.
- * @member {object} [invokeDataLossResult.selectedPartition]
- * @member {string} [invokeDataLossResult.selectedPartition.serviceName]
- * @member {uuid} [invokeDataLossResult.selectedPartition.partitionId]
+ * @member {object} [invokeDataLossResult.selectedPartition] This class returns
+ * information about the partition that the user-induced operation acted upon.
+ * @member {string} [invokeDataLossResult.selectedPartition.serviceName] The
+ * name of the service the partition belongs to.
+ * @member {uuid} [invokeDataLossResult.selectedPartition.partitionId] An
+ * internal ID used by Service Fabric to uniquely identify a partition. This is
+ * a randomly generated GUID when the service was created. The partition ID is
+ * unique and does not change for the lifetime of the service. If the same
+ * service was deleted and recreated the IDs of its partitions would be
+ * different.
  */
 export interface PartitionDataLossProgress {
   state?: string;
@@ -6833,15 +9226,25 @@ export interface PartitionDataLossProgress {
  * @constructor
  * Information about a partition quorum loss user-induced operation.
  *
- * @member {string} [state] Possible values include: 'Invalid', 'Running',
- * 'RollingBack', 'Completed', 'Faulted', 'Cancelled', 'ForceCancelled'
- * @member {object} [invokeQuorumLossResult]
+ * @member {string} [state] The state of the operation. Possible values
+ * include: 'Invalid', 'Running', 'RollingBack', 'Completed', 'Faulted',
+ * 'Cancelled', 'ForceCancelled'
+ * @member {object} [invokeQuorumLossResult] Represents information about an
+ * operation in a terminal state (Completed or Faulted).
  * @member {number} [invokeQuorumLossResult.errorCode] If OperationState is
  * Completed, this is 0.  If OperationState is Faulted, this is an error code
  * indicating the reason.
- * @member {object} [invokeQuorumLossResult.selectedPartition]
- * @member {string} [invokeQuorumLossResult.selectedPartition.serviceName]
- * @member {uuid} [invokeQuorumLossResult.selectedPartition.partitionId]
+ * @member {object} [invokeQuorumLossResult.selectedPartition] This class
+ * returns information about the partition that the user-induced operation
+ * acted upon.
+ * @member {string} [invokeQuorumLossResult.selectedPartition.serviceName] The
+ * name of the service the partition belongs to.
+ * @member {uuid} [invokeQuorumLossResult.selectedPartition.partitionId] An
+ * internal ID used by Service Fabric to uniquely identify a partition. This is
+ * a randomly generated GUID when the service was created. The partition ID is
+ * unique and does not change for the lifetime of the service. If the same
+ * service was deleted and recreated the IDs of its partitions would be
+ * different.
  */
 export interface PartitionQuorumLossProgress {
   state?: string;
@@ -6857,9 +9260,15 @@ export interface PartitionQuorumLossProgress {
  *
  * @member {number} [errorCode] If OperationState is Completed, this is 0.  If
  * OperationState is Faulted, this is an error code indicating the reason.
- * @member {object} [selectedPartition]
- * @member {string} [selectedPartition.serviceName]
- * @member {uuid} [selectedPartition.partitionId]
+ * @member {object} [selectedPartition] This class returns information about
+ * the partition that the user-induced operation acted upon.
+ * @member {string} [selectedPartition.serviceName] The name of the service the
+ * partition belongs to.
+ * @member {uuid} [selectedPartition.partitionId] An internal ID used by
+ * Service Fabric to uniquely identify a partition. This is a randomly
+ * generated GUID when the service was created. The partition ID is unique and
+ * does not change for the lifetime of the service. If the same service was
+ * deleted and recreated the IDs of its partitions would be different.
  */
 export interface RestartPartitionResult {
   errorCode?: number;
@@ -6872,15 +9281,25 @@ export interface RestartPartitionResult {
  * @constructor
  * Information about a partition restart user-induced operation.
  *
- * @member {string} [state] Possible values include: 'Invalid', 'Running',
- * 'RollingBack', 'Completed', 'Faulted', 'Cancelled', 'ForceCancelled'
- * @member {object} [restartPartitionResult]
+ * @member {string} [state] The state of the operation. Possible values
+ * include: 'Invalid', 'Running', 'RollingBack', 'Completed', 'Faulted',
+ * 'Cancelled', 'ForceCancelled'
+ * @member {object} [restartPartitionResult] Represents information about an
+ * operation in a terminal state (Completed or Faulted).
  * @member {number} [restartPartitionResult.errorCode] If OperationState is
  * Completed, this is 0.  If OperationState is Faulted, this is an error code
  * indicating the reason.
- * @member {object} [restartPartitionResult.selectedPartition]
- * @member {string} [restartPartitionResult.selectedPartition.serviceName]
- * @member {uuid} [restartPartitionResult.selectedPartition.partitionId]
+ * @member {object} [restartPartitionResult.selectedPartition] This class
+ * returns information about the partition that the user-induced operation
+ * acted upon.
+ * @member {string} [restartPartitionResult.selectedPartition.serviceName] The
+ * name of the service the partition belongs to.
+ * @member {uuid} [restartPartitionResult.selectedPartition.partitionId] An
+ * internal ID used by Service Fabric to uniquely identify a partition. This is
+ * a randomly generated GUID when the service was created. The partition ID is
+ * unique and does not change for the lifetime of the service. If the same
+ * service was deleted and recreated the IDs of its partitions would be
+ * different.
  */
 export interface PartitionRestartProgress {
   state?: string;
@@ -6895,8 +9314,9 @@ export interface PartitionRestartProgress {
  *
  * @member {string} [sharedPackageName] The name of code, configuration or data
  * package that should be shared.
- * @member {string} [packageSharingScope] Possible values include: 'None',
- * 'All', 'Code', 'Config', 'Data'
+ * @member {string} [packageSharingScope] Represents the scope for
+ * PackageSharingPolicy. This is specified during DeployServicePackageToNode
+ * operation. Possible values include: 'None', 'All', 'Code', 'Config', 'Data'
  */
 export interface PackageSharingPolicyInfo {
   sharedPackageName?: string;
@@ -6910,12 +9330,15 @@ export interface PackageSharingPolicyInfo {
  * Defines description for downloading packages associated with a service
  * manifest to image cache on a Service Fabric node.
  *
- *
- * @member {string} serviceManifestName
- * @member {string} applicationTypeName
- * @member {string} applicationTypeVersion
- * @member {string} nodeName
- * @member {array} [packageSharingPolicy]
+ * @member {string} serviceManifestName The name of service manifest whose
+ * packages need to be downloaded.
+ * @member {string} applicationTypeName The application type name as defined in
+ * the application manifest.
+ * @member {string} applicationTypeVersion The version of the application type
+ * as defined in the application manifest.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {array} [packageSharingPolicy] List of package sharing policy
+ * information.
  */
 export interface DeployServicePackageToNodeDescription {
   serviceManifestName: string;
@@ -6945,10 +9368,13 @@ export interface ResumeApplicationUpgradeDescription {
  * @constructor
  * Describes the parameters for updating an ongoing application upgrade.
  *
- * @member {string} name
- * @member {string} upgradeKind Possible values include: 'Invalid', 'Rolling'.
- * Default value: 'Rolling' .
- * @member {object} [applicationHealthPolicy]
+ * @member {string} name The name of the application, including the 'fabric:'
+ * URI scheme.
+ * @member {string} upgradeKind The kind of upgrade out of the following
+ * possible values. Possible values include: 'Invalid', 'Rolling'. Default
+ * value: 'Rolling' .
+ * @member {object} [applicationHealthPolicy] Defines a health policy used to
+ * evaluate the health of an application or one of its children entities.
  * @member {boolean} [applicationHealthPolicy.considerWarningAsError] Indicates
  * whether warnings are treated with the same severity as errors.
  * @member {number}
@@ -6964,6 +9390,7 @@ export interface ResumeApplicationUpgradeDescription {
  * The computation rounds up to tolerate one failure on small numbers of nodes.
  * Default percentage is zero.
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The health policy used by default to evaluate the health of a service type.
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
  * The maximum allowed percentage of unhealthy partitions per service. Allowed
@@ -7004,19 +9431,59 @@ export interface ResumeApplicationUpgradeDescription {
  * service type.
  * The computation rounds up to tolerate one failure on small numbers of
  * services. Default percentage is zero.
- * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap]
- * @member {object} [updateDescription]
- * @member {string} [updateDescription.rollingUpgradeMode] Possible values
- * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
- * @member {boolean} [updateDescription.forceRestart]
+ * @member {array} [applicationHealthPolicy.serviceTypeHealthPolicyMap] The map
+ * with service type health policy per service type name. The map is empty by
+ * default.
+ * @member {object} [updateDescription] Describes the parameters for updating a
+ * rolling upgrade of application or cluster.
+ * @member {string} [updateDescription.rollingUpgradeMode] The mode used to
+ * monitor health during a rolling upgrade. The values are UnmonitoredAuto,
+ * UnmonitoredManual, and Monitored. Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * @member {boolean} [updateDescription.forceRestart] If true, then processes
+ * are forcefully restarted during upgrade even when the code version has not
+ * changed (the upgrade only changes configuration or data).
  * @member {number} [updateDescription.replicaSetCheckTimeoutInMilliseconds]
- * @member {string} [updateDescription.failureAction] Possible values include:
- * 'Invalid', 'Rollback', 'Manual'
+ * The maximum amount of time to block processing of an upgrade domain and
+ * prevent loss of availability when there are unexpected issues. When this
+ * timeout expires, processing of the upgrade domain will proceed regardless of
+ * availability loss issues. The timeout is reset at the start of each upgrade
+ * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+ * 32-bit integer).
+ * @member {string} [updateDescription.failureAction] The compensating action
+ * to perform when a Monitored upgrade encounters monitoring policy or health
+ * policy violations.
+ * Invalid indicates the failure action is invalid. Rollback specifies that the
+ * upgrade will start rolling back automatically.
+ * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
+ * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
  * @member {string} [updateDescription.healthCheckWaitDurationInMilliseconds]
+ * The amount of time to wait after completing an upgrade domain before
+ * applying health policies. It is first interpreted as a string representing
+ * an ISO 8601 duration. If that fails, then it is interpreted as a number
+ * representing the total number of milliseconds.
  * @member {string} [updateDescription.healthCheckStableDurationInMilliseconds]
+ * The amount of time that the application or cluster must remain healthy
+ * before the upgrade proceeds to the next upgrade domain. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
  * @member {string} [updateDescription.healthCheckRetryTimeoutInMilliseconds]
- * @member {string} [updateDescription.upgradeTimeoutInMilliseconds]
- * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds]
+ * The amount of time to retry health evaluation when the application or
+ * cluster is unhealthy before FailureAction is executed. It is first
+ * interpreted as a string representing an ISO 8601 duration. If that fails,
+ * then it is interpreted as a number representing the total number of
+ * milliseconds.
+ * @member {string} [updateDescription.upgradeTimeoutInMilliseconds] The amount
+ * of time the overall upgrade has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
+ * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds] The
+ * amount of time each upgrade domain has to complete before FailureAction is
+ * executed. It is first interpreted as a string representing an ISO 8601
+ * duration. If that fails, then it is interpreted as a number representing the
+ * total number of milliseconds.
  */
 export interface ApplicationUpgradeUpdateDescription {
   name: string;
@@ -7027,13 +9494,1478 @@ export interface ApplicationUpgradeUpdateDescription {
 
 /**
  * @class
+ * Initializes a new instance of the NameDescription class.
+ * @constructor
+ * Describes a Service Fabric name.
+ *
+ * @member {string} name The Service Fabric name, including the 'fabric:' URI
+ * scheme.
+ */
+export interface NameDescription {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedSubNameInfoList class.
+ * @constructor
+ * A paged list of Service Fabric names. The list is paged when all of the
+ * results cannot fit in a single message. The next set of results can be
+ * obtained by executing the same query with the continuation token provided in
+ * this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {boolean} [isConsistent] Indicates whether any name under the given
+ * name has been modified during the enumeration. If there was a modification,
+ * this property value is false.
+ * @member {array} [subNames] List of the child names.
+ */
+export interface PagedSubNameInfoList {
+  continuationToken?: string;
+  isConsistent?: boolean;
+  subNames?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyValue class.
+ * @constructor
+ * Describes a Service Fabric property value.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface PropertyValue {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BinaryPropertyValue class.
+ * @constructor
+ * Describes a Service Fabric property value of type Binary.
+ *
+ * @member {array} data Array of bytes to be sent as an integer array. Each
+ * element of array is a number between 0 and 255.
+ */
+export interface BinaryPropertyValue extends PropertyValue {
+  data: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Int64PropertyValue class.
+ * @constructor
+ * Describes a Service Fabric property value of type Int64.
+ *
+ * @member {string} data The data of the property value.
+ */
+export interface Int64PropertyValue extends PropertyValue {
+  data: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DoublePropertyValue class.
+ * @constructor
+ * Describes a Service Fabric property value of type Double.
+ *
+ * @member {number} data The data of the property value.
+ */
+export interface DoublePropertyValue extends PropertyValue {
+  data: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StringPropertyValue class.
+ * @constructor
+ * Describes a Service Fabric property value of type String.
+ *
+ * @member {string} data The data of the property value.
+ */
+export interface StringPropertyValue extends PropertyValue {
+  data: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GuidPropertyValue class.
+ * @constructor
+ * Describes a Service Fabric property value of type Guid.
+ *
+ * @member {uuid} data The data of the property value.
+ */
+export interface GuidPropertyValue extends PropertyValue {
+  data: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyMetadata class.
+ * @constructor
+ * The metadata associated with a property, including the property's name.
+ *
+ * @member {string} [typeId] The kind of property, determined by the type of
+ * data. Following are the possible values. Possible values include: 'Invalid',
+ * 'Binary', 'Int64', 'Double', 'String', 'Guid'
+ * @member {string} [customTypeId] The property's custom type ID.
+ * @member {string} [parent] The name of the parent Service Fabric Name for the
+ * property. It could be thought of as the name-space/table under which the
+ * property exists.
+ * @member {number} [sizeInBytes] The length of the serialized property value.
+ * @member {date} [lastModifiedUtcTimestamp] Represents when the Property was
+ * last modified. Only write operations will cause this field to be updated.
+ * @member {string} [sequenceNumber] The version of the property. Every time a
+ * property is modified, its sequence number is increased.
+ */
+export interface PropertyMetadata {
+  typeId?: string;
+  customTypeId?: string;
+  parent?: string;
+  sizeInBytes?: number;
+  lastModifiedUtcTimestamp?: Date;
+  sequenceNumber?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyInfo class.
+ * @constructor
+ * Information about a Service Fabric property.
+ *
+ * @member {string} name The name of the Service Fabric property.
+ * @member {object} [value] Describes a Service Fabric property value.
+ * @member {string} [value.kind] Polymorphic Discriminator
+ * @member {object} metadata The metadata associated with a property, including
+ * the property's name.
+ * @member {string} [metadata.typeId] The kind of property, determined by the
+ * type of data. Following are the possible values. Possible values include:
+ * 'Invalid', 'Binary', 'Int64', 'Double', 'String', 'Guid'
+ * @member {string} [metadata.customTypeId] The property's custom type ID.
+ * @member {string} [metadata.parent] The name of the parent Service Fabric
+ * Name for the property. It could be thought of as the name-space/table under
+ * which the property exists.
+ * @member {number} [metadata.sizeInBytes] The length of the serialized
+ * property value.
+ * @member {date} [metadata.lastModifiedUtcTimestamp] Represents when the
+ * Property was last modified. Only write operations will cause this field to
+ * be updated.
+ * @member {string} [metadata.sequenceNumber] The version of the property.
+ * Every time a property is modified, its sequence number is increased.
+ */
+export interface PropertyInfo {
+  name: string;
+  value?: PropertyValue;
+  metadata: PropertyMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedPropertyInfoList class.
+ * @constructor
+ * The paged list of Service Fabric properties under a given name. The list is
+ * paged when all of the results cannot fit in a single message. The next set
+ * of results can be obtained by executing the same query with the continuation
+ * token provided in this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {boolean} [isConsistent] Indicates whether any property under the
+ * given name has been modified during the enumeration. If there was a
+ * modification, this property value is false.
+ * @member {array} [properties] List of property information.
+ */
+export interface PagedPropertyInfoList {
+  continuationToken?: string;
+  isConsistent?: boolean;
+  properties?: PropertyInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyDescription class.
+ * @constructor
+ * Description of a Service Fabric property.
+ *
+ * @member {string} propertyName The name of the Service Fabric property.
+ * @member {string} [customTypeId] The property's custom type ID. Using this
+ * property, the user is able to tag the type of the value of the property.
+ * @member {object} value Describes a Service Fabric property value.
+ * @member {string} [value.kind] Polymorphic Discriminator
+ */
+export interface PropertyDescription {
+  propertyName: string;
+  customTypeId?: string;
+  value: PropertyValue;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyBatchOperation class.
+ * @constructor
+ * Represents the base type for property operations that can be put into a
+ * batch and submitted.
+ *
+ * @member {string} propertyName The name of the Service Fabric property.
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface PropertyBatchOperation {
+  propertyName: string;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyBatchDescriptionList class.
+ * @constructor
+ * Describes a list of property batch operations to be executed. Either all or
+ * none of the operations will be committed.
+ *
+ * @member {array} [operations] A list of the property batch operations to be
+ * executed.
+ */
+export interface PropertyBatchDescriptionList {
+  operations?: PropertyBatchOperation[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckExistsPropertyBatchOperation class.
+ * @constructor
+ * Represents a PropertyBatchOperation that compares the Boolean existence of a
+ * property with the Exists argument.
+ * The PropertyBatchOperation operation fails if the property's existence is
+ * not equal to the Exists argument.
+ * The CheckExistsPropertyBatchOperation is generally used as a precondition
+ * for the write operations in the batch.
+ * Note that if one PropertyBatchOperation in a PropertyBatch fails,
+ * the entire batch fails and cannot be committed in a transactional manner.
+ *
+ * @member {boolean} exists Whether or not the property should exist for the
+ * operation to pass.
+ */
+export interface CheckExistsPropertyBatchOperation extends PropertyBatchOperation {
+  exists: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckSequencePropertyBatchOperation class.
+ * @constructor
+ * Compares the Sequence Number of a property with the SequenceNumber argument.
+ * A property's sequence number can be thought of as that property's version.
+ * Every time the property is modified, its sequence number is increased.
+ * The sequence number can be found in a property's metadata.
+ * The comparison fails if the sequence numbers are not equal.
+ * CheckSequencePropertyBatchOperation is generally used as a precondition for
+ * the write operations in the batch.
+ * Note that if one PropertyBatchOperation in a PropertyBatch fails,
+ * the entire batch fails and cannot be committed in a transactional manner.
+ *
+ * @member {string} sequenceNumber The expected sequence number.
+ */
+export interface CheckSequencePropertyBatchOperation extends PropertyBatchOperation {
+  sequenceNumber: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckValuePropertyBatchOperation class.
+ * @constructor
+ * Represents a PropertyBatchOperation that compares the value of the property
+ * with the expected value.
+ * The CheckValuePropertyBatchOperation is generally used as a precondition for
+ * the write operations in the batch.
+ * Note that if one PropertyBatchOperation in a PropertyBatch fails,
+ * the entire batch fails and cannot be committed in a transactional manner.
+ *
+ * @member {object} value The expected property value.
+ * @member {string} [value.kind] Polymorphic Discriminator
+ */
+export interface CheckValuePropertyBatchOperation extends PropertyBatchOperation {
+  value: PropertyValue;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletePropertyBatchOperation class.
+ * @constructor
+ * Represents a PropertyBatchOperation that deletes a specified property if it
+ * exists.
+ * Note that if one PropertyBatchOperation in a PropertyBatch fails,
+ * the entire batch fails and cannot be committed in a transactional manner.
+ *
+ */
+export interface DeletePropertyBatchOperation extends PropertyBatchOperation {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetPropertyBatchOperation class.
+ * @constructor
+ * Represents a PropertyBatchOperation that gets the specified property if it
+ * exists.
+ * Note that if one PropertyBatchOperation in a PropertyBatch fails,
+ * the entire batch fails and cannot be committed in a transactional manner.
+ *
+ * @member {boolean} [includeValue] Whether or not to return the property value
+ * with the metadata.
+ * True if values should be returned with the metadata; False to return only
+ * property metadata. Default value: false .
+ */
+export interface GetPropertyBatchOperation extends PropertyBatchOperation {
+  includeValue?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PutPropertyBatchOperation class.
+ * @constructor
+ * Puts the specified property under the specified name.
+ * Note that if one PropertyBatchOperation in a PropertyBatch fails,
+ * the entire batch fails and cannot be committed in a transactional manner.
+ *
+ * @member {object} value Describes a Service Fabric property value.
+ * @member {string} [value.kind] Polymorphic Discriminator
+ * @member {string} [customTypeId] The property's custom type ID. Using this
+ * property, the user is able to tag the type of the value of the property.
+ */
+export interface PutPropertyBatchOperation extends PropertyBatchOperation {
+  value: PropertyValue;
+  customTypeId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PropertyBatchInfo class.
+ * @constructor
+ * Information about the results of a property batch.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface PropertyBatchInfo {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SuccessfulPropertyBatchInfo class.
+ * @constructor
+ * Derived from PropertyBatchInfo. Represents the property batch succeeding.
+ * Contains the results of any "Get" operations in the batch.
+ *
+ * @member {object} [properties] A map containing the properties that were
+ * requested through any "Get" property batch operations. The key represents
+ * the index of the "Get" operation in the original request, in string form.
+ * The value is the property. If a property is not found, it will not be in the
+ * map.
+ */
+export interface SuccessfulPropertyBatchInfo extends PropertyBatchInfo {
+  properties?: { [propertyName: string]: PropertyInfo };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FailedPropertyBatchInfo class.
+ * @constructor
+ * Derived from PropertyBatchInfo. Represents the property batch failing.
+ * Contains information about the specific batch failure.
+ *
+ * @member {string} [errorMessage] The error message of the failed operation.
+ * Describes the exception thrown due to the first unsuccessful operation in
+ * the property batch.
+ * @member {number} [operationIndex] The index of the unsuccessful operation in
+ * the property batch.
+ */
+export interface FailedPropertyBatchInfo extends PropertyBatchInfo {
+  errorMessage?: string;
+  operationIndex?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupScheduleDescription class.
+ * @constructor
+ * Describes the backup schedule parameters.
+ *
+ * @member {string} scheduleKind Polymorphic Discriminator
+ */
+export interface BackupScheduleDescription {
+  scheduleKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupStorageDescription class.
+ * @constructor
+ * Describes the parameters for the backup storage.
+ *
+ * @member {string} [friendlyName] Friendly name for this backup storage.
+ * @member {string} storageKind Polymorphic Discriminator
+ */
+export interface BackupStorageDescription {
+  friendlyName?: string;
+  storageKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupPolicyDescription class.
+ * @constructor
+ * Describes a backup policy for configuring periodic backup.
+ *
+ * @member {string} name The unique name identifying this backup policy.
+ * @member {boolean} autoRestoreOnDataLoss Specifies whether to trigger restore
+ * automatically using the latest available backup in case the partition
+ * experiences a data loss event.
+ * @member {number} maxIncrementalBackups Defines the maximum number of
+ * incremental backups to be taken between two full backups. This is just the
+ * upper limit. A full backup may be taken before specified number of
+ * incremental backups are completed in one of the following conditions
+ * - The replica has never taken a full backup since it has become primary,
+ * - Some of the log records since the last backup has been truncated, or
+ * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
+ * @member {object} schedule Describes the backup schedule parameters.
+ * @member {string} [schedule.scheduleKind] Polymorphic Discriminator
+ * @member {object} storage Describes the details of backup storage where to
+ * store the periodic backups.
+ * @member {string} [storage.friendlyName] Friendly name for this backup
+ * storage.
+ * @member {string} [storage.storageKind] Polymorphic Discriminator
+ */
+export interface BackupPolicyDescription {
+  name: string;
+  autoRestoreOnDataLoss: boolean;
+  maxIncrementalBackups: number;
+  schedule: BackupScheduleDescription;
+  storage: BackupStorageDescription;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedBackupPolicyDescriptionList class.
+ * @constructor
+ * The list of backup policies configured in the cluster. The list is paged
+ * when all of the results cannot fit in a single message. The next set of
+ * results can be obtained by executing the same query with the continuation
+ * token provided in this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] The list of backup policies information.
+ */
+export interface PagedBackupPolicyDescriptionList {
+  continuationToken?: string;
+  items?: BackupPolicyDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupConfigurationInfo class.
+ * @constructor
+ * Describes the backup configuration information.
+ *
+ * @member {string} [policyName] The name of the backup policy which is
+ * applicable to this Service Fabric application or service or partition.
+ * @member {string} [policyInheritedFrom] Specifies the scope at which the
+ * backup policy is applied. Possible values include: 'Invalid', 'Partition',
+ * 'Service', 'Application'
+ * @member {object} [suspensionInfo] Describes the backup suspension details.
+ * @member {boolean} [suspensionInfo.isSuspended] Indicates whether periodic
+ * backup is suspended at this level or not.
+ * @member {string} [suspensionInfo.suspensionInheritedFrom] Specifies the
+ * scope at which the backup suspension was applied. Possible values include:
+ * 'Invalid', 'Partition', 'Service', 'Application'
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface BackupConfigurationInfo {
+  policyName?: string;
+  policyInheritedFrom?: string;
+  suspensionInfo?: BackupSuspensionInfo;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationBackupConfigurationInfo class.
+ * @constructor
+ * Backup configuration information for a specific Service Fabric application
+ * specifying what backup policy is being applied and suspend description, if
+ * any.
+ *
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ */
+export interface ApplicationBackupConfigurationInfo extends BackupConfigurationInfo {
+  applicationName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceBackupConfigurationInfo class.
+ * @constructor
+ * Backup configuration information for a specific Service Fabric service
+ * specifying what backup policy is being applied and suspend description, if
+ * any.
+ *
+ * @member {string} [serviceName] The full name of the service with 'fabric:'
+ * URI scheme.
+ */
+export interface ServiceBackupConfigurationInfo extends BackupConfigurationInfo {
+  serviceName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupSuspensionInfo class.
+ * @constructor
+ * Describes the backup suspension details.
+ *
+ * @member {boolean} [isSuspended] Indicates whether periodic backup is
+ * suspended at this level or not.
+ * @member {string} [suspensionInheritedFrom] Specifies the scope at which the
+ * backup suspension was applied. Possible values include: 'Invalid',
+ * 'Partition', 'Service', 'Application'
+ */
+export interface BackupSuspensionInfo {
+  isSuspended?: boolean;
+  suspensionInheritedFrom?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedBackupConfigurationInfoList class.
+ * @constructor
+ * The list of backup configuration information. The list is paged when all of
+ * the results cannot fit in a single message. The next set of results can be
+ * obtained by executing the same query with the continuation token provided in
+ * this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of backup configuration information.
+ */
+export interface PagedBackupConfigurationInfoList {
+  continuationToken?: string;
+  items?: BackupConfigurationInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePartitionDescription class.
+ * @constructor
+ * Specifies the parameters needed to trigger a restore of a specific
+ * partition.
+ *
+ * @member {uuid} backupId Unique backup ID.
+ * @member {string} backupLocation Location of the backup relative to the
+ * backup storage specified/ configured.
+ * @member {object} [backupStorage] Location of the backup from where the
+ * partition will be restored.
+ * @member {string} [backupStorage.friendlyName] Friendly name for this backup
+ * storage.
+ * @member {string} [backupStorage.storageKind] Polymorphic Discriminator
+ */
+export interface RestorePartitionDescription {
+  backupId: string;
+  backupLocation: string;
+  backupStorage?: BackupStorageDescription;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestoreProgressInfo class.
+ * @constructor
+ * Describes the progress of a restore operation on a partition.
+ *
+ * @member {string} [restoreState] Represents the current state of the
+ * partition restore operation. Possible values include: 'Invalid', 'Accepted',
+ * 'RestoreInProgress', 'Success', 'Failure', 'Timeout'
+ * @member {date} [timeStampUtc] Timestamp when operation succeeded or failed.
+ * @member {object} [restoredEpoch] Describes the epoch at which the partition
+ * is restored.
+ * @member {string} [restoredEpoch.configurationNumber] The current
+ * configuration number of this Epoch. The configuration number is an
+ * increasing value that is updated whenever the configuration of this replica
+ * set changes.
+ * @member {string} [restoredEpoch.dataLossNumber] The current dataloss number
+ * of this Epoch. The data loss number property is an increasing value which is
+ * updated whenever data loss is suspected, as when loss of a quorum of
+ * replicas in the replica set that includes the Primary replica.
+ * @member {string} [restoredLsn] Restored LSN.
+ * @member {object} [failureError] Denotes the failure encountered in
+ * performing restore operation.
+ * @member {string} [failureError.code] Defines the fabric error codes that be
+ * returned as part of the error object in response to Service Fabric API
+ * operations that are not successful. Following are the error code values that
+ * can be returned for a specific HTTP status code.
+ *
+ * - Possible values of the error code for HTTP status code 400 (Bad Request)
+ * - "FABRIC_E_INVALID_PARTITION_KEY"
+ * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_ADDRESS"
+ * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
+ * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_FABRIC_NOT_UPGRADING"
+ * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_CONFIGURATION"
+ * - "FABRIC_E_INVALID_NAME_URI"
+ * - "FABRIC_E_PATH_TOO_LONG"
+ * - "FABRIC_E_KEY_TOO_LARGE"
+ * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
+ * - "FABRIC_E_INVALID_ATOMIC_GROUP"
+ * - "FABRIC_E_VALUE_EMPTY"
+ * - "FABRIC_E_BACKUP_IS_ENABLED"
+ * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
+ * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
+ * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
+ * - "E_INVALIDARG"
+ *
+ * - Possible values of the error code for HTTP status code 404 (Not Found)
+ * - "FABRIC_E_NODE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
+ * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
+ * - "FABRIC_E_PARTITION_NOT_FOUND"
+ * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
+ * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
+ * - "FABRIC_E_DIRECTORY_NOT_FOUND"
+ * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
+ * - "FABRIC_E_FILE_NOT_FOUND"
+ * - "FABRIC_E_NAME_DOES_NOT_EXIST"
+ * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
+ * - "FABRIC_E_ENUMERATION_COMPLETED"
+ * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
+ * - "FABRIC_E_KEY_NOT_FOUND"
+ * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
+ * - "FABRIC_E_BACKUP_NOT_ENABLED"
+ * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
+ * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 409 (Conflict)
+ * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
+ * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
+ * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
+ * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
+ * - "FABRIC_E_FABRIC_VERSION_IN_USE"
+ * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_NAME_ALREADY_EXISTS"
+ * - "FABRIC_E_NAME_NOT_EMPTY"
+ * - "FABRIC_E_PROPERTY_CHECK_FAILED"
+ * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
+ * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
+ * - "FABRIC_E_HEALTH_STALE_REPORT"
+ * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
+ * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
+ * - "FABRIC_E_INSTANCE_ID_MISMATCH"
+ * - "FABRIC_E_BACKUP_IN_PROGRESS"
+ * - "FABRIC_E_RESTORE_IN_PROGRESS"
+ * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 413 (Request Entity
+ * Too Large)
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 500 (Internal
+ * Server Error)
+ * - "FABRIC_E_NODE_IS_UP"
+ * - "E_FAIL"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
+ * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "SerializationError"
+ *
+ * - Possible values of the error code for HTTP status code 503 (Service
+ * Unavailable)
+ * - "FABRIC_E_NO_WRITE_QUORUM"
+ * - "FABRIC_E_NOT_PRIMARY"
+ * - "FABRIC_E_NOT_READY"
+ * - "FABRIC_E_RECONFIGURATION_PENDING"
+ * - "FABRIC_E_SERVICE_OFFLINE"
+ * - "E_ABORT"
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 504 (Gateway
+ * Timeout)
+ * - "FABRIC_E_COMMUNICATION_ERROR"
+ * - "FABRIC_E_OPERATION_NOT_COMPLETE"
+ * - "FABRIC_E_TIMEOUT". Possible values include:
+ * 'FABRIC_E_INVALID_PARTITION_KEY', 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR',
+ * 'FABRIC_E_INVALID_ADDRESS', 'FABRIC_E_APPLICATION_NOT_UPGRADING',
+ * 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
+ * 'FABRIC_E_FABRIC_NOT_UPGRADING', 'FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR',
+ * 'FABRIC_E_INVALID_CONFIGURATION', 'FABRIC_E_INVALID_NAME_URI',
+ * 'FABRIC_E_PATH_TOO_LONG', 'FABRIC_E_KEY_TOO_LARGE',
+ * 'FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED',
+ * 'FABRIC_E_INVALID_ATOMIC_GROUP', 'FABRIC_E_VALUE_EMPTY',
+ * 'FABRIC_E_NODE_NOT_FOUND', 'FABRIC_E_APPLICATION_TYPE_NOT_FOUND',
+ * 'FABRIC_E_APPLICATION_NOT_FOUND', 'FABRIC_E_SERVICE_TYPE_NOT_FOUND',
+ * 'FABRIC_E_SERVICE_DOES_NOT_EXIST',
+ * 'FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND',
+ * 'FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND', 'FABRIC_E_PARTITION_NOT_FOUND',
+ * 'FABRIC_E_REPLICA_DOES_NOT_EXIST', 'FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST',
+ * 'FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND',
+ * 'FABRIC_E_DIRECTORY_NOT_FOUND', 'FABRIC_E_FABRIC_VERSION_NOT_FOUND',
+ * 'FABRIC_E_FILE_NOT_FOUND', 'FABRIC_E_NAME_DOES_NOT_EXIST',
+ * 'FABRIC_E_PROPERTY_DOES_NOT_EXIST', 'FABRIC_E_ENUMERATION_COMPLETED',
+ * 'FABRIC_E_SERVICE_MANIFEST_NOT_FOUND', 'FABRIC_E_KEY_NOT_FOUND',
+ * 'FABRIC_E_HEALTH_ENTITY_NOT_FOUND',
+ * 'FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION',
+ * 'FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS',
+ * 'FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS',
+ * 'FABRIC_E_SERVICE_ALREADY_EXISTS', 'FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_TYPE_IN_USE',
+ * 'FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION',
+ * 'FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS', 'FABRIC_E_FABRIC_VERSION_IN_USE',
+ * 'FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS', 'FABRIC_E_NAME_ALREADY_EXISTS',
+ * 'FABRIC_E_NAME_NOT_EMPTY', 'FABRIC_E_PROPERTY_CHECK_FAILED',
+ * 'FABRIC_E_SERVICE_METADATA_MISMATCH', 'FABRIC_E_SERVICE_TYPE_MISMATCH',
+ * 'FABRIC_E_HEALTH_STALE_REPORT', 'FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED',
+ * 'FABRIC_E_NODE_HAS_NOT_STOPPED_YET', 'FABRIC_E_INSTANCE_ID_MISMATCH',
+ * 'FABRIC_E_VALUE_TOO_LARGE', 'FABRIC_E_NO_WRITE_QUORUM',
+ * 'FABRIC_E_NOT_PRIMARY', 'FABRIC_E_NOT_READY',
+ * 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE', 'E_ABORT',
+ * 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
+ * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL',
+ * 'FABRIC_E_BACKUP_IS_ENABLED',
+ * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
+ * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
+ * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING',
+ * 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
+ * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
+ * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING',
+ * 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY', 'E_INVALIDARG',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND',
+ * 'FABRIC_E_VOLUME_ALREADY_EXISTS', 'FABRIC_E_VOLUME_NOT_FOUND',
+ * 'SerializationError'
+ * @member {string} [failureError.message] Error message.
+ */
+export interface RestoreProgressInfo {
+  restoreState?: string;
+  timeStampUtc?: Date;
+  restoredEpoch?: BackupEpoch;
+  restoredLsn?: string;
+  failureError?: FabricErrorError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupPartitionDescription class.
+ * @constructor
+ * Describes the parameters for triggering partition's backup.
+ *
+ * @member {object} [backupStorage] Specifies the details of the backup storage
+ * where to save the backup.
+ * @member {string} [backupStorage.friendlyName] Friendly name for this backup
+ * storage.
+ * @member {string} [backupStorage.storageKind] Polymorphic Discriminator
+ */
+export interface BackupPartitionDescription {
+  backupStorage?: BackupStorageDescription;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupInfo class.
+ * @constructor
+ * Represents a backup point which can be used to trigger a restore.
+ *
+ * @member {uuid} [backupId] Unique backup ID .
+ * @member {uuid} [backupChainId] Unique backup chain ID. All backups part of
+ * the same chain has the same backup chain id. A backup chain is comprised of
+ * 1 full backup and multiple incremental backups.
+ * @member {string} [applicationName] Name of the Service Fabric application
+ * this partition backup belongs to.
+ * @member {string} [serviceName] Name of the Service Fabric service this
+ * partition backup belongs to.
+ * @member {object} [partitionInformation] Information about the partition to
+ * which this backup belongs to
+ * @member {uuid} [partitionInformation.id] An internal ID used by Service
+ * Fabric to uniquely identify a partition. This is a randomly generated GUID
+ * when the service was created. The partition ID is unique and does not change
+ * for the lifetime of the service. If the same service was deleted and
+ * recreated the IDs of its partitions would be different.
+ * @member {string} [partitionInformation.servicePartitionKind] Polymorphic
+ * Discriminator
+ * @member {string} [backupLocation] Location of the backup, relative to the
+ * backup store.
+ * @member {string} [backupType] Describes the type of backup, whether its full
+ * or incremental. Possible values include: 'Invalid', 'Full', 'Incremental'
+ * @member {object} [epochOfLastBackupRecord] Epoch of the last record in this
+ * backup.
+ * @member {string} [epochOfLastBackupRecord.configurationNumber] The current
+ * configuration number of this Epoch. The configuration number is an
+ * increasing value that is updated whenever the configuration of this replica
+ * set changes.
+ * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current
+ * dataloss number of this Epoch. The data loss number property is an
+ * increasing value which is updated whenever data loss is suspected, as when
+ * loss of a quorum of replicas in the replica set that includes the Primary
+ * replica.
+ * @member {string} [lsnOfLastBackupRecord] LSN of the last record in this
+ * backup.
+ * @member {date} [creationTimeUtc] The date time when this backup was taken.
+ * @member {object} [failureError] Denotes the failure encountered in getting
+ * backup point information.
+ * @member {string} [failureError.code] Defines the fabric error codes that be
+ * returned as part of the error object in response to Service Fabric API
+ * operations that are not successful. Following are the error code values that
+ * can be returned for a specific HTTP status code.
+ *
+ * - Possible values of the error code for HTTP status code 400 (Bad Request)
+ * - "FABRIC_E_INVALID_PARTITION_KEY"
+ * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_ADDRESS"
+ * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
+ * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_FABRIC_NOT_UPGRADING"
+ * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_CONFIGURATION"
+ * - "FABRIC_E_INVALID_NAME_URI"
+ * - "FABRIC_E_PATH_TOO_LONG"
+ * - "FABRIC_E_KEY_TOO_LARGE"
+ * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
+ * - "FABRIC_E_INVALID_ATOMIC_GROUP"
+ * - "FABRIC_E_VALUE_EMPTY"
+ * - "FABRIC_E_BACKUP_IS_ENABLED"
+ * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
+ * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
+ * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
+ * - "E_INVALIDARG"
+ *
+ * - Possible values of the error code for HTTP status code 404 (Not Found)
+ * - "FABRIC_E_NODE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
+ * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
+ * - "FABRIC_E_PARTITION_NOT_FOUND"
+ * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
+ * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
+ * - "FABRIC_E_DIRECTORY_NOT_FOUND"
+ * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
+ * - "FABRIC_E_FILE_NOT_FOUND"
+ * - "FABRIC_E_NAME_DOES_NOT_EXIST"
+ * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
+ * - "FABRIC_E_ENUMERATION_COMPLETED"
+ * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
+ * - "FABRIC_E_KEY_NOT_FOUND"
+ * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
+ * - "FABRIC_E_BACKUP_NOT_ENABLED"
+ * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
+ * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 409 (Conflict)
+ * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
+ * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
+ * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
+ * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
+ * - "FABRIC_E_FABRIC_VERSION_IN_USE"
+ * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_NAME_ALREADY_EXISTS"
+ * - "FABRIC_E_NAME_NOT_EMPTY"
+ * - "FABRIC_E_PROPERTY_CHECK_FAILED"
+ * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
+ * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
+ * - "FABRIC_E_HEALTH_STALE_REPORT"
+ * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
+ * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
+ * - "FABRIC_E_INSTANCE_ID_MISMATCH"
+ * - "FABRIC_E_BACKUP_IN_PROGRESS"
+ * - "FABRIC_E_RESTORE_IN_PROGRESS"
+ * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 413 (Request Entity
+ * Too Large)
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 500 (Internal
+ * Server Error)
+ * - "FABRIC_E_NODE_IS_UP"
+ * - "E_FAIL"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
+ * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "SerializationError"
+ *
+ * - Possible values of the error code for HTTP status code 503 (Service
+ * Unavailable)
+ * - "FABRIC_E_NO_WRITE_QUORUM"
+ * - "FABRIC_E_NOT_PRIMARY"
+ * - "FABRIC_E_NOT_READY"
+ * - "FABRIC_E_RECONFIGURATION_PENDING"
+ * - "FABRIC_E_SERVICE_OFFLINE"
+ * - "E_ABORT"
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 504 (Gateway
+ * Timeout)
+ * - "FABRIC_E_COMMUNICATION_ERROR"
+ * - "FABRIC_E_OPERATION_NOT_COMPLETE"
+ * - "FABRIC_E_TIMEOUT". Possible values include:
+ * 'FABRIC_E_INVALID_PARTITION_KEY', 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR',
+ * 'FABRIC_E_INVALID_ADDRESS', 'FABRIC_E_APPLICATION_NOT_UPGRADING',
+ * 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
+ * 'FABRIC_E_FABRIC_NOT_UPGRADING', 'FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR',
+ * 'FABRIC_E_INVALID_CONFIGURATION', 'FABRIC_E_INVALID_NAME_URI',
+ * 'FABRIC_E_PATH_TOO_LONG', 'FABRIC_E_KEY_TOO_LARGE',
+ * 'FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED',
+ * 'FABRIC_E_INVALID_ATOMIC_GROUP', 'FABRIC_E_VALUE_EMPTY',
+ * 'FABRIC_E_NODE_NOT_FOUND', 'FABRIC_E_APPLICATION_TYPE_NOT_FOUND',
+ * 'FABRIC_E_APPLICATION_NOT_FOUND', 'FABRIC_E_SERVICE_TYPE_NOT_FOUND',
+ * 'FABRIC_E_SERVICE_DOES_NOT_EXIST',
+ * 'FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND',
+ * 'FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND', 'FABRIC_E_PARTITION_NOT_FOUND',
+ * 'FABRIC_E_REPLICA_DOES_NOT_EXIST', 'FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST',
+ * 'FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND',
+ * 'FABRIC_E_DIRECTORY_NOT_FOUND', 'FABRIC_E_FABRIC_VERSION_NOT_FOUND',
+ * 'FABRIC_E_FILE_NOT_FOUND', 'FABRIC_E_NAME_DOES_NOT_EXIST',
+ * 'FABRIC_E_PROPERTY_DOES_NOT_EXIST', 'FABRIC_E_ENUMERATION_COMPLETED',
+ * 'FABRIC_E_SERVICE_MANIFEST_NOT_FOUND', 'FABRIC_E_KEY_NOT_FOUND',
+ * 'FABRIC_E_HEALTH_ENTITY_NOT_FOUND',
+ * 'FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION',
+ * 'FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS',
+ * 'FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS',
+ * 'FABRIC_E_SERVICE_ALREADY_EXISTS', 'FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_TYPE_IN_USE',
+ * 'FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION',
+ * 'FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS', 'FABRIC_E_FABRIC_VERSION_IN_USE',
+ * 'FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS', 'FABRIC_E_NAME_ALREADY_EXISTS',
+ * 'FABRIC_E_NAME_NOT_EMPTY', 'FABRIC_E_PROPERTY_CHECK_FAILED',
+ * 'FABRIC_E_SERVICE_METADATA_MISMATCH', 'FABRIC_E_SERVICE_TYPE_MISMATCH',
+ * 'FABRIC_E_HEALTH_STALE_REPORT', 'FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED',
+ * 'FABRIC_E_NODE_HAS_NOT_STOPPED_YET', 'FABRIC_E_INSTANCE_ID_MISMATCH',
+ * 'FABRIC_E_VALUE_TOO_LARGE', 'FABRIC_E_NO_WRITE_QUORUM',
+ * 'FABRIC_E_NOT_PRIMARY', 'FABRIC_E_NOT_READY',
+ * 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE', 'E_ABORT',
+ * 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
+ * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL',
+ * 'FABRIC_E_BACKUP_IS_ENABLED',
+ * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
+ * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
+ * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING',
+ * 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
+ * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
+ * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING',
+ * 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY', 'E_INVALIDARG',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND',
+ * 'FABRIC_E_VOLUME_ALREADY_EXISTS', 'FABRIC_E_VOLUME_NOT_FOUND',
+ * 'SerializationError'
+ * @member {string} [failureError.message] Error message.
+ */
+export interface BackupInfo {
+  backupId?: string;
+  backupChainId?: string;
+  applicationName?: string;
+  serviceName?: string;
+  partitionInformation?: PartitionInformation;
+  backupLocation?: string;
+  backupType?: string;
+  epochOfLastBackupRecord?: BackupEpoch;
+  lsnOfLastBackupRecord?: string;
+  creationTimeUtc?: Date;
+  failureError?: FabricErrorError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedBackupInfoList class.
+ * @constructor
+ * The list of backups. The list is paged when all of the results cannot fit in
+ * a single message. The next set of results can be obtained by executing the
+ * same query with the continuation token provided in this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of backup information.
+ */
+export interface PagedBackupInfoList {
+  continuationToken?: string;
+  items?: BackupInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureBlobBackupStorageDescription class.
+ * @constructor
+ * Describes the parameters for Azure blob store used for storing and
+ * enumerating backups.
+ *
+ * @member {string} connectionString The connection string to connect to the
+ * Azure blob store.
+ * @member {string} containerName The name of the container in the blob store
+ * to store and enumerate backups from.
+ */
+export interface AzureBlobBackupStorageDescription extends BackupStorageDescription {
+  connectionString: string;
+  containerName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileShareBackupStorageDescription class.
+ * @constructor
+ * Describes the parameters for file share storage used for storing or
+ * enumerating backups.
+ *
+ * @member {string} path UNC path of the file share where to store or enumerate
+ * backups from.
+ * @member {string} [primaryUserName] Primary user name to access the file
+ * share.
+ * @member {string} [primaryPassword] Primary password to access the share
+ * location.
+ * @member {string} [secondaryUserName] Secondary user name to access the file
+ * share.
+ * @member {string} [secondaryPassword] Secondary password to access the share
+ * location
+ */
+export interface FileShareBackupStorageDescription extends BackupStorageDescription {
+  path: string;
+  primaryUserName?: string;
+  primaryPassword?: string;
+  secondaryUserName?: string;
+  secondaryPassword?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FrequencyBasedBackupScheduleDescription class.
+ * @constructor
+ * Describes the frequency based backup schedule.
+ *
+ * @member {moment.duration} interval Defines the interval with which backups
+ * are periodically taken. It should be specified in ISO8601 format. Timespan
+ * in seconds is not supported and will be ignored while creating the policy.
+ */
+export interface FrequencyBasedBackupScheduleDescription extends BackupScheduleDescription {
+  interval: moment.Duration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TimeBasedBackupScheduleDescription class.
+ * @constructor
+ * Describes the time based backup schedule.
+ *
+ * @member {string} scheduleFrequencyType Describes the frequency with which to
+ * run the time based backup schedule. Possible values include: 'Invalid',
+ * 'Daily', 'Weekly'
+ * @member {array} [runDays] List of days of a week when to trigger the
+ * periodic backup. This is valid only when the backup schedule frequency type
+ * is weekly.
+ * @member {array} runTimes Represents the list of exact time during the day in
+ * ISO8601 format. Like '19:00:00' will represent '7PM' during the day. Date
+ * specified along with time will be ignored.
+ */
+export interface TimeBasedBackupScheduleDescription extends BackupScheduleDescription {
+  scheduleFrequencyType: string;
+  runDays?: string[];
+  runTimes: Date[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupProgressInfo class.
+ * @constructor
+ * Describes the progress of a partition's backup.
+ *
+ * @member {string} [backupState] Represents the current state of the partition
+ * backup operation. Possible values include: 'Invalid', 'Accepted',
+ * 'BackupInProgress', 'Success', 'Failure', 'Timeout'
+ * @member {date} [timeStampUtc] TimeStamp in UTC when operation succeeded or
+ * failed.
+ * @member {uuid} [backupId] Unique ID of the newly created backup.
+ * @member {string} [backupLocation] Location, relative to the backup store, of
+ * the newly created backup.
+ * @member {object} [epochOfLastBackupRecord] Specifies the epoch of the last
+ * record included in backup.
+ * @member {string} [epochOfLastBackupRecord.configurationNumber] The current
+ * configuration number of this Epoch. The configuration number is an
+ * increasing value that is updated whenever the configuration of this replica
+ * set changes.
+ * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current
+ * dataloss number of this Epoch. The data loss number property is an
+ * increasing value which is updated whenever data loss is suspected, as when
+ * loss of a quorum of replicas in the replica set that includes the Primary
+ * replica.
+ * @member {string} [lsnOfLastBackupRecord] The LSN of last record included in
+ * backup.
+ * @member {object} [failureError] Denotes the failure encountered in
+ * performing backup operation.
+ * @member {string} [failureError.code] Defines the fabric error codes that be
+ * returned as part of the error object in response to Service Fabric API
+ * operations that are not successful. Following are the error code values that
+ * can be returned for a specific HTTP status code.
+ *
+ * - Possible values of the error code for HTTP status code 400 (Bad Request)
+ * - "FABRIC_E_INVALID_PARTITION_KEY"
+ * - "FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_ADDRESS"
+ * - "FABRIC_E_APPLICATION_NOT_UPGRADING"
+ * - "FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_FABRIC_NOT_UPGRADING"
+ * - "FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR"
+ * - "FABRIC_E_INVALID_CONFIGURATION"
+ * - "FABRIC_E_INVALID_NAME_URI"
+ * - "FABRIC_E_PATH_TOO_LONG"
+ * - "FABRIC_E_KEY_TOO_LARGE"
+ * - "FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED"
+ * - "FABRIC_E_INVALID_ATOMIC_GROUP"
+ * - "FABRIC_E_VALUE_EMPTY"
+ * - "FABRIC_E_BACKUP_IS_ENABLED"
+ * - "FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH"
+ * - "FABRIC_E_INVALID_FOR_STATELESS_SERVICES"
+ * - "FABRIC_E_INVALID_SERVICE_SCALING_POLICY"
+ * - "E_INVALIDARG"
+ *
+ * - Possible values of the error code for HTTP status code 404 (Not Found)
+ * - "FABRIC_E_NODE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_TYPE_NOT_FOUND"
+ * - "FABRIC_E_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_TYPE_NOT_FOUND"
+ * - "FABRIC_E_SERVICE_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND"
+ * - "FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND"
+ * - "FABRIC_E_PARTITION_NOT_FOUND"
+ * - "FABRIC_E_REPLICA_DOES_NOT_EXIST"
+ * - "FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST"
+ * - "FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND"
+ * - "FABRIC_E_DIRECTORY_NOT_FOUND"
+ * - "FABRIC_E_FABRIC_VERSION_NOT_FOUND"
+ * - "FABRIC_E_FILE_NOT_FOUND"
+ * - "FABRIC_E_NAME_DOES_NOT_EXIST"
+ * - "FABRIC_E_PROPERTY_DOES_NOT_EXIST"
+ * - "FABRIC_E_ENUMERATION_COMPLETED"
+ * - "FABRIC_E_SERVICE_MANIFEST_NOT_FOUND"
+ * - "FABRIC_E_KEY_NOT_FOUND"
+ * - "FABRIC_E_HEALTH_ENTITY_NOT_FOUND"
+ * - "FABRIC_E_BACKUP_NOT_ENABLED"
+ * - "FABRIC_E_BACKUP_POLICY_NOT_EXISTING"
+ * - "FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 409 (Conflict)
+ * - "FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS"
+ * - "FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_SERVICE_ALREADY_EXISTS"
+ * - "FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS"
+ * - "FABRIC_E_APPLICATION_TYPE_IN_USE"
+ * - "FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION"
+ * - "FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS"
+ * - "FABRIC_E_FABRIC_VERSION_IN_USE"
+ * - "FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS"
+ * - "FABRIC_E_NAME_ALREADY_EXISTS"
+ * - "FABRIC_E_NAME_NOT_EMPTY"
+ * - "FABRIC_E_PROPERTY_CHECK_FAILED"
+ * - "FABRIC_E_SERVICE_METADATA_MISMATCH"
+ * - "FABRIC_E_SERVICE_TYPE_MISMATCH"
+ * - "FABRIC_E_HEALTH_STALE_REPORT"
+ * - "FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED"
+ * - "FABRIC_E_NODE_HAS_NOT_STOPPED_YET"
+ * - "FABRIC_E_INSTANCE_ID_MISMATCH"
+ * - "FABRIC_E_BACKUP_IN_PROGRESS"
+ * - "FABRIC_E_RESTORE_IN_PROGRESS"
+ * - "FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING"
+ *
+ * - Possible values of the error code for HTTP status code 413 (Request Entity
+ * Too Large)
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 500 (Internal
+ * Server Error)
+ * - "FABRIC_E_NODE_IS_UP"
+ * - "E_FAIL"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS"
+ * - "FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND"
+ * - "FABRIC_E_VOLUME_ALREADY_EXISTS"
+ * - "ABRIC_E_VOLUME_NOT_FOUND"
+ * - "SerializationError"
+ *
+ * - Possible values of the error code for HTTP status code 503 (Service
+ * Unavailable)
+ * - "FABRIC_E_NO_WRITE_QUORUM"
+ * - "FABRIC_E_NOT_PRIMARY"
+ * - "FABRIC_E_NOT_READY"
+ * - "FABRIC_E_RECONFIGURATION_PENDING"
+ * - "FABRIC_E_SERVICE_OFFLINE"
+ * - "E_ABORT"
+ * - "FABRIC_E_VALUE_TOO_LARGE"
+ *
+ * - Possible values of the error code for HTTP status code 504 (Gateway
+ * Timeout)
+ * - "FABRIC_E_COMMUNICATION_ERROR"
+ * - "FABRIC_E_OPERATION_NOT_COMPLETE"
+ * - "FABRIC_E_TIMEOUT". Possible values include:
+ * 'FABRIC_E_INVALID_PARTITION_KEY', 'FABRIC_E_IMAGEBUILDER_VALIDATION_ERROR',
+ * 'FABRIC_E_INVALID_ADDRESS', 'FABRIC_E_APPLICATION_NOT_UPGRADING',
+ * 'FABRIC_E_APPLICATION_UPGRADE_VALIDATION_ERROR',
+ * 'FABRIC_E_FABRIC_NOT_UPGRADING', 'FABRIC_E_FABRIC_UPGRADE_VALIDATION_ERROR',
+ * 'FABRIC_E_INVALID_CONFIGURATION', 'FABRIC_E_INVALID_NAME_URI',
+ * 'FABRIC_E_PATH_TOO_LONG', 'FABRIC_E_KEY_TOO_LARGE',
+ * 'FABRIC_E_SERVICE_AFFINITY_CHAIN_NOT_SUPPORTED',
+ * 'FABRIC_E_INVALID_ATOMIC_GROUP', 'FABRIC_E_VALUE_EMPTY',
+ * 'FABRIC_E_NODE_NOT_FOUND', 'FABRIC_E_APPLICATION_TYPE_NOT_FOUND',
+ * 'FABRIC_E_APPLICATION_NOT_FOUND', 'FABRIC_E_SERVICE_TYPE_NOT_FOUND',
+ * 'FABRIC_E_SERVICE_DOES_NOT_EXIST',
+ * 'FABRIC_E_SERVICE_TYPE_TEMPLATE_NOT_FOUND',
+ * 'FABRIC_E_CONFIGURATION_SECTION_NOT_FOUND', 'FABRIC_E_PARTITION_NOT_FOUND',
+ * 'FABRIC_E_REPLICA_DOES_NOT_EXIST', 'FABRIC_E_SERVICE_GROUP_DOES_NOT_EXIST',
+ * 'FABRIC_E_CONFIGURATION_PARAMETER_NOT_FOUND',
+ * 'FABRIC_E_DIRECTORY_NOT_FOUND', 'FABRIC_E_FABRIC_VERSION_NOT_FOUND',
+ * 'FABRIC_E_FILE_NOT_FOUND', 'FABRIC_E_NAME_DOES_NOT_EXIST',
+ * 'FABRIC_E_PROPERTY_DOES_NOT_EXIST', 'FABRIC_E_ENUMERATION_COMPLETED',
+ * 'FABRIC_E_SERVICE_MANIFEST_NOT_FOUND', 'FABRIC_E_KEY_NOT_FOUND',
+ * 'FABRIC_E_HEALTH_ENTITY_NOT_FOUND',
+ * 'FABRIC_E_APPLICATION_TYPE_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_ALREADY_IN_TARGET_VERSION',
+ * 'FABRIC_E_APPLICATION_TYPE_PROVISION_IN_PROGRESS',
+ * 'FABRIC_E_APPLICATION_UPGRADE_IN_PROGRESS',
+ * 'FABRIC_E_SERVICE_ALREADY_EXISTS', 'FABRIC_E_SERVICE_GROUP_ALREADY_EXISTS',
+ * 'FABRIC_E_APPLICATION_TYPE_IN_USE',
+ * 'FABRIC_E_FABRIC_ALREADY_IN_TARGET_VERSION',
+ * 'FABRIC_E_FABRIC_VERSION_ALREADY_EXISTS', 'FABRIC_E_FABRIC_VERSION_IN_USE',
+ * 'FABRIC_E_FABRIC_UPGRADE_IN_PROGRESS', 'FABRIC_E_NAME_ALREADY_EXISTS',
+ * 'FABRIC_E_NAME_NOT_EMPTY', 'FABRIC_E_PROPERTY_CHECK_FAILED',
+ * 'FABRIC_E_SERVICE_METADATA_MISMATCH', 'FABRIC_E_SERVICE_TYPE_MISMATCH',
+ * 'FABRIC_E_HEALTH_STALE_REPORT', 'FABRIC_E_SEQUENCE_NUMBER_CHECK_FAILED',
+ * 'FABRIC_E_NODE_HAS_NOT_STOPPED_YET', 'FABRIC_E_INSTANCE_ID_MISMATCH',
+ * 'FABRIC_E_VALUE_TOO_LARGE', 'FABRIC_E_NO_WRITE_QUORUM',
+ * 'FABRIC_E_NOT_PRIMARY', 'FABRIC_E_NOT_READY',
+ * 'FABRIC_E_RECONFIGURATION_PENDING', 'FABRIC_E_SERVICE_OFFLINE', 'E_ABORT',
+ * 'FABRIC_E_COMMUNICATION_ERROR', 'FABRIC_E_OPERATION_NOT_COMPLETE',
+ * 'FABRIC_E_TIMEOUT', 'FABRIC_E_NODE_IS_UP', 'E_FAIL',
+ * 'FABRIC_E_BACKUP_IS_ENABLED',
+ * 'FABRIC_E_RESTORE_SOURCE_TARGET_PARTITION_MISMATCH',
+ * 'FABRIC_E_INVALID_FOR_STATELESS_SERVICES', 'FABRIC_E_BACKUP_NOT_ENABLED',
+ * 'FABRIC_E_BACKUP_POLICY_NOT_EXISTING',
+ * 'FABRIC_E_FAULT_ANALYSIS_SERVICE_NOT_EXISTING',
+ * 'FABRIC_E_BACKUP_IN_PROGRESS', 'FABRIC_E_RESTORE_IN_PROGRESS',
+ * 'FABRIC_E_BACKUP_POLICY_ALREADY_EXISTING',
+ * 'FABRIC_E_INVALID_SERVICE_SCALING_POLICY', 'E_INVALIDARG',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_ALREADY_EXISTS',
+ * 'FABRIC_E_SINGLE_INSTANCE_APPLICATION_NOT_FOUND',
+ * 'FABRIC_E_VOLUME_ALREADY_EXISTS', 'FABRIC_E_VOLUME_NOT_FOUND',
+ * 'SerializationError'
+ * @member {string} [failureError.message] Error message.
+ */
+export interface BackupProgressInfo {
+  backupState?: string;
+  timeStampUtc?: Date;
+  backupId?: string;
+  backupLocation?: string;
+  epochOfLastBackupRecord?: BackupEpoch;
+  lsnOfLastBackupRecord?: string;
+  failureError?: FabricErrorError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionBackupConfigurationInfo class.
+ * @constructor
+ * Backup configuration information, for a specific partition, specifying what
+ * backup policy is being applied and suspend description, if any.
+ *
+ * @member {string} [serviceName] The full name of the service with 'fabric:'
+ * URI scheme.
+ * @member {uuid} [partitionId] An internal ID used by Service Fabric to
+ * uniquely identify a partition. This is a randomly generated GUID when the
+ * service was created. The partition ID is unique and does not change for the
+ * lifetime of the service. If the same service was deleted and recreated the
+ * IDs of its partitions would be different.
+ */
+export interface PartitionBackupConfigurationInfo extends BackupConfigurationInfo {
+  serviceName?: string;
+  partitionId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupEntity class.
+ * @constructor
+ * Describes the Service Fabric entity that is configured for backup.
+ *
+ * @member {string} entityKind Polymorphic Discriminator
+ */
+export interface BackupEntity {
+  entityKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationBackupEntity class.
+ * @constructor
+ * Identifies the Service Fabric application which is being backed up.
+ *
+ * @member {string} [applicationName] The name of the application, including
+ * the 'fabric:' URI scheme.
+ */
+export interface ApplicationBackupEntity extends BackupEntity {
+  applicationName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceBackupEntity class.
+ * @constructor
+ * Identifies the Service Fabric stateful service which is being backed up.
+ *
+ * @member {string} [serviceName] The full name of the service with 'fabric:'
+ * URI scheme.
+ */
+export interface ServiceBackupEntity extends BackupEntity {
+  serviceName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionBackupEntity class.
+ * @constructor
+ * Identifies the Service Fabric stateful partition which is being backed up.
+ *
+ * @member {string} [serviceName] The full name of the service with 'fabric:'
+ * URI scheme.
+ * @member {uuid} [partitionId] An internal ID used by Service Fabric to
+ * uniquely identify a partition. This is a randomly generated GUID when the
+ * service was created. The partition ID is unique and does not change for the
+ * lifetime of the service. If the same service was deleted and recreated the
+ * IDs of its partitions would be different.
+ */
+export interface PartitionBackupEntity extends BackupEntity {
+  serviceName?: string;
+  partitionId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableBackupDescription class.
+ * @constructor
+ * Specifies the parameters needed to enable periodic backup.
+ *
+ * @member {string} backupPolicyName Name of the backup policy to be used for
+ * enabling periodic backups.
+ */
+export interface EnableBackupDescription {
+  backupPolicyName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedBackupEntityList class.
+ * @constructor
+ * The list of backup entities that are being periodically backed. The list is
+ * paged when all of the results cannot fit in a single message. The next set
+ * of results can be obtained by executing the same query with the continuation
+ * token provided in this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of backup entity information.
+ */
+export interface PagedBackupEntityList {
+  continuationToken?: string;
+  items?: BackupEntity[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetBackupByStorageQueryDescription class.
+ * @constructor
+ * Describes additional filters to be applied, while listing backups, and
+ * backup storage details from where to fetch the backups.
+ *
+ * @member {date} [startDateTimeFilter] Specifies the start date time in
+ * ISO8601 from which to enumerate backups. If not specified, backups are
+ * enumerated from the beginning.
+ * @member {date} [endDateTimeFilter] Specifies the end date time in ISO8601
+ * till which to enumerate backups. If not specified, backups are enumerated
+ * till the end.
+ * @member {boolean} [latest] If specified as true, gets the most recent backup
+ * (within the specified time range) for every partition under the specified
+ * backup entity. Default value: false .
+ * @member {object} storage Describes the parameters for the backup storage
+ * from where to enumerate backups. This is optional and by default backups are
+ * enumerated from the backup storage where this backup entity is currently
+ * being backed up (as specified in backup policy). This parameter is useful to
+ * be able to enumerate backups from another cluster where you may intend to
+ * restore.
+ * @member {string} [storage.friendlyName] Friendly name for this backup
+ * storage.
+ * @member {string} [storage.storageKind] Polymorphic Discriminator
+ * @member {object} backupEntity Indicates the entity for which to enumerate
+ * backups.
+ * @member {string} [backupEntity.entityKind] Polymorphic Discriminator
+ */
+export interface GetBackupByStorageQueryDescription {
+  startDateTimeFilter?: Date;
+  endDateTimeFilter?: Date;
+  latest?: boolean;
+  storage: BackupStorageDescription;
+  backupEntity: BackupEntity;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NodeImpact class.
  * @constructor
  * Describes the expected impact of a repair to a particular node.
  *
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
- *
  *
  * @member {string} nodeName The name of the impacted node.
  * @member {string} [impactLevel] The level of impact expected. Possible values
@@ -7053,7 +10985,6 @@ export interface NodeImpact {
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {string} kind Polymorphic Discriminator
  */
 export interface RepairImpactDescriptionBase {
@@ -7068,7 +10999,6 @@ export interface RepairImpactDescriptionBase {
  *
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
- *
  *
  * @member {array} [nodeImpactList] The list of nodes impacted by a repair
  * action and their respective expected impact.
@@ -7086,7 +11016,6 @@ export interface NodeRepairImpactDescription extends RepairImpactDescriptionBase
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {string} kind Polymorphic Discriminator
  */
 export interface RepairTargetDescriptionBase {
@@ -7102,7 +11031,6 @@ export interface RepairTargetDescriptionBase {
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {array} [nodeNames] The list of nodes targeted by a repair action.
  */
 export interface NodeRepairTargetDescription extends RepairTargetDescriptionBase {
@@ -7117,7 +11045,6 @@ export interface NodeRepairTargetDescription extends RepairTargetDescriptionBase
  *
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
- *
  *
  * @member {date} [createdUtcTimestamp] The time when the repair task entered
  * the Created state.
@@ -7166,7 +11093,6 @@ export interface RepairTaskHistory {
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {string} taskId The ID of the repair task.
  * @member {string} [version] The version of the repair task.
  * When creating a new repair task, the version must be set to zero.  When
@@ -7180,25 +11106,9 @@ export interface RepairTaskHistory {
  * task, or other informational details.
  * May be set when the repair task is created, and is immutable once set.
  * @member {string} state The workflow state of the repair task. Valid initial
- * states are Created, Claimed, and Preparing.
- *
- * - Invalid - Indicates that the repair task state is invalid. All Service
- * Fabric enumerations have the invalid value.
- * - Created - Indicates that the repair task has been created.
- * - Claimed - Indicates that the repair task has been claimed by a repair
- * executor.
- * - Preparing - Indicates that the Repair Manager is preparing the system to
- * handle the impact of the repair task, usually by taking resources offline
- * gracefully.
- * - Approved - Indicates that the repair task has been approved by the Repair
- * Manager and is safe to execute.
- * - Executing - Indicates that execution of the repair task is in progress.
- * - Restoring - Indicates that the Repair Manager is restoring the system to
- * its pre-repair state, usually by bringing resources back online.
- * - Completed - Indicates that the repair task has completed, and no further
- * state changes will occur.
- * . Possible values include: 'Invalid', 'Created', 'Claimed', 'Preparing',
- * 'Approved', 'Executing', 'Restoring', 'Completed'
+ * states are Created, Claimed, and Preparing. Possible values include:
+ * 'Invalid', 'Created', 'Claimed', 'Preparing', 'Approved', 'Executing',
+ * 'Restoring', 'Completed'
  * @member {number} [flags] A bitwise-OR of the following values, which gives
  * additional details about the status of the repair task.
  * - 1 - Cancellation of the repair has been requested
@@ -7206,33 +11116,25 @@ export interface RepairTaskHistory {
  * - 4 - Approval of the repair was forced via client request
  * @member {string} action The requested repair action. Must be specified when
  * the repair task is created, and is immutable once set.
- * @member {object} [target]
+ * @member {object} [target] The target object determines what actions the
+ * system will take to prepare for the impact of the repair, prior to approving
+ * execution of the repair.
+ * May be set when the repair task is created, and is immutable once set.
  * @member {string} [target.kind] Polymorphic Discriminator
  * @member {string} [executor] The name of the repair executor. Must be
  * specified in Claimed and later states, and is immutable once set.
  * @member {string} [executorData] A data string that the repair executor can
  * use to store its internal state.
- * @member {object} [impact]
+ * @member {object} [impact] The impact object determines what actions the
+ * system will take to prepare for the impact of the repair, prior to approving
+ * execution of the repair.
+ * Impact must be specified by the repair executor when transitioning to the
+ * Preparing state, and is immutable once set.
  * @member {string} [impact.kind] Polymorphic Discriminator
  * @member {string} [resultStatus] A value describing the overall result of the
- * repair task execution.
- * Must be specified in the Restoring and later states, and is immutable once
- * set.
- *
- * - Invalid - Indicates that the repair task result is invalid. All Service
- * Fabric enumerations have the invalid value.
- * - Succeeded - Indicates that the repair task completed execution
- * successfully.
- * - Cancelled - Indicates that the repair task was cancelled prior to
- * execution.
- * - Interrupted - Indicates that execution of the repair task was interrupted
- * by a cancellation request after some work had already been performed.
- * - Failed - Indicates that there was a failure during execution of the repair
- * task. Some work may have been performed.
- * - Pending - Indicates that the repair task result is not yet available,
- * because the repair task has not finished executing.
- * . Possible values include: 'Invalid', 'Succeeded', 'Cancelled',
- * 'Interrupted', 'Failed', 'Pending'
+ * repair task execution. Must be specified in the Restoring and later states,
+ * and is immutable once set. Possible values include: 'Invalid', 'Succeeded',
+ * 'Cancelled', 'Interrupted', 'Failed', 'Pending'
  * @member {number} [resultCode] A numeric value providing additional details
  * about the result of the repair task execution.
  * May be specified in the Restoring and later states, and is immutable once
@@ -7241,7 +11143,9 @@ export interface RepairTaskHistory {
  * the result of the repair task execution.
  * May be specified in the Restoring and later states, and is immutable once
  * set.
- * @member {object} [history]
+ * @member {object} [history] An object that contains timestamps of the repair
+ * task's state transitions.
+ * These timestamps are updated by the system, and cannot be directly modified.
  * @member {date} [history.createdUtcTimestamp] The time when the repair task
  * entered the Created state.
  * @member {date} [history.claimedUtcTimestamp] The time when the repair task
@@ -7264,10 +11168,12 @@ export interface RepairTaskHistory {
  * the repair task started the health check in the Restoring state.
  * @member {date} [history.restoringHealthCheckEndUtcTimestamp] The time when
  * the repair task completed the health check in the Restoring state.
- * @member {string} [preparingHealthCheckState] Possible values include:
- * 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
- * @member {string} [restoringHealthCheckState] Possible values include:
- * 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+ * @member {string} [preparingHealthCheckState] The workflow state of the
+ * health check when the repair task is in the Preparing state. Possible values
+ * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
+ * @member {string} [restoringHealthCheckState] The workflow state of the
+ * health check when the repair task is in the Restoring state. Possible values
+ * include: 'NotStarted', 'InProgress', 'Succeeded', 'Skipped', 'TimedOut'
  * @member {boolean} [performPreparingHealthCheck] A value to determine if
  * health checks will be performed when the repair task enters the Preparing
  * state.
@@ -7305,12 +11211,11 @@ export interface RepairTask {
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {string} taskId The ID of the repair task.
  * @member {string} [version] The current version number of the repair task. If
  * non-zero, then the request will only succeed if this value matches the
  * actual current version of the repair task. If zero, then no version check is
- * performed.</para>
+ * performed.
  */
 export interface RepairTaskApproveDescription {
   taskId: string;
@@ -7326,15 +11231,14 @@ export interface RepairTaskApproveDescription {
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {string} taskId The ID of the repair task.
  * @member {string} [version] The current version number of the repair task. If
  * non-zero, then the request will only succeed if this value matches the
  * actual current version of the repair task. If zero, then no version check is
- * performed.</para>
+ * performed.
  * @member {boolean} [requestAbort] _True_ if the repair should be stopped as
  * soon as possible even if it has already started executing. _False_ if the
- * repair should be cancelled only if execution has not yet started.</para>
+ * repair should be cancelled only if execution has not yet started.
  */
 export interface RepairTaskCancelDescription {
   taskId: string;
@@ -7350,7 +11254,6 @@ export interface RepairTaskCancelDescription {
  *
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
- *
  *
  * @member {string} taskId The ID of the completed repair task to be deleted.
  * @member {string} [version] The current version number of the repair task. If
@@ -7371,7 +11274,6 @@ export interface RepairTaskDeleteDescription {
  *
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
- *
  *
  * @member {string} taskId The ID of the repair task to be updated.
  * @member {string} [version] The current version number of the repair task. If
@@ -7403,9 +11305,2171 @@ export interface RepairTaskUpdateHealthPolicyDescription {
  * This type supports the Service Fabric platform; it is not meant to be used
  * directly from your code.
  *
- *
  * @member {string} version The new version of the repair task.
  */
 export interface RepairTaskUpdateInfo {
   version: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UploadChunkRange class.
+ * @constructor
+ * Information about which portion of the file to upload.
+ *
+ * @member {string} [startPosition] The start position of the portion of the
+ * file. It's represented by the number of bytes.
+ * @member {string} [endPosition] The end position of the portion of the file.
+ * It's represented by the number of bytes.
+ */
+export interface UploadChunkRange {
+  startPosition?: string;
+  endPosition?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UploadSessionInfo class.
+ * @constructor
+ * Information about an image store upload session. A session is associated
+ * with a relative path in the image store.
+ *
+ * @member {string} [storeRelativePath] The remote location within image store.
+ * This path is relative to the image store root.
+ * @member {uuid} [sessionId] A unique ID of the upload session. A session ID
+ * can be reused only if the session was committed or removed.
+ * @member {date} [modifiedDate] The date and time when the upload session was
+ * last modified.
+ * @member {string} [fileSize] The size in bytes of the uploading file.
+ * @member {array} [expectedRanges] List of chunk ranges that image store has
+ * not received yet.
+ */
+export interface UploadSessionInfo {
+  storeRelativePath?: string;
+  sessionId?: string;
+  modifiedDate?: Date;
+  fileSize?: string;
+  expectedRanges?: UploadChunkRange[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UploadSession class.
+ * @constructor
+ * Information about a image store upload session
+ *
+ * @member {array} [uploadSessions] When querying upload session by upload
+ * session ID, the result contains only one upload session. When querying
+ * upload session by image store relative path, the result might contain
+ * multiple upload sessions.
+ */
+export interface UploadSession {
+  uploadSessions?: UploadSessionInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerLogs class.
+ * @constructor
+ * Container logs.
+ *
+ * @member {string} [content] Container logs.
+ */
+export interface ContainerLogs {
+  content?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AveragePartitionLoadScalingTrigger class.
+ * @constructor
+ * Represents a scaling trigger related to an average load of a metric/resource
+ * of a partition.
+ *
+ * @member {string} metricName The name of the metric for which usage should be
+ * tracked.
+ * @member {string} lowerLoadThreshold The lower limit of the load below which
+ * a scale in operation should be performed.
+ * @member {string} upperLoadThreshold The upper limit of the load beyond which
+ * a scale out operation should be performed.
+ * @member {number} scaleIntervalInSeconds The period in seconds on which a
+ * decision is made whether to scale or not.
+ */
+export interface AveragePartitionLoadScalingTrigger extends ScalingTriggerDescription {
+  metricName: string;
+  lowerLoadThreshold: string;
+  upperLoadThreshold: string;
+  scaleIntervalInSeconds: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AverageServiceLoadScalingTrigger class.
+ * @constructor
+ * Represents a scaling policy related to an average load of a metric/resource
+ * of a service.
+ *
+ * @member {string} metricName The name of the metric for which usage should be
+ * tracked.
+ * @member {string} lowerLoadThreshold The lower limit of the load below which
+ * a scale in operation should be performed.
+ * @member {string} upperLoadThreshold The upper limit of the load beyond which
+ * a scale out operation should be performed.
+ * @member {number} scaleIntervalInSeconds The period in seconds on which a
+ * decision is made whether to scale or not.
+ */
+export interface AverageServiceLoadScalingTrigger extends ScalingTriggerDescription {
+  metricName: string;
+  lowerLoadThreshold: string;
+  upperLoadThreshold: string;
+  scaleIntervalInSeconds: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionInstanceCountScaleMechanism class.
+ * @constructor
+ * Represents a scaling mechanism for adding or removing instances of stateless
+ * service partition.
+ *
+ * @member {number} minInstanceCount Minimum number of instances of the
+ * partition.
+ * @member {number} maxInstanceCount Maximum number of instances of the
+ * partition.
+ * @member {number} scaleIncrement The number of instances to add or remove
+ * during a scaling operation.
+ */
+export interface PartitionInstanceCountScaleMechanism extends ScalingMechanismDescription {
+  minInstanceCount: number;
+  maxInstanceCount: number;
+  scaleIncrement: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddRemoveIncrementalNamedPartitionScalingMechanism class.
+ * @constructor
+ * Represents a scaling mechanism for adding or removing named partitions of a
+ * stateless service. Partition names are in the format '0','1''N-1'
+ *
+ * @member {number} minPartitionCount Minimum number of named partitions of the
+ * service.
+ * @member {number} maxPartitionCount Maximum number of named partitions of the
+ * service.
+ * @member {number} scaleIncrement The number of instances to add or remove
+ * during a scaling operation.
+ */
+export interface AddRemoveIncrementalNamedPartitionScalingMechanism extends ScalingMechanismDescription {
+  minPartitionCount: number;
+  maxPartitionCount: number;
+  scaleIncrement: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationCreatedEvent class.
+ * @constructor
+ * Application Created event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} applicationTypeVersion Application type version.
+ * @member {string} applicationDefinitionKind Application definition kind.
+ */
+export interface ApplicationCreatedEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  applicationTypeVersion: string;
+  applicationDefinitionKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationDeletedEvent class.
+ * @constructor
+ * Application Deleted event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} applicationTypeVersion Application type version.
+ */
+export interface ApplicationDeletedEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  applicationTypeVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationHealthReportCreatedEvent class.
+ * @constructor
+ * Application Health Report Created event.
+ *
+ * @member {number} applicationInstanceId Id of Application instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface ApplicationHealthReportCreatedEvent extends ApplicationEvent {
+  applicationInstanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationHealthReportExpiredEvent class.
+ * @constructor
+ * Application Health Report Expired event.
+ *
+ * @member {number} applicationInstanceId Id of Application instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface ApplicationHealthReportExpiredEvent extends ApplicationEvent {
+  applicationInstanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpgradeCompleteEvent class.
+ * @constructor
+ * Application Upgrade Complete event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} applicationTypeVersion Application type version.
+ * @member {number} overallUpgradeElapsedTimeInMs Overall upgrade time in
+ * milli-seconds.
+ */
+export interface ApplicationUpgradeCompleteEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  applicationTypeVersion: string;
+  overallUpgradeElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpgradeDomainCompleteEvent class.
+ * @constructor
+ * Application Upgrade Domain Complete event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} currentApplicationTypeVersion Current Application type
+ * version.
+ * @member {string} applicationTypeVersion Target Application type version.
+ * @member {string} upgradeState State of upgrade.
+ * @member {string} upgradeDomains Upgrade domains.
+ * @member {number} upgradeDomainElapsedTimeInMs Upgrade time of domain in
+ * milli-seconds.
+ */
+export interface ApplicationUpgradeDomainCompleteEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  currentApplicationTypeVersion: string;
+  applicationTypeVersion: string;
+  upgradeState: string;
+  upgradeDomains: string;
+  upgradeDomainElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpgradeRollbackCompleteEvent class.
+ * @constructor
+ * Application Upgrade Rollback Complete event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} applicationTypeVersion Application type version.
+ * @member {string} failureReason Describes reason of failure.
+ * @member {number} overallUpgradeElapsedTimeInMs Overall upgrade time in
+ * milli-seconds.
+ */
+export interface ApplicationUpgradeRollbackCompleteEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  applicationTypeVersion: string;
+  failureReason: string;
+  overallUpgradeElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpgradeRollbackStartEvent class.
+ * @constructor
+ * Application Upgrade Rollback Start event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} currentApplicationTypeVersion Current Application type
+ * version.
+ * @member {string} applicationTypeVersion Target Application type version.
+ * @member {string} failureReason Describes reason of failure.
+ * @member {number} overallUpgradeElapsedTimeInMs Overall upgrade time in
+ * milli-seconds.
+ */
+export interface ApplicationUpgradeRollbackStartEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  currentApplicationTypeVersion: string;
+  applicationTypeVersion: string;
+  failureReason: string;
+  overallUpgradeElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpgradeStartEvent class.
+ * @constructor
+ * Application Upgrade Start event.
+ *
+ * @member {string} applicationTypeName Application type name.
+ * @member {string} currentApplicationTypeVersion Current Application type
+ * version.
+ * @member {string} applicationTypeVersion Target Application type version.
+ * @member {string} upgradeType Type of upgrade.
+ * @member {string} rollingUpgradeMode Mode of upgrade.
+ * @member {string} failureAction Action if failed.
+ */
+export interface ApplicationUpgradeStartEvent extends ApplicationEvent {
+  applicationTypeName: string;
+  currentApplicationTypeVersion: string;
+  applicationTypeVersion: string;
+  upgradeType: string;
+  rollingUpgradeMode: string;
+  failureAction: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeployedApplicationHealthReportCreatedEvent class.
+ * @constructor
+ * Deployed Application Health Report Created event.
+ *
+ * @member {number} applicationInstanceId Id of Application instance.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface DeployedApplicationHealthReportCreatedEvent extends ApplicationEvent {
+  applicationInstanceId: number;
+  nodeName: string;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeployedApplicationHealthReportExpiredEvent class.
+ * @constructor
+ * Deployed Application Health Report Expired event.
+ *
+ * @member {number} applicationInstanceId Id of Application instance.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface DeployedApplicationHealthReportExpiredEvent extends ApplicationEvent {
+  applicationInstanceId: number;
+  nodeName: string;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProcessDeactivatedEvent class.
+ * @constructor
+ * Process Deactivated event.
+ *
+ * @member {string} serviceName Name of Service.
+ * @member {string} servicePackageName Name of Service package.
+ * @member {string} servicePackageActivationId Activation Id of Service
+ * package.
+ * @member {boolean} isExclusive Indicates IsExclusive flag.
+ * @member {string} codePackageName Name of Code package.
+ * @member {string} entryPointType Type of EntryPoint.
+ * @member {string} exeName Name of executable.
+ * @member {number} processId Process Id.
+ * @member {string} hostId Host Id.
+ * @member {number} exitCode Exit code of process.
+ * @member {boolean} unexpectedTermination Indicates if termination is
+ * unexpected.
+ * @member {date} startTime Start time of process.
+ */
+export interface ProcessDeactivatedEvent extends ApplicationEvent {
+  serviceName: string;
+  servicePackageName: string;
+  servicePackageActivationId: string;
+  isExclusive: boolean;
+  codePackageName: string;
+  entryPointType: string;
+  exeName: string;
+  processId: number;
+  hostId: string;
+  exitCode: number;
+  unexpectedTermination: boolean;
+  startTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerDeactivatedEvent class.
+ * @constructor
+ * Container Deactivated event.
+ *
+ * @member {string} serviceName Name of Service.
+ * @member {string} servicePackageName Name of Service package.
+ * @member {string} servicePackageActivationId Activation Id of Service
+ * package.
+ * @member {boolean} isExclusive Indicates IsExclusive flag.
+ * @member {string} codePackageName Name of Code package.
+ * @member {string} entryPointType Type of EntryPoint.
+ * @member {string} imageName Name of Container image.
+ * @member {string} containerName Name of Container.
+ * @member {string} hostId Host Id.
+ * @member {number} exitCode Exit code of process.
+ * @member {boolean} unexpectedTermination Indicates if termination is
+ * unexpected.
+ * @member {date} startTime Start time of process.
+ */
+export interface ContainerDeactivatedEvent extends ApplicationEvent {
+  serviceName: string;
+  servicePackageName: string;
+  servicePackageActivationId: string;
+  isExclusive: boolean;
+  codePackageName: string;
+  entryPointType: string;
+  imageName: string;
+  containerName: string;
+  hostId: string;
+  exitCode: number;
+  unexpectedTermination: boolean;
+  startTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeAbortedEvent class.
+ * @constructor
+ * Node Aborted event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeId Id of Node.
+ * @member {string} upgradeDomain Upgrade domain of Node.
+ * @member {string} faultDomain Fault domain of Node.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} hostname Name of Host.
+ * @member {boolean} isSeedNode Indicates if it is seed node.
+ * @member {string} nodeVersion Version of Node.
+ */
+export interface NodeAbortedEvent extends NodeEvent {
+  nodeInstance: number;
+  nodeId: string;
+  upgradeDomain: string;
+  faultDomain: string;
+  ipAddressOrFQDN: string;
+  hostname: string;
+  isSeedNode: boolean;
+  nodeVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeAbortingEvent class.
+ * @constructor
+ * Node Aborting event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeId Id of Node.
+ * @member {string} upgradeDomain Upgrade domain of Node.
+ * @member {string} faultDomain Fault domain of Node.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} hostname Name of Host.
+ * @member {boolean} isSeedNode Indicates if it is seed node.
+ * @member {string} nodeVersion Version of Node.
+ */
+export interface NodeAbortingEvent extends NodeEvent {
+  nodeInstance: number;
+  nodeId: string;
+  upgradeDomain: string;
+  faultDomain: string;
+  ipAddressOrFQDN: string;
+  hostname: string;
+  isSeedNode: boolean;
+  nodeVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeAddedEvent class.
+ * @constructor
+ * Node Added event.
+ *
+ * @member {string} nodeId Id of Node.
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeType Type of Node.
+ * @member {string} fabricVersion Fabric version.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} nodeCapacities Capacities.
+ */
+export interface NodeAddedEvent extends NodeEvent {
+  nodeId: string;
+  nodeInstance: number;
+  nodeType: string;
+  fabricVersion: string;
+  ipAddressOrFQDN: string;
+  nodeCapacities: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeCloseEvent class.
+ * @constructor
+ * Node Close event.
+ *
+ * @member {string} nodeId Id of Node.
+ * @member {string} nodeInstance Id of Node instance.
+ * @member {string} error Describes error.
+ */
+export interface NodeCloseEvent extends NodeEvent {
+  nodeId: string;
+  nodeInstance: string;
+  error: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeClosingEvent class.
+ * @constructor
+ * Node Closing event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeId Id of Node.
+ * @member {string} upgradeDomain Upgrade domain of Node.
+ * @member {string} faultDomain Fault domain of Node.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} hostname Name of Host.
+ * @member {boolean} isSeedNode Indicates if it is seed node.
+ * @member {string} nodeVersion Version of Node.
+ */
+export interface NodeClosingEvent extends NodeEvent {
+  nodeInstance: number;
+  nodeId: string;
+  upgradeDomain: string;
+  faultDomain: string;
+  ipAddressOrFQDN: string;
+  hostname: string;
+  isSeedNode: boolean;
+  nodeVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeDeactivateCompleteEvent class.
+ * @constructor
+ * Node Deactivate Complete event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} effectiveDeactivateIntent Describes deactivate intent.
+ * @member {string} batchIdsWithDeactivateIntent Batch Ids.
+ * @member {date} startTime Start time.
+ */
+export interface NodeDeactivateCompleteEvent extends NodeEvent {
+  nodeInstance: number;
+  effectiveDeactivateIntent: string;
+  batchIdsWithDeactivateIntent: string;
+  startTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeDeactivateStartEvent class.
+ * @constructor
+ * Node Deactivate Start event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} batchId Batch Id.
+ * @member {string} deactivateIntent Describes deactivate intent.
+ */
+export interface NodeDeactivateStartEvent extends NodeEvent {
+  nodeInstance: number;
+  batchId: string;
+  deactivateIntent: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeDownEvent class.
+ * @constructor
+ * Node Down event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {date} lastNodeUpAt Time when Node was last up.
+ */
+export interface NodeDownEvent extends NodeEvent {
+  nodeInstance: number;
+  lastNodeUpAt: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeHealthReportCreatedEvent class.
+ * @constructor
+ * Node Health Report Created event.
+ *
+ * @member {number} nodeInstanceId Id of Node instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface NodeHealthReportCreatedEvent extends NodeEvent {
+  nodeInstanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeHealthReportExpiredEvent class.
+ * @constructor
+ * Node Health Report Expired event.
+ *
+ * @member {number} nodeInstanceId Id of Node instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface NodeHealthReportExpiredEvent extends NodeEvent {
+  nodeInstanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeOpenedSuccessEvent class.
+ * @constructor
+ * Node Opened Success event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeId Id of Node.
+ * @member {string} upgradeDomain Upgrade domain of Node.
+ * @member {string} faultDomain Fault domain of Node.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} hostname Name of Host.
+ * @member {boolean} isSeedNode Indicates if it is seed node.
+ * @member {string} nodeVersion Version of Node.
+ */
+export interface NodeOpenedSuccessEvent extends NodeEvent {
+  nodeInstance: number;
+  nodeId: string;
+  upgradeDomain: string;
+  faultDomain: string;
+  ipAddressOrFQDN: string;
+  hostname: string;
+  isSeedNode: boolean;
+  nodeVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeOpenFailedEvent class.
+ * @constructor
+ * Node Open Failed event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeId Id of Node.
+ * @member {string} upgradeDomain Upgrade domain of Node.
+ * @member {string} faultDomain Fault domain of Node.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} hostname Name of Host.
+ * @member {boolean} isSeedNode Indicates if it is seed node.
+ * @member {string} nodeVersion Version of Node.
+ * @member {string} error Describes the error.
+ */
+export interface NodeOpenFailedEvent extends NodeEvent {
+  nodeInstance: number;
+  nodeId: string;
+  upgradeDomain: string;
+  faultDomain: string;
+  ipAddressOrFQDN: string;
+  hostname: string;
+  isSeedNode: boolean;
+  nodeVersion: string;
+  error: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeOpeningEvent class.
+ * @constructor
+ * Node Opening event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeId Id of Node.
+ * @member {string} upgradeDomain Upgrade domain of Node.
+ * @member {string} faultDomain Fault domain of Node.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} hostname Name of Host.
+ * @member {boolean} isSeedNode Indicates if it is seed node.
+ * @member {string} nodeVersion Version of Node.
+ */
+export interface NodeOpeningEvent extends NodeEvent {
+  nodeInstance: number;
+  nodeId: string;
+  upgradeDomain: string;
+  faultDomain: string;
+  ipAddressOrFQDN: string;
+  hostname: string;
+  isSeedNode: boolean;
+  nodeVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeRemovedEvent class.
+ * @constructor
+ * Node Removed event.
+ *
+ * @member {string} nodeId Id of Node.
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {string} nodeType Type of Node.
+ * @member {string} fabricVersion Fabric version.
+ * @member {string} ipAddressOrFQDN IP address or FQDN.
+ * @member {string} nodeCapacities Capacities.
+ */
+export interface NodeRemovedEvent extends NodeEvent {
+  nodeId: string;
+  nodeInstance: number;
+  nodeType: string;
+  fabricVersion: string;
+  ipAddressOrFQDN: string;
+  nodeCapacities: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeUpEvent class.
+ * @constructor
+ * Node Up event.
+ *
+ * @member {number} nodeInstance Id of Node instance.
+ * @member {date} lastNodeDownAt Time when Node was last down.
+ */
+export interface NodeUpEvent extends NodeEvent {
+  nodeInstance: number;
+  lastNodeDownAt: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionHealthReportCreatedEvent class.
+ * @constructor
+ * Partition Health Report Created event.
+ *
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface PartitionHealthReportCreatedEvent extends PartitionEvent {
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionHealthReportExpiredEvent class.
+ * @constructor
+ * Partition Health Report Expired event.
+ *
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface PartitionHealthReportExpiredEvent extends PartitionEvent {
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionReconfigurationCompletedEvent class.
+ * @constructor
+ * Partition Reconfiguration Completed event.
+ *
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} nodeInstanceId Id of Node instance.
+ * @member {string} serviceType Type of Service.
+ * @member {number} ccEpochDataLossVersion CcEpochDataLoss version.
+ * @member {number} ccEpochConfigVersion CcEpochConfig version.
+ * @member {string} reconfigType Type of reconfiguration.
+ * @member {string} result Describes reconfiguration result.
+ * @member {number} phase0DurationMs Duration of Phase0 in milli-seconds.
+ * @member {number} phase1DurationMs Duration of Phase1 in milli-seconds.
+ * @member {number} phase2DurationMs Duration of Phase2 in milli-seconds.
+ * @member {number} phase3DurationMs Duration of Phase3 in milli-seconds.
+ * @member {number} phase4DurationMs Duration of Phase4 in milli-seconds.
+ * @member {number} totalDurationMs Total duration in milli-seconds.
+ */
+export interface PartitionReconfigurationCompletedEvent extends PartitionEvent {
+  nodeName: string;
+  nodeInstanceId: string;
+  serviceType: string;
+  ccEpochDataLossVersion: number;
+  ccEpochConfigVersion: number;
+  reconfigType: string;
+  result: string;
+  phase0DurationMs: number;
+  phase1DurationMs: number;
+  phase2DurationMs: number;
+  phase3DurationMs: number;
+  phase4DurationMs: number;
+  totalDurationMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartitionPrimaryMoveAnalysisEvent class.
+ * @constructor
+ * Partition Primary Move Analysis event.
+ *
+ * @member {date} whenMoveCompleted Time when the move was completed.
+ * @member {string} previousNode The name of a Service Fabric node.
+ * @member {string} currentNode The name of a Service Fabric node.
+ * @member {string} moveReason Move reason.
+ * @member {string} relevantTraces Relevant traces.
+ */
+export interface PartitionPrimaryMoveAnalysisEvent extends PartitionAnalysisEvent {
+  whenMoveCompleted: Date;
+  previousNode: string;
+  currentNode: string;
+  moveReason: string;
+  relevantTraces: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceCreatedEvent class.
+ * @constructor
+ * Service Created event.
+ *
+ * @member {string} serviceTypeName Service type name.
+ * @member {string} applicationName Application name.
+ * @member {string} applicationTypeName Application type name.
+ * @member {number} serviceInstance Id of Service instance.
+ * @member {boolean} isStateful Indicates if Service is stateful.
+ * @member {number} partitionCount Number of partitions.
+ * @member {number} targetReplicaSetSize Size of target replicas set.
+ * @member {number} minReplicaSetSize Minimum size of replicas set.
+ * @member {string} servicePackageVersion Version of Service package.
+ * @member {uuid} partitionId An internal ID used by Service Fabric to uniquely
+ * identify a partition. This is a randomly generated GUID when the service was
+ * created. The partition ID is unique and does not change for the lifetime of
+ * the service. If the same service was deleted and recreated the IDs of its
+ * partitions would be different.
+ */
+export interface ServiceCreatedEvent extends ServiceEvent {
+  serviceTypeName: string;
+  applicationName: string;
+  applicationTypeName: string;
+  serviceInstance: number;
+  isStateful: boolean;
+  partitionCount: number;
+  targetReplicaSetSize: number;
+  minReplicaSetSize: number;
+  servicePackageVersion: string;
+  partitionId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceDeletedEvent class.
+ * @constructor
+ * Service Deleted event.
+ *
+ * @member {string} serviceTypeName Service type name.
+ * @member {string} applicationName Application name.
+ * @member {string} applicationTypeName Application type name.
+ * @member {number} serviceInstance Id of Service instance.
+ * @member {boolean} isStateful Indicates if Service is stateful.
+ * @member {number} partitionCount Number of partitions.
+ * @member {number} targetReplicaSetSize Size of target replicas set.
+ * @member {number} minReplicaSetSize Minimum size of replicas set.
+ * @member {string} servicePackageVersion Version of Service package.
+ */
+export interface ServiceDeletedEvent extends ServiceEvent {
+  serviceTypeName: string;
+  applicationName: string;
+  applicationTypeName: string;
+  serviceInstance: number;
+  isStateful: boolean;
+  partitionCount: number;
+  targetReplicaSetSize: number;
+  minReplicaSetSize: number;
+  servicePackageVersion: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceHealthReportCreatedEvent class.
+ * @constructor
+ * Service Health Report Created event.
+ *
+ * @member {number} instanceId Id of Service instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface ServiceHealthReportCreatedEvent extends ServiceEvent {
+  instanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceHealthReportExpiredEvent class.
+ * @constructor
+ * Service Health Report Expired event.
+ *
+ * @member {number} instanceId Id of Service instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface ServiceHealthReportExpiredEvent extends ServiceEvent {
+  instanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeployedServiceHealthReportCreatedEvent class.
+ * @constructor
+ * Deployed Service Health Report Created event.
+ *
+ * @member {string} serviceManifestName Service manifest name.
+ * @member {number} servicePackageInstanceId Id of Service package instance.
+ * @member {string} servicePackageActivationId Id of Service package
+ * activation.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} tTLTimespan Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface DeployedServiceHealthReportCreatedEvent extends ApplicationEvent {
+  serviceManifestName: string;
+  servicePackageInstanceId: number;
+  servicePackageActivationId: string;
+  nodeName: string;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  tTLTimespan: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeployedServiceHealthReportExpiredEvent class.
+ * @constructor
+ * Deployed Service Health Report Expired event.
+ *
+ * @member {string} serviceManifest Service manifest name.
+ * @member {number} servicePackageInstanceId Id of Service package instance.
+ * @member {string} servicePackageActivationId Id of Service package
+ * activation.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} tTLTimespan Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface DeployedServiceHealthReportExpiredEvent extends ApplicationEvent {
+  serviceManifest: string;
+  servicePackageInstanceId: number;
+  servicePackageActivationId: string;
+  nodeName: string;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  tTLTimespan: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulReplicaHealthReportCreatedEvent class.
+ * @constructor
+ * Stateful Replica Health Report Created event.
+ *
+ * @member {number} replicaInstanceId Id of Replica instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface StatefulReplicaHealthReportCreatedEvent extends ReplicaEvent {
+  replicaInstanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulReplicaHealthReportExpiredEvent class.
+ * @constructor
+ * Stateful Replica Health Report Expired event.
+ *
+ * @member {number} replicaInstanceId Id of Replica instance.
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface StatefulReplicaHealthReportExpiredEvent extends ReplicaEvent {
+  replicaInstanceId: number;
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessReplicaHealthReportCreatedEvent class.
+ * @constructor
+ * Stateless Replica Health Report Created event.
+ *
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface StatelessReplicaHealthReportCreatedEvent extends ReplicaEvent {
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessReplicaHealthReportExpiredEvent class.
+ * @constructor
+ * Stateless Replica Health Report Expired event.
+ *
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface StatelessReplicaHealthReportExpiredEvent extends ReplicaEvent {
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterHealthReportCreatedEvent class.
+ * @constructor
+ * Cluster Health Report Created event.
+ *
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface ClusterHealthReportCreatedEvent extends ClusterEvent {
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterHealthReportExpiredEvent class.
+ * @constructor
+ * Cluster Health Report Expired event.
+ *
+ * @member {string} sourceId Id of report source.
+ * @member {string} property Describes the property.
+ * @member {string} healthState Describes the property health state.
+ * @member {number} timeToLiveMs Time to live in milli-seconds.
+ * @member {number} sequenceNumber Sequence number of report.
+ * @member {string} description Description of report.
+ * @member {boolean} removeWhenExpired Indicates the removal when it expires.
+ * @member {date} sourceUtcTimestamp Source time.
+ */
+export interface ClusterHealthReportExpiredEvent extends ClusterEvent {
+  sourceId: string;
+  property: string;
+  healthState: string;
+  timeToLiveMs: number;
+  sequenceNumber: number;
+  description: string;
+  removeWhenExpired: boolean;
+  sourceUtcTimestamp: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpgradeCompleteEvent class.
+ * @constructor
+ * Cluster Upgrade Complete event.
+ *
+ * @member {string} targetClusterVersion Target Cluster version.
+ * @member {number} overallUpgradeElapsedTimeInMs Overall duration of upgrade
+ * in milli-seconds.
+ */
+export interface ClusterUpgradeCompleteEvent extends ClusterEvent {
+  targetClusterVersion: string;
+  overallUpgradeElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpgradeDomainCompleteEvent class.
+ * @constructor
+ * Cluster Upgrade Domain Complete event.
+ *
+ * @member {string} targetClusterVersion Target Cluster version.
+ * @member {string} upgradeState State of upgrade.
+ * @member {string} upgradeDomains Upgrade domains.
+ * @member {number} upgradeDomainElapsedTimeInMs Duration of domain upgrade in
+ * milli-seconds.
+ */
+export interface ClusterUpgradeDomainCompleteEvent extends ClusterEvent {
+  targetClusterVersion: string;
+  upgradeState: string;
+  upgradeDomains: string;
+  upgradeDomainElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpgradeRollbackCompleteEvent class.
+ * @constructor
+ * Cluster Upgrade Rollback Complete event.
+ *
+ * @member {string} targetClusterVersion Target Cluster version.
+ * @member {string} failureReason Describes failure.
+ * @member {number} overallUpgradeElapsedTimeInMs Overall duration of upgrade
+ * in milli-seconds.
+ */
+export interface ClusterUpgradeRollbackCompleteEvent extends ClusterEvent {
+  targetClusterVersion: string;
+  failureReason: string;
+  overallUpgradeElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpgradeRollbackStartEvent class.
+ * @constructor
+ * Cluster Upgrade Rollback Start event.
+ *
+ * @member {string} targetClusterVersion Target Cluster version.
+ * @member {string} failureReason Describes failure.
+ * @member {number} overallUpgradeElapsedTimeInMs Overall duration of upgrade
+ * in milli-seconds.
+ */
+export interface ClusterUpgradeRollbackStartEvent extends ClusterEvent {
+  targetClusterVersion: string;
+  failureReason: string;
+  overallUpgradeElapsedTimeInMs: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpgradeStartEvent class.
+ * @constructor
+ * Cluster Upgrade Start event.
+ *
+ * @member {string} currentClusterVersion Current Cluster version.
+ * @member {string} targetClusterVersion Target Cluster version.
+ * @member {string} upgradeType Type of upgrade.
+ * @member {string} rollingUpgradeMode Mode of upgrade.
+ * @member {string} failureAction Action if failed.
+ */
+export interface ClusterUpgradeStartEvent extends ClusterEvent {
+  currentClusterVersion: string;
+  targetClusterVersion: string;
+  upgradeType: string;
+  rollingUpgradeMode: string;
+  failureAction: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosStoppedEvent class.
+ * @constructor
+ * Chaos Stopped event.
+ *
+ * @member {string} reason Describes reason.
+ */
+export interface ChaosStoppedEvent extends ClusterEvent {
+  reason: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosStartedEvent class.
+ * @constructor
+ * Chaos Started event.
+ *
+ * @member {number} maxConcurrentFaults Maximum number of concurrent faults.
+ * @member {number} timeToRunInSeconds Time to run in seconds.
+ * @member {number} maxClusterStabilizationTimeoutInSeconds Maximum timeout for
+ * cluster stabilization in seconds.
+ * @member {number} waitTimeBetweenIterationsInSeconds Wait time between
+ * iterations in seconds.
+ * @member {number} waitTimeBetweenFautlsInSeconds Wait time between faults in
+ * seconds.
+ * @member {boolean} moveReplicaFaultEnabled Indicates MoveReplica fault is
+ * enabled.
+ * @member {string} includedNodeTypeList List of included Node types.
+ * @member {string} includedApplicationList List of included Applications.
+ * @member {string} clusterHealthPolicy Health policy.
+ * @member {string} chaosContext Chaos Context.
+ */
+export interface ChaosStartedEvent extends ClusterEvent {
+  maxConcurrentFaults: number;
+  timeToRunInSeconds: number;
+  maxClusterStabilizationTimeoutInSeconds: number;
+  waitTimeBetweenIterationsInSeconds: number;
+  waitTimeBetweenFautlsInSeconds: number;
+  moveReplicaFaultEnabled: boolean;
+  includedNodeTypeList: string;
+  includedApplicationList: string;
+  clusterHealthPolicy: string;
+  chaosContext: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRestartNodeFaultCompletedEvent class.
+ * @constructor
+ * Chaos Restart Node Fault Completed event.
+ *
+ * @member {number} nodeInstanceId Id of Node instance.
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ */
+export interface ChaosRestartNodeFaultCompletedEvent extends NodeEvent {
+  nodeInstanceId: number;
+  faultGroupId: string;
+  faultId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRestartCodePackageFaultScheduledEvent class.
+ * @constructor
+ * Chaos Restart Code Package Fault Scheduled event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} serviceManifestName Service manifest name.
+ * @member {string} codePackageName Code package name.
+ * @member {string} servicePackageActivationId Id of Service package
+ * activation.
+ */
+export interface ChaosRestartCodePackageFaultScheduledEvent extends ApplicationEvent {
+  faultGroupId: string;
+  faultId: string;
+  nodeName: string;
+  serviceManifestName: string;
+  codePackageName: string;
+  servicePackageActivationId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRestartCodePackageFaultCompletedEvent class.
+ * @constructor
+ * Chaos Restart Code Package Fault Completed event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} nodeName The name of a Service Fabric node.
+ * @member {string} serviceManifestName Service manifest name.
+ * @member {string} codePackageName Code package name.
+ * @member {string} servicePackageActivationId Id of Service package
+ * activation.
+ */
+export interface ChaosRestartCodePackageFaultCompletedEvent extends ApplicationEvent {
+  faultGroupId: string;
+  faultId: string;
+  nodeName: string;
+  serviceManifestName: string;
+  codePackageName: string;
+  servicePackageActivationId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRemoveReplicaFaultScheduledEvent class.
+ * @constructor
+ * Chaos Remove Replica Fault Scheduled event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} serviceUri Service name.
+ */
+export interface ChaosRemoveReplicaFaultScheduledEvent extends ReplicaEvent {
+  faultGroupId: string;
+  faultId: string;
+  serviceUri: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRemoveReplicaFaultCompletedEvent class.
+ * @constructor
+ * Chaos Remove Replica Fault Completed event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} serviceUri Service name.
+ */
+export interface ChaosRemoveReplicaFaultCompletedEvent extends ReplicaEvent {
+  faultGroupId: string;
+  faultId: string;
+  serviceUri: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosMoveSecondaryFaultScheduledEvent class.
+ * @constructor
+ * Chaos Move Secondary Fault Scheduled event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} serviceName Service name.
+ * @member {string} sourceNode The name of a Service Fabric node.
+ * @member {string} destinationNode The name of a Service Fabric node.
+ * @member {boolean} forcedMove Indicates a forced move.
+ */
+export interface ChaosMoveSecondaryFaultScheduledEvent extends PartitionEvent {
+  faultGroupId: string;
+  faultId: string;
+  serviceName: string;
+  sourceNode: string;
+  destinationNode: string;
+  forcedMove: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosMovePrimaryFaultScheduledEvent class.
+ * @constructor
+ * Chaos Move Primary Fault Scheduled event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} serviceName Service name.
+ * @member {string} nodeTo The name of a Service Fabric node.
+ * @member {boolean} forcedMove Indicates a forced move.
+ */
+export interface ChaosMovePrimaryFaultScheduledEvent extends PartitionEvent {
+  faultGroupId: string;
+  faultId: string;
+  serviceName: string;
+  nodeTo: string;
+  forcedMove: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRestartReplicaFaultScheduledEvent class.
+ * @constructor
+ * Chaos Restart Replica Fault Scheduled event.
+ *
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ * @member {string} serviceUri Service name.
+ */
+export interface ChaosRestartReplicaFaultScheduledEvent extends ReplicaEvent {
+  faultGroupId: string;
+  faultId: string;
+  serviceUri: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChaosRestartNodeFaultScheduledEvent class.
+ * @constructor
+ * Chaos Restart Node Fault Scheduled event.
+ *
+ * @member {number} nodeInstanceId Id of Node instance.
+ * @member {uuid} faultGroupId Id of fault group.
+ * @member {uuid} faultId Id of fault.
+ */
+export interface ChaosRestartNodeFaultScheduledEvent extends NodeEvent {
+  nodeInstanceId: number;
+  faultGroupId: string;
+  faultId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResourceDescription class.
+ * @constructor
+ * Describes a service fabric service resource.
+ *
+ * @member {string} osType The Operating system type required by the code in
+ * service. Possible values include: 'Linux', 'Windows'
+ * @member {array} codePackages Describes the set of code packages that forms
+ * the service. A code package describes the container and the properties for
+ * running it. All the code packages are started together on the same host and
+ * share the same context (network, process etc.).
+ * @member {array} [networkRefs] The names of the private networks that this
+ * service needs to be part of.
+ * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
+ * References the list of sinks in DiagnosticsDescription.
+ * @member {string} [description] User readable description of the service.
+ * @member {number} [replicaCount] The number of replicas of the service to
+ * create. Defaults to 1 if not specified.
+ * @member {string} [healthState] The health state of a Service Fabric entity
+ * such as Cluster, Node, Application, Service, Partition, Replica etc.
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+ * @member {string} [status] Represents the status of the service. Possible
+ * values include: 'Unknown', 'Active', 'Upgrading', 'Deleting', 'Creating',
+ * 'Failed'
+ * @member {string} name Service resource name.
+ */
+export interface ServiceResourceDescription {
+  osType: string;
+  codePackages: ContainerCodePackageProperties[];
+  networkRefs?: NetworkRef[];
+  diagnostics?: DiagnosticsRef;
+  description?: string;
+  replicaCount?: number;
+  healthState?: string;
+  readonly status?: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticsSinkProperties class.
+ * @constructor
+ * Properties of a DiagnosticsSink.
+ *
+ * @member {string} [name] Name of the sink. This value is referenced by
+ * DiagnosticsReferenceDescription
+ * @member {string} [description] A description of the sink.
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface DiagnosticsSinkProperties {
+  name?: string;
+  description?: string;
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticsDescription class.
+ * @constructor
+ * Describes the diagnostics options available
+ *
+ * @member {array} [sinks] List of supported sinks that can be referenced.
+ * @member {boolean} [enabled] Status of whether or not sinks are enabled.
+ * @member {array} [defaultSinkRefs] The sinks to be used if diagnostics is
+ * enabled. Sink choices can be overridden at the service and code package
+ * level.
+ */
+export interface DiagnosticsDescription {
+  sinks?: DiagnosticsSinkProperties[];
+  enabled?: boolean;
+  defaultSinkRefs?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationResourceDescription class.
+ * @constructor
+ * Describes a service fabric application resource.
+ *
+ * @member {string} [description] User readable description of the application.
+ * @member {string} [debugParams] Internal use.
+ * @member {array} [services] describes the services in the application.
+ * @member {string} [healthState] Describes the health state of an application
+ * resource. Possible values include: 'Invalid', 'Ok', 'Warning', 'Error',
+ * 'Unknown'
+ * @member {string} [unhealthyEvaluation] When the application's health state
+ * is not 'Ok', this additional details from service fabric Health Manager for
+ * the user to know why the application is marked unhealthy.
+ * @member {string} [status] Status of the application resource. Possible
+ * values include: 'Invalid', 'Ready', 'Upgrading', 'Creating', 'Deleting',
+ * 'Failed'
+ * @member {string} [statusDetails] Gives additional information about the
+ * current status of the application deployment.
+ * @member {array} [serviceNames] Names of the services in the application.
+ * @member {object} [diagnostics] Describes the diagnostics definition and
+ * usage for an application resource.
+ * @member {array} [diagnostics.sinks] List of supported sinks that can be
+ * referenced.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.defaultSinkRefs] The sinks to be used if
+ * diagnostics is enabled. Sink choices can be overridden at the service and
+ * code package level.
+ * @member {string} name Application resource name.
+ */
+export interface ApplicationResourceDescription {
+  description?: string;
+  debugParams?: string;
+  services?: ServiceResourceDescription[];
+  readonly healthState?: string;
+  readonly unhealthyEvaluation?: string;
+  readonly status?: string;
+  readonly statusDetails?: string;
+  readonly serviceNames?: string[];
+  diagnostics?: DiagnosticsDescription;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedServiceResourceDescriptionList class.
+ * @constructor
+ * The list of service resources in the cluster. The list is paged when all of
+ * the results cannot fit in a single message. The next set of results can be
+ * obtained by executing the same query with the continuation token provided in
+ * this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of service resource description.
+ */
+export interface PagedServiceResourceDescriptionList {
+  continuationToken?: string;
+  items?: ServiceResourceDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceReplicaProperties class.
+ * @constructor
+ * Describes the properties of a service replica.
+ *
+ * @member {string} osType The Operating system type required by the code in
+ * service. Possible values include: 'Linux', 'Windows'
+ * @member {array} codePackages Describes the set of code packages that forms
+ * the service. A code package describes the container and the properties for
+ * running it. All the code packages are started together on the same host and
+ * share the same context (network, process etc.).
+ * @member {array} [networkRefs] The names of the private networks that this
+ * service needs to be part of.
+ * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
+ * References the list of sinks in DiagnosticsDescription.
+ */
+export interface ServiceReplicaProperties {
+  osType: string;
+  codePackages: ContainerCodePackageProperties[];
+  networkRefs?: NetworkRef[];
+  diagnostics?: DiagnosticsRef;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceResourceReplicaDescription class.
+ * @constructor
+ * Describes a replica of a service resource.
+ *
+ * @member {string} replicaName Name of the replica.
+ */
+export interface ServiceResourceReplicaDescription extends ServiceReplicaProperties {
+  replicaName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PagedServiceResourceReplicaDescriptionList class.
+ * @constructor
+ * The list of service resources in the cluster. The list is paged when all of
+ * the results cannot fit in a single message. The next set of results can be
+ * obtained by executing the same query with the continuation token provided in
+ * this list.
+ *
+ * @member {string} [continuationToken] The continuation token parameter is
+ * used to obtain next set of results. The continuation token is included in
+ * the response of the API when the results from the system do not fit in a
+ * single response. When this value is passed to the next API call, the API
+ * returns next set of results. If there are no further results, then the
+ * continuation token is not included in the response.
+ * @member {array} [items] List of service resource description.
+ */
+export interface PagedServiceResourceReplicaDescriptionList {
+  continuationToken?: string;
+  items?: ServiceResourceReplicaDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VolumeProviderParametersAzureFile class.
+ * @constructor
+ * This type describes a volume provided by an Azure Files file share.
+ *
+ * @member {string} accountName Name of the Azure storage account for the File
+ * Share.
+ * @member {string} [accountKey] Access key of the Azure storage account for
+ * the File Share.
+ * @member {string} shareName Name of the Azure Files file share that provides
+ * storage for the volume.
+ */
+export interface VolumeProviderParametersAzureFile {
+  accountName: string;
+  accountKey?: string;
+  shareName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VolumeResourceDescription class.
+ * @constructor
+ * Describes a service fabric volume resource.
+ *
+ * @member {string} [description] User readable description of the volume.
+ * @member {object} [azureFileParameters] This type describes a volume provided
+ * by an Azure Files file share.
+ * @member {string} [azureFileParameters.accountName] Name of the Azure storage
+ * account for the File Share.
+ * @member {string} [azureFileParameters.accountKey] Access key of the Azure
+ * storage account for the File Share.
+ * @member {string} [azureFileParameters.shareName] Name of the Azure Files
+ * file share that provides storage for the volume.
+ * @member {string} name Volume resource name.
+ */
+export interface VolumeResourceDescription {
+  description?: string;
+  azureFileParameters?: VolumeProviderParametersAzureFile;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageRegistryCredential class.
+ * @constructor
+ * Image registry credential.
+ *
+ * @member {string} server Docker image registry server, without protocol such
+ * as `http` and `https`.
+ * @member {string} username The username for the private registry.
+ * @member {string} [password] The password for the private registry.
+ */
+export interface ImageRegistryCredential {
+  server: string;
+  username: string;
+  password?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnvironmentVariable class.
+ * @constructor
+ * Describes an environment variable for the container.
+ *
+ * @member {string} [name] The name of the environment variable.
+ * @member {string} [value] The value of the environment variable.
+ */
+export interface EnvironmentVariable {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Setting class.
+ * @constructor
+ * Describes a setting for the container.
+ *
+ * @member {string} [name] The name of the setting.
+ * @member {string} [value] The value of the setting.
+ */
+export interface Setting {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerLabel class.
+ * @constructor
+ * Describes a container label.
+ *
+ * @member {string} name The name of the container label.
+ * @member {string} value The value of the container label.
+ */
+export interface ContainerLabel {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointProperties class.
+ * @constructor
+ * Describes a container endpoint.
+ *
+ * @member {string} name The name of the endpoint.
+ * @member {number} [port] Port used by the container.
+ */
+export interface EndpointProperties {
+  name: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRequests class.
+ * @constructor
+ * This type describes the requested resources for a given container. It
+ * describes the least amount of resources required for the container. A
+ * container can consume more than requested resources up to the specified
+ * limits before being restarted. Currently, the requested resources are
+ * treated as limits.
+ *
+ * @member {number} memoryInGB The memory request in GB for this container.
+ * @member {number} cpu Requested number of CPU cores. At present, only full
+ * cores are supported.
+ */
+export interface ResourceRequests {
+  memoryInGB: number;
+  cpu: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceLimits class.
+ * @constructor
+ * This type describes the resource limits for a given container. It describes
+ * the most amount of resources a container is allowed to use before being
+ * restarted.
+ *
+ * @member {number} [memoryInGB] The memory limit in GB.
+ * @member {number} [cpu] CPU limits in cores. At present, only full cores are
+ * supported.
+ */
+export interface ResourceLimits {
+  memoryInGB?: number;
+  cpu?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRequirements class.
+ * @constructor
+ * This type describes the resource requirements for a container or a service.
+ *
+ * @member {object} requests Describes the requested resources for a given
+ * container.
+ * @member {number} [requests.memoryInGB] The memory request in GB for this
+ * container.
+ * @member {number} [requests.cpu] Requested number of CPU cores. At present,
+ * only full cores are supported.
+ * @member {object} [limits] Describes the maximum limits on the resources for
+ * a given container.
+ * @member {number} [limits.memoryInGB] The memory limit in GB.
+ * @member {number} [limits.cpu] CPU limits in cores. At present, only full
+ * cores are supported.
+ */
+export interface ResourceRequirements {
+  requests: ResourceRequests;
+  limits?: ResourceLimits;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerVolume class.
+ * @constructor
+ * Describes how a volume is attached to a container.
+ *
+ * @member {string} name Name of the volume.
+ * @member {boolean} [readOnly] The flag indicating whether the volume is read
+ * only. Default is 'false'.
+ * @member {string} destinationPath The path within the container at which the
+ * volume should be mounted. Only valid path characters are allowed.
+ */
+export interface ContainerVolume {
+  name: string;
+  readOnly?: boolean;
+  destinationPath: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerState class.
+ * @constructor
+ * The container state.
+ *
+ * @member {string} [state] The state of this container
+ * @member {date} [startTime] Date/time when the container state started.
+ * @member {string} [exitCode] The container exit code.
+ * @member {date} [finishTime] Date/time when the container state finished.
+ * @member {string} [detailStatus] Human-readable status of this state.
+ */
+export interface ContainerState {
+  state?: string;
+  startTime?: Date;
+  exitCode?: string;
+  finishTime?: Date;
+  detailStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerEvent class.
+ * @constructor
+ * A container event.
+ *
+ * @member {string} [name] The name of the container event.
+ * @member {number} [count] The count of the event.
+ * @member {string} [firstTimestamp] Date/time of the first event.
+ * @member {string} [lastTimestamp] Date/time of the last event.
+ * @member {string} [message] The event message
+ * @member {string} [type] The event type.
+ */
+export interface ContainerEvent {
+  name?: string;
+  count?: number;
+  firstTimestamp?: string;
+  lastTimestamp?: string;
+  message?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerInstanceView class.
+ * @constructor
+ * Runtime information of a container instance.
+ *
+ * @member {number} [restartCount] The number of times the container has been
+ * restarted.
+ * @member {object} [currentState] Current container instance state.
+ * @member {string} [currentState.state] The state of this container
+ * @member {date} [currentState.startTime] Date/time when the container state
+ * started.
+ * @member {string} [currentState.exitCode] The container exit code.
+ * @member {date} [currentState.finishTime] Date/time when the container state
+ * finished.
+ * @member {string} [currentState.detailStatus] Human-readable status of this
+ * state.
+ * @member {object} [previousState] Previous container instance state.
+ * @member {string} [previousState.state] The state of this container
+ * @member {date} [previousState.startTime] Date/time when the container state
+ * started.
+ * @member {string} [previousState.exitCode] The container exit code.
+ * @member {date} [previousState.finishTime] Date/time when the container state
+ * finished.
+ * @member {string} [previousState.detailStatus] Human-readable status of this
+ * state.
+ * @member {array} [events] The events of this container instance.
+ */
+export interface ContainerInstanceView {
+  restartCount?: number;
+  currentState?: ContainerState;
+  previousState?: ContainerState;
+  events?: ContainerEvent[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticsRef class.
+ * @constructor
+ * Reference to sinks in DiagnosticsDescription.
+ *
+ * @member {boolean} [enabled] Status of whether or not sinks are enabled.
+ * @member {array} [sinkRefs] List of sinks to be used if enabled. References
+ * the list of sinks in DiagnosticsDescription.
+ */
+export interface DiagnosticsRef {
+  enabled?: boolean;
+  sinkRefs?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerCodePackageProperties class.
+ * @constructor
+ * Describes a container and its runtime properties.
+ *
+ * @member {string} name The name of the code package.
+ * @member {string} image The Container image to use.
+ * @member {object} [imageRegistryCredential] Image registry credential.
+ * @member {string} [imageRegistryCredential.server] Docker image registry
+ * server, without protocol such as `http` and `https`.
+ * @member {string} [imageRegistryCredential.username] The username for the
+ * private registry.
+ * @member {string} [imageRegistryCredential.password] The password for the
+ * private registry.
+ * @member {string} [entrypoint] Override for the default entry point in the
+ * container.
+ * @member {array} [commands] Command array to execute within the container in
+ * exec form.
+ * @member {array} [environmentVariables] The environment variables to set in
+ * this container
+ * @member {array} [settings] The settings to set in this container. The
+ * setting file path can be fetched from environment variable
+ * "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The
+ * path for Linux container is "/var/secrets".
+ * @member {array} [labels] The labels to set in this container.
+ * @member {array} [endpoints] The endpoints exposed by this container.
+ * @member {object} resources This type describes the resource requirements for
+ * a container or a service.
+ * @member {object} [resources.requests] Describes the requested resources for
+ * a given container.
+ * @member {number} [resources.requests.memoryInGB] The memory request in GB
+ * for this container.
+ * @member {number} [resources.requests.cpu] Requested number of CPU cores. At
+ * present, only full cores are supported.
+ * @member {object} [resources.limits] Describes the maximum limits on the
+ * resources for a given container.
+ * @member {number} [resources.limits.memoryInGB] The memory limit in GB.
+ * @member {number} [resources.limits.cpu] CPU limits in cores. At present,
+ * only full cores are supported.
+ * @member {array} [volumeRefs] The volumes to be attached to the container.
+ * @member {object} [instanceView] Runtime information of a container instance.
+ * @member {number} [instanceView.restartCount] The number of times the
+ * container has been restarted.
+ * @member {object} [instanceView.currentState] Current container instance
+ * state.
+ * @member {string} [instanceView.currentState.state] The state of this
+ * container
+ * @member {date} [instanceView.currentState.startTime] Date/time when the
+ * container state started.
+ * @member {string} [instanceView.currentState.exitCode] The container exit
+ * code.
+ * @member {date} [instanceView.currentState.finishTime] Date/time when the
+ * container state finished.
+ * @member {string} [instanceView.currentState.detailStatus] Human-readable
+ * status of this state.
+ * @member {object} [instanceView.previousState] Previous container instance
+ * state.
+ * @member {string} [instanceView.previousState.state] The state of this
+ * container
+ * @member {date} [instanceView.previousState.startTime] Date/time when the
+ * container state started.
+ * @member {string} [instanceView.previousState.exitCode] The container exit
+ * code.
+ * @member {date} [instanceView.previousState.finishTime] Date/time when the
+ * container state finished.
+ * @member {string} [instanceView.previousState.detailStatus] Human-readable
+ * status of this state.
+ * @member {array} [instanceView.events] The events of this container instance.
+ * @member {object} [diagnostics] Reference to sinks in DiagnosticsDescription.
+ * @member {boolean} [diagnostics.enabled] Status of whether or not sinks are
+ * enabled.
+ * @member {array} [diagnostics.sinkRefs] List of sinks to be used if enabled.
+ * References the list of sinks in DiagnosticsDescription.
+ */
+export interface ContainerCodePackageProperties {
+  name: string;
+  image: string;
+  imageRegistryCredential?: ImageRegistryCredential;
+  entrypoint?: string;
+  commands?: string[];
+  environmentVariables?: EnvironmentVariable[];
+  settings?: Setting[];
+  labels?: ContainerLabel[];
+  endpoints?: EndpointProperties[];
+  resources: ResourceRequirements;
+  volumeRefs?: ContainerVolume[];
+  readonly instanceView?: ContainerInstanceView;
+  diagnostics?: DiagnosticsRef;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkRef class.
+ * @constructor
+ * Describes a network reference in a service.
+ *
+ * @member {string} [name] Name of the network.
+ */
+export interface NetworkRef {
+  name?: string;
 }
