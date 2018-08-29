@@ -69,20 +69,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * ARM tracked resource
- *
- * @member {string} [location] The location of the resource.
- * @member {object} [tags] The tags of the resource.
- */
-export interface TrackedResource extends Resource {
-  location?: string;
-  tags?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the SubscriptionState class.
  * @constructor
  * Subscription State object.
@@ -156,6 +142,25 @@ export interface CloudEndpoint extends BaseResource {
   provisioningState?: string;
   lastWorkflowId?: string;
   lastOperationName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerEndpointUpdateParameters class.
+ * @constructor
+ * Parameters for updating an Server Endpoint.
+ *
+ * @member {object} [tags] The user-specified tags associated with the server
+ * endpoint.
+ * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * 'on', 'off'
+ * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * maintained by Cloud Tiering if it is enabled.
+ */
+export interface ServerEndpointUpdateParameters {
+  tags?: { [propertyName: string]: string };
+  cloudTiering?: string;
+  volumeFreeSpacePercent?: number;
 }
 
 /**
@@ -477,6 +482,35 @@ export interface PostBackupResponse {
  */
 export interface WorkflowArray {
   value?: Workflow[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSyncServiceUpdateParameters class.
+ * @constructor
+ * Parameters for updating an Storage sync service.
+ *
+ * @member {object} [tags] The user-specified tags associated with the storage
+ * sync service.
+ * @member {object} [properties] The properties of the storage sync service.
+ */
+export interface StorageSyncServiceUpdateParameters {
+  tags?: { [propertyName: string]: string };
+  properties?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} location The geo-location where the resource lives
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
+  location: string;
 }
 
 
