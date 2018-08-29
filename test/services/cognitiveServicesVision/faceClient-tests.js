@@ -20,7 +20,7 @@ const should = require('should');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const FaceAPIClient = require('../../../lib/services/face/lib/faceAPIClient');
+const FaceAPIClient = require('../../../lib/services/cognitiveServicesFace/lib/faceClient');
 const fs = require('fs');
 
 let requiredEnvironment = [
@@ -57,7 +57,7 @@ describe('Face', () => {
   describe('Analyze face image.', () => {
     it('should detect face is female"', (done) => {
       let fileStream = fs.createReadStream('test/services/cognitiveServicesVision/facefindsimilar.queryface.jpg');
-      client.face.detectInStream(fileStream, {
+      client.face.detectWithStream(fileStream, {
         returnFaceId: true,
         returnFaceAttributes: ["age", "gender", "headPose", "smile", "facialHair", "glasses", "emotion",
           "hair", "makeup", "occlusion", "accessories", "exposure", "noise"]
