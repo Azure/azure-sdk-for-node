@@ -3981,7 +3981,7 @@ export interface InboundNatPool extends SubResource {
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
- * @member {array} [frontendIPConfigurations] The Frontend IP addresses of the
+ * @member {array} frontendIPConfigurations The Frontend IP addresses of the
  * load balancer.
  * @member {object} backendAddressPool A reference to a pool of DIPs. Outbound
  * traffic is randomly load balanced across IPs in the backend IPs.
@@ -3989,7 +3989,7 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * @member {string} protocol Protocol - TCP, UDP or All. Possible values
  * include: 'Tcp', 'Udp', 'All'
  * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
@@ -4003,10 +4003,10 @@ export interface InboundNatPool extends SubResource {
  */
 export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
-  frontendIPConfigurations?: SubResource[];
+  frontendIPConfigurations: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
-  protocol?: string;
+  protocol: string;
   enableTcpReset?: boolean;
   idleTimeoutInMinutes?: number;
   name?: string;
@@ -7266,8 +7266,8 @@ export interface DeviceProperties {
  * @constructor
  * VpnSite Resource.
  *
- * @member {object} [virtualWAN] The VirtualWAN to which the vpnSite belongs
- * @member {string} [virtualWAN.id] Resource ID.
+ * @member {object} [virtualWan] The VirtualWAN to which the vpnSite belongs
+ * @member {string} [virtualWan.id] Resource ID.
  * @member {object} [deviceProperties] The device properties
  * @member {string} [deviceProperties.deviceVendor] Name of the device Vendor.
  * @member {string} [deviceProperties.deviceModel] Model of the device.
@@ -7292,7 +7292,7 @@ export interface DeviceProperties {
  * the resource is updated.
  */
 export interface VpnSite extends Resource {
-  virtualWAN?: SubResource;
+  virtualWan?: SubResource;
   deviceProperties?: DeviceProperties;
   ipAddress?: string;
   siteKey?: string;
@@ -7315,7 +7315,7 @@ export interface VpnSite extends Resource {
  * configurations for vpn-sites
  */
 export interface GetVpnSitesConfigurationRequest {
-  vpnSites?: SubResource[];
+  vpnSites?: string[];
   outputBlobSasUrl?: string;
 }
 
@@ -7335,15 +7335,18 @@ export interface GetVpnSitesConfigurationRequest {
  * @member {boolean} [enableInternetSecurity] Enable internet security
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
-export interface HubVirtualNetworkConnection extends Resource {
+export interface HubVirtualNetworkConnection extends SubResource {
   remoteVirtualNetwork?: SubResource;
   allowHubToRemoteVnetTransit?: boolean;
   allowRemoteVnetToUseHubVnetGateways?: boolean;
   enableInternetSecurity?: boolean;
   provisioningState?: string;
+  name?: string;
   readonly etag?: string;
 }
 
@@ -7425,23 +7428,26 @@ export interface VirtualHub extends Resource {
  * @member {boolean} [enableInternetSecurity] Enable internet security
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
-export interface VpnConnection extends Resource {
+export interface VpnConnection extends SubResource {
   remoteVpnSite?: SubResource;
   routingWeight?: number;
   connectionStatus?: string;
   connectionProtocol?: string;
   readonly ingressBytesTransferred?: number;
   readonly egressBytesTransferred?: number;
-  readonly connectionBandwidth?: number;
+  connectionBandwidth?: number;
   sharedKey?: string;
   enableBgp?: boolean;
   ipsecPolicies?: IpsecPolicy[];
   enableRateLimiting?: boolean;
   enableInternetSecurity?: boolean;
   provisioningState?: string;
+  name?: string;
   readonly etag?: string;
 }
 
@@ -7547,12 +7553,6 @@ export interface VpnClientConnectionHealth {
  *
  * @member {object} [virtualHub] The VirtualHub to which the gateway belongs
  * @member {string} [virtualHub.id] Resource ID.
- * @member {object} [bgpSettings] Local network gateway's BGP speaker settings.
- * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
- * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
- * BGP identifier of this BGP speaker.
- * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
- * from this BGP speaker.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {number} [vpnGatewayScaleUnit] The scale unit for this p2s vpn
@@ -7571,7 +7571,6 @@ export interface VpnClientConnectionHealth {
  */
 export interface P2SVpnGateway extends Resource {
   virtualHub?: SubResource;
-  bgpSettings?: BgpSettings;
   provisioningState?: string;
   vpnGatewayScaleUnit?: number;
   p2sVpnServerConfiguration?: SubResource;

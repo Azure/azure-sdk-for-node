@@ -34857,10 +34857,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -34932,10 +34932,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -35259,10 +35259,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -35334,10 +35334,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -37705,6 +37705,9 @@ export interface VpnConnections {
      * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
      * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
      *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -37722,11 +37725,11 @@ export interface VpnConnections {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37769,6 +37772,9 @@ export interface VpnConnections {
      * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
      * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
      *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -37786,11 +37792,11 @@ export interface VpnConnections {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37974,6 +37980,9 @@ export interface VpnConnections {
      * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
      * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
      *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -37991,11 +38000,11 @@ export interface VpnConnections {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38038,6 +38047,9 @@ export interface VpnConnections {
      * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
      * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
      *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -38055,11 +38067,11 @@ export interface VpnConnections {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38921,18 +38933,6 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {object} [p2sVpnGatewayParameters.bgpSettings] Local network
-     * gateway's BGP speaker settings.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.asn] The BGP speaker's
-     * ASN.
-     *
-     * @param {string} [p2sVpnGatewayParameters.bgpSettings.bgpPeeringAddress] The
-     * BGP peering address and BGP identifier of this BGP speaker.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.peerWeight] The weight
-     * added to routes learned from this BGP speaker.
-     *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -38987,18 +38987,6 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
-     *
-     * @param {object} [p2sVpnGatewayParameters.bgpSettings] Local network
-     * gateway's BGP speaker settings.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.asn] The BGP speaker's
-     * ASN.
-     *
-     * @param {string} [p2sVpnGatewayParameters.bgpSettings.bgpPeeringAddress] The
-     * BGP peering address and BGP identifier of this BGP speaker.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.peerWeight] The weight
-     * added to routes learned from this BGP speaker.
      *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -39390,18 +39378,6 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {object} [p2sVpnGatewayParameters.bgpSettings] Local network
-     * gateway's BGP speaker settings.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.asn] The BGP speaker's
-     * ASN.
-     *
-     * @param {string} [p2sVpnGatewayParameters.bgpSettings.bgpPeeringAddress] The
-     * BGP peering address and BGP identifier of this BGP speaker.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.peerWeight] The weight
-     * added to routes learned from this BGP speaker.
-     *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -39456,18 +39432,6 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
-     *
-     * @param {object} [p2sVpnGatewayParameters.bgpSettings] Local network
-     * gateway's BGP speaker settings.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.asn] The BGP speaker's
-     * ASN.
-     *
-     * @param {string} [p2sVpnGatewayParameters.bgpSettings.bgpPeeringAddress] The
-     * BGP peering address and BGP identifier of this BGP speaker.
-     *
-     * @param {number} [p2sVpnGatewayParameters.bgpSettings.peerWeight] The weight
-     * added to routes learned from this BGP speaker.
      *
      * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
