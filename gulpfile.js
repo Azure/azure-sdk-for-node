@@ -44,6 +44,10 @@ function npmInstall(packageFolderPath) {
 }
 
 gulp.task('default', function () {
+  console.log('gulp install --package <package name>');
+  console.log('  --package');
+  console.log('    NPM package to run "npm install" on.');
+  console.log();
   console.log('gulp codegen [--azure-rest-api-specs-root <azure-rest-api-specs root>] [--use <autorest.nodejs root>] [--package <package name>]');
   console.log('  --azure-rest-api-specs-root');
   console.log('    Root location of the local clone of the azure-rest-api-specs-root repository.');
@@ -57,11 +61,41 @@ gulp.task('default', function () {
   console.log('    The name of the package to publish. If no package is specified, then all packages will be published.');
 });
 
+gulp.task("install", function () {
+  if (!package) {
+    console.log(`No --package specified to run "npm install" on.`);
+  } else {
+    const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
+
+    let foundPackage = false;
+
+    for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
+      const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
+
+      const nodejsReadmeFileContents = fs.readFileSync(nodejsReadmeFilePath, 'utf8');
+      const packageName = getPackageNameFromReadmeNodejsMdFileContents(nodejsReadmeFileContents);
+
+      if (package === packageName || packageName.endsWith(`-${package}`)) {
+        foundPackage = true;
+
+        const outputFolderPath = getOutputFolderFromReadmeNodeJsMdFileContents(nodejsReadmeFileContents);
+        const outputFolderPathRelativeToAzureSDKForNodeRepoRoot = outputFolderPath.substring('$(node-sdks-folder)/'.length);
+        const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, outputFolderPathRelativeToAzureSDKForNodeRepoRoot);
+        console.log(`[${packageFolderPath}]> npm install`);
+        npmInstall(packageFolderPath);
+      }
+    }
+
+    if (!foundPackage) {
+      console.log(`No package found with the name "${package}".`);
+    }
+  }
+});
+
 //This task is used to generate libraries based on the mappings specified above.
-gulp.task('codegen', function (cb) {
+gulp.task('codegen', function () {
   const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
 
-  let packageName;
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
 

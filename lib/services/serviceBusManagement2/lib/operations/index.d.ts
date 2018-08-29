@@ -2206,6 +2206,547 @@ export interface DisasterRecoveryConfigs {
 
 /**
  * @class
+ * MigrationConfigs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceBusManagementClient.
+ */
+export interface MigrationConfigs {
+
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigListResult>>;
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigListResult>;
+    list(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+    list(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+
+
+    /**
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
+     *
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
+     *
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createAndStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+
+    /**
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
+     *
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
+     *
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigProperties} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    createAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    createAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+
+
+    /**
+     * Deletes a MigrationConfiguration
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a MigrationConfiguration
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves Migration Config
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+
+    /**
+     * Retrieves Migration Config
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigProperties} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+
+
+    /**
+     * This operation Completes Migration of entities by pointing the connection
+     * strings to Premium namespace and any enties created after the operation will
+     * be under Premium Namespace. CompleteMigration operation will fail when
+     * entity migration is in-progress.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    completeMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * This operation Completes Migration of entities by pointing the connection
+     * strings to Premium namespace and any enties created after the operation will
+     * be under Premium Namespace. CompleteMigration operation will fail when
+     * entity migration is in-progress.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    completeMigration(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    completeMigration(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    completeMigration(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * This operation reverts Migration
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    revertWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * This operation reverts Migration
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revert(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revert(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    revert(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
+     *
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
+     *
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateAndStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+
+    /**
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
+     *
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
+     *
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigProperties} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    beginCreateAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    beginCreateAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigListResult>>;
+
+    /**
+     * Gets all migrationConfigurations
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigListResult>): void;
+}
+
+/**
+ * @class
  * Queues
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceBusManagementClient.
@@ -2223,6 +2764,14 @@ export interface Queues {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2232,7 +2781,7 @@ export interface Queues {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueueListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueueListResult>>;
 
     /**
      * Gets the queues within a namespace.
@@ -2243,6 +2792,14 @@ export interface Queues {
      * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2269,9 +2826,9 @@ export interface Queues {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueueListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueueListResult>;
     listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBQueueListResult>): void;
-    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueueListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueueListResult>): void;
 
 
     /**
@@ -3156,6 +3713,14 @@ export interface Topics {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3165,7 +3730,7 @@ export interface Topics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopicListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopicListResult>>;
 
     /**
      * Gets all the topics in a namespace.
@@ -3176,6 +3741,14 @@ export interface Topics {
      * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3202,9 +3775,9 @@ export interface Topics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopicListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopicListResult>;
     listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBTopicListResult>): void;
-    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopicListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopicListResult>): void;
 
 
     /**
@@ -4055,6 +4628,14 @@ export interface Subscriptions {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4064,7 +4645,7 @@ export interface Subscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByTopicWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscriptionListResult>>;
+    listByTopicWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscriptionListResult>>;
 
     /**
      * List all the subscriptions under a specified topic.
@@ -4077,6 +4658,14 @@ export interface Subscriptions {
      * @param {string} topicName The topic name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4104,9 +4693,9 @@ export interface Subscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscriptionListResult>;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscriptionListResult>;
     listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
-    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
 
 
     /**
@@ -4488,6 +5077,14 @@ export interface Rules {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4497,7 +5094,7 @@ export interface Rules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionsWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuleListResult>>;
+    listBySubscriptionsWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuleListResult>>;
 
     /**
      * List all the rules within given topic-subscription
@@ -4512,6 +5109,14 @@ export interface Rules {
      * @param {string} subscriptionName The subscription name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4538,9 +5143,9 @@ export interface Rules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RuleListResult>;
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RuleListResult>;
     listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, callback: ServiceCallback<models.RuleListResult>): void;
-    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuleListResult>): void;
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuleListResult>): void;
 
 
     /**

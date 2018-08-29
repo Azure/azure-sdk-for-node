@@ -18612,9 +18612,15 @@ export interface DatabaseVulnerabilityAssessments {
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} parameters.storageContainerSasKey A shared access signature
-     * (SAS Key) that has write access to the blob container specified in
-     * 'storageContainerPath' parameter.
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the vulnerability assessment storage account. If
+     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+     * required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -18659,9 +18665,15 @@ export interface DatabaseVulnerabilityAssessments {
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} parameters.storageContainerSasKey A shared access signature
-     * (SAS Key) that has write access to the blob container specified in
-     * 'storageContainerPath' parameter.
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the vulnerability assessment storage account. If
+     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+     * required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -25085,6 +25097,88 @@ export interface SensitivityLabels {
 
 
     /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} sensitivityLabelSource Optional source of the sensitivity
+     * label. Valid values are current or recommeneded. In not specified both
+     * returned. Possible values include: 'current', 'recommended'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithSourceWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} sensitivityLabelSource Optional source of the sensitivity
+     * label. Valid values are current or recommeneded. In not specified both
+     * returned. Possible values include: 'current', 'recommended'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseWithSource(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listByDatabaseWithSource(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listByDatabaseWithSource(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
      * Gets the sensitivity label of a given column
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -25394,6 +25488,64 @@ export interface SensitivityLabels {
     listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
     listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
     listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithSourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseWithSourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listByDatabaseWithSourceNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listByDatabaseWithSourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
 }
 
 /**
