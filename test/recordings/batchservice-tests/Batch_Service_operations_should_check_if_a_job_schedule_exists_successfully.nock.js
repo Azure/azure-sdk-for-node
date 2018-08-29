@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .head('/jobschedules/NodeSDKTestSchedule?api-version=2018-03-01.6.1')
+  .head('/jobschedules/NodeSDKTestSchedule?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:24 GMT',
-  etag: '0x8D5861508E222CC',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:03 GMT',
+  etag: '0x8D607A503E9DDB3',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '776a0818-bff4-4397-9b30-1ccc50c998ad',
+  'request-id': '04390025-2fe6-44de-a4f6-2de4912d0575',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .head('/jobschedules/NodeSDKTestSchedule?api-version=2018-03-01.6.1')
+  .head('/jobschedules/NodeSDKTestSchedule?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:24 GMT',
-  etag: '0x8D5861508E222CC',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:03 GMT',
+  etag: '0x8D607A503E9DDB3',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '776a0818-bff4-4397-9b30-1ccc50c998ad',
+  'request-id': '04390025-2fe6-44de-a4f6-2de4912d0575',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:25:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:04 GMT',
   connection: 'close' });
  return result; }]];

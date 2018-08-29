@@ -1,0 +1,24 @@
+{
+  "name": "azure-cognitiveservices-luis-runtime",
+  "author": "Microsoft Corporation",
+  "description": "LUISRuntimeClient Library with typescript type definitions for node",
+  "version": "1.0.0",
+  "dependencies": {
+    "ms-rest": "^2.3.3"
+  },
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "license": "MIT",
+  "main": "./lib/lUISRuntimeClient.js",
+  "types": "./lib/lUISRuntimeClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/luis/runtime",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
+  }
+}
