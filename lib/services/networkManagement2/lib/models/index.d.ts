@@ -90,6 +90,8 @@ export interface BackendAddressPool extends SubResource {
  * configuration.
  * @member {string} [backendIPConfiguration.subnet.addressPrefix] The address
  * prefix for the subnet.
+ * @member {array} [backendIPConfiguration.subnet.addressPrefixes] List of
+ * address prefixes for the subnet.
  * @member {object} [backendIPConfiguration.subnet.networkSecurityGroup] The
  * reference of the NetworkSecurityGroup resource.
  * @member {array}
@@ -176,6 +178,9 @@ export interface BackendAddressPool extends SubResource {
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
  * The address prefix for the subnet.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
+ * List of  address prefixes for the subnet.
  * @member {object}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
@@ -796,6 +801,8 @@ export interface IpTag {
  * resource.
  * @member {string} [ipConfiguration.subnet.addressPrefix] The address prefix
  * for the subnet.
+ * @member {array} [ipConfiguration.subnet.addressPrefixes] List of  address
+ * prefixes for the subnet.
  * @member {object} [ipConfiguration.subnet.networkSecurityGroup] The reference
  * of the NetworkSecurityGroup resource.
  * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
@@ -919,6 +926,8 @@ export interface PublicIPAddress extends Resource {
  * 'Static', 'Dynamic'
  * @member {object} [subnet] The reference of the subnet resource.
  * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
  * @member {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
  * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
@@ -1054,15 +1063,21 @@ export interface ResourceNavigationLink extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the ServiceDelegationPropertiesFormat class.
+ * Initializes a new instance of the Delegation class.
  * @constructor
- * Properties of a service delegation.
+ * Details the service to which the subnet is delegated.
  *
  * @member {string} [serviceName] The name of the service to whom the subnet
  * should be delegated (e.g. Microsoft.Sql/servers)
+ * @member {string} [name] The name of the resource that is unique within a
+ * subnet. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
  */
-export interface ServiceDelegationPropertiesFormat {
+export interface Delegation {
   serviceName?: string;
+  name?: string;
+  etag?: string;
 }
 
 /**
@@ -1072,6 +1087,7 @@ export interface ServiceDelegationPropertiesFormat {
  * Subnet in a virtual network resource.
  *
  * @member {string} [addressPrefix] The address prefix for the subnet.
+ * @member {array} [addressPrefixes] List of  address prefixes for the subnet.
  * @member {object} [networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
  * @member {array} [networkSecurityGroup.securityRules] A collection of
@@ -1117,13 +1133,14 @@ export interface ServiceDelegationPropertiesFormat {
  */
 export interface Subnet extends SubResource {
   addressPrefix?: string;
+  addressPrefixes?: string[];
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
   serviceEndpointPolicies?: ServiceEndpointPolicy[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
-  delegations?: ServiceDelegationPropertiesFormat[];
+  delegations?: Delegation[];
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -1152,6 +1169,8 @@ export interface Subnet extends SubResource {
  * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
  * @member {object} [subnet] Subnet bound to the IP configuration.
  * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
  * @member {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
  * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
@@ -1222,6 +1241,8 @@ export interface Subnet extends SubResource {
  * the subnet resource.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix] The
  * address prefix for the subnet.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.addressPrefixes]
+ * List of  address prefixes for the subnet.
  * @member {object}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup] The reference
  * of the NetworkSecurityGroup resource.
@@ -1504,6 +1525,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * configuration.
  * @member {string} [ipConfiguration.subnet.addressPrefix] The address prefix
  * for the subnet.
+ * @member {array} [ipConfiguration.subnet.addressPrefixes] List of  address
+ * prefixes for the subnet.
  * @member {object} [ipConfiguration.subnet.networkSecurityGroup] The reference
  * of the NetworkSecurityGroup resource.
  * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
@@ -1584,6 +1607,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix] The
  * address prefix for the subnet.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefixes]
+ * List of  address prefixes for the subnet.
  * @member {object}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
  * The reference of the NetworkSecurityGroup resource.
@@ -3622,6 +3648,8 @@ export interface LoadBalancerSku {
  * include: 'Static', 'Dynamic'
  * @member {object} [subnet] The reference of the subnet resource.
  * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
  * @member {object} [subnet.networkSecurityGroup] The reference of the
  * NetworkSecurityGroup resource.
  * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
@@ -3689,6 +3717,8 @@ export interface LoadBalancerSku {
  * the subnet resource.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix] The
  * address prefix for the subnet.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.addressPrefixes]
+ * List of  address prefixes for the subnet.
  * @member {object}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup] The reference
  * of the NetworkSecurityGroup resource.
@@ -3995,7 +4025,7 @@ export interface InboundNatPool extends SubResource {
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
- * @member {array} [frontendIPConfigurations] The Frontend IP addresses of the
+ * @member {array} frontendIPConfigurations The Frontend IP addresses of the
  * load balancer.
  * @member {object} backendAddressPool A reference to a pool of DIPs. Outbound
  * traffic is randomly load balanced across IPs in the backend IPs.
@@ -4003,7 +4033,7 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * @member {string} protocol Protocol - TCP, UDP or All. Possible values
  * include: 'Tcp', 'Udp', 'All'
  * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
@@ -4017,10 +4047,10 @@ export interface InboundNatPool extends SubResource {
  */
 export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
-  frontendIPConfigurations?: SubResource[];
+  frontendIPConfigurations: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
-  protocol?: string;
+  protocol: string;
   enableTcpReset?: boolean;
   idleTimeoutInMinutes?: number;
   name?: string;
