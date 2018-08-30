@@ -2,7 +2,7 @@
   "name": "azure-cognitiveservices-websearch",
   "author": "Microsoft Corporation",
   "description": "WebSearchAPIClient Library with typescript type definitions for node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
