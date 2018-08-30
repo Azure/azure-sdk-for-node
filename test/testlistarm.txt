@@ -1,9 +1,9 @@
 #tsTest.js
 services/cognitiveServicesLanguage/textAnalyticsAPIClient-tests.js
 services/cognitiveServicesLanguage/spellCheckAPIClient-tests.js
-services/cognitiveServicesVision/computerVisionAPIClient-tests.js
+#services/cognitiveServicesVision/computerVisionClient-tests.js
 services/cognitiveServicesVision/contentModeratorAPIClient-tests.js
-services/cognitiveServicesVision/faceAPIClient-tests.js
+#services/cognitiveServicesVision/faceAPIClient-tests.js
 services/cognitiveServicesSearch/entitySearch-tests.js
 services/cognitiveServicesSearch/webSearch-tests.js
 services/cognitiveServicesSearch/videoSearch-tests.js
