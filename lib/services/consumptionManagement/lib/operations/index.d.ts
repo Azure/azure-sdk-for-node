@@ -5064,11 +5064,11 @@ export interface AggregatedCost {
 
 /**
  * @class
- * ChargesByEnrollmentAccount
+ * Charges
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface ChargesByEnrollmentAccount {
+export interface Charges {
 
 
     /**
@@ -5095,7 +5095,7 @@ export interface ChargesByEnrollmentAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByEnrollmentAccount>>;
+    listByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByEnrollmentAccount>>;
 
     /**
      * Lists the charges by enrollmentAccountId.
@@ -5138,18 +5138,9 @@ export interface ChargesByEnrollmentAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByEnrollmentAccount>;
-    list(billingAccountId: string, enrollmentAccountId: string, callback: ServiceCallback<models.ChargesListResultByEnrollmentAccount>): void;
-    list(billingAccountId: string, enrollmentAccountId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByEnrollmentAccount>): void;
-}
-
-/**
- * @class
- * ChargesForEnrollmentAccount
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface ChargesForEnrollmentAccount {
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByEnrollmentAccount>;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, callback: ServiceCallback<models.ChargesListResultByEnrollmentAccount>): void;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByEnrollmentAccount>): void;
 
 
     /**
@@ -5178,7 +5169,7 @@ export interface ChargesForEnrollmentAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByEnrollmentAccount>>;
+    listForBillingPeriodByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByEnrollmentAccount>>;
 
     /**
      * Lists the charges based on enrollmentAccountId by billing period.
@@ -5223,18 +5214,9 @@ export interface ChargesForEnrollmentAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByEnrollmentAccount>;
-    listByBillingPeriod(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByEnrollmentAccount>): void;
-    listByBillingPeriod(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByEnrollmentAccount>): void;
-}
-
-/**
- * @class
- * ChargesByDepartment
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface ChargesByDepartment {
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByEnrollmentAccount>;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByEnrollmentAccount>): void;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByEnrollmentAccount>): void;
 
 
     /**
@@ -5261,7 +5243,7 @@ export interface ChargesByDepartment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByDepartment>>;
+    listByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByDepartment>>;
 
     /**
      * Lists the charges by departmentId.
@@ -5304,18 +5286,9 @@ export interface ChargesByDepartment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByDepartment>;
-    list(billingAccountId: string, departmentId: string, callback: ServiceCallback<models.ChargesListResultByDepartment>): void;
-    list(billingAccountId: string, departmentId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByDepartment>): void;
-}
-
-/**
- * @class
- * ChargesForDepartment
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface ChargesForDepartment {
+    listByDepartment(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByDepartment>;
+    listByDepartment(billingAccountId: string, departmentId: string, callback: ServiceCallback<models.ChargesListResultByDepartment>): void;
+    listByDepartment(billingAccountId: string, departmentId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByDepartment>): void;
 
 
     /**
@@ -5344,7 +5317,7 @@ export interface ChargesForDepartment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByDepartment>>;
+    listForBillingPeriodByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByDepartment>>;
 
     /**
      * Lists the charges based on departmentId by billing period.
@@ -5389,7 +5362,7 @@ export interface ChargesForDepartment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByDepartment>;
-    listByBillingPeriod(billingAccountId: string, departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByDepartment>): void;
-    listByBillingPeriod(billingAccountId: string, departmentId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByDepartment>): void;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByDepartment>;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByDepartment>): void;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByDepartment>): void;
 }

@@ -68,10 +68,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   forecasts: operations.Forecasts;
   operations: operations.Operations;
   aggregatedCost: operations.AggregatedCost;
-  chargesByEnrollmentAccount: operations.ChargesByEnrollmentAccount;
-  chargesForEnrollmentAccount: operations.ChargesForEnrollmentAccount;
-  chargesByDepartment: operations.ChargesByDepartment;
-  chargesForDepartment: operations.ChargesForDepartment;
+  charges: operations.Charges;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
