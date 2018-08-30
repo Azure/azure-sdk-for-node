@@ -18,7 +18,7 @@
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const ContentModeratorAPIClient = require('../../../lib/services/contentModerator/lib/contentModeratorAPIClient');
+const ContentModeratorClient = require('../../../lib/services/cognitiveServicesContentModerator/lib/contentModeratorClient');
 const fs = require('fs');
 const assert = require('assert');
 
@@ -36,7 +36,7 @@ describe('Content Moderator', () => {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(() => {
       credentials = new CognitiveServicesCredentials(process.env["AZURE_CONTENT_MODERATOR_KEY"]);
-      client = new ContentModeratorAPIClient(credentials, "westus.api.cognitive.microsoft.com");
+      client = new ContentModeratorClient(credentials, "westus.api.cognitive.microsoft.com");
       done();
     });
   });
