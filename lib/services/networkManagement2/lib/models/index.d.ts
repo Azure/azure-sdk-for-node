@@ -7387,6 +7387,11 @@ export interface VirtualHubRouteTable {
  *
  * @member {object} [virtualWan] The VirtualWAN to which the VirtualHub belongs
  * @member {string} [virtualWan.id] Resource ID.
+ * @member {object} [vpnGateway] The VpnGateway associated with this VirtualHub
+ * @member {string} [vpnGateway.id] Resource ID.
+ * @member {object} [expressRouteGateway] The expressRouteGateway associated
+ * with this VirtualHub
+ * @member {string} [expressRouteGateway.id] Resource ID.
  * @member {array} [virtualNetworkConnections] list of all vnet connections
  * with this VirtualHub.
  * @member {string} [addressPrefix] Address-prefix for this VirtualHub.
@@ -7400,6 +7405,8 @@ export interface VirtualHubRouteTable {
  */
 export interface VirtualHub extends Resource {
   virtualWan?: SubResource;
+  vpnGateway?: SubResource;
+  expressRouteGateway?: SubResource;
   virtualNetworkConnections?: HubVirtualNetworkConnection[];
   addressPrefix?: string;
   routeTable?: VirtualHubRouteTable;

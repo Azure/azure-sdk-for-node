@@ -35908,7 +35908,13 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
      * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
      * vnet connections with this VirtualHub.
@@ -35958,7 +35964,13 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
      * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
      * vnet connections with this VirtualHub.
@@ -36260,7 +36272,13 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
      * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
      * vnet connections with this VirtualHub.
@@ -36310,7 +36328,13 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
      *
      * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
      * vnet connections with this VirtualHub.
