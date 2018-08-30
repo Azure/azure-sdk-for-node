@@ -4,7 +4,7 @@
       "nodejs": "",
       "license-header": "MICROSOFT_MIT_NO_VERSION",
       "sdkrel:node-sdks-folder": ".",
-      "use": "@microsoft.azure/autorest.nodejs@^2.1.43"
+      "use": "@microsoft.azure/autorest.nodejs@latest"
     },
     "repotag": "azure-sdk-for-node",
     "version": "0.3.0"
