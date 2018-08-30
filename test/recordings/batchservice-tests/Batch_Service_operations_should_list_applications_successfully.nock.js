@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/applications?api-version=2018-03-01.6.1')
+  .get('/applications?api-version=2018-08-01.7.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_updated_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6ee89e1a-6899-4a80-a289-684a06a628b4',
+  'request-id': '9ece1c35-c5d2-404e-940b-570b30f9117f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:07 GMT',
+  date: 'Tue, 21 Aug 2018 20:30:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/applications?api-version=2018-03-01.6.1')
+  .get('/applications?api-version=2018-08-01.7.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_updated_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6ee89e1a-6899-4a80-a289-684a06a628b4',
+  'request-id': '9ece1c35-c5d2-404e-940b-570b30f9117f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:07 GMT',
+  date: 'Tue, 21 Aug 2018 20:30:58 GMT',
   connection: 'close' });
  return result; }]];

@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2018-03-01.6.1&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2018-08-01.7.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:45:45 GMT',
-  etag: '0x8D5860F7EF25469',
+  'last-modified': 'Tue, 21 Aug 2018 20:09:40 GMT',
+  etag: '0x8D607A20760C002',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6df1e240-198c-41eb-ab22-82213274c56e',
+  'request-id': '7f270ebd-6b11-432f-8334-f28d091456f1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2018-03-01.6.1&$select=id%2Cstate&$expand=stats')
+  .get('/pools/nodesdktestpool1?api-version=2018-08-01.7.0&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 22:45:45 GMT',
-  etag: '0x8D5860F7EF25469',
+  'last-modified': 'Tue, 21 Aug 2018 20:09:40 GMT',
+  etag: '0x8D607A20760C002',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '6df1e240-198c-41eb-ab22-82213274c56e',
+  'request-id': '7f270ebd-6b11-432f-8334-f28d091456f1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 22:52:25 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:21 GMT',
   connection: 'close' });
  return result; }]];
