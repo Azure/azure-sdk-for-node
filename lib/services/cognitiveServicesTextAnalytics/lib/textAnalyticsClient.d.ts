@@ -11,15 +11,15 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-export default class TextAnalyticsAPIClient extends ServiceClient {
+export default class TextAnalyticsClient extends ServiceClient {
   /**
    * @class
-   * Initializes a new instance of the TextAnalyticsAPIClient class.
+   * Initializes a new instance of the TextAnalyticsClient class.
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
-   * @param {azureRegions} azureRegion - Supported Azure regions for Cognitive Services endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus', 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth'
+   * @param {string} endpoint - Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com).
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,19 +31,18 @@ export default class TextAnalyticsAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, azureRegion: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, endpoint: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
-  azureRegion: string;
+  endpoint: string;
 
 
   /**
    * @summary The API returns a list of strings denoting the key talking points
    * in the input text.
    *
-   * We employ techniques from Microsoft Office's sophisticated Natural Language
-   * Processing toolkit. See the <a
+   * See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
    * Analytics Documentation</a> for details about the languages that are
    * supported by key phrase extraction.
@@ -70,8 +69,7 @@ export default class TextAnalyticsAPIClient extends ServiceClient {
    * @summary The API returns a list of strings denoting the key talking points
    * in the input text.
    *
-   * We employ techniques from Microsoft Office's sophisticated Natural Language
-   * Processing toolkit. See the <a
+   * See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
    * Analytics Documentation</a> for details about the languages that are
    * supported by key phrase extraction.
@@ -184,10 +182,8 @@ export default class TextAnalyticsAPIClient extends ServiceClient {
    * @summary The API returns a numeric score between 0 and 1.
    *
    * Scores close to 1 indicate positive sentiment, while scores close to 0
-   * indicate negative sentiment. Sentiment score is generated using
-   * classification techniques. The input features to the classifier include
-   * n-grams, features generated from part-of-speech tags, and word embeddings.
-   * See the <a
+   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+   * (e.g. a factoid statement). See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
    * Analytics Documentation</a> for details about the languages that are
    * supported by sentiment analysis.
@@ -213,10 +209,8 @@ export default class TextAnalyticsAPIClient extends ServiceClient {
    * @summary The API returns a numeric score between 0 and 1.
    *
    * Scores close to 1 indicate positive sentiment, while scores close to 0
-   * indicate negative sentiment. Sentiment score is generated using
-   * classification techniques. The input features to the classifier include
-   * n-grams, features generated from part-of-speech tags, and word embeddings.
-   * See the <a
+   * indicate negative sentiment. A score of 0.5 indicates the lack of sentiment
+   * (e.g. a factoid statement). See the <a
    * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/overview#supported-languages">Text
    * Analytics Documentation</a> for details about the languages that are
    * supported by sentiment analysis.
@@ -255,6 +249,77 @@ export default class TextAnalyticsAPIClient extends ServiceClient {
   sentiment(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SentimentBatchResult>;
   sentiment(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.SentimentBatchResult>): void;
   sentiment(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SentimentBatchResult>): void;
+
+
+  /**
+   * @summary The API returns a list of recognized entities in a given document.
+   *
+   * To get even more information on each recognized entity we recommend using
+   * the Bing Entity Search API by querying for the recognized entities names.
+   * See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+   * languages in Text Analytics API</a> for the list of enabled languages.
+   *
+   * @param {object} input Collection of documents to analyze.
+   *
+   * @param {array} [input.documents]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<EntitiesBatchResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  entitiesWithHttpOperationResponse(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntitiesBatchResult>>;
+
+  /**
+   * @summary The API returns a list of recognized entities in a given document.
+   *
+   * To get even more information on each recognized entity we recommend using
+   * the Bing Entity Search API by querying for the recognized entities names.
+   * See the <a
+   * href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/text-analytics-supported-languages">Supported
+   * languages in Text Analytics API</a> for the list of enabled languages.
+   *
+   * @param {object} input Collection of documents to analyze.
+   *
+   * @param {array} [input.documents]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {EntitiesBatchResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {EntitiesBatchResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link EntitiesBatchResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  entities(input: models.MultiLanguageBatchInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EntitiesBatchResult>;
+  entities(input: models.MultiLanguageBatchInput, callback: ServiceCallback<models.EntitiesBatchResult>): void;
+  entities(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntitiesBatchResult>): void;
 }
 
-export { TextAnalyticsAPIClient, models as TextAnalyticsAPIModels };
+export { TextAnalyticsClient, models as TextAnalyticsModels };
