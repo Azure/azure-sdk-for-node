@@ -143,6 +143,7 @@ export interface DictionaryType extends BaseMapperType {
 export interface Mapper extends BaseMapperType {
   readOnly?: boolean;
   isConstant?: boolean;
+  nullable?: boolean;
   required: boolean;
   serializedName: string;
   type: BaseMapperType;

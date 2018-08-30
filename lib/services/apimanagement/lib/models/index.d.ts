@@ -35,9 +35,27 @@ export interface ErrorFieldContract {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
+ * Initializes a new instance of the ErrorResponseBody class.
  * @constructor
  * Error Body contract.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface ErrorResponseBody {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error Response.
  *
  * @member {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
@@ -76,7 +94,8 @@ export interface Resource extends BaseResource {
  * @member {string} policyContent Json escaped Xml Encoded contents of the
  * Policy.
  * @member {string} [contentFormat] Format of the policyContent. Possible
- * values include: 'xml', 'xml-link'. Default value: 'xml' .
+ * values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'. Default value:
+ * 'xml' .
  */
 export interface PolicyContract extends Resource {
   policyContent: string;
@@ -213,6 +232,8 @@ export interface ApiVersionSetContractDetails {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  */
@@ -225,6 +246,8 @@ export interface ApiEntityBaseContract {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
 }
 
@@ -295,6 +318,8 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -328,6 +353,8 @@ export interface ApiContract extends Resource {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -382,6 +409,8 @@ export interface ApiCreateOrUpdatePropertiesWsdlSelector {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -429,6 +458,8 @@ export interface ApiCreateOrUpdateParameter {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -472,6 +503,8 @@ export interface ApiCreateOrUpdateParameter {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -493,6 +526,8 @@ export interface ApiUpdateContract {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -831,6 +866,66 @@ export interface OperationUpdateContract {
 export interface SchemaContract extends Resource {
   contentType: string;
   value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueContract class.
+ * @constructor
+ * Issue Contract details.
+ *
+ * @member {string} title The issue title.
+ * @member {string} description Text describing the issue.
+ * @member {date} [createdDate] Date and time when the issue was created.
+ * @member {string} [state] Status of the issue. Possible values include:
+ * 'proposed', 'open', 'removed', 'resolved', 'closed'
+ * @member {string} userId A resource identifier for the user created the
+ * issue.
+ * @member {string} [apiId] A resource identifier for the API the issue was
+ * created for.
+ */
+export interface IssueContract extends Resource {
+  title: string;
+  description: string;
+  createdDate?: Date;
+  state?: string;
+  userId: string;
+  apiId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentContract class.
+ * @constructor
+ * Issue Comment Contract details.
+ *
+ * @member {string} text Comment text.
+ * @member {date} [createdDate] Date and time when the comment was created.
+ * @member {string} userId A resource identifier for the user who left the
+ * comment.
+ */
+export interface IssueCommentContract extends Resource {
+  text: string;
+  createdDate?: Date;
+  userId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentContract class.
+ * @constructor
+ * Issue Attachment Contract details.
+ *
+ * @member {string} title Filename by which the binary data will be saved.
+ * @member {string} contentFormat Either 'link' if content is provided via an
+ * HTTP link or the MIME type of the Base64-encoded binary data provided in the
+ * 'content' property.
+ * @member {string} content An HTTP link or Base64-encoded binary data.
+ */
+export interface IssueAttachmentContract extends Resource {
+  title: string;
+  contentFormat: string;
+  content: string;
 }
 
 /**
@@ -1699,7 +1794,7 @@ export interface CertificateConfiguration {
   encodedCertificate?: string;
   certificatePassword?: string;
   storeName: string;
-  readonly certificate?: CertificateInformation;
+  certificate?: CertificateInformation;
 }
 
 /**
@@ -1742,7 +1837,7 @@ export interface HostnameConfiguration {
   certificatePassword?: string;
   defaultSslBinding?: boolean;
   negotiateClientCertificate?: boolean;
-  readonly certificate?: CertificateInformation;
+  certificate?: CertificateInformation;
 }
 
 /**
@@ -1793,8 +1888,13 @@ export interface ApiManagementServiceSkuProperties {
  * 'Developer', 'Standard', 'Premium', 'Basic'
  * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {array} [publicIPAddresses] Static IP addresses of the location's
- * virtual machines.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in the additional location. Available only for
+ * Basic, Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service which is deployed in an Internal
+ * Virtual Network in a particular additional location. Available only for
+ * Basic, Standard and Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * for the location.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1811,6 +1911,7 @@ export interface AdditionalLocation {
   location: string;
   sku: ApiManagementServiceSkuProperties;
   readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   readonly gatewayRegionalUrl?: string;
 }
@@ -1865,11 +1966,12 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1983,11 +2085,12 @@ export interface ApimResource extends BaseResource {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -2087,11 +2190,12 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -3574,7 +3678,7 @@ export interface OperationResultContract {
   started?: Date;
   updated?: Date;
   resultInfo?: string;
-  error?: ErrorResponse;
+  error?: ErrorResponseBody;
   readonly actionLog?: OperationResultLogItemContract[];
 }
 
@@ -3819,7 +3923,7 @@ export interface RegionListResult extends Array<RegionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiCollection extends Array<ApiContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3844,7 +3948,7 @@ export interface TagResourceCollection extends Array<TagResourceContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3856,7 +3960,7 @@ export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3868,7 +3972,7 @@ export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface OperationCollection extends Array<OperationContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3892,7 +3996,7 @@ export interface ProductCollection extends Array<ProductContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface SchemaCollection extends Array<SchemaContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3918,6 +4022,42 @@ export interface DiagnosticCollection extends Array<DiagnosticContract> {
  */
 export interface LoggerCollection extends Array<LoggerContract> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCollection class.
+ * @constructor
+ * Paged Issue list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCollection extends Array<IssueContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentCollection class.
+ * @constructor
+ * Paged Issue Comment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCommentCollection extends Array<IssueCommentContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentCollection class.
+ * @constructor
+ * Paged Issue Attachment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueAttachmentCollection extends Array<IssueAttachmentContract> {
+  readonly nextLink?: string;
 }
 
 /**
