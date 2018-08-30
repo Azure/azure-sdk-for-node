@@ -58,6 +58,7 @@ export default class GraphRbacManagementClient extends AzureServiceClient {
   // Operation groups
   objects: operations.Objects;
   applications: operations.Applications;
+  deletedApplications: operations.DeletedApplications;
   groups: operations.Groups;
   servicePrincipals: operations.ServicePrincipals;
   users: operations.Users;
