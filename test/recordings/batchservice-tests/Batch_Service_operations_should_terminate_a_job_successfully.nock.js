@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:10 GMT',
-  etag: '0x8D58612355BAEF6',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:01 GMT',
+  etag: '0x8D607A502EB8DE1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '38dad21a-007d-4d3d-ba10-e9833be61f31',
+  'request-id': '1bd0af83-bafb-4191-a208-eae2d0037a25',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/terminate',
-  date: 'Fri, 09 Mar 2018 23:05:09 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:10 GMT',
-  etag: '0x8D58612355BAEF6',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:01 GMT',
+  etag: '0x8D607A502EB8DE1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '38dad21a-007d-4d3d-ba10-e9833be61f31',
+  'request-id': '1bd0af83-bafb-4191-a208-eae2d0037a25',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/terminate',
-  date: 'Fri, 09 Mar 2018 23:05:09 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; }]];

@@ -22,6 +22,130 @@ export interface Registries {
 
 
     /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    importImageWithHttpOperationResponse(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    importImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    importImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, callback: ServiceCallback<void>): void;
+    importImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Checks whether the container registry name is available for use. The name
      * must contain only alphanumeric characters, be globally unique, and between 5
      * and 50 characters in length.
@@ -734,6 +858,431 @@ export interface Registries {
 
 
     /**
+     * Lists the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listPoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
+
+    /**
+     * Lists the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryPolicies} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPolicies(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
+    listPolicies(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RegistryPolicies>): void;
+    listPolicies(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
+
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updatePoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryPolicies} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
+    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, callback: ServiceCallback<models.RegistryPolicies>): void;
+    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
+
+
+    /**
+     * Schedules a new run based on the request parameters and add it to the run
+     * queue.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
+     *
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    scheduleRunWithHttpOperationResponse(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
+
+    /**
+     * Schedules a new run based on the request parameters and add it to the run
+     * queue.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
+     *
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Run} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    scheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    scheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, callback: ServiceCallback<models.Run>): void;
+    scheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
+
+
+    /**
+     * Get the upload location for the user to be able to upload the source.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceUploadDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getBuildSourceUploadUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceUploadDefinition>>;
+
+    /**
+     * Get the upload location for the user to be able to upload the source.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceUploadDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceUploadDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceUploadDefinition} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceUploadDefinition>;
+    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.SourceUploadDefinition>): void;
+    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceUploadDefinition>): void;
+
+
+    /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginImportImageWithHttpOperationResponse(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginImportImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginImportImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, callback: ServiceCallback<void>): void;
+    beginImportImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Creates a container registry with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
@@ -1005,6 +1554,184 @@ export interface Registries {
     beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
     beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, callback: ServiceCallback<models.Registry>): void;
     beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
+
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdatePoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryPolicies} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
+    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, callback: ServiceCallback<models.RegistryPolicies>): void;
+    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
+
+
+    /**
+     * Schedules a new run based on the request parameters and add it to the run
+     * queue.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
+     *
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginScheduleRunWithHttpOperationResponse(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
+
+    /**
+     * Schedules a new run based on the request parameters and add it to the run
+     * queue.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
+     *
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Run} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginScheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    beginScheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, callback: ServiceCallback<models.Run>): void;
+    beginScheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
 
 
     /**
@@ -2904,4 +3631,1630 @@ export interface Webhooks {
     listEventsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventListResult>;
     listEventsNext(nextPageLink: string, callback: ServiceCallback<models.EventListResult>): void;
     listEventsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventListResult>): void;
+}
+
+/**
+ * @class
+ * Runs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerRegistryManagementClient.
+ */
+export interface Runs {
+
+
+    /**
+     * Gets all the runs for a registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The runs filter to apply on the operation.
+     * Arithmetic operators are not supported. The allowed string function is
+     * 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
+     *
+     * @param {number} [options.top] $top is supported for get list of runs, which
+     * limits the maximum number of runs to return.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunListResult>>;
+
+    /**
+     * Gets all the runs for a registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The runs filter to apply on the operation.
+     * Arithmetic operators are not supported. The allowed string function is
+     * 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
+     *
+     * @param {number} [options.top] $top is supported for get list of runs, which
+     * limits the maximum number of runs to return.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RunListResult>;
+    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RunListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunListResult>): void;
+
+
+    /**
+     * Gets the detailed information for a given run.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
+
+    /**
+     * Gets the detailed information for a given run.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Run} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    get(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.Run>): void;
+    get(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
+
+
+    /**
+     * Patch the run properties.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} runUpdateParameters The run update properties.
+     *
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
+     * indicates whether archiving is enabled or not.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
+
+    /**
+     * Patch the run properties.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} runUpdateParameters The run update properties.
+     *
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
+     * indicates whether archiving is enabled or not.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Run} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    update(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, callback: ServiceCallback<models.Run>): void;
+    update(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
+
+
+    /**
+     * Gets a link to download the run logs.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunGetLogResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getLogSasUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunGetLogResult>>;
+
+    /**
+     * Gets a link to download the run logs.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunGetLogResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunGetLogResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunGetLogResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunGetLogResult>;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.RunGetLogResult>): void;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunGetLogResult>): void;
+
+
+    /**
+     * Cancel an existing run.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Cancel an existing run.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Patch the run properties.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} runUpdateParameters The run update properties.
+     *
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
+     * indicates whether archiving is enabled or not.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
+
+    /**
+     * Patch the run properties.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} runUpdateParameters The run update properties.
+     *
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
+     * indicates whether archiving is enabled or not.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Run} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    beginUpdate(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, callback: ServiceCallback<models.Run>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
+
+
+    /**
+     * Cancel an existing run.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCancelWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Cancel an existing run.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} runId The run ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCancel(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCancel(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<void>): void;
+    beginCancel(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all the runs for a registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunListResult>>;
+
+    /**
+     * Gets all the runs for a registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RunListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunListResult>): void;
+}
+
+/**
+ * @class
+ * Tasks
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerRegistryManagementClient.
+ */
+export interface Tasks {
+
+
+    /**
+     * Lists all the tasks for a specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TaskListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TaskListResult>>;
+
+    /**
+     * Lists all the tasks for a specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TaskListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TaskListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TaskListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TaskListResult>;
+    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.TaskListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskListResult>): void;
+
+
+    /**
+     * Get the properties of a specified task.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+
+    /**
+     * Get the properties of a specified task.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Task} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    get(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<models.Task>): void;
+    get(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+
+
+    /**
+     * Creates a task for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskCreateParameters The parameters for creating a task.
+     *
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+
+    /**
+     * Creates a task for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskCreateParameters The parameters for creating a task.
+     *
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Task} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    create(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, callback: ServiceCallback<models.Task>): void;
+    create(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+
+
+    /**
+     * Deletes a specified task.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a specified task.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a task with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskUpdateParameters The parameters for updating a task.
+     *
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+
+    /**
+     * Updates a task with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskUpdateParameters The parameters for updating a task.
+     *
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Task} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, callback: ServiceCallback<models.Task>): void;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+
+
+    /**
+     * Returns a task with extended information that includes all secrets.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getDetailsWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+
+    /**
+     * Returns a task with extended information that includes all secrets.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Task} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<models.Task>): void;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+
+
+    /**
+     * Creates a task for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskCreateParameters The parameters for creating a task.
+     *
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+
+    /**
+     * Creates a task for a container registry with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskCreateParameters The parameters for creating a task.
+     *
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Task} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    beginCreate(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, callback: ServiceCallback<models.Task>): void;
+    beginCreate(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+
+
+    /**
+     * Deletes a specified task.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a specified task.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a task with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskUpdateParameters The parameters for updating a task.
+     *
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+
+    /**
+     * Updates a task with the specified parameters.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {string} taskName The name of the container registry task.
+     *
+     * @param {object} taskUpdateParameters The parameters for updating a task.
+     *
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
+     *
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
+     *
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Task} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, callback: ServiceCallback<models.Task>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+
+
+    /**
+     * Lists all the tasks for a specified container registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TaskListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TaskListResult>>;
+
+    /**
+     * Lists all the tasks for a specified container registry.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TaskListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TaskListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TaskListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TaskListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.TaskListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskListResult>): void;
 }

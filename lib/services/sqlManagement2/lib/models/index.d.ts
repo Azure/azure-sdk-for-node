@@ -34,20 +34,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * ARM tracked top level resource.
- *
- * @member {object} [tags] Resource tags.
- * @member {string} location Resource location.
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ProxyResource class.
  * @constructor
  * ARM proxy resource.
@@ -106,6 +92,20 @@ export interface RestorableDroppedDatabase extends ProxyResource {
   readonly creationDate?: Date;
   readonly deletionDate?: Date;
   readonly earliestRestoreDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * ARM tracked top level resource.
+ *
+ * @member {string} location Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface TrackedResource extends Resource {
+  location: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1066,42 +1066,6 @@ export interface DatabaseUsage {
 
 /**
  * @class
- * Initializes a new instance of the DatabaseBlobAuditingPolicy class.
- * @constructor
- * A database blob auditing policy.
- *
- * @member {string} [kind] Resource kind.
- * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
- * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
- * https://MyAccount.blob.core.windows.net). If state is Enabled,
- * storageEndpoint is required.
- * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
- * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
- * @member {array} [auditActionsAndGroups] Specifies the Actions and
- * Actions-Groups to audit.
- * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
- * subscription Id.
- * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
- * storageAccountAccessKey value is the storage’s secondary key.
- */
-export interface DatabaseBlobAuditingPolicy extends ProxyResource {
-  readonly kind?: string;
-  state: string;
-  storageEndpoint?: string;
-  storageAccountAccessKey?: string;
-  retentionDays?: number;
-  auditActionsAndGroups?: string[];
-  storageAccountSubscriptionId?: string;
-  isStorageSecondaryKeyInUse?: boolean;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutomaticTuningOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -1294,6 +1258,153 @@ export interface FailoverGroupUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceIdentity class.
+ * @constructor
+ * Azure Active Directory identity configuration for a resource.
+ *
+ * @member {uuid} [principalId] The Azure Active Directory principal id.
+ * @member {string} [type] The identity type. Set this to 'SystemAssigned' in
+ * order to automatically create and assign an Azure Active Directory principal
+ * for the resource. Possible values include: 'SystemAssigned'
+ * @member {uuid} [tenantId] The Azure Active Directory tenant id.
+ */
+export interface ResourceIdentity {
+  readonly principalId?: string;
+  type?: string;
+  readonly tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * The resource model definition representing SKU
+ *
+ * @member {string} name The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [size] The SKU size. When the name field is the combination
+ * of tier and some other value, this would be the standalone code.
+ * @member {string} [family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
+ */
+export interface Sku {
+  name: string;
+  tier?: string;
+  size?: string;
+  family?: string;
+  capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstance class.
+ * @constructor
+ * An Azure SQL managed instance.
+ *
+ * @member {object} [identity] The Azure Active Directory identity of the
+ * managed instance.
+ * @member {uuid} [identity.principalId] The Azure Active Directory principal
+ * id.
+ * @member {string} [identity.type] The identity type. Set this to
+ * 'SystemAssigned' in order to automatically create and assign an Azure Active
+ * Directory principal for the resource. Possible values include:
+ * 'SystemAssigned'
+ * @member {uuid} [identity.tenantId] The Azure Active Directory tenant id.
+ * @member {object} [sku] Managed instance sku
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
+ * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
+ * of the managed instance.
+ * @member {string} [administratorLogin] Administrator username for the managed
+ * instance. Can only be specified when the managed instance is being created
+ * (and is required for creation).
+ * @member {string} [administratorLoginPassword] The administrator login
+ * password (required for managed instance creation).
+ * @member {string} [subnetId] Subnet resource ID for the managed instance.
+ * @member {string} [state] The state of the managed instance.
+ * @member {string} [licenseType] The license type. Possible values are
+ * 'LicenseIncluded' and 'BasePrice'.
+ * @member {number} [vCores] The number of VCores.
+ * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ */
+export interface ManagedInstance extends TrackedResource {
+  identity?: ResourceIdentity;
+  sku?: Sku;
+  readonly fullyQualifiedDomainName?: string;
+  administratorLogin?: string;
+  administratorLoginPassword?: string;
+  subnetId?: string;
+  readonly state?: string;
+  licenseType?: string;
+  vCores?: number;
+  storageSizeInGB?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceUpdate class.
+ * @constructor
+ * An update request for an Azure SQL Database managed instance.
+ *
+ * @member {object} [sku] Managed instance sku
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
+ * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
+ * of the managed instance.
+ * @member {string} [administratorLogin] Administrator username for the managed
+ * instance. Can only be specified when the managed instance is being created
+ * (and is required for creation).
+ * @member {string} [administratorLoginPassword] The administrator login
+ * password (required for managed instance creation).
+ * @member {string} [subnetId] Subnet resource ID for the managed instance.
+ * @member {string} [state] The state of the managed instance.
+ * @member {string} [licenseType] The license type. Possible values are
+ * 'LicenseIncluded' and 'BasePrice'.
+ * @member {number} [vCores] The number of VCores.
+ * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {object} [tags] Resource tags.
+ */
+export interface ManagedInstanceUpdate {
+  sku?: Sku;
+  readonly fullyQualifiedDomainName?: string;
+  administratorLogin?: string;
+  administratorLoginPassword?: string;
+  subnetId?: string;
+  readonly state?: string;
+  licenseType?: string;
+  vCores?: number;
+  storageSizeInGB?: number;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
@@ -1366,24 +1477,6 @@ export interface ServerKey extends ProxyResource {
   uri?: string;
   thumbprint?: string;
   creationDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceIdentity class.
- * @constructor
- * Azure Active Directory identity configuration for a resource.
- *
- * @member {uuid} [principalId] The Azure Active Directory principal id.
- * @member {string} [type] The identity type. Set this to 'SystemAssigned' in
- * order to automatically create and assign an Azure Active Directory principal
- * for the resource. Possible values include: 'SystemAssigned'
- * @member {uuid} [tenantId] The Azure Active Directory tenant id.
- */
-export interface ResourceIdentity {
-  readonly principalId?: string;
-  type?: string;
-  readonly tenantId?: string;
 }
 
 /**
@@ -1764,6 +1857,852 @@ export interface VirtualNetworkRule extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the ExtendedDatabaseBlobAuditingPolicy class.
+ * @constructor
+ * An extended database blob auditing policy.
+ *
+ * @member {string} [predicateExpression] Specifies condition of where clause
+ * when creating an audit.
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
+  predicateExpression?: string;
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExtendedServerBlobAuditingPolicy class.
+ * @constructor
+ * An extended server blob auditing policy.
+ *
+ * @member {string} [predicateExpression] Specifies condition of where clause
+ * when creating an audit.
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
+  predicateExpression?: string;
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerBlobAuditingPolicy class.
+ * @constructor
+ * A server blob auditing policy.
+ *
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface ServerBlobAuditingPolicy extends ProxyResource {
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseBlobAuditingPolicy class.
+ * @constructor
+ * A database blob auditing policy.
+ *
+ * @member {string} [kind] Resource kind.
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface DatabaseBlobAuditingPolicy extends ProxyResource {
+  readonly kind?: string;
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentRuleBaselineItem class.
+ * @constructor
+ * Properties for an Azure SQL Database Vulnerability Assessment rule
+ * baseline's result.
+ *
+ * @member {array} result The rule baseline result
+ */
+export interface DatabaseVulnerabilityAssessmentRuleBaselineItem {
+  result: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentRuleBaseline class.
+ * @constructor
+ * A database vulnerability assessment rule baseline.
+ *
+ * @member {array} baselineResults The rule baseline result
+ */
+export interface DatabaseVulnerabilityAssessmentRuleBaseline extends ProxyResource {
+  baselineResults: DatabaseVulnerabilityAssessmentRuleBaselineItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentRecurringScansProperties class.
+ * @constructor
+ * Properties of a Vulnerability Assessment recurring scans.
+ *
+ * @member {boolean} [isEnabled] Recurring scans state.
+ * @member {boolean} [emailSubscriptionAdmins] Specifies that the schedule scan
+ * notification will be is sent to the subscription administrators. Default
+ * value: true .
+ * @member {array} [emails] Specifies an array of e-mail addresses to which the
+ * scan notification is sent.
+ */
+export interface VulnerabilityAssessmentRecurringScansProperties {
+  isEnabled?: boolean;
+  emailSubscriptionAdmins?: boolean;
+  emails?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessment class.
+ * @constructor
+ * A database vulnerability assessment.
+ *
+ * @member {string} storageContainerPath A blob storage container path to hold
+ * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the vulnerability assessment storage account. If 'StorageContainerSasKey'
+ * isn't specified, storageAccountAccessKey is required.
+ * @member {object} [recurringScans] The recurring scans settings
+ * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @member {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface DatabaseVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobAgent class.
+ * @constructor
+ * An Azure SQL job agent.
+ *
+ * @member {object} [sku] The name and tier of the SKU.
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
+ * @member {string} databaseId Resource ID of the database to store job
+ * metadata in.
+ * @member {string} [state] The state of the job agent. Possible values
+ * include: 'Creating', 'Ready', 'Updating', 'Deleting', 'Disabled'
+ */
+export interface JobAgent extends TrackedResource {
+  sku?: Sku;
+  databaseId: string;
+  readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobAgentUpdate class.
+ * @constructor
+ * An update to an Azure SQL job agent.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface JobAgentUpdate {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCredential class.
+ * @constructor
+ * A stored credential that can be used by a job to connect to target
+ * databases.
+ *
+ * @member {string} username The credential user name.
+ * @member {string} password The credential password.
+ */
+export interface JobCredential extends ProxyResource {
+  username: string;
+  password: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobExecutionTarget class.
+ * @constructor
+ * The target that a job execution is executed on.
+ *
+ * @member {string} [type] The type of the target. Possible values include:
+ * 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap', 'SqlServer'
+ * @member {string} [serverName] The server name.
+ * @member {string} [databaseName] The database name.
+ */
+export interface JobExecutionTarget {
+  readonly type?: string;
+  readonly serverName?: string;
+  readonly databaseName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobExecution class.
+ * @constructor
+ * An execution of a job
+ *
+ * @member {number} [jobVersion] The job version number.
+ * @member {string} [stepName] The job step name.
+ * @member {number} [stepId] The job step id.
+ * @member {uuid} [jobExecutionId] The unique identifier of the job execution.
+ * @member {string} [lifecycle] The detailed state of the job execution.
+ * Possible values include: 'Created', 'InProgress',
+ * 'WaitingForChildJobExecutions', 'WaitingForRetry', 'Succeeded',
+ * 'SucceededWithSkipped', 'Failed', 'TimedOut', 'Canceled', 'Skipped'
+ * @member {string} [provisioningState] The ARM provisioning state of the job
+ * execution. Possible values include: 'Created', 'InProgress', 'Succeeded',
+ * 'Failed', 'Canceled'
+ * @member {date} [createTime] The time that the job execution was created.
+ * @member {date} [startTime] The time that the job execution started.
+ * @member {date} [endTime] The time that the job execution completed.
+ * @member {number} [currentAttempts] Number of times the job execution has
+ * been attempted.
+ * @member {date} [currentAttemptStartTime] Start time of the current attempt.
+ * @member {string} [lastMessage] The last status or error message.
+ * @member {object} [target] The target that this execution is executed on.
+ * @member {string} [target.type] The type of the target. Possible values
+ * include: 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap',
+ * 'SqlServer'
+ * @member {string} [target.serverName] The server name.
+ * @member {string} [target.databaseName] The database name.
+ */
+export interface JobExecution extends ProxyResource {
+  readonly jobVersion?: number;
+  readonly stepName?: string;
+  readonly stepId?: number;
+  readonly jobExecutionId?: string;
+  readonly lifecycle?: string;
+  readonly provisioningState?: string;
+  readonly createTime?: Date;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  currentAttempts?: number;
+  readonly currentAttemptStartTime?: Date;
+  readonly lastMessage?: string;
+  readonly target?: JobExecutionTarget;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobSchedule class.
+ * @constructor
+ * Scheduling properties of a job.
+ *
+ * @member {date} [startTime] Schedule start time. Default value: new
+ * Date('0001-01-01T00:00:00Z') .
+ * @member {date} [endTime] Schedule end time. Default value: new
+ * Date('9999-12-31T11:59:59Z') .
+ * @member {string} [type] Schedule interval type. Possible values include:
+ * 'Once', 'Recurring'. Default value: 'Once' .
+ * @member {boolean} [enabled] Whether or not the schedule is enabled.
+ * @member {string} [interval] Value of the schedule's recurring interval, if
+ * the scheduletype is recurring. ISO8601 duration format.
+ */
+export interface JobSchedule {
+  startTime?: Date;
+  endTime?: Date;
+  type?: string;
+  enabled?: boolean;
+  interval?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Job class.
+ * @constructor
+ * A job.
+ *
+ * @member {string} [description] User-defined description of the job. Default
+ * value: '' .
+ * @member {number} [version] The job version number.
+ * @member {object} [schedule] Schedule properties of the job.
+ * @member {date} [schedule.startTime] Schedule start time.
+ * @member {date} [schedule.endTime] Schedule end time.
+ * @member {string} [schedule.type] Schedule interval type. Possible values
+ * include: 'Once', 'Recurring'
+ * @member {boolean} [schedule.enabled] Whether or not the schedule is enabled.
+ * @member {string} [schedule.interval] Value of the schedule's recurring
+ * interval, if the scheduletype is recurring. ISO8601 duration format.
+ */
+export interface Job extends ProxyResource {
+  description?: string;
+  readonly version?: number;
+  schedule?: JobSchedule;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepAction class.
+ * @constructor
+ * The action to be executed by a job step.
+ *
+ * @member {string} [type] Type of action being executed by the job step.
+ * Possible values include: 'TSql'. Default value: 'TSql' .
+ * @member {string} [source] The source of the action to execute. Possible
+ * values include: 'Inline'. Default value: 'Inline' .
+ * @member {string} value The action value, for example the text of the T-SQL
+ * script to execute.
+ */
+export interface JobStepAction {
+  type?: string;
+  source?: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepOutput class.
+ * @constructor
+ * The output configuration of a job step.
+ *
+ * @member {string} [type] The output destination type. Possible values
+ * include: 'SqlDatabase'. Default value: 'SqlDatabase' .
+ * @member {uuid} [subscriptionId] The output destination subscription id.
+ * @member {string} [resourceGroupName] The output destination resource group.
+ * @member {string} serverName The output destination server name.
+ * @member {string} databaseName The output destination database.
+ * @member {string} [schemaName] The output destination schema. Default value:
+ * 'dbo' .
+ * @member {string} tableName The output destination table.
+ * @member {string} credential The resource ID of the credential to use to
+ * connect to the output destination.
+ */
+export interface JobStepOutput {
+  type?: string;
+  subscriptionId?: string;
+  resourceGroupName?: string;
+  serverName: string;
+  databaseName: string;
+  schemaName?: string;
+  tableName: string;
+  credential: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepExecutionOptions class.
+ * @constructor
+ * The execution options of a job step.
+ *
+ * @member {number} [timeoutSeconds] Execution timeout for the job step.
+ * Default value: 43200 .
+ * @member {number} [retryAttempts] Maximum number of times the job step will
+ * be reattempted if the first attempt fails. Default value: 10 .
+ * @member {number} [initialRetryIntervalSeconds] Initial delay between retries
+ * for job step execution. Default value: 1 .
+ * @member {number} [maximumRetryIntervalSeconds] The maximum amount of time to
+ * wait between retries for job step execution. Default value: 120 .
+ * @member {number} [retryIntervalBackoffMultiplier] The backoff multiplier for
+ * the time between retries. Default value: 2 .
+ */
+export interface JobStepExecutionOptions {
+  timeoutSeconds?: number;
+  retryAttempts?: number;
+  initialRetryIntervalSeconds?: number;
+  maximumRetryIntervalSeconds?: number;
+  retryIntervalBackoffMultiplier?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStep class.
+ * @constructor
+ * A job step.
+ *
+ * @member {number} [stepId] The job step's index within the job. If not
+ * specified when creating the job step, it will be created as the last step.
+ * If not specified when updating the job step, the step id is not modified.
+ * @member {string} targetGroup The resource ID of the target group that the
+ * job step will be executed on.
+ * @member {string} credential The resource ID of the job credential that will
+ * be used to connect to the targets.
+ * @member {object} action The action payload of the job step.
+ * @member {string} [action.type] Type of action being executed by the job
+ * step. Possible values include: 'TSql'
+ * @member {string} [action.source] The source of the action to execute.
+ * Possible values include: 'Inline'
+ * @member {string} [action.value] The action value, for example the text of
+ * the T-SQL script to execute.
+ * @member {object} [output] Output destination properties of the job step.
+ * @member {string} [output.type] The output destination type. Possible values
+ * include: 'SqlDatabase'
+ * @member {uuid} [output.subscriptionId] The output destination subscription
+ * id.
+ * @member {string} [output.resourceGroupName] The output destination resource
+ * group.
+ * @member {string} [output.serverName] The output destination server name.
+ * @member {string} [output.databaseName] The output destination database.
+ * @member {string} [output.schemaName] The output destination schema.
+ * @member {string} [output.tableName] The output destination table.
+ * @member {string} [output.credential] The resource ID of the credential to
+ * use to connect to the output destination.
+ * @member {object} [executionOptions] Execution options for the job step.
+ * @member {number} [executionOptions.timeoutSeconds] Execution timeout for the
+ * job step.
+ * @member {number} [executionOptions.retryAttempts] Maximum number of times
+ * the job step will be reattempted if the first attempt fails.
+ * @member {number} [executionOptions.initialRetryIntervalSeconds] Initial
+ * delay between retries for job step execution.
+ * @member {number} [executionOptions.maximumRetryIntervalSeconds] The maximum
+ * amount of time to wait between retries for job step execution.
+ * @member {number} [executionOptions.retryIntervalBackoffMultiplier] The
+ * backoff multiplier for the time between retries.
+ */
+export interface JobStep extends ProxyResource {
+  stepId?: number;
+  targetGroup: string;
+  credential: string;
+  action: JobStepAction;
+  output?: JobStepOutput;
+  executionOptions?: JobStepExecutionOptions;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTarget class.
+ * @constructor
+ * A job target, for example a specific database or a container of databases
+ * that is evaluated during job execution.
+ *
+ * @member {string} [membershipType] Whether the target is included or excluded
+ * from the group. Possible values include: 'Include', 'Exclude'. Default
+ * value: 'Include' .
+ * @member {string} type The target type. Possible values include:
+ * 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap', 'SqlServer'
+ * @member {string} [serverName] The target server name.
+ * @member {string} [databaseName] The target database name.
+ * @member {string} [elasticPoolName] The target elastic pool name.
+ * @member {string} [shardMapName] The target shard map.
+ * @member {string} [refreshCredential] The resource ID of the credential that
+ * is used during job execution to connect to the target and determine the list
+ * of databases inside the target.
+ */
+export interface JobTarget {
+  membershipType?: string;
+  type: string;
+  serverName?: string;
+  databaseName?: string;
+  elasticPoolName?: string;
+  shardMapName?: string;
+  refreshCredential?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTargetGroup class.
+ * @constructor
+ * A group of job targets.
+ *
+ * @member {array} members Members of the target group.
+ */
+export interface JobTargetGroup extends ProxyResource {
+  members: JobTarget[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobVersion class.
+ * @constructor
+ * A job version.
+ *
+ */
+export interface JobVersion extends ProxyResource {
+}
+
+/**
+ * @class
  * Initializes a new instance of the LongTermRetentionBackup class.
  * @constructor
  * A long term retention backup.
@@ -1807,6 +2746,139 @@ export interface BackupLongTermRetentionPolicy extends ProxyResource {
   monthlyRetention?: string;
   yearlyRetention?: string;
   weekOfYear?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CompleteDatabaseRestoreDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a complete database restore
+ * operation.
+ *
+ * @member {string} lastBackupName The last backup name to apply
+ */
+export interface CompleteDatabaseRestoreDefinition {
+  lastBackupName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabase class.
+ * @constructor
+ * A managed database resource.
+ *
+ * @member {string} [collation] Collation of the managed database.
+ * @member {string} [status] Status for the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @member {date} [creationDate] Creation date of the database.
+ * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * point in time restore.
+ * @member {date} [restorePointInTime] Conditional. If createMode is
+ * PointInTimeRestore, this value is required. Specifies the point in time
+ * (ISO8601 format) of the source database that will be restored to create the
+ * new database.
+ * @member {string} [defaultSecondaryLocation] Geo paired region.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {string} [createMode] Managed database create mode.
+ * PointInTimeRestore: Create a database by restoring a point in time backup of
+ * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+ * PointInTime must be specified. RestoreExternalBackup: Create a database by
+ * restoring from external backup files. Collation, StorageContainerUri and
+ * StorageContainerSasToken must be specified. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * @member {string} [storageContainerUri] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the uri of the
+ * storage container where backups for this restore are stored.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the storage
+ * container sas token.
+ * @member {string} [failoverGroupId] Instance Failover Group resource
+ * identifier that this managed database belongs to.
+ */
+export interface ManagedDatabase extends TrackedResource {
+  collation?: string;
+  readonly status?: string;
+  readonly creationDate?: Date;
+  readonly earliestRestorePoint?: Date;
+  restorePointInTime?: Date;
+  readonly defaultSecondaryLocation?: string;
+  catalogCollation?: string;
+  createMode?: string;
+  storageContainerUri?: string;
+  sourceDatabaseId?: string;
+  storageContainerSasToken?: string;
+  readonly failoverGroupId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseUpdate class.
+ * @constructor
+ * An managed database update.
+ *
+ * @member {string} [collation] Collation of the managed database.
+ * @member {string} [status] Status for the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @member {date} [creationDate] Creation date of the database.
+ * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * point in time restore.
+ * @member {date} [restorePointInTime] Conditional. If createMode is
+ * PointInTimeRestore, this value is required. Specifies the point in time
+ * (ISO8601 format) of the source database that will be restored to create the
+ * new database.
+ * @member {string} [defaultSecondaryLocation] Geo paired region.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {string} [createMode] Managed database create mode.
+ * PointInTimeRestore: Create a database by restoring a point in time backup of
+ * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+ * PointInTime must be specified. RestoreExternalBackup: Create a database by
+ * restoring from external backup files. Collation, StorageContainerUri and
+ * StorageContainerSasToken must be specified. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * @member {string} [storageContainerUri] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the uri of the
+ * storage container where backups for this restore are stored.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the storage
+ * container sas token.
+ * @member {string} [failoverGroupId] Instance Failover Group resource
+ * identifier that this managed database belongs to.
+ * @member {object} [tags] Resource tags.
+ */
+export interface ManagedDatabaseUpdate {
+  collation?: string;
+  readonly status?: string;
+  readonly creationDate?: Date;
+  readonly earliestRestorePoint?: Date;
+  restorePointInTime?: Date;
+  readonly defaultSecondaryLocation?: string;
+  catalogCollation?: string;
+  createMode?: string;
+  storageContainerUri?: string;
+  sourceDatabaseId?: string;
+  storageContainerSasToken?: string;
+  readonly failoverGroupId?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabel class.
+ * @constructor
+ * A sensitivity label.
+ *
+ * @member {string} [labelName] The label name.
+ * @member {string} [informationType] The information type.
+ */
+export interface SensitivityLabel extends ProxyResource {
+  labelName?: string;
+  informationType?: string;
 }
 
 /**
@@ -1873,6 +2945,39 @@ export interface ServerDnsAlias extends ProxyResource {
  */
 export interface ServerDnsAliasAcquisition {
   oldServerDnsAliasId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerSecurityAlertPolicy class.
+ * @constructor
+ * A server security alert policy.
+ *
+ * @member {string} state Specifies the state of the policy, whether it is
+ * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
+ * @member {array} [disabledAlerts] Specifies an array of alerts that are
+ * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
+ * Access_Anomaly
+ * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * which the alert is sent.
+ * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators.
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). This blob storage will hold all
+ * Threat Detection audit logs.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * Threat Detection audit logs.
+ */
+export interface ServerSecurityAlertPolicy extends ProxyResource {
+  state: string;
+  disabledAlerts?: string[];
+  emailAddresses?: string[];
+  emailAccountAdmins?: boolean;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
 }
 
 /**
@@ -2084,28 +3189,6 @@ export interface PerformanceLevelCapability {
 
 /**
  * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * An ARM Resource SKU.
- *
- * @member {string} name The name of the SKU, typically, a letter + Number
- * code, e.g. P3.
- * @member {string} [tier] The tier of the particular SKU, e.g. Basic, Premium.
- * @member {string} [size] Size of the particular SKU
- * @member {string} [family] If the service has different generations of
- * hardware, for the same SKU, then that can be captured here.
- * @member {number} [capacity] Capacity of the particular SKU.
- */
-export interface Sku {
-  name: string;
-  tier?: string;
-  size?: string;
-  family?: string;
-  capacity?: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the LicenseTypeCapability class.
  * @constructor
  * The license type capability
@@ -2136,14 +3219,18 @@ export interface LicenseTypeCapability {
  * @member {string} [performanceLevel.unit] Unit type used to measure
  * performance level. Possible values include: 'DTU', 'VCores'
  * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {array} [supportedLicenseTypes] List of supported license types.
  * @member {object} [includedMaxSize] The included (free) max size.
  * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
@@ -2244,14 +3331,18 @@ export interface ElasticPoolPerDatabaseMaxPerformanceLevelCapability {
  * @member {string} [performanceLevel.unit] Unit type used to measure
  * performance level. Possible values include: 'DTU', 'VCores'
  * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {array} [supportedLicenseTypes] List of supported license types.
  * @member {number} [maxDatabaseCount] The maximum number of databases
  * supported.
@@ -2450,14 +3541,18 @@ export interface LocationCapabilities {
  * A database resource.
  *
  * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [kind] Kind of database. This is metadata used for the
  * Azure portal experience.
  * @member {string} [managedBy] Resource that manages the database.
@@ -2552,14 +3647,18 @@ export interface LocationCapabilities {
  * string may be routed to a readonly secondary replica in the same region.
  * Possible values include: 'Enabled', 'Disabled'
  * @member {object} [currentSku] The name and tier of the SKU.
- * @member {string} [currentSku.name] The name of the SKU, typically, a letter
- * + Number code, e.g. P3.
- * @member {string} [currentSku.tier] The tier of the particular SKU, e.g.
- * Basic, Premium.
- * @member {string} [currentSku.size] Size of the particular SKU
+ * @member {string} [currentSku.name] The name of the SKU. Ex - P3. It is
+ * typically a letter+number code
+ * @member {string} [currentSku.tier] This field is required to be implemented
+ * by the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @member {string} [currentSku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [currentSku.family] If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [currentSku.capacity] Capacity of the particular SKU.
+ * @member {number} [currentSku.capacity] If the SKU supports scale out/in then
+ * the capacity integer should be included. If scale out/in is not possible for
+ * the resource this may be omitted.
  */
 export interface Database extends TrackedResource {
   sku?: Sku;
@@ -2600,14 +3699,18 @@ export interface Database extends TrackedResource {
  * A database resource.
  *
  * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [createMode] Specifies the mode of database creation.
  *
  * Default: regular database creation.
@@ -2699,14 +3802,18 @@ export interface Database extends TrackedResource {
  * string may be routed to a readonly secondary replica in the same region.
  * Possible values include: 'Enabled', 'Disabled'
  * @member {object} [currentSku] The name and tier of the SKU.
- * @member {string} [currentSku.name] The name of the SKU, typically, a letter
- * + Number code, e.g. P3.
- * @member {string} [currentSku.tier] The tier of the particular SKU, e.g.
- * Basic, Premium.
- * @member {string} [currentSku.size] Size of the particular SKU
+ * @member {string} [currentSku.name] The name of the SKU. Ex - P3. It is
+ * typically a letter+number code
+ * @member {string} [currentSku.tier] This field is required to be implemented
+ * by the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @member {string} [currentSku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [currentSku.family] If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [currentSku.capacity] Capacity of the particular SKU.
+ * @member {number} [currentSku.capacity] If the SKU supports scale out/in then
+ * the capacity integer should be included. If scale out/in is not possible for
+ * the resource this may be omitted.
  * @member {object} [tags] Resource tags.
  */
 export interface DatabaseUpdate {
@@ -2775,14 +3882,18 @@ export interface ElasticPoolPerDatabaseSettings {
  * An elastic pool.
  *
  * @member {object} [sku]
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [kind] Kind of elastic pool. This is metadata used for the
  * Azure portal experience.
  * @member {string} [state] The state of the elastic pool. Possible values
@@ -2821,14 +3932,18 @@ export interface ElasticPool extends TrackedResource {
  * An elastic pool update.
  *
  * @member {object} [sku]
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {number} [maxSizeBytes] The storage limit for the database elastic
  * pool in bytes.
  * @member {object} [perDatabaseSettings] The per database settings for the
@@ -2851,6 +3966,194 @@ export interface ElasticPoolUpdate {
   zoneRedundant?: boolean;
   licenseType?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanError class.
+ * @constructor
+ * Properties of a vulnerability assessment scan error.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [message] The error message.
+ */
+export interface VulnerabilityAssessmentScanError {
+  readonly code?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanRecord class.
+ * @constructor
+ * A vulnerability assessment scan record.
+ *
+ * @member {string} [scanId] The scan ID.
+ * @member {string} [triggerType] The scan trigger type. Possible values
+ * include: 'OnDemand', 'Recurring'
+ * @member {string} [state] The scan status. Possible values include: 'Passed',
+ * 'Failed', 'FailedToRun', 'InProgress'
+ * @member {date} [startTime] The scan start time (UTC).
+ * @member {date} [endTime] The scan end time (UTC).
+ * @member {array} [errors] The scan errors.
+ * @member {string} [storageContainerPath] The scan results storage container
+ * path.
+ * @member {number} [numberOfFailedSecurityChecks] The number of failed
+ * security checks.
+ */
+export interface VulnerabilityAssessmentScanRecord extends ProxyResource {
+  readonly scanId?: string;
+  readonly triggerType?: string;
+  readonly state?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly errors?: VulnerabilityAssessmentScanError[];
+  readonly storageContainerPath?: string;
+  readonly numberOfFailedSecurityChecks?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentScansExport class.
+ * @constructor
+ * A database Vulnerability Assessment scan export resource.
+ *
+ * @member {string} [exportedReportLocation] Location of the exported report
+ * (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/scans/serverName/databaseName/scan_scanId.xlsx).
+ */
+export interface DatabaseVulnerabilityAssessmentScansExport extends ProxyResource {
+  readonly exportedReportLocation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroupReadWriteEndpoint class.
+ * @constructor
+ * Read-write endpoint of the failover group instance.
+ *
+ * @member {string} failoverPolicy Failover policy of the read-write endpoint
+ * for the failover group. If failoverPolicy is Automatic then
+ * failoverWithDataLossGracePeriodMinutes is required. Possible values include:
+ * 'Manual', 'Automatic'
+ * @member {number} [failoverWithDataLossGracePeriodMinutes] Grace period
+ * before failover with data loss is attempted for the read-write endpoint. If
+ * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
+ * required.
+ */
+export interface InstanceFailoverGroupReadWriteEndpoint {
+  failoverPolicy: string;
+  failoverWithDataLossGracePeriodMinutes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroupReadOnlyEndpoint class.
+ * @constructor
+ * Read-only endpoint of the failover group instance.
+ *
+ * @member {string} [failoverPolicy] Failover policy of the read-only endpoint
+ * for the failover group. Possible values include: 'Disabled', 'Enabled'
+ */
+export interface InstanceFailoverGroupReadOnlyEndpoint {
+  failoverPolicy?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartnerRegionInfo class.
+ * @constructor
+ * Partner region information for the failover group.
+ *
+ * @member {string} [location] Geo location of the partner managed instances.
+ * @member {string} [replicationRole] Replication role of the partner managed
+ * instances. Possible values include: 'Primary', 'Secondary'
+ */
+export interface PartnerRegionInfo {
+  location?: string;
+  readonly replicationRole?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstancePairInfo class.
+ * @constructor
+ * Pairs of Managed Instances in the failover group.
+ *
+ * @member {string} [primaryManagedInstanceId] Id of Primary Managed Instance
+ * in pair.
+ * @member {string} [partnerManagedInstanceId] Id of Partner Managed Instance
+ * in pair.
+ */
+export interface ManagedInstancePairInfo {
+  primaryManagedInstanceId?: string;
+  partnerManagedInstanceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroup class.
+ * @constructor
+ * An instance failover group.
+ *
+ * @member {object} readWriteEndpoint Read-write endpoint of the failover group
+ * instance.
+ * @member {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
+ * read-write endpoint for the failover group. If failoverPolicy is Automatic
+ * then failoverWithDataLossGracePeriodMinutes is required. Possible values
+ * include: 'Manual', 'Automatic'
+ * @member {number} [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes]
+ * Grace period before failover with data loss is attempted for the read-write
+ * endpoint. If failoverPolicy is Automatic then
+ * failoverWithDataLossGracePeriodMinutes is required.
+ * @member {object} [readOnlyEndpoint] Read-only endpoint of the failover group
+ * instance.
+ * @member {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
+ * read-only endpoint for the failover group. Possible values include:
+ * 'Disabled', 'Enabled'
+ * @member {string} [replicationRole] Local replication role of the failover
+ * group instance. Possible values include: 'Primary', 'Secondary'
+ * @member {string} [replicationState] Replication state of the failover group
+ * instance.
+ * @member {array} partnerRegions Partner region information for the failover
+ * group.
+ * @member {array} managedInstancePairs List of managed instance pairs in the
+ * failover group.
+ */
+export interface InstanceFailoverGroup extends ProxyResource {
+  readWriteEndpoint: InstanceFailoverGroupReadWriteEndpoint;
+  readOnlyEndpoint?: InstanceFailoverGroupReadOnlyEndpoint;
+  readonly replicationRole?: string;
+  readonly replicationState?: string;
+  partnerRegions: PartnerRegionInfo[];
+  managedInstancePairs: ManagedInstancePairInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupShortTermRetentionPolicy class.
+ * @constructor
+ * A short term retention policy.
+ *
+ * @member {number} [retentionDays] The backup retention period in days. This
+ * is how many days Point-in-Time Restore will be supported.
+ */
+export interface BackupShortTermRetentionPolicy extends ProxyResource {
+  retentionDays?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TdeCertificate class.
+ * @constructor
+ * A TDE certificate that can be uploaded into a server.
+ *
+ * @member {string} privateBlob The base64 encoded certificate private blob.
+ * @member {string} [certPassword] The certificate password.
+ */
+export interface TdeCertificate extends ProxyResource {
+  privateBlob: string;
+  certPassword?: string;
 }
 
 
@@ -3107,6 +4410,18 @@ export interface FailoverGroupListResult extends Array<FailoverGroup> {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedInstanceListResult class.
+ * @constructor
+ * A list of managed instances.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceListResult extends Array<ManagedInstance> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
  * Result of the request to list SQL operations.
@@ -3239,6 +4554,90 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
 
 /**
  * @class
+ * Initializes a new instance of the JobAgentListResult class.
+ * @constructor
+ * A list of Azure SQL job agents.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobAgentListResult extends Array<JobAgent> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCredentialListResult class.
+ * @constructor
+ * A list of job credentials.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobCredentialListResult extends Array<JobCredential> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobExecutionListResult class.
+ * @constructor
+ * A list of job executions.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobExecutionListResult extends Array<JobExecution> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobListResult class.
+ * @constructor
+ * A list of jobs.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobListResult extends Array<Job> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepListResult class.
+ * @constructor
+ * A list of job steps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobStepListResult extends Array<JobStep> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTargetGroupListResult class.
+ * @constructor
+ * A list of target groups.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobTargetGroupListResult extends Array<JobTargetGroup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobVersionListResult class.
+ * @constructor
+ * A list of job versions.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobVersionListResult extends Array<JobVersion> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LongTermRetentionBackupListResult class.
  * @constructor
  * A list of long term retention bacukps.
@@ -3246,6 +4645,30 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseListResult class.
+ * @constructor
+ * A list of managed databases.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabelListResult class.
+ * @constructor
+ * A list of sensitivity labels.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
   readonly nextLink?: string;
 }
 
@@ -3294,5 +4717,41 @@ export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanRecordListResult class.
+ * @constructor
+ * A list of vulnerability assessment scan records.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface VulnerabilityAssessmentScanRecordListResult extends Array<VulnerabilityAssessmentScanRecord> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroupListResult class.
+ * @constructor
+ * A list of instance failover groups.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface InstanceFailoverGroupListResult extends Array<InstanceFailoverGroup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupShortTermRetentionPolicyListResult class.
+ * @constructor
+ * A list of short term retention policies.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface BackupShortTermRetentionPolicyListResult extends Array<BackupShortTermRetentionPolicy> {
   readonly nextLink?: string;
 }

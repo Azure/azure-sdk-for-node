@@ -9,7 +9,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/providers/Microsoft.Storage/checkNameAvailability?api-version=2018-02-01', '*')
+.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/providers/Microsoft.Storage/checkNameAvailability?api-version=2018-03-01-preview', '*')
   .reply(200, "{\"message\":\"The storage account named testacc6023 is already taken.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '117',
@@ -28,7 +28,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/providers/Microsoft.Storage/checkNameAvailability?api-version=2018-02-01', '*')
+.post('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/providers/Microsoft.Storage/checkNameAvailability?api-version=2018-03-01-preview', '*')
   .reply(200, "{\"message\":\"The storage account named testacc6023 is already taken.\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '117',

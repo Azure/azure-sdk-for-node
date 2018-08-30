@@ -148,14 +148,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -205,9 +204,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -335,14 +332,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -392,9 +388,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -822,14 +816,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -879,9 +872,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1009,14 +1000,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -1066,9 +1056,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1356,6 +1344,66 @@ export interface ContainerServices {
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerServiceClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Gets a list of compute operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Gets a list of compute operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * ManagedClusters
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ContainerServiceClient.
@@ -1552,7 +1600,7 @@ export interface ManagedClusters {
 
 
     /**
-     * @summary Gets access profile of a managed cluster.
+     * @summary Gets an access profile of a managed cluster.
      *
      * Gets the accessProfile for the specified role name of the managed cluster
      * with a specified resource group and name.
@@ -1575,10 +1623,10 @@ export interface ManagedClusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAccessProfilesWithHttpOperationResponse(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedClusterAccessProfile>>;
+    getAccessProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedClusterAccessProfile>>;
 
     /**
-     * @summary Gets access profile of a managed cluster.
+     * @summary Gets an access profile of a managed cluster.
      *
      * Gets the accessProfile for the specified role name of the managed cluster
      * with a specified resource group and name.
@@ -1618,9 +1666,139 @@ export interface ManagedClusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAccessProfiles(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedClusterAccessProfile>;
-    getAccessProfiles(resourceGroupName: string, resourceName: string, roleName: string, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
-    getAccessProfiles(resourceGroupName: string, resourceName: string, roleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedClusterAccessProfile>;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+
+
+    /**
+     * @summary Gets clusteradmin credential of a managed cluster.
+     *
+     * Gets clusteradmin credential of the managed cluster with a specified
+     * resource group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CredentialResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listClusterAdminCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
+
+    /**
+     * @summary Gets clusteradmin credential of a managed cluster.
+     *
+     * Gets clusteradmin credential of the managed cluster with a specified
+     * resource group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CredentialResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CredentialResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CredentialResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialResults>;
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.CredentialResults>): void;
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialResults>): void;
+
+
+    /**
+     * @summary Gets clusteruser credential of a managed cluster.
+     *
+     * Gets clusteruser credential of the managed cluster with a specified resource
+     * group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CredentialResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listClusterUserCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
+
+    /**
+     * @summary Gets clusteruser credential of a managed cluster.
+     *
+     * Gets clusteruser credential of the managed cluster with a specified resource
+     * group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CredentialResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CredentialResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CredentialResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialResults>;
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.CredentialResults>): void;
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialResults>): void;
 
 
     /**
@@ -1701,11 +1879,11 @@ export interface ManagedClusters {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Managed Cluster operation.
      *
-     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
-     * the managed cluster.
-     *
      * @param {string} [parameters.kubernetesVersion] Version of Kubernetes
      * specified when creating the managed cluster.
+     *
+     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
+     * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
      *
@@ -1724,7 +1902,7 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
@@ -1732,19 +1910,52 @@ export interface ManagedClusters {
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
      *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
+     * @param {object} [parameters.addonProfiles] Profile of managed cluster
+     * add-on.
      *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
+     * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
+     * Role-Based Access Control.
      *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
+     * @param {object} [parameters.networkProfile] Profile of network
+     * configuration.
      *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
+     * @param {string} [parameters.networkProfile.networkPlugin] Network plugin
+     * used for building Kubernetes network. Possible values include: 'azure',
+     * 'kubenet'
+     *
+     * @param {string} [parameters.networkProfile.networkPolicy] Network policy
+     * used for building Kubernetes network. Possible values include: 'calico'
+     *
+     * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
+     * from which to assign pod IPs when kubenet is used.
+     *
+     * @param {string} [parameters.networkProfile.serviceCidr] A CIDR notation IP
+     * range from which to assign service cluster IPs. It must not overlap with any
+     * Subnet IP ranges.
+     *
+     * @param {string} [parameters.networkProfile.dnsServiceIP] An IP address
+     * assigned to the Kubernetes DNS service. It must be within the Kubernetes
+     * service address range specified in serviceCidr.
+     *
+     * @param {string} [parameters.networkProfile.dockerBridgeCidr] A CIDR notation
+     * IP range assigned to the Docker bridge network. It must not overlap with any
+     * Subnet IP ranges or the Kubernetes service address range.
+     *
+     * @param {object} [parameters.aadProfile] Profile of Azure Active Directory
+     * configuration.
+     *
+     * @param {string} parameters.aadProfile.clientAppID The client AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppID The server AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * application secret.
+     *
+     * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
+     * for authentication. If not specified, will use the tenant of the deployment
+     * subscription.
      *
      * @param {string} parameters.location Resource location
      *
@@ -1776,11 +1987,11 @@ export interface ManagedClusters {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Managed Cluster operation.
      *
-     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
-     * the managed cluster.
-     *
      * @param {string} [parameters.kubernetesVersion] Version of Kubernetes
      * specified when creating the managed cluster.
+     *
+     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
+     * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
      *
@@ -1799,7 +2010,7 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
@@ -1807,19 +2018,52 @@ export interface ManagedClusters {
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
      *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
+     * @param {object} [parameters.addonProfiles] Profile of managed cluster
+     * add-on.
      *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
+     * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
+     * Role-Based Access Control.
      *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
+     * @param {object} [parameters.networkProfile] Profile of network
+     * configuration.
      *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
+     * @param {string} [parameters.networkProfile.networkPlugin] Network plugin
+     * used for building Kubernetes network. Possible values include: 'azure',
+     * 'kubenet'
+     *
+     * @param {string} [parameters.networkProfile.networkPolicy] Network policy
+     * used for building Kubernetes network. Possible values include: 'calico'
+     *
+     * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
+     * from which to assign pod IPs when kubenet is used.
+     *
+     * @param {string} [parameters.networkProfile.serviceCidr] A CIDR notation IP
+     * range from which to assign service cluster IPs. It must not overlap with any
+     * Subnet IP ranges.
+     *
+     * @param {string} [parameters.networkProfile.dnsServiceIP] An IP address
+     * assigned to the Kubernetes DNS service. It must be within the Kubernetes
+     * service address range specified in serviceCidr.
+     *
+     * @param {string} [parameters.networkProfile.dockerBridgeCidr] A CIDR notation
+     * IP range assigned to the Docker bridge network. It must not overlap with any
+     * Subnet IP ranges or the Kubernetes service address range.
+     *
+     * @param {object} [parameters.aadProfile] Profile of Azure Active Directory
+     * configuration.
+     *
+     * @param {string} parameters.aadProfile.clientAppID The client AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppID The server AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * application secret.
+     *
+     * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
+     * for authentication. If not specified, will use the tenant of the deployment
+     * subscription.
      *
      * @param {string} parameters.location Resource location
      *
@@ -1855,6 +2099,79 @@ export interface ManagedClusters {
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, callback: ServiceCallback<models.ManagedCluster>): void;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ManagedCluster>): void;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
 
 
     /**
@@ -1932,11 +2249,11 @@ export interface ManagedClusters {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Managed Cluster operation.
      *
-     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
-     * the managed cluster.
-     *
      * @param {string} [parameters.kubernetesVersion] Version of Kubernetes
      * specified when creating the managed cluster.
+     *
+     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
+     * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
      *
@@ -1955,7 +2272,7 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
@@ -1963,19 +2280,52 @@ export interface ManagedClusters {
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
      *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
+     * @param {object} [parameters.addonProfiles] Profile of managed cluster
+     * add-on.
      *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
+     * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
+     * Role-Based Access Control.
      *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
+     * @param {object} [parameters.networkProfile] Profile of network
+     * configuration.
      *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
+     * @param {string} [parameters.networkProfile.networkPlugin] Network plugin
+     * used for building Kubernetes network. Possible values include: 'azure',
+     * 'kubenet'
+     *
+     * @param {string} [parameters.networkProfile.networkPolicy] Network policy
+     * used for building Kubernetes network. Possible values include: 'calico'
+     *
+     * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
+     * from which to assign pod IPs when kubenet is used.
+     *
+     * @param {string} [parameters.networkProfile.serviceCidr] A CIDR notation IP
+     * range from which to assign service cluster IPs. It must not overlap with any
+     * Subnet IP ranges.
+     *
+     * @param {string} [parameters.networkProfile.dnsServiceIP] An IP address
+     * assigned to the Kubernetes DNS service. It must be within the Kubernetes
+     * service address range specified in serviceCidr.
+     *
+     * @param {string} [parameters.networkProfile.dockerBridgeCidr] A CIDR notation
+     * IP range assigned to the Docker bridge network. It must not overlap with any
+     * Subnet IP ranges or the Kubernetes service address range.
+     *
+     * @param {object} [parameters.aadProfile] Profile of Azure Active Directory
+     * configuration.
+     *
+     * @param {string} parameters.aadProfile.clientAppID The client AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppID The server AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * application secret.
+     *
+     * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
+     * for authentication. If not specified, will use the tenant of the deployment
+     * subscription.
      *
      * @param {string} parameters.location Resource location
      *
@@ -2007,11 +2357,11 @@ export interface ManagedClusters {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Managed Cluster operation.
      *
-     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
-     * the managed cluster.
-     *
      * @param {string} [parameters.kubernetesVersion] Version of Kubernetes
      * specified when creating the managed cluster.
+     *
+     * @param {string} [parameters.dnsPrefix] DNS prefix specified when creating
+     * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
      *
@@ -2030,7 +2380,7 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
@@ -2038,19 +2388,52 @@ export interface ManagedClusters {
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
      *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
+     * @param {object} [parameters.addonProfiles] Profile of managed cluster
+     * add-on.
      *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
+     * @param {boolean} [parameters.enableRBAC] Whether to enable Kubernetes
+     * Role-Based Access Control.
      *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
+     * @param {object} [parameters.networkProfile] Profile of network
+     * configuration.
      *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
+     * @param {string} [parameters.networkProfile.networkPlugin] Network plugin
+     * used for building Kubernetes network. Possible values include: 'azure',
+     * 'kubenet'
+     *
+     * @param {string} [parameters.networkProfile.networkPolicy] Network policy
+     * used for building Kubernetes network. Possible values include: 'calico'
+     *
+     * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
+     * from which to assign pod IPs when kubenet is used.
+     *
+     * @param {string} [parameters.networkProfile.serviceCidr] A CIDR notation IP
+     * range from which to assign service cluster IPs. It must not overlap with any
+     * Subnet IP ranges.
+     *
+     * @param {string} [parameters.networkProfile.dnsServiceIP] An IP address
+     * assigned to the Kubernetes DNS service. It must be within the Kubernetes
+     * service address range specified in serviceCidr.
+     *
+     * @param {string} [parameters.networkProfile.dockerBridgeCidr] A CIDR notation
+     * IP range assigned to the Docker bridge network. It must not overlap with any
+     * Subnet IP ranges or the Kubernetes service address range.
+     *
+     * @param {object} [parameters.aadProfile] Profile of Azure Active Directory
+     * configuration.
+     *
+     * @param {string} parameters.aadProfile.clientAppID The client AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppID The server AAD application
+     * ID.
+     *
+     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * application secret.
+     *
+     * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
+     * for authentication. If not specified, will use the tenant of the deployment
+     * subscription.
      *
      * @param {string} parameters.location Resource location
      *
@@ -2086,6 +2469,79 @@ export interface ManagedClusters {
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, callback: ServiceCallback<models.ManagedCluster>): void;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
 
 
     /**

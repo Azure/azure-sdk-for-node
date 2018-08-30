@@ -1887,7 +1887,8 @@ export interface ServicePrincipals {
 
 
     /**
-     * Gets service principal information from the directory.
+     * Gets service principal information from the directory. Query by objectId or
+     * pass a filter to query by appId
      *
      * @param {string} objectId The object ID of the service principal to get.
      *
@@ -1905,7 +1906,8 @@ export interface ServicePrincipals {
     getWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
-     * Gets service principal information from the directory.
+     * Gets service principal information from the directory. Query by objectId or
+     * pass a filter to query by appId
      *
      * @param {string} objectId The object ID of the service principal to get.
      *
@@ -2979,4 +2981,167 @@ export interface Domains {
     get(domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Domain>;
     get(domainName: string, callback: ServiceCallback<models.Domain>): void;
     get(domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
+}
+
+/**
+ * @class
+ * OAuth2
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the GraphRbacManagementClient.
+ */
+export interface OAuth2 {
+
+
+    /**
+     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] This is the Service Principal ObjectId
+     * associated with the app
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+
+    /**
+     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] This is the Service Principal ObjectId
+     * associated with the app
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Permissions} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Permissions} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    get(callback: ServiceCallback<models.Permissions>): void;
+    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+
+
+    /**
+     * Grants OAuth2 permissions for the relevant resource Ids of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.body] The relevant app Service Principal Object Id
+     * and the Service Principal Objecit Id you want to grant.
+     *
+     * @param {string} [options.body.odatatype]
+     * Microsoft.DirectoryServices.OAuth2PermissionGrant
+     *
+     * @param {string} [options.body.clientId] The objectId of the Service
+     * Principal associated with the app
+     *
+     * @param {string} [options.body.consentType] Typically set to AllPrincipals
+     *
+     * @param {object} [options.body.principalId] Set to null if AllPrincipals is
+     * set
+     *
+     * @param {string} [options.body.resourceId] Service Principal Id of the
+     * resource you want to grant
+     *
+     * @param {string} [options.body.scope] Typically set to user_impersonation
+     *
+     * @param {string} [options.body.startTime] Start time for TTL
+     *
+     * @param {string} [options.body.expiryTime] Expiry time for TTL
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+
+    /**
+     * Grants OAuth2 permissions for the relevant resource Ids of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.body] The relevant app Service Principal Object Id
+     * and the Service Principal Objecit Id you want to grant.
+     *
+     * @param {string} [options.body.odatatype]
+     * Microsoft.DirectoryServices.OAuth2PermissionGrant
+     *
+     * @param {string} [options.body.clientId] The objectId of the Service
+     * Principal associated with the app
+     *
+     * @param {string} [options.body.consentType] Typically set to AllPrincipals
+     *
+     * @param {object} [options.body.principalId] Set to null if AllPrincipals is
+     * set
+     *
+     * @param {string} [options.body.resourceId] Service Principal Id of the
+     * resource you want to grant
+     *
+     * @param {string} [options.body.scope] Typically set to user_impersonation
+     *
+     * @param {string} [options.body.startTime] Start time for TTL
+     *
+     * @param {string} [options.body.expiryTime] Expiry time for TTL
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Permissions} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Permissions} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    post(callback: ServiceCallback<models.Permissions>): void;
+    post(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
 }
