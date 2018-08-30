@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class KeyVaultManagementClient extends AzureServiceClient {
+export default class KeyVaultManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the KeyVaultManagementClient class.
    * @constructor
@@ -59,4 +60,4 @@ declare class KeyVaultManagementClient extends AzureServiceClient {
   operations: operations.Operations;
 }
 
-export = KeyVaultManagementClient;
+export { KeyVaultManagementClient, models as KeyVaultManagementModels };

@@ -593,6 +593,144 @@ export interface Applications {
 
 
     /**
+     * @summary Directory objects that are owners of the application.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} applicationObjectId The object ID of the application for
+     * which to get owners.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOwnersWithHttpOperationResponse(applicationObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+
+    /**
+     * @summary Directory objects that are owners of the application.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} applicationObjectId The object ID of the application for
+     * which to get owners.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOwners(applicationObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwners(applicationObjectId: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwners(applicationObjectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+
+
+    /**
+     * Add an owner to an application.
+     *
+     * @param {string} applicationObjectId The object ID of the application to
+     * which to add the owner.
+     *
+     * @param {object} parameters The URL of the owner object, such as
+     * https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
+     *
+     * @param {string} parameters.url A owner object URL, such as
+     * "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
+     * where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
+     * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the owner (user,
+     * application, servicePrincipal, group) to be added.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addOwnerWithHttpOperationResponse(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Add an owner to an application.
+     *
+     * @param {string} applicationObjectId The object ID of the application to
+     * which to add the owner.
+     *
+     * @param {object} parameters The URL of the owner object, such as
+     * https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
+     *
+     * @param {string} parameters.url A owner object URL, such as
+     * "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
+     * where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
+     * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the owner (user,
+     * application, servicePrincipal, group) to be added.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addOwner(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    addOwner(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, callback: ServiceCallback<void>): void;
+    addOwner(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Get the keyCredentials associated with an application.
      *
      * @param {string} applicationObjectId Application object ID.
@@ -1018,7 +1156,10 @@ export interface Groups {
      * @param {string} groupObjectId The object ID of the group to which to add the
      * member.
      *
-     * @param {string} url A member object URL, such as
+     * @param {object} parameters The URL of the member object, such as
+     * https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
+     *
+     * @param {string} parameters.url A member object URL, such as
      * "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
      * where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
      * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the member (user,
@@ -1035,7 +1176,7 @@ export interface Groups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addMemberWithHttpOperationResponse(groupObjectId: string, url: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    addMemberWithHttpOperationResponse(groupObjectId: string, parameters: models.GroupAddMemberParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Add a member to a group.
@@ -1043,7 +1184,10 @@ export interface Groups {
      * @param {string} groupObjectId The object ID of the group to which to add the
      * member.
      *
-     * @param {string} url A member object URL, such as
+     * @param {object} parameters The URL of the member object, such as
+     * https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
+     *
+     * @param {string} parameters.url A member object URL, such as
      * "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd",
      * where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
      * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the member (user,
@@ -1075,63 +1219,9 @@ export interface Groups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addMember(groupObjectId: string, url: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addMember(groupObjectId: string, url: string, callback: ServiceCallback<void>): void;
-    addMember(groupObjectId: string, url: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Delete a group from the directory.
-     *
-     * @param {string} groupObjectId The object ID of the group to delete.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(groupObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete a group from the directory.
-     *
-     * @param {string} groupObjectId The object ID of the group to delete.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(groupObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(groupObjectId: string, callback: ServiceCallback<void>): void;
-    deleteMethod(groupObjectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addMember(groupObjectId: string, parameters: models.GroupAddMemberParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    addMember(groupObjectId: string, parameters: models.GroupAddMemberParameters, callback: ServiceCallback<void>): void;
+    addMember(groupObjectId: string, parameters: models.GroupAddMemberParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1367,13 +1457,69 @@ export interface Groups {
 
 
     /**
+     * Delete a group from the directory.
+     *
+     * @param {string} objectId The object ID of the group to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a group from the directory.
+     *
+     * @param {string} objectId The object ID of the group to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(objectId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Gets a collection of object IDs of groups of which the specified group is a
      * member.
      *
      * @param {string} objectId The object ID of the group for which to get group
      * membership.
      *
-     * @param {boolean} securityEnabledOnly If true, only membership in
+     * @param {object} parameters Group filtering parameters.
+     *
+     * @param {boolean} parameters.securityEnabledOnly If true, only membership in
      * security-enabled groups should be checked. Otherwise, membership in all
      * groups should be checked.
      *
@@ -1388,7 +1534,7 @@ export interface Groups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getMemberGroupsWithHttpOperationResponse(objectId: string, securityEnabledOnly: boolean, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GroupGetMemberGroupsResult>>;
+    getMemberGroupsWithHttpOperationResponse(objectId: string, parameters: models.GroupGetMemberGroupsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GroupGetMemberGroupsResult>>;
 
     /**
      * Gets a collection of object IDs of groups of which the specified group is a
@@ -1397,7 +1543,9 @@ export interface Groups {
      * @param {string} objectId The object ID of the group for which to get group
      * membership.
      *
-     * @param {boolean} securityEnabledOnly If true, only membership in
+     * @param {object} parameters Group filtering parameters.
+     *
+     * @param {boolean} parameters.securityEnabledOnly If true, only membership in
      * security-enabled groups should be checked. Otherwise, membership in all
      * groups should be checked.
      *
@@ -1429,9 +1577,9 @@ export interface Groups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getMemberGroups(objectId: string, securityEnabledOnly: boolean, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GroupGetMemberGroupsResult>;
-    getMemberGroups(objectId: string, securityEnabledOnly: boolean, callback: ServiceCallback<models.GroupGetMemberGroupsResult>): void;
-    getMemberGroups(objectId: string, securityEnabledOnly: boolean, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GroupGetMemberGroupsResult>): void;
+    getMemberGroups(objectId: string, parameters: models.GroupGetMemberGroupsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GroupGetMemberGroupsResult>;
+    getMemberGroups(objectId: string, parameters: models.GroupGetMemberGroupsParameters, callback: ServiceCallback<models.GroupGetMemberGroupsResult>): void;
+    getMemberGroups(objectId: string, parameters: models.GroupGetMemberGroupsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GroupGetMemberGroupsResult>): void;
 
 
     /**
@@ -1739,7 +1887,8 @@ export interface ServicePrincipals {
 
 
     /**
-     * Gets service principal information from the directory.
+     * Gets service principal information from the directory. Query by objectId or
+     * pass a filter to query by appId
      *
      * @param {string} objectId The object ID of the service principal to get.
      *
@@ -1757,7 +1906,8 @@ export interface ServicePrincipals {
     getWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
-     * Gets service principal information from the directory.
+     * Gets service principal information from the directory. Query by objectId or
+     * pass a filter to query by appId
      *
      * @param {string} objectId The object ID of the service principal to get.
      *
@@ -1791,6 +1941,70 @@ export interface ServicePrincipals {
     get(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
     get(objectId: string, callback: ServiceCallback<models.ServicePrincipal>): void;
     get(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+
+
+    /**
+     * @summary Directory objects that are owners of this service principal.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} objectId The object ID of the service principal for which to
+     * get owners.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOwnersWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+
+    /**
+     * @summary Directory objects that are owners of this service principal.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} objectId The object ID of the service principal for which to
+     * get owners.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOwners(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwners(objectId: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwners(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 
 
     /**
@@ -2530,7 +2744,9 @@ export interface Users {
      * @param {string} objectId The object ID of the user for which to get group
      * membership.
      *
-     * @param {boolean} securityEnabledOnly If true, only membership in
+     * @param {object} parameters User filtering parameters.
+     *
+     * @param {boolean} parameters.securityEnabledOnly If true, only membership in
      * security-enabled groups should be checked. Otherwise, membership in all
      * groups should be checked.
      *
@@ -2545,7 +2761,7 @@ export interface Users {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getMemberGroupsWithHttpOperationResponse(objectId: string, securityEnabledOnly: boolean, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserGetMemberGroupsResult>>;
+    getMemberGroupsWithHttpOperationResponse(objectId: string, parameters: models.UserGetMemberGroupsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserGetMemberGroupsResult>>;
 
     /**
      * Gets a collection that contains the object IDs of the groups of which the
@@ -2554,7 +2770,9 @@ export interface Users {
      * @param {string} objectId The object ID of the user for which to get group
      * membership.
      *
-     * @param {boolean} securityEnabledOnly If true, only membership in
+     * @param {object} parameters User filtering parameters.
+     *
+     * @param {boolean} parameters.securityEnabledOnly If true, only membership in
      * security-enabled groups should be checked. Otherwise, membership in all
      * groups should be checked.
      *
@@ -2586,9 +2804,9 @@ export interface Users {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getMemberGroups(objectId: string, securityEnabledOnly: boolean, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserGetMemberGroupsResult>;
-    getMemberGroups(objectId: string, securityEnabledOnly: boolean, callback: ServiceCallback<models.UserGetMemberGroupsResult>): void;
-    getMemberGroups(objectId: string, securityEnabledOnly: boolean, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserGetMemberGroupsResult>): void;
+    getMemberGroups(objectId: string, parameters: models.UserGetMemberGroupsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserGetMemberGroupsResult>;
+    getMemberGroups(objectId: string, parameters: models.UserGetMemberGroupsParameters, callback: ServiceCallback<models.UserGetMemberGroupsResult>): void;
+    getMemberGroups(objectId: string, parameters: models.UserGetMemberGroupsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserGetMemberGroupsResult>): void;
 
 
     /**
@@ -2763,4 +2981,167 @@ export interface Domains {
     get(domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Domain>;
     get(domainName: string, callback: ServiceCallback<models.Domain>): void;
     get(domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
+}
+
+/**
+ * @class
+ * OAuth2
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the GraphRbacManagementClient.
+ */
+export interface OAuth2 {
+
+
+    /**
+     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] This is the Service Principal ObjectId
+     * associated with the app
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+
+    /**
+     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] This is the Service Principal ObjectId
+     * associated with the app
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Permissions} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Permissions} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    get(callback: ServiceCallback<models.Permissions>): void;
+    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+
+
+    /**
+     * Grants OAuth2 permissions for the relevant resource Ids of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.body] The relevant app Service Principal Object Id
+     * and the Service Principal Objecit Id you want to grant.
+     *
+     * @param {string} [options.body.odatatype]
+     * Microsoft.DirectoryServices.OAuth2PermissionGrant
+     *
+     * @param {string} [options.body.clientId] The objectId of the Service
+     * Principal associated with the app
+     *
+     * @param {string} [options.body.consentType] Typically set to AllPrincipals
+     *
+     * @param {object} [options.body.principalId] Set to null if AllPrincipals is
+     * set
+     *
+     * @param {string} [options.body.resourceId] Service Principal Id of the
+     * resource you want to grant
+     *
+     * @param {string} [options.body.scope] Typically set to user_impersonation
+     *
+     * @param {string} [options.body.startTime] Start time for TTL
+     *
+     * @param {string} [options.body.expiryTime] Expiry time for TTL
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+
+    /**
+     * Grants OAuth2 permissions for the relevant resource Ids of an app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.body] The relevant app Service Principal Object Id
+     * and the Service Principal Objecit Id you want to grant.
+     *
+     * @param {string} [options.body.odatatype]
+     * Microsoft.DirectoryServices.OAuth2PermissionGrant
+     *
+     * @param {string} [options.body.clientId] The objectId of the Service
+     * Principal associated with the app
+     *
+     * @param {string} [options.body.consentType] Typically set to AllPrincipals
+     *
+     * @param {object} [options.body.principalId] Set to null if AllPrincipals is
+     * set
+     *
+     * @param {string} [options.body.resourceId] Service Principal Id of the
+     * resource you want to grant
+     *
+     * @param {string} [options.body.scope] Typically set to user_impersonation
+     *
+     * @param {string} [options.body.startTime] Start time for TTL
+     *
+     * @param {string} [options.body.expiryTime] Expiry time for TTL
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Permissions} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Permissions} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    post(callback: ServiceCallback<models.Permissions>): void;
+    post(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
 }

@@ -31,16 +31,7 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} vmSize The size of virtual machines in the pool. All VMs in
  * a pool are the same size. For information about available sizes of virtual
  * machines in pools, see Choose a VM size for compute nodes in an Azure Batch
- * pool (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes). Batch
- * supports all Cloud Services VM sizes except ExtraSmall, STANDARD_A1_V2 and
- * STANDARD_A2_V2. For information about available VM sizes for pools using
- * images from the Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * pool (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} totalCoreHours The total core hours used in the pool during
  * this aggregation interval.
  * @member {number} dataIngressGiB The cross data center network ingress to the
@@ -859,7 +850,10 @@ export interface AutoUserSpecification {
  * @constructor
  * @summary The definition of the user identity under which the task is run.
  *
- * Specify either the userName or autoUser property, but not both.
+ * Specify either the userName or autoUser property, but not both. On
+ * CloudServiceConfiguration pools, this user is logged in with the INTERACTIVE
+ * flag. On Windows VirtualMachineConfiguration pools, this user is logged in
+ * with the BATCH flag.
  *
  * @member {string} [userName] The name of the user identity under which the
  * task is run. The userName and autoUser properties are mutually exclusive;
@@ -914,10 +908,7 @@ export interface LinuxUserConfiguration {
  * @member {string} name The name of the user account.
  * @member {string} password The password for the user account.
  * @member {string} [elevationLevel] The elevation level of the user account.
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {object} [linuxUserConfiguration] The Linux-specific user
  * configuration for the user account. This property is ignored if specified on
  * a Windows pool. If not specified, the user is created with the default
@@ -961,12 +952,15 @@ export interface UserAccount {
  * be retained until the compute node is removed or reimaged.
  * @member {number} [maxTaskRetryCount] The maximum number of times the task
  * may be retried. The Batch service retries a task if its exit code is
- * nonzero. Note that this value specifically controls the number of retries.
- * The Batch service will try the task once, and may then retry up to this
- * limit. For example, if the maximum retry count is 3, Batch tries the task up
- * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
- * the Batch service does not retry the task. If the maximum retry count is -1,
- * the Batch service retries the task without limit.
+ * nonzero. Note that this value specifically controls the number of retries
+ * for the task executable due to a nonzero exit code. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task after the first attempt. If the maximum retry count is
+ * -1, the Batch service retries the task without limit. Resource files and
+ * application packages are only downloaded again if the task is retried on a
+ * new compute node.
  */
 export interface TaskConstraints {
   maxWallClockTime?: moment.Duration;
@@ -1101,7 +1095,17 @@ export interface OutputFile {
  * task to restart. Note that a Job Manager task in one job does not have
  * priority over tasks in other jobs. Across jobs, only job level priorities
  * are observed. For example, if a Job Manager in a priority 0 job needs to be
- * restarted, it will not displace tasks of a priority 1 job.
+ * restarted, it will not displace tasks of a priority 1 job. Batch will retry
+ * tasks when a recovery operation is triggered on a compute node. Examples of
+ * recovery operations include (but are not limited to) when an unhealthy
+ * compute node is rebooted or a compute node disappeared due to host failure.
+ * Retries due to recovery operations are independent of and are not counted
+ * against the maxTaskRetryCount. Even if the maxTaskRetryCount is 0, an
+ * internal retry due to a recovery operation may occur. Because of this, all
+ * tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
  *
  * @member {string} id A string that uniquely identifies the Job Manager task
  * within the job. The ID can contain any combination of alphanumeric
@@ -1115,7 +1119,10 @@ export interface OutputFile {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Manager task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -1138,7 +1145,12 @@ export interface OutputFile {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -1153,12 +1165,14 @@ export interface OutputFile {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {boolean} [killJobOnCompletion] Whether completion of the Job
  * Manager task signifies completion of the entire job. If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
@@ -1212,7 +1226,7 @@ export interface OutputFile {
  * the only supported value for the access property is 'job', which grants
  * access to all operations related to the job which contains the task.
  * @member {boolean} [allowLowPriorityNode] Whether the Job Manager task may
- * run on a low-priority compute node. The default value is false.
+ * run on a low-priority compute node. The default value is true.
  */
 export interface JobManagerTask {
   id: string;
@@ -1254,7 +1268,17 @@ export interface JobManagerTask {
  * before scheduling any other task of the job, if
  * rerunOnNodeRebootAfterSuccess is true or if the Job Preparation task did not
  * previously complete. If the compute node is reimaged, the Job Preparation
- * task is run again before scheduling any task of the job.
+ * task is run again before scheduling any task of the job. Batch will retry
+ * tasks when a recovery operation is triggered on a compute node. Examples of
+ * recovery operations include (but are not limited to) when an unhealthy
+ * compute node is rebooted or a compute node disappeared due to host failure.
+ * Retries due to recovery operations are independent of and are not counted
+ * against the maxTaskRetryCount. Even if the maxTaskRetryCount is 0, an
+ * internal retry due to a recovery operation may occur. Because of this, all
+ * tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
  *
  * @member {string} [id] A string that uniquely identifies the Job Preparation
  * task within the job. The ID can contain any combination of alphanumeric
@@ -1270,7 +1294,10 @@ export interface JobManagerTask {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Preparation task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1291,7 +1318,12 @@ export interface JobManagerTask {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Preparation task.
  * @member {object} [constraints] Constraints that apply to the Job Preparation
@@ -1302,12 +1334,14 @@ export interface JobManagerTask {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
  * the Job Preparation task to complete successfully before scheduling any
  * other tasks of the job on the compute node. A Job Preparation task has
@@ -1392,7 +1426,10 @@ export interface JobPreparationTask {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Release task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1412,8 +1449,13 @@ export interface JobPreparationTask {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Release task.
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
@@ -1471,12 +1513,26 @@ export interface TaskSchedulingPolicy {
  * @summary A task which is run when a compute node joins a pool in the Azure
  * Batch service, or when the compute node is rebooted or reimaged.
  *
+ * Batch will retry tasks when a recovery operation is triggered on a compute
+ * node. Examples of recovery operations include (but are not limited to) when
+ * an unhealthy compute node is rebooted or a compute node disappeared due to
+ * host failure. Retries due to recovery operations are independent of and are
+ * not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is
+ * 0, an internal retry due to a recovery operation may occur. Because of this,
+ * all tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
+ *
  * @member {string} commandLine The command line of the start task. The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the start task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1496,8 +1552,13 @@ export interface TaskSchedulingPolicy {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files. When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the start task.
  * @member {object} [userIdentity] The user identity under which the start task
@@ -1607,9 +1668,10 @@ export interface MetadataItem {
  * Services platform.
  *
  * @member {string} osFamily The Azure Guest OS family to be installed on the
- * virtual machines in the pool. Possible values are: 2 - OS Family 2,
- * equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to
- * Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * virtual machines in the pool. Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
@@ -1636,8 +1698,8 @@ export interface CloudServiceConfiguration {
  * @summary Settings for the operating system disk of the virtual machine.
  *
  * @member {string} [caching] The type of caching to enable for the OS disk.
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  */
@@ -1669,7 +1731,7 @@ export interface WindowsConfiguration {
  * identify each data disk. If attaching multiple disks, each should have a
  * distinct lun.
  * @member {string} [caching] The type of caching to be enabled for the data
- * disks. The default value for caching is none. For information about the
+ * disks. The default value for caching is readwrite. For information about the
  * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
@@ -1731,8 +1793,8 @@ export interface ContainerConfiguration {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [osDisk] Settings for the operating system disk of the
  * Virtual Machine.
- * @member {string} [osDisk.caching] The default value for caching is none. For
- * information about the caching options see:
+ * @member {string} [osDisk.caching] The default value for caching is
+ * readwrite. For information about the caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} nodeAgentSKUId The SKU of the Batch node agent to be
@@ -1938,18 +2000,9 @@ export interface NetworkConfiguration {
  * maximum length of 1024.
  * @member {string} vmSize The size of the virtual machines in the pool. All
  * virtual machines in a pool are the same size. For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [cloudServiceConfiguration] The cloud service configuration
  * for the pool. This property must be specified if the pool needs to be
  * created with Azure PaaS VMs. This property and virtualMachineConfiguration
@@ -1958,11 +2011,12 @@ export interface NetworkConfiguration {
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  * This property cannot be specified if the Batch account was created with its
  * poolAllocationMode property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -1998,7 +2052,8 @@ export interface NetworkConfiguration {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
  * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is none. For information about the caching options see:
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -2131,7 +2186,11 @@ export interface NetworkConfiguration {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -2194,7 +2253,9 @@ export interface NetworkConfiguration {
  * Batch service will make available on each compute node in the pool. The list
  * of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [userAccounts] The list of user accounts to be created on
  * each node in the pool.
  * @member {array} [metadata] A list of name-value pairs associated with the
@@ -2249,18 +2310,9 @@ export interface PoolSpecification {
  * @member {string} [pool.displayName] The display name need not be unique and
  * can contain any Unicode characters up to a maximum length of 1024.
  * @member {string} [pool.vmSize] For information about available sizes of
- * virtual machines for Cloud Services pools (pools created with
- * cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * virtual machines in pools, see Choose a VM size for compute nodes in an
+ * Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [pool.cloudServiceConfiguration] This property must be
  * specified if the pool needs to be created with Azure PaaS VMs. This property
  * and virtualMachineConfiguration are mutually exclusive and one of the
@@ -2270,10 +2322,12 @@ export interface PoolSpecification {
  * account was created with its poolAllocationMode property set to
  * 'UserSubscription'.
  * @member {string} [pool.cloudServiceConfiguration.osFamily] Possible values
- * are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS
- * Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to
- * Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016.
- * For more information, see Azure Guest OS Releases
+ * are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [pool.cloudServiceConfiguration.targetOSVersion] The
  * default value is * which specifies the latest operating system version for
@@ -2308,8 +2362,8 @@ export interface PoolSpecification {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [pool.virtualMachineConfiguration.osDisk]
  * @member {string} [pool.virtualMachineConfiguration.osDisk.caching] The
- * default value for caching is none. For information about the caching options
- * see:
+ * default value for caching is readwrite. For information about the caching
+ * options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The Batch
@@ -2435,7 +2489,11 @@ export interface PoolSpecification {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [pool.startTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -2497,7 +2555,10 @@ export interface PoolSpecification {
  * @member {array} [pool.applicationPackageReferences]
  * @member {array} [pool.applicationLicenses] The list of application licenses
  * must be a subset of available Batch service application licenses. If a
- * license is requested which is not supported, pool creation will fail.
+ * license is requested which is not supported, pool creation will fail. The
+ * permitted licenses available on the pool are 'maya', 'vray', '3dsmax',
+ * 'arnold'. An additional charge applies for each application license added to
+ * the pool.
  * @member {array} [pool.userAccounts]
  * @member {array} [pool.metadata] The Batch service does not assign any
  * meaning to metadata; it is solely for the use of user code.
@@ -2549,18 +2610,9 @@ export interface AutoPoolSpecification {
  * need not be unique and can contain any Unicode characters up to a maximum
  * length of 1024.
  * @member {string} [autoPoolSpecification.pool.vmSize] For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
  * VMs. This property and virtualMachineConfiguration are mutually exclusive
@@ -2571,10 +2623,12 @@ export interface AutoPoolSpecification {
  * property set to 'UserSubscription'.
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.osFamily] Possible
- * values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 -
- * OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent
- * to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server
- * 2016. For more information, see Azure Guest OS Releases
+ * values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion] The
@@ -2618,8 +2672,8 @@ export interface AutoPoolSpecification {
  * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching] The
- * default value for caching is none. For information about the caching options
- * see:
+ * default value for caching is readwrite. For information about the caching
+ * options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -2755,7 +2809,10 @@ export interface AutoPoolSpecification {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -2829,7 +2886,9 @@ export interface AutoPoolSpecification {
  * @member {array} [autoPoolSpecification.pool.applicationLicenses] The list of
  * application licenses must be a subset of available Batch service application
  * licenses. If a license is requested which is not supported, pool creation
- * will fail.
+ * will fail. The permitted licenses available on the pool are 'maya', 'vray',
+ * '3dsmax', 'arnold'. An additional charge applies for each application
+ * license added to the pool.
  * @member {array} [autoPoolSpecification.pool.userAccounts]
  * @member {array} [autoPoolSpecification.pool.metadata] The Batch service does
  * not assign any meaning to metadata; it is solely for the use of user code.
@@ -2901,7 +2960,11 @@ export interface PoolInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -2923,7 +2986,11 @@ export interface PoolInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -2935,12 +3002,15 @@ export interface PoolInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -2992,7 +3062,7 @@ export interface PoolInformation {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
- * false.
+ * true.
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
  * created under this schedule. If a job has a Job Preparation task, the Batch
  * service will run the Job Preparation task on a compute node before starting
@@ -3009,7 +3079,11 @@ export interface PoolInformation {
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
  * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If
+ * the command line refers to file paths, it should use a relative path
+ * (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -3030,7 +3104,12 @@ export interface PoolInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -3040,12 +3119,15 @@ export interface PoolInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -3096,7 +3178,11 @@ export interface PoolInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobReleaseTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -3172,19 +3258,9 @@ export interface PoolInformation {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -3196,10 +3272,12 @@ export interface PoolInformation {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -3245,8 +3323,8 @@ export interface PoolInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -3386,7 +3464,10 @@ export interface PoolInformation {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -3467,7 +3548,9 @@ export interface PoolInformation {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -3709,7 +3792,10 @@ export interface JobScheduleStatistics {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -3737,7 +3823,12 @@ export interface JobScheduleStatistics {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -3752,12 +3843,15 @@ export interface JobScheduleStatistics {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -3814,7 +3908,7 @@ export interface JobScheduleStatistics {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -3831,7 +3925,10 @@ export interface JobScheduleStatistics {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -3858,6 +3955,11 @@ export interface JobScheduleStatistics {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -3869,12 +3971,15 @@ export interface JobScheduleStatistics {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -3929,7 +4034,10 @@ export interface JobScheduleStatistics {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4016,19 +4124,9 @@ export interface JobScheduleStatistics {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4040,10 +4138,12 @@ export interface JobScheduleStatistics {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -4089,8 +4189,8 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -4238,7 +4338,10 @@ export interface JobScheduleStatistics {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -4321,7 +4424,9 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -4346,7 +4451,9 @@ export interface JobScheduleStatistics {
  * schedule as metadata. The Batch service does not assign any meaning to
  * metadata; it is solely for the use of user code.
  * @member {object} [stats] The lifetime resource usage statistics for the job
- * schedule.
+ * schedule. The statistics may not be immediately available. The Batch service
+ * performs periodic roll-up of statistics. The typical delay is about 30
+ * minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -4481,7 +4588,10 @@ export interface CloudJobSchedule {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -4509,7 +4619,12 @@ export interface CloudJobSchedule {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -4524,12 +4639,15 @@ export interface CloudJobSchedule {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -4586,7 +4704,7 @@ export interface CloudJobSchedule {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -4603,7 +4721,10 @@ export interface CloudJobSchedule {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4630,6 +4751,11 @@ export interface CloudJobSchedule {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -4641,12 +4767,15 @@ export interface CloudJobSchedule {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -4701,7 +4830,10 @@ export interface CloudJobSchedule {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4788,19 +4920,9 @@ export interface CloudJobSchedule {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4812,10 +4934,12 @@ export interface CloudJobSchedule {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -4861,8 +4985,8 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -5010,7 +5134,10 @@ export interface CloudJobSchedule {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -5093,7 +5220,9 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -5245,7 +5374,11 @@ export interface JobExecutionInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -5267,7 +5400,11 @@ export interface JobExecutionInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -5279,12 +5416,15 @@ export interface JobExecutionInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -5336,7 +5476,7 @@ export interface JobExecutionInformation {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
- * false.
+ * true.
  * @member {object} [jobPreparationTask] The Job Preparation task. The Job
  * Preparation task is a special task run on each node before any other task of
  * the job.
@@ -5352,7 +5492,11 @@ export interface JobExecutionInformation {
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
  * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If
+ * the command line refers to file paths, it should use a relative path
+ * (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -5373,7 +5517,12 @@ export interface JobExecutionInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -5383,12 +5532,15 @@ export interface JobExecutionInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -5434,7 +5586,11 @@ export interface JobExecutionInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobReleaseTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -5509,19 +5665,9 @@ export interface JobExecutionInformation {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -5533,10 +5679,12 @@ export interface JobExecutionInformation {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -5582,8 +5730,8 @@ export interface JobExecutionInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -5723,7 +5871,10 @@ export interface JobExecutionInformation {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -5804,7 +5955,9 @@ export interface JobExecutionInformation {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -5853,7 +6006,9 @@ export interface JobExecutionInformation {
  * Any other string is a user-defined reason specified in a call to the
  * 'Terminate a job' operation.
  * @member {object} [stats] Resource usage statistics for the entire lifetime
- * of the job.
+ * of the job. The statistics may not be immediately available. The Batch
+ * service performs periodic roll-up of statistics. The typical delay is about
+ * 30 minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -5957,7 +6112,11 @@ export interface CloudJob {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -5979,7 +6138,11 @@ export interface CloudJob {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -5991,12 +6154,15 @@ export interface CloudJob {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -6048,7 +6214,7 @@ export interface CloudJob {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
- * false.
+ * true.
  * @member {object} [jobPreparationTask] The Job Preparation task. If a job has
  * a Job Preparation task, the Batch service will run the Job Preparation task
  * on a compute node before starting any tasks of that job on that compute
@@ -6065,7 +6231,11 @@ export interface CloudJob {
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
  * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If
+ * the command line refers to file paths, it should use a relative path
+ * (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -6086,7 +6256,12 @@ export interface CloudJob {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -6096,12 +6271,15 @@ export interface CloudJob {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -6151,7 +6329,11 @@ export interface CloudJob {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobReleaseTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -6227,19 +6409,9 @@ export interface CloudJob {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -6251,10 +6423,12 @@ export interface CloudJob {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -6300,8 +6474,8 @@ export interface CloudJob {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -6441,7 +6615,10 @@ export interface CloudJob {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -6522,7 +6699,9 @@ export interface CloudJob {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -6866,8 +7045,6 @@ export interface JobPreparationAndReleaseTaskExecutionInformation {
  * succeeds if its result (found in the executionInfo property) is 'success'.
  * @member {number} failed The number of tasks which failed. A task fails if
  * its result (found in the executionInfo property) is 'failure'.
- * @member {string} validationStatus Whether the task counts have been
- * validated. Possible values include: 'validated', 'unvalidated'
  */
 export interface TaskCounts {
   active: number;
@@ -6875,7 +7052,6 @@ export interface TaskCounts {
   completed: number;
   succeeded: number;
   failed: number;
-  validationStatus: string;
 }
 
 /**
@@ -6976,28 +7152,20 @@ export interface ResizeError {
  * entered its current allocation state.
  * @member {string} [vmSize] The size of virtual machines in the pool. All
  * virtual machines in a pool are the same size. For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [cloudServiceConfiguration] The cloud service configuration
  * for the pool. This property and virtualMachineConfiguration are mutually
  * exclusive and one of the properties must be specified. This property cannot
  * be specified if the Batch account was created with its poolAllocationMode
  * property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -7029,7 +7197,8 @@ export interface ResizeError {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
  * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is none. For information about the caching options see:
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -7159,7 +7328,11 @@ export interface ResizeError {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -7234,7 +7407,9 @@ export interface ResizeError {
  * @member {array} [metadata] A list of name-value pairs associated with the
  * pool as metadata.
  * @member {object} [stats] Utilization and resource usage statistics for the
- * entire lifetime of the pool.
+ * entire lifetime of the pool. The statistics may not be immediately
+ * available. The Batch service performs periodic roll-up of statistics. The
+ * typical delay is about 30 minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -7312,7 +7487,7 @@ export interface CloudPool {
  * virtual machines in a pool are the same size. For information about
  * available sizes of virtual machines for Cloud Services pools (pools created
  * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
  * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
  * For information about available VM sizes for pools using images from the
  * Virtual Machines Marketplace (pools created with
@@ -7327,11 +7502,12 @@ export interface CloudPool {
  * exclusive and one of the properties must be specified. This property cannot
  * be specified if the Batch account was created with its poolAllocationMode
  * property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -7363,7 +7539,8 @@ export interface CloudPool {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
  * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
- * value for caching is none. For information about the caching options see:
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -7490,7 +7667,11 @@ export interface CloudPool {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -7716,6 +7897,28 @@ export interface ComputeNodeInformation {
 
 /**
  * @class
+ * Initializes a new instance of the NodeAgentInformation class.
+ * @constructor
+ * @summary Information about the node agent.
+ *
+ * The Batch node agent is a program that runs on each node in the pool and
+ * provides Batch capability on the compute node.
+ *
+ * @member {string} version The version of the Batch node agent running on the
+ * compute node. This version number can be checked against the node agent
+ * release notes located at
+ * https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md.
+ * @member {date} lastUpdateTime The time when the node agent was updated on
+ * the compute node. This is the most recent time that the node agent was
+ * updated to a new version.
+ */
+export interface NodeAgentInformation {
+  version: string;
+  lastUpdateTime: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MultiInstanceSettings class.
  * @constructor
  * @summary Settings which specify how to run a multi-instance task.
@@ -7736,7 +7939,11 @@ export interface ComputeNodeInformation {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  */
 export interface MultiInstanceSettings {
   numberOfInstances?: number;
@@ -7839,6 +8046,17 @@ export interface TaskDependencies {
  * @constructor
  * @summary An Azure Batch task.
  *
+ * Batch will retry tasks when a recovery operation is triggered on a compute
+ * node. Examples of recovery operations include (but are not limited to) when
+ * an unhealthy compute node is rebooted or a compute node disappeared due to
+ * host failure. Retries due to recovery operations are independent of and are
+ * not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is
+ * 0, an internal retry due to a recovery operation may occur. Because of this,
+ * all tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
+ *
  * @member {string} [id] A string that uniquely identifies the task within the
  * job. The ID can contain any combination of alphanumeric characters including
  * hyphens and underscores, and cannot contain more than 64 characters.
@@ -7927,7 +8145,10 @@ export interface TaskDependencies {
  * therefore cannot take advantage of shell features such as environment
  * variable expansion. If you want to take advantage of such features, you
  * should invoke the shell in the command line, for example using "cmd /c
- * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+ * line refers to file paths, it should use a relative path (relative to the
+ * task working directory), or use the Batch provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -7951,7 +8172,11 @@ export interface TaskDependencies {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -7973,12 +8198,14 @@ export interface TaskDependencies {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
@@ -8066,7 +8293,11 @@ export interface TaskDependencies {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [stats] Resource usage statistics for the task.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
@@ -8150,6 +8381,17 @@ export interface CloudTask {
  * @constructor
  * @summary An Azure Batch task to add.
  *
+ * Batch will retry tasks when a recovery operation is triggered on a compute
+ * node. Examples of recovery operations include (but are not limited to) when
+ * an unhealthy compute node is rebooted or a compute node disappeared due to
+ * host failure. Retries due to recovery operations are independent of and are
+ * not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is
+ * 0, an internal retry due to a recovery operation may occur. Because of this,
+ * all tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
+ *
  * @member {string} id A string that uniquely identifies the task within the
  * job. The ID can contain any combination of alphanumeric characters including
  * hyphens and underscores, and cannot contain more than 64 characters. The ID
@@ -8165,7 +8407,10 @@ export interface CloudTask {
  * therefore cannot take advantage of shell features such as environment
  * variable expansion. If you want to take advantage of such features, you
  * should invoke the shell in the command line, for example using "cmd /c
- * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+ * line refers to file paths, it should use a relative path (relative to the
+ * task working directory), or use the Batch provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -8246,7 +8491,11 @@ export interface CloudTask {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8270,12 +8519,14 @@ export interface CloudTask {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
@@ -8300,7 +8551,11 @@ export interface CloudTask {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [dependsOn] The tasks that this task depends on. This task
  * will not be scheduled until all tasks that it depends on have completed
  * successfully. If any of those tasks fail and exhaust their retry counts,
@@ -8359,11 +8614,11 @@ export interface TaskAddParameter {
  * @constructor
  * @summary A collection of Azure Batch tasks to add.
  *
- * @member {array} value The collection of tasks to add. The total serialized
- * size of this collection must be less than 4MB. If it is greater than 4MB
- * (for example if each task has 100's of resource files or environment
- * variables), the request will fail with code 'RequestBodyTooLarge' and should
- * be retried again with fewer tasks.
+ * @member {array} value The collection of tasks to add. The maximum count of
+ * tasks is 100. The total serialized size of this collection must be less than
+ * 1MB. If it is greater than 1MB (for example if each task has 100's of
+ * resource files or environment variables), the request will fail with code
+ * 'RequestBodyTooLarge' and should be retried again with fewer tasks.
  */
 export interface TaskAddCollectionParameter {
   value: TaskAddParameter[];
@@ -8794,19 +9049,9 @@ export interface ComputeNodeEndpointConfiguration {
  * just a soft affinity. If the target node is busy or unavailable at the time
  * the task is scheduled, then the task will be scheduled elsewhere.
  * @member {string} [vmSize] The size of the virtual machine hosting the
- * compute node. For information about available sizes of virtual machines for
- * Cloud Services pools (pools created with cloudServiceConfiguration), see
- * Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * compute node. For information about available sizes of virtual machines in
+ * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} [totalTasksRun] The total number of job tasks completed on
  * the compute node. This includes Job Manager tasks and normal tasks, but not
  * Job Preparation, Job Release or Start tasks.
@@ -8826,7 +9071,11 @@ export interface ComputeNodeEndpointConfiguration {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -8938,6 +9187,13 @@ export interface ComputeNodeEndpointConfiguration {
  * @member {object} [endpointConfiguration] The endpoint configuration for the
  * compute node.
  * @member {array} [endpointConfiguration.inboundEndpoints]
+ * @member {object} [nodeAgentInfo] Information about the node agent version
+ * and the time the node upgraded to a new version.
+ * @member {string} [nodeAgentInfo.version] This version number can be checked
+ * against the node agent release notes located at
+ * https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md.
+ * @member {date} [nodeAgentInfo.lastUpdateTime] This is the most recent time
+ * that the node agent was updated to a new version.
  */
 export interface ComputeNode {
   id?: string;
@@ -8960,6 +9216,7 @@ export interface ComputeNode {
   errors?: ComputeNodeError[];
   isDedicated?: boolean;
   endpointConfiguration?: ComputeNodeEndpointConfiguration;
+  nodeAgentInfo?: NodeAgentInformation;
 }
 
 /**
@@ -9100,7 +9357,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -9128,7 +9388,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -9143,12 +9408,15 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -9205,7 +9473,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -9222,7 +9490,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9249,6 +9520,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -9260,12 +9536,15 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -9320,7 +9599,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9407,19 +9689,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -9431,10 +9703,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -9480,8 +9754,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -9629,7 +9903,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -9712,7 +9989,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -9821,7 +10100,10 @@ export interface JobSchedulePatchParameter {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -9849,7 +10131,12 @@ export interface JobSchedulePatchParameter {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -9864,12 +10151,15 @@ export interface JobSchedulePatchParameter {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -9926,7 +10216,7 @@ export interface JobSchedulePatchParameter {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -9943,7 +10233,10 @@ export interface JobSchedulePatchParameter {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9970,6 +10263,11 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -9981,12 +10279,15 @@ export interface JobSchedulePatchParameter {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -10041,7 +10342,10 @@ export interface JobSchedulePatchParameter {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -10128,19 +10432,9 @@ export interface JobSchedulePatchParameter {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -10152,10 +10446,12 @@ export interface JobSchedulePatchParameter {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10201,8 +10497,8 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -10350,7 +10646,10 @@ export interface JobSchedulePatchParameter {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -10433,7 +10732,9 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -10549,19 +10850,9 @@ export interface JobTerminateParameter {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -10573,10 +10864,12 @@ export interface JobTerminateParameter {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10622,8 +10915,8 @@ export interface JobTerminateParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -10763,7 +11056,10 @@ export interface JobTerminateParameter {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -10844,7 +11140,9 @@ export interface JobTerminateParameter {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -10921,19 +11219,9 @@ export interface JobPatchParameter {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -10945,10 +11233,12 @@ export interface JobPatchParameter {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10994,8 +11284,8 @@ export interface JobPatchParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -11135,7 +11425,10 @@ export interface JobPatchParameter {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -11216,7 +11509,9 @@ export interface JobPatchParameter {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -11333,7 +11628,11 @@ export interface PoolResizeParameter {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -11439,7 +11738,11 @@ export interface PoolUpgradeOSParameter {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -11535,12 +11838,14 @@ export interface PoolPatchParameter {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  */
 export interface TaskUpdateParameter {
   constraints?: TaskConstraints;
@@ -11708,6 +12013,7 @@ export interface UploadBatchServiceLogsResult {
  * @member {number} starting The number of nodes in the starting state.
  * @member {number} startTaskFailed The number of nodes in the startTaskFailed
  * state.
+ * @member {number} leavingPool The number of nodes in the leavingPool state.
  * @member {number} unknown The number of nodes in the unknown state.
  * @member {number} unusable The number of nodes in the unusable state.
  * @member {number} waitingForStartTask The number of nodes in the
@@ -11724,6 +12030,7 @@ export interface NodeCounts {
   running: number;
   starting: number;
   startTaskFailed: number;
+  leavingPool: number;
   unknown: number;
   unusable: number;
   waitingForStartTask: number;
@@ -11747,6 +12054,7 @@ export interface NodeCounts {
  * @member {number} [dedicated.running]
  * @member {number} [dedicated.starting]
  * @member {number} [dedicated.startTaskFailed]
+ * @member {number} [dedicated.leavingPool]
  * @member {number} [dedicated.unknown]
  * @member {number} [dedicated.unusable]
  * @member {number} [dedicated.waitingForStartTask]
@@ -11762,6 +12070,7 @@ export interface NodeCounts {
  * @member {number} [lowPriority.running]
  * @member {number} [lowPriority.starting]
  * @member {number} [lowPriority.startTaskFailed]
+ * @member {number} [lowPriority.leavingPool]
  * @member {number} [lowPriority.unknown]
  * @member {number} [lowPriority.unusable]
  * @member {number} [lowPriority.waitingForStartTask]
@@ -12477,7 +12786,9 @@ export interface AccountListNodeAgentSkusOptions {
  * @constructor
  * Additional parameters for listPoolNodeCounts operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. Default value: 10 .
  * @member {number} [timeout] The maximum time that the server can spend
