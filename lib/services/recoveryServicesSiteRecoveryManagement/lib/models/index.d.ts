@@ -18,6 +18,982 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ApplyRecoveryPointProviderSpecificInput class.
+ * @constructor
+ * Provider specific input for apply recovery point.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ApplyRecoveryPointProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AApplyRecoveryPointInput class.
+ * @constructor
+ * ApplyRecoveryPoint input specific to A2A provider.
+ *
+ */
+export interface A2AApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationProviderSpecificContainerCreationInput class.
+ * @constructor
+ * Provider specific input for container creation operation.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ReplicationProviderSpecificContainerCreationInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AContainerCreationInput class.
+ * @constructor
+ * A2A cloud creation input.
+ *
+ */
+export interface A2AContainerCreationInput extends ReplicationProviderSpecificContainerCreationInput {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationProviderSpecificContainerMappingInput class.
+ * @constructor
+ * Provider specific input for pairing operations.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ReplicationProviderSpecificContainerMappingInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AContainerMappingInput class.
+ * @constructor
+ * A2A container mapping input.
+ *
+ * @member {string} [agentAutoUpdateStatus] A value indicating whether the auto
+ * update is enabled. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [automationAccountArmId] The automation account arm id.
+ */
+export interface A2AContainerMappingInput extends ReplicationProviderSpecificContainerMappingInput {
+  agentAutoUpdateStatus?: string;
+  automationAccountArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AVmDiskInputDetails class.
+ * @constructor
+ * Azure VM disk input details.
+ *
+ * @member {string} [diskUri] The disk Uri.
+ * @member {string} [recoveryAzureStorageAccountId] The recovery VHD storage
+ * account Id.
+ * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account Id.
+ */
+export interface A2AVmDiskInputDetails {
+  diskUri?: string;
+  recoveryAzureStorageAccountId?: string;
+  primaryStagingAzureStorageAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AVmManagedDiskInputDetails class.
+ * @constructor
+ * Azure VM managed disk input details.
+ *
+ * @member {string} [diskId] The disk Id.
+ * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account Arm Id.
+ * @member {string} [recoveryResourceGroupId] The target resource group Arm Id.
+ * @member {string} [recoveryReplicaDiskAccountType] The replica disk type. Its
+ * an optional value and will be same as source disk type if not user provided.
+ * @member {string} [recoveryTargetDiskAccountType] The target disk type after
+ * failover. Its an optional value and will be same as source disk type if not
+ * user provided.
+ */
+export interface A2AVmManagedDiskInputDetails {
+  diskId?: string;
+  primaryStagingAzureStorageAccountId?: string;
+  recoveryResourceGroupId?: string;
+  recoveryReplicaDiskAccountType?: string;
+  recoveryTargetDiskAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskEncryptionKeyInfo class.
+ * @constructor
+ * Disk Encryption Key Information (BitLocker Encryption Key (BEK) on Windows).
+ *
+ * @member {string} [secretIdentifier] The secret url / identifier.
+ * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * secret.
+ */
+export interface DiskEncryptionKeyInfo {
+  secretIdentifier?: string;
+  keyVaultResourceArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyEncryptionKeyInfo class.
+ * @constructor
+ * Key Encryption Key (KEK) information.
+ *
+ * @member {string} [keyIdentifier] The key url / identifier.
+ * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * key.
+ */
+export interface KeyEncryptionKeyInfo {
+  keyIdentifier?: string;
+  keyVaultResourceArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskEncryptionInfo class.
+ * @constructor
+ * Recovery disk encryption info (BEK and KEK).
+ *
+ * @member {object} [diskEncryptionKeyInfo] The recovery KeyVault reference for
+ * secret.
+ * @member {string} [diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * identifier.
+ * @member {string} [diskEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for secret.
+ * @member {object} [keyEncryptionKeyInfo] The recovery KeyVault reference for
+ * key.
+ * @member {string} [keyEncryptionKeyInfo.keyIdentifier] The key url /
+ * identifier.
+ * @member {string} [keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
+ */
+export interface DiskEncryptionInfo {
+  diskEncryptionKeyInfo?: DiskEncryptionKeyInfo;
+  keyEncryptionKeyInfo?: KeyEncryptionKeyInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableProtectionProviderSpecificInput class.
+ * @constructor
+ * Enable protection provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface EnableProtectionProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AEnableProtectionInput class.
+ * @constructor
+ * A2A enable protection input.
+ *
+ * @member {string} [fabricObjectId] The fabric specific object Id of the
+ * virtual machine.
+ * @member {string} [recoveryContainerId] The recovery container Id.
+ * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
+ * Valid for V2 scenarios.
+ * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
+ * Valid for V1 scenarios.
+ * @member {string} [recoveryAvailabilitySetId] The recovery availability set
+ * Id.
+ * @member {array} [vmDisks] The list of vm disk details.
+ * @member {array} [vmManagedDisks] The list of vm managed disk details.
+ * @member {string} [multiVmGroupName] The multi vm group name.
+ * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
+ * storage account.
+ * @member {object} [diskEncryptionInfo] The recovery disk encryption
+ * information.
+ * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * KeyVault reference for secret.
+ * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
+ * The secret url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * KeyVault reference for key.
+ * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
+ * key url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
+ */
+export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecificInput {
+  fabricObjectId?: string;
+  recoveryContainerId?: string;
+  recoveryResourceGroupId?: string;
+  recoveryCloudServiceId?: string;
+  recoveryAvailabilitySetId?: string;
+  vmDisks?: A2AVmDiskInputDetails[];
+  vmManagedDisks?: A2AVmManagedDiskInputDetails[];
+  multiVmGroupName?: string;
+  recoveryBootDiagStorageAccountId?: string;
+  diskEncryptionInfo?: DiskEncryptionInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventProviderSpecificDetails class.
+ * @constructor
+ * Model class for provider specific details for an event.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface EventProviderSpecificDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AEventDetails class.
+ * @constructor
+ * Model class for event details of a A2A event.
+ *
+ * @member {string} [protectedItemName] The protected item arm name.
+ * @member {string} [fabricObjectId] The azure vm arm id.
+ * @member {string} [fabricName] Fabric arm name.
+ * @member {string} [fabricLocation] The fabric location.
+ * @member {string} [remoteFabricName] Remote fabric arm name.
+ * @member {string} [remoteFabricLocation] Remote fabric location.
+ */
+export interface A2AEventDetails extends EventProviderSpecificDetails {
+  protectedItemName?: string;
+  fabricObjectId?: string;
+  fabricName?: string;
+  fabricLocation?: string;
+  remoteFabricName?: string;
+  remoteFabricLocation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProviderSpecificFailoverInput class.
+ * @constructor
+ * Provider specific failover input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ProviderSpecificFailoverInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AFailoverProviderInput class.
+ * @constructor
+ * A2A provider specific input for failover.
+ *
+ * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * failover to a particular recovery point. In case of latest recovery point,
+ * null should be passed.
+ * @member {string} [cloudServiceCreationOption] A value indicating whether to
+ * use recovery cloud service for TFO or not.
+ */
+export interface A2AFailoverProviderInput extends ProviderSpecificFailoverInput {
+  recoveryPointId?: string;
+  cloudServiceCreationOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyProviderSpecificInput class.
+ * @constructor
+ * Base class for provider specific input
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface PolicyProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2APolicyCreationInput class.
+ * @constructor
+ * A2A Policy creation input.
+ *
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency (in minutes).
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency (in minutes).
+ * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
+ * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
+ * include: 'Enable', 'Disable'
+ */
+export interface A2APolicyCreationInput extends PolicyProviderSpecificInput {
+  recoveryPointHistory?: number;
+  crashConsistentFrequencyInMinutes?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyProviderSpecificDetails class.
+ * @constructor
+ * Base class for Provider specific details for policies.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface PolicyProviderSpecificDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2APolicyDetails class.
+ * @constructor
+ * A2A specific policy details.
+ *
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency in minutes.
+ * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * sync has to be enabled.
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency in minutes.
+ */
+export interface A2APolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus?: string;
+  crashConsistentFrequencyInMinutes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AProtectedDiskDetails class.
+ * @constructor
+ * A2A protected disk details.
+ *
+ * @member {string} [diskUri] The disk uri.
+ * @member {string} [recoveryAzureStorageAccountId] The recovery disk storage
+ * account.
+ * @member {string} [primaryDiskAzureStorageAccountId] The primary disk storage
+ * account.
+ * @member {string} [recoveryDiskUri] Recovery disk uri.
+ * @member {string} [diskName] The disk name.
+ * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account.
+ * @member {string} [diskType] The type of disk.
+ * @member {boolean} [resyncRequired] A value indicating whether resync is
+ * required for this disk.
+ * @member {number} [monitoringPercentageCompletion] The percentage of the
+ * monitoring job. The type of the monitoring job is defined by
+ * MonitoringJobType property.
+ * @member {string} [monitoringJobType] The type of the monitoring job. The
+ * progress is contained in MonitoringPercentageCompletion property.
+ * @member {number} [dataPendingInStagingStorageAccountInMB] The data pending
+ * for replication in MB at staging account.
+ * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
+ * virtual machine in MB.
+ * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
+ * encrypted os disk or not.
+ * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
+ * @member {string} [dekKeyVaultArmId] The KeyVault resource id for secret
+ * (BEK).
+ * @member {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
+ * got encrypted or not.
+ * @member {string} [keyIdentifier] The key URL / identifier (KEK).
+ * @member {string} [kekKeyVaultArmId] The KeyVault resource id for key (KEK).
+ */
+export interface A2AProtectedDiskDetails {
+  diskUri?: string;
+  recoveryAzureStorageAccountId?: string;
+  primaryDiskAzureStorageAccountId?: string;
+  recoveryDiskUri?: string;
+  diskName?: string;
+  diskCapacityInBytes?: number;
+  primaryStagingAzureStorageAccountId?: string;
+  diskType?: string;
+  resyncRequired?: boolean;
+  monitoringPercentageCompletion?: number;
+  monitoringJobType?: string;
+  dataPendingInStagingStorageAccountInMB?: number;
+  dataPendingAtSourceAgentInMB?: number;
+  isDiskEncrypted?: boolean;
+  secretIdentifier?: string;
+  dekKeyVaultArmId?: string;
+  isDiskKeyEncrypted?: boolean;
+  keyIdentifier?: string;
+  kekKeyVaultArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AProtectedManagedDiskDetails class.
+ * @constructor
+ * A2A protected managed disk details.
+ *
+ * @member {string} [diskId] The managed disk Arm id.
+ * @member {string} [recoveryResourceGroupId] The recovery disk resource group
+ * Arm Id.
+ * @member {string} [recoveryTargetDiskId] Recovery target disk Arm Id.
+ * @member {string} [recoveryReplicaDiskId] Recovery replica disk Arm Id.
+ * @member {string} [recoveryReplicaDiskAccountType] The replica disk type. Its
+ * an optional value and will be same as source disk type if not user provided.
+ * @member {string} [recoveryTargetDiskAccountType] The target disk type after
+ * failover. Its an optional value and will be same as source disk type if not
+ * user provided.
+ * @member {string} [diskName] The disk name.
+ * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
+ * storage account.
+ * @member {string} [diskType] The type of disk.
+ * @member {boolean} [resyncRequired] A value indicating whether resync is
+ * required for this disk.
+ * @member {number} [monitoringPercentageCompletion] The percentage of the
+ * monitoring job. The type of the monitoring job is defined by
+ * MonitoringJobType property.
+ * @member {string} [monitoringJobType] The type of the monitoring job. The
+ * progress is contained in MonitoringPercentageCompletion property.
+ * @member {number} [dataPendingInStagingStorageAccountInMB] The data pending
+ * for replication in MB at staging account.
+ * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
+ * virtual machine in MB.
+ * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
+ * encrypted os disk or not.
+ * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
+ * @member {string} [dekKeyVaultArmId] The KeyVault resource id for secret
+ * (BEK).
+ * @member {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
+ * got encrypted or not.
+ * @member {string} [keyIdentifier] The key URL / identifier (KEK).
+ * @member {string} [kekKeyVaultArmId] The KeyVault resource id for key (KEK).
+ */
+export interface A2AProtectedManagedDiskDetails {
+  diskId?: string;
+  recoveryResourceGroupId?: string;
+  recoveryTargetDiskId?: string;
+  recoveryReplicaDiskId?: string;
+  recoveryReplicaDiskAccountType?: string;
+  recoveryTargetDiskAccountType?: string;
+  diskName?: string;
+  diskCapacityInBytes?: number;
+  primaryStagingAzureStorageAccountId?: string;
+  diskType?: string;
+  resyncRequired?: boolean;
+  monitoringPercentageCompletion?: number;
+  monitoringJobType?: string;
+  dataPendingInStagingStorageAccountInMB?: number;
+  dataPendingAtSourceAgentInMB?: number;
+  isDiskEncrypted?: boolean;
+  secretIdentifier?: string;
+  dekKeyVaultArmId?: string;
+  isDiskKeyEncrypted?: boolean;
+  keyIdentifier?: string;
+  kekKeyVaultArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtectionContainerMappingProviderSpecificDetails class.
+ * @constructor
+ * Container mapping provider specific details.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ProtectionContainerMappingProviderSpecificDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AProtectionContainerMappingDetails class.
+ * @constructor
+ * A2A provider specific settings.
+ *
+ * @member {string} [agentAutoUpdateStatus] A value indicating whether the auto
+ * update is enabled. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [automationAccountArmId] The automation account arm id.
+ * @member {string} [scheduleName] The schedule arm name.
+ * @member {string} [jobScheduleName] The job schedule arm name.
+ */
+export interface A2AProtectionContainerMappingDetails extends ProtectionContainerMappingProviderSpecificDetails {
+  agentAutoUpdateStatus?: string;
+  automationAccountArmId?: string;
+  scheduleName?: string;
+  jobScheduleName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProviderSpecificRecoveryPointDetails class.
+ * @constructor
+ * Replication provider specific recovery point details.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ProviderSpecificRecoveryPointDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2ARecoveryPointDetails class.
+ * @constructor
+ * A2A provider specific recovery point details.
+ *
+ * @member {string} [recoveryPointSyncType] A value indicating whether the
+ * recovery point is multi VM consistent. Possible values include:
+ * 'MultiVmSyncRecoveryPoint', 'PerVmRecoveryPoint'
+ */
+export interface A2ARecoveryPointDetails extends ProviderSpecificRecoveryPointDetails {
+  recoveryPointSyncType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMNicDetails class.
+ * @constructor
+ * Hyper V VM network details.
+ *
+ * @member {string} [nicId] The nic Id.
+ * @member {string} [replicaNicId] The replica nic Id.
+ * @member {string} [sourceNicArmId] The source nic ARM Id.
+ * @member {string} [vMSubnetName] VM subnet name.
+ * @member {string} [vMNetworkName] VM network name.
+ * @member {string} [recoveryVMNetworkId] Recovery VM network Id.
+ * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
+ * @member {string} [ipAddressType] Ip address type.
+ * @member {string} [primaryNicStaticIPAddress] Primary nic static IP address.
+ * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
+ * @member {string} [selectionType] Selection type for failover.
+ * @member {string} [recoveryNicIpAddressType] IP allocation type for recovery
+ * VM.
+ * @member {boolean} [enableAcceleratedNetworkingOnRecovery] A value indicating
+ * whether the NIC has accerated networking enabled.
+ */
+export interface VMNicDetails {
+  nicId?: string;
+  replicaNicId?: string;
+  sourceNicArmId?: string;
+  vMSubnetName?: string;
+  vMNetworkName?: string;
+  recoveryVMNetworkId?: string;
+  recoveryVMSubnetName?: string;
+  ipAddressType?: string;
+  primaryNicStaticIPAddress?: string;
+  replicaNicStaticIPAddress?: string;
+  selectionType?: string;
+  recoveryNicIpAddressType?: string;
+  enableAcceleratedNetworkingOnRecovery?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoleAssignment class.
+ * @constructor
+ * Azure role assignment details.
+ *
+ * @member {string} [id] The ARM Id of the role assignment.
+ * @member {string} [name] The name of the role assignment.
+ * @member {string} [scope] Role assignment scope.
+ * @member {string} [principalId] Principal Id.
+ * @member {string} [roleDefinitionId] Role definition id.
+ */
+export interface RoleAssignment {
+  id?: string;
+  name?: string;
+  scope?: string;
+  principalId?: string;
+  roleDefinitionId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InputEndpoint class.
+ * @constructor
+ * Azure VM input endpoint details.
+ *
+ * @member {string} [endpointName] The input endpoint name.
+ * @member {number} [privatePort] The input endpoint private port.
+ * @member {number} [publicPort] The input endpoint public port.
+ * @member {string} [protocol] The input endpoint protocol.
+ */
+export interface InputEndpoint {
+  endpointName?: string;
+  privatePort?: number;
+  publicPort?: number;
+  protocol?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureToAzureVmSyncedConfigDetails class.
+ * @constructor
+ * Azure to Azure VM synced configuration details.
+ *
+ * @member {object} [tags] The Azure VM tags.
+ * @member {array} [roleAssignments] The Azure role assignments.
+ * @member {array} [inputEndpoints] The Azure VM input endpoints.
+ */
+export interface AzureToAzureVmSyncedConfigDetails {
+  tags?: { [propertyName: string]: string };
+  roleAssignments?: RoleAssignment[];
+  inputEndpoints?: InputEndpoint[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationProviderSpecificSettings class.
+ * @constructor
+ * Replication provider specific settings.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ReplicationProviderSpecificSettings {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AReplicationDetails class.
+ * @constructor
+ * A2A provider specific settings.
+ *
+ * @member {string} [fabricObjectId] The fabric specific object Id of the
+ * virtual machine.
+ * @member {string} [multiVmGroupId] The multi vm group Id.
+ * @member {string} [multiVmGroupName] The multi vm group name.
+ * @member {string} [multiVmGroupCreateOption] Whether Multi VM group is auto
+ * created or specified by user. Possible values include: 'AutoCreated',
+ * 'UserSpecified'
+ * @member {string} [managementId] The management Id.
+ * @member {array} [protectedDisks] The list of protected disks.
+ * @member {array} [protectedManagedDisks] The list of protected managed disks.
+ * @member {string} [recoveryBootDiagStorageAccountId] The recovery boot
+ * diagnostic storage account Arm Id.
+ * @member {string} [primaryFabricLocation] Primary fabric location.
+ * @member {string} [recoveryFabricLocation] The recovery fabric location.
+ * @member {string} [osType] The type of operating system.
+ * @member {string} [recoveryAzureVMSize] The size of recovery virtual machine.
+ * @member {string} [recoveryAzureVMName] The name of recovery virtual machine.
+ * @member {string} [recoveryAzureResourceGroupId] The recovery resource group.
+ * @member {string} [recoveryCloudService] The recovery cloud service.
+ * @member {string} [recoveryAvailabilitySet] The recovery availability set.
+ * @member {string} [selectedRecoveryAzureNetworkId] The recovery virtual
+ * network.
+ * @member {array} [vmNics] The virtual machine nic details.
+ * @member {object} [vmSyncedConfigDetails] The synced configuration details.
+ * @member {object} [vmSyncedConfigDetails.tags] The Azure VM tags.
+ * @member {array} [vmSyncedConfigDetails.roleAssignments] The Azure role
+ * assignments.
+ * @member {array} [vmSyncedConfigDetails.inputEndpoints] The Azure VM input
+ * endpoints.
+ * @member {number} [monitoringPercentageCompletion] The percentage of the
+ * monitoring job. The type of the monitoring job is defined by
+ * MonitoringJobType property.
+ * @member {string} [monitoringJobType] The type of the monitoring job. The
+ * progress is contained in MonitoringPercentageCompletion property.
+ * @member {date} [lastHeartbeat] The last heartbeat received from the source
+ * server.
+ * @member {string} [agentVersion] The agent version.
+ * @member {boolean} [isReplicationAgentUpdateRequired] A value indicating
+ * whether replication agent update is required.
+ * @member {string} [recoveryFabricObjectId] The recovery fabric object Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {string} [lifecycleId] An id associated with the PE that survives
+ * actions like switch protection which change the backing PE/CPE objects
+ * internally.The lifecycle id gets carried forward to have a link/continuity
+ * in being able to have an Id that denotes the "same" protected item even
+ * though other internal Ids/ARM Id might be changing.
+ * @member {string} [testFailoverRecoveryFabricObjectId] The test failover
+ * fabric object Id.
+ * @member {number} [rpoInSeconds] The last RPO value in seconds.
+ * @member {date} [lastRpoCalculatedTime] The time (in UTC) when the last RPO
+ * value was calculated by Protection Service.
+ */
+export interface A2AReplicationDetails extends ReplicationProviderSpecificSettings {
+  fabricObjectId?: string;
+  multiVmGroupId?: string;
+  multiVmGroupName?: string;
+  multiVmGroupCreateOption?: string;
+  managementId?: string;
+  protectedDisks?: A2AProtectedDiskDetails[];
+  protectedManagedDisks?: A2AProtectedManagedDiskDetails[];
+  recoveryBootDiagStorageAccountId?: string;
+  primaryFabricLocation?: string;
+  recoveryFabricLocation?: string;
+  osType?: string;
+  recoveryAzureVMSize?: string;
+  recoveryAzureVMName?: string;
+  recoveryAzureResourceGroupId?: string;
+  recoveryCloudService?: string;
+  recoveryAvailabilitySet?: string;
+  selectedRecoveryAzureNetworkId?: string;
+  vmNics?: VMNicDetails[];
+  vmSyncedConfigDetails?: AzureToAzureVmSyncedConfigDetails;
+  monitoringPercentageCompletion?: number;
+  monitoringJobType?: string;
+  lastHeartbeat?: Date;
+  agentVersion?: string;
+  isReplicationAgentUpdateRequired?: boolean;
+  recoveryFabricObjectId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  lifecycleId?: string;
+  testFailoverRecoveryFabricObjectId?: string;
+  rpoInSeconds?: number;
+  lastRpoCalculatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReverseReplicationProviderSpecificInput class.
+ * @constructor
+ * Provider specific reverse replication input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ReverseReplicationProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AReprotectInput class.
+ * @constructor
+ * Azure specific reprotect input.
+ *
+ * @member {string} [recoveryContainerId] The recovery container Id.
+ * @member {array} [vmDisks] The list of vm disk details.
+ * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
+ * Valid for V2 scenarios.
+ * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
+ * Valid for V1 scenarios.
+ * @member {string} [recoveryAvailabilitySetId] The recovery availability set.
+ * @member {string} [policyId] The Policy Id.
+ */
+export interface A2AReprotectInput extends ReverseReplicationProviderSpecificInput {
+  recoveryContainerId?: string;
+  vmDisks?: A2AVmDiskInputDetails[];
+  recoveryResourceGroupId?: string;
+  recoveryCloudServiceId?: string;
+  recoveryAvailabilitySetId?: string;
+  policyId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SwitchProtectionProviderSpecificInput class.
+ * @constructor
+ * Provider specific switch protection input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface SwitchProtectionProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2ASwitchProtectionInput class.
+ * @constructor
+ * A2A specific switch protection input.
+ *
+ * @member {string} [recoveryContainerId] The recovery container Id.
+ * @member {array} [vmDisks] The list of vm disk details.
+ * @member {array} [vmManagedDisks] The list of vm managed disk details.
+ * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
+ * Valid for V2 scenarios.
+ * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
+ * Valid for V1 scenarios.
+ * @member {string} [recoveryAvailabilitySetId] The recovery availability set.
+ * @member {string} [policyId] The Policy Id.
+ * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
+ * storage account.
+ * @member {object} [diskEncryptionInfo] The recovery disk encryption
+ * information.
+ * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * KeyVault reference for secret.
+ * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
+ * The secret url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * KeyVault reference for key.
+ * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
+ * key url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
+ */
+export interface A2ASwitchProtectionInput extends SwitchProtectionProviderSpecificInput {
+  recoveryContainerId?: string;
+  vmDisks?: A2AVmDiskInputDetails[];
+  vmManagedDisks?: A2AVmManagedDiskInputDetails[];
+  recoveryResourceGroupId?: string;
+  recoveryCloudServiceId?: string;
+  recoveryAvailabilitySetId?: string;
+  policyId?: string;
+  recoveryBootDiagStorageAccountId?: string;
+  diskEncryptionInfo?: DiskEncryptionInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationProviderSpecificUpdateContainerMappingInput class.
+ * @constructor
+ * Provider specific input for update pairing operations.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ReplicationProviderSpecificUpdateContainerMappingInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AUpdateContainerMappingInput class.
+ * @constructor
+ * A2A update protection container mapping.
+ *
+ * @member {string} [agentAutoUpdateStatus] A value indicating whether the auto
+ * update is enabled. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [automationAccountArmId] The automation account arm id.
+ */
+export interface A2AUpdateContainerMappingInput extends ReplicationProviderSpecificUpdateContainerMappingInput {
+  agentAutoUpdateStatus?: string;
+  automationAccountArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AVmManagedDiskUpdateDetails class.
+ * @constructor
+ * Azure VM managed disk update input details.
+ *
+ * @member {string} [diskId] The disk Id.
+ * @member {string} [recoveryTargetDiskAccountType] The target disk type before
+ * failover.
+ * @member {string} [recoveryReplicaDiskAccountType] The replica disk type
+ * before failover.
+ */
+export interface A2AVmManagedDiskUpdateDetails {
+  diskId?: string;
+  recoveryTargetDiskAccountType?: string;
+  recoveryReplicaDiskAccountType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateReplicationProtectedItemProviderInput class.
+ * @constructor
+ * Update replication protected item provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface UpdateReplicationProtectedItemProviderInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the A2AUpdateReplicationProtectedItemInput class.
+ * @constructor
+ * InMage Azure V2 input to update replication protected item.
+ *
+ * @member {string} [recoveryCloudServiceId] The target cloud service ARM Id
+ * (for V1).
+ * @member {string} [recoveryResourceGroupId] The target resource group ARM Id
+ * (for V2).
+ * @member {array} [managedDiskUpdateDetails] Managed disk update details.
+ * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
+ * storage account.
+ * @member {object} [diskEncryptionInfo] The recovery os disk encryption
+ * information.
+ * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * KeyVault reference for secret.
+ * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
+ * The secret url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * KeyVault reference for key.
+ * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
+ * key url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
+ */
+export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
+  recoveryCloudServiceId?: string;
+  recoveryResourceGroupId?: string;
+  managedDiskUpdateDetails?: A2AVmManagedDiskUpdateDetails[];
+  recoveryBootDiagStorageAccountId?: string;
+  diskEncryptionInfo?: DiskEncryptionInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddVCenterRequestProperties class.
+ * @constructor
+ * The properties of an add vCenter request.
+ *
+ * @member {string} [friendlyName] The friendly name of the vCenter.
+ * @member {string} [ipAddress] The IP address of the vCenter to be discovered.
+ * @member {string} [processServerId] The process server Id from where the
+ * discovery is orchestrated.
+ * @member {string} [port] The port number for discovery.
+ * @member {string} [runAsAccountId] The account Id which has privileges to
+ * discover the vCenter.
+ */
+export interface AddVCenterRequestProperties {
+  friendlyName?: string;
+  ipAddress?: string;
+  processServerId?: string;
+  port?: string;
+  runAsAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddVCenterRequest class.
+ * @constructor
+ * Input required to add vCenter.
+ *
+ * @member {object} [properties] The properties of an add vCenter request.
+ * @member {string} [properties.friendlyName] The friendly name of the vCenter.
+ * @member {string} [properties.ipAddress] The IP address of the vCenter to be
+ * discovered.
+ * @member {string} [properties.processServerId] The process server Id from
+ * where the discovery is orchestrated.
+ * @member {string} [properties.port] The port number for discovery.
+ * @member {string} [properties.runAsAccountId] The account Id which has
+ * privileges to discover the vCenter.
+ */
+export interface AddVCenterRequest {
+  properties?: AddVCenterRequestProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AlertProperties class.
  * @constructor
  * The proprties of an alert.
@@ -71,377 +1047,62 @@ export interface Alert extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ConfigureAlertRequestProperties class.
+ * Initializes a new instance of the ApplyRecoveryPointInputProperties class.
  * @constructor
- * Properties of a configure alert request.
+ * Input properties to apply recovery point.
  *
- * @member {string} [sendToOwners] A value indicating whether to send email to
- * subscription administrator.
- * @member {array} [customEmailAddresses] The custom email address for sending
- * emails.
- * @member {string} [locale] The locale for the email notification.
- */
-export interface ConfigureAlertRequestProperties {
-  sendToOwners?: string;
-  customEmailAddresses?: string[];
-  locale?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConfigureAlertRequest class.
- * @constructor
- * Request to configure alerts for the system.
- *
- * @member {object} [properties] The properties of a configure alert request.
- * @member {string} [properties.sendToOwners] A value indicating whether to
- * send email to subscription administrator.
- * @member {array} [properties.customEmailAddresses] The custom email address
- * for sending emails.
- * @member {string} [properties.locale] The locale for the email notification.
- */
-export interface ConfigureAlertRequest {
-  properties?: ConfigureAlertRequestProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the EventProviderSpecificDetails class.
- * @constructor
- * Model class for provider specific details for an event.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface EventProviderSpecificDetails {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the EventSpecificDetails class.
- * @constructor
- * Model class for event specific details for an event.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface EventSpecificDetails {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HealthError class.
- * @constructor
- * Health Error
- *
- * @member {string} [errorSource] Source of error.
- * @member {string} [errorType] Type of error.
- * @member {string} [errorLevel] Level of error.
- * @member {string} [errorCode] Error code.
- * @member {string} [errorMessage] Error message.
- * @member {string} [possibleCauses] Possible causes of error.
- * @member {string} [recommendedAction] Recommended action to resolve error.
- * @member {date} [creationTimeUtc] Error creation time (UTC)
- * @member {string} [recoveryProviderErrorMessage] DRA error message.
- * @member {string} [entityId] ID of the entity.
- * @member {array} [childErrors] The child health errors.
- */
-export interface HealthError {
-  errorSource?: string;
-  errorType?: string;
-  errorLevel?: string;
-  errorCode?: string;
-  errorMessage?: string;
-  possibleCauses?: string;
-  recommendedAction?: string;
-  creationTimeUtc?: Date;
-  recoveryProviderErrorMessage?: string;
-  entityId?: string;
-  childErrors?: HealthError[];
-}
-
-/**
- * @class
- * Initializes a new instance of the EventProperties class.
- * @constructor
- * The properties of a monitoring event.
- *
- * @member {string} [eventCode] The Id of the monitoring event.
- * @member {string} [description] The event name.
- * @member {string} [eventType] The type of the event. for example: VM Health,
- * Server Health, Job Failure etc.
- * @member {string} [affectedObjectFriendlyName] The friendly name of the
- * source of the event on which it is raised (for example, VM, VMM etc).
- * @member {string} [severity] The severity of the event.
- * @member {date} [timeOfOccurrence] The time of occurence of the event.
- * @member {string} [fabricId] The ARM ID of the fabric.
- * @member {object} [providerSpecificDetails] The provider specific settings.
+ * @member {string} [recoveryPointId] The recovery point Id.
+ * @member {object} [providerSpecificDetails] Provider specific input for
+ * applying recovery point.
  * @member {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
- * @member {object} [eventSpecificDetails] The event specific settings.
- * @member {string} [eventSpecificDetails.instanceType] Polymorphic
- * Discriminator
- * @member {array} [healthErrors] The list of errors / warnings capturing
- * details associated with the issue(s).
  */
-export interface EventProperties {
-  eventCode?: string;
-  description?: string;
-  eventType?: string;
-  affectedObjectFriendlyName?: string;
-  severity?: string;
-  timeOfOccurrence?: Date;
-  fabricId?: string;
-  providerSpecificDetails?: EventProviderSpecificDetails;
-  eventSpecificDetails?: EventSpecificDetails;
-  healthErrors?: HealthError[];
+export interface ApplyRecoveryPointInputProperties {
+  recoveryPointId?: string;
+  providerSpecificDetails?: ApplyRecoveryPointProviderSpecificInput;
 }
 
 /**
  * @class
- * Initializes a new instance of the Event class.
+ * Initializes a new instance of the ApplyRecoveryPointInput class.
  * @constructor
- * Implements the Event class.
+ * Input to apply recovery point.
  *
- * @member {object} [properties] Event related data.
- * @member {string} [properties.eventCode] The Id of the monitoring event.
- * @member {string} [properties.description] The event name.
- * @member {string} [properties.eventType] The type of the event. for example:
- * VM Health, Server Health, Job Failure etc.
- * @member {string} [properties.affectedObjectFriendlyName] The friendly name
- * of the source of the event on which it is raised (for example, VM, VMM etc).
- * @member {string} [properties.severity] The severity of the event.
- * @member {date} [properties.timeOfOccurrence] The time of occurence of the
- * event.
- * @member {string} [properties.fabricId] The ARM ID of the fabric.
- * @member {object} [properties.providerSpecificDetails] The provider specific
- * settings.
+ * @member {object} [properties] The input properties to apply recovery point.
+ * @member {string} [properties.recoveryPointId] The recovery point Id.
+ * @member {object} [properties.providerSpecificDetails] Provider specific
+ * input for applying recovery point.
  * @member {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
- * @member {object} [properties.eventSpecificDetails] The event specific
- * settings.
- * @member {string} [properties.eventSpecificDetails.instanceType] Polymorphic
- * Discriminator
- * @member {array} [properties.healthErrors] The list of errors / warnings
- * capturing details associated with the issue(s).
  */
-export interface Event extends Resource {
-  properties?: EventProperties;
+export interface ApplyRecoveryPointInput {
+  properties?: ApplyRecoveryPointInputProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the EventQueryParameter class.
+ * Initializes a new instance of the JobDetails class.
  * @constructor
- * Implements the event query parameter.
+ * Job details based on specific job type.
  *
- * @member {string} [eventCode] The source id of the events to be queried.
- * @member {string} [severity] The severity of the events to be queried.
- * @member {string} [eventType] The type of the events to be queried.
- * @member {string} [fabricName] The affected object server id of the events to
- * be queried.
- * @member {string} [affectedObjectFriendlyName] The affected object name of
- * the events to be queried.
- * @member {date} [startTime] The start time of the time range within which the
- * events are to be queried.
- * @member {date} [endTime] The end time of the time range within which the
- * events are to be queried.
- */
-export interface EventQueryParameter {
-  eventCode?: string;
-  severity?: string;
-  eventType?: string;
-  fabricName?: string;
-  affectedObjectFriendlyName?: string;
-  startTime?: Date;
-  endTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the EncryptionDetails class.
- * @constructor
- * Encryption details for the fabric.
- *
- * @member {string} [kekState] The key encryption key state for the Vmm.
- * @member {string} [kekCertThumbprint] The key encryption key certificate
- * thumbprint.
- * @member {date} [kekCertExpiryDate] The key encryption key certificate expiry
- * date.
- */
-export interface EncryptionDetails {
-  kekState?: string;
-  kekCertThumbprint?: string;
-  kekCertExpiryDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FabricSpecificDetails class.
- * @constructor
- * Fabric specific details.
- *
+ * @member {object} [affectedObjectDetails] The affected object properties like
+ * source server, source cloud, target server, target cloud etc. based on the
+ * workflow object details.
  * @member {string} instanceType Polymorphic Discriminator
  */
-export interface FabricSpecificDetails {
+export interface JobDetails {
+  affectedObjectDetails?: { [propertyName: string]: string };
   instanceType: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the FabricProperties class.
+ * Initializes a new instance of the AsrJobDetails class.
  * @constructor
- * Fabric properties.
+ * This class represents job details based on specific job type.
  *
- * @member {string} [friendlyName] Friendly name of the fabric.
- * @member {object} [encryptionDetails] Encryption details for the fabric.
- * @member {string} [encryptionDetails.kekState] The key encryption key state
- * for the Vmm.
- * @member {string} [encryptionDetails.kekCertThumbprint] The key encryption
- * key certificate thumbprint.
- * @member {date} [encryptionDetails.kekCertExpiryDate] The key encryption key
- * certificate expiry date.
- * @member {object} [rolloverEncryptionDetails] Rollover encryption details for
- * the fabric.
- * @member {string} [rolloverEncryptionDetails.kekState] The key encryption key
- * state for the Vmm.
- * @member {string} [rolloverEncryptionDetails.kekCertThumbprint] The key
- * encryption key certificate thumbprint.
- * @member {date} [rolloverEncryptionDetails.kekCertExpiryDate] The key
- * encryption key certificate expiry date.
- * @member {string} [internalIdentifier] Dra Registration Id.
- * @member {string} [bcdrState] BCDR state of the fabric.
- * @member {object} [customDetails] Fabric specific settings.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
- * @member {array} [healthErrorDetails] Fabric health error details.
- * @member {string} [health] Health of fabric.
  */
-export interface FabricProperties {
-  friendlyName?: string;
-  encryptionDetails?: EncryptionDetails;
-  rolloverEncryptionDetails?: EncryptionDetails;
-  internalIdentifier?: string;
-  bcdrState?: string;
-  customDetails?: FabricSpecificDetails;
-  healthErrorDetails?: HealthError[];
-  health?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Fabric class.
- * @constructor
- * Fabric definition.
- *
- * @member {object} [properties] Fabric related data.
- * @member {string} [properties.friendlyName] Friendly name of the fabric.
- * @member {object} [properties.encryptionDetails] Encryption details for the
- * fabric.
- * @member {string} [properties.encryptionDetails.kekState] The key encryption
- * key state for the Vmm.
- * @member {string} [properties.encryptionDetails.kekCertThumbprint] The key
- * encryption key certificate thumbprint.
- * @member {date} [properties.encryptionDetails.kekCertExpiryDate] The key
- * encryption key certificate expiry date.
- * @member {object} [properties.rolloverEncryptionDetails] Rollover encryption
- * details for the fabric.
- * @member {string} [properties.rolloverEncryptionDetails.kekState] The key
- * encryption key state for the Vmm.
- * @member {string} [properties.rolloverEncryptionDetails.kekCertThumbprint]
- * The key encryption key certificate thumbprint.
- * @member {date} [properties.rolloverEncryptionDetails.kekCertExpiryDate] The
- * key encryption key certificate expiry date.
- * @member {string} [properties.internalIdentifier] Dra Registration Id.
- * @member {string} [properties.bcdrState] BCDR state of the fabric.
- * @member {object} [properties.customDetails] Fabric specific settings.
- * @member {string} [properties.customDetails.instanceType] Polymorphic
- * Discriminator
- * @member {array} [properties.healthErrorDetails] Fabric health error details.
- * @member {string} [properties.health] Health of fabric.
- */
-export interface Fabric extends Resource {
-  properties?: FabricProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the FabricSpecificCreationInput class.
- * @constructor
- * Fabric provider specific settings.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface FabricSpecificCreationInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FabricCreationInputProperties class.
- * @constructor
- * Properties of site details provided during the time of site creation
- *
- * @member {object} [customDetails] Fabric provider specific creation input.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
- */
-export interface FabricCreationInputProperties {
-  customDetails?: FabricSpecificCreationInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the FabricCreationInput class.
- * @constructor
- * Site details provided during the time of site creation
- *
- * @member {object} [properties] Fabric creation input.
- * @member {object} [properties.customDetails] Fabric provider specific
- * creation input.
- * @member {string} [properties.customDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface FabricCreationInput {
-  properties?: FabricCreationInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the FailoverProcessServerRequestProperties class.
- * @constructor
- * The properties of the Failover Process Server request.
- *
- * @member {string} [containerName] The container identifier.
- * @member {string} [sourceProcessServerId] The source process server.
- * @member {string} [targetProcessServerId] The new process server.
- * @member {array} [vmsToMigrate] The VMS to migrate.
- * @member {string} [updateType] A value for failover type. It can be
- * systemlevel/serverlevel
- */
-export interface FailoverProcessServerRequestProperties {
-  containerName?: string;
-  sourceProcessServerId?: string;
-  targetProcessServerId?: string;
-  vmsToMigrate?: string[];
-  updateType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FailoverProcessServerRequest class.
- * @constructor
- * Request to failover a process server.
- *
- * @member {object} [properties] The properties of the PS Failover request.
- * @member {string} [properties.containerName] The container identifier.
- * @member {string} [properties.sourceProcessServerId] The source process
- * server.
- * @member {string} [properties.targetProcessServerId] The new process server.
- * @member {array} [properties.vmsToMigrate] The VMS to migrate.
- * @member {string} [properties.updateType] A value for failover type. It can
- * be systemlevel/serverlevel
- */
-export interface FailoverProcessServerRequest {
-  properties?: FailoverProcessServerRequestProperties;
+export interface AsrJobDetails extends JobDetails {
 }
 
 /**
@@ -593,18 +1254,2853 @@ export interface ASRTask {
 
 /**
  * @class
- * Initializes a new instance of the JobDetails class.
+ * Initializes a new instance of the AutomationRunbookTaskDetails class.
  * @constructor
- * Job details based on specific job type.
+ * This class represents the task details for an automation runbook.
  *
- * @member {object} [affectedObjectDetails] The affected object properties like
- * source server, source cloud, target server, target cloud etc. based on the
- * workflow object details.
+ * @member {string} [name] The recovery plan task name.
+ * @member {string} [cloudServiceName] The cloud service of the automation
+ * runbook account.
+ * @member {string} [subscriptionId] The subscription Id of the automation
+ * runbook account.
+ * @member {string} [accountName] The automation account name of the runbook.
+ * @member {string} [runbookId] The runbook Id.
+ * @member {string} [runbookName] The runbook name.
+ * @member {string} [jobId] The job Id of the runbook execution.
+ * @member {string} [jobOutput] The execution output of the runbook.
+ * @member {boolean} [isPrimarySideScript] A value indicating whether it is a
+ * primary side script or not.
+ */
+export interface AutomationRunbookTaskDetails extends TaskTypeDetails {
+  name?: string;
+  cloudServiceName?: string;
+  subscriptionId?: string;
+  accountName?: string;
+  runbookId?: string;
+  runbookName?: string;
+  jobId?: string;
+  jobOutput?: string;
+  isPrimarySideScript?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricSpecificCreationInput class.
+ * @constructor
+ * Fabric provider specific settings.
+ *
  * @member {string} instanceType Polymorphic Discriminator
  */
-export interface JobDetails {
-  affectedObjectDetails?: { [propertyName: string]: string };
+export interface FabricSpecificCreationInput {
   instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFabricCreationInput class.
+ * @constructor
+ * Fabric provider specific settings.
+ *
+ * @member {string} [location] The Location.
+ */
+export interface AzureFabricCreationInput extends FabricSpecificCreationInput {
+  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricSpecificDetails class.
+ * @constructor
+ * Fabric specific details.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface FabricSpecificDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFabricSpecificDetails class.
+ * @constructor
+ * Azure Fabric Specific Details.
+ *
+ * @member {string} [location] The Location for the Azure fabric.
+ * @member {array} [containerIds] The container Ids for the Azure fabric.
+ */
+export interface AzureFabricSpecificDetails extends FabricSpecificDetails {
+  location?: string;
+  containerIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricSpecificCreateNetworkMappingInput class.
+ * @constructor
+ * Input details specific to fabrics during Network Mapping.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface FabricSpecificCreateNetworkMappingInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureToAzureCreateNetworkMappingInput class.
+ * @constructor
+ * Create network mappings input properties/behaviour specific to Azure to
+ * Azure Network mapping.
+ *
+ * @member {string} [primaryNetworkId] The primary azure vnet Id.
+ */
+export interface AzureToAzureCreateNetworkMappingInput extends FabricSpecificCreateNetworkMappingInput {
+  primaryNetworkId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkMappingFabricSpecificSettings class.
+ * @constructor
+ * Network Mapping fabric specific settings.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface NetworkMappingFabricSpecificSettings {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureToAzureNetworkMappingSettings class.
+ * @constructor
+ * A2A Network Mapping fabric specific settings.
+ *
+ * @member {string} [primaryFabricLocation] The primary fabric location.
+ * @member {string} [recoveryFabricLocation] The recovery fabric location.
+ */
+export interface AzureToAzureNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
+  primaryFabricLocation?: string;
+  recoveryFabricLocation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricSpecificUpdateNetworkMappingInput class.
+ * @constructor
+ * Input details specific to fabrics during Network Mapping.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface FabricSpecificUpdateNetworkMappingInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureToAzureUpdateNetworkMappingInput class.
+ * @constructor
+ * Updates network mappings input.
+ *
+ * @member {string} [primaryNetworkId] The primary azure vnet Id.
+ */
+export interface AzureToAzureUpdateNetworkMappingInput extends FabricSpecificUpdateNetworkMappingInput {
+  primaryNetworkId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureVmDiskDetails class.
+ * @constructor
+ * Disk details for E2A provider.
+ *
+ * @member {string} [vhdType] VHD type.
+ * @member {string} [vhdId] The VHD id.
+ * @member {string} [vhdName] VHD name.
+ * @member {string} [maxSizeMB] Max side in MB.
+ * @member {string} [targetDiskLocation] Blob uri of the Azure disk.
+ * @member {string} [targetDiskName] The target Azure disk name.
+ * @member {string} [lunId] Ordinal\LunId of the disk for the Azure VM.
+ */
+export interface AzureVmDiskDetails {
+  vhdType?: string;
+  vhdId?: string;
+  vhdName?: string;
+  maxSizeMB?: string;
+  targetDiskLocation?: string;
+  targetDiskName?: string;
+  lunId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputeSizeErrorDetails class.
+ * @constructor
+ * Represents the error used to indicate why the target compute size is not
+ * applicable.
+ *
+ * @member {string} [message] The error message.
+ * @member {string} [severity] The severity of the error.
+ */
+export interface ComputeSizeErrorDetails {
+  message?: string;
+  severity?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConfigurationSettings class.
+ * @constructor
+ * Replication provider specific settings.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface ConfigurationSettings {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConfigureAlertRequestProperties class.
+ * @constructor
+ * Properties of a configure alert request.
+ *
+ * @member {string} [sendToOwners] A value indicating whether to send email to
+ * subscription administrator.
+ * @member {array} [customEmailAddresses] The custom email address for sending
+ * emails.
+ * @member {string} [locale] The locale for the email notification.
+ */
+export interface ConfigureAlertRequestProperties {
+  sendToOwners?: string;
+  customEmailAddresses?: string[];
+  locale?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConfigureAlertRequest class.
+ * @constructor
+ * Request to configure alerts for the system.
+ *
+ * @member {object} [properties] The properties of a configure alert request.
+ * @member {string} [properties.sendToOwners] A value indicating whether to
+ * send email to subscription administrator.
+ * @member {array} [properties.customEmailAddresses] The custom email address
+ * for sending emails.
+ * @member {string} [properties.locale] The locale for the email notification.
+ */
+export interface ConfigureAlertRequest {
+  properties?: ConfigureAlertRequestProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InconsistentVmDetails class.
+ * @constructor
+ * This class stores the monitoring details for consistency check of
+ * inconsistent Protected Entity.
+ *
+ * @member {string} [vmName] The Vm name.
+ * @member {string} [cloudName] The Cloud name.
+ * @member {array} [details] The list of details regarding state of the
+ * Protected Entity in SRS and On prem.
+ * @member {array} [errorIds] The list of error ids.
+ */
+export interface InconsistentVmDetails {
+  vmName?: string;
+  cloudName?: string;
+  details?: string[];
+  errorIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConsistencyCheckTaskDetails class.
+ * @constructor
+ * This class contains monitoring details of all the inconsistent Protected
+ * Entites in Vmm.
+ *
+ * @member {array} [vmDetails] The list of inconsistent Vm details.
+ */
+export interface ConsistencyCheckTaskDetails extends TaskTypeDetails {
+  vmDetails?: InconsistentVmDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateNetworkMappingInputProperties class.
+ * @constructor
+ * Common input details for network mapping operation.
+ *
+ * @member {string} [recoveryFabricName] Recovery fabric Name.
+ * @member {string} [recoveryNetworkId] Recovery network Id.
+ * @member {object} [fabricSpecificDetails] Fabric specific input properties.
+ * @member {string} [fabricSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface CreateNetworkMappingInputProperties {
+  recoveryFabricName?: string;
+  recoveryNetworkId?: string;
+  fabricSpecificDetails?: FabricSpecificCreateNetworkMappingInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateNetworkMappingInput class.
+ * @constructor
+ * Create network mappings input.
+ *
+ * @member {object} [properties] Input properties for creating network mapping.
+ * @member {string} [properties.recoveryFabricName] Recovery fabric Name.
+ * @member {string} [properties.recoveryNetworkId] Recovery network Id.
+ * @member {object} [properties.fabricSpecificDetails] Fabric specific input
+ * properties.
+ * @member {string} [properties.fabricSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface CreateNetworkMappingInput {
+  properties?: CreateNetworkMappingInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreatePolicyInputProperties class.
+ * @constructor
+ * Policy creation properties.
+ *
+ * @member {object} [providerSpecificInput] The ReplicationProviderSettings.
+ * @member {string} [providerSpecificInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface CreatePolicyInputProperties {
+  providerSpecificInput?: PolicyProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreatePolicyInput class.
+ * @constructor
+ * Protection Policy input.
+ *
+ * @member {object} [properties] Policy creation properties.
+ * @member {object} [properties.providerSpecificInput] The
+ * ReplicationProviderSettings.
+ * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface CreatePolicyInput {
+  properties?: CreatePolicyInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateProtectionContainerInputProperties class.
+ * @constructor
+ * Create protection container input properties.
+ *
+ * @member {array} [providerSpecificInput] Provider specific inputs for
+ * container creation.
+ */
+export interface CreateProtectionContainerInputProperties {
+  providerSpecificInput?: ReplicationProviderSpecificContainerCreationInput[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateProtectionContainerInput class.
+ * @constructor
+ * Create protection container input.
+ *
+ * @member {object} [properties] Create protection container input properties.
+ * @member {array} [properties.providerSpecificInput] Provider specific inputs
+ * for container creation.
+ */
+export interface CreateProtectionContainerInput {
+  properties?: CreateProtectionContainerInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateProtectionContainerMappingInputProperties class.
+ * @constructor
+ * Configure pairing input properties.
+ *
+ * @member {string} [targetProtectionContainerId] The target unique protection
+ * container name.
+ * @member {string} [policyId] Applicable policy.
+ * @member {object} [providerSpecificInput] Provider specific input for
+ * pairing.
+ * @member {string} [providerSpecificInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface CreateProtectionContainerMappingInputProperties {
+  targetProtectionContainerId?: string;
+  policyId?: string;
+  providerSpecificInput?: ReplicationProviderSpecificContainerMappingInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateProtectionContainerMappingInput class.
+ * @constructor
+ * Configure pairing input.
+ *
+ * @member {object} [properties] Configure protection input properties.
+ * @member {string} [properties.targetProtectionContainerId] The target unique
+ * protection container name.
+ * @member {string} [properties.policyId] Applicable policy.
+ * @member {object} [properties.providerSpecificInput] Provider specific input
+ * for pairing.
+ * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface CreateProtectionContainerMappingInput {
+  properties?: CreateProtectionContainerMappingInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanProtectedItem class.
+ * @constructor
+ * Recovery plan protected item.
+ *
+ * @member {string} [id] The ARM Id of the recovery plan protected item.
+ * @member {string} [virtualMachineId] The virtual machine Id.
+ */
+export interface RecoveryPlanProtectedItem {
+  id?: string;
+  virtualMachineId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanActionDetails class.
+ * @constructor
+ * Recovery plan action custom details.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface RecoveryPlanActionDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanAction class.
+ * @constructor
+ * Recovery plan action details.
+ *
+ * @member {string} actionName The action name.
+ * @member {array} failoverTypes The list of failover types.
+ * @member {array} failoverDirections The list of failover directions.
+ * @member {object} customDetails The custom details.
+ * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ */
+export interface RecoveryPlanAction {
+  actionName: string;
+  failoverTypes: string[];
+  failoverDirections: string[];
+  customDetails: RecoveryPlanActionDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanGroup class.
+ * @constructor
+ * Recovery plan group details.
+ *
+ * @member {string} groupType The group type. Possible values include:
+ * 'Shutdown', 'Boot', 'Failover'
+ * @member {array} [replicationProtectedItems] The list of protected items.
+ * @member {array} [startGroupActions] The start group actions.
+ * @member {array} [endGroupActions] The end group actions.
+ */
+export interface RecoveryPlanGroup {
+  groupType: string;
+  replicationProtectedItems?: RecoveryPlanProtectedItem[];
+  startGroupActions?: RecoveryPlanAction[];
+  endGroupActions?: RecoveryPlanAction[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateRecoveryPlanInputProperties class.
+ * @constructor
+ * Recovery plan creation properties.
+ *
+ * @member {string} primaryFabricId The primary fabric Id.
+ * @member {string} recoveryFabricId The recovery fabric Id.
+ * @member {string} [failoverDeploymentModel] The failover deployment model.
+ * Possible values include: 'NotApplicable', 'Classic', 'ResourceManager'
+ * @member {array} groups The recovery plan groups.
+ */
+export interface CreateRecoveryPlanInputProperties {
+  primaryFabricId: string;
+  recoveryFabricId: string;
+  failoverDeploymentModel?: string;
+  groups: RecoveryPlanGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateRecoveryPlanInput class.
+ * @constructor
+ * Create recovery plan input class.
+ *
+ * @member {object} properties Recovery plan creation properties.
+ * @member {string} [properties.primaryFabricId] The primary fabric Id.
+ * @member {string} [properties.recoveryFabricId] The recovery fabric Id.
+ * @member {string} [properties.failoverDeploymentModel] The failover
+ * deployment model. Possible values include: 'NotApplicable', 'Classic',
+ * 'ResourceManager'
+ * @member {array} [properties.groups] The recovery plan groups.
+ */
+export interface CreateRecoveryPlanInput {
+  properties: CreateRecoveryPlanInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CurrentScenarioDetails class.
+ * @constructor
+ * Current scenario details of the protected entity.
+ *
+ * @member {string} [scenarioName] Scenario name.
+ * @member {string} [jobId] ARM Id of the job being executed.
+ * @member {date} [startTime] Start time of the workflow.
+ */
+export interface CurrentScenarioDetails {
+  scenarioName?: string;
+  jobId?: string;
+  startTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataStore class.
+ * @constructor
+ * The datastore details of the MT.
+ *
+ * @member {string} [symbolicName] The symbolic name of data store.
+ * @member {string} [uuid] The uuid of data store.
+ * @member {string} [capacity] The capacity of data store in GBs.
+ * @member {string} [freeSpace] The free space of data store in GBs.
+ * @member {string} [type] The type of data store.
+ */
+export interface DataStore {
+  symbolicName?: string;
+  uuid?: string;
+  capacity?: string;
+  freeSpace?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DisableProtectionProviderSpecificInput class.
+ * @constructor
+ * Disable protection provider specific input.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface DisableProtectionProviderSpecificInput {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DisableProtectionInputProperties class.
+ * @constructor
+ * Disable protection input properties.
+ *
+ * @member {string} [disableProtectionReason] Disable protection reason. It can
+ * have values NotSpecified/MigrationComplete. Possible values include:
+ * 'NotSpecified', 'MigrationComplete'
+ * @member {object} [replicationProviderInput] Replication provider specific
+ * input.
+ * @member {string} [replicationProviderInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface DisableProtectionInputProperties {
+  disableProtectionReason?: string;
+  replicationProviderInput?: DisableProtectionProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DisableProtectionInput class.
+ * @constructor
+ * Disable protection input.
+ *
+ * @member {object} [properties] Disable protection input properties.
+ * @member {string} [properties.disableProtectionReason] Disable protection
+ * reason. It can have values NotSpecified/MigrationComplete. Possible values
+ * include: 'NotSpecified', 'MigrationComplete'
+ * @member {object} [properties.replicationProviderInput] Replication provider
+ * specific input.
+ * @member {string} [properties.replicationProviderInput.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface DisableProtectionInput {
+  properties?: DisableProtectionInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiscoverProtectableItemRequestProperties class.
+ * @constructor
+ * Discover protectable item properties.
+ *
+ * @member {string} [friendlyName] The friendly name of the physical machine.
+ * @member {string} [ipAddress] The IP address of the physical machine to be
+ * discovered.
+ * @member {string} [osType] The OS type on the physical machine.
+ */
+export interface DiscoverProtectableItemRequestProperties {
+  friendlyName?: string;
+  ipAddress?: string;
+  osType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiscoverProtectableItemRequest class.
+ * @constructor
+ * Request to add a physical machine as a protectable item in a container.
+ *
+ * @member {object} [properties] The properties of a discover protectable item
+ * request.
+ * @member {string} [properties.friendlyName] The friendly name of the physical
+ * machine.
+ * @member {string} [properties.ipAddress] The IP address of the physical
+ * machine to be discovered.
+ * @member {string} [properties.osType] The OS type on the physical machine.
+ */
+export interface DiscoverProtectableItemRequest {
+  properties?: DiscoverProtectableItemRequestProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskDetails class.
+ * @constructor
+ * Onprem disk details data.
+ *
+ * @member {number} [maxSizeMB] The hard disk max size in MB.
+ * @member {string} [vhdType] The type of the volume.
+ * @member {string} [vhdId] The VHD Id.
+ * @member {string} [vhdName] The VHD name.
+ */
+export interface DiskDetails {
+  maxSizeMB?: number;
+  vhdType?: string;
+  vhdId?: string;
+  vhdName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskVolumeDetails class.
+ * @constructor
+ * Volume details.
+ *
+ * @member {string} [label] The volume label.
+ * @member {string} [name] The volume name.
+ */
+export interface DiskVolumeDetails {
+  label?: string;
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Display class.
+ * @constructor
+ * Contains the localized display information for this particular operation /
+ * action. These value will be used by several clients for (1) custom role
+ * definitions for RBAC; (2) complex query filters for the event service; and
+ * (3) audit history / records for management operations.
+ *
+ * @member {string} [provider] The provider. The localized friendly form of the
+ * resource provider name – it is expected to also include the
+ * publisher/company responsible. It should use Title Casing and begin with
+ * "Microsoft" for 1st party services. e.g. "Microsoft Monitoring Insights" or
+ * "Microsoft Compute."
+ * @member {string} [resource] The resource. The localized friendly form of the
+ * resource related to this action/operation – it should match the public
+ * documentation for the resource provider. It should use Title Casing. This
+ * value should be unique for a particular URL type (e.g. nested types should
+ * *not* reuse their parent’s display.resource field). e.g. "Virtual Machines"
+ * or "Scheduler Job Collections", or "Virtual Machine VM Sizes" or "Scheduler
+ * Jobs"
+ * @member {string} [operation] The operation. The localized friendly name for
+ * the operation, as it should be shown to the user. It should be concise (to
+ * fit in drop downs) but clear (i.e. self-documenting). It should use Title
+ * Casing. Prescriptive guidance: Read Create or Update Delete 'ActionName'
+ * @member {string} [description] The description. The localized friendly
+ * description for the operation, as it should be shown to the user. It should
+ * be thorough, yet concise – it will be used in tool tips and detailed views.
+ * Prescriptive guidance for namespaces: Read any 'display.provider' resource
+ * Create or Update any 'display.provider' resource Delete any
+ * 'display.provider' resource Perform any other action on any
+ * 'display.provider' resource Prescriptive guidance for namespaces: Read any
+ * 'display.resource' Create or Update any 'display.resource' Delete any
+ * 'display.resource' 'ActionName' any 'display.resources'
+ */
+export interface Display {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableProtectionInputProperties class.
+ * @constructor
+ * Enable protection input properties.
+ *
+ * @member {string} [policyId] The Policy Id.
+ * @member {string} [protectableItemId] The protectable item Id.
+ * @member {object} [providerSpecificDetails] The ReplicationProviderInput. For
+ * HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object.
+ * For San provider, it will be SanEnableProtectionInput object. For
+ * HyperVReplicaAzure provider, it can be null.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface EnableProtectionInputProperties {
+  policyId?: string;
+  protectableItemId?: string;
+  providerSpecificDetails?: EnableProtectionProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnableProtectionInput class.
+ * @constructor
+ * Enable protection input.
+ *
+ * @member {object} [properties] Enable protection input properties.
+ * @member {string} [properties.policyId] The Policy Id.
+ * @member {string} [properties.protectableItemId] The protectable item Id.
+ * @member {object} [properties.providerSpecificDetails] The
+ * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
+ * AzureEnableProtectionInput object. For San provider, it will be
+ * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
+ * null.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface EnableProtectionInput {
+  properties?: EnableProtectionInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EncryptionDetails class.
+ * @constructor
+ * Encryption details for the fabric.
+ *
+ * @member {string} [kekState] The key encryption key state for the Vmm.
+ * @member {string} [kekCertThumbprint] The key encryption key certificate
+ * thumbprint.
+ * @member {date} [kekCertExpiryDate] The key encryption key certificate expiry
+ * date.
+ */
+export interface EncryptionDetails {
+  kekState?: string;
+  kekCertThumbprint?: string;
+  kekCertExpiryDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventSpecificDetails class.
+ * @constructor
+ * Model class for event specific details for an event.
+ *
+ * @member {string} instanceType Polymorphic Discriminator
+ */
+export interface EventSpecificDetails {
+  instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InnerHealthError class.
+ * @constructor
+ * Implements InnerHealthError class. HealthError object has a list of
+ * InnerHealthErrors as child errors. InnerHealthError is used because this
+ * will prevent an infinite loop of structures when Hydra tries to
+ * auto-generate the contract. We are exposing the related health errors as
+ * inner health errors and all API consumers can utilize this in the same
+ * fashion as Exception -&gt; InnerException.
+ *
+ * @member {string} [errorSource] Source of error.
+ * @member {string} [errorType] Type of error.
+ * @member {string} [errorLevel] Level of error.
+ * @member {string} [errorCategory] Category of error.
+ * @member {string} [errorCode] Error code.
+ * @member {string} [summaryMessage] Summary message of the entity.
+ * @member {string} [errorMessage] Error message.
+ * @member {string} [possibleCauses] Possible causes of error.
+ * @member {string} [recommendedAction] Recommended action to resolve error.
+ * @member {date} [creationTimeUtc] Error creation time (UTC)
+ * @member {string} [recoveryProviderErrorMessage] DRA error message.
+ * @member {string} [entityId] ID of the entity.
+ */
+export interface InnerHealthError {
+  errorSource?: string;
+  errorType?: string;
+  errorLevel?: string;
+  errorCategory?: string;
+  errorCode?: string;
+  summaryMessage?: string;
+  errorMessage?: string;
+  possibleCauses?: string;
+  recommendedAction?: string;
+  creationTimeUtc?: Date;
+  recoveryProviderErrorMessage?: string;
+  entityId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HealthError class.
+ * @constructor
+ * Health Error
+ *
+ * @member {array} [innerHealthErrors] The inner health errors. HealthError
+ * having a list of HealthError as child errors is problematic.
+ * InnerHealthError is used because this will prevent an infinite loop of
+ * structures when Hydra tries to auto-generate the contract. We are exposing
+ * the related health errors as inner health errors and all API consumers can
+ * utilize this in the same fashion as Exception -&gt; InnerException.
+ * @member {string} [errorSource] Source of error.
+ * @member {string} [errorType] Type of error.
+ * @member {string} [errorLevel] Level of error.
+ * @member {string} [errorCategory] Category of error.
+ * @member {string} [errorCode] Error code.
+ * @member {string} [summaryMessage] Summary message of the entity.
+ * @member {string} [errorMessage] Error message.
+ * @member {string} [possibleCauses] Possible causes of error.
+ * @member {string} [recommendedAction] Recommended action to resolve error.
+ * @member {date} [creationTimeUtc] Error creation time (UTC)
+ * @member {string} [recoveryProviderErrorMessage] DRA error message.
+ * @member {string} [entityId] ID of the entity.
+ */
+export interface HealthError {
+  innerHealthErrors?: InnerHealthError[];
+  errorSource?: string;
+  errorType?: string;
+  errorLevel?: string;
+  errorCategory?: string;
+  errorCode?: string;
+  summaryMessage?: string;
+  errorMessage?: string;
+  possibleCauses?: string;
+  recommendedAction?: string;
+  creationTimeUtc?: Date;
+  recoveryProviderErrorMessage?: string;
+  entityId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventProperties class.
+ * @constructor
+ * The properties of a monitoring event.
+ *
+ * @member {string} [eventCode] The Id of the monitoring event.
+ * @member {string} [description] The event name.
+ * @member {string} [eventType] The type of the event. for example: VM Health,
+ * Server Health, Job Failure etc.
+ * @member {string} [affectedObjectFriendlyName] The friendly name of the
+ * source of the event on which it is raised (for example, VM, VMM etc).
+ * @member {string} [severity] The severity of the event.
+ * @member {date} [timeOfOccurrence] The time of occurence of the event.
+ * @member {string} [fabricId] The ARM ID of the fabric.
+ * @member {object} [providerSpecificDetails] The provider specific settings.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ * @member {object} [eventSpecificDetails] The event specific settings.
+ * @member {string} [eventSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ * @member {array} [healthErrors] The list of errors / warnings capturing
+ * details associated with the issue(s).
+ */
+export interface EventProperties {
+  eventCode?: string;
+  description?: string;
+  eventType?: string;
+  affectedObjectFriendlyName?: string;
+  severity?: string;
+  timeOfOccurrence?: Date;
+  fabricId?: string;
+  providerSpecificDetails?: EventProviderSpecificDetails;
+  eventSpecificDetails?: EventSpecificDetails;
+  healthErrors?: HealthError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Event class.
+ * @constructor
+ * Implements the Event class.
+ *
+ * @member {object} [properties] Event related data.
+ * @member {string} [properties.eventCode] The Id of the monitoring event.
+ * @member {string} [properties.description] The event name.
+ * @member {string} [properties.eventType] The type of the event. for example:
+ * VM Health, Server Health, Job Failure etc.
+ * @member {string} [properties.affectedObjectFriendlyName] The friendly name
+ * of the source of the event on which it is raised (for example, VM, VMM etc).
+ * @member {string} [properties.severity] The severity of the event.
+ * @member {date} [properties.timeOfOccurrence] The time of occurence of the
+ * event.
+ * @member {string} [properties.fabricId] The ARM ID of the fabric.
+ * @member {object} [properties.providerSpecificDetails] The provider specific
+ * settings.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ * @member {object} [properties.eventSpecificDetails] The event specific
+ * settings.
+ * @member {string} [properties.eventSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ * @member {array} [properties.healthErrors] The list of errors / warnings
+ * capturing details associated with the issue(s).
+ */
+export interface Event extends Resource {
+  properties?: EventProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventQueryParameter class.
+ * @constructor
+ * Implements the event query parameter.
+ *
+ * @member {string} [eventCode] The source id of the events to be queried.
+ * @member {string} [severity] The severity of the events to be queried.
+ * @member {string} [eventType] The type of the events to be queried.
+ * @member {string} [fabricName] The affected object server id of the events to
+ * be queried.
+ * @member {string} [affectedObjectFriendlyName] The affected object name of
+ * the events to be queried.
+ * @member {date} [startTime] The start time of the time range within which the
+ * events are to be queried.
+ * @member {date} [endTime] The end time of the time range within which the
+ * events are to be queried.
+ */
+export interface EventQueryParameter {
+  eventCode?: string;
+  severity?: string;
+  eventType?: string;
+  fabricName?: string;
+  affectedObjectFriendlyName?: string;
+  startTime?: Date;
+  endTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExportJobDetails class.
+ * @constructor
+ * This class represents details for export jobs workflow.
+ *
+ * @member {string} [blobUri] BlobUri of the exported jobs.
+ * @member {string} [sasToken] The sas token to access blob.
+ */
+export interface ExportJobDetails extends JobDetails {
+  blobUri?: string;
+  sasToken?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricProperties class.
+ * @constructor
+ * Fabric properties.
+ *
+ * @member {string} [friendlyName] Friendly name of the fabric.
+ * @member {object} [encryptionDetails] Encryption details for the fabric.
+ * @member {string} [encryptionDetails.kekState] The key encryption key state
+ * for the Vmm.
+ * @member {string} [encryptionDetails.kekCertThumbprint] The key encryption
+ * key certificate thumbprint.
+ * @member {date} [encryptionDetails.kekCertExpiryDate] The key encryption key
+ * certificate expiry date.
+ * @member {object} [rolloverEncryptionDetails] Rollover encryption details for
+ * the fabric.
+ * @member {string} [rolloverEncryptionDetails.kekState] The key encryption key
+ * state for the Vmm.
+ * @member {string} [rolloverEncryptionDetails.kekCertThumbprint] The key
+ * encryption key certificate thumbprint.
+ * @member {date} [rolloverEncryptionDetails.kekCertExpiryDate] The key
+ * encryption key certificate expiry date.
+ * @member {string} [internalIdentifier] Dra Registration Id.
+ * @member {string} [bcdrState] BCDR state of the fabric.
+ * @member {object} [customDetails] Fabric specific settings.
+ * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ * @member {array} [healthErrorDetails] Fabric health error details.
+ * @member {string} [health] Health of fabric.
+ */
+export interface FabricProperties {
+  friendlyName?: string;
+  encryptionDetails?: EncryptionDetails;
+  rolloverEncryptionDetails?: EncryptionDetails;
+  internalIdentifier?: string;
+  bcdrState?: string;
+  customDetails?: FabricSpecificDetails;
+  healthErrorDetails?: HealthError[];
+  health?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Fabric class.
+ * @constructor
+ * Fabric definition.
+ *
+ * @member {object} [properties] Fabric related data.
+ * @member {string} [properties.friendlyName] Friendly name of the fabric.
+ * @member {object} [properties.encryptionDetails] Encryption details for the
+ * fabric.
+ * @member {string} [properties.encryptionDetails.kekState] The key encryption
+ * key state for the Vmm.
+ * @member {string} [properties.encryptionDetails.kekCertThumbprint] The key
+ * encryption key certificate thumbprint.
+ * @member {date} [properties.encryptionDetails.kekCertExpiryDate] The key
+ * encryption key certificate expiry date.
+ * @member {object} [properties.rolloverEncryptionDetails] Rollover encryption
+ * details for the fabric.
+ * @member {string} [properties.rolloverEncryptionDetails.kekState] The key
+ * encryption key state for the Vmm.
+ * @member {string} [properties.rolloverEncryptionDetails.kekCertThumbprint]
+ * The key encryption key certificate thumbprint.
+ * @member {date} [properties.rolloverEncryptionDetails.kekCertExpiryDate] The
+ * key encryption key certificate expiry date.
+ * @member {string} [properties.internalIdentifier] Dra Registration Id.
+ * @member {string} [properties.bcdrState] BCDR state of the fabric.
+ * @member {object} [properties.customDetails] Fabric specific settings.
+ * @member {string} [properties.customDetails.instanceType] Polymorphic
+ * Discriminator
+ * @member {array} [properties.healthErrorDetails] Fabric health error details.
+ * @member {string} [properties.health] Health of fabric.
+ */
+export interface Fabric extends Resource {
+  properties?: FabricProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricCreationInputProperties class.
+ * @constructor
+ * Properties of site details provided during the time of site creation
+ *
+ * @member {object} [customDetails] Fabric provider specific creation input.
+ * @member {string} [customDetails.instanceType] Polymorphic Discriminator
+ */
+export interface FabricCreationInputProperties {
+  customDetails?: FabricSpecificCreationInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricCreationInput class.
+ * @constructor
+ * Site details provided during the time of site creation
+ *
+ * @member {object} [properties] Fabric creation input.
+ * @member {object} [properties.customDetails] Fabric provider specific
+ * creation input.
+ * @member {string} [properties.customDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface FabricCreationInput {
+  properties?: FabricCreationInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobEntity class.
+ * @constructor
+ * This class contains the minimal job details required to navigate to the
+ * desired drill down.
+ *
+ * @member {string} [jobId] The job id.
+ * @member {string} [jobFriendlyName] The job display name.
+ * @member {string} [targetObjectId] The object id.
+ * @member {string} [targetObjectName] The object name.
+ * @member {string} [targetInstanceType] The workflow affected object type.
+ * @member {string} [jobScenarioName] The job name. Enum type ScenarioName.
+ */
+export interface JobEntity {
+  jobId?: string;
+  jobFriendlyName?: string;
+  targetObjectId?: string;
+  targetObjectName?: string;
+  targetInstanceType?: string;
+  jobScenarioName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricReplicationGroupTaskDetails class.
+ * @constructor
+ * This class represents the fabric replication group task details.
+ *
+ * @member {string} [skippedReason] The skipped reason.
+ * @member {string} [skippedReasonString] The skipped reason string.
+ * @member {object} [jobTask] The job entity.
+ * @member {string} [jobTask.jobId] The job id.
+ * @member {string} [jobTask.jobFriendlyName] The job display name.
+ * @member {string} [jobTask.targetObjectId] The object id.
+ * @member {string} [jobTask.targetObjectName] The object name.
+ * @member {string} [jobTask.targetInstanceType] The workflow affected object
+ * type.
+ * @member {string} [jobTask.jobScenarioName] The job name. Enum type
+ * ScenarioName.
+ */
+export interface FabricReplicationGroupTaskDetails extends TaskTypeDetails {
+  skippedReason?: string;
+  skippedReasonString?: string;
+  jobTask?: JobEntity;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FailoverReplicationProtectedItemDetails class.
+ * @constructor
+ * Failover details for a replication protected item.
+ *
+ * @member {string} [name] The name.
+ * @member {string} [friendlyName] The friendly name.
+ * @member {string} [testVmName] The test Vm name.
+ * @member {string} [testVmFriendlyName] The test Vm friendly name.
+ * @member {string} [networkConnectionStatus] The network connection status.
+ * @member {string} [networkFriendlyName] The network friendly name.
+ * @member {string} [subnet] The network subnet.
+ * @member {string} [recoveryPointId] The recovery point Id.
+ * @member {date} [recoveryPointTime] The recovery point time.
+ */
+export interface FailoverReplicationProtectedItemDetails {
+  name?: string;
+  friendlyName?: string;
+  testVmName?: string;
+  testVmFriendlyName?: string;
+  networkConnectionStatus?: string;
+  networkFriendlyName?: string;
+  subnet?: string;
+  recoveryPointId?: string;
+  recoveryPointTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FailoverJobDetails class.
+ * @constructor
+ * This class represents the details for a failover job.
+ *
+ * @member {array} [protectedItemDetails] The test VM details.
+ */
+export interface FailoverJobDetails extends JobDetails {
+  protectedItemDetails?: FailoverReplicationProtectedItemDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FailoverProcessServerRequestProperties class.
+ * @constructor
+ * The properties of the Failover Process Server request.
+ *
+ * @member {string} [containerName] The container identifier.
+ * @member {string} [sourceProcessServerId] The source process server.
+ * @member {string} [targetProcessServerId] The new process server.
+ * @member {array} [vmsToMigrate] The VMS to migrate.
+ * @member {string} [updateType] A value for failover type. It can be
+ * systemlevel/serverlevel
+ */
+export interface FailoverProcessServerRequestProperties {
+  containerName?: string;
+  sourceProcessServerId?: string;
+  targetProcessServerId?: string;
+  vmsToMigrate?: string[];
+  updateType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FailoverProcessServerRequest class.
+ * @constructor
+ * Request to failover a process server.
+ *
+ * @member {object} [properties] The properties of the PS Failover request.
+ * @member {string} [properties.containerName] The container identifier.
+ * @member {string} [properties.sourceProcessServerId] The source process
+ * server.
+ * @member {string} [properties.targetProcessServerId] The new process server.
+ * @member {array} [properties.vmsToMigrate] The VMS to migrate.
+ * @member {string} [properties.updateType] A value for failover type. It can
+ * be systemlevel/serverlevel
+ */
+export interface FailoverProcessServerRequest {
+  properties?: FailoverProcessServerRequestProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HealthErrorSummary class.
+ * @constructor
+ * class to define the summary of the health error details.
+ *
+ * @member {string} [summaryCode] The code of the health error.
+ * @member {string} [category] The category of the health error. Possible
+ * values include: 'None', 'Replication', 'TestFailover', 'Configuration',
+ * 'FabricInfrastructure', 'VersionExpiry', 'AgentAutoUpdate'
+ * @member {string} [severity] Severity of error. Possible values include:
+ * 'NONE', 'Warning', 'Error', 'Info'
+ * @member {string} [summaryMessage] The summary message of the health error.
+ * @member {string} [affectedResourceType] The type of affected ARM resource.
+ * @member {string} [affectedResourceSubtype] The sub type of any subcomponent
+ * within the ARM resource that this might be applicable. Value remains null if
+ * not applicable.
+ * @member {array} [affectedResourceCorrelationIds] The list of affected
+ * resource correlation Ids. This can be used to uniquely identify the count of
+ * items affected by a specific category and severity as well as count of item
+ * affected by an specific issue.
+ */
+export interface HealthErrorSummary {
+  summaryCode?: string;
+  category?: string;
+  severity?: string;
+  summaryMessage?: string;
+  affectedResourceType?: string;
+  affectedResourceSubtype?: string;
+  affectedResourceCorrelationIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplica2012EventDetails class.
+ * @constructor
+ * Model class for event details of a HyperVReplica E2E event.
+ *
+ * @member {string} [containerName] The container friendly name.
+ * @member {string} [fabricName] The fabric friendly name.
+ * @member {string} [remoteContainerName] The remote container name.
+ * @member {string} [remoteFabricName] The remote fabric name.
+ */
+export interface HyperVReplica2012EventDetails extends EventProviderSpecificDetails {
+  containerName?: string;
+  fabricName?: string;
+  remoteContainerName?: string;
+  remoteFabricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplica2012R2EventDetails class.
+ * @constructor
+ * Model class for event details of a HyperVReplica blue E2E event.
+ *
+ * @member {string} [containerName] The container friendly name.
+ * @member {string} [fabricName] The fabric friendly name.
+ * @member {string} [remoteContainerName] The remote container name.
+ * @member {string} [remoteFabricName] The remote fabric name.
+ */
+export interface HyperVReplica2012R2EventDetails extends EventProviderSpecificDetails {
+  containerName?: string;
+  fabricName?: string;
+  remoteContainerName?: string;
+  remoteFabricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureApplyRecoveryPointInput class.
+ * @constructor
+ * ApplyRecoveryPoint input specific to HyperVReplicaAzure provider.
+ *
+ * @member {string} [vaultLocation] The vault location where the recovery Vm
+ * resides.
+ * @member {string} [primaryKekCertificatePfx] The primary kek certificate pfx.
+ * @member {string} [secondaryKekCertificatePfx] The secondary kek certificate
+ * pfx.
+ */
+export interface HyperVReplicaAzureApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
+  vaultLocation?: string;
+  primaryKekCertificatePfx?: string;
+  secondaryKekCertificatePfx?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureEnableProtectionInput class.
+ * @constructor
+ * Azure specific enable protection input.
+ *
+ * @member {string} [hvHostVmId] The Hyper-V host Vm Id.
+ * @member {string} [vmName] The Vm Name.
+ * @member {string} [osType] The OS type associated with vm.
+ * @member {string} [vhdId] The OS disk VHD id associated with vm.
+ * @member {string} [targetStorageAccountId] The storage account name.
+ * @member {string} [targetAzureNetworkId] The selected target Azure network
+ * Id.
+ * @member {string} [targetAzureSubnetId] The selected target Azure subnet Id.
+ * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * RDP\SSH on target vm after failover. String value of
+ * {SrsDataContract.EnableRDPOnTargetOption} enum.
+ * @member {string} [targetAzureVmName] The target azure Vm Name.
+ * @member {string} [logStorageAccountId] The storage account to be used for
+ * logging during replication.
+ * @member {array} [disksToInclude] The list of VHD IDs of disks to be
+ * protected.
+ * @member {string} [targetAzureV1ResourceGroupId] The Id of the target
+ * resource group (for classic deployment) in which the failover VM is to be
+ * created.
+ * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
+ * resource group (for resource manager deployment) in which the failover VM is
+ * to be created.
+ * @member {string} [useManagedDisks] A value indicating whether managed disks
+ * should be used during failover.
+ */
+export interface HyperVReplicaAzureEnableProtectionInput extends EnableProtectionProviderSpecificInput {
+  hvHostVmId?: string;
+  vmName?: string;
+  osType?: string;
+  vhdId?: string;
+  targetStorageAccountId?: string;
+  targetAzureNetworkId?: string;
+  targetAzureSubnetId?: string;
+  enableRdpOnTargetOption?: string;
+  targetAzureVmName?: string;
+  logStorageAccountId?: string;
+  disksToInclude?: string[];
+  targetAzureV1ResourceGroupId?: string;
+  targetAzureV2ResourceGroupId?: string;
+  useManagedDisks?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureEventDetails class.
+ * @constructor
+ * Model class for event details of a HyperVReplica E2A event.
+ *
+ * @member {string} [containerName] The container friendly name.
+ * @member {string} [fabricName] The fabric friendly name.
+ * @member {string} [remoteContainerName] The remote container name.
+ */
+export interface HyperVReplicaAzureEventDetails extends EventProviderSpecificDetails {
+  containerName?: string;
+  fabricName?: string;
+  remoteContainerName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureFailbackProviderInput class.
+ * @constructor
+ * HvrA provider specific input for failback.
+ *
+ * @member {string} [dataSyncOption] Data sync option.
+ * @member {string} [recoveryVmCreationOption] ALR options to create alternate
+ * recovery.
+ * @member {string} [providerIdForAlternateRecovery] Provider ID for alternate
+ * location
+ */
+export interface HyperVReplicaAzureFailbackProviderInput extends ProviderSpecificFailoverInput {
+  dataSyncOption?: string;
+  recoveryVmCreationOption?: string;
+  providerIdForAlternateRecovery?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureFailoverProviderInput class.
+ * @constructor
+ * HvrA provider specific input for failover.
+ *
+ * @member {string} [vaultLocation] Location of the vault.
+ * @member {string} [primaryKekCertificatePfx] Primary kek certificate pfx.
+ * @member {string} [secondaryKekCertificatePfx] Secondary kek certificate pfx.
+ * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * failover to a particular recovery point. In case of latest recovery point,
+ * null should be passed.
+ */
+export interface HyperVReplicaAzureFailoverProviderInput extends ProviderSpecificFailoverInput {
+  vaultLocation?: string;
+  primaryKekCertificatePfx?: string;
+  secondaryKekCertificatePfx?: string;
+  recoveryPointId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzurePolicyDetails class.
+ * @constructor
+ * Hyper-V Replica Azure specific protection profile details.
+ *
+ * @member {number} [recoveryPointHistoryDurationInHours] The duration (in
+ * hours) to which point the recovery history needs to be maintained.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] The
+ * interval (in hours) at which Hyper-V Replica should create an application
+ * consistent snapshot within the VM.
+ * @member {number} [replicationInterval] The replication interval.
+ * @member {string} [onlineReplicationStartTime] The scheduled start time for
+ * the initial replication. If this parameter is Null, the initial replication
+ * starts immediately.
+ * @member {string} [encryption] A value indicating whether encryption is
+ * enabled for virtual machines in this cloud.
+ * @member {string} [activeStorageAccountId] The active storage account Id.
+ */
+export interface HyperVReplicaAzurePolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPointHistoryDurationInHours?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  replicationInterval?: number;
+  onlineReplicationStartTime?: string;
+  encryption?: string;
+  activeStorageAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzurePolicyInput class.
+ * @constructor
+ * Hyper-V Replica Azure specific input for creating a protection profile.
+ *
+ * @member {number} [recoveryPointHistoryDuration] The duration (in hours) to
+ * which point the recovery history needs to be maintained.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] The
+ * interval (in hours) at which Hyper-V Replica should create an application
+ * consistent snapshot within the VM.
+ * @member {number} [replicationInterval] The replication interval.
+ * @member {string} [onlineReplicationStartTime] The scheduled start time for
+ * the initial replication. If this parameter is Null, the initial replication
+ * starts immediately.
+ * @member {array} [storageAccounts] The list of storage accounts to which the
+ * VMs in the primary cloud can replicate to.
+ */
+export interface HyperVReplicaAzurePolicyInput extends PolicyProviderSpecificInput {
+  recoveryPointHistoryDuration?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  replicationInterval?: number;
+  onlineReplicationStartTime?: string;
+  storageAccounts?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InitialReplicationDetails class.
+ * @constructor
+ * Initial replication details.
+ *
+ * @member {string} [initialReplicationType] Initial replication type.
+ * @member {string} [initialReplicationProgressPercentage] The initial
+ * replication progress percentage.
+ */
+export interface InitialReplicationDetails {
+  initialReplicationType?: string;
+  initialReplicationProgressPercentage?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OSDetails class.
+ * @constructor
+ * Disk Details.
+ *
+ * @member {string} [osType] VM Disk details.
+ * @member {string} [productType] Product type.
+ * @member {string} [osEdition] The OSEdition.
+ * @member {string} [oSVersion] The OS Version.
+ * @member {string} [oSMajorVersion] The OS Major Version.
+ * @member {string} [oSMinorVersion] The OS Minor Version.
+ */
+export interface OSDetails {
+  osType?: string;
+  productType?: string;
+  osEdition?: string;
+  oSVersion?: string;
+  oSMajorVersion?: string;
+  oSMinorVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureReplicationDetails class.
+ * @constructor
+ * Hyper V Replica Azure provider specific settings.
+ *
+ * @member {array} [azureVmDiskDetails] Azure VM Disk details.
+ * @member {string} [recoveryAzureVmName] Recovery Azure given name.
+ * @member {string} [recoveryAzureVMSize] The Recovery Azure VM size.
+ * @member {string} [recoveryAzureStorageAccount] The recovery Azure storage
+ * account.
+ * @member {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
+ * storage account used for replication. This will be set to null if no log
+ * storage account was provided during enable protection.
+ * @member {date} [lastReplicatedTime] The Last replication time.
+ * @member {number} [rpoInSeconds] Last RPO value.
+ * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @member {string} [vmId] The virtual machine Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {object} [initialReplicationDetails] Initial replication details.
+ * @member {string} [initialReplicationDetails.initialReplicationType] Initial
+ * replication type.
+ * @member {string}
+ * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
+ * replication progress percentage.
+ * @member {array} [vmNics] The PE Network details.
+ * @member {string} [selectedRecoveryAzureNetworkId] The selected recovery
+ * azure network Id.
+ * @member {string} [selectedSourceNicId] The selected source nic Id which will
+ * be used as the primary nic during failover.
+ * @member {string} [encryption] The encryption info.
+ * @member {object} [oSDetails] The operating system info.
+ * @member {string} [oSDetails.osType] VM Disk details.
+ * @member {string} [oSDetails.productType] Product type.
+ * @member {string} [oSDetails.osEdition] The OSEdition.
+ * @member {string} [oSDetails.oSVersion] The OS Version.
+ * @member {string} [oSDetails.oSMajorVersion] The OS Major Version.
+ * @member {string} [oSDetails.oSMinorVersion] The OS Minor Version.
+ * @member {number} [sourceVmRamSizeInMB] The RAM size of the VM on the primary
+ * side.
+ * @member {number} [sourceVmCpuCount] The CPU count of the VM on the primary
+ * side.
+ * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * RDP\SSH on target vm after failover. String value of
+ * {SrsDataContract.EnableRDPOnTargetOption} enum.
+ * @member {string} [recoveryAzureResourceGroupId] The target resource group
+ * Id.
+ * @member {string} [recoveryAvailabilitySetId] The recovery availability set
+ * Id.
+ * @member {string} [useManagedDisks] A value indicating whether managed disks
+ * should be used during failover.
+ * @member {string} [licenseType] License Type of the VM to be used.
+ */
+export interface HyperVReplicaAzureReplicationDetails extends ReplicationProviderSpecificSettings {
+  azureVmDiskDetails?: AzureVmDiskDetails[];
+  recoveryAzureVmName?: string;
+  recoveryAzureVMSize?: string;
+  recoveryAzureStorageAccount?: string;
+  recoveryAzureLogStorageAccountId?: string;
+  lastReplicatedTime?: Date;
+  rpoInSeconds?: number;
+  lastRpoCalculatedTime?: Date;
+  vmId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  initialReplicationDetails?: InitialReplicationDetails;
+  vmNics?: VMNicDetails[];
+  selectedRecoveryAzureNetworkId?: string;
+  selectedSourceNicId?: string;
+  encryption?: string;
+  oSDetails?: OSDetails;
+  sourceVmRamSizeInMB?: number;
+  sourceVmCpuCount?: number;
+  enableRdpOnTargetOption?: string;
+  recoveryAzureResourceGroupId?: string;
+  recoveryAvailabilitySetId?: string;
+  useManagedDisks?: string;
+  licenseType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureReprotectInput class.
+ * @constructor
+ * Azure specific reprotect input.
+ *
+ * @member {string} [hvHostVmId] The Hyper-V host Vm Id.
+ * @member {string} [vmName] The Vm Name.
+ * @member {string} [osType] The OS type associated with vm.
+ * @member {string} [vHDId] The OS disk VHD id associated with vm.
+ * @member {string} [storageAccountId] The storage account name.
+ * @member {string} [logStorageAccountId] The storage account to be used for
+ * logging during replication.
+ */
+export interface HyperVReplicaAzureReprotectInput extends ReverseReplicationProviderSpecificInput {
+  hvHostVmId?: string;
+  vmName?: string;
+  osType?: string;
+  vHDId?: string;
+  storageAccountId?: string;
+  logStorageAccountId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaAzureUpdateReplicationProtectedItemInput class.
+ * @constructor
+ * HyperV replica Azure input to update replication protected item.
+ *
+ * @member {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
+ * resource group Id for classic deployment.
+ * @member {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
+ * resource group Id for resource manager deployment.
+ * @member {string} [useManagedDisks] A value indicating whether managed disks
+ * should be used during failover.
+ */
+export interface HyperVReplicaAzureUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
+  recoveryAzureV1ResourceGroupId?: string;
+  recoveryAzureV2ResourceGroupId?: string;
+  useManagedDisks?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaBaseEventDetails class.
+ * @constructor
+ * Abstract model class for event details of a HyperVReplica E2E event.
+ *
+ * @member {string} [containerName] The container friendly name.
+ * @member {string} [fabricName] The fabric friendly name.
+ * @member {string} [remoteContainerName] The remote container name.
+ * @member {string} [remoteFabricName] The remote fabric name.
+ */
+export interface HyperVReplicaBaseEventDetails extends EventProviderSpecificDetails {
+  containerName?: string;
+  fabricName?: string;
+  remoteContainerName?: string;
+  remoteFabricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaBasePolicyDetails class.
+ * @constructor
+ * Base class for HyperVReplica policy details.
+ *
+ * @member {number} [recoveryPoints] A value indicating the number of recovery
+ * points.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * indicating the application consistent frequency.
+ * @member {string} [compression] A value indicating whether compression has to
+ * be enabled.
+ * @member {string} [initialReplicationMethod] A value indicating whether IR is
+ * online.
+ * @member {string} [onlineReplicationStartTime] A value indicating the online
+ * IR start time.
+ * @member {string} [offlineReplicationImportPath] A value indicating the
+ * offline IR import path.
+ * @member {string} [offlineReplicationExportPath] A value indicating the
+ * offline IR export path.
+ * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * port.
+ * @member {number} [allowedAuthenticationType] A value indicating the
+ * authentication type.
+ * @member {string} [replicaDeletionOption] A value indicating whether the VM
+ * has to be auto deleted. Supported Values: String.Empty, None,
+ * OnRecoveryCloud
+ */
+export interface HyperVReplicaBasePolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPoints?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  compression?: string;
+  initialReplicationMethod?: string;
+  onlineReplicationStartTime?: string;
+  offlineReplicationImportPath?: string;
+  offlineReplicationExportPath?: string;
+  replicationPort?: number;
+  allowedAuthenticationType?: number;
+  replicaDeletionOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaBaseReplicationDetails class.
+ * @constructor
+ * Hyper V replica provider specific settings base class.
+ *
+ * @member {date} [lastReplicatedTime] The Last replication time.
+ * @member {array} [vmNics] The PE Network details.
+ * @member {string} [vmId] The virtual machine Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {object} [initialReplicationDetails] Initial replication details.
+ * @member {string} [initialReplicationDetails.initialReplicationType] Initial
+ * replication type.
+ * @member {string}
+ * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
+ * replication progress percentage.
+ * @member {array} [vMDiskDetails] VM disk details.
+ */
+export interface HyperVReplicaBaseReplicationDetails extends ReplicationProviderSpecificSettings {
+  lastReplicatedTime?: Date;
+  vmNics?: VMNicDetails[];
+  vmId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  initialReplicationDetails?: InitialReplicationDetails;
+  vMDiskDetails?: DiskDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaBluePolicyDetails class.
+ * @constructor
+ * Hyper-V Replica Blue specific protection profile details.
+ *
+ * @member {number} [replicationFrequencyInSeconds] A value indicating the
+ * replication interval.
+ * @member {number} [recoveryPoints] A value indicating the number of recovery
+ * points.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * indicating the application consistent frequency.
+ * @member {string} [compression] A value indicating whether compression has to
+ * be enabled.
+ * @member {string} [initialReplicationMethod] A value indicating whether IR is
+ * online.
+ * @member {string} [onlineReplicationStartTime] A value indicating the online
+ * IR start time.
+ * @member {string} [offlineReplicationImportPath] A value indicating the
+ * offline IR import path.
+ * @member {string} [offlineReplicationExportPath] A value indicating the
+ * offline IR export path.
+ * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * port.
+ * @member {number} [allowedAuthenticationType] A value indicating the
+ * authentication type.
+ * @member {string} [replicaDeletionOption] A value indicating whether the VM
+ * has to be auto deleted. Supported Values: String.Empty, None,
+ * OnRecoveryCloud
+ */
+export interface HyperVReplicaBluePolicyDetails extends PolicyProviderSpecificDetails {
+  replicationFrequencyInSeconds?: number;
+  recoveryPoints?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  compression?: string;
+  initialReplicationMethod?: string;
+  onlineReplicationStartTime?: string;
+  offlineReplicationImportPath?: string;
+  offlineReplicationExportPath?: string;
+  replicationPort?: number;
+  allowedAuthenticationType?: number;
+  replicaDeletionOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaBluePolicyInput class.
+ * @constructor
+ * HyperV Replica Blue policy input.
+ *
+ * @member {number} [replicationFrequencyInSeconds] A value indicating the
+ * replication interval.
+ * @member {number} [recoveryPoints] A value indicating the number of recovery
+ * points.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * indicating the application consistent frequency.
+ * @member {string} [compression] A value indicating whether compression has to
+ * be enabled.
+ * @member {string} [initialReplicationMethod] A value indicating whether IR is
+ * online.
+ * @member {string} [onlineReplicationStartTime] A value indicating the online
+ * IR start time.
+ * @member {string} [offlineReplicationImportPath] A value indicating the
+ * offline IR import path.
+ * @member {string} [offlineReplicationExportPath] A value indicating the
+ * offline IR export path.
+ * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * port.
+ * @member {number} [allowedAuthenticationType] A value indicating the
+ * authentication type.
+ * @member {string} [replicaDeletion] A value indicating whether the VM has to
+ * be auto deleted.
+ */
+export interface HyperVReplicaBluePolicyInput extends PolicyProviderSpecificInput {
+  replicationFrequencyInSeconds?: number;
+  recoveryPoints?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  compression?: string;
+  initialReplicationMethod?: string;
+  onlineReplicationStartTime?: string;
+  offlineReplicationImportPath?: string;
+  offlineReplicationExportPath?: string;
+  replicationPort?: number;
+  allowedAuthenticationType?: number;
+  replicaDeletion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaBlueReplicationDetails class.
+ * @constructor
+ * HyperV replica 2012 R2 (Blue) replication details.
+ *
+ * @member {date} [lastReplicatedTime] The Last replication time.
+ * @member {array} [vmNics] The PE Network details.
+ * @member {string} [vmId] The virtual machine Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {object} [initialReplicationDetails] Initial replication details.
+ * @member {string} [initialReplicationDetails.initialReplicationType] Initial
+ * replication type.
+ * @member {string}
+ * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
+ * replication progress percentage.
+ * @member {array} [vMDiskDetails] VM disk details.
+ */
+export interface HyperVReplicaBlueReplicationDetails extends ReplicationProviderSpecificSettings {
+  lastReplicatedTime?: Date;
+  vmNics?: VMNicDetails[];
+  vmId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  initialReplicationDetails?: InitialReplicationDetails;
+  vMDiskDetails?: DiskDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaPolicyDetails class.
+ * @constructor
+ * Hyper-V Replica Blue specific protection profile details.
+ *
+ * @member {number} [recoveryPoints] A value indicating the number of recovery
+ * points.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * indicating the application consistent frequency.
+ * @member {string} [compression] A value indicating whether compression has to
+ * be enabled.
+ * @member {string} [initialReplicationMethod] A value indicating whether IR is
+ * online.
+ * @member {string} [onlineReplicationStartTime] A value indicating the online
+ * IR start time.
+ * @member {string} [offlineReplicationImportPath] A value indicating the
+ * offline IR import path.
+ * @member {string} [offlineReplicationExportPath] A value indicating the
+ * offline IR export path.
+ * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * port.
+ * @member {number} [allowedAuthenticationType] A value indicating the
+ * authentication type.
+ * @member {string} [replicaDeletionOption] A value indicating whether the VM
+ * has to be auto deleted. Supported Values: String.Empty, None,
+ * OnRecoveryCloud
+ */
+export interface HyperVReplicaPolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPoints?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  compression?: string;
+  initialReplicationMethod?: string;
+  onlineReplicationStartTime?: string;
+  offlineReplicationImportPath?: string;
+  offlineReplicationExportPath?: string;
+  replicationPort?: number;
+  allowedAuthenticationType?: number;
+  replicaDeletionOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaPolicyInput class.
+ * @constructor
+ * Hyper-V Replica specific policy Input.
+ *
+ * @member {number} [recoveryPoints] A value indicating the number of recovery
+ * points.
+ * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
+ * indicating the application consistent frequency.
+ * @member {string} [compression] A value indicating whether compression has to
+ * be enabled.
+ * @member {string} [initialReplicationMethod] A value indicating whether IR is
+ * online.
+ * @member {string} [onlineReplicationStartTime] A value indicating the online
+ * IR start time.
+ * @member {string} [offlineReplicationImportPath] A value indicating the
+ * offline IR import path.
+ * @member {string} [offlineReplicationExportPath] A value indicating the
+ * offline IR export path.
+ * @member {number} [replicationPort] A value indicating the recovery HTTPS
+ * port.
+ * @member {number} [allowedAuthenticationType] A value indicating the
+ * authentication type.
+ * @member {string} [replicaDeletion] A value indicating whether the VM has to
+ * be auto deleted.
+ */
+export interface HyperVReplicaPolicyInput extends PolicyProviderSpecificInput {
+  recoveryPoints?: number;
+  applicationConsistentSnapshotFrequencyInHours?: number;
+  compression?: string;
+  initialReplicationMethod?: string;
+  onlineReplicationStartTime?: string;
+  offlineReplicationImportPath?: string;
+  offlineReplicationExportPath?: string;
+  replicationPort?: number;
+  allowedAuthenticationType?: number;
+  replicaDeletion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVReplicaReplicationDetails class.
+ * @constructor
+ * HyperV replica 2012 replication details.
+ *
+ * @member {date} [lastReplicatedTime] The Last replication time.
+ * @member {array} [vmNics] The PE Network details.
+ * @member {string} [vmId] The virtual machine Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {object} [initialReplicationDetails] Initial replication details.
+ * @member {string} [initialReplicationDetails.initialReplicationType] Initial
+ * replication type.
+ * @member {string}
+ * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
+ * replication progress percentage.
+ * @member {array} [vMDiskDetails] VM disk details.
+ */
+export interface HyperVReplicaReplicationDetails extends ReplicationProviderSpecificSettings {
+  lastReplicatedTime?: Date;
+  vmNics?: VMNicDetails[];
+  vmId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  initialReplicationDetails?: InitialReplicationDetails;
+  vMDiskDetails?: DiskDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVSiteDetails class.
+ * @constructor
+ * HyperVSite fabric specific details.
+ *
+ */
+export interface HyperVSiteDetails extends FabricSpecificDetails {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HyperVVirtualMachineDetails class.
+ * @constructor
+ * Single Host fabric provider specific VM settings.
+ *
+ * @member {string} [sourceItemId] The source id of the object.
+ * @member {string} [generation] The id of the object in fabric.
+ * @member {object} [osDetails] The Last replication time.
+ * @member {string} [osDetails.osType] VM Disk details.
+ * @member {string} [osDetails.productType] Product type.
+ * @member {string} [osDetails.osEdition] The OSEdition.
+ * @member {string} [osDetails.oSVersion] The OS Version.
+ * @member {string} [osDetails.oSMajorVersion] The OS Major Version.
+ * @member {string} [osDetails.oSMinorVersion] The OS Minor Version.
+ * @member {array} [diskDetails] The Last successful failover time.
+ * @member {string} [hasPhysicalDisk] A value indicating whether the VM has a
+ * physical disk attached. String value of {SrsDataContract.PresenceStatus}
+ * enum. Possible values include: 'Unknown', 'Present', 'NotPresent'
+ * @member {string} [hasFibreChannelAdapter] A value indicating whether the VM
+ * has a fibre channel adapter attached. String value of
+ * {SrsDataContract.PresenceStatus} enum. Possible values include: 'Unknown',
+ * 'Present', 'NotPresent'
+ * @member {string} [hasSharedVhd] A value indicating whether the VM has a
+ * shared VHD attached. String value of {SrsDataContract.PresenceStatus} enum.
+ * Possible values include: 'Unknown', 'Present', 'NotPresent'
+ */
+export interface HyperVVirtualMachineDetails extends ConfigurationSettings {
+  sourceItemId?: string;
+  generation?: string;
+  osDetails?: OSDetails;
+  diskDetails?: DiskDetails[];
+  hasPhysicalDisk?: string;
+  hasFibreChannelAdapter?: string;
+  hasSharedVhd?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IdentityInformation class.
+ * @constructor
+ * Identity details.
+ *
+ * @member {string} [identityProviderType] The identity provider type. Value is
+ * the ToString() of a IdentityProviderType value. Possible values include:
+ * 'RecoveryServicesActiveDirectory'
+ * @member {string} [tenantId] The tenant Id for the service principal with
+ * which the on-premise management/data plane components would communicate with
+ * our Azure services.
+ * @member {string} [applicationId] The application/client Id for the service
+ * principal with which the on-premise management/data plane components would
+ * communicate with our Azure services.
+ * @member {string} [objectId] The object Id of the service principal with
+ * which the on-premise management/data plane components would communicate with
+ * our Azure services.
+ * @member {string} [audience] The intended Audience of the service principal
+ * with which the on-premise management/data plane components would communicate
+ * with our Azure services.
+ * @member {string} [aadAuthority] The base authority for Azure Active
+ * Directory authentication.
+ * @member {string} [certificateThumbprint] The certificate thumbprint.
+ * Applicable only if IdentityProviderType is RecoveryServicesActiveDirectory.
+ */
+export interface IdentityInformation {
+  identityProviderType?: string;
+  tenantId?: string;
+  applicationId?: string;
+  objectId?: string;
+  audience?: string;
+  aadAuthority?: string;
+  certificateThumbprint?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InlineWorkflowTaskDetails class.
+ * @constructor
+ * This class represents the inline workflow task details.
+ *
+ * @member {array} [workflowIds] The list of child workflow ids.
+ */
+export interface InlineWorkflowTaskDetails extends GroupTaskDetails {
+  workflowIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAgentDetails class.
+ * @constructor
+ * The details of the InMage agent.
+ *
+ * @member {string} [agentVersion] The agent version.
+ * @member {string} [agentUpdateStatus] A value indicating whether installed
+ * agent needs to be updated.
+ * @member {string} [postUpdateRebootStatus] A value indicating whether reboot
+ * is required after update is applied.
+ * @member {date} [agentExpiryDate] Agent expiry date.
+ */
+export interface InMageAgentDetails {
+  agentVersion?: string;
+  agentUpdateStatus?: string;
+  postUpdateRebootStatus?: string;
+  agentExpiryDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAgentVersionDetails class.
+ * @constructor
+ * InMage agent version details.
+ *
+ * @member {string} [postUpdateRebootStatus] A value indicating whether reboot
+ * is required after update is applied.
+ * @member {string} [version] The agent version.
+ * @member {date} [expiryDate] Version expiry date.
+ * @member {string} [status] A value indicating whether security update
+ * required. Possible values include: 'Supported', 'NotSupported',
+ * 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
+ */
+export interface InMageAgentVersionDetails {
+  postUpdateRebootStatus?: string;
+  version?: string;
+  expiryDate?: Date;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2ApplyRecoveryPointInput class.
+ * @constructor
+ * ApplyRecoveryPoint input specific to InMageAzureV2 provider.
+ *
+ * @member {string} [vaultLocation] The vault location where the recovery Vm
+ * resides.
+ */
+export interface InMageAzureV2ApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
+  vaultLocation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2EnableProtectionInput class.
+ * @constructor
+ * VMware Azure specific enable protection input.
+ *
+ * @member {string} [masterTargetId] The Master target Id.
+ * @member {string} [processServerId] The Process Server Id.
+ * @member {string} storageAccountId The storage account name.
+ * @member {string} [runAsAccountId] The CS account Id.
+ * @member {string} [multiVmGroupId] The multi vm group Id.
+ * @member {string} [multiVmGroupName] The multi vm group name.
+ * @member {array} [disksToInclude] The disks to include list.
+ * @member {string} [targetAzureNetworkId] The selected target Azure network
+ * Id.
+ * @member {string} [targetAzureSubnetId] The selected target Azure subnet Id.
+ * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * RDP\SSH on target vm after failover. String value of
+ * {SrsDataContract.EnableRDPOnTargetOption} enum.
+ * @member {string} [targetAzureVmName] The target azure Vm Name.
+ * @member {string} [logStorageAccountId] The storage account to be used for
+ * logging during replication.
+ * @member {string} [targetAzureV1ResourceGroupId] The Id of the target
+ * resource group (for classic deployment) in which the failover VM is to be
+ * created.
+ * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
+ * resource group (for resource manager deployment) in which the failover VM is
+ * to be created.
+ * @member {string} [useManagedDisks] A value indicating whether managed disks
+ * should be used during failover.
+ */
+export interface InMageAzureV2EnableProtectionInput extends EnableProtectionProviderSpecificInput {
+  masterTargetId?: string;
+  processServerId?: string;
+  storageAccountId: string;
+  runAsAccountId?: string;
+  multiVmGroupId?: string;
+  multiVmGroupName?: string;
+  disksToInclude?: string[];
+  targetAzureNetworkId?: string;
+  targetAzureSubnetId?: string;
+  enableRdpOnTargetOption?: string;
+  targetAzureVmName?: string;
+  logStorageAccountId?: string;
+  targetAzureV1ResourceGroupId?: string;
+  targetAzureV2ResourceGroupId?: string;
+  useManagedDisks?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2EventDetails class.
+ * @constructor
+ * Model class for event details of a VMwareAzureV2 event.
+ *
+ * @member {string} [eventType] InMage Event type. Takes one of the values of
+ * {InMageDataContract.InMageMonitoringEventType}.
+ * @member {string} [category] InMage Event Category.
+ * @member {string} [component] InMage Event Component.
+ * @member {string} [correctiveAction] Corrective Action string for the event.
+ * @member {string} [details] InMage Event Details.
+ * @member {string} [summary] InMage Event Summary.
+ * @member {string} [siteName] VMware Site name.
+ */
+export interface InMageAzureV2EventDetails extends EventProviderSpecificDetails {
+  eventType?: string;
+  category?: string;
+  component?: string;
+  correctiveAction?: string;
+  details?: string;
+  summary?: string;
+  siteName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2FailoverProviderInput class.
+ * @constructor
+ * InMageAzureV2 provider specific input for failover.
+ *
+ * @member {string} [vaultLocation] Location of the vault.
+ * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * failover to a particular recovery point. In case of latest recovery point,
+ * null should be passed.
+ */
+export interface InMageAzureV2FailoverProviderInput extends ProviderSpecificFailoverInput {
+  vaultLocation?: string;
+  recoveryPointId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2PolicyDetails class.
+ * @constructor
+ * InMage Azure v2 specific protection profile details.
+ *
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency in minutes.
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency in minutes.
+ * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * sync has to be enabled.
+ */
+export interface InMageAzureV2PolicyDetails extends PolicyProviderSpecificDetails {
+  crashConsistentFrequencyInMinutes?: number;
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2PolicyInput class.
+ * @constructor
+ * VMWare Azure specific policy Input.
+ *
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency (in minutes).
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency (in minutes).
+ * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
+ * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
+ * include: 'Enable', 'Disable'
+ */
+export interface InMageAzureV2PolicyInput extends PolicyProviderSpecificInput {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  crashConsistentFrequencyInMinutes?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2ProtectedDiskDetails class.
+ * @constructor
+ * InMageAzureV2 protected disk details.
+ *
+ * @member {string} [diskId] The disk id.
+ * @member {string} [diskName] The disk name.
+ * @member {string} [protectionStage] The protection stage.
+ * @member {string} [healthErrorCode] The health error code for the disk.
+ * @member {number} [rpoInSeconds] The RPO in seconds.
+ * @member {string} [resyncRequired] A value indicating whether resync is
+ * required for this disk.
+ * @member {number} [resyncProgressPercentage] The resync progress percentage.
+ * @member {number} [resyncDurationInSeconds] The resync duration in seconds.
+ * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @member {number} [fileSystemCapacityInBytes] The disk file system capacity
+ * in bytes.
+ * @member {number} [sourceDataInMegaBytes] The source data transit in MB.
+ * @member {number} [psDataInMegaBytes] The PS data transit in MB.
+ * @member {number} [targetDataInMegaBytes] The target data transit in MB.
+ * @member {string} [diskResized] A value indicating whether disk is resized.
+ * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ */
+export interface InMageAzureV2ProtectedDiskDetails {
+  diskId?: string;
+  diskName?: string;
+  protectionStage?: string;
+  healthErrorCode?: string;
+  rpoInSeconds?: number;
+  resyncRequired?: string;
+  resyncProgressPercentage?: number;
+  resyncDurationInSeconds?: number;
+  diskCapacityInBytes?: number;
+  fileSystemCapacityInBytes?: number;
+  sourceDataInMegaBytes?: number;
+  psDataInMegaBytes?: number;
+  targetDataInMegaBytes?: number;
+  diskResized?: string;
+  lastRpoCalculatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2RecoveryPointDetails class.
+ * @constructor
+ * InMage Azure V2 provider specific recovery point details.
+ *
+ * @member {string} [isMultiVmSyncPoint] A value indicating whether the
+ * recovery point is multi VM consistent.
+ */
+export interface InMageAzureV2RecoveryPointDetails extends ProviderSpecificRecoveryPointDetails {
+  isMultiVmSyncPoint?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2ReplicationDetails class.
+ * @constructor
+ * InMageAzureV2 provider specific settings
+ *
+ * @member {string} [infrastructureVmId] The infrastructure VM Id.
+ * @member {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
+ * @member {string} [protectionStage] The protection stage.
+ * @member {string} [vmId] The virtual machine Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {number} [resyncProgressPercentage] The resync progress percentage.
+ * @member {number} [rpoInSeconds] The RPO in seconds.
+ * @member {number} [compressedDataRateInMB] The compressed data change rate in
+ * MB.
+ * @member {number} [uncompressedDataRateInMB] The uncompressed data change
+ * rate in MB.
+ * @member {string} [ipAddress] The source IP address.
+ * @member {string} [agentVersion] The agent version.
+ * @member {date} [agentExpiryDate] Agent expiry date.
+ * @member {string} [isAgentUpdateRequired] A value indicating whether
+ * installed agent needs to be updated.
+ * @member {string} [isRebootAfterUpdateRequired] A value indicating whether
+ * the source server requires a restart after update.
+ * @member {date} [lastHeartbeat] The last heartbeat received from the source
+ * server.
+ * @member {string} [processServerId] The process server Id.
+ * @member {string} [multiVmGroupId] The multi vm group Id.
+ * @member {string} [multiVmGroupName] The multi vm group name.
+ * @member {string} [multiVmSyncStatus] A value indicating whether multi vm
+ * sync is enabled or disabled.
+ * @member {array} [protectedDisks] The list of protected disks.
+ * @member {string} [diskResized] A value indicating whether any disk is
+ * resized for this VM.
+ * @member {string} [masterTargetId] The master target Id.
+ * @member {number} [sourceVmCpuCount] The CPU count of the VM on the primary
+ * side.
+ * @member {number} [sourceVmRamSizeInMB] The RAM size of the VM on the primary
+ * side.
+ * @member {string} [osType] The type of the OS on the VM.
+ * @member {string} [vhdName] The OS disk VHD name.
+ * @member {string} [osDiskId] The id of the disk containing the OS.
+ * @member {array} [azureVMDiskDetails] Azure VM Disk details.
+ * @member {string} [recoveryAzureVMName] Recovery Azure given name.
+ * @member {string} [recoveryAzureVMSize] The Recovery Azure VM size.
+ * @member {string} [recoveryAzureStorageAccount] The recovery Azure storage
+ * account.
+ * @member {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
+ * storage account used for replication. This will be set to null if no log
+ * storage account was provided during enable protection.
+ * @member {array} [vmNics] The PE Network details.
+ * @member {string} [selectedRecoveryAzureNetworkId] The selected recovery
+ * azure network Id.
+ * @member {string} [selectedSourceNicId] The selected source nic Id which will
+ * be used as the primary nic during failover.
+ * @member {string} [discoveryType] A value indicating the discovery type of
+ * the machine. Value can be vCenter or physical.
+ * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * RDP\SSH on target vm after failover. String value of
+ * {SrsDataContract.EnableRDPOnTargetOption} enum.
+ * @member {array} [datastores] The datastores of the on-premise machine. Value
+ * can be list of strings that contain datastore names.
+ * @member {string} [targetVmId] The ARM Id of the target Azure VM. This value
+ * will be null until the VM is failed over. Only after failure it will be
+ * populated with the ARM Id of the Azure VM.
+ * @member {string} [recoveryAzureResourceGroupId] The target resource group
+ * Id.
+ * @member {string} [recoveryAvailabilitySetId] The recovery availability set
+ * Id.
+ * @member {string} [useManagedDisks] A value indicating whether managed disks
+ * should be used during failover.
+ * @member {string} [licenseType] License Type of the VM to be used.
+ * @member {array} [validationErrors] The validation errors of the on-premise
+ * machine Value can be list of validation errors.
+ * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @member {date} [lastUpdateReceivedTime] The last update time received from
+ * on-prem components.
+ * @member {string} [replicaId] The replica id of the protected item.
+ * @member {string} [osVersion] The OS Version of the protected item.
+ */
+export interface InMageAzureV2ReplicationDetails extends ReplicationProviderSpecificSettings {
+  infrastructureVmId?: string;
+  vCenterInfrastructureId?: string;
+  protectionStage?: string;
+  vmId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  resyncProgressPercentage?: number;
+  rpoInSeconds?: number;
+  compressedDataRateInMB?: number;
+  uncompressedDataRateInMB?: number;
+  ipAddress?: string;
+  agentVersion?: string;
+  agentExpiryDate?: Date;
+  isAgentUpdateRequired?: string;
+  isRebootAfterUpdateRequired?: string;
+  lastHeartbeat?: Date;
+  processServerId?: string;
+  multiVmGroupId?: string;
+  multiVmGroupName?: string;
+  multiVmSyncStatus?: string;
+  protectedDisks?: InMageAzureV2ProtectedDiskDetails[];
+  diskResized?: string;
+  masterTargetId?: string;
+  sourceVmCpuCount?: number;
+  sourceVmRamSizeInMB?: number;
+  osType?: string;
+  vhdName?: string;
+  osDiskId?: string;
+  azureVMDiskDetails?: AzureVmDiskDetails[];
+  recoveryAzureVMName?: string;
+  recoveryAzureVMSize?: string;
+  recoveryAzureStorageAccount?: string;
+  recoveryAzureLogStorageAccountId?: string;
+  vmNics?: VMNicDetails[];
+  selectedRecoveryAzureNetworkId?: string;
+  selectedSourceNicId?: string;
+  discoveryType?: string;
+  enableRdpOnTargetOption?: string;
+  datastores?: string[];
+  targetVmId?: string;
+  recoveryAzureResourceGroupId?: string;
+  recoveryAvailabilitySetId?: string;
+  useManagedDisks?: string;
+  licenseType?: string;
+  validationErrors?: HealthError[];
+  lastRpoCalculatedTime?: Date;
+  lastUpdateReceivedTime?: Date;
+  replicaId?: string;
+  osVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2ReprotectInput class.
+ * @constructor
+ * InMageAzureV2 specific provider input.
+ *
+ * @member {string} [masterTargetId] The Master target Id.
+ * @member {string} [processServerId] The Process Server Id.
+ * @member {string} [storageAccountId] The storage account id.
+ * @member {string} [runAsAccountId] The CS account Id.
+ * @member {string} [policyId] The Policy Id.
+ * @member {string} [logStorageAccountId] The storage account to be used for
+ * logging during replication.
+ * @member {array} [disksToInclude] The disks to include list.
+ */
+export interface InMageAzureV2ReprotectInput extends ReverseReplicationProviderSpecificInput {
+  masterTargetId?: string;
+  processServerId?: string;
+  storageAccountId?: string;
+  runAsAccountId?: string;
+  policyId?: string;
+  logStorageAccountId?: string;
+  disksToInclude?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageAzureV2UpdateReplicationProtectedItemInput class.
+ * @constructor
+ * InMage Azure V2 input to update replication protected item.
+ *
+ * @member {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
+ * resource group Id for classic deployment.
+ * @member {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
+ * resource group Id for resource manager deployment.
+ * @member {string} [useManagedDisks] A value indicating whether managed disks
+ * should be used during failover.
+ */
+export interface InMageAzureV2UpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
+  recoveryAzureV1ResourceGroupId?: string;
+  recoveryAzureV2ResourceGroupId?: string;
+  useManagedDisks?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageBasePolicyDetails class.
+ * @constructor
+ * Base class for the policies of providers using InMage replication.
+ *
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency in minutes.
+ * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * sync has to be enabled.
+ */
+export interface InMageBasePolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageDisableProtectionProviderSpecificInput class.
+ * @constructor
+ * InMage disable protection provider specific input.
+ *
+ * @member {string} [replicaVmDeletionStatus] A value indicating whether the
+ * replica VM should be destroyed or retained. Values from Delete and Retain.
+ */
+export interface InMageDisableProtectionProviderSpecificInput extends DisableProtectionProviderSpecificInput {
+  replicaVmDeletionStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageDiskDetails class.
+ * @constructor
+ * VMware/Physical specific Disk Details
+ *
+ * @member {string} [diskId] The disk Id.
+ * @member {string} [diskName] The disk name.
+ * @member {string} [diskSizeInMB] The disk size in MB.
+ * @member {string} [diskType] Whether disk is system disk or data disk.
+ * @member {string} [diskConfiguration] Whether disk is dynamic disk or basic
+ * disk.
+ * @member {array} [volumeList] Volumes of the disk.
+ */
+export interface InMageDiskDetails {
+  diskId?: string;
+  diskName?: string;
+  diskSizeInMB?: string;
+  diskType?: string;
+  diskConfiguration?: string;
+  volumeList?: DiskVolumeDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageVolumeExclusionOptions class.
+ * @constructor
+ * Guest disk signature based disk exclusion option when doing enable
+ * protection of virtual machine in InMage provider.
+ *
+ * @member {string} [volumeLabel] The volume label. The disk having any volume
+ * with this label will be excluded from replication.
+ * @member {string} [onlyExcludeIfSingleVolume] The value indicating whether to
+ * exclude multi volume disk or not. If a disk has multiple volumes and one of
+ * the volume has label matching with VolumeLabel this disk will be excluded
+ * from replication if OnlyExcludeIfSingleVolume is false.
+ */
+export interface InMageVolumeExclusionOptions {
+  volumeLabel?: string;
+  onlyExcludeIfSingleVolume?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageDiskSignatureExclusionOptions class.
+ * @constructor
+ * Guest disk signature based disk exclusion option when doing enable
+ * protection of virtual machine in InMage provider.
+ *
+ * @member {string} [diskSignature] The guest signature of disk to be excluded
+ * from replication.
+ */
+export interface InMageDiskSignatureExclusionOptions {
+  diskSignature?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageDiskExclusionInput class.
+ * @constructor
+ * DiskExclusionInput when doing enable protection of virtual machine in InMage
+ * provider.
+ *
+ * @member {array} [volumeOptions] The volume label based option for disk
+ * exclusion.
+ * @member {array} [diskSignatureOptions] The guest disk signature based option
+ * for disk exclusion.
+ */
+export interface InMageDiskExclusionInput {
+  volumeOptions?: InMageVolumeExclusionOptions[];
+  diskSignatureOptions?: InMageDiskSignatureExclusionOptions[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageEnableProtectionInput class.
+ * @constructor
+ * VMware Azure specific enable protection input.
+ *
+ * @member {string} [vmFriendlyName] The Vm Name.
+ * @member {string} masterTargetId The Master Target Id.
+ * @member {string} processServerId The Process Server Id.
+ * @member {string} retentionDrive The retention drive to use on the MT.
+ * @member {string} [runAsAccountId] The CS account Id.
+ * @member {string} multiVmGroupId The multi vm group Id.
+ * @member {string} multiVmGroupName The multi vm group name.
+ * @member {string} [datastoreName] The target datastore name.
+ * @member {object} [diskExclusionInput] The enable disk exclusion input.
+ * @member {array} [diskExclusionInput.volumeOptions] The volume label based
+ * option for disk exclusion.
+ * @member {array} [diskExclusionInput.diskSignatureOptions] The guest disk
+ * signature based option for disk exclusion.
+ * @member {array} [disksToInclude] The disks to include list.
+ */
+export interface InMageEnableProtectionInput extends EnableProtectionProviderSpecificInput {
+  vmFriendlyName?: string;
+  masterTargetId: string;
+  processServerId: string;
+  retentionDrive: string;
+  runAsAccountId?: string;
+  multiVmGroupId: string;
+  multiVmGroupName: string;
+  datastoreName?: string;
+  diskExclusionInput?: InMageDiskExclusionInput;
+  disksToInclude?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageFailoverProviderInput class.
+ * @constructor
+ * Provider specific input for InMage failover.
+ *
+ * @member {string} [recoveryPointType] The recovery point type. Values from
+ * LatestTime, LatestTag or Custom. In the case of custom, the recovery point
+ * provided by RecoveryPointId will be used. In the other two cases, recovery
+ * point id will be ignored. Possible values include: 'LatestTime',
+ * 'LatestTag', 'Custom'
+ * @member {string} [recoveryPointId] The recovery point id to be passed to
+ * failover to a particular recovery point. In case of latest recovery point,
+ * null should be passed.
+ */
+export interface InMageFailoverProviderInput extends ProviderSpecificFailoverInput {
+  recoveryPointType?: string;
+  recoveryPointId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMagePolicyDetails class.
+ * @constructor
+ * InMage specific protection profile details.
+ *
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency in minutes.
+ * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * sync has to be enabled.
+ */
+export interface InMagePolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMagePolicyInput class.
+ * @constructor
+ * VMWare Azure specific protection profile Input.
+ *
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency (in minutes).
+ * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
+ * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
+ * include: 'Enable', 'Disable'
+ */
+export interface InMagePolicyInput extends PolicyProviderSpecificInput {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageProtectedDiskDetails class.
+ * @constructor
+ * InMage protected disk details.
+ *
+ * @member {string} [diskId] The disk id.
+ * @member {string} [diskName] The disk name.
+ * @member {string} [protectionStage] The protection stage.
+ * @member {string} [healthErrorCode] The health error code for the disk.
+ * @member {number} [rpoInSeconds] The RPO in seconds.
+ * @member {string} [resyncRequired] A value indicating whether resync is
+ * required for this disk.
+ * @member {number} [resyncProgressPercentage] The resync progress percentage.
+ * @member {number} [resyncDurationInSeconds] The resync duration in seconds.
+ * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
+ * @member {number} [fileSystemCapacityInBytes] The file system capacity in
+ * bytes.
+ * @member {number} [sourceDataInMB] The source data transit in MB.
+ * @member {number} [psDataInMB] The PS data transit in MB.
+ * @member {number} [targetDataInMB] The target data transit in MB.
+ * @member {string} [diskResized] A value indicating whether disk is resized.
+ * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ */
+export interface InMageProtectedDiskDetails {
+  diskId?: string;
+  diskName?: string;
+  protectionStage?: string;
+  healthErrorCode?: string;
+  rpoInSeconds?: number;
+  resyncRequired?: string;
+  resyncProgressPercentage?: number;
+  resyncDurationInSeconds?: number;
+  diskCapacityInBytes?: number;
+  fileSystemCapacityInBytes?: number;
+  sourceDataInMB?: number;
+  psDataInMB?: number;
+  targetDataInMB?: number;
+  diskResized?: string;
+  lastRpoCalculatedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OSDiskDetails class.
+ * @constructor
+ * Details of the OS Disk.
+ *
+ * @member {string} [osVhdId] The id of the disk containing the OS.
+ * @member {string} [osType] The type of the OS on the VM.
+ * @member {string} [vhdName] The OS disk VHD name.
+ */
+export interface OSDiskDetails {
+  osVhdId?: string;
+  osType?: string;
+  vhdName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageReplicationDetails class.
+ * @constructor
+ * InMage provider specific settings
+ *
+ * @member {string} [activeSiteType] The active location of the VM. If the VM
+ * is being protected from Azure, this field will take values from { Azure,
+ * OnPrem }. If the VM is being protected between two data-centers, this field
+ * will be OnPrem always.
+ * @member {number} [sourceVmCpuCount] The CPU count of the VM on the primary
+ * side.
+ * @member {number} [sourceVmRamSizeInMB] The RAM size of the VM on the primary
+ * side.
+ * @member {object} [osDetails] The OS details.
+ * @member {string} [osDetails.osVhdId] The id of the disk containing the OS.
+ * @member {string} [osDetails.osType] The type of the OS on the VM.
+ * @member {string} [osDetails.vhdName] The OS disk VHD name.
+ * @member {string} [protectionStage] The protection stage.
+ * @member {string} [vmId] The virtual machine Id.
+ * @member {string} [vmProtectionState] The protection state for the vm.
+ * @member {string} [vmProtectionStateDescription] The protection state
+ * description for the vm.
+ * @member {object} [resyncDetails] The resync details of the machine
+ * @member {string} [resyncDetails.initialReplicationType] Initial replication
+ * type.
+ * @member {string} [resyncDetails.initialReplicationProgressPercentage] The
+ * initial replication progress percentage.
+ * @member {date} [retentionWindowStart] The retention window start time.
+ * @member {date} [retentionWindowEnd] The retention window end time.
+ * @member {number} [compressedDataRateInMB] The compressed data change rate in
+ * MB.
+ * @member {number} [uncompressedDataRateInMB] The uncompressed data change
+ * rate in MB.
+ * @member {number} [rpoInSeconds] The RPO in seconds.
+ * @member {array} [protectedDisks] The list of protected disks.
+ * @member {string} [ipAddress] The source IP address.
+ * @member {date} [lastHeartbeat] The last heartbeat received from the source
+ * server.
+ * @member {string} [processServerId] The process server Id.
+ * @member {string} [masterTargetId] The master target Id.
+ * @member {object} [consistencyPoints] The collection of Consistency points.
+ * @member {string} [diskResized] A value indicating whether any disk is
+ * resized for this VM.
+ * @member {string} [rebootAfterUpdateStatus] A value indicating whether the
+ * source server requires a restart after update.
+ * @member {string} [multiVmGroupId] The multi vm group Id, if any.
+ * @member {string} [multiVmGroupName] The multi vm group name, if any.
+ * @member {string} [multiVmSyncStatus] A value indicating whether the multi vm
+ * sync is enabled or disabled.
+ * @member {object} [agentDetails] The agent details.
+ * @member {string} [agentDetails.agentVersion] The agent version.
+ * @member {string} [agentDetails.agentUpdateStatus] A value indicating whether
+ * installed agent needs to be updated.
+ * @member {string} [agentDetails.postUpdateRebootStatus] A value indicating
+ * whether reboot is required after update is applied.
+ * @member {date} [agentDetails.agentExpiryDate] Agent expiry date.
+ * @member {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
+ * @member {string} [infrastructureVmId] The infrastructure VM Id.
+ * @member {array} [vmNics] The PE Network details.
+ * @member {string} [discoveryType] A value indicating the discovery type of
+ * the machine.
+ * @member {string} [azureStorageAccountId] A value indicating the underlying
+ * Azure storage account. If the VM is not running in Azure, this value shall
+ * be set to null.
+ * @member {array} [datastores] The datastores of the on-premise machine Value
+ * can be list of strings that contain datastore names
+ * @member {array} [validationErrors] The validation errors of the on-premise
+ * machine Value can be list of validation errors
+ * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
+ * @member {date} [lastUpdateReceivedTime] The last update time received from
+ * on-prem components.
+ * @member {string} [replicaId] The replica id of the protected item.
+ * @member {string} [osVersion] The OS Version of the protected item.
+ */
+export interface InMageReplicationDetails extends ReplicationProviderSpecificSettings {
+  activeSiteType?: string;
+  sourceVmCpuCount?: number;
+  sourceVmRamSizeInMB?: number;
+  osDetails?: OSDiskDetails;
+  protectionStage?: string;
+  vmId?: string;
+  vmProtectionState?: string;
+  vmProtectionStateDescription?: string;
+  resyncDetails?: InitialReplicationDetails;
+  retentionWindowStart?: Date;
+  retentionWindowEnd?: Date;
+  compressedDataRateInMB?: number;
+  uncompressedDataRateInMB?: number;
+  rpoInSeconds?: number;
+  protectedDisks?: InMageProtectedDiskDetails[];
+  ipAddress?: string;
+  lastHeartbeat?: Date;
+  processServerId?: string;
+  masterTargetId?: string;
+  consistencyPoints?: { [propertyName: string]: Date };
+  diskResized?: string;
+  rebootAfterUpdateStatus?: string;
+  multiVmGroupId?: string;
+  multiVmGroupName?: string;
+  multiVmSyncStatus?: string;
+  agentDetails?: InMageAgentDetails;
+  vCenterInfrastructureId?: string;
+  infrastructureVmId?: string;
+  vmNics?: VMNicDetails[];
+  discoveryType?: string;
+  azureStorageAccountId?: string;
+  datastores?: string[];
+  validationErrors?: HealthError[];
+  lastRpoCalculatedTime?: Date;
+  lastUpdateReceivedTime?: Date;
+  replicaId?: string;
+  osVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InMageReprotectInput class.
+ * @constructor
+ * InMageAzureV2 specific provider input.
+ *
+ * @member {string} masterTargetId The Master Target Id.
+ * @member {string} processServerId The Process Server Id.
+ * @member {string} retentionDrive The retention drive to use on the MT.
+ * @member {string} [runAsAccountId] The CS account Id.
+ * @member {string} [datastoreName] The target datastore name.
+ * @member {object} [diskExclusionInput] The enable disk exclusion input.
+ * @member {array} [diskExclusionInput.volumeOptions] The volume label based
+ * option for disk exclusion.
+ * @member {array} [diskExclusionInput.diskSignatureOptions] The guest disk
+ * signature based option for disk exclusion.
+ * @member {string} profileId The Policy Id.
+ * @member {array} [disksToInclude] The disks to include list.
+ */
+export interface InMageReprotectInput extends ReverseReplicationProviderSpecificInput {
+  masterTargetId: string;
+  processServerId: string;
+  retentionDrive: string;
+  runAsAccountId?: string;
+  datastoreName?: string;
+  diskExclusionInput?: InMageDiskExclusionInput;
+  profileId: string;
+  disksToInclude?: string[];
 }
 
 /**
@@ -656,140 +4152,6 @@ export interface JobProperties {
 
 /**
  * @class
- * Initializes a new instance of the ARMExceptionDetails class.
- * @constructor
- * Service based exception details.
- *
- * @member {string} [code] Gets service error code.
- * @member {string} [message] Gets error message.
- * @member {string} [possibleCauses] Gets possible cause for error.
- * @member {string} [recommendedAction] Gets recommended action for the error.
- * @member {string} [clientRequestId] Gets the client request Id for the
- * session.
- * @member {string} [activityId] Gets the activity Id for the session.
- * @member {string} [target] Gets exception target.
- */
-export interface ARMExceptionDetails {
-  code?: string;
-  message?: string;
-  possibleCauses?: string;
-  recommendedAction?: string;
-  clientRequestId?: string;
-  activityId?: string;
-  target?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MethodCallStatus class.
- * @constructor
- * Reports method status where exception was raised.
- *
- * @member {string} [isVirtual] Gets a value indicating whether called method
- * was virtual
- * @member {array} [parameters] Gets parameter list passed to method.
- * @member {string} [containsGenericParameters] Gets a value indicating whether
- * method container generic params.
- */
-export interface MethodCallStatus {
-  isVirtual?: string;
-  parameters?: string[];
-  containsGenericParameters?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ARMInnerError class.
- * @constructor
- * ARM internal error class for providing additional debug data.
- *
- * @member {string} [trace] Gets complete stack trace of the exception.
- * @member {string} [source] Gets exception source.
- * @member {object} [methodStatus] Gets data related to method which threw the
- * exception.
- * @member {string} [methodStatus.isVirtual] Gets a value indicating whether
- * called method was virtual
- * @member {array} [methodStatus.parameters] Gets parameter list passed to
- * method.
- * @member {string} [methodStatus.containsGenericParameters] Gets a value
- * indicating whether method container generic params.
- * @member {string} [cloudId] Gets cloud Id in exception.
- * @member {string} [hVHostId] Gets hyperV host ID.
- * @member {string} [hVClusterId] Gets hyperV cluster Id.
- * @member {string} [networkId] Gets network Id.
- * @member {string} [vmId] Gets Vm Id.
- * @member {string} [fabricId] Gets Fabric Id.
- * @member {string} [liveId] Gets Live Id of the caller.
- * @member {string} [containerId] Gets container Id of the caller.
- * @member {string} [resourceId] Gets resource id used in the call.
- * @member {string} [resourceName] Gets caller resource name.
- * @member {string} [subscriptionId] Gets subscription Id.
- * @member {string} [serializedSRSLogContext] Gets serialized SRS log context.
- */
-export interface ARMInnerError {
-  trace?: string;
-  source?: string;
-  methodStatus?: MethodCallStatus;
-  cloudId?: string;
-  hVHostId?: string;
-  hVClusterId?: string;
-  networkId?: string;
-  vmId?: string;
-  fabricId?: string;
-  liveId?: string;
-  containerId?: string;
-  resourceId?: string;
-  resourceName?: string;
-  subscriptionId?: string;
-  serializedSRSLogContext?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ARMException class.
- * @constructor
- * ARM inner exception class.
- *
- * @member {string} [code] Gets HTTP status code for the error.
- * @member {string} [message] Gets exception message.
- * @member {string} [target] Gets exception target.
- * @member {array} [details] Gets service based error details.
- * @member {object} [innererror] Gets private data for service debugging.
- * @member {string} [innererror.trace] Gets complete stack trace of the
- * exception.
- * @member {string} [innererror.source] Gets exception source.
- * @member {object} [innererror.methodStatus] Gets data related to method which
- * threw the exception.
- * @member {string} [innererror.methodStatus.isVirtual] Gets a value indicating
- * whether called method was virtual
- * @member {array} [innererror.methodStatus.parameters] Gets parameter list
- * passed to method.
- * @member {string} [innererror.methodStatus.containsGenericParameters] Gets a
- * value indicating whether method container generic params.
- * @member {string} [innererror.cloudId] Gets cloud Id in exception.
- * @member {string} [innererror.hVHostId] Gets hyperV host ID.
- * @member {string} [innererror.hVClusterId] Gets hyperV cluster Id.
- * @member {string} [innererror.networkId] Gets network Id.
- * @member {string} [innererror.vmId] Gets Vm Id.
- * @member {string} [innererror.fabricId] Gets Fabric Id.
- * @member {string} [innererror.liveId] Gets Live Id of the caller.
- * @member {string} [innererror.containerId] Gets container Id of the caller.
- * @member {string} [innererror.resourceId] Gets resource id used in the call.
- * @member {string} [innererror.resourceName] Gets caller resource name.
- * @member {string} [innererror.subscriptionId] Gets subscription Id.
- * @member {string} [innererror.serializedSRSLogContext] Gets serialized SRS
- * log context.
- */
-export interface ARMException {
-  code?: string;
-  message?: string;
-  target?: string;
-  details?: ARMExceptionDetails[];
-  innererror?: ARMInnerError;
-}
-
-/**
- * @class
  * Initializes a new instance of the Job class.
  * @constructor
  * Job details.
@@ -822,50 +4184,9 @@ export interface ARMException {
  * target cloud etc. based on the workflow object details.
  * @member {string} [properties.customDetails.instanceType] Polymorphic
  * Discriminator
- * @member {string} [status] The status of the Job. ARM expects the terminal
- * status to be one of (1) Succeeded, (2) Failed or (3) Canceled. All other
- * values imply that the operation is still running / being applied.
- * @member {object} [error] The error.
- * @member {string} [error.code] Gets HTTP status code for the error.
- * @member {string} [error.message] Gets exception message.
- * @member {string} [error.target] Gets exception target.
- * @member {array} [error.details] Gets service based error details.
- * @member {object} [error.innererror] Gets private data for service debugging.
- * @member {string} [error.innererror.trace] Gets complete stack trace of the
- * exception.
- * @member {string} [error.innererror.source] Gets exception source.
- * @member {object} [error.innererror.methodStatus] Gets data related to method
- * which threw the exception.
- * @member {string} [error.innererror.methodStatus.isVirtual] Gets a value
- * indicating whether called method was virtual
- * @member {array} [error.innererror.methodStatus.parameters] Gets parameter
- * list passed to method.
- * @member {string} [error.innererror.methodStatus.containsGenericParameters]
- * Gets a value indicating whether method container generic params.
- * @member {string} [error.innererror.cloudId] Gets cloud Id in exception.
- * @member {string} [error.innererror.hVHostId] Gets hyperV host ID.
- * @member {string} [error.innererror.hVClusterId] Gets hyperV cluster Id.
- * @member {string} [error.innererror.networkId] Gets network Id.
- * @member {string} [error.innererror.vmId] Gets Vm Id.
- * @member {string} [error.innererror.fabricId] Gets Fabric Id.
- * @member {string} [error.innererror.liveId] Gets Live Id of the caller.
- * @member {string} [error.innererror.containerId] Gets container Id of the
- * caller.
- * @member {string} [error.innererror.resourceId] Gets resource id used in the
- * call.
- * @member {string} [error.innererror.resourceName] Gets caller resource name.
- * @member {string} [error.innererror.subscriptionId] Gets subscription Id.
- * @member {string} [error.innererror.serializedSRSLogContext] Gets serialized
- * SRS log context.
- * @member {string} [startTime] The start time.
- * @member {string} [endTime] The start time.
  */
 export interface Job extends Resource {
   properties?: JobProperties;
-  status?: string;
-  error?: ARMException;
-  startTime?: string;
-  endTime?: string;
 }
 
 /**
@@ -877,40 +4198,54 @@ export interface Job extends Resource {
  * @member {string} [startTime] Date time to get jobs from.
  * @member {string} [endTime] Date time to get jobs upto.
  * @member {string} [fabricId] The Id of the fabric to search jobs under.
- * @member {array} [affectedObjectTypes] The type of objects.
- * @member {array} [jobStatus] The states of the job to be filtered can be in.
+ * @member {string} [affectedObjectTypes] The type of objects.
+ * @member {string} [jobStatus] The states of the job to be filtered can be in.
  */
 export interface JobQueryParameter {
   startTime?: string;
   endTime?: string;
   fabricId?: string;
-  affectedObjectTypes?: string[];
-  jobStatus?: string[];
+  affectedObjectTypes?: string;
+  jobStatus?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ResumeJobParamsProperties class.
+ * Initializes a new instance of the JobStatusEventDetails class.
  * @constructor
- * Resume job properties.
+ * Model class for event details of a job status event.
  *
- * @member {string} [comments] Resume job comments.
+ * @member {string} [jobId] Job arm id for the event.
+ * @member {string} [jobFriendlyName] JobName for the Event.
+ * @member {string} [jobStatus] JobStatus for the Event.
+ * @member {string} [affectedObjectType] AffectedObjectType for the event.
  */
-export interface ResumeJobParamsProperties {
-  comments?: string;
+export interface JobStatusEventDetails extends EventSpecificDetails {
+  jobId?: string;
+  jobFriendlyName?: string;
+  jobStatus?: string;
+  affectedObjectType?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ResumeJobParams class.
+ * Initializes a new instance of the JobTaskDetails class.
  * @constructor
- * Resume job params.
+ * This class represents a task which is actually a workflow so that one can
+ * navigate to its individual drill down.
  *
- * @member {object} [properties] Resume job properties.
- * @member {string} [properties.comments] Resume job comments.
+ * @member {object} [jobTask] The job entity.
+ * @member {string} [jobTask.jobId] The job id.
+ * @member {string} [jobTask.jobFriendlyName] The job display name.
+ * @member {string} [jobTask.targetObjectId] The object id.
+ * @member {string} [jobTask.targetObjectName] The object name.
+ * @member {string} [jobTask.targetInstanceType] The workflow affected object
+ * type.
+ * @member {string} [jobTask.jobScenarioName] The job name. Enum type
+ * ScenarioName.
  */
-export interface ResumeJobParams {
-  properties?: ResumeJobParamsProperties;
+export interface JobTaskDetails extends TaskTypeDetails {
+  jobTask?: JobEntity;
 }
 
 /**
@@ -955,14 +4290,179 @@ export interface LogicalNetwork extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the NetworkMappingFabricSpecificSettings class.
+ * Initializes a new instance of the ManualActionTaskDetails class.
  * @constructor
- * Network Mapping fabric specific settings.
+ * This class represents the manual action task details.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @member {string} [name] The name.
+ * @member {string} [instructions] The instructions.
+ * @member {string} [observation] The observation.
  */
-export interface NetworkMappingFabricSpecificSettings {
-  instanceType: string;
+export interface ManualActionTaskDetails extends TaskTypeDetails {
+  name?: string;
+  instructions?: string;
+  observation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RetentionVolume class.
+ * @constructor
+ * The retention details of the MT.
+ *
+ * @member {string} [volumeName] The volume name.
+ * @member {number} [capacityInBytes] The volume capacity.
+ * @member {number} [freeSpaceInBytes] The free space available in this volume.
+ * @member {number} [thresholdPercentage] The threshold percentage.
+ */
+export interface RetentionVolume {
+  volumeName?: string;
+  capacityInBytes?: number;
+  freeSpaceInBytes?: number;
+  thresholdPercentage?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VersionDetails class.
+ * @constructor
+ * Version related details.
+ *
+ * @member {string} [version] The agent version.
+ * @member {date} [expiryDate] Version expiry date.
+ * @member {string} [status] A value indicating whether security update
+ * required. Possible values include: 'Supported', 'NotSupported',
+ * 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
+ */
+export interface VersionDetails {
+  version?: string;
+  expiryDate?: Date;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MasterTargetServer class.
+ * @constructor
+ * Details of a Master Target Server.
+ *
+ * @member {string} [id] The server Id.
+ * @member {string} [ipAddress] The IP address of the server.
+ * @member {string} [name] The server name.
+ * @member {string} [osType] The OS type of the server.
+ * @member {string} [agentVersion] The version of the scout component on the
+ * server.
+ * @member {date} [lastHeartbeat] The last heartbeat received from the server.
+ * @member {string} [versionStatus] Version status
+ * @member {array} [retentionVolumes] The retention volumes of Master target
+ * Server.
+ * @member {array} [dataStores] The list of data stores in the fabric.
+ * @member {array} [validationErrors] Validation errors.
+ * @member {array} [healthErrors] Health errors.
+ * @member {number} [diskCount] Disk count of the master target.
+ * @member {string} [osVersion] OS Version of the master target.
+ * @member {date} [agentExpiryDate] Agent expiry date.
+ * @member {string} [marsAgentVersion] MARS agent version.
+ * @member {date} [marsAgentExpiryDate] MARS agent expiry date.
+ * @member {object} [agentVersionDetails] Agent version details.
+ * @member {string} [agentVersionDetails.version] The agent version.
+ * @member {date} [agentVersionDetails.expiryDate] Version expiry date.
+ * @member {string} [agentVersionDetails.status] A value indicating whether
+ * security update required. Possible values include: 'Supported',
+ * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
+ * @member {object} [marsAgentVersionDetails] Mars agent version details.
+ * @member {string} [marsAgentVersionDetails.version] The agent version.
+ * @member {date} [marsAgentVersionDetails.expiryDate] Version expiry date.
+ * @member {string} [marsAgentVersionDetails.status] A value indicating whether
+ * security update required. Possible values include: 'Supported',
+ * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
+ */
+export interface MasterTargetServer {
+  id?: string;
+  ipAddress?: string;
+  name?: string;
+  osType?: string;
+  agentVersion?: string;
+  lastHeartbeat?: Date;
+  versionStatus?: string;
+  retentionVolumes?: RetentionVolume[];
+  dataStores?: DataStore[];
+  validationErrors?: HealthError[];
+  healthErrors?: HealthError[];
+  diskCount?: number;
+  osVersion?: string;
+  agentExpiryDate?: Date;
+  marsAgentVersion?: string;
+  marsAgentExpiryDate?: Date;
+  agentVersionDetails?: VersionDetails;
+  marsAgentVersionDetails?: VersionDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MobilityServiceUpdate class.
+ * @constructor
+ * The Mobility Service update details.
+ *
+ * @member {string} [version] The version of the latest update.
+ * @member {string} [rebootStatus] The reboot status of the update - whether it
+ * is required or not.
+ * @member {string} [osType] The OS type.
+ */
+export interface MobilityServiceUpdate {
+  version?: string;
+  rebootStatus?: string;
+  osType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Subnet class.
+ * @constructor
+ * Subnets of the network.
+ *
+ * @member {string} [name] The subnet name.
+ * @member {string} [friendlyName] The subnet friendly name.
+ * @member {array} [addressList] The list of addresses for the subnet.
+ */
+export interface Subnet {
+  name?: string;
+  friendlyName?: string;
+  addressList?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProperties class.
+ * @constructor
+ * Network Properties
+ *
+ * @member {string} [fabricType] The Fabric Type.
+ * @member {array} [subnets] The List of subnets.
+ * @member {string} [friendlyName] The Friendly Name.
+ * @member {string} [networkType] The Network Type.
+ */
+export interface NetworkProperties {
+  fabricType?: string;
+  subnets?: Subnet[];
+  friendlyName?: string;
+  networkType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Network class.
+ * @constructor
+ * Network model.
+ *
+ * @member {object} [properties] The Network Properties.
+ * @member {string} [properties.fabricType] The Fabric Type.
+ * @member {array} [properties.subnets] The List of subnets.
+ * @member {string} [properties.friendlyName] The Friendly Name.
+ * @member {string} [properties.networkType] The Network Type.
+ */
+export interface Network extends Resource {
+  properties?: NetworkProperties;
 }
 
 /**
@@ -1039,195 +4539,6 @@ export interface NetworkMapping extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the FabricSpecificCreateNetworkMappingInput class.
- * @constructor
- * Input details specific to fabrics during Network Mapping.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface FabricSpecificCreateNetworkMappingInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateNetworkMappingInputProperties class.
- * @constructor
- * Common input details for network mapping operation.
- *
- * @member {string} [recoveryFabricName] Recovery fabric Name.
- * @member {string} [recoveryNetworkId] Recovery network Id.
- * @member {object} [fabricSpecificDetails] Fabric specific input properties.
- * @member {string} [fabricSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface CreateNetworkMappingInputProperties {
-  recoveryFabricName?: string;
-  recoveryNetworkId?: string;
-  fabricSpecificDetails?: FabricSpecificCreateNetworkMappingInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateNetworkMappingInput class.
- * @constructor
- * Create network mappings input.
- *
- * @member {object} [properties] Input properties for creating network mapping.
- * @member {string} [properties.recoveryFabricName] Recovery fabric Name.
- * @member {string} [properties.recoveryNetworkId] Recovery network Id.
- * @member {object} [properties.fabricSpecificDetails] Fabric specific input
- * properties.
- * @member {string} [properties.fabricSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface CreateNetworkMappingInput {
-  properties?: CreateNetworkMappingInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the FabricSpecificUpdateNetworkMappingInput class.
- * @constructor
- * Input details specific to fabrics during Network Mapping.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface FabricSpecificUpdateNetworkMappingInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateNetworkMappingInputProperties class.
- * @constructor
- * Common input details for network mapping operation.
- *
- * @member {string} [recoveryFabricName] Recovery fabric name.
- * @member {string} [recoveryNetworkId] Recovery network Id.
- * @member {object} [fabricSpecificDetails] Fabrics specific input network Id.
- * @member {string} [fabricSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface UpdateNetworkMappingInputProperties {
-  recoveryFabricName?: string;
-  recoveryNetworkId?: string;
-  fabricSpecificDetails?: FabricSpecificUpdateNetworkMappingInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateNetworkMappingInput class.
- * @constructor
- * Update network mapping input.
- *
- * @member {object} [properties] The input properties needed to update network
- * mapping.
- * @member {string} [properties.recoveryFabricName] Recovery fabric name.
- * @member {string} [properties.recoveryNetworkId] Recovery network Id.
- * @member {object} [properties.fabricSpecificDetails] Fabrics specific input
- * network Id.
- * @member {string} [properties.fabricSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface UpdateNetworkMappingInput {
-  properties?: UpdateNetworkMappingInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the Subnet class.
- * @constructor
- * Subnets of the network.
- *
- * @member {string} [name] The subnet name.
- * @member {string} [friendlyName] The subnet friendly name.
- * @member {array} [addressList] The list of addresses for the subnet.
- */
-export interface Subnet {
-  name?: string;
-  friendlyName?: string;
-  addressList?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkProperties class.
- * @constructor
- * Network Properties
- *
- * @member {string} [fabricType] The Fabric Type.
- * @member {array} [subnets] The List of subnets.
- * @member {string} [friendlyName] The Friendly Name.
- * @member {string} [networkType] The Network Type.
- */
-export interface NetworkProperties {
-  fabricType?: string;
-  subnets?: Subnet[];
-  friendlyName?: string;
-  networkType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Network class.
- * @constructor
- * Network model.
- *
- * @member {object} [properties] The Network Properties.
- * @member {string} [properties.fabricType] The Fabric Type.
- * @member {array} [properties.subnets] The List of subnets.
- * @member {string} [properties.friendlyName] The Friendly Name.
- * @member {string} [properties.networkType] The Network Type.
- */
-export interface Network extends Resource {
-  properties?: NetworkProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the Display class.
- * @constructor
- * Contains the localized display information for this particular operation /
- * action. These value will be used by several clients for (1) custom role
- * definitions for RBAC; (2) complex query filters for the event service; and
- * (3) audit history / records for management operations.
- *
- * @member {string} [provider] The provider. The localized friendly form of the
- * resource provider name – it is expected to also include the
- * publisher/company responsible. It should use Title Casing and begin with
- * "Microsoft" for 1st party services. e.g. "Microsoft Monitoring Insights" or
- * "Microsoft Compute."
- * @member {string} [resource] The resource. The localized friendly form of the
- * resource related to this action/operation – it should match the public
- * documentation for the resource provider. It should use Title Casing. This
- * value should be unique for a particular URL type (e.g. nested types should
- * *not* reuse their parent’s display.resource field). e.g. "Virtual Machines"
- * or "Scheduler Job Collections", or "Virtual Machine VM Sizes" or "Scheduler
- * Jobs"
- * @member {string} [operation] The operation. The localized friendly name for
- * the operation, as it should be shown to the user. It should be concise (to
- * fit in drop downs) but clear (i.e. self-documenting). It should use Title
- * Casing. Prescriptive guidance: Read Create or Update Delete 'ActionName'
- * @member {string} [description] The description. The localized friendly
- * description for the operation, as it should be shown to the user. It should
- * be thorough, yet concise – it will be used in tool tips and detailed views.
- * Prescriptive guidance for namespaces: Read any 'display.provider' resource
- * Create or Update any 'display.provider' resource Delete any
- * 'display.provider' resource Perform any other action on any
- * 'display.provider' resource Prescriptive guidance for namespaces: Read any
- * 'display.resource' Create or Update any 'display.resource' Delete any
- * 'display.resource' 'ActionName' any 'display.resources'
- */
-export interface Display {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-  description?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationsDiscovery class.
  * @constructor
  * Operations discovery class.
@@ -1291,14 +4602,35 @@ export interface OperationsDiscovery {
 
 /**
  * @class
- * Initializes a new instance of the PolicyProviderSpecificDetails class.
+ * Initializes a new instance of the PlannedFailoverInputProperties class.
  * @constructor
- * Base class for Provider specific details for policies.
+ * Input definition for planned failover input properties.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @member {string} [failoverDirection] Failover direction.
+ * @member {object} [providerSpecificDetails] Provider specific settings
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
  */
-export interface PolicyProviderSpecificDetails {
-  instanceType: string;
+export interface PlannedFailoverInputProperties {
+  failoverDirection?: string;
+  providerSpecificDetails?: ProviderSpecificFailoverInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PlannedFailoverInput class.
+ * @constructor
+ * Input definition for planned failover.
+ *
+ * @member {object} [properties] Planned failover input properties
+ * @member {string} [properties.failoverDirection] Failover direction.
+ * @member {object} [properties.providerSpecificDetails] Provider specific
+ * settings
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface PlannedFailoverInput {
+  properties?: PlannedFailoverInputProperties;
 }
 
 /**
@@ -1336,87 +4668,77 @@ export interface Policy extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the PolicyProviderSpecificInput class.
+ * Initializes a new instance of the ProcessServer class.
  * @constructor
- * Base class for provider specific input
+ * Details of the Process Server.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @member {string} [friendlyName] The Process Server's friendly name.
+ * @member {string} [id] The Process Server Id.
+ * @member {string} [ipAddress] The IP address of the server.
+ * @member {string} [osType] The OS type of the server.
+ * @member {string} [agentVersion] The version of the scout component on the
+ * server.
+ * @member {date} [lastHeartbeat] The last heartbeat received from the server.
+ * @member {string} [versionStatus] Version status
+ * @member {array} [mobilityServiceUpdates] The list of the mobility service
+ * updates available on the Process Server.
+ * @member {string} [hostId] The agent generated Id.
+ * @member {string} [machineCount] The servers configured with this PS.
+ * @member {string} [replicationPairCount] The number of replication pairs
+ * configured in this PS.
+ * @member {string} [systemLoad] The percentage of the system load.
+ * @member {string} [systemLoadStatus] The system load status.
+ * @member {string} [cpuLoad] The percentage of the CPU load.
+ * @member {string} [cpuLoadStatus] The CPU load status.
+ * @member {number} [totalMemoryInBytes] The total memory.
+ * @member {number} [availableMemoryInBytes] The available memory.
+ * @member {string} [memoryUsageStatus] The memory usage status.
+ * @member {number} [totalSpaceInBytes] The total space.
+ * @member {number} [availableSpaceInBytes] The available space.
+ * @member {string} [spaceUsageStatus] The space usage status.
+ * @member {string} [psServiceStatus] The PS service status.
+ * @member {date} [sslCertExpiryDate] The PS SSL cert expiry date.
+ * @member {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
+ * @member {string} [osVersion] OS Version of the process server. Note: This
+ * will get populated if user has CS version greater than 9.12.0.0.
+ * @member {array} [healthErrors] Health errors.
+ * @member {date} [agentExpiryDate] Agent expiry date.
+ * @member {object} [agentVersionDetails] The agent version details.
+ * @member {string} [agentVersionDetails.version] The agent version.
+ * @member {date} [agentVersionDetails.expiryDate] Version expiry date.
+ * @member {string} [agentVersionDetails.status] A value indicating whether
+ * security update required. Possible values include: 'Supported',
+ * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
-export interface PolicyProviderSpecificInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreatePolicyInputProperties class.
- * @constructor
- * Policy creation properties.
- *
- * @member {object} [providerSpecificInput] The ReplicationProviderSettings.
- * @member {string} [providerSpecificInput.instanceType] Polymorphic
- * Discriminator
- */
-export interface CreatePolicyInputProperties {
-  providerSpecificInput?: PolicyProviderSpecificInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreatePolicyInput class.
- * @constructor
- * Protection profile input.
- *
- * @member {object} [properties] Policy creation properties.
- * @member {object} [properties.providerSpecificInput] The
- * ReplicationProviderSettings.
- * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
- * Discriminator
- */
-export interface CreatePolicyInput {
-  properties?: CreatePolicyInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdatePolicyInputProperties class.
- * @constructor
- * Policy update properties.
- *
- * @member {object} [replicationProviderSettings] The
- * ReplicationProviderSettings.
- * @member {string} [replicationProviderSettings.instanceType] Polymorphic
- * Discriminator
- */
-export interface UpdatePolicyInputProperties {
-  replicationProviderSettings?: PolicyProviderSpecificInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdatePolicyInput class.
- * @constructor
- * Update protection profile input.
- *
- * @member {object} [properties] The ReplicationProviderSettings.
- * @member {object} [properties.replicationProviderSettings] The
- * ReplicationProviderSettings.
- * @member {string} [properties.replicationProviderSettings.instanceType]
- * Polymorphic Discriminator
- */
-export interface UpdatePolicyInput {
-  properties?: UpdatePolicyInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConfigurationSettings class.
- * @constructor
- * Replication provider specific settings.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface ConfigurationSettings {
-  instanceType: string;
+export interface ProcessServer {
+  friendlyName?: string;
+  id?: string;
+  ipAddress?: string;
+  osType?: string;
+  agentVersion?: string;
+  lastHeartbeat?: Date;
+  versionStatus?: string;
+  mobilityServiceUpdates?: MobilityServiceUpdate[];
+  hostId?: string;
+  machineCount?: string;
+  replicationPairCount?: string;
+  systemLoad?: string;
+  systemLoadStatus?: string;
+  cpuLoad?: string;
+  cpuLoadStatus?: string;
+  totalMemoryInBytes?: number;
+  availableMemoryInBytes?: number;
+  memoryUsageStatus?: string;
+  totalSpaceInBytes?: number;
+  availableSpaceInBytes?: number;
+  spaceUsageStatus?: string;
+  psServiceStatus?: string;
+  sslCertExpiryDate?: Date;
+  sslCertExpiryRemainingDays?: number;
+  osVersion?: string;
+  healthErrors?: HealthError[];
+  agentExpiryDate?: Date;
+  agentVersionDetails?: VersionDetails;
 }
 
 /**
@@ -1475,177 +4797,36 @@ export interface ProtectableItem extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ProtectionContainerMappingProviderSpecificDetails class.
+ * Initializes a new instance of the ProtectableItemQueryParameter class.
  * @constructor
- * Container mapping provider specific details.
+ * Query parameter to enumerate Protectable items.
  *
- * @member {string} [instanceType] Gets the class type. Overriden in derived
- * classes.
+ * @member {string} [state] State of the Protectable item query filter.
  */
-export interface ProtectionContainerMappingProviderSpecificDetails {
-  readonly instanceType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProtectionContainerMappingProperties class.
- * @constructor
- * Protection container mapping properties.
- *
- * @member {string} [targetProtectionContainerId] Paired protection container
- * ARM ID.
- * @member {string} [targetProtectionContainerFriendlyName] Friendly name of
- * paired container.
- * @member {object} [providerSpecificDetails] Provider specific provider
- * details.
- * @member {string} [providerSpecificDetails.instanceType] Gets the class type.
- * Overriden in derived classes.
- * @member {string} [health] Health of pairing.
- * @member {array} [healthErrorDetails] Health error.
- * @member {string} [policyId] Policy ARM Id.
- * @member {string} [state] Association Status
- * @member {string} [sourceProtectionContainerFriendlyName] Friendly name of
- * source protection container.
- * @member {string} [sourceFabricFriendlyName] Friendly name of source fabric.
- * @member {string} [targetFabricFriendlyName] Friendly name of target fabric.
- * @member {string} [policyFriendlyName] Friendly name of replication policy.
- */
-export interface ProtectionContainerMappingProperties {
-  targetProtectionContainerId?: string;
-  targetProtectionContainerFriendlyName?: string;
-  providerSpecificDetails?: ProtectionContainerMappingProviderSpecificDetails;
-  health?: string;
-  healthErrorDetails?: HealthError[];
-  policyId?: string;
+export interface ProtectableItemQueryParameter {
   state?: string;
-  sourceProtectionContainerFriendlyName?: string;
-  sourceFabricFriendlyName?: string;
-  targetFabricFriendlyName?: string;
-  policyFriendlyName?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ProtectionContainerMapping class.
+ * Initializes a new instance of the ProtectedItemsQueryParameter class.
  * @constructor
- * Protection container mapping object.
+ * Query parameter to enumerate protected items.
  *
- * @member {object} [properties] The custom data.
- * @member {string} [properties.targetProtectionContainerId] Paired protection
- * container ARM ID.
- * @member {string} [properties.targetProtectionContainerFriendlyName] Friendly
- * name of paired container.
- * @member {object} [properties.providerSpecificDetails] Provider specific
- * provider details.
- * @member {string} [properties.providerSpecificDetails.instanceType] Gets the
- * class type. Overriden in derived classes.
- * @member {string} [properties.health] Health of pairing.
- * @member {array} [properties.healthErrorDetails] Health error.
- * @member {string} [properties.policyId] Policy ARM Id.
- * @member {string} [properties.state] Association Status
- * @member {string} [properties.sourceProtectionContainerFriendlyName] Friendly
- * name of source protection container.
- * @member {string} [properties.sourceFabricFriendlyName] Friendly name of
- * source fabric.
- * @member {string} [properties.targetFabricFriendlyName] Friendly name of
- * target fabric.
- * @member {string} [properties.policyFriendlyName] Friendly name of
- * replication policy.
+ * @member {string} [sourceFabricName] The source fabric name filter.
+ * @member {string} [recoveryPlanName] The recovery plan filter.
+ * @member {string} [vCenterName] The vCenter name filter.
+ * @member {string} [instanceType] The replication provider type.
+ * @member {string} [multiVmGroupCreateOption] Whether Multi VM group is auto
+ * created or specified by user. Possible values include: 'AutoCreated',
+ * 'UserSpecified'
  */
-export interface ProtectionContainerMapping extends Resource {
-  properties?: ProtectionContainerMappingProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReplicationProviderSpecificContainerMappingInput class.
- * @constructor
- * Provider specific input for pairing operations.
- *
- * @member {string} [instanceType] The class type.
- */
-export interface ReplicationProviderSpecificContainerMappingInput {
+export interface ProtectedItemsQueryParameter {
+  sourceFabricName?: string;
+  recoveryPlanName?: string;
+  vCenterName?: string;
   instanceType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateProtectionContainerMappingInputProperties class.
- * @constructor
- * Configure pairing input properties.
- *
- * @member {string} [targetProtectionContainerId] The target unique protection
- * container name.
- * @member {string} [policyId] Applicable policy.
- * @member {object} [providerSpecificInput] Provider specific input for
- * pairing.
- * @member {string} [providerSpecificInput.instanceType] The class type.
- */
-export interface CreateProtectionContainerMappingInputProperties {
-  targetProtectionContainerId?: string;
-  policyId?: string;
-  providerSpecificInput?: ReplicationProviderSpecificContainerMappingInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateProtectionContainerMappingInput class.
- * @constructor
- * Configure pairing input.
- *
- * @member {object} [properties] Configure protection input properties.
- * @member {string} [properties.targetProtectionContainerId] The target unique
- * protection container name.
- * @member {string} [properties.policyId] Applicable policy.
- * @member {object} [properties.providerSpecificInput] Provider specific input
- * for pairing.
- * @member {string} [properties.providerSpecificInput.instanceType] The class
- * type.
- */
-export interface CreateProtectionContainerMappingInput {
-  properties?: CreateProtectionContainerMappingInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReplicationProviderContainerUnmappingInput class.
- * @constructor
- * Provider specific input for unpairing operations.
- *
- * @member {string} [instanceType] The class type.
- */
-export interface ReplicationProviderContainerUnmappingInput {
-  instanceType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RemoveProtectionContainerMappingInputProperties class.
- * @constructor
- * Unpairing input properties.
- *
- * @member {object} [providerSpecificInput] Provider specific input for
- * unpairing.
- * @member {string} [providerSpecificInput.instanceType] The class type.
- */
-export interface RemoveProtectionContainerMappingInputProperties {
-  providerSpecificInput?: ReplicationProviderContainerUnmappingInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the RemoveProtectionContainerMappingInput class.
- * @constructor
- * Container unpairing input.
- *
- * @member {object} [properties] Configure protection input properties.
- * @member {object} [properties.providerSpecificInput] Provider specific input
- * for unpairing.
- * @member {string} [properties.providerSpecificInput.instanceType] The class
- * type.
- */
-export interface RemoveProtectionContainerMappingInput {
-  properties?: RemoveProtectionContainerMappingInputProperties;
+  multiVmGroupCreateOption?: string;
 }
 
 /**
@@ -1711,204 +4892,97 @@ export interface ProtectionContainer extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReplicationProviderSpecificContainerCreationInput class.
+ * Initializes a new instance of the ProtectionContainerMappingProperties class.
  * @constructor
- * Provider specific input for container creation operation.
+ * Protection container mapping properties.
  *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface ReplicationProviderSpecificContainerCreationInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateProtectionContainerInputProperties class.
- * @constructor
- * Create protection container input properties.
- *
- * @member {array} [providerSpecificInput] Provider specific inputs for
- * container creation.
- */
-export interface CreateProtectionContainerInputProperties {
-  providerSpecificInput?: ReplicationProviderSpecificContainerCreationInput[];
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateProtectionContainerInput class.
- * @constructor
- * Create protection container input.
- *
- * @member {object} [properties] Create protection container input properties.
- * @member {array} [properties.providerSpecificInput] Provider specific inputs
- * for container creation.
- */
-export interface CreateProtectionContainerInput {
-  properties?: CreateProtectionContainerInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiscoverProtectableItemRequestProperties class.
- * @constructor
- * Discover protectable item properties.
- *
- * @member {string} [friendlyName] The friendly name of the physical machine.
- * @member {string} [ipAddress] The IP address of the physical machine to be
- * discovered.
- * @member {string} [osType] The OS type on the physical machine.
- */
-export interface DiscoverProtectableItemRequestProperties {
-  friendlyName?: string;
-  ipAddress?: string;
-  osType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiscoverProtectableItemRequest class.
- * @constructor
- * Request to add a physical machine as a protectable item in a container.
- *
- * @member {object} [properties] The properties of a discover protectable item
- * request.
- * @member {string} [properties.friendlyName] The friendly name of the physical
- * machine.
- * @member {string} [properties.ipAddress] The IP address of the physical
- * machine to be discovered.
- * @member {string} [properties.osType] The OS type on the physical machine.
- */
-export interface DiscoverProtectableItemRequest {
-  properties?: DiscoverProtectableItemRequestProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the SwitchProtectionProviderSpecificInput class.
- * @constructor
- * Provider specific switch protection input.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface SwitchProtectionProviderSpecificInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SwitchProtectionInputProperties class.
- * @constructor
- * Switch protection input properties.
- *
- * @member {string} [replicationProtectedItemName] The unique replication
- * protected item name.
- * @member {object} [providerSpecificDetails] Provider specific switch
- * protection input.
+ * @member {string} [targetProtectionContainerId] Paired protection container
+ * ARM ID.
+ * @member {string} [targetProtectionContainerFriendlyName] Friendly name of
+ * paired container.
+ * @member {object} [providerSpecificDetails] Provider specific provider
+ * details.
  * @member {string} [providerSpecificDetails.instanceType] Polymorphic
  * Discriminator
+ * @member {string} [health] Health of pairing.
+ * @member {array} [healthErrorDetails] Health error.
+ * @member {string} [policyId] Policy ARM Id.
+ * @member {string} [state] Association Status
+ * @member {string} [sourceProtectionContainerFriendlyName] Friendly name of
+ * source protection container.
+ * @member {string} [sourceFabricFriendlyName] Friendly name of source fabric.
+ * @member {string} [targetFabricFriendlyName] Friendly name of target fabric.
+ * @member {string} [policyFriendlyName] Friendly name of replication policy.
  */
-export interface SwitchProtectionInputProperties {
-  replicationProtectedItemName?: string;
-  providerSpecificDetails?: SwitchProtectionProviderSpecificInput;
+export interface ProtectionContainerMappingProperties {
+  targetProtectionContainerId?: string;
+  targetProtectionContainerFriendlyName?: string;
+  providerSpecificDetails?: ProtectionContainerMappingProviderSpecificDetails;
+  health?: string;
+  healthErrorDetails?: HealthError[];
+  policyId?: string;
+  state?: string;
+  sourceProtectionContainerFriendlyName?: string;
+  sourceFabricFriendlyName?: string;
+  targetFabricFriendlyName?: string;
+  policyFriendlyName?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the SwitchProtectionInput class.
+ * Initializes a new instance of the ProtectionContainerMapping class.
  * @constructor
- * Switch protection input.
+ * Protection container mapping object.
  *
- * @member {object} [properties] Switch protection properties
- * @member {string} [properties.replicationProtectedItemName] The unique
- * replication protected item name.
+ * @member {object} [properties] The custom data.
+ * @member {string} [properties.targetProtectionContainerId] Paired protection
+ * container ARM ID.
+ * @member {string} [properties.targetProtectionContainerFriendlyName] Friendly
+ * name of paired container.
  * @member {object} [properties.providerSpecificDetails] Provider specific
- * switch protection input.
+ * provider details.
  * @member {string} [properties.providerSpecificDetails.instanceType]
  * Polymorphic Discriminator
+ * @member {string} [properties.health] Health of pairing.
+ * @member {array} [properties.healthErrorDetails] Health error.
+ * @member {string} [properties.policyId] Policy ARM Id.
+ * @member {string} [properties.state] Association Status
+ * @member {string} [properties.sourceProtectionContainerFriendlyName] Friendly
+ * name of source protection container.
+ * @member {string} [properties.sourceFabricFriendlyName] Friendly name of
+ * source fabric.
+ * @member {string} [properties.targetFabricFriendlyName] Friendly name of
+ * target fabric.
+ * @member {string} [properties.policyFriendlyName] Friendly name of
+ * replication policy.
  */
-export interface SwitchProtectionInput {
-  properties?: SwitchProtectionInputProperties;
+export interface ProtectionContainerMapping extends Resource {
+  properties?: ProtectionContainerMappingProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the CurrentScenarioDetails class.
+ * Initializes a new instance of the RcmAzureMigrationPolicyDetails class.
  * @constructor
- * Current scenario details of the protected entity.
+ * RCM based Azure migration specific policy details.
  *
- * @member {string} [scenarioName] Scenario name.
- * @member {string} [jobId] ARM Id of the job being executed.
- * @member {date} [startTime] Start time of the workflow.
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency in minutes.
+ * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
+ * sync has to be enabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency in minutes.
  */
-export interface CurrentScenarioDetails {
-  scenarioName?: string;
-  jobId?: string;
-  startTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanProtectedItem class.
- * @constructor
- * Recovery plan protected item.
- *
- * @member {string} [id] The ARM Id of the recovery plan protected item.
- * @member {string} [virtualMachineId] The virtual machine Id.
- */
-export interface RecoveryPlanProtectedItem {
-  id?: string;
-  virtualMachineId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanActionDetails class.
- * @constructor
- * Recovery plan action custom details.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface RecoveryPlanActionDetails {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanAction class.
- * @constructor
- * Recovery plan action details.
- *
- * @member {string} actionName The action name.
- * @member {array} failoverTypes The list of failover types.
- * @member {array} failoverDirections The list of failover directions.
- * @member {object} customDetails The custom details.
- * @member {string} [customDetails.instanceType] Polymorphic Discriminator
- */
-export interface RecoveryPlanAction {
-  actionName: string;
-  failoverTypes: string[];
-  failoverDirections: string[];
-  customDetails: RecoveryPlanActionDetails;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanGroup class.
- * @constructor
- * Recovery plan group details.
- *
- * @member {string} groupType The group type. Possible values include:
- * 'Shutdown', 'Boot', 'Failover'
- * @member {array} [replicationProtectedItems] The list of protected items.
- * @member {array} [startGroupActions] The start group actions.
- * @member {array} [endGroupActions] The end group actions.
- */
-export interface RecoveryPlanGroup {
-  groupType: string;
-  replicationProtectedItems?: RecoveryPlanProtectedItem[];
-  startGroupActions?: RecoveryPlanAction[];
-  endGroupActions?: RecoveryPlanAction[];
+export interface RcmAzureMigrationPolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  multiVmSyncStatus?: string;
+  crashConsistentFrequencyInMinutes?: number;
 }
 
 /**
@@ -2004,68 +5078,6 @@ export interface RecoveryPlan extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the CreateRecoveryPlanInputProperties class.
- * @constructor
- * Recovery plan creation properties.
- *
- * @member {string} primaryFabricId The primary fabric Id.
- * @member {string} recoveryFabricId The recovery fabric Id.
- * @member {string} [failoverDeploymentModel] The failover deployment model.
- * Possible values include: 'NotApplicable', 'Classic', 'ResourceManager'
- * @member {array} groups The recovery plan groups.
- */
-export interface CreateRecoveryPlanInputProperties {
-  primaryFabricId: string;
-  recoveryFabricId: string;
-  failoverDeploymentModel?: string;
-  groups: RecoveryPlanGroup[];
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateRecoveryPlanInput class.
- * @constructor
- * Create recovery plan input class.
- *
- * @member {object} properties Recovery plan creation properties.
- * @member {string} [properties.primaryFabricId] The primary fabric Id.
- * @member {string} [properties.recoveryFabricId] The recovery fabric Id.
- * @member {string} [properties.failoverDeploymentModel] The failover
- * deployment model. Possible values include: 'NotApplicable', 'Classic',
- * 'ResourceManager'
- * @member {array} [properties.groups] The recovery plan groups.
- */
-export interface CreateRecoveryPlanInput {
-  properties: CreateRecoveryPlanInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateRecoveryPlanInputProperties class.
- * @constructor
- * Recovery plan updation properties.
- *
- * @member {array} [groups] The recovery plan groups.
- */
-export interface UpdateRecoveryPlanInputProperties {
-  groups?: RecoveryPlanGroup[];
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateRecoveryPlanInput class.
- * @constructor
- * Update recovery plan input class.
- *
- * @member {object} [properties] Recovery plan update properties.
- * @member {array} [properties.groups] The recovery plan groups.
- */
-export interface UpdateRecoveryPlanInput {
-  properties?: UpdateRecoveryPlanInputProperties;
-}
-
-/**
- * @class
  * Initializes a new instance of the RecoveryPlanProviderSpecificFailoverInput class.
  * @constructor
  * Recovery plan provider specific failover input base class.
@@ -2074,6 +5086,140 @@ export interface UpdateRecoveryPlanInput {
  */
 export interface RecoveryPlanProviderSpecificFailoverInput {
   instanceType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanA2AFailoverInput class.
+ * @constructor
+ * Recovery plan A2A failover input.
+ *
+ * @member {string} recoveryPointType The recovery point type. Possible values
+ * include: 'Latest', 'LatestApplicationConsistent', 'LatestCrashConsistent',
+ * 'LatestProcessed'
+ * @member {string} [cloudServiceCreationOption] A value indicating whether to
+ * use recovery cloud service for TFO or not.
+ * @member {string} [multiVmSyncPointOption] A value indicating whether multi
+ * VM sync enabled VMs should use multi VM sync points for failover. Possible
+ * values include: 'UseMultiVmSyncRecoveryPoint', 'UsePerVmRecoveryPoint'
+ */
+export interface RecoveryPlanA2AFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
+  recoveryPointType: string;
+  cloudServiceCreationOption?: string;
+  multiVmSyncPointOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanAutomationRunbookActionDetails class.
+ * @constructor
+ * Recovery plan Automation runbook action details.
+ *
+ * @member {string} [runbookId] The runbook ARM Id.
+ * @member {string} [timeout] The runbook timeout.
+ * @member {string} fabricLocation The fabric location. Possible values
+ * include: 'Primary', 'Recovery'
+ */
+export interface RecoveryPlanAutomationRunbookActionDetails extends RecoveryPlanActionDetails {
+  runbookId?: string;
+  timeout?: string;
+  fabricLocation: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanGroupTaskDetails class.
+ * @constructor
+ * This class represents the recovery plan group task.
+ *
+ * @member {string} [name] The name.
+ * @member {string} [groupId] The group identifier.
+ * @member {string} [rpGroupType] The group type.
+ */
+export interface RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
+  name?: string;
+  groupId?: string;
+  rpGroupType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanHyperVReplicaAzureFailbackInput class.
+ * @constructor
+ * Recovery plan HVR Azure failback input.
+ *
+ * @member {string} dataSyncOption The data sync option. Possible values
+ * include: 'ForDownTime', 'ForSynchronization'
+ * @member {string} recoveryVmCreationOption The ALR option. Possible values
+ * include: 'CreateVmIfNotFound', 'NoAction'
+ */
+export interface RecoveryPlanHyperVReplicaAzureFailbackInput extends RecoveryPlanProviderSpecificFailoverInput {
+  dataSyncOption: string;
+  recoveryVmCreationOption: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanHyperVReplicaAzureFailoverInput class.
+ * @constructor
+ * Recovery plan HVR Azure failover input.
+ *
+ * @member {string} vaultLocation The vault location.
+ * @member {string} [primaryKekCertificatePfx] The primary KEK certificate PFX.
+ * @member {string} [secondaryKekCertificatePfx] The secondary KEK certificate
+ * PFX.
+ * @member {string} [recoveryPointType] The recovery point type. Possible
+ * values include: 'Latest', 'LatestApplicationConsistent', 'LatestProcessed'
+ */
+export interface RecoveryPlanHyperVReplicaAzureFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
+  vaultLocation: string;
+  primaryKekCertificatePfx?: string;
+  secondaryKekCertificatePfx?: string;
+  recoveryPointType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanInMageAzureV2FailoverInput class.
+ * @constructor
+ * Recovery plan InMageAzureV2 failover input.
+ *
+ * @member {string} vaultLocation The vault location.
+ * @member {string} recoveryPointType The recovery point type. Possible values
+ * include: 'Latest', 'LatestApplicationConsistent', 'LatestCrashConsistent',
+ * 'LatestProcessed'
+ * @member {string} [useMultiVmSyncPoint] A value indicating whether multi VM
+ * sync enabled VMs should use multi VM sync points for failover.
+ */
+export interface RecoveryPlanInMageAzureV2FailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
+  vaultLocation: string;
+  recoveryPointType: string;
+  useMultiVmSyncPoint?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanInMageFailoverInput class.
+ * @constructor
+ * Recovery plan InMage failover input.
+ *
+ * @member {string} recoveryPointType The recovery point type. Possible values
+ * include: 'LatestTime', 'LatestTag', 'Custom'
+ */
+export interface RecoveryPlanInMageFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
+  recoveryPointType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanManualActionDetails class.
+ * @constructor
+ * Recovery plan manual action details.
+ *
+ * @member {string} [description] The manual action description.
+ */
+export interface RecoveryPlanManualActionDetails extends RecoveryPlanActionDetails {
+  description?: string;
 }
 
 /**
@@ -2110,40 +5256,61 @@ export interface RecoveryPlanPlannedFailoverInput {
 
 /**
  * @class
- * Initializes a new instance of the RecoveryPlanUnplannedFailoverInputProperties class.
+ * Initializes a new instance of the RecoveryPlanScriptActionDetails class.
  * @constructor
- * Recovery plan unplanned failover input properties.
+ * Recovery plan script action details.
  *
- * @member {string} failoverDirection The failover direction. Possible values
- * include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {string} sourceSiteOperations A value indicating whether source site
- * operations are required. Possible values include: 'Required', 'NotRequired'
- * @member {array} [providerSpecificDetails] The provider specific properties.
+ * @member {string} path The script path.
+ * @member {string} [timeout] The script timeout.
+ * @member {string} fabricLocation The fabric location. Possible values
+ * include: 'Primary', 'Recovery'
  */
-export interface RecoveryPlanUnplannedFailoverInputProperties {
-  failoverDirection: string;
-  sourceSiteOperations: string;
-  providerSpecificDetails?: RecoveryPlanProviderSpecificFailoverInput[];
+export interface RecoveryPlanScriptActionDetails extends RecoveryPlanActionDetails {
+  path: string;
+  timeout?: string;
+  fabricLocation: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the RecoveryPlanUnplannedFailoverInput class.
+ * Initializes a new instance of the RecoveryPlanShutdownGroupTaskDetails class.
  * @constructor
- * Recovery plan unplanned failover input.
+ * This class represents the recovery plan shutdown group task details.
  *
- * @member {object} properties The recovery plan unplanned failover input
- * properties.
- * @member {string} [properties.failoverDirection] The failover direction.
- * Possible values include: 'PrimaryToRecovery', 'RecoveryToPrimary'
- * @member {string} [properties.sourceSiteOperations] A value indicating
- * whether source site operations are required. Possible values include:
- * 'Required', 'NotRequired'
- * @member {array} [properties.providerSpecificDetails] The provider specific
- * properties.
+ * @member {string} [name] The name.
+ * @member {string} [groupId] The group identifier.
+ * @member {string} [rpGroupType] The group type.
  */
-export interface RecoveryPlanUnplannedFailoverInput {
-  properties: RecoveryPlanUnplannedFailoverInputProperties;
+export interface RecoveryPlanShutdownGroupTaskDetails extends GroupTaskDetails {
+  name?: string;
+  groupId?: string;
+  rpGroupType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanTestFailoverCleanupInputProperties class.
+ * @constructor
+ * Recovery plan test failover cleanup input properties.
+ *
+ * @member {string} [comments] The test failover cleanup comments.
+ */
+export interface RecoveryPlanTestFailoverCleanupInputProperties {
+  comments?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryPlanTestFailoverCleanupInput class.
+ * @constructor
+ * Recovery plan test failover cleanup input.
+ *
+ * @member {object} properties The recovery plan test failover cleanup input
+ * properties.
+ * @member {string} [properties.comments] The test failover cleanup comments.
+ */
+export interface RecoveryPlanTestFailoverCleanupInput {
+  properties: RecoveryPlanTestFailoverCleanupInputProperties;
 }
 
 /**
@@ -2194,40 +5361,40 @@ export interface RecoveryPlanTestFailoverInput {
 
 /**
  * @class
- * Initializes a new instance of the RecoveryPlanTestFailoverCleanupInputProperties class.
+ * Initializes a new instance of the RecoveryPlanUnplannedFailoverInputProperties class.
  * @constructor
- * Recovery plan test failover cleanup input properties.
+ * Recovery plan unplanned failover input properties.
  *
- * @member {string} [comments] The test failover cleanup comments.
+ * @member {string} failoverDirection The failover direction. Possible values
+ * include: 'PrimaryToRecovery', 'RecoveryToPrimary'
+ * @member {string} sourceSiteOperations A value indicating whether source site
+ * operations are required. Possible values include: 'Required', 'NotRequired'
+ * @member {array} [providerSpecificDetails] The provider specific properties.
  */
-export interface RecoveryPlanTestFailoverCleanupInputProperties {
-  comments?: string;
+export interface RecoveryPlanUnplannedFailoverInputProperties {
+  failoverDirection: string;
+  sourceSiteOperations: string;
+  providerSpecificDetails?: RecoveryPlanProviderSpecificFailoverInput[];
 }
 
 /**
  * @class
- * Initializes a new instance of the RecoveryPlanTestFailoverCleanupInput class.
+ * Initializes a new instance of the RecoveryPlanUnplannedFailoverInput class.
  * @constructor
- * Recovery plan test failover cleanup input.
+ * Recovery plan unplanned failover input.
  *
- * @member {object} properties The recovery plan test failover cleanup input
+ * @member {object} properties The recovery plan unplanned failover input
  * properties.
- * @member {string} [properties.comments] The test failover cleanup comments.
+ * @member {string} [properties.failoverDirection] The failover direction.
+ * Possible values include: 'PrimaryToRecovery', 'RecoveryToPrimary'
+ * @member {string} [properties.sourceSiteOperations] A value indicating
+ * whether source site operations are required. Possible values include:
+ * 'Required', 'NotRequired'
+ * @member {array} [properties.providerSpecificDetails] The provider specific
+ * properties.
  */
-export interface RecoveryPlanTestFailoverCleanupInput {
-  properties: RecoveryPlanTestFailoverCleanupInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProviderSpecificRecoveryPointDetails class.
- * @constructor
- * Replication provider specific recovery point details.
- *
- * @member {string} [type] Gets the provider type.
- */
-export interface ProviderSpecificRecoveryPointDetails {
-  readonly type?: string;
+export interface RecoveryPlanUnplannedFailoverInput {
+  properties: RecoveryPlanUnplannedFailoverInputProperties;
 }
 
 /**
@@ -2241,7 +5408,8 @@ export interface ProviderSpecificRecoveryPointDetails {
  * ApplicationConsistent, CrashConsistent.
  * @member {object} [providerSpecificDetails] The provider specific details for
  * the recovery point.
- * @member {string} [providerSpecificDetails.type] Gets the provider type.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
  */
 export interface RecoveryPointProperties {
   recoveryPointTime?: Date;
@@ -2261,47 +5429,11 @@ export interface RecoveryPointProperties {
  * ApplicationConsistent, CrashConsistent.
  * @member {object} [properties.providerSpecificDetails] The provider specific
  * details for the recovery point.
- * @member {string} [properties.providerSpecificDetails.type] Gets the provider
- * type.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
  */
 export interface RecoveryPoint extends Resource {
   properties?: RecoveryPointProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the IdentityInformation class.
- * @constructor
- * Identity details.
- *
- * @member {string} [identityProviderType] The identity provider type. Value is
- * the ToString() of a IdentityProviderType value. Possible values include:
- * 'RecoveryServicesActiveDirectory', 'CustomerActiveDirectory'
- * @member {string} [tenantId] The tenant Id for the service principal with
- * which the on-premise management/data plane components would communicate with
- * our Azure services.
- * @member {string} [applicationId] The application/client Id for the service
- * principal with which the on-premise management/data plane components would
- * communicate with our Azure services.
- * @member {string} [objectId] The object Id of the service principal with
- * which the on-premise management/data plane components would communicate with
- * our Azure services.
- * @member {string} [audience] The intended Audience of the service principal
- * with which the on-premise management/data plane components would communicate
- * with our Azure services.
- * @member {string} [aadAuthority] The base authority for Azure Active
- * Directory authentication.
- * @member {string} [certificateThumbprint] The certificate thumbprint.
- * Applicable only if IdentityProviderType is RecoveryServicesActiveDirectory.
- */
-export interface IdentityInformation {
-  identityProviderType?: string;
-  tenantId?: string;
-  applicationId?: string;
-  objectId?: string;
-  audience?: string;
-  aadAuthority?: string;
-  certificateThumbprint?: string;
 }
 
 /**
@@ -2315,8 +5447,7 @@ export interface IdentityInformation {
  * @member {string} [providerVersion] The provider version.
  * @member {string} [serverVersion] The fabric provider.
  * @member {string} [providerVersionState] DRA version status.
- * @member {date} [providerVersionExpiryDate] Expiry date if the version is
- * deprecated.
+ * @member {date} [providerVersionExpiryDate] Expiry date of the version.
  * @member {string} [fabricFriendlyName] The fabric friendly name.
  * @member {date} [lastHeartBeat] Time when last heartbeat was sent by the DRA.
  * @member {string} [connectionStatus] A value indicating whether DRA is
@@ -2330,8 +5461,7 @@ export interface IdentityInformation {
  * @member {object} [identityDetails] The identity details.
  * @member {string} [identityDetails.identityProviderType] The identity
  * provider type. Value is the ToString() of a IdentityProviderType value.
- * Possible values include: 'RecoveryServicesActiveDirectory',
- * 'CustomerActiveDirectory'
+ * Possible values include: 'RecoveryServicesActiveDirectory'
  * @member {string} [identityDetails.tenantId] The tenant Id for the service
  * principal with which the on-premise management/data plane components would
  * communicate with our Azure services.
@@ -2349,6 +5479,12 @@ export interface IdentityInformation {
  * @member {string} [identityDetails.certificateThumbprint] The certificate
  * thumbprint. Applicable only if IdentityProviderType is
  * RecoveryServicesActiveDirectory.
+ * @member {object} [providerVersionDetails] The provider version details.
+ * @member {string} [providerVersionDetails.version] The agent version.
+ * @member {date} [providerVersionDetails.expiryDate] Version expiry date.
+ * @member {string} [providerVersionDetails.status] A value indicating whether
+ * security update required. Possible values include: 'Supported',
+ * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
 export interface RecoveryServicesProviderProperties {
   fabricType?: string;
@@ -2365,6 +5501,7 @@ export interface RecoveryServicesProviderProperties {
   healthErrorDetails?: HealthError[];
   draIdentifier?: string;
   identityDetails?: IdentityInformation;
+  providerVersionDetails?: VersionDetails;
 }
 
 /**
@@ -2379,8 +5516,8 @@ export interface RecoveryServicesProviderProperties {
  * @member {string} [properties.providerVersion] The provider version.
  * @member {string} [properties.serverVersion] The fabric provider.
  * @member {string} [properties.providerVersionState] DRA version status.
- * @member {date} [properties.providerVersionExpiryDate] Expiry date if the
- * version is deprecated.
+ * @member {date} [properties.providerVersionExpiryDate] Expiry date of the
+ * version.
  * @member {string} [properties.fabricFriendlyName] The fabric friendly name.
  * @member {date} [properties.lastHeartBeat] Time when last heartbeat was sent
  * by the DRA.
@@ -2396,8 +5533,7 @@ export interface RecoveryServicesProviderProperties {
  * @member {object} [properties.identityDetails] The identity details.
  * @member {string} [properties.identityDetails.identityProviderType] The
  * identity provider type. Value is the ToString() of a IdentityProviderType
- * value. Possible values include: 'RecoveryServicesActiveDirectory',
- * 'CustomerActiveDirectory'
+ * value. Possible values include: 'RecoveryServicesActiveDirectory'
  * @member {string} [properties.identityDetails.tenantId] The tenant Id for the
  * service principal with which the on-premise management/data plane components
  * would communicate with our Azure services.
@@ -2415,6 +5551,16 @@ export interface RecoveryServicesProviderProperties {
  * @member {string} [properties.identityDetails.certificateThumbprint] The
  * certificate thumbprint. Applicable only if IdentityProviderType is
  * RecoveryServicesActiveDirectory.
+ * @member {object} [properties.providerVersionDetails] The provider version
+ * details.
+ * @member {string} [properties.providerVersionDetails.version] The agent
+ * version.
+ * @member {date} [properties.providerVersionDetails.expiryDate] Version expiry
+ * date.
+ * @member {string} [properties.providerVersionDetails.status] A value
+ * indicating whether security update required. Possible values include:
+ * 'Supported', 'NotSupported', 'Deprecated', 'UpdateRequired',
+ * 'SecurityUpdateRequired'
  */
 export interface RecoveryServicesProvider extends Resource {
   properties?: RecoveryServicesProviderProperties;
@@ -2422,14 +5568,79 @@ export interface RecoveryServicesProvider extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReplicationProviderSpecificSettings class.
+ * Initializes a new instance of the ReplicationProviderContainerUnmappingInput class.
  * @constructor
- * Replication provider specific settings.
+ * Provider specific input for unpairing operations.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @member {string} [instanceType] The class type.
  */
-export interface ReplicationProviderSpecificSettings {
-  instanceType: string;
+export interface ReplicationProviderContainerUnmappingInput {
+  instanceType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemoveProtectionContainerMappingInputProperties class.
+ * @constructor
+ * Unpairing input properties.
+ *
+ * @member {object} [providerSpecificInput] Provider specific input for
+ * unpairing.
+ * @member {string} [providerSpecificInput.instanceType] The class type.
+ */
+export interface RemoveProtectionContainerMappingInputProperties {
+  providerSpecificInput?: ReplicationProviderContainerUnmappingInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemoveProtectionContainerMappingInput class.
+ * @constructor
+ * Container unpairing input.
+ *
+ * @member {object} [properties] Configure protection input properties.
+ * @member {object} [properties.providerSpecificInput] Provider specific input
+ * for unpairing.
+ * @member {string} [properties.providerSpecificInput.instanceType] The class
+ * type.
+ */
+export interface RemoveProtectionContainerMappingInput {
+  properties?: RemoveProtectionContainerMappingInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RenewCertificateInputProperties class.
+ * @constructor
+ * Renew Certificate input properties.
+ *
+ * @member {string} [renewCertificateType] Renew certificate type.
+ */
+export interface RenewCertificateInputProperties {
+  renewCertificateType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RenewCertificateInput class.
+ * @constructor
+ * Certificate renewal input.
+ *
+ * @member {object} [properties] Renew certificate input properties.
+ * @member {string} [properties.renewCertificateType] Renew certificate type.
+ */
+export interface RenewCertificateInput {
+  properties?: RenewCertificateInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationGroupDetails class.
+ * @constructor
+ * Replication group details. This will be used in case of San and Wvr.
+ *
+ */
+export interface ReplicationGroupDetails extends ConfigurationSettings {
 }
 
 /**
@@ -2444,6 +5655,8 @@ export interface ReplicationProviderSpecificSettings {
  * @member {string} [recoveryServicesProviderId] The recovery provider ARM Id.
  * @member {string} [primaryFabricFriendlyName] The friendly name of the
  * primary fabric.
+ * @member {string} [primaryFabricProvider] The fabric provider of the primary
+ * fabric.
  * @member {string} [recoveryFabricFriendlyName] The friendly name of recovery
  * fabric.
  * @member {string} [recoveryFabricId] The Arm Id of recovery fabric.
@@ -2466,8 +5679,7 @@ export interface ReplicationProviderSpecificSettings {
  * representation of the ProtectionHealth enumeration.
  * @member {string} [failoverHealth] The consolidated failover health for the
  * VM.
- * @member {array} [replicationHealthErrors] List of replication health errors.
- * @member {array} [failoverHealthErrors] List of failover health errors.
+ * @member {array} [healthErrors] List of health errors.
  * @member {string} [policyId] The ID of Policy governing this PE.
  * @member {string} [policyFriendlyName] The name of Policy governing this PE.
  * @member {date} [lastSuccessfulFailoverTime] The Last successful failover
@@ -2492,6 +5704,7 @@ export interface ReplicationProtectedItemProperties {
   protectableItemId?: string;
   recoveryServicesProviderId?: string;
   primaryFabricFriendlyName?: string;
+  primaryFabricProvider?: string;
   recoveryFabricFriendlyName?: string;
   recoveryFabricId?: string;
   primaryProtectionContainerFriendlyName?: string;
@@ -2504,8 +5717,7 @@ export interface ReplicationProtectedItemProperties {
   allowedOperations?: string[];
   replicationHealth?: string;
   failoverHealth?: string;
-  replicationHealthErrors?: HealthError[];
-  failoverHealthErrors?: HealthError[];
+  healthErrors?: HealthError[];
   policyId?: string;
   policyFriendlyName?: string;
   lastSuccessfulFailoverTime?: Date;
@@ -2531,6 +5743,8 @@ export interface ReplicationProtectedItemProperties {
  * provider ARM Id.
  * @member {string} [properties.primaryFabricFriendlyName] The friendly name of
  * the primary fabric.
+ * @member {string} [properties.primaryFabricProvider] The fabric provider of
+ * the primary fabric.
  * @member {string} [properties.recoveryFabricFriendlyName] The friendly name
  * of recovery fabric.
  * @member {string} [properties.recoveryFabricId] The Arm Id of recovery
@@ -2555,10 +5769,7 @@ export interface ReplicationProtectedItemProperties {
  * string representation of the ProtectionHealth enumeration.
  * @member {string} [properties.failoverHealth] The consolidated failover
  * health for the VM.
- * @member {array} [properties.replicationHealthErrors] List of replication
- * health errors.
- * @member {array} [properties.failoverHealthErrors] List of failover health
- * errors.
+ * @member {array} [properties.healthErrors] List of health errors.
  * @member {string} [properties.policyId] The ID of Policy governing this PE.
  * @member {string} [properties.policyFriendlyName] The name of Policy
  * governing this PE.
@@ -2586,364 +5797,44 @@ export interface ReplicationProtectedItem extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the EnableProtectionProviderSpecificInput class.
+ * Initializes a new instance of the ResourceHealthSummary class.
  * @constructor
- * Enable protection provider specific input.
+ * Base class to define the health summary of the resources contained under an
+ * Arm resource.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @member {number} [resourceCount] The count of total resources umder the
+ * container.
+ * @member {array} [issues] The list of summary of health errors across the
+ * resources under the container.
  */
-export interface EnableProtectionProviderSpecificInput {
-  instanceType: string;
+export interface ResourceHealthSummary {
+  resourceCount?: number;
+  issues?: HealthErrorSummary[];
 }
 
 /**
  * @class
- * Initializes a new instance of the EnableProtectionInputProperties class.
+ * Initializes a new instance of the ResumeJobParamsProperties class.
  * @constructor
- * Enable protection input properties.
+ * Resume job properties.
  *
- * @member {string} [policyId] The Policy Id.
- * @member {string} [protectableItemId] The protectable item Id.
- * @member {object} [providerSpecificDetails] The ReplicationProviderInput. For
- * HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object.
- * For San provider, it will be SanEnableProtectionInput object. For
- * HyperVReplicaAzure provider, it can be null.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
- * Discriminator
+ * @member {string} [comments] Resume job comments.
  */
-export interface EnableProtectionInputProperties {
-  policyId?: string;
-  protectableItemId?: string;
-  providerSpecificDetails?: EnableProtectionProviderSpecificInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the EnableProtectionInput class.
- * @constructor
- * Enable protection input.
- *
- * @member {object} [properties] Enable protection input properties.
- * @member {string} [properties.policyId] The Policy Id.
- * @member {string} [properties.protectableItemId] The protectable item Id.
- * @member {object} [properties.providerSpecificDetails] The
- * ReplicationProviderInput. For HyperVReplicaAzure provider, it will be
- * AzureEnableProtectionInput object. For San provider, it will be
- * SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be
- * null.
- * @member {string} [properties.providerSpecificDetails.instanceType]
- * Polymorphic Discriminator
- */
-export interface EnableProtectionInput {
-  properties?: EnableProtectionInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the VMNicInputDetails class.
- * @constructor
- * Hyper V VM network input details.
- *
- * @member {string} [nicId] The nic Id.
- * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
- * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
- * @member {string} [selectionType] Selection type for failover.
- */
-export interface VMNicInputDetails {
-  nicId?: string;
-  recoveryVMSubnetName?: string;
-  replicaNicStaticIPAddress?: string;
-  selectionType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateReplicationProtectedItemProviderInput class.
- * @constructor
- * Update replication protected item provider specific input.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface UpdateReplicationProtectedItemProviderInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateReplicationProtectedItemInputProperties class.
- * @constructor
- * Update protected item input properties.
- *
- * @member {string} [recoveryAzureVMName] Target azure VM name given by the
- * user.
- * @member {string} [recoveryAzureVMSize] Target Azure Vm size.
- * @member {string} [selectedRecoveryAzureNetworkId] Target Azure Network Id.
- * @member {string} [enableRDPOnTargetOption] The selected option to enable
- * RDP\SSH on target vm after failover. String value of
- * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [vmNics] The list of vm nic details.
- * @member {string} [licenseType] License type. Possible values include:
- * 'NotSpecified', 'NoLicenseType', 'WindowsServer'
- * @member {string} [recoveryAvailabilitySetId] The target availability set id.
- * @member {object} [providerSpecificDetails] The provider specific input to
- * update replication protected item.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface UpdateReplicationProtectedItemInputProperties {
-  recoveryAzureVMName?: string;
-  recoveryAzureVMSize?: string;
-  selectedRecoveryAzureNetworkId?: string;
-  enableRDPOnTargetOption?: string;
-  vmNics?: VMNicInputDetails[];
-  licenseType?: string;
-  recoveryAvailabilitySetId?: string;
-  providerSpecificDetails?: UpdateReplicationProtectedItemProviderInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpdateReplicationProtectedItemInput class.
- * @constructor
- * Update replication protected item input.
- *
- * @member {object} [properties] Update replication protected item properties.
- * @member {string} [properties.recoveryAzureVMName] Target azure VM name given
- * by the user.
- * @member {string} [properties.recoveryAzureVMSize] Target Azure Vm size.
- * @member {string} [properties.selectedRecoveryAzureNetworkId] Target Azure
- * Network Id.
- * @member {string} [properties.enableRDPOnTargetOption] The selected option to
- * enable RDP\SSH on target vm after failover. String value of
- * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [properties.vmNics] The list of vm nic details.
- * @member {string} [properties.licenseType] License type. Possible values
- * include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'
- * @member {string} [properties.recoveryAvailabilitySetId] The target
- * availability set id.
- * @member {object} [properties.providerSpecificDetails] The provider specific
- * input to update replication protected item.
- * @member {string} [properties.providerSpecificDetails.instanceType]
- * Polymorphic Discriminator
- */
-export interface UpdateReplicationProtectedItemInput {
-  properties?: UpdateReplicationProtectedItemInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the DisableProtectionProviderSpecificInput class.
- * @constructor
- * Disable protection provider specific input.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface DisableProtectionProviderSpecificInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DisableProtectionInputProperties class.
- * @constructor
- * Disable protection input properties.
- *
- * @member {string} [disableProtectionReason] Disable protection reason. It can
- * have values NotSpecified/MigrationComplete. Possible values include:
- * 'NotSpecified', 'MigrationComplete'
- * @member {object} [replicationProviderInput] Replication provider specific
- * input.
- * @member {string} [replicationProviderInput.instanceType] Polymorphic
- * Discriminator
- */
-export interface DisableProtectionInputProperties {
-  disableProtectionReason?: string;
-  replicationProviderInput?: DisableProtectionProviderSpecificInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the DisableProtectionInput class.
- * @constructor
- * Disable protection input.
- *
- * @member {object} [properties] Disable protection input properties.
- * @member {string} [properties.disableProtectionReason] Disable protection
- * reason. It can have values NotSpecified/MigrationComplete. Possible values
- * include: 'NotSpecified', 'MigrationComplete'
- * @member {object} [properties.replicationProviderInput] Replication provider
- * specific input.
- * @member {string} [properties.replicationProviderInput.instanceType]
- * Polymorphic Discriminator
- */
-export interface DisableProtectionInput {
-  properties?: DisableProtectionInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProviderSpecificFailoverInput class.
- * @constructor
- * Provider specific failover input.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface ProviderSpecificFailoverInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PlannedFailoverInputProperties class.
- * @constructor
- * Input definition for planned failover input properties.
- *
- * @member {string} [failoverDirection] Failover direction.
- * @member {object} [providerSpecificDetails] Provider specific settings
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface PlannedFailoverInputProperties {
-  failoverDirection?: string;
-  providerSpecificDetails?: ProviderSpecificFailoverInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the PlannedFailoverInput class.
- * @constructor
- * Input definition for planned failover.
- *
- * @member {object} [properties] Planned failover input properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {object} [properties.providerSpecificDetails] Provider specific
- * settings
- * @member {string} [properties.providerSpecificDetails.instanceType]
- * Polymorphic Discriminator
- */
-export interface PlannedFailoverInput {
-  properties?: PlannedFailoverInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the UnplannedFailoverInputProperties class.
- * @constructor
- * Input definition for planned failover input properties.
- *
- * @member {string} [failoverDirection] Failover direction.
- * @member {string} [sourceSiteOperations] Source site operations status
- * @member {object} [providerSpecificDetails] Provider specific settings
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface UnplannedFailoverInputProperties {
-  failoverDirection?: string;
-  sourceSiteOperations?: string;
-  providerSpecificDetails?: ProviderSpecificFailoverInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the UnplannedFailoverInput class.
- * @constructor
- * Input definition for planned failover.
- *
- * @member {object} [properties] Planned failover input properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {string} [properties.sourceSiteOperations] Source site operations
- * status
- * @member {object} [properties.providerSpecificDetails] Provider specific
- * settings
- * @member {string} [properties.providerSpecificDetails.instanceType]
- * Polymorphic Discriminator
- */
-export interface UnplannedFailoverInput {
-  properties?: UnplannedFailoverInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestFailoverInputProperties class.
- * @constructor
- * Input definition for planned failover input properties.
- *
- * @member {string} [failoverDirection] Failover direction.
- * @member {string} [networkType] Network type to be used for test failover.
- * @member {string} [networkId] The id of the network to be used for test
- * failover
- * @member {string} [skipTestFailoverCleanup] A value indicating whether the
- * test failover cleanup is to be skipped.
- * @member {object} [providerSpecificDetails] Provider specific settings
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface TestFailoverInputProperties {
-  failoverDirection?: string;
-  networkType?: string;
-  networkId?: string;
-  skipTestFailoverCleanup?: string;
-  providerSpecificDetails?: ProviderSpecificFailoverInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestFailoverInput class.
- * @constructor
- * Input definition for planned failover.
- *
- * @member {object} [properties] Planned failover input properties
- * @member {string} [properties.failoverDirection] Failover direction.
- * @member {string} [properties.networkType] Network type to be used for test
- * failover.
- * @member {string} [properties.networkId] The id of the network to be used for
- * test failover
- * @member {string} [properties.skipTestFailoverCleanup] A value indicating
- * whether the test failover cleanup is to be skipped.
- * @member {object} [properties.providerSpecificDetails] Provider specific
- * settings
- * @member {string} [properties.providerSpecificDetails.instanceType]
- * Polymorphic Discriminator
- */
-export interface TestFailoverInput {
-  properties?: TestFailoverInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestFailoverCleanupInputProperties class.
- * @constructor
- * Input definition for test failover cleanup input properties.
- *
- * @member {string} [comments] Test failover cleanup comments.
- */
-export interface TestFailoverCleanupInputProperties {
+export interface ResumeJobParamsProperties {
   comments?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the TestFailoverCleanupInput class.
+ * Initializes a new instance of the ResumeJobParams class.
  * @constructor
- * Input definition for test failover cleanup.
+ * Resume job params.
  *
- * @member {object} properties Test failover cleanup input properties.
- * @member {string} [properties.comments] Test failover cleanup comments.
+ * @member {object} [properties] Resume job properties.
+ * @member {string} [properties.comments] Resume job comments.
  */
-export interface TestFailoverCleanupInput {
-  properties: TestFailoverCleanupInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReverseReplicationProviderSpecificInput class.
- * @constructor
- * Provider specific reverse replication input.
- *
- * @member {string} instanceType Polymorphic Discriminator
- */
-export interface ReverseReplicationProviderSpecificInput {
-  instanceType: string;
+export interface ResumeJobParams {
+  properties?: ResumeJobParamsProperties;
 }
 
 /**
@@ -2982,74 +5873,45 @@ export interface ReverseReplicationInput {
 
 /**
  * @class
- * Initializes a new instance of the UpdateMobilityServiceRequestProperties class.
+ * Initializes a new instance of the RunAsAccount class.
  * @constructor
- * The properties of an update mobility service request.
+ * CS Accounts Details.
  *
- * @member {string} [runAsAccountId] The CS run as account Id.
+ * @member {string} [accountId] The CS RunAs account Id.
+ * @member {string} [accountName] The CS RunAs account name.
  */
-export interface UpdateMobilityServiceRequestProperties {
-  runAsAccountId?: string;
+export interface RunAsAccount {
+  accountId?: string;
+  accountName?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the UpdateMobilityServiceRequest class.
+ * Initializes a new instance of the SanEnableProtectionInput class.
  * @constructor
- * Request to update the mobility service on a protected item.
+ * San enable protection provider specific input.
  *
- * @member {object} [properties] The properties of the update mobility service
- * request.
- * @member {string} [properties.runAsAccountId] The CS run as account Id.
  */
-export interface UpdateMobilityServiceRequest {
-  properties?: UpdateMobilityServiceRequestProperties;
+export interface SanEnableProtectionInput extends EnableProtectionProviderSpecificInput {
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplyRecoveryPointProviderSpecificInput class.
+ * Initializes a new instance of the ScriptActionTaskDetails class.
  * @constructor
- * Provider specific input for apply recovery point.
+ * This class represents the script action task details.
  *
- * @member {string} instanceType Polymorphic Discriminator
+ * @member {string} [name] The name.
+ * @member {string} [path] The path.
+ * @member {string} [output] The output.
+ * @member {boolean} [isPrimarySideScript] A value indicating whether it is a
+ * primary side script or not.
  */
-export interface ApplyRecoveryPointProviderSpecificInput {
-  instanceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplyRecoveryPointInputProperties class.
- * @constructor
- * Input properties to apply recovery point.
- *
- * @member {string} [recoveryPointId] The recovery point Id.
- * @member {object} [providerSpecificDetails] Provider specific input for
- * applying recovery point.
- * @member {string} [providerSpecificDetails.instanceType] Polymorphic
- * Discriminator
- */
-export interface ApplyRecoveryPointInputProperties {
-  recoveryPointId?: string;
-  providerSpecificDetails?: ApplyRecoveryPointProviderSpecificInput;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplyRecoveryPointInput class.
- * @constructor
- * Input to apply recovery point.
- *
- * @member {object} [properties] The input properties to apply recovery point.
- * @member {string} [properties.recoveryPointId] The recovery point Id.
- * @member {object} [properties.providerSpecificDetails] Provider specific
- * input for applying recovery point.
- * @member {string} [properties.providerSpecificDetails.instanceType]
- * Polymorphic Discriminator
- */
-export interface ApplyRecoveryPointInput {
-  properties?: ApplyRecoveryPointInputProperties;
+export interface ScriptActionTaskDetails extends TaskTypeDetails {
+  name?: string;
+  path?: string;
+  output?: string;
+  isPrimarySideScript?: boolean;
 }
 
 /**
@@ -3133,103 +5995,486 @@ export interface StorageClassificationMappingInput {
 
 /**
  * @class
- * Initializes a new instance of the VCenterProperties class.
+ * Initializes a new instance of the SwitchProtectionInputProperties class.
  * @constructor
- * vCenter properties.
+ * Switch protection input properties.
  *
- * @member {string} [friendlyName] Friendly name of the vCenter.
- * @member {string} [internalId] VCenter internal ID.
- * @member {date} [lastHeartbeat] The time when the last heartbeat was reveived
- * by vCenter.
- * @member {string} [discoveryStatus] The VCenter discovery status.
- * @member {string} [processServerId] The process server Id.
- * @member {string} [ipAddress] The IP address of the vCenter.
- * @member {string} [infrastructureId] The infrastructure Id of vCenter.
- * @member {string} [port] The port number for discovery.
- * @member {string} [runAsAccountId] The account Id which has privileges to
- * discover the vCenter.
- * @member {string} [fabricArmResourceName] The ARM resource name of the fabric
- * containing this VCenter.
+ * @member {string} [replicationProtectedItemName] The unique replication
+ * protected item name.
+ * @member {object} [providerSpecificDetails] Provider specific switch
+ * protection input.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
  */
-export interface VCenterProperties {
+export interface SwitchProtectionInputProperties {
+  replicationProtectedItemName?: string;
+  providerSpecificDetails?: SwitchProtectionProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SwitchProtectionInput class.
+ * @constructor
+ * Switch protection input.
+ *
+ * @member {object} [properties] Switch protection properties
+ * @member {string} [properties.replicationProtectedItemName] The unique
+ * replication protected item name.
+ * @member {object} [properties.providerSpecificDetails] Provider specific
+ * switch protection input.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface SwitchProtectionInput {
+  properties?: SwitchProtectionInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SwitchProtectionJobDetails class.
+ * @constructor
+ * This class represents details for switch protection job.
+ *
+ * @member {string} [newReplicationProtectedItemId] ARM Id of the new
+ * replication protected item.
+ */
+export interface SwitchProtectionJobDetails extends JobDetails {
+  newReplicationProtectedItemId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetComputeSizeProperties class.
+ * @constructor
+ * Represents applicable recovery vm sizes properties.
+ *
+ * @member {string} [name] Target compute size name.
+ * @member {string} [friendlyName] Target compute size display name.
+ * @member {number} [cpuCoresCount] The maximum cpu cores count supported by
+ * target compute size.
+ * @member {number} [memoryInGB] The maximum memory in GB supported by target
+ * compute size.
+ * @member {number} [maxDataDiskCount] The maximum data disks count supported
+ * by target compute size.
+ * @member {number} [maxNicsCount] The maximum Nics count supported by target
+ * compute size.
+ * @member {array} [errors] The reasons why the target compute size is not
+ * applicable for the protected item.
+ * @member {string} [highIopsSupported] The value indicating whether the target
+ * compute size supports high Iops.
+ */
+export interface TargetComputeSizeProperties {
+  name?: string;
   friendlyName?: string;
-  internalId?: string;
-  lastHeartbeat?: Date;
-  discoveryStatus?: string;
-  processServerId?: string;
-  ipAddress?: string;
-  infrastructureId?: string;
-  port?: string;
+  cpuCoresCount?: number;
+  memoryInGB?: number;
+  maxDataDiskCount?: number;
+  maxNicsCount?: number;
+  errors?: ComputeSizeErrorDetails[];
+  highIopsSupported?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetComputeSize class.
+ * @constructor
+ * Represents applicable recovery vm sizes.
+ *
+ * @member {string} [id] The Id.
+ * @member {string} [name] The name.
+ * @member {string} [type] The Type of the object.
+ * @member {object} [properties] The custom data.
+ * @member {string} [properties.name] Target compute size name.
+ * @member {string} [properties.friendlyName] Target compute size display name.
+ * @member {number} [properties.cpuCoresCount] The maximum cpu cores count
+ * supported by target compute size.
+ * @member {number} [properties.memoryInGB] The maximum memory in GB supported
+ * by target compute size.
+ * @member {number} [properties.maxDataDiskCount] The maximum data disks count
+ * supported by target compute size.
+ * @member {number} [properties.maxNicsCount] The maximum Nics count supported
+ * by target compute size.
+ * @member {array} [properties.errors] The reasons why the target compute size
+ * is not applicable for the protected item.
+ * @member {string} [properties.highIopsSupported] The value indicating whether
+ * the target compute size supports high Iops.
+ */
+export interface TargetComputeSize {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: TargetComputeSizeProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestFailoverCleanupInputProperties class.
+ * @constructor
+ * Input definition for test failover cleanup input properties.
+ *
+ * @member {string} [comments] Test failover cleanup comments.
+ */
+export interface TestFailoverCleanupInputProperties {
+  comments?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestFailoverCleanupInput class.
+ * @constructor
+ * Input definition for test failover cleanup.
+ *
+ * @member {object} properties Test failover cleanup input properties.
+ * @member {string} [properties.comments] Test failover cleanup comments.
+ */
+export interface TestFailoverCleanupInput {
+  properties: TestFailoverCleanupInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestFailoverInputProperties class.
+ * @constructor
+ * Input definition for planned failover input properties.
+ *
+ * @member {string} [failoverDirection] Failover direction.
+ * @member {string} [networkType] Network type to be used for test failover.
+ * @member {string} [networkId] The id of the network to be used for test
+ * failover
+ * @member {string} [skipTestFailoverCleanup] A value indicating whether the
+ * test failover cleanup is to be skipped.
+ * @member {object} [providerSpecificDetails] Provider specific settings
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface TestFailoverInputProperties {
+  failoverDirection?: string;
+  networkType?: string;
+  networkId?: string;
+  skipTestFailoverCleanup?: string;
+  providerSpecificDetails?: ProviderSpecificFailoverInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestFailoverInput class.
+ * @constructor
+ * Input definition for planned failover.
+ *
+ * @member {object} [properties] Planned failover input properties
+ * @member {string} [properties.failoverDirection] Failover direction.
+ * @member {string} [properties.networkType] Network type to be used for test
+ * failover.
+ * @member {string} [properties.networkId] The id of the network to be used for
+ * test failover
+ * @member {string} [properties.skipTestFailoverCleanup] A value indicating
+ * whether the test failover cleanup is to be skipped.
+ * @member {object} [properties.providerSpecificDetails] Provider specific
+ * settings
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface TestFailoverInput {
+  properties?: TestFailoverInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestFailoverJobDetails class.
+ * @constructor
+ * This class represents the details for a test failover job.
+ *
+ * @member {string} [testFailoverStatus] The test failover status.
+ * @member {string} [comments] The test failover comments.
+ * @member {string} [networkName] The test network name.
+ * @member {string} [networkFriendlyName] The test network friendly name.
+ * @member {string} [networkType] The test network type (see TestFailoverInput
+ * enum for possible values).
+ * @member {array} [protectedItemDetails] The test VM details.
+ */
+export interface TestFailoverJobDetails extends JobDetails {
+  testFailoverStatus?: string;
+  comments?: string;
+  networkName?: string;
+  networkFriendlyName?: string;
+  networkType?: string;
+  protectedItemDetails?: FailoverReplicationProtectedItemDetails[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UnplannedFailoverInputProperties class.
+ * @constructor
+ * Input definition for planned failover input properties.
+ *
+ * @member {string} [failoverDirection] Failover direction.
+ * @member {string} [sourceSiteOperations] Source site operations status
+ * @member {object} [providerSpecificDetails] Provider specific settings
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface UnplannedFailoverInputProperties {
+  failoverDirection?: string;
+  sourceSiteOperations?: string;
+  providerSpecificDetails?: ProviderSpecificFailoverInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UnplannedFailoverInput class.
+ * @constructor
+ * Input definition for planned failover.
+ *
+ * @member {object} [properties] Planned failover input properties
+ * @member {string} [properties.failoverDirection] Failover direction.
+ * @member {string} [properties.sourceSiteOperations] Source site operations
+ * status
+ * @member {object} [properties.providerSpecificDetails] Provider specific
+ * settings
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface UnplannedFailoverInput {
+  properties?: UnplannedFailoverInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateMobilityServiceRequestProperties class.
+ * @constructor
+ * The properties of an update mobility service request.
+ *
+ * @member {string} [runAsAccountId] The CS run as account Id.
+ */
+export interface UpdateMobilityServiceRequestProperties {
   runAsAccountId?: string;
-  fabricArmResourceName?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the VCenter class.
+ * Initializes a new instance of the UpdateMobilityServiceRequest class.
  * @constructor
- * vCenter definition.
+ * Request to update the mobility service on a protected item.
  *
- * @member {object} [properties] VCenter related data.
- * @member {string} [properties.friendlyName] Friendly name of the vCenter.
- * @member {string} [properties.internalId] VCenter internal ID.
- * @member {date} [properties.lastHeartbeat] The time when the last heartbeat
- * was reveived by vCenter.
- * @member {string} [properties.discoveryStatus] The VCenter discovery status.
- * @member {string} [properties.processServerId] The process server Id.
- * @member {string} [properties.ipAddress] The IP address of the vCenter.
- * @member {string} [properties.infrastructureId] The infrastructure Id of
- * vCenter.
- * @member {string} [properties.port] The port number for discovery.
- * @member {string} [properties.runAsAccountId] The account Id which has
- * privileges to discover the vCenter.
- * @member {string} [properties.fabricArmResourceName] The ARM resource name of
- * the fabric containing this VCenter.
+ * @member {object} [properties] The properties of the update mobility service
+ * request.
+ * @member {string} [properties.runAsAccountId] The CS run as account Id.
  */
-export interface VCenter extends Resource {
-  properties?: VCenterProperties;
+export interface UpdateMobilityServiceRequest {
+  properties?: UpdateMobilityServiceRequestProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the AddVCenterRequestProperties class.
+ * Initializes a new instance of the UpdateNetworkMappingInputProperties class.
  * @constructor
- * The properties of an add vCenter request.
+ * Common input details for network mapping operation.
  *
- * @member {string} [friendlyName] The friendly name of the vCenter.
- * @member {string} [ipAddress] The IP address of the vCenter to be discovered.
- * @member {string} [processServerId] The process server Id from where the
- * discovery is orchestrated.
- * @member {string} [port] The port number for discovery.
- * @member {string} [runAsAccountId] The account Id which has privileges to
- * discover the vCenter.
+ * @member {string} [recoveryFabricName] Recovery fabric name.
+ * @member {string} [recoveryNetworkId] Recovery network Id.
+ * @member {object} [fabricSpecificDetails] Fabrics specific input network Id.
+ * @member {string} [fabricSpecificDetails.instanceType] Polymorphic
+ * Discriminator
  */
-export interface AddVCenterRequestProperties {
-  friendlyName?: string;
-  ipAddress?: string;
-  processServerId?: string;
-  port?: string;
-  runAsAccountId?: string;
+export interface UpdateNetworkMappingInputProperties {
+  recoveryFabricName?: string;
+  recoveryNetworkId?: string;
+  fabricSpecificDetails?: FabricSpecificUpdateNetworkMappingInput;
 }
 
 /**
  * @class
- * Initializes a new instance of the AddVCenterRequest class.
+ * Initializes a new instance of the UpdateNetworkMappingInput class.
  * @constructor
- * Input required to add vCenter.
+ * Update network mapping input.
  *
- * @member {object} [properties] The properties of an add vCenter request.
- * @member {string} [properties.friendlyName] The friendly name of the vCenter.
- * @member {string} [properties.ipAddress] The IP address of the vCenter to be
- * discovered.
- * @member {string} [properties.processServerId] The process server Id from
- * where the discovery is orchestrated.
- * @member {string} [properties.port] The port number for discovery.
- * @member {string} [properties.runAsAccountId] The account Id which has
- * privileges to discover the vCenter.
+ * @member {object} [properties] The input properties needed to update network
+ * mapping.
+ * @member {string} [properties.recoveryFabricName] Recovery fabric name.
+ * @member {string} [properties.recoveryNetworkId] Recovery network Id.
+ * @member {object} [properties.fabricSpecificDetails] Fabrics specific input
+ * network Id.
+ * @member {string} [properties.fabricSpecificDetails.instanceType] Polymorphic
+ * Discriminator
  */
-export interface AddVCenterRequest {
-  properties?: AddVCenterRequestProperties;
+export interface UpdateNetworkMappingInput {
+  properties?: UpdateNetworkMappingInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdatePolicyInputProperties class.
+ * @constructor
+ * Policy update properties.
+ *
+ * @member {object} [replicationProviderSettings] The
+ * ReplicationProviderSettings.
+ * @member {string} [replicationProviderSettings.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface UpdatePolicyInputProperties {
+  replicationProviderSettings?: PolicyProviderSpecificInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdatePolicyInput class.
+ * @constructor
+ * Update policy input.
+ *
+ * @member {object} [properties] The ReplicationProviderSettings.
+ * @member {object} [properties.replicationProviderSettings] The
+ * ReplicationProviderSettings.
+ * @member {string} [properties.replicationProviderSettings.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface UpdatePolicyInput {
+  properties?: UpdatePolicyInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateProtectionContainerMappingInputProperties class.
+ * @constructor
+ * Container pairing update input.
+ *
+ * @member {object} [providerSpecificInput] Provider specific input for
+ * updating protection container mapping.
+ * @member {string} [providerSpecificInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface UpdateProtectionContainerMappingInputProperties {
+  providerSpecificInput?: ReplicationProviderSpecificUpdateContainerMappingInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateProtectionContainerMappingInput class.
+ * @constructor
+ * Container pairing update input.
+ *
+ * @member {object} [properties] Update protection container mapping input
+ * properties.
+ * @member {object} [properties.providerSpecificInput] Provider specific input
+ * for updating protection container mapping.
+ * @member {string} [properties.providerSpecificInput.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface UpdateProtectionContainerMappingInput {
+  properties?: UpdateProtectionContainerMappingInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateRecoveryPlanInputProperties class.
+ * @constructor
+ * Recovery plan updation properties.
+ *
+ * @member {array} [groups] The recovery plan groups.
+ */
+export interface UpdateRecoveryPlanInputProperties {
+  groups?: RecoveryPlanGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateRecoveryPlanInput class.
+ * @constructor
+ * Update recovery plan input class.
+ *
+ * @member {object} [properties] Recovery plan update properties.
+ * @member {array} [properties.groups] The recovery plan groups.
+ */
+export interface UpdateRecoveryPlanInput {
+  properties?: UpdateRecoveryPlanInputProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMNicInputDetails class.
+ * @constructor
+ * Hyper V VM network input details.
+ *
+ * @member {string} [nicId] The nic Id.
+ * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
+ * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
+ * @member {string} [selectionType] Selection type for failover.
+ * @member {boolean} [enableAcceleratedNetworkingOnRecovery] Whether the NIC
+ * has accerated networking enabled.
+ */
+export interface VMNicInputDetails {
+  nicId?: string;
+  recoveryVMSubnetName?: string;
+  replicaNicStaticIPAddress?: string;
+  selectionType?: string;
+  enableAcceleratedNetworkingOnRecovery?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateReplicationProtectedItemInputProperties class.
+ * @constructor
+ * Update protected item input properties.
+ *
+ * @member {string} [recoveryAzureVMName] Target azure VM name given by the
+ * user.
+ * @member {string} [recoveryAzureVMSize] Target Azure Vm size.
+ * @member {string} [selectedRecoveryAzureNetworkId] Target Azure Network Id.
+ * @member {string} [selectedSourceNicId] The selected source nic Id which will
+ * be used as the primary nic during failover.
+ * @member {string} [enableRdpOnTargetOption] The selected option to enable
+ * RDP\SSH on target vm after failover. String value of
+ * {SrsDataContract.EnableRDPOnTargetOption} enum.
+ * @member {array} [vmNics] The list of vm nic details.
+ * @member {string} [licenseType] License type. Possible values include:
+ * 'NotSpecified', 'NoLicenseType', 'WindowsServer'
+ * @member {string} [recoveryAvailabilitySetId] The target availability set id.
+ * @member {object} [providerSpecificDetails] The provider specific input to
+ * update replication protected item.
+ * @member {string} [providerSpecificDetails.instanceType] Polymorphic
+ * Discriminator
+ */
+export interface UpdateReplicationProtectedItemInputProperties {
+  recoveryAzureVMName?: string;
+  recoveryAzureVMSize?: string;
+  selectedRecoveryAzureNetworkId?: string;
+  selectedSourceNicId?: string;
+  enableRdpOnTargetOption?: string;
+  vmNics?: VMNicInputDetails[];
+  licenseType?: string;
+  recoveryAvailabilitySetId?: string;
+  providerSpecificDetails?: UpdateReplicationProtectedItemProviderInput;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateReplicationProtectedItemInput class.
+ * @constructor
+ * Update replication protected item input.
+ *
+ * @member {object} [properties] Update replication protected item properties.
+ * @member {string} [properties.recoveryAzureVMName] Target azure VM name given
+ * by the user.
+ * @member {string} [properties.recoveryAzureVMSize] Target Azure Vm size.
+ * @member {string} [properties.selectedRecoveryAzureNetworkId] Target Azure
+ * Network Id.
+ * @member {string} [properties.selectedSourceNicId] The selected source nic Id
+ * which will be used as the primary nic during failover.
+ * @member {string} [properties.enableRdpOnTargetOption] The selected option to
+ * enable RDP\SSH on target vm after failover. String value of
+ * {SrsDataContract.EnableRDPOnTargetOption} enum.
+ * @member {array} [properties.vmNics] The list of vm nic details.
+ * @member {string} [properties.licenseType] License type. Possible values
+ * include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'
+ * @member {string} [properties.recoveryAvailabilitySetId] The target
+ * availability set id.
+ * @member {object} [properties.providerSpecificDetails] The provider specific
+ * input to update replication protected item.
+ * @member {string} [properties.providerSpecificDetails.instanceType]
+ * Polymorphic Discriminator
+ */
+export interface UpdateReplicationProtectedItemInput {
+  properties?: UpdateReplicationProtectedItemInputProperties;
 }
 
 /**
@@ -3276,95 +6521,6 @@ export interface UpdateVCenterRequest {
 
 /**
  * @class
- * Initializes a new instance of the RenewCertificateInputProperties class.
- * @constructor
- * Renew Certificate input properties.
- *
- * @member {string} [renewCertificateType] Renew certificate type.
- */
-export interface RenewCertificateInputProperties {
-  renewCertificateType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RenewCertificateInput class.
- * @constructor
- * Certificate renewal input.
- *
- * @member {object} [properties] Renew certificate input properties.
- * @member {string} [properties.renewCertificateType] Renew certificate type.
- */
-export interface RenewCertificateInput {
-  properties?: RenewCertificateInputProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProtectedItemsQueryParameter class.
- * @constructor
- * Query parameter to enumerate protected items.
- *
- * @member {string} [sourceFabricName] The source fabric name filter.
- * @member {string} [recoveryPlanName] The recovery plan filter.
- * @member {string} [vCenterName] The vCenter name filter.
- */
-export interface ProtectedItemsQueryParameter {
-  sourceFabricName?: string;
-  recoveryPlanName?: string;
-  vCenterName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HealthErrorSummary class.
- * @constructor
- * class to define the summary of the health error details.
- *
- * @member {string} [summaryCode] The code of the health error.
- * @member {string} [category] The category of the health error. Possible
- * values include: 'Replication', 'TestFailover', 'Configuration'
- * @member {string} [severity] Severity of error. Possible values include:
- * 'NONE', 'Warning', 'Error', 'Info'
- * @member {string} [summaryMessage] The summary message of the health error.
- * @member {string} [affectedResourceType] The type of affected ARM resource.
- * @member {string} [affectedResourceSubtype] The sub type of any subcomponent
- * within the ARM resource that this might be applicable. Value remains null if
- * not applicable.
- * @member {array} [affectedResourceCorrelationIds] The list of affected
- * resource correlation Ids. This can be used to uniquely identify the count of
- * items affected by a specific category and severity as well as count of item
- * affected by an specific issue.
- */
-export interface HealthErrorSummary {
-  summaryCode?: string;
-  category?: string;
-  severity?: string;
-  summaryMessage?: string;
-  affectedResourceType?: string;
-  affectedResourceSubtype?: string;
-  affectedResourceCorrelationIds?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceHealthSummary class.
- * @constructor
- * Base class to define the health summary of the resources contained under an
- * Arm resource.
- *
- * @member {number} [resourceCount] The count of total resources umder the
- * container.
- * @member {array} [issues] The list of summary of health errors across the
- * resources under the container.
- */
-export interface ResourceHealthSummary {
-  resourceCount?: number;
-  issues?: HealthErrorSummary[];
-}
-
-/**
- * @class
  * Initializes a new instance of the VaultHealthProperties class.
  * @constructor
  * class to define the health summary of the Vault.
@@ -3382,11 +6538,18 @@ export interface ResourceHealthSummary {
  * umder the container.
  * @member {array} [fabricsHealth.issues] The list of summary of health errors
  * across the resources under the container.
+ * @member {object} [containersHealth] The list of the health detail of the
+ * containers in the vault.
+ * @member {number} [containersHealth.resourceCount] The count of total
+ * resources umder the container.
+ * @member {array} [containersHealth.issues] The list of summary of health
+ * errors across the resources under the container.
  */
 export interface VaultHealthProperties {
   vaultErrors?: HealthError[];
   protectedItemsHealth?: ResourceHealthSummary;
   fabricsHealth?: ResourceHealthSummary;
+  containersHealth?: ResourceHealthSummary;
 }
 
 /**
@@ -3409,6 +6572,12 @@ export interface VaultHealthProperties {
  * resources umder the container.
  * @member {array} [properties.fabricsHealth.issues] The list of summary of
  * health errors across the resources under the container.
+ * @member {object} [properties.containersHealth] The list of the health detail
+ * of the containers in the vault.
+ * @member {number} [properties.containersHealth.resourceCount] The count of
+ * total resources umder the container.
+ * @member {array} [properties.containersHealth.issues] The list of summary of
+ * health errors across the resources under the container.
  */
 export interface VaultHealthDetails extends Resource {
   properties?: VaultHealthProperties;
@@ -3416,49 +6585,99 @@ export interface VaultHealthDetails extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the AzureToAzureNetworkMappingSettings class.
+ * Initializes a new instance of the VCenterProperties class.
  * @constructor
- * A2A Network Mapping fabric specific settings.
+ * vCenter properties.
  *
- * @member {string} [primaryFabricLocation] The primary fabric location.
- * @member {string} [recoveryFabricLocation] The recovery fabric location.
+ * @member {string} [friendlyName] Friendly name of the vCenter.
+ * @member {string} [internalId] VCenter internal ID.
+ * @member {date} [lastHeartbeat] The time when the last heartbeat was reveived
+ * by vCenter.
+ * @member {string} [discoveryStatus] The VCenter discovery status.
+ * @member {string} [processServerId] The process server Id.
+ * @member {string} [ipAddress] The IP address of the vCenter.
+ * @member {string} [infrastructureId] The infrastructure Id of vCenter.
+ * @member {string} [port] The port number for discovery.
+ * @member {string} [runAsAccountId] The account Id which has privileges to
+ * discover the vCenter.
+ * @member {string} [fabricArmResourceName] The ARM resource name of the fabric
+ * containing this VCenter.
+ * @member {array} [healthErrors] The health errors for this VCenter.
  */
-export interface AzureToAzureNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
-  primaryFabricLocation?: string;
-  recoveryFabricLocation?: string;
+export interface VCenterProperties {
+  friendlyName?: string;
+  internalId?: string;
+  lastHeartbeat?: Date;
+  discoveryStatus?: string;
+  processServerId?: string;
+  ipAddress?: string;
+  infrastructureId?: string;
+  port?: string;
+  runAsAccountId?: string;
+  fabricArmResourceName?: string;
+  healthErrors?: HealthError[];
 }
 
 /**
  * @class
- * Initializes a new instance of the VmmToAzureNetworkMappingSettings class.
+ * Initializes a new instance of the VCenter class.
  * @constructor
- * E2A Network Mapping fabric specific settings.
+ * vCenter definition.
  *
+ * @member {object} [properties] VCenter related data.
+ * @member {string} [properties.friendlyName] Friendly name of the vCenter.
+ * @member {string} [properties.internalId] VCenter internal ID.
+ * @member {date} [properties.lastHeartbeat] The time when the last heartbeat
+ * was reveived by vCenter.
+ * @member {string} [properties.discoveryStatus] The VCenter discovery status.
+ * @member {string} [properties.processServerId] The process server Id.
+ * @member {string} [properties.ipAddress] The IP address of the vCenter.
+ * @member {string} [properties.infrastructureId] The infrastructure Id of
+ * vCenter.
+ * @member {string} [properties.port] The port number for discovery.
+ * @member {string} [properties.runAsAccountId] The account Id which has
+ * privileges to discover the vCenter.
+ * @member {string} [properties.fabricArmResourceName] The ARM resource name of
+ * the fabric containing this VCenter.
+ * @member {array} [properties.healthErrors] The health errors for this
+ * VCenter.
  */
-export interface VmmToAzureNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
+export interface VCenter extends Resource {
+  properties?: VCenterProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the VmmToVmmNetworkMappingSettings class.
+ * Initializes a new instance of the VirtualMachineTaskDetails class.
  * @constructor
- * E2E Network Mapping fabric specific settings.
+ * This class represents the virtual machine task details.
  *
+ * @member {string} [skippedReason] The skipped reason.
+ * @member {string} [skippedReasonString] The skipped reason string.
+ * @member {object} [jobTask] The job entity.
+ * @member {string} [jobTask.jobId] The job id.
+ * @member {string} [jobTask.jobFriendlyName] The job display name.
+ * @member {string} [jobTask.targetObjectId] The object id.
+ * @member {string} [jobTask.targetObjectName] The object name.
+ * @member {string} [jobTask.targetInstanceType] The workflow affected object
+ * type.
+ * @member {string} [jobTask.jobScenarioName] The job name. Enum type
+ * ScenarioName.
  */
-export interface VmmToVmmNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
+export interface VirtualMachineTaskDetails extends TaskTypeDetails {
+  skippedReason?: string;
+  skippedReasonString?: string;
+  jobTask?: JobEntity;
 }
 
 /**
  * @class
- * Initializes a new instance of the AzureToAzureCreateNetworkMappingInput class.
+ * Initializes a new instance of the VmmDetails class.
  * @constructor
- * Create network mappings input properties/behaviour specific to Azure to
- * Azure Network mapping.
+ * VMM fabric specific details.
  *
- * @member {string} [primaryNetworkId] The primary azure vnet Id.
  */
-export interface AzureToAzureCreateNetworkMappingInput extends FabricSpecificCreateNetworkMappingInput {
-  primaryNetworkId?: string;
+export interface VmmDetails extends FabricSpecificDetails {
 }
 
 /**
@@ -3474,25 +6693,12 @@ export interface VmmToAzureCreateNetworkMappingInput extends FabricSpecificCreat
 
 /**
  * @class
- * Initializes a new instance of the VmmToVmmCreateNetworkMappingInput class.
+ * Initializes a new instance of the VmmToAzureNetworkMappingSettings class.
  * @constructor
- * Create network mappings input properties/behaviour specific to vmm to vmm
- * Network mapping.
+ * E2A Network Mapping fabric specific settings.
  *
  */
-export interface VmmToVmmCreateNetworkMappingInput extends FabricSpecificCreateNetworkMappingInput {
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureToAzureUpdateNetworkMappingInput class.
- * @constructor
- * Updates network mappings input.
- *
- * @member {string} [primaryNetworkId] The primary azure vnet Id.
- */
-export interface AzureToAzureUpdateNetworkMappingInput extends FabricSpecificUpdateNetworkMappingInput {
-  primaryNetworkId?: string;
+export interface VmmToAzureNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
 }
 
 /**
@@ -3507,6 +6713,27 @@ export interface VmmToAzureUpdateNetworkMappingInput extends FabricSpecificUpdat
 
 /**
  * @class
+ * Initializes a new instance of the VmmToVmmCreateNetworkMappingInput class.
+ * @constructor
+ * Create network mappings input properties/behaviour specific to vmm to vmm
+ * Network mapping.
+ *
+ */
+export interface VmmToVmmCreateNetworkMappingInput extends FabricSpecificCreateNetworkMappingInput {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VmmToVmmNetworkMappingSettings class.
+ * @constructor
+ * E2E Network Mapping fabric specific settings.
+ *
+ */
+export interface VmmToVmmNetworkMappingSettings extends NetworkMappingFabricSpecificSettings {
+}
+
+/**
+ * @class
  * Initializes a new instance of the VmmToVmmUpdateNetworkMappingInput class.
  * @constructor
  * Update network mappings input properties/behaviour specific to vmm to vmm.
@@ -3517,205 +6744,96 @@ export interface VmmToVmmUpdateNetworkMappingInput extends FabricSpecificUpdateN
 
 /**
  * @class
- * Initializes a new instance of the AzureFabricSpecificDetails class.
+ * Initializes a new instance of the VmmVirtualMachineDetails class.
  * @constructor
- * Azure Fabric Specific Details.
+ * VMM fabric provider specific VM settings.
  *
- * @member {string} [location] The Location for the Azure fabric.
- * @member {array} [containerIds] The container Ids for the Azure fabric.
+ * @member {string} [sourceItemId] The source id of the object.
+ * @member {string} [generation] The id of the object in fabric.
+ * @member {object} [osDetails] The Last replication time.
+ * @member {string} [osDetails.osType] VM Disk details.
+ * @member {string} [osDetails.productType] Product type.
+ * @member {string} [osDetails.osEdition] The OSEdition.
+ * @member {string} [osDetails.oSVersion] The OS Version.
+ * @member {string} [osDetails.oSMajorVersion] The OS Major Version.
+ * @member {string} [osDetails.oSMinorVersion] The OS Minor Version.
+ * @member {array} [diskDetails] The Last successful failover time.
+ * @member {string} [hasPhysicalDisk] A value indicating whether the VM has a
+ * physical disk attached. String value of {SrsDataContract.PresenceStatus}
+ * enum. Possible values include: 'Unknown', 'Present', 'NotPresent'
+ * @member {string} [hasFibreChannelAdapter] A value indicating whether the VM
+ * has a fibre channel adapter attached. String value of
+ * {SrsDataContract.PresenceStatus} enum. Possible values include: 'Unknown',
+ * 'Present', 'NotPresent'
+ * @member {string} [hasSharedVhd] A value indicating whether the VM has a
+ * shared VHD attached. String value of {SrsDataContract.PresenceStatus} enum.
+ * Possible values include: 'Unknown', 'Present', 'NotPresent'
  */
-export interface AzureFabricSpecificDetails extends FabricSpecificDetails {
-  location?: string;
-  containerIds?: string[];
+export interface VmmVirtualMachineDetails extends ConfigurationSettings {
+  sourceItemId?: string;
+  generation?: string;
+  osDetails?: OSDetails;
+  diskDetails?: DiskDetails[];
+  hasPhysicalDisk?: string;
+  hasFibreChannelAdapter?: string;
+  hasSharedVhd?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the VmmDetails class.
+ * Initializes a new instance of the VmNicUpdatesTaskDetails class.
  * @constructor
- * VMM fabric specific details.
+ * This class represents the vm NicUpdates task details.
  *
+ * @member {string} [vmId] Virtual machine Id.
+ * @member {string} [nicId] Nic Id.
+ * @member {string} [name] Name of the Nic.
  */
-export interface VmmDetails extends FabricSpecificDetails {
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVSiteDetails class.
- * @constructor
- * HyperVSite fabric specific details.
- *
- */
-export interface HyperVSiteDetails extends FabricSpecificDetails {
-}
-
-/**
- * @class
- * Initializes a new instance of the MobilityServiceUpdate class.
- * @constructor
- * The Mobility Service update details.
- *
- * @member {string} [version] The version of the latest update.
- * @member {string} [rebootStatus] The reboot status of the update - whether it
- * is required or not.
- * @member {string} [osType] The OS type.
- */
-export interface MobilityServiceUpdate {
-  version?: string;
-  rebootStatus?: string;
-  osType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProcessServer class.
- * @constructor
- * Details of the Process Server.
- *
- * @member {string} [friendlyName] The Process Server's friendly name.
- * @member {string} [id] The Process Server Id.
- * @member {string} [ipAddress] The IP address of the server.
- * @member {string} [osType] The OS type of the server.
- * @member {string} [agentVersion] The version of the scout component on the
- * server.
- * @member {date} [lastHeartbeat] The last heartbeat received from the server.
- * @member {string} [versionStatus] Version status
- * @member {array} [mobilityServiceUpdates] The list of the mobility service
- * updates available on the Process Server.
- * @member {string} [hostId] The agent generated Id.
- * @member {string} [machineCount] The servers configured with this PS.
- * @member {string} [replicationPairCount] The number of replication pairs
- * configured in this PS.
- * @member {string} [systemLoad] The percentage of the system load.
- * @member {string} [systemLoadStatus] The system load status.
- * @member {string} [cpuLoad] The percentage of the CPU load.
- * @member {string} [cpuLoadStatus] The CPU load status.
- * @member {number} [totalMemoryInBytes] The total memory.
- * @member {number} [availableMemoryInBytes] The available memory.
- * @member {string} [memoryUsageStatus] The memory usage status.
- * @member {number} [totalSpaceInBytes] The total space.
- * @member {number} [availableSpaceInBytes] The available space.
- * @member {string} [spaceUsageStatus] The space usage status.
- * @member {string} [psServiceStatus] The PS service status.
- * @member {date} [sslCertExpiryDate] The PS SSL cert expiry date.
- * @member {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
- * @member {string} [osVersion] OS Version of the process server. Note: This
- * will get populated if user has CS version greater than 9.12.0.0.
- */
-export interface ProcessServer {
-  friendlyName?: string;
-  id?: string;
-  ipAddress?: string;
-  osType?: string;
-  agentVersion?: string;
-  lastHeartbeat?: Date;
-  versionStatus?: string;
-  mobilityServiceUpdates?: MobilityServiceUpdate[];
-  hostId?: string;
-  machineCount?: string;
-  replicationPairCount?: string;
-  systemLoad?: string;
-  systemLoadStatus?: string;
-  cpuLoad?: string;
-  cpuLoadStatus?: string;
-  totalMemoryInBytes?: number;
-  availableMemoryInBytes?: number;
-  memoryUsageStatus?: string;
-  totalSpaceInBytes?: number;
-  availableSpaceInBytes?: number;
-  spaceUsageStatus?: string;
-  psServiceStatus?: string;
-  sslCertExpiryDate?: Date;
-  sslCertExpiryRemainingDays?: number;
-  osVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RetentionVolume class.
- * @constructor
- * The retention details of the MT.
- *
- * @member {string} [volumeName] The volume name.
- * @member {number} [capacityInBytes] The volume capacity.
- * @member {number} [freeSpaceInBytes] The free space available in this volume.
- * @member {number} [thresholdPercentage] The threshold percentage.
- */
-export interface RetentionVolume {
-  volumeName?: string;
-  capacityInBytes?: number;
-  freeSpaceInBytes?: number;
-  thresholdPercentage?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataStore class.
- * @constructor
- * The datastore details of the MT.
- *
- * @member {string} [symbolicName] The symbolic name of data store.
- * @member {string} [uuid] The uuid of data store.
- * @member {string} [capacity] The capacity of data store in GBs.
- * @member {string} [freeSpace] The free space of data store in GBs.
- * @member {string} [type] The type of data store.
- */
-export interface DataStore {
-  symbolicName?: string;
-  uuid?: string;
-  capacity?: string;
-  freeSpace?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MasterTargetServer class.
- * @constructor
- * Details of a Master Target Server.
- *
- * @member {string} [id] The server Id.
- * @member {string} [ipAddress] The IP address of the server.
- * @member {string} [name] The server name.
- * @member {string} [osType] The OS type of the server.
- * @member {string} [agentVersion] The version of the scout component on the
- * server.
- * @member {date} [lastHeartbeat] The last heartbeat received from the server.
- * @member {string} [versionStatus] Version status
- * @member {array} [retentionVolumes] The retention volumes of Master target
- * Server.
- * @member {array} [dataStores] The list of data stores in the fabric.
- * @member {array} [validationErrors] Validation errors.
- * @member {number} [diskCount] Disk count of the master target.
- * @member {string} [osVersion] OS Version of the master target.
- */
-export interface MasterTargetServer {
-  id?: string;
-  ipAddress?: string;
+export interface VmNicUpdatesTaskDetails extends TaskTypeDetails {
+  vmId?: string;
+  nicId?: string;
   name?: string;
-  osType?: string;
-  agentVersion?: string;
-  lastHeartbeat?: Date;
-  versionStatus?: string;
-  retentionVolumes?: RetentionVolume[];
-  dataStores?: DataStore[];
-  validationErrors?: HealthError[];
-  diskCount?: number;
-  osVersion?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the RunAsAccount class.
+ * Initializes a new instance of the VMwareCbtPolicyCreationInput class.
  * @constructor
- * CS Accounts Details.
+ * VMware Cbt Policy creation input.
  *
- * @member {string} [accountId] The CS RunAs account Id.
- * @member {string} [accountName] The CS RunAs account name.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency (in minutes).
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency (in minutes).
  */
-export interface RunAsAccount {
-  accountId?: string;
-  accountName?: string;
+export interface VMwareCbtPolicyCreationInput extends PolicyProviderSpecificInput {
+  recoveryPointHistory?: number;
+  crashConsistentFrequencyInMinutes?: number;
+  appConsistentFrequencyInMinutes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VmwareCbtPolicyDetails class.
+ * @constructor
+ * VMware Cbt specific policy details.
+ *
+ * @member {number} [recoveryPointThresholdInMinutes] The recovery point
+ * threshold in minutes.
+ * @member {number} [recoveryPointHistory] The duration in minutes until which
+ * the recovery points need to be stored.
+ * @member {number} [appConsistentFrequencyInMinutes] The app consistent
+ * snapshot frequency in minutes.
+ * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
+ * snapshot frequency in minutes.
+ */
+export interface VmwareCbtPolicyDetails extends PolicyProviderSpecificDetails {
+  recoveryPointThresholdInMinutes?: number;
+  recoveryPointHistory?: number;
+  appConsistentFrequencyInMinutes?: number;
+  crashConsistentFrequencyInMinutes?: number;
 }
 
 /**
@@ -3759,6 +6877,13 @@ export interface RunAsAccount {
  * @member {date} [sslCertExpiryDate] CS SSL cert expiry date.
  * @member {number} [sslCertExpiryRemainingDays] CS SSL cert expiry date.
  * @member {string} [psTemplateVersion] PS template version.
+ * @member {date} [agentExpiryDate] Agent expiry date.
+ * @member {object} [agentVersionDetails] The agent version details.
+ * @member {string} [agentVersionDetails.version] The agent version.
+ * @member {date} [agentVersionDetails.expiryDate] Version expiry date.
+ * @member {string} [agentVersionDetails.status] A value indicating whether
+ * security update required. Possible values include: 'Supported',
+ * 'NotSupported', 'Deprecated', 'UpdateRequired', 'SecurityUpdateRequired'
  */
 export interface VMwareDetails extends FabricSpecificDetails {
   processServers?: ProcessServer[];
@@ -3791,6 +6916,22 @@ export interface VMwareDetails extends FabricSpecificDetails {
   sslCertExpiryDate?: Date;
   sslCertExpiryRemainingDays?: number;
   psTemplateVersion?: string;
+  agentExpiryDate?: Date;
+  agentVersionDetails?: VersionDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VMwareV2FabricCreationInput class.
+ * @constructor
+ * Fabric provider specific settings.
+ *
+ * @member {string} [keyVaultUrl] The Key Vault URL.
+ * @member {string} [keyVaultResourceArmId] The Key Vault ARM Id.
+ */
+export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput {
+  keyVaultUrl?: string;
+  keyVaultResourceArmId?: string;
 }
 
 /**
@@ -3803,1382 +6944,14 @@ export interface VMwareDetails extends FabricSpecificDetails {
  * the SRS Service.
  * @member {string} [rcmServiceEndpoint] The endpoint for making requests to
  * the RCM Service.
+ * @member {string} [keyVaultUrl] The Key Vault URL.
+ * @member {string} [keyVaultResourceArmId] The Key Vault ARM Id.
  */
 export interface VMwareV2FabricSpecificDetails extends FabricSpecificDetails {
   srsServiceEndpoint?: string;
   rcmServiceEndpoint?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VMNicDetails class.
- * @constructor
- * Hyper V VM network details.
- *
- * @member {string} [nicId] The nic Id.
- * @member {string} [replicaNicId] The replica nic Id.
- * @member {string} [sourceNicArmId] The source nic ARM Id.
- * @member {string} [vMSubnetName] VM subnet name.
- * @member {string} [vMNetworkName] VM network name.
- * @member {string} [recoveryVMNetworkId] Recovery VM network Id.
- * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
- * @member {string} [ipAddressType] Ip address type.
- * @member {string} [primaryNicStaticIPAddress] Primary nic static IP address.
- * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
- * @member {string} [selectionType] Selection type for failover.
- * @member {string} [recoveryNicIpAddressType] IP allocation type for recovery
- * VM.
- */
-export interface VMNicDetails {
-  nicId?: string;
-  replicaNicId?: string;
-  sourceNicArmId?: string;
-  vMSubnetName?: string;
-  vMNetworkName?: string;
-  recoveryVMNetworkId?: string;
-  recoveryVMSubnetName?: string;
-  ipAddressType?: string;
-  primaryNicStaticIPAddress?: string;
-  replicaNicStaticIPAddress?: string;
-  selectionType?: string;
-  recoveryNicIpAddressType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InitialReplicationDetails class.
- * @constructor
- * Initial replication details.
- *
- * @member {string} [initialReplicationType] Initial replication type.
- * @member {string} [initialReplicationProgressPercentage] The initial
- * replication progress percentage.
- */
-export interface InitialReplicationDetails {
-  initialReplicationType?: string;
-  initialReplicationProgressPercentage?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskDetails class.
- * @constructor
- * Onprem disk details data.
- *
- * @member {number} [maxSizeMB] The hard disk max size in MB.
- * @member {string} [vhdType] The type of the volume.
- * @member {string} [vhdId] The VHD Id.
- * @member {string} [vhdName] The VHD name.
- */
-export interface DiskDetails {
-  maxSizeMB?: number;
-  vhdType?: string;
-  vhdId?: string;
-  vhdName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaBaseReplicationDetails class.
- * @constructor
- * Hyper V replica provider specific settings base class.
- *
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
- * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
- * replication progress percentage.
- * @member {array} [vMDiskDetails] VM disk details.
- */
-export interface HyperVReplicaBaseReplicationDetails extends ReplicationProviderSpecificSettings {
-  lastReplicatedTime?: Date;
-  vmNics?: VMNicDetails[];
-  vmId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  initialReplicationDetails?: InitialReplicationDetails;
-  vMDiskDetails?: DiskDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaReplicationDetails class.
- * @constructor
- * HyperV replica 2012 replication details.
- *
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
- * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
- * replication progress percentage.
- * @member {array} [vMDiskDetails] VM disk details.
- */
-export interface HyperVReplicaReplicationDetails extends ReplicationProviderSpecificSettings {
-  lastReplicatedTime?: Date;
-  vmNics?: VMNicDetails[];
-  vmId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  initialReplicationDetails?: InitialReplicationDetails;
-  vMDiskDetails?: DiskDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaBlueReplicationDetails class.
- * @constructor
- * HyperV replica 2012 R2 (Blue) replication details.
- *
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
- * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
- * replication progress percentage.
- * @member {array} [vMDiskDetails] VM disk details.
- */
-export interface HyperVReplicaBlueReplicationDetails extends ReplicationProviderSpecificSettings {
-  lastReplicatedTime?: Date;
-  vmNics?: VMNicDetails[];
-  vmId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  initialReplicationDetails?: InitialReplicationDetails;
-  vMDiskDetails?: DiskDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureVmDiskDetails class.
- * @constructor
- * Disk details for E2A provider.
- *
- * @member {string} [vhdType] VHD type.
- * @member {string} [vhdId] The VHD id.
- * @member {string} [vhdName] VHD name.
- * @member {string} [maxSizeMB] Max side in MB.
- * @member {string} [targetDiskLocation] Blob uri of the Azure disk.
- * @member {string} [targetDiskName] The target Azure disk name.
- * @member {string} [lunId] Ordinal\LunId of the disk for the Azure VM.
- */
-export interface AzureVmDiskDetails {
-  vhdType?: string;
-  vhdId?: string;
-  vhdName?: string;
-  maxSizeMB?: string;
-  targetDiskLocation?: string;
-  targetDiskName?: string;
-  lunId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OSDetails class.
- * @constructor
- * Disk Details.
- *
- * @member {string} [osType] VM Disk details.
- * @member {string} [productType] Product type.
- * @member {string} [osEdition] The OSEdition.
- * @member {string} [oSVersion] The OS Version.
- * @member {string} [oSMajorVersion] The OS Major Version.
- * @member {string} [oSMinorVersion] The OS Minor Version.
- */
-export interface OSDetails {
-  osType?: string;
-  productType?: string;
-  osEdition?: string;
-  oSVersion?: string;
-  oSMajorVersion?: string;
-  oSMinorVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureReplicationDetails class.
- * @constructor
- * Hyper V Replica Azure provider specific settings.
- *
- * @member {array} [azureVMDiskDetails] Azure VM Disk details.
- * @member {string} [recoveryAzureVMName] Recovery Azure given name.
- * @member {string} [recoveryAzureVMSize] The Recovery Azure VM size.
- * @member {string} [recoveryAzureStorageAccount] The recovery Azure storage
- * account.
- * @member {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
- * storage account used for replication. This will be set to null if no log
- * storage account was provided during enable protection.
- * @member {date} [lastReplicatedTime] The Last replication time.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {object} [initialReplicationDetails] Initial replication details.
- * @member {string} [initialReplicationDetails.initialReplicationType] Initial
- * replication type.
- * @member {string}
- * [initialReplicationDetails.initialReplicationProgressPercentage] The initial
- * replication progress percentage.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [selectedRecoveryAzureNetworkId] The selected recovery
- * azure network Id.
- * @member {string} [encryption] The encryption info.
- * @member {object} [oSDetails] The operating system info.
- * @member {string} [oSDetails.osType] VM Disk details.
- * @member {string} [oSDetails.productType] Product type.
- * @member {string} [oSDetails.osEdition] The OSEdition.
- * @member {string} [oSDetails.oSVersion] The OS Version.
- * @member {string} [oSDetails.oSMajorVersion] The OS Major Version.
- * @member {string} [oSDetails.oSMinorVersion] The OS Minor Version.
- * @member {number} [sourceVmRAMSizeInMB] The RAM size of the VM on the primary
- * side.
- * @member {number} [sourceVmCPUCount] The CPU count of the VM on the primary
- * side.
- * @member {string} [enableRDPOnTargetOption] The selected option to enable
- * RDP\SSH on target vm after failover. String value of
- * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {string} [recoveryAzureResourceGroupId] The target resource group
- * Id.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set
- * Id.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- * @member {string} [licenseType] License Type of the VM to be used.
- */
-export interface HyperVReplicaAzureReplicationDetails extends ReplicationProviderSpecificSettings {
-  azureVMDiskDetails?: AzureVmDiskDetails[];
-  recoveryAzureVMName?: string;
-  recoveryAzureVMSize?: string;
-  recoveryAzureStorageAccount?: string;
-  recoveryAzureLogStorageAccountId?: string;
-  lastReplicatedTime?: Date;
-  vmId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  initialReplicationDetails?: InitialReplicationDetails;
-  vmNics?: VMNicDetails[];
-  selectedRecoveryAzureNetworkId?: string;
-  encryption?: string;
-  oSDetails?: OSDetails;
-  sourceVmRAMSizeInMB?: number;
-  sourceVmCPUCount?: number;
-  enableRDPOnTargetOption?: string;
-  recoveryAzureResourceGroupId?: string;
-  recoveryAvailabilitySetId?: string;
-  useManagedDisks?: string;
-  licenseType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2ProtectedDiskDetails class.
- * @constructor
- * InMageAzureV2 protected disk details.
- *
- * @member {string} [diskId] The disk id.
- * @member {string} [diskName] The disk name.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [healthErrorCode] The health error code for the disk.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {string} [resyncRequired] A value indicating whether resync is
- * required for this disk.
- * @member {number} [resyncProgressPercentage] The resync progress percentage.
- * @member {number} [resyncDurationInSeconds] The resync duration in seconds.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {number} [fileSystemCapacityInBytes] The disk file system capacity
- * in bytes.
- * @member {number} [sourceDataInMegaBytes] The source data transit in MB.
- * @member {number} [psDataInMegaBytes] The PS data transit in MB.
- * @member {number} [targetDataInMegaBytes] The target data transit in MB.
- * @member {string} [diskResized] A value indicating whether disk is resized.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- */
-export interface InMageAzureV2ProtectedDiskDetails {
-  diskId?: string;
-  diskName?: string;
-  protectionStage?: string;
-  healthErrorCode?: string;
-  rpoInSeconds?: number;
-  resyncRequired?: string;
-  resyncProgressPercentage?: number;
-  resyncDurationInSeconds?: number;
-  diskCapacityInBytes?: number;
-  fileSystemCapacityInBytes?: number;
-  sourceDataInMegaBytes?: number;
-  psDataInMegaBytes?: number;
-  targetDataInMegaBytes?: number;
-  diskResized?: string;
-  lastRpoCalculatedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2ReplicationDetails class.
- * @constructor
- * InMageAzureV2 provider specific settings
- *
- * @member {string} [infrastructureVmId] The infrastructure VM Id.
- * @member {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {number} [resyncProgressPercentage] The resync progress percentage.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {number} [compressedDataRateInMB] The compressed data change rate in
- * MB.
- * @member {number} [uncompressedDataRateInMB] The uncompressed data change
- * rate in MB.
- * @member {string} [ipAddress] The source IP address.
- * @member {string} [agentVersion] The agent version.
- * @member {string} [isAgentUpdateRequired] A value indicating whether
- * installed agent needs to be updated.
- * @member {string} [isRebootAfterUpdateRequired] A value indicating whether
- * the source server requires a restart after update.
- * @member {date} [lastHeartbeat] The last heartbeat received from the source
- * server.
- * @member {string} [processServerId] The process server Id.
- * @member {string} [multiVmGroupId] The multi vm group Id.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi vm
- * sync is enabled or disabled.
- * @member {array} [protectedDisks] The list of protected disks.
- * @member {string} [diskResized] A value indicating whether any disk is
- * resized for this VM.
- * @member {string} [masterTargetId] The master target Id.
- * @member {number} [sourceVmCPUCount] The CPU count of the VM on the primary
- * side.
- * @member {number} [sourceVmRAMSizeInMB] The RAM size of the VM on the primary
- * side.
- * @member {string} [osType] The type of the OS on the VM.
- * @member {string} [vhdName] The OS disk VHD name.
- * @member {string} [osDiskId] The id of the disk containing the OS.
- * @member {array} [azureVMDiskDetails] Azure VM Disk details.
- * @member {string} [recoveryAzureVMName] Recovery Azure given name.
- * @member {string} [recoveryAzureVMSize] The Recovery Azure VM size.
- * @member {string} [recoveryAzureStorageAccount] The recovery Azure storage
- * account.
- * @member {string} [recoveryAzureLogStorageAccountId] The ARM id of the log
- * storage account used for replication. This will be set to null if no log
- * storage account was provided during enable protection.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [selectedRecoveryAzureNetworkId] The selected recovery
- * azure network Id.
- * @member {string} [discoveryType] A value indicating the discovery type of
- * the machine. Value can be vCenter or physical.
- * @member {string} [enableRDPOnTargetOption] The selected option to enable
- * RDP\SSH on target vm after failover. String value of
- * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {array} [datastores] The datastores of the on-premise machine. Value
- * can be list of strings that contain datastore names.
- * @member {string} [targetVmId] The ARM Id of the target Azure VM. This value
- * will be null until the VM is failed over. Only after failure it will be
- * populated with the ARM Id of the Azure VM.
- * @member {string} [recoveryAzureResourceGroupId] The target resource group
- * Id.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set
- * Id.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- * @member {string} [licenseType] License Type of the VM to be used.
- * @member {array} [validationErrors] The validation errors of the on-premise
- * machine Value can be list of validation errors.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- * @member {date} [lastUpdateReceivedTime] The last update time received from
- * on-prem components.
- * @member {string} [replicaId] The replica id of the protected item.
- * @member {string} [osVersion] The OS Version of the protected item.
- */
-export interface InMageAzureV2ReplicationDetails extends ReplicationProviderSpecificSettings {
-  infrastructureVmId?: string;
-  vCenterInfrastructureId?: string;
-  protectionStage?: string;
-  vmId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  resyncProgressPercentage?: number;
-  rpoInSeconds?: number;
-  compressedDataRateInMB?: number;
-  uncompressedDataRateInMB?: number;
-  ipAddress?: string;
-  agentVersion?: string;
-  isAgentUpdateRequired?: string;
-  isRebootAfterUpdateRequired?: string;
-  lastHeartbeat?: Date;
-  processServerId?: string;
-  multiVmGroupId?: string;
-  multiVmGroupName?: string;
-  multiVmSyncStatus?: string;
-  protectedDisks?: InMageAzureV2ProtectedDiskDetails[];
-  diskResized?: string;
-  masterTargetId?: string;
-  sourceVmCPUCount?: number;
-  sourceVmRAMSizeInMB?: number;
-  osType?: string;
-  vhdName?: string;
-  osDiskId?: string;
-  azureVMDiskDetails?: AzureVmDiskDetails[];
-  recoveryAzureVMName?: string;
-  recoveryAzureVMSize?: string;
-  recoveryAzureStorageAccount?: string;
-  recoveryAzureLogStorageAccountId?: string;
-  vmNics?: VMNicDetails[];
-  selectedRecoveryAzureNetworkId?: string;
-  discoveryType?: string;
-  enableRDPOnTargetOption?: string;
-  datastores?: string[];
-  targetVmId?: string;
-  recoveryAzureResourceGroupId?: string;
-  recoveryAvailabilitySetId?: string;
-  useManagedDisks?: string;
-  licenseType?: string;
-  validationErrors?: HealthError[];
-  lastRpoCalculatedTime?: Date;
-  lastUpdateReceivedTime?: Date;
-  replicaId?: string;
-  osVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OSDiskDetails class.
- * @constructor
- * Details of the OS Disk.
- *
- * @member {string} [osVhdId] The id of the disk containing the OS.
- * @member {string} [osType] The type of the OS on the VM.
- * @member {string} [vhdName] The OS disk VHD name.
- */
-export interface OSDiskDetails {
-  osVhdId?: string;
-  osType?: string;
-  vhdName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageProtectedDiskDetails class.
- * @constructor
- * InMage protected disk details.
- *
- * @member {string} [diskId] The disk id.
- * @member {string} [diskName] The disk name.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [healthErrorCode] The health error code for the disk.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {string} [resyncRequired] A value indicating whether resync is
- * required for this disk.
- * @member {number} [resyncProgressPercentage] The resync progress percentage.
- * @member {number} [resyncDurationInSeconds] The resync duration in seconds.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {number} [fileSystemCapacityInBytes] The file system capacity in
- * bytes.
- * @member {number} [sourceDataInMB] The source data transit in MB.
- * @member {number} [psDataInMB] The PS data transit in MB.
- * @member {number} [targetDataInMB] The target data transit in MB.
- * @member {string} [diskResized] A value indicating whether disk is resized.
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- */
-export interface InMageProtectedDiskDetails {
-  diskId?: string;
-  diskName?: string;
-  protectionStage?: string;
-  healthErrorCode?: string;
-  rpoInSeconds?: number;
-  resyncRequired?: string;
-  resyncProgressPercentage?: number;
-  resyncDurationInSeconds?: number;
-  diskCapacityInBytes?: number;
-  fileSystemCapacityInBytes?: number;
-  sourceDataInMB?: number;
-  psDataInMB?: number;
-  targetDataInMB?: number;
-  diskResized?: string;
-  lastRpoCalculatedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAgentDetails class.
- * @constructor
- * The details of the InMage agent.
- *
- * @member {string} [agentVersion] The agent version.
- * @member {string} [agentUpdateStatus] A value indicating whether installed
- * agent needs to be updated.
- * @member {string} [postUpdateRebootStatus] A value indicating whether reboot
- * is required after update is applied.
- */
-export interface InMageAgentDetails {
-  agentVersion?: string;
-  agentUpdateStatus?: string;
-  postUpdateRebootStatus?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageReplicationDetails class.
- * @constructor
- * InMage provider specific settings
- *
- * @member {string} [activeSiteType] The active location of the VM. If the VM
- * is being protected from Azure, this field will take values from { Azure,
- * OnPrem }. If the VM is being protected between two data-centers, this field
- * will be OnPrem always.
- * @member {number} [sourceVmCPUCount] The CPU count of the VM on the primary
- * side.
- * @member {number} [sourceVmRAMSizeInMB] The RAM size of the VM on the primary
- * side.
- * @member {object} [osDetails] The OS details.
- * @member {string} [osDetails.osVhdId] The id of the disk containing the OS.
- * @member {string} [osDetails.osType] The type of the OS on the VM.
- * @member {string} [osDetails.vhdName] The OS disk VHD name.
- * @member {string} [protectionStage] The protection stage.
- * @member {string} [vmId] The virtual machine Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {object} [resyncDetails] The resync details of the machine
- * @member {string} [resyncDetails.initialReplicationType] Initial replication
- * type.
- * @member {string} [resyncDetails.initialReplicationProgressPercentage] The
- * initial replication progress percentage.
- * @member {date} [retentionWindowStart] The retention window start time.
- * @member {date} [retentionWindowEnd] The retention window end time.
- * @member {number} [compressedDataRateInMB] The compressed data change rate in
- * MB.
- * @member {number} [uncompressedDataRateInMB] The uncompressed data change
- * rate in MB.
- * @member {number} [rpoInSeconds] The RPO in seconds.
- * @member {array} [protectedDisks] The list of protected disks.
- * @member {string} [ipAddress] The source IP address.
- * @member {date} [lastHeartbeat] The last heartbeat received from the source
- * server.
- * @member {string} [processServerId] The process server Id.
- * @member {string} [masterTargetId] The master target Id.
- * @member {object} [consistencyPoints] The collection of Consistency points.
- * @member {string} [diskResized] A value indicating whether any disk is
- * resized for this VM.
- * @member {string} [rebootAfterUpdateStatus] A value indicating whether the
- * source server requires a restart after update.
- * @member {string} [multiVmGroupId] The multi vm group Id, if any.
- * @member {string} [multiVmGroupName] The multi vm group name, if any.
- * @member {string} [multiVmSyncStatus] A value indicating whether the multi vm
- * sync is enabled or disabled.
- * @member {object} [agentDetails] The agent details.
- * @member {string} [agentDetails.agentVersion] The agent version.
- * @member {string} [agentDetails.agentUpdateStatus] A value indicating whether
- * installed agent needs to be updated.
- * @member {string} [agentDetails.postUpdateRebootStatus] A value indicating
- * whether reboot is required after update is applied.
- * @member {string} [vCenterInfrastructureId] The vCenter infrastructure Id.
- * @member {string} [infrastructureVmId] The infrastructure VM Id.
- * @member {array} [vmNics] The PE Network details.
- * @member {string} [discoveryType] A value indicating the discovery type of
- * the machine.
- * @member {string} [azureStorageAccountId] A value indicating the underlying
- * Azure storage account. If the VM is not running in Azure, this value shall
- * be set to null.
- * @member {array} [datastores] The datastores of the on-premise machine Value
- * can be list of strings that contain datastore names
- * @member {array} [validationErrors] The validation errors of the on-premise
- * machine Value can be list of validation errors
- * @member {date} [lastRpoCalculatedTime] The last RPO calculated time.
- * @member {date} [lastUpdateReceivedTime] The last update time received from
- * on-prem components.
- * @member {string} [replicaId] The replica id of the protected item.
- * @member {string} [osVersion] The OS Version of the protected item.
- */
-export interface InMageReplicationDetails extends ReplicationProviderSpecificSettings {
-  activeSiteType?: string;
-  sourceVmCPUCount?: number;
-  sourceVmRAMSizeInMB?: number;
-  osDetails?: OSDiskDetails;
-  protectionStage?: string;
-  vmId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  resyncDetails?: InitialReplicationDetails;
-  retentionWindowStart?: Date;
-  retentionWindowEnd?: Date;
-  compressedDataRateInMB?: number;
-  uncompressedDataRateInMB?: number;
-  rpoInSeconds?: number;
-  protectedDisks?: InMageProtectedDiskDetails[];
-  ipAddress?: string;
-  lastHeartbeat?: Date;
-  processServerId?: string;
-  masterTargetId?: string;
-  consistencyPoints?: { [propertyName: string]: Date };
-  diskResized?: string;
-  rebootAfterUpdateStatus?: string;
-  multiVmGroupId?: string;
-  multiVmGroupName?: string;
-  multiVmSyncStatus?: string;
-  agentDetails?: InMageAgentDetails;
-  vCenterInfrastructureId?: string;
-  infrastructureVmId?: string;
-  vmNics?: VMNicDetails[];
-  discoveryType?: string;
-  azureStorageAccountId?: string;
-  datastores?: string[];
-  validationErrors?: HealthError[];
-  lastRpoCalculatedTime?: Date;
-  lastUpdateReceivedTime?: Date;
-  replicaId?: string;
-  osVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AProtectedDiskDetails class.
- * @constructor
- * A2A protected disk details.
- *
- * @member {string} [diskUri] The disk uri.
- * @member {string} [recoveryAzureStorageAccountId] The recovery disk storage
- * account.
- * @member {string} [primaryDiskAzureStorageAccountId] The primary disk storage
- * account.
- * @member {string} [recoveryDiskUri] Recovery disk uri.
- * @member {string} [diskName] The disk name.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
- * storage account.
- * @member {string} [diskType] The type of disk.
- * @member {boolean} [resyncRequired] A value indicating whether resync is
- * required for this disk.
- * @member {number} [monitoringPercentageCompletion] The percentage of the
- * monitoring job. The type of the monitoring job is defined by
- * MonitoringJobType property.
- * @member {string} [monitoringJobType] The type of the monitoring job. The
- * progress is contained in MonitoringPercentageCompletion property.
- * @member {number} [dataPendingInStagingStorageAccountInMB] The data pending
- * for replication in MB at staging account.
- * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
- * virtual machine in MB.
- */
-export interface A2AProtectedDiskDetails {
-  diskUri?: string;
-  recoveryAzureStorageAccountId?: string;
-  primaryDiskAzureStorageAccountId?: string;
-  recoveryDiskUri?: string;
-  diskName?: string;
-  diskCapacityInBytes?: number;
-  primaryStagingAzureStorageAccountId?: string;
-  diskType?: string;
-  resyncRequired?: boolean;
-  monitoringPercentageCompletion?: number;
-  monitoringJobType?: string;
-  dataPendingInStagingStorageAccountInMB?: number;
-  dataPendingAtSourceAgentInMB?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AProtectedManagedDiskDetails class.
- * @constructor
- * A2A protected managed disk details.
- *
- * @member {string} [diskId] The managed disk Arm id.
- * @member {string} [recoveryAzureResourceGroupId] The recovery disk resource
- * group Arm Id.
- * @member {string} [recoveryDiskId] Recovery disk Arm Id.
- * @member {string} [diskName] The disk name.
- * @member {number} [diskCapacityInBytes] The disk capacity in bytes.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
- * storage account.
- * @member {string} [diskType] The type of disk.
- * @member {boolean} [resyncRequired] A value indicating whether resync is
- * required for this disk.
- * @member {number} [monitoringPercentageCompletion] The percentage of the
- * monitoring job. The type of the monitoring job is defined by
- * MonitoringJobType property.
- * @member {string} [monitoringJobType] The type of the monitoring job. The
- * progress is contained in MonitoringPercentageCompletion property.
- * @member {number} [dataPendingInStagingStorageAccountInMB] The data pending
- * for replication in MB at staging account.
- * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
- * virtual machine in MB.
- */
-export interface A2AProtectedManagedDiskDetails {
-  diskId?: string;
-  recoveryAzureResourceGroupId?: string;
-  recoveryDiskId?: string;
-  diskName?: string;
-  diskCapacityInBytes?: number;
-  primaryStagingAzureStorageAccountId?: string;
-  diskType?: string;
-  resyncRequired?: boolean;
-  monitoringPercentageCompletion?: number;
-  monitoringJobType?: string;
-  dataPendingInStagingStorageAccountInMB?: number;
-  dataPendingAtSourceAgentInMB?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleAssignment class.
- * @constructor
- * Azure role assignment details.
- *
- * @member {string} [id] The ARM Id of the role assignment.
- * @member {string} [name] The name of the role assignment.
- * @member {string} [scope] Role assignment scope.
- * @member {string} [principalId] Principal Id.
- * @member {string} [roleDefinitionId] Role definition id.
- */
-export interface RoleAssignment {
-  id?: string;
-  name?: string;
-  scope?: string;
-  principalId?: string;
-  roleDefinitionId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InputEndpoint class.
- * @constructor
- * Azure VM input endpoint details.
- *
- * @member {string} [endpointName] The input endpoint name.
- * @member {number} [privatePort] The input endpoint private port.
- * @member {number} [publicPort] The input endpoint public port.
- * @member {string} [protocol] The input endpoint protocol.
- */
-export interface InputEndpoint {
-  endpointName?: string;
-  privatePort?: number;
-  publicPort?: number;
-  protocol?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureToAzureVmSyncedConfigDetails class.
- * @constructor
- * Azure to Azure VM synced configuration details.
- *
- * @member {object} [tags] The Azure VM tags.
- * @member {array} [roleAssignments] The Azure role assignments.
- * @member {array} [inputEndpoints] The Azure VM input endpoints.
- */
-export interface AzureToAzureVmSyncedConfigDetails {
-  tags?: { [propertyName: string]: string };
-  roleAssignments?: RoleAssignment[];
-  inputEndpoints?: InputEndpoint[];
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AReplicationDetails class.
- * @constructor
- * A2A provider specific settings.
- *
- * @member {string} [fabricObjectId] The fabric specific object Id of the
- * virtual machine.
- * @member {string} [multiVmGroupId] The multi vm group Id.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {string} [managementId] The management Id.
- * @member {array} [protectedDisks] The list of protected disks.
- * @member {array} [protectedManagedDisks] The list of protected managed disks.
- * @member {string} [primaryFabricLocation] Primary fabric location.
- * @member {string} [recoveryFabricLocation] The recovery fabric location.
- * @member {string} [osType] The type of operating system.
- * @member {string} [recoveryAzureVMSize] The size of recovery virtual machine.
- * @member {string} [recoveryAzureVMName] The name of recovery virtual machine.
- * @member {string} [recoveryAzureResourceGroupId] The recovery resource group.
- * @member {string} [recoveryCloudService] The recovery cloud service.
- * @member {string} [recoveryAvailabilitySet] The recovery availability set.
- * @member {string} [selectedRecoveryAzureNetworkId] The recovery virtual
- * network.
- * @member {array} [vmNics] The virtual machine nic details.
- * @member {object} [vmSyncedConfigDetails] The synced configuration details.
- * @member {object} [vmSyncedConfigDetails.tags] The Azure VM tags.
- * @member {array} [vmSyncedConfigDetails.roleAssignments] The Azure role
- * assignments.
- * @member {array} [vmSyncedConfigDetails.inputEndpoints] The Azure VM input
- * endpoints.
- * @member {number} [monitoringPercentageCompletion] The percentage of the
- * monitoring job. The type of the monitoring job is defined by
- * MonitoringJobType property.
- * @member {string} [monitoringJobType] The type of the monitoring job. The
- * progress is contained in MonitoringPercentageCompletion property.
- * @member {date} [lastHeartbeat] The last heartbeat received from the source
- * server.
- * @member {string} [agentVersion] The agent version.
- * @member {boolean} [isReplicationAgentUpdateRequired] A value indicating
- * whether replication agent update is required.
- * @member {string} [recoveryFabricObjectId] The recovery fabric object Id.
- * @member {string} [vmProtectionState] The protection state for the vm.
- * @member {string} [vmProtectionStateDescription] The protection state
- * description for the vm.
- * @member {string} [lifecycleId] An id associated with the PE that survives
- * actions like switch protection which change the backing PE/CPE objects
- * internally.The lifecycle id gets carried forward to have a link/continuity
- * in being able to have an Id that denotes the "same" protected item even
- * though other internal Ids/ARM Id might be changing.
- * @member {string} [testFailoverRecoveryFabricObjectId] The test failover
- * fabric object Id.
- * @member {number} [rpoInSeconds] The last RPO value in seconds.
- * @member {date} [lastRpoCalculatedTime] The time (in UTC) when the last RPO
- * value was calculated by Protection Service.
- */
-export interface A2AReplicationDetails extends ReplicationProviderSpecificSettings {
-  fabricObjectId?: string;
-  multiVmGroupId?: string;
-  multiVmGroupName?: string;
-  managementId?: string;
-  protectedDisks?: A2AProtectedDiskDetails[];
-  protectedManagedDisks?: A2AProtectedManagedDiskDetails[];
-  primaryFabricLocation?: string;
-  recoveryFabricLocation?: string;
-  osType?: string;
-  recoveryAzureVMSize?: string;
-  recoveryAzureVMName?: string;
-  recoveryAzureResourceGroupId?: string;
-  recoveryCloudService?: string;
-  recoveryAvailabilitySet?: string;
-  selectedRecoveryAzureNetworkId?: string;
-  vmNics?: VMNicDetails[];
-  vmSyncedConfigDetails?: AzureToAzureVmSyncedConfigDetails;
-  monitoringPercentageCompletion?: number;
-  monitoringJobType?: string;
-  lastHeartbeat?: Date;
-  agentVersion?: string;
-  isReplicationAgentUpdateRequired?: boolean;
-  recoveryFabricObjectId?: string;
-  vmProtectionState?: string;
-  vmProtectionStateDescription?: string;
-  lifecycleId?: string;
-  testFailoverRecoveryFabricObjectId?: string;
-  rpoInSeconds?: number;
-  lastRpoCalculatedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureEnableProtectionInput class.
- * @constructor
- * Azure specific enable protection input.
- *
- * @member {string} [hvHostVmId] The Hyper-V host Vm Id.
- * @member {string} [vmName] The Vm Name.
- * @member {string} [osType] The OS type associated with vm.
- * @member {string} [vhdId] The OS disk VHD id associated with vm.
- * @member {string} [targetStorageAccountId] The storage account name.
- * @member {string} [targetAzureNetworkId] The selected target Azure network
- * Id.
- * @member {string} [targetAzureSubnetId] The selected target Azure subnet Id.
- * @member {string} [enableRDPOnTargetOption] The selected option to enable
- * RDP\SSH on target vm after failover. String value of
- * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {string} [targetAzureVmName] The target azure Vm Name.
- * @member {string} [logStorageAccountId] The storage account to be used for
- * logging during replication.
- * @member {array} [disksToInclude] The list of VHD IDs of disks to be
- * protected.
- * @member {string} [targetAzureV1ResourceGroupId] The Id of the target
- * resource group (for classic deployment) in which the failover VM is to be
- * created.
- * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
- * resource group (for resource manager deployment) in which the failover VM is
- * to be created.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- */
-export interface HyperVReplicaAzureEnableProtectionInput extends EnableProtectionProviderSpecificInput {
-  hvHostVmId?: string;
-  vmName?: string;
-  osType?: string;
-  vhdId?: string;
-  targetStorageAccountId?: string;
-  targetAzureNetworkId?: string;
-  targetAzureSubnetId?: string;
-  enableRDPOnTargetOption?: string;
-  targetAzureVmName?: string;
-  logStorageAccountId?: string;
-  disksToInclude?: string[];
-  targetAzureV1ResourceGroupId?: string;
-  targetAzureV2ResourceGroupId?: string;
-  useManagedDisks?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SanEnableProtectionInput class.
- * @constructor
- * San enable protection provider specific input.
- *
- */
-export interface SanEnableProtectionInput extends EnableProtectionProviderSpecificInput {
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2EnableProtectionInput class.
- * @constructor
- * VMware Azure specific enable protection input.
- *
- * @member {string} [masterTargetId] The Master target Id.
- * @member {string} [processServerId] The Process Server Id.
- * @member {string} storageAccountId The storage account name.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [multiVmGroupId] The multi vm group Id.
- * @member {string} [multiVmGroupName] The multi vm group name.
- * @member {array} [disksToInclude] The disks to include list.
- * @member {string} [targetAzureNetworkId] The selected target Azure network
- * Id.
- * @member {string} [targetAzureSubnetId] The selected target Azure subnet Id.
- * @member {string} [enableRDPOnTargetOption] The selected option to enable
- * RDP\SSH on target vm after failover. String value of
- * {SrsDataContract.EnableRDPOnTargetOption} enum.
- * @member {string} [targetAzureVmName] The target azure Vm Name.
- * @member {string} [logStorageAccountId] The storage account to be used for
- * logging during replication.
- * @member {string} [targetAzureV1ResourceGroupId] The Id of the target
- * resource group (for classic deployment) in which the failover VM is to be
- * created.
- * @member {string} [targetAzureV2ResourceGroupId] The Id of the target
- * resource group (for resource manager deployment) in which the failover VM is
- * to be created.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- */
-export interface InMageAzureV2EnableProtectionInput extends EnableProtectionProviderSpecificInput {
-  masterTargetId?: string;
-  processServerId?: string;
-  storageAccountId: string;
-  runAsAccountId?: string;
-  multiVmGroupId?: string;
-  multiVmGroupName?: string;
-  disksToInclude?: string[];
-  targetAzureNetworkId?: string;
-  targetAzureSubnetId?: string;
-  enableRDPOnTargetOption?: string;
-  targetAzureVmName?: string;
-  logStorageAccountId?: string;
-  targetAzureV1ResourceGroupId?: string;
-  targetAzureV2ResourceGroupId?: string;
-  useManagedDisks?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageVolumeExclusionOptions class.
- * @constructor
- * Guest disk signature based disk exclusion option when doing enable
- * protection of virtual machine in InMage provider.
- *
- * @member {string} [volumeLabel] The volume label. The disk having any volume
- * with this label will be excluded from replication.
- * @member {string} [onlyExcludeIfSingleVolume] The value indicating whether to
- * exclude multi volume disk or not. If a disk has multiple volumes and one of
- * the volume has label matching with VolumeLabel this disk will be excluded
- * from replication if OnlyExcludeIfSingleVolume is false.
- */
-export interface InMageVolumeExclusionOptions {
-  volumeLabel?: string;
-  onlyExcludeIfSingleVolume?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageDiskSignatureExclusionOptions class.
- * @constructor
- * Guest disk signature based disk exclusion option when doing enable
- * protection of virtual machine in InMage provider.
- *
- * @member {string} [diskSignature] The guest signature of disk to be excluded
- * from replication.
- */
-export interface InMageDiskSignatureExclusionOptions {
-  diskSignature?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageDiskExclusionInput class.
- * @constructor
- * DiskExclusionInput when doing enable protection of virtual machine in InMage
- * provider.
- *
- * @member {array} [volumeOptions] The volume label based option for disk
- * exclusion.
- * @member {array} [diskSignatureOptions] The guest disk signature based option
- * for disk exclusion.
- */
-export interface InMageDiskExclusionInput {
-  volumeOptions?: InMageVolumeExclusionOptions[];
-  diskSignatureOptions?: InMageDiskSignatureExclusionOptions[];
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageEnableProtectionInput class.
- * @constructor
- * VMware Azure specific enable protection input.
- *
- * @member {string} [vmFriendlyName] The Vm Name.
- * @member {string} masterTargetId The Master Target Id.
- * @member {string} processServerId The Process Server Id.
- * @member {string} retentionDrive The retention drive to use on the MT.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} multiVmGroupId The multi vm group Id.
- * @member {string} multiVmGroupName The multi vm group name.
- * @member {string} [datastoreName] The target datastore name.
- * @member {object} [diskExclusionInput] The enable disk exclusion input.
- * @member {array} [diskExclusionInput.volumeOptions] The volume label based
- * option for disk exclusion.
- * @member {array} [diskExclusionInput.diskSignatureOptions] The guest disk
- * signature based option for disk exclusion.
- * @member {array} [disksToInclude] The disks to include list.
- */
-export interface InMageEnableProtectionInput extends EnableProtectionProviderSpecificInput {
-  vmFriendlyName?: string;
-  masterTargetId: string;
-  processServerId: string;
-  retentionDrive: string;
-  runAsAccountId?: string;
-  multiVmGroupId: string;
-  multiVmGroupName: string;
-  datastoreName?: string;
-  diskExclusionInput?: InMageDiskExclusionInput;
-  disksToInclude?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AVmDiskInputDetails class.
- * @constructor
- * Azure VM disk input details.
- *
- * @member {string} [diskUri] The disk Uri.
- * @member {string} [recoveryAzureStorageAccountId] The recovery VHD storage
- * account Id.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
- * storage account Id.
- */
-export interface A2AVmDiskInputDetails {
-  diskUri?: string;
-  recoveryAzureStorageAccountId?: string;
-  primaryStagingAzureStorageAccountId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AVmManagedDiskInputDetails class.
- * @constructor
- * Azure VM managed disk input details.
- *
- * @member {string} [diskId] The disk Id.
- * @member {string} [primaryStagingAzureStorageAccountId] The primary staging
- * storage account Arm Id.
- * @member {string} [recoveryResourceGroupId] The target resource group Arm Id.
- */
-export interface A2AVmManagedDiskInputDetails {
-  diskId?: string;
-  primaryStagingAzureStorageAccountId?: string;
-  recoveryResourceGroupId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AEnableProtectionInput class.
- * @constructor
- * A2A enable protection input.
- *
- * @member {string} [fabricObjectId] The fabric specific object Id of the
- * virtual machine.
- * @member {string} [recoveryContainerId] The recovery container Id.
- * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
- * Valid for V2 scenarios.
- * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
- * Valid for V1 scenarios.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set
- * Id.
- * @member {array} [vmDisks] The list of vm disk details.
- * @member {array} [vmManagedDisks] The list of vm managed disk details.
- */
-export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecificInput {
-  fabricObjectId?: string;
-  recoveryContainerId?: string;
-  recoveryResourceGroupId?: string;
-  recoveryCloudServiceId?: string;
-  recoveryAvailabilitySetId?: string;
-  vmDisks?: A2AVmDiskInputDetails[];
-  vmManagedDisks?: A2AVmManagedDiskInputDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureUpdateReplicationProtectedItemInput class.
- * @constructor
- * HyperV replica Azure input to update replication protected item.
- *
- * @member {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
- * resource group Id for classic deployment.
- * @member {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
- * resource group Id for resource manager deployment.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- */
-export interface HyperVReplicaAzureUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
-  recoveryAzureV1ResourceGroupId?: string;
-  recoveryAzureV2ResourceGroupId?: string;
-  useManagedDisks?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2UpdateReplicationProtectedItemInput class.
- * @constructor
- * InMage Azure V2 input to update replication protected item.
- *
- * @member {string} [recoveryAzureV1ResourceGroupId] The recovery Azure
- * resource group Id for classic deployment.
- * @member {string} [recoveryAzureV2ResourceGroupId] The recovery Azure
- * resource group Id for resource manager deployment.
- * @member {string} [useManagedDisks] A value indicating whether managed disks
- * should be used during failover.
- */
-export interface InMageAzureV2UpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
-  recoveryAzureV1ResourceGroupId?: string;
-  recoveryAzureV2ResourceGroupId?: string;
-  useManagedDisks?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AUpdateReplicationProtectedItemInput class.
- * @constructor
- * InMage Azure V2 input to update replication protected item.
- *
- * @member {string} [recoveryCloudServiceId] The target cloud service ARM Id
- * (for V1).
- * @member {string} [recoveryResourceGroupId] The target resource group ARM Id
- * (for V2).
- */
-export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
-  recoveryCloudServiceId?: string;
-  recoveryResourceGroupId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaBaseEventDetails class.
- * @constructor
- * Abstract model class for event details of a HyperVReplica E2E event.
- *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- * @member {string} [remoteFabricName] The remote fabric name.
- */
-export interface HyperVReplicaBaseEventDetails extends EventProviderSpecificDetails {
-  containerName?: string;
-  fabricName?: string;
-  remoteContainerName?: string;
-  remoteFabricName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplica2012EventDetails class.
- * @constructor
- * Model class for event details of a HyperVReplica E2E event.
- *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- * @member {string} [remoteFabricName] The remote fabric name.
- */
-export interface HyperVReplica2012EventDetails extends EventProviderSpecificDetails {
-  containerName?: string;
-  fabricName?: string;
-  remoteContainerName?: string;
-  remoteFabricName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplica2012R2EventDetails class.
- * @constructor
- * Model class for event details of a HyperVReplica blue E2E event.
- *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- * @member {string} [remoteFabricName] The remote fabric name.
- */
-export interface HyperVReplica2012R2EventDetails extends EventProviderSpecificDetails {
-  containerName?: string;
-  fabricName?: string;
-  remoteContainerName?: string;
-  remoteFabricName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureEventDetails class.
- * @constructor
- * Model class for event details of a HyperVReplica E2A event.
- *
- * @member {string} [containerName] The container friendly name.
- * @member {string} [fabricName] The fabric friendly name.
- * @member {string} [remoteContainerName] The remote container name.
- */
-export interface HyperVReplicaAzureEventDetails extends EventProviderSpecificDetails {
-  containerName?: string;
-  fabricName?: string;
-  remoteContainerName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AEventDetails class.
- * @constructor
- * Model class for event details of a A2A event.
- *
- * @member {string} [protectedItemName] The protected item arm name.
- * @member {string} [fabricObjectId] The azure vm arm id.
- * @member {string} [fabricName] Fabric arm name.
- * @member {string} [fabricLocation] The fabric location.
- * @member {string} [remoteFabricName] Remote fabric arm name.
- * @member {string} [remoteFabricLocation] Remote fabric location.
- */
-export interface A2AEventDetails extends EventProviderSpecificDetails {
-  protectedItemName?: string;
-  fabricObjectId?: string;
-  fabricName?: string;
-  fabricLocation?: string;
-  remoteFabricName?: string;
-  remoteFabricLocation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2EventDetails class.
- * @constructor
- * Model class for event details of a VMwareAzureV2 event.
- *
- * @member {string} [eventType] InMage Event type. Takes one of the values of
- * {InMageDataContract.InMageMonitoringEventType}.
- * @member {string} [category] InMage Event Category.
- * @member {string} [component] InMage Event Component.
- * @member {string} [correctiveAction] Corrective Action string for the event.
- * @member {string} [details] InMage Event Details.
- * @member {string} [summary] InMage Event Summary.
- * @member {string} [siteName] VMware Site name.
- */
-export interface InMageAzureV2EventDetails extends EventProviderSpecificDetails {
-  eventType?: string;
-  category?: string;
-  component?: string;
-  correctiveAction?: string;
-  details?: string;
-  summary?: string;
-  siteName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStatusEventDetails class.
- * @constructor
- * Model class for event details of a job status event.
- *
- * @member {string} [jobId] Job arm id for the event.
- * @member {string} [jobFriendlyName] JobName for the Event.
- * @member {string} [jobStatus] JobStatus for the Event.
- * @member {string} [affectedObjectType] AffectedObjectType for the event.
- */
-export interface JobStatusEventDetails extends EventSpecificDetails {
-  jobId?: string;
-  jobFriendlyName?: string;
-  jobStatus?: string;
-  affectedObjectType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVVirtualMachineDetails class.
- * @constructor
- * Hyper V replica provider specific settings
- *
- * @member {string} [sourceItemId] The source id of the object.
- * @member {string} [generation] The id of the object in fabric.
- * @member {object} [osDetails] The Last replication time.
- * @member {string} [osDetails.osType] VM Disk details.
- * @member {string} [osDetails.productType] Product type.
- * @member {string} [osDetails.osEdition] The OSEdition.
- * @member {string} [osDetails.oSVersion] The OS Version.
- * @member {string} [osDetails.oSMajorVersion] The OS Major Version.
- * @member {string} [osDetails.oSMinorVersion] The OS Minor Version.
- * @member {array} [diskDetails] The Last successful failover time.
- */
-export interface HyperVVirtualMachineDetails extends ConfigurationSettings {
-  sourceItemId?: string;
-  generation?: string;
-  osDetails?: OSDetails;
-  diskDetails?: DiskDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DiskVolumeDetails class.
- * @constructor
- * Volume details.
- *
- * @member {string} [label] The volume label.
- * @member {string} [name] The volume name.
- */
-export interface DiskVolumeDetails {
-  label?: string;
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageDiskDetails class.
- * @constructor
- * VMware/Physical specific Disk Details
- *
- * @member {string} [diskId] The disk Id.
- * @member {string} [diskName] The disk name.
- * @member {string} [diskSizeInMB] The disk size in MB.
- * @member {string} [diskType] Whether disk is system disk or data disk.
- * @member {string} [diskConfiguration] Whether disk is dynamic disk or basic
- * disk.
- * @member {array} [volumeList] Volumes of the disk.
- */
-export interface InMageDiskDetails {
-  diskId?: string;
-  diskName?: string;
-  diskSizeInMB?: string;
-  diskType?: string;
-  diskConfiguration?: string;
-  volumeList?: DiskVolumeDetails[];
+  keyVaultUrl?: string;
+  keyVaultResourceArmId?: string;
 }
 
 /**
@@ -5215,1326 +6988,76 @@ export interface VMwareVirtualMachineDetails extends ConfigurationSettings {
   validationErrors?: HealthError[];
 }
 
-/**
- * @class
- * Initializes a new instance of the ReplicationGroupDetails class.
- * @constructor
- * Replication group details. This will be used in case of San and Wvr.
- *
- */
-export interface ReplicationGroupDetails extends ConfigurationSettings {
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2RecoveryPointDetails class.
- * @constructor
- * InMage Azure V2 provider specific recovery point details.
- *
- * @member {string} [instanceType] Gets the instance type.
- * @member {string} [isMultiVmSyncPoint] A value indicating whether the
- * recovery point is multi VM consistent.
- */
-export interface InMageAzureV2RecoveryPointDetails extends ProviderSpecificRecoveryPointDetails {
-  readonly instanceType?: string;
-  isMultiVmSyncPoint?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageDisableProtectionProviderSpecificInput class.
- * @constructor
- * InMage disable protection provider specific input.
- *
- * @member {string} [replicaVmDeletionStatus] A value indicating whether the
- * replica VM should be destroyed or retained. Values from Delete and Retain.
- */
-export interface InMageDisableProtectionProviderSpecificInput extends DisableProtectionProviderSpecificInput {
-  replicaVmDeletionStatus?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureFailoverProviderInput class.
- * @constructor
- * HvrA provider specific input for failover.
- *
- * @member {string} [vaultLocation] Location of the vault.
- * @member {string} [primaryKekCertificatePfx] Primary kek certificate pfx.
- * @member {string} [secondaryKekCertificatePfx] Secondary kek certificate pfx.
- * @member {string} [recoveryPointId] The recovery point id to be passed to
- * failover to a particular recovery point. In case of latest recovery point,
- * null should be passed.
- */
-export interface HyperVReplicaAzureFailoverProviderInput extends ProviderSpecificFailoverInput {
-  vaultLocation?: string;
-  primaryKekCertificatePfx?: string;
-  secondaryKekCertificatePfx?: string;
-  recoveryPointId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureFailbackProviderInput class.
- * @constructor
- * HvrA provider specific input for failback.
- *
- * @member {string} [dataSyncOption] Data sync option.
- * @member {string} [recoveryVmCreationOption] ALR options to create alternate
- * recovery.
- * @member {string} [providerIdForAlternateRecovery] Provider ID for alternate
- * location
- */
-export interface HyperVReplicaAzureFailbackProviderInput extends ProviderSpecificFailoverInput {
-  dataSyncOption?: string;
-  recoveryVmCreationOption?: string;
-  providerIdForAlternateRecovery?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2FailoverProviderInput class.
- * @constructor
- * InMageAzureV2 provider specific input for failover.
- *
- * @member {string} [vaultLocation] Location of the vault.
- * @member {string} [recoveryPointId] The recovery point id to be passed to
- * failover to a particular recovery point. In case of latest recovery point,
- * null should be passed.
- */
-export interface InMageAzureV2FailoverProviderInput extends ProviderSpecificFailoverInput {
-  vaultLocation?: string;
-  recoveryPointId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageFailoverProviderInput class.
- * @constructor
- * Provider specific input for InMage failover.
- *
- * @member {string} [recoveryPointType] The recovery point type. Values from
- * LatestTime, LatestTag or Custom. In the case of custom, the recovery point
- * provided by RecoveryPointId will be used. In the other two cases, recovery
- * point id will be ignored. Possible values include: 'LatestTime',
- * 'LatestTag', 'Custom'
- * @member {string} [recoveryPointId] The recovery point id to be passed to
- * failover to a particular recovery point. In case of latest recovery point,
- * null should be passed.
- */
-export interface InMageFailoverProviderInput extends ProviderSpecificFailoverInput {
-  recoveryPointType?: string;
-  recoveryPointId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AFailoverProviderInput class.
- * @constructor
- * A2A provider specific input for failover.
- *
- * @member {string} [recoveryPointId] The recovery point id to be passed to
- * failover to a particular recovery point. In case of latest recovery point,
- * null should be passed.
- * @member {string} [cloudServiceCreationOption] A value indicating whether to
- * use recovery cloud service for TFO or not.
- */
-export interface A2AFailoverProviderInput extends ProviderSpecificFailoverInput {
-  recoveryPointId?: string;
-  cloudServiceCreationOption?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureReprotectInput class.
- * @constructor
- * Azure specific reprotect input.
- *
- * @member {string} [hvHostVmId] The Hyper-V host Vm Id.
- * @member {string} [vmName] The Vm Name.
- * @member {string} [osType] The OS type associated with vm.
- * @member {string} [vHDId] The OS disk VHD id associated with vm.
- * @member {string} [storageAccountId] The storage account name.
- * @member {string} [logStorageAccountId] The storage account to be used for
- * logging during replication.
- */
-export interface HyperVReplicaAzureReprotectInput extends ReverseReplicationProviderSpecificInput {
-  hvHostVmId?: string;
-  vmName?: string;
-  osType?: string;
-  vHDId?: string;
-  storageAccountId?: string;
-  logStorageAccountId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2ReprotectInput class.
- * @constructor
- * InMageAzureV2 specific provider input.
- *
- * @member {string} [masterTargetId] The Master target Id.
- * @member {string} [processServerId] The Process Server Id.
- * @member {string} [storageAccountId] The storage account id.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [policyId] The Policy Id.
- * @member {string} [logStorageAccountId] The storage account to be used for
- * logging during replication.
- * @member {array} [disksToInclude] The disks to include list.
- */
-export interface InMageAzureV2ReprotectInput extends ReverseReplicationProviderSpecificInput {
-  masterTargetId?: string;
-  processServerId?: string;
-  storageAccountId?: string;
-  runAsAccountId?: string;
-  policyId?: string;
-  logStorageAccountId?: string;
-  disksToInclude?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageReprotectInput class.
- * @constructor
- * InMageAzureV2 specific provider input.
- *
- * @member {string} masterTargetId The Master Target Id.
- * @member {string} processServerId The Process Server Id.
- * @member {string} retentionDrive The retention drive to use on the MT.
- * @member {string} [runAsAccountId] The CS account Id.
- * @member {string} [datastoreName] The target datastore name.
- * @member {object} [diskExclusionInput] The enable disk exclusion input.
- * @member {array} [diskExclusionInput.volumeOptions] The volume label based
- * option for disk exclusion.
- * @member {array} [diskExclusionInput.diskSignatureOptions] The guest disk
- * signature based option for disk exclusion.
- * @member {string} profileId The Policy Id.
- * @member {array} [disksToInclude] The disks to include list.
- */
-export interface InMageReprotectInput extends ReverseReplicationProviderSpecificInput {
-  masterTargetId: string;
-  processServerId: string;
-  retentionDrive: string;
-  runAsAccountId?: string;
-  datastoreName?: string;
-  diskExclusionInput?: InMageDiskExclusionInput;
-  profileId: string;
-  disksToInclude?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AReprotectInput class.
- * @constructor
- * Azure specific reprotect input.
- *
- * @member {string} [recoveryContainerId] The recovery container Id.
- * @member {array} [vmDisks] The list of vm disk details.
- * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
- * Valid for V2 scenarios.
- * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
- * Valid for V1 scenarios.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set.
- * @member {string} [policyId] The Policy Id.
- */
-export interface A2AReprotectInput extends ReverseReplicationProviderSpecificInput {
-  recoveryContainerId?: string;
-  vmDisks?: A2AVmDiskInputDetails[];
-  recoveryResourceGroupId?: string;
-  recoveryCloudServiceId?: string;
-  recoveryAvailabilitySetId?: string;
-  policyId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzureApplyRecoveryPointInput class.
- * @constructor
- * ApplyRecoveryPoint input specific to HyperVReplicaAzure provider.
- *
- * @member {string} [vaultLocation] The vault location where the recovery Vm
- * resides.
- * @member {string} [primaryKekCertificatePfx] The primary kek certificate pfx.
- * @member {string} [secondaryKekCertificatePfx] The secondary kek certificate
- * pfx.
- */
-export interface HyperVReplicaAzureApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
-  vaultLocation?: string;
-  primaryKekCertificatePfx?: string;
-  secondaryKekCertificatePfx?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2ApplyRecoveryPointInput class.
- * @constructor
- * ApplyRecoveryPoint input specific to InMageAzureV2 provider.
- *
- * @member {string} [vaultLocation] The vault location where the recovery Vm
- * resides.
- */
-export interface InMageAzureV2ApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
-  vaultLocation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AApplyRecoveryPointInput class.
- * @constructor
- * ApplyRecoveryPoint input specific to A2A provider.
- *
- */
-export interface A2AApplyRecoveryPointInput extends ApplyRecoveryPointProviderSpecificInput {
-}
-
-/**
- * @class
- * Initializes a new instance of the JobEntity class.
- * @constructor
- * This class contains the minimal job details required to navigate to the
- * desired drill down.
- *
- * @member {string} [jobId] The job id.
- * @member {string} [jobFriendlyName] The job display name.
- * @member {string} [targetObjectId] The object id.
- * @member {string} [targetObjectName] The object name.
- * @member {string} [targetInstanceType] The workflow affected object type.
- * @member {string} [jobScenarioName] The job name. Enum type ScenarioName.
- */
-export interface JobEntity {
-  jobId?: string;
-  jobFriendlyName?: string;
-  targetObjectId?: string;
-  targetObjectName?: string;
-  targetInstanceType?: string;
-  jobScenarioName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobTaskDetails class.
- * @constructor
- * This class represents a task which is actually a workflow so that one can
- * navigate to its individual drill down.
- *
- * @member {object} [jobTask] The job entity.
- * @member {string} [jobTask.jobId] The job id.
- * @member {string} [jobTask.jobFriendlyName] The job display name.
- * @member {string} [jobTask.targetObjectId] The object id.
- * @member {string} [jobTask.targetObjectName] The object name.
- * @member {string} [jobTask.targetInstanceType] The workflow affected object
- * type.
- * @member {string} [jobTask.jobScenarioName] The job name. Enum type
- * ScenarioName.
- */
-export interface JobTaskDetails extends TaskTypeDetails {
-  jobTask?: JobEntity;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineTaskDetails class.
- * @constructor
- * This class represents the virtual machine task details.
- *
- * @member {string} [skippedReason] The skipped reason.
- * @member {string} [skippedReasonString] The skipped reason string.
- * @member {object} [jobTask] The job entity.
- * @member {string} [jobTask.jobId] The job id.
- * @member {string} [jobTask.jobFriendlyName] The job display name.
- * @member {string} [jobTask.targetObjectId] The object id.
- * @member {string} [jobTask.targetObjectName] The object name.
- * @member {string} [jobTask.targetInstanceType] The workflow affected object
- * type.
- * @member {string} [jobTask.jobScenarioName] The job name. Enum type
- * ScenarioName.
- */
-export interface VirtualMachineTaskDetails extends TaskTypeDetails {
-  skippedReason?: string;
-  skippedReasonString?: string;
-  jobTask?: JobEntity;
-}
-
-/**
- * @class
- * Initializes a new instance of the FabricReplicationGroupTaskDetails class.
- * @constructor
- * This class represents the fabric replication group task details.
- *
- * @member {string} [skippedReason] The skipped reason.
- * @member {string} [skippedReasonString] The skipped reason string.
- * @member {object} [jobTask] The job entity.
- * @member {string} [jobTask.jobId] The job id.
- * @member {string} [jobTask.jobFriendlyName] The job display name.
- * @member {string} [jobTask.targetObjectId] The object id.
- * @member {string} [jobTask.targetObjectName] The object name.
- * @member {string} [jobTask.targetInstanceType] The workflow affected object
- * type.
- * @member {string} [jobTask.jobScenarioName] The job name. Enum type
- * ScenarioName.
- */
-export interface FabricReplicationGroupTaskDetails extends TaskTypeDetails {
-  skippedReason?: string;
-  skippedReasonString?: string;
-  jobTask?: JobEntity;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManualActionTaskDetails class.
- * @constructor
- * This class represents the manual action task details.
- *
- * @member {string} [name] The name.
- * @member {string} [instructions] The instructions.
- * @member {string} [observation] The observation.
- */
-export interface ManualActionTaskDetails extends TaskTypeDetails {
-  name?: string;
-  instructions?: string;
-  observation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScriptActionTaskDetails class.
- * @constructor
- * This class represents the script action task details.
- *
- * @member {string} [name] The name.
- * @member {string} [path] The path.
- * @member {string} [output] The output.
- * @member {boolean} [isPrimarySideScript] A value indicating whether it is a
- * primary side script or not.
- */
-export interface ScriptActionTaskDetails extends TaskTypeDetails {
-  name?: string;
-  path?: string;
-  output?: string;
-  isPrimarySideScript?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the VmNicUpdatesTaskDetails class.
- * @constructor
- * This class represents the vm NicUpdates task details.
- *
- * @member {string} [vmId] Virtual machine Id.
- * @member {string} [nicId] Nic Id.
- * @member {string} [name] Name of the Nic.
- */
-export interface VmNicUpdatesTaskDetails extends TaskTypeDetails {
-  vmId?: string;
-  nicId?: string;
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InconsistentVmDetails class.
- * @constructor
- * This class stores the monitoring details for consistency check of
- * inconsistent Protected Entity.
- *
- * @member {string} [vmName] The Vm name.
- * @member {string} [cloudName] The Cloud name.
- * @member {array} [details] The list of details regarding state of the
- * Protected Entity in SRS and On prem.
- * @member {array} [errorIds] The list of error ids.
- */
-export interface InconsistentVmDetails {
-  vmName?: string;
-  cloudName?: string;
-  details?: string[];
-  errorIds?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ConsistencyCheckTaskDetails class.
- * @constructor
- * This class contains monitoring details of all the inconsistent Protected
- * Entites in Vmm.
- *
- * @member {array} [vmDetails] The list of inconsistent Vm details.
- */
-export interface ConsistencyCheckTaskDetails extends TaskTypeDetails {
-  vmDetails?: InconsistentVmDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AutomationRunbookTaskDetails class.
- * @constructor
- * This class represents the task details for an automation runbook.
- *
- * @member {string} [name] The recovery plan task name.
- * @member {string} [cloudServiceName] The cloud service of the automation
- * runbook account.
- * @member {string} [subscriptionId] The subscription Id of the automation
- * runbook account.
- * @member {string} [accountName] The automation account name of the runbook.
- * @member {string} [runbookId] The runbook Id.
- * @member {string} [runbookName] The runbook name.
- * @member {string} [jobId] The job Id of the runbook execution.
- * @member {string} [jobOutput] The execution output of the runbook.
- * @member {boolean} [isPrimarySideScript] A value indicating whether it is a
- * primary side script or not.
- */
-export interface AutomationRunbookTaskDetails extends TaskTypeDetails {
-  name?: string;
-  cloudServiceName?: string;
-  subscriptionId?: string;
-  accountName?: string;
-  runbookId?: string;
-  runbookName?: string;
-  jobId?: string;
-  jobOutput?: string;
-  isPrimarySideScript?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the InlineWorkflowTaskDetails class.
- * @constructor
- * This class represents the inline workflow task details.
- *
- * @member {array} [workflowIds] The list of child workflow ids.
- */
-export interface InlineWorkflowTaskDetails extends GroupTaskDetails {
-  workflowIds?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanGroupTaskDetails class.
- * @constructor
- * This class represents the recovery plan group task.
- *
- * @member {string} [name] The name.
- * @member {string} [groupId] The group identifier.
- * @member {string} [rpGroupType] The group type.
- */
-export interface RecoveryPlanGroupTaskDetails extends GroupTaskDetails {
-  name?: string;
-  groupId?: string;
-  rpGroupType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanShutdownGroupTaskDetails class.
- * @constructor
- * This class represents the recovery plan shutdown group task details.
- *
- * @member {string} [name] The name.
- * @member {string} [groupId] The group identifier.
- * @member {string} [rpGroupType] The group type.
- */
-export interface RecoveryPlanShutdownGroupTaskDetails extends GroupTaskDetails {
-  name?: string;
-  groupId?: string;
-  rpGroupType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AsrJobDetails class.
- * @constructor
- * This class represents job details based on specific job type.
- *
- */
-export interface AsrJobDetails extends JobDetails {
-}
-
-/**
- * @class
- * Initializes a new instance of the FailoverReplicationProtectedItemDetails class.
- * @constructor
- * Failover details for a replication protected item.
- *
- * @member {string} [name] The name.
- * @member {string} [friendlyName] The friendly name.
- * @member {string} [testVmName] The test Vm name.
- * @member {string} [testVmFriendlyName] The test Vm friendly name.
- * @member {string} [networkConnectionStatus] The network connection status.
- * @member {string} [networkFriendlyName] The network friendly name.
- * @member {string} [subnet] The network subnet.
- * @member {string} [recoveryPointId] The recovery point Id.
- * @member {date} [recoveryPointTime] The recovery point time.
- */
-export interface FailoverReplicationProtectedItemDetails {
-  name?: string;
-  friendlyName?: string;
-  testVmName?: string;
-  testVmFriendlyName?: string;
-  networkConnectionStatus?: string;
-  networkFriendlyName?: string;
-  subnet?: string;
-  recoveryPointId?: string;
-  recoveryPointTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestFailoverJobDetails class.
- * @constructor
- * This class represents the details for a test failover job.
- *
- * @member {string} [testFailoverStatus] The test failover status.
- * @member {string} [comments] The test failover comments.
- * @member {string} [networkName] The test network name.
- * @member {string} [networkFriendlyName] The test network friendly name.
- * @member {string} [networkType] The test network type (see TestFailoverInput
- * enum for possible values).
- * @member {array} [protectedItemDetails] The test VM details.
- */
-export interface TestFailoverJobDetails extends JobDetails {
-  testFailoverStatus?: string;
-  comments?: string;
-  networkName?: string;
-  networkFriendlyName?: string;
-  networkType?: string;
-  protectedItemDetails?: FailoverReplicationProtectedItemDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the FailoverJobDetails class.
- * @constructor
- * This class represents the details for a failover job.
- *
- * @member {array} [protectedItemDetails] The test VM details.
- */
-export interface FailoverJobDetails extends JobDetails {
-  protectedItemDetails?: FailoverReplicationProtectedItemDetails[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ExportJobDetails class.
- * @constructor
- * This class represents details for export jobs workflow.
- *
- * @member {string} [blobUri] BlobUri of the exported jobs.
- * @member {string} [sasToken] The sas token to access blob.
- */
-export interface ExportJobDetails extends JobDetails {
-  blobUri?: string;
-  sasToken?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SwitchProtectionJobDetails class.
- * @constructor
- * This class represents details for switch protection job.
- *
- * @member {string} [newReplicationProtectedItemId] ARM Id of the new
- * replication protected item.
- */
-export interface SwitchProtectionJobDetails extends JobDetails {
-  newReplicationProtectedItemId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2AContainerCreationInput class.
- * @constructor
- * A2A cloud creation input.
- *
- */
-export interface A2AContainerCreationInput extends ReplicationProviderSpecificContainerCreationInput {
-}
-
-/**
- * @class
- * Initializes a new instance of the A2ASwitchProtectionInput class.
- * @constructor
- * A2A specific switch protection input.
- *
- * @member {string} [recoveryContainerId] The recovery container Id.
- * @member {array} [vmDisks] The list of vm disk details.
- * @member {array} [vmManagedDisks] The list of vm managed disk details.
- * @member {string} [recoveryResourceGroupId] The recovery resource group Id.
- * Valid for V2 scenarios.
- * @member {string} [recoveryCloudServiceId] The recovery cloud service Id.
- * Valid for V1 scenarios.
- * @member {string} [recoveryAvailabilitySetId] The recovery availability set.
- * @member {string} [policyId] The Policy Id.
- */
-export interface A2ASwitchProtectionInput extends SwitchProtectionProviderSpecificInput {
-  recoveryContainerId?: string;
-  vmDisks?: A2AVmDiskInputDetails[];
-  vmManagedDisks?: A2AVmManagedDiskInputDetails[];
-  recoveryResourceGroupId?: string;
-  recoveryCloudServiceId?: string;
-  recoveryAvailabilitySetId?: string;
-  policyId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzurePolicyDetails class.
- * @constructor
- * Hyper-V Replica Azure specific protection profile details.
- *
- * @member {number} [recoveryPointHistoryDurationInHours] The duration (in
- * hours) to which point the recovery history needs to be maintained.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] The
- * interval (in hours) at which Hyper-V Replica should create an application
- * consistent snapshot within the VM.
- * @member {number} [replicationInterval] The replication interval.
- * @member {string} [onlineReplicationStartTime] The scheduled start time for
- * the initial replication. If this parameter is Null, the initial replication
- * starts immediately.
- * @member {string} [encryption] A value indicating whether encryption is
- * enabled for virtual machines in this cloud.
- * @member {string} [activeStorageAccountId] The active storage account Id.
- */
-export interface HyperVReplicaAzurePolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointHistoryDurationInHours?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  replicationInterval?: number;
-  onlineReplicationStartTime?: string;
-  encryption?: string;
-  activeStorageAccountId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaBasePolicyDetails class.
- * @constructor
- * Base class for HyperVReplica policy details.
- *
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
- * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
- * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
- * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
- * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
- * authentication type.
- * @member {string} [replicaDeletionOption] A value indicating whether the VM
- * has to be auto deleted. Supported Values: String.Empty, None,
- * OnRecoveryCloud
- */
-export interface HyperVReplicaBasePolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPoints?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  compression?: string;
-  initialReplicationMethod?: string;
-  onlineReplicationStartTime?: string;
-  offlineReplicationImportPath?: string;
-  offlineReplicationExportPath?: string;
-  replicationPort?: number;
-  allowedAuthenticationType?: number;
-  replicaDeletionOption?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaPolicyDetails class.
- * @constructor
- * Hyper-V Replica Blue specific protection profile details.
- *
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
- * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
- * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
- * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
- * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
- * authentication type.
- * @member {string} [replicaDeletionOption] A value indicating whether the VM
- * has to be auto deleted. Supported Values: String.Empty, None,
- * OnRecoveryCloud
- */
-export interface HyperVReplicaPolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPoints?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  compression?: string;
-  initialReplicationMethod?: string;
-  onlineReplicationStartTime?: string;
-  offlineReplicationImportPath?: string;
-  offlineReplicationExportPath?: string;
-  replicationPort?: number;
-  allowedAuthenticationType?: number;
-  replicaDeletionOption?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaBluePolicyDetails class.
- * @constructor
- * Hyper-V Replica Blue specific protection profile details.
- *
- * @member {number} [replicationFrequencyInSeconds] A value indicating the
- * replication interval.
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
- * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
- * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
- * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
- * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
- * authentication type.
- * @member {string} [replicaDeletionOption] A value indicating whether the VM
- * has to be auto deleted. Supported Values: String.Empty, None,
- * OnRecoveryCloud
- */
-export interface HyperVReplicaBluePolicyDetails extends PolicyProviderSpecificDetails {
-  replicationFrequencyInSeconds?: number;
-  recoveryPoints?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  compression?: string;
-  initialReplicationMethod?: string;
-  onlineReplicationStartTime?: string;
-  offlineReplicationImportPath?: string;
-  offlineReplicationExportPath?: string;
-  replicationPort?: number;
-  allowedAuthenticationType?: number;
-  replicaDeletionOption?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageBasePolicyDetails class.
- * @constructor
- * Base class for the policies of providers using InMage replication.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
- * sync has to be enabled.
- */
-export interface InMageBasePolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2PolicyDetails class.
- * @constructor
- * InMage Azure v2 specific protection profile details.
- *
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency in minutes.
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
- * sync has to be enabled.
- */
-export interface InMageAzureV2PolicyDetails extends PolicyProviderSpecificDetails {
-  crashConsistentFrequencyInMinutes?: number;
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMagePolicyDetails class.
- * @constructor
- * InMage specific protection profile details.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
- * sync has to be enabled.
- */
-export interface InMagePolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2APolicyDetails class.
- * @constructor
- * A2A specific policy details.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
- * sync has to be enabled.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency in minutes.
- */
-export interface A2APolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus?: string;
-  crashConsistentFrequencyInMinutes?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RcmAzureMigrationPolicyDetails class.
- * @constructor
- * RCM based Azure migration specific policy details.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency in minutes.
- * @member {string} [multiVmSyncStatus] A value indicating whether multi-VM
- * sync has to be enabled. Possible values include: 'Enabled', 'Disabled'
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency in minutes.
- */
-export interface RcmAzureMigrationPolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus?: string;
-  crashConsistentFrequencyInMinutes?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the VmwareCbtPolicyDetails class.
- * @constructor
- * VMware Cbt specific policy details.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency in minutes.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency in minutes.
- */
-export interface VmwareCbtPolicyDetails extends PolicyProviderSpecificDetails {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  crashConsistentFrequencyInMinutes?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaAzurePolicyInput class.
- * @constructor
- * Hyper-V Replica Azure specific input for creating a protection profile.
- *
- * @member {number} [recoveryPointHistoryDuration] The duration (in hours) to
- * which point the recovery history needs to be maintained.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] The
- * interval (in hours) at which Hyper-V Replica should create an application
- * consistent snapshot within the VM.
- * @member {number} [replicationInterval] The replication interval.
- * @member {string} [onlineReplicationStartTime] The scheduled start time for
- * the initial replication. If this parameter is Null, the initial replication
- * starts immediately.
- * @member {string} [encryption] A value indicating whether encryption needs to
- * be enabled for Vms in this cloud.
- * @member {array} [storageAccounts] The list of storage accounts to which the
- * VMs in the primary cloud can replicate to.
- */
-export interface HyperVReplicaAzurePolicyInput extends PolicyProviderSpecificInput {
-  recoveryPointHistoryDuration?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  replicationInterval?: number;
-  onlineReplicationStartTime?: string;
-  encryption?: string;
-  storageAccounts?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaPolicyInput class.
- * @constructor
- * Hyper-V Replica specific protection profile Input.
- *
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
- * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
- * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
- * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
- * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
- * authentication type.
- * @member {string} [replicaDeletion] A value indicating whether the VM has to
- * be auto deleted.
- */
-export interface HyperVReplicaPolicyInput extends PolicyProviderSpecificInput {
-  recoveryPoints?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  compression?: string;
-  initialReplicationMethod?: string;
-  onlineReplicationStartTime?: string;
-  offlineReplicationImportPath?: string;
-  offlineReplicationExportPath?: string;
-  replicationPort?: number;
-  allowedAuthenticationType?: number;
-  replicaDeletion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HyperVReplicaBluePolicyInput class.
- * @constructor
- * HyperV Replica Blue policy input.
- *
- * @member {number} [replicationFrequencyInSeconds] A value indicating the
- * replication interval.
- * @member {number} [recoveryPoints] A value indicating the number of recovery
- * points.
- * @member {number} [applicationConsistentSnapshotFrequencyInHours] A value
- * indicating the application consistent frequency.
- * @member {string} [compression] A value indicating whether compression has to
- * be enabled.
- * @member {string} [initialReplicationMethod] A value indicating whether IR is
- * online.
- * @member {string} [onlineReplicationStartTime] A value indicating the online
- * IR start time.
- * @member {string} [offlineReplicationImportPath] A value indicating the
- * offline IR import path.
- * @member {string} [offlineReplicationExportPath] A value indicating the
- * offline IR export path.
- * @member {number} [replicationPort] A value indicating the recovery HTTPS
- * port.
- * @member {number} [allowedAuthenticationType] A value indicating the
- * authentication type.
- * @member {string} [replicaDeletion] A value indicating whether the VM has to
- * be auto deleted.
- */
-export interface HyperVReplicaBluePolicyInput extends PolicyProviderSpecificInput {
-  replicationFrequencyInSeconds?: number;
-  recoveryPoints?: number;
-  applicationConsistentSnapshotFrequencyInHours?: number;
-  compression?: string;
-  initialReplicationMethod?: string;
-  onlineReplicationStartTime?: string;
-  offlineReplicationImportPath?: string;
-  offlineReplicationExportPath?: string;
-  replicationPort?: number;
-  allowedAuthenticationType?: number;
-  replicaDeletion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMageAzureV2PolicyInput class.
- * @constructor
- * VMWare Azure specific protection profile Input.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency (in minutes).
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency (in minutes).
- * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
- * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
- * include: 'Enable', 'Disable'
- */
-export interface InMageAzureV2PolicyInput extends PolicyProviderSpecificInput {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  crashConsistentFrequencyInMinutes?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InMagePolicyInput class.
- * @constructor
- * VMWare Azure specific protection profile Input.
- *
- * @member {number} [recoveryPointThresholdInMinutes] The recovery point
- * threshold in minutes.
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency (in minutes).
- * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
- * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
- * include: 'Enable', 'Disable'
- */
-export interface InMagePolicyInput extends PolicyProviderSpecificInput {
-  recoveryPointThresholdInMinutes?: number;
-  recoveryPointHistory?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the A2APolicyCreationInput class.
- * @constructor
- * A2A Policy creation input.
- *
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency (in minutes).
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency (in minutes).
- * @member {string} multiVmSyncStatus A value indicating whether multi-VM sync
- * has to be enabled. Value should be 'Enabled' or 'Disabled'. Possible values
- * include: 'Enable', 'Disable'
- */
-export interface A2APolicyCreationInput extends PolicyProviderSpecificInput {
-  recoveryPointHistory?: number;
-  crashConsistentFrequencyInMinutes?: number;
-  appConsistentFrequencyInMinutes?: number;
-  multiVmSyncStatus: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VMwareCbtPolicyCreationInput class.
- * @constructor
- * VMware Cbt Policy creation input.
- *
- * @member {number} [recoveryPointHistory] The duration in minutes until which
- * the recovery points need to be stored.
- * @member {number} [crashConsistentFrequencyInMinutes] The crash consistent
- * snapshot frequency (in minutes).
- * @member {number} [appConsistentFrequencyInMinutes] The app consistent
- * snapshot frequency (in minutes).
- */
-export interface VMwareCbtPolicyCreationInput extends PolicyProviderSpecificInput {
-  recoveryPointHistory?: number;
-  crashConsistentFrequencyInMinutes?: number;
-  appConsistentFrequencyInMinutes?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanScriptActionDetails class.
- * @constructor
- * Recovery plan script action details.
- *
- * @member {string} path The script path.
- * @member {string} [timeout] The script timeout.
- * @member {string} fabricLocation The fabric location. Possible values
- * include: 'Primary', 'Recovery'
- */
-export interface RecoveryPlanScriptActionDetails extends RecoveryPlanActionDetails {
-  path: string;
-  timeout?: string;
-  fabricLocation: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanAutomationRunbookActionDetails class.
- * @constructor
- * Recovery plan Automation runbook action details.
- *
- * @member {string} [runbookId] The runbook ARM Id.
- * @member {string} [timeout] The runbook timeout.
- * @member {string} fabricLocation The fabric location. Possible values
- * include: 'Primary', 'Recovery'
- */
-export interface RecoveryPlanAutomationRunbookActionDetails extends RecoveryPlanActionDetails {
-  runbookId?: string;
-  timeout?: string;
-  fabricLocation: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanManualActionDetails class.
- * @constructor
- * Recovery plan manual action details.
- *
- * @member {string} [description] The manual action description.
- */
-export interface RecoveryPlanManualActionDetails extends RecoveryPlanActionDetails {
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanHyperVReplicaAzureFailoverInput class.
- * @constructor
- * Recovery plan HVR Azure failover input.
- *
- * @member {string} vaultLocation The vault location.
- * @member {string} [primaryKekCertificatePfx] The primary KEK certificate PFX.
- * @member {string} [secondaryKekCertificatePfx] The secondary KEK certificate
- * PFX.
- * @member {string} [recoveryPointType] The recovery point type. Possible
- * values include: 'Latest', 'LatestApplicationConsistent', 'LatestProcessed'
- */
-export interface RecoveryPlanHyperVReplicaAzureFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
-  vaultLocation: string;
-  primaryKekCertificatePfx?: string;
-  secondaryKekCertificatePfx?: string;
-  recoveryPointType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanHyperVReplicaAzureFailbackInput class.
- * @constructor
- * Recovery plan HVR Azure failback input.
- *
- * @member {string} dataSyncOption The data sync option. Possible values
- * include: 'ForDownTime', 'ForSynchronization'
- * @member {string} recoveryVmCreationOption The ALR option. Possible values
- * include: 'CreateVmIfNotFound', 'NoAction'
- */
-export interface RecoveryPlanHyperVReplicaAzureFailbackInput extends RecoveryPlanProviderSpecificFailoverInput {
-  dataSyncOption: string;
-  recoveryVmCreationOption: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanInMageAzureV2FailoverInput class.
- * @constructor
- * Recovery plan InMageAzureV2 failover input.
- *
- * @member {string} vaultLocation The vault location.
- * @member {string} recoveryPointType The recovery point type. Possible values
- * include: 'Latest', 'LatestApplicationConsistent', 'LatestCrashConsistent',
- * 'LatestProcessed'
- * @member {string} [useMultiVmSyncPoint] A value indicating whether multi VM
- * sync enabled VMs should use multi VM sync points for failover.
- */
-export interface RecoveryPlanInMageAzureV2FailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
-  vaultLocation: string;
-  recoveryPointType: string;
-  useMultiVmSyncPoint?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanInMageFailoverInput class.
- * @constructor
- * Recovery plan InMage failover input.
- *
- * @member {string} recoveryPointType The recovery point type. Possible values
- * include: 'LatestTime', 'LatestTag', 'Custom'
- */
-export interface RecoveryPlanInMageFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
-  recoveryPointType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanA2AFailoverInput class.
- * @constructor
- * Recovery plan A2A failover input.
- *
- * @member {string} recoveryPointType The recovery point type. Possible values
- * include: 'Latest', 'LatestApplicationConsistent', 'LatestCrashConsistent',
- * 'LatestProcessed'
- * @member {string} [cloudServiceCreationOption] A value indicating whether to
- * use recovery cloud service for TFO or not.
- */
-export interface RecoveryPlanA2AFailoverInput extends RecoveryPlanProviderSpecificFailoverInput {
-  recoveryPointType: string;
-  cloudServiceCreationOption?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFabricCreationInput class.
- * @constructor
- * Fabric provider specific settings.
- *
- * @member {string} [location] The Location.
- */
-export interface AzureFabricCreationInput extends FabricSpecificCreationInput {
-  location?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VMwareV2FabricCreationInput class.
- * @constructor
- * Fabric provider specific settings.
- *
- */
-export interface VMwareV2FabricCreationInput extends FabricSpecificCreationInput {
-}
-
 
 /**
  * @class
- * Initializes a new instance of the ReplicationProtectedItemCollection class.
+ * Initializes a new instance of the OperationsDiscoveryCollection class.
  * @constructor
- * Replication protected item collection.
+ * Collection of ClientDiscovery details.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface ReplicationProtectedItemCollection extends Array<ReplicationProtectedItem> {
+export interface OperationsDiscoveryCollection extends Array<OperationsDiscovery> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AlertCollection class.
+ * @constructor
+ * Collection of alerts.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface AlertCollection extends Array<Alert> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventCollection class.
+ * @constructor
+ * Collection of fabric details.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface EventCollection extends Array<Event> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FabricCollection class.
+ * @constructor
+ * Collection of fabric details.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface FabricCollection extends Array<Fabric> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogicalNetworkCollection class.
+ * @constructor
+ * List of logical networks.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface LogicalNetworkCollection extends Array<LogicalNetwork> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkCollection class.
+ * @constructor
+ * List of networks.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface NetworkCollection extends Array<Network> {
   nextLink?: string;
 }
 
@@ -6556,90 +7079,6 @@ export interface NetworkMappingCollection extends Array<NetworkMapping> {
 
 /**
  * @class
- * Initializes a new instance of the FabricCollection class.
- * @constructor
- * Collection of fabric details.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface FabricCollection extends Array<Fabric> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VCenterCollection class.
- * @constructor
- * Collection of vCenter details.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface VCenterCollection extends Array<VCenter> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageClassificationMappingCollection class.
- * @constructor
- * Collection of storage mapping details.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface StorageClassificationMappingCollection extends Array<StorageClassificationMapping> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageClassificationCollection class.
- * @constructor
- * Collection of storage details.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface StorageClassificationCollection extends Array<StorageClassification> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryServicesProviderCollection class.
- * @constructor
- * Collection of providers.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface RecoveryServicesProviderCollection extends Array<RecoveryServicesProvider> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPointCollection class.
- * @constructor
- * Collection of recovery point details.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface RecoveryPointCollection extends Array<RecoveryPoint> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecoveryPlanCollection class.
- * @constructor
- * Recovery plan collection details.
- *
- * @member {string} [nextLink] The value of next link.
- */
-export interface RecoveryPlanCollection extends Array<RecoveryPlan> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ProtectionContainerCollection class.
  * @constructor
  * Protection Container collection.
@@ -6647,18 +7086,6 @@ export interface RecoveryPlanCollection extends Array<RecoveryPlan> {
  * @member {string} [nextLink] The value of next link.
  */
 export interface ProtectionContainerCollection extends Array<ProtectionContainer> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProtectionContainerMappingCollection class.
- * @constructor
- * Protection container mapping collection class.
- *
- * @member {string} [nextLink] Link to fetch rest of the data.
- */
-export interface ProtectionContainerMappingCollection extends Array<ProtectionContainerMapping> {
   nextLink?: string;
 }
 
@@ -6676,49 +7103,97 @@ export interface ProtectableItemCollection extends Array<ProtectableItem> {
 
 /**
  * @class
- * Initializes a new instance of the PolicyCollection class.
+ * Initializes a new instance of the ReplicationProtectedItemCollection class.
  * @constructor
- * Protection Profile Collection details.
+ * Replication protected item collection.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface PolicyCollection extends Array<Policy> {
+export interface ReplicationProtectedItemCollection extends Array<ReplicationProtectedItem> {
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the OperationsDiscoveryCollection class.
+ * Initializes a new instance of the RecoveryPointCollection class.
  * @constructor
- * Collection of ClientDiscovery details.
+ * Collection of recovery point details.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface OperationsDiscoveryCollection extends Array<OperationsDiscovery> {
+export interface RecoveryPointCollection extends Array<RecoveryPoint> {
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the NetworkCollection class.
+ * Initializes a new instance of the TargetComputeSizeCollection class.
  * @constructor
- * List of networks.
+ * Target compute size collection.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface NetworkCollection extends Array<Network> {
+export interface TargetComputeSizeCollection extends Array<TargetComputeSize> {
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the LogicalNetworkCollection class.
+ * Initializes a new instance of the ProtectionContainerMappingCollection class.
  * @constructor
- * List of logical networks.
+ * Protection container mapping collection class.
+ *
+ * @member {string} [nextLink] Link to fetch rest of the data.
+ */
+export interface ProtectionContainerMappingCollection extends Array<ProtectionContainerMapping> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecoveryServicesProviderCollection class.
+ * @constructor
+ * Collection of providers.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface LogicalNetworkCollection extends Array<LogicalNetwork> {
+export interface RecoveryServicesProviderCollection extends Array<RecoveryServicesProvider> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageClassificationCollection class.
+ * @constructor
+ * Collection of storage details.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface StorageClassificationCollection extends Array<StorageClassification> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageClassificationMappingCollection class.
+ * @constructor
+ * Collection of storage mapping details.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface StorageClassificationMappingCollection extends Array<StorageClassificationMapping> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VCenterCollection class.
+ * @constructor
+ * Collection of vCenter details.
+ *
+ * @member {string} [nextLink] The value of next link.
+ */
+export interface VCenterCollection extends Array<VCenter> {
   nextLink?: string;
 }
 
@@ -6736,24 +7211,24 @@ export interface JobCollection extends Array<Job> {
 
 /**
  * @class
- * Initializes a new instance of the EventCollection class.
+ * Initializes a new instance of the PolicyCollection class.
  * @constructor
- * Collection of fabric details.
+ * Protection Profile Collection details.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface EventCollection extends Array<Event> {
+export interface PolicyCollection extends Array<Policy> {
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the AlertCollection class.
+ * Initializes a new instance of the RecoveryPlanCollection class.
  * @constructor
- * Collection of alerts.
+ * Recovery plan collection details.
  *
  * @member {string} [nextLink] The value of next link.
  */
-export interface AlertCollection extends Array<Alert> {
+export interface RecoveryPlanCollection extends Array<RecoveryPlan> {
   nextLink?: string;
 }
