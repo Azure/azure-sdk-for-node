@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2018-03-01.6.1')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:ea99a173-04f2-4279-8cce-9af8a5e3784e\\nTime:2018-03-09T23:05:10.0856820Z\"\r\n  }\r\n}", { 'content-length': '413',
+  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2018-08-01.7.0')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:c64b5386-cf38-44c7-ba9c-d6a280b6eb02\\nTime:2018-08-21T20:31:01.4981668Z\"\r\n  }\r\n}", { 'content-length': '413',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ea99a173-04f2-4279-8cce-9af8a5e3784e',
+  'request-id': 'c64b5386-cf38-44c7-ba9c-d6a280b6eb02',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:09 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2018-03-01.6.1')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:ea99a173-04f2-4279-8cce-9af8a5e3784e\\nTime:2018-03-09T23:05:10.0856820Z\"\r\n  }\r\n}", { 'content-length': '413',
+  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2018-08-01.7.0')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:c64b5386-cf38-44c7-ba9c-d6a280b6eb02\\nTime:2018-08-21T20:31:01.4981668Z\"\r\n  }\r\n}", { 'content-length': '413',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ea99a173-04f2-4279-8cce-9af8a5e3784e',
+  'request-id': 'c64b5386-cf38-44c7-ba9c-d6a280b6eb02',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:09 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; }]];

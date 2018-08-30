@@ -2919,11 +2919,11 @@ export interface DscConfigurationOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * Retrieve the configuration script identified by configuration name.
@@ -2946,7 +2946,7 @@ export interface DscConfigurationOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2954,15 +2954,15 @@ export interface DscConfigurationOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<string>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -9218,30 +9218,37 @@ export interface SourceControlOperations {
      * @param {object} parameters The parameters supplied to the create or update
      * source control operation.
      *
-     * @param {string} [parameters.repoUrl] Gets or sets the repo url of the source
-     * control.
+     * @param {string} [parameters.repoUrl] The repo url of the source control.
      *
-     * @param {string} [parameters.branch] Gets or sets the repo branch of the
-     * source control. Include branch as empty string for VsoTfvc.
+     * @param {string} [parameters.branch] The repo branch of the source control.
+     * Include branch as empty string for VsoTfvc.
      *
-     * @param {string} [parameters.folderPath] Gets or sets the folder path of the
-     * source control. Path must be relative.
+     * @param {string} [parameters.folderPath] The folder path of the source
+     * control. Path must be relative.
      *
-     * @param {boolean} [parameters.autoSync] Gets or sets auto async of the source
-     * control. Default is false.
+     * @param {boolean} [parameters.autoSync] The auto async of the source control.
+     * Default is false.
      *
-     * @param {boolean} [parameters.publishRunbook] Gets or sets the auto publish
-     * of the source control. Default is true.
+     * @param {boolean} [parameters.publishRunbook] The auto publish of the source
+     * control. Default is true.
      *
      * @param {string} [parameters.sourceType] The source type. Must be one of
      * VsoGit, VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
      * 'VsoTfvc', 'GitHub'
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
-     * token for the repo of the source control.
+     * @param {object} [parameters.securityToken] The authorization token for the
+     * repo of the source control.
      *
-     * @param {string} [parameters.description] Gets or sets the user description
-     * of the source control.
+     * @param {string} [parameters.securityToken.accessToken] The access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] The refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
+     *
+     * @param {string} [parameters.description] The user description of the source
+     * control.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9268,30 +9275,37 @@ export interface SourceControlOperations {
      * @param {object} parameters The parameters supplied to the create or update
      * source control operation.
      *
-     * @param {string} [parameters.repoUrl] Gets or sets the repo url of the source
-     * control.
+     * @param {string} [parameters.repoUrl] The repo url of the source control.
      *
-     * @param {string} [parameters.branch] Gets or sets the repo branch of the
-     * source control. Include branch as empty string for VsoTfvc.
+     * @param {string} [parameters.branch] The repo branch of the source control.
+     * Include branch as empty string for VsoTfvc.
      *
-     * @param {string} [parameters.folderPath] Gets or sets the folder path of the
-     * source control. Path must be relative.
+     * @param {string} [parameters.folderPath] The folder path of the source
+     * control. Path must be relative.
      *
-     * @param {boolean} [parameters.autoSync] Gets or sets auto async of the source
-     * control. Default is false.
+     * @param {boolean} [parameters.autoSync] The auto async of the source control.
+     * Default is false.
      *
-     * @param {boolean} [parameters.publishRunbook] Gets or sets the auto publish
-     * of the source control. Default is true.
+     * @param {boolean} [parameters.publishRunbook] The auto publish of the source
+     * control. Default is true.
      *
      * @param {string} [parameters.sourceType] The source type. Must be one of
      * VsoGit, VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
      * 'VsoTfvc', 'GitHub'
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
-     * token for the repo of the source control.
+     * @param {object} [parameters.securityToken] The authorization token for the
+     * repo of the source control.
      *
-     * @param {string} [parameters.description] Gets or sets the user description
-     * of the source control.
+     * @param {string} [parameters.securityToken.accessToken] The access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] The refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
+     *
+     * @param {string} [parameters.description] The user description of the source
+     * control.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9337,23 +9351,30 @@ export interface SourceControlOperations {
      * @param {object} parameters The parameters supplied to the update source
      * control operation.
      *
-     * @param {string} [parameters.branch] Gets or sets the repo branch of the
-     * source control.
+     * @param {string} [parameters.branch] The repo branch of the source control.
      *
-     * @param {string} [parameters.folderPath] Gets or sets the folder path of the
-     * source control. Path must be relative.
+     * @param {string} [parameters.folderPath] The folder path of the source
+     * control. Path must be relative.
      *
-     * @param {boolean} [parameters.autoSync] Gets or sets auto async of the source
-     * control. Default is false.
+     * @param {boolean} [parameters.autoSync] The auto sync of the source control.
+     * Default is false.
      *
-     * @param {boolean} [parameters.publishRunbook] Gets or sets the auto publish
-     * of the source control. Default is true.
+     * @param {boolean} [parameters.publishRunbook] The auto publish of the source
+     * control. Default is true.
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
-     * token for the repo of the source control.
+     * @param {object} [parameters.securityToken] The authorization token for the
+     * repo of the source control.
      *
-     * @param {string} [parameters.description] Gets or sets the user description
-     * of the source control.
+     * @param {string} [parameters.securityToken.accessToken] The access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] The refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
+     *
+     * @param {string} [parameters.description] The user description of the source
+     * control.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9380,23 +9401,30 @@ export interface SourceControlOperations {
      * @param {object} parameters The parameters supplied to the update source
      * control operation.
      *
-     * @param {string} [parameters.branch] Gets or sets the repo branch of the
-     * source control.
+     * @param {string} [parameters.branch] The repo branch of the source control.
      *
-     * @param {string} [parameters.folderPath] Gets or sets the folder path of the
-     * source control. Path must be relative.
+     * @param {string} [parameters.folderPath] The folder path of the source
+     * control. Path must be relative.
      *
-     * @param {boolean} [parameters.autoSync] Gets or sets auto async of the source
-     * control. Default is false.
+     * @param {boolean} [parameters.autoSync] The auto sync of the source control.
+     * Default is false.
      *
-     * @param {boolean} [parameters.publishRunbook] Gets or sets the auto publish
-     * of the source control. Default is true.
+     * @param {boolean} [parameters.publishRunbook] The auto publish of the source
+     * control. Default is true.
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
-     * token for the repo of the source control.
+     * @param {object} [parameters.securityToken] The authorization token for the
+     * repo of the source control.
      *
-     * @param {string} [parameters.description] Gets or sets the user description
-     * of the source control.
+     * @param {string} [parameters.securityToken.accessToken] The access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] The refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
+     *
+     * @param {string} [parameters.description] The user description of the source
+     * control.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9700,8 +9728,8 @@ export interface SourceControlSyncJobOperations {
      * @param {object} parameters The parameters supplied to the create source
      * control sync job operation.
      *
-     * @param {string} [parameters.commitId] Sets the commit id of the source
-     * control sync job.
+     * @param {string} parameters.commitId The commit id of the source control sync
+     * job. If not syncing to a commitId, enter an empty string.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9730,8 +9758,8 @@ export interface SourceControlSyncJobOperations {
      * @param {object} parameters The parameters supplied to the create source
      * control sync job operation.
      *
-     * @param {string} [parameters.commitId] Sets the commit id of the source
-     * control sync job.
+     * @param {string} parameters.commitId The commit id of the source control sync
+     * job. If not syncing to a commitId, enter an empty string.
      *
      * @param {object} [options] Optional Parameters.
      *

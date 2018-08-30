@@ -16,6 +16,8 @@
  * @member {array} [details] An array of CloudError objects specifying the details
  * 
  * @member {Object} [innererror] The inner error parsed from the body of the http error response
+ * 
+ * @member {Object} [additionalInfo] The additional error information
  */
 class CloudError extends Error {
   constructor(parameters) {
@@ -48,6 +50,10 @@ class CloudError extends Error {
 
       if (parameters.innererror) {
         this.innererror = JSON.parse(JSON.stringify(parameters.innererror));
+      }
+
+      if (parameters.additionalInfo) {
+        this.additionalInfo = parameters.additionalInfo;
       }
     }
   }
@@ -108,6 +114,37 @@ class CloudError extends Error {
             type: {
               name: 'Object'
             }
+          },
+          additionalInfo: {
+            required: false,
+            serializedName: 'additionalInfo',
+            type: {
+              name: 'Sequence',
+              element: {
+                required: false,
+                serializedName: 'AdditionalInfoElementType',
+                type: {
+                  name: 'Composite',
+                  className: 'AdditionalInfoElement',
+                  modelProperties: {
+                    type: {
+                      required: true,
+                      serializedName: 'type',
+                      type: {
+                        name: 'String'
+                      }
+                    },
+                    info: {
+                      required: false,
+                      serializedName: 'info',
+                      type: {
+                        name: 'Object'
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -148,6 +185,11 @@ class CloudError extends Error {
     if (this.innererror) {
       payload.error.innererror = JSON.parse(JSON.stringify(this.innererror));
     }
+
+    if (this.additionalInfo) {
+      payload.error.additionalInfo = JSON.parse(JSON.stringify(this.additionalInfo));
+    }
+
     return payload;
   }
 
@@ -187,6 +229,10 @@ class CloudError extends Error {
         
         if (instance.error.innererror) {
           this.innererror = JSON.parse(JSON.stringify(instance.error.innererror));
+        }
+
+        if (instance.error.additionalInfo) {
+          this.additionalInfo = JSON.parse(JSON.stringify(instance.error.additionalInfo));
         }
       }
     }
