@@ -2659,10 +2659,10 @@ export interface AvailableDelegation {
  * @class
  * Initializes a new instance of the AvailableDelegationsResult class.
  * @constructor
- * @member {array} [delegations] An array of available delegations.
+ * @member {array} [value] An array of available delegations.
  */
 export interface AvailableDelegationsResult {
-  delegations?: AvailableDelegation[];
+  value?: AvailableDelegation[];
 }
 
 /**
