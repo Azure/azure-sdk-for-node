@@ -9,7 +9,7 @@ services/cognitiveServicesSearch/webSearch-tests.js
 services/cognitiveServicesSearch/videoSearch-tests.js
 services/cognitiveServicesSearch/newsSearch-tests.js
 services/cognitiveServicesSearch/imageSearch-tests.js
-services/cognitiveServicesSearch/customSearch-tests.js
+#services/cognitiveServicesSearch/customSearch-tests.js
 services/batchaiManagement/batchaiManagementClient-tests.js
 common/framework-tests.js
 runtimeTests/rpRegistrationFilterTest.js
