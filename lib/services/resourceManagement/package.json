@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Srinivasan, Vivek <visriniv@microsoft.com>"
   ],
-  "version": "3.1.1-preview",
+  "version": "4.1.0-preview",
   "description": "Microsoft Azure Resource Management Client Library for node",
   "tags": [
     "azure",
@@ -20,10 +20,10 @@
   "types": "./lib/resource.d.ts",
   "license": "MIT",
   "dependencies": {
-    "ms-rest": "^2.3.0",
-    "ms-rest-azure": "^2.5.0"
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
   },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/resourceManagement",
   "repository": {
     "type": "git",
     "url": "git@github.com:Azure/azure-sdk-for-node.git"

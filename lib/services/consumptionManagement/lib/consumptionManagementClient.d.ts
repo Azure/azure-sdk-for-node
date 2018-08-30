@@ -23,8 +23,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
-   * @param {datagrain} grain - Can be daily or monthly. Possible values include: 'DailyGrain', 'MonthlyGrain'
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -36,22 +34,20 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, grain: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
-
-  grain: string;
 
   acceptLanguage: string;
 
@@ -62,12 +58,17 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   // Operation groups
   usageDetails: operations.UsageDetails;
   marketplaces: operations.Marketplaces;
+  balances: operations.Balances;
   reservationsSummaries: operations.ReservationsSummaries;
   reservationsDetails: operations.ReservationsDetails;
-  reservationRecommendationsOperations: operations.ReservationRecommendationsOperations;
+  reservationRecommendations: operations.ReservationRecommendations;
   budgets: operations.Budgets;
-  operations: operations.Operations;
   priceSheet: operations.PriceSheet;
+  costTags: operations.CostTags;
+  tags: operations.Tags;
+  forecasts: operations.Forecasts;
+  operations: operations.Operations;
+  aggregatedCost: operations.AggregatedCost;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };

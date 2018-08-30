@@ -394,12 +394,15 @@ export interface ErrorResponse {
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
  */
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
   partnerNamespace?: string;
   alternateName?: string;
   readonly role?: string;
+  readonly pendingReplicationOperationsCount?: number;
 }
 
 /**
@@ -432,7 +435,7 @@ export interface MessagingRegions extends TrackedResource {
  * @class
  * Initializes a new instance of the MessagingPlan class.
  * @constructor
- * Messaging
+ * Messaging Plan for the namespace
  *
  * @member {number} [sku] Sku type
  * @member {number} [selectedEventHubUnit] Selected event hub unit
@@ -440,10 +443,10 @@ export interface MessagingRegions extends TrackedResource {
  * @member {number} [revision] revision number
  */
 export interface MessagingPlan extends TrackedResource {
-  sku?: number;
-  selectedEventHubUnit?: number;
+  readonly sku?: number;
+  readonly selectedEventHubUnit?: number;
   readonly updatedAt?: Date;
-  revision?: number;
+  readonly revision?: number;
 }
 
 

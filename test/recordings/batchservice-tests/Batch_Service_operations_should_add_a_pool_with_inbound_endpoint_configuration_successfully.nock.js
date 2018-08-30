@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2018-03-01.6.1', '*')
+.post('/pools?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:52:32 GMT',
-  etag: '0x8D58610717C3E16',
+  'last-modified': 'Tue, 21 Aug 2018 20:16:28 GMT',
+  etag: '0x8D607A2FA29DA10',
   location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkinboundendpointpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '60386202-9c7a-42c6-91df-5556027e52ec',
+  'request-id': 'fd4c1f89-0345-4ea1-859c-8fae1153e10d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkinboundendpointpool',
-  date: 'Fri, 09 Mar 2018 22:52:32 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2018-03-01.6.1', '*')
+.post('/pools?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:52:32 GMT',
-  etag: '0x8D58610717C3E16',
+  'last-modified': 'Tue, 21 Aug 2018 20:16:28 GMT',
+  etag: '0x8D607A2FA29DA10',
   location: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkinboundendpointpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '60386202-9c7a-42c6-91df-5556027e52ec',
+  'request-id': 'fd4c1f89-0345-4ea1-859c-8fae1153e10d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdkinboundendpointpool',
-  date: 'Fri, 09 Mar 2018 22:52:32 GMT',
+  date: 'Tue, 21 Aug 2018 20:16:28 GMT',
   connection: 'close' });
  return result; }]];

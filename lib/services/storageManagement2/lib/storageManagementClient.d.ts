@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class StorageManagementClient extends AzureServiceClient {
+export default class StorageManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the StorageManagementClient class.
    * @constructor
@@ -20,7 +21,7 @@ declare class StorageManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - The ID of the target subscription.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -33,11 +34,11 @@ declare class StorageManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -58,7 +59,8 @@ declare class StorageManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   skus: operations.Skus;
   storageAccounts: operations.StorageAccounts;
-  usageOperations: operations.UsageOperations;
+  usages: operations.Usages;
+  blobContainers: operations.BlobContainers;
 }
 
-export = StorageManagementClient;
+export { StorageManagementClient, models as StorageManagementModels };

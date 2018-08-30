@@ -510,7 +510,7 @@ describe('IoTHub', function () {
           });
       });
 
-      it('should get the iothub quota metric successfully', function(done) {
+      it.skip('should get the iothub quota metric successfully', function(done) {
           client.iotHubResource.getQuotaMetrics(resourceGroupName, resourceName, function(err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
@@ -570,7 +570,7 @@ describe('IoTHub', function () {
           });
       });
 
-      it('should get all the eventhub consumer groups successfully', function(done) {
+      it.skip('should get all the eventhub consumer groups successfully', function(done) {
           client.iotHubResource.listEventHubConsumerGroups(resourceGroupName, resourceName, 'events', function(err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
