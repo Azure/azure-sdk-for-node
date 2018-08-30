@@ -10,67 +10,67 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:09 GMT',
-  etag: '0x8D58612347B608D',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:00 GMT',
+  etag: '0x8D607A5021DEA9B',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '30308657-ef81-48eb-bdc9-f172ba9114a1',
+  'request-id': '999e4662-f9cf-44ef-9944-da6f9560e349',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask',
-  date: 'Fri, 09 Mar 2018 23:05:09 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-03-01.6.1', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:09 GMT',
-  etag: '0x8D58612347B608D',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:00 GMT',
+  etag: '0x8D607A5021DEA9B',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '30308657-ef81-48eb-bdc9-f172ba9114a1',
+  'request-id': '999e4662-f9cf-44ef-9944-da6f9560e349',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask',
-  date: 'Fri, 09 Mar 2018 23:05:09 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"ApplicationPacakgeReferenceTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask\",\"eTag\":\"0x8D58612347B608D\",\"creationTime\":\"2018-03-09T23:05:09.0827405Z\",\"lastModified\":\"2018-03-09T23:05:09.0827405Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T23:05:09.0827405Z\",\"commandLine\":\"cmd /c echo hello world\",\"applicationPackageReferences\":[\r\n    {\r\n      \"applicationId\":\"my_application_id\"\r\n    }\r\n  ],\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"ApplicationPacakgeReferenceTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask\",\"eTag\":\"0x8D607A5021DEA9B\",\"creationTime\":\"2018-08-21T20:31:00.6017179Z\",\"lastModified\":\"2018-08-21T20:31:00.6017179Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:31:00.6017179Z\",\"commandLine\":\"cmd /c echo hello world\",\"applicationPackageReferences\":[\r\n    {\r\n      \"applicationId\":\"my_application_id\"\r\n    }\r\n  ],\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:09 GMT',
-  etag: '0x8D58612347B608D',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:00 GMT',
+  etag: '0x8D607A5021DEA9B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e9594e93-af51-4b89-a16e-206c4774e4c4',
+  'request-id': '96578e5a-3034-4627-badf-60697ad65cad',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:08 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask?api-version=2018-03-01.6.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"ApplicationPacakgeReferenceTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask\",\"eTag\":\"0x8D58612347B608D\",\"creationTime\":\"2018-03-09T23:05:09.0827405Z\",\"lastModified\":\"2018-03-09T23:05:09.0827405Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-03-09T23:05:09.0827405Z\",\"commandLine\":\"cmd /c echo hello world\",\"applicationPackageReferences\":[\r\n    {\r\n      \"applicationId\":\"my_application_id\"\r\n    }\r\n  ],\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask?api-version=2018-08-01.7.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://lchency4.westcentralus.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"ApplicationPacakgeReferenceTask\",\"url\":\"https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/ApplicationPacakgeReferenceTask\",\"eTag\":\"0x8D607A5021DEA9B\",\"creationTime\":\"2018-08-21T20:31:00.6017179Z\",\"lastModified\":\"2018-08-21T20:31:00.6017179Z\",\"state\":\"active\",\"stateTransitionTime\":\"2018-08-21T20:31:00.6017179Z\",\"commandLine\":\"cmd /c echo hello world\",\"applicationPackageReferences\":[\r\n    {\r\n      \"applicationId\":\"my_application_id\"\r\n    }\r\n  ],\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:09 GMT',
-  etag: '0x8D58612347B608D',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:00 GMT',
+  etag: '0x8D607A5021DEA9B',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e9594e93-af51-4b89-a16e-206c4774e4c4',
+  'request-id': '96578e5a-3034-4627-badf-60697ad65cad',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:08 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:00 GMT',
   connection: 'close' });
  return result; }]];
