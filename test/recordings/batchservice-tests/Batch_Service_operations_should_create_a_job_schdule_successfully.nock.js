@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobschedules?api-version=2018-03-01.6.1', '*')
+.post('/jobschedules?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:24 GMT',
-  etag: '0x8D5861508E222CC',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:03 GMT',
+  etag: '0x8D607A503E9DDB3',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e5290907-284d-4f04-98ed-e3f133040be5',
+  'request-id': '50d586c2-ace8-438c-8a95-d0c4d27da08c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Fri, 09 Mar 2018 23:25:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobschedules?api-version=2018-03-01.6.1', '*')
+.post('/jobschedules?api-version=2018-08-01.7.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:25:24 GMT',
-  etag: '0x8D5861508E222CC',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:03 GMT',
+  etag: '0x8D607A503E9DDB3',
   location: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e5290907-284d-4f04-98ed-e3f133040be5',
+  'request-id': '50d586c2-ace8-438c-8a95-d0c4d27da08c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Fri, 09 Mar 2018 23:25:24 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; }]];
