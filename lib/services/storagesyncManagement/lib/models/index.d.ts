@@ -53,22 +53,6 @@ export interface StorageSyncError {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The Azure Resource Manager resource.
- *
- * @member {string} [id] The id of the resource.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SubscriptionState class.
  * @constructor
  * Subscription State object.
@@ -86,6 +70,36 @@ export interface SubscriptionState {
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource. Ex-
+ * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} location The geo-location where the resource lives
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
+  location: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageSyncService class.
  * @constructor
  * Storage Sync Service object.
@@ -93,7 +107,7 @@ export interface SubscriptionState {
  * @member {number} [storageSyncServiceStatus] Storage Sync service status.
  * @member {string} [storageSyncServiceUid] Storage Sync service Uid
  */
-export interface StorageSyncService extends BaseResource {
+export interface StorageSyncService extends TrackedResource {
   readonly storageSyncServiceStatus?: number;
   readonly storageSyncServiceUid?: string;
 }
@@ -107,7 +121,7 @@ export interface StorageSyncService extends BaseResource {
  * @member {string} [uniqueId] Unique Id
  * @member {string} [syncGroupStatus] Sync group status
  */
-export interface SyncGroup extends BaseResource {
+export interface SyncGroup extends Resource {
   uniqueId?: string;
   readonly syncGroupStatus?: string;
 }
@@ -130,7 +144,7 @@ export interface SyncGroup extends BaseResource {
  * @member {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
  * @member {string} [lastOperationName] Resource Last Operation Name
  */
-export interface CloudEndpoint extends BaseResource {
+export interface CloudEndpoint extends Resource {
   storageAccountKey?: string;
   storageAccount?: string;
   storageAccountResourceId?: string;
@@ -181,7 +195,7 @@ export interface ServerEndpointUpdateParameters {
  * @member {string} [lastOperationName] Resource Last Operation Name
  * @member {object} [syncStatus] Sync Health Status
  */
-export interface ServerEndpoint extends BaseResource {
+export interface ServerEndpoint extends Resource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
@@ -275,7 +289,7 @@ export interface ResourcesMoveInfo {
  * @member {string} [steps] workflow steps
  * @member {string} [lastOperationId] workflow last operation identifier.
  */
-export interface Workflow extends BaseResource {
+export interface Workflow extends Resource {
   lastStepName?: string;
   status?: string;
   operation?: string;
@@ -501,16 +515,26 @@ export interface StorageSyncServiceUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the TrackedResource class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * The resource model definition for a ARM tracked top level resource
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
  *
- * @member {object} [tags] Resource tags.
- * @member {string} location The geo-location where the resource lives
  */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location: string;
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureEntityResource class.
+ * @constructor
+ * The resource model definition for a Azure Resource Manager resource with an
+ * etag.
+ *
+ * @member {string} [etag] Resource Etag.
+ */
+export interface AzureEntityResource extends Resource {
+  readonly etag?: string;
 }
 
 
