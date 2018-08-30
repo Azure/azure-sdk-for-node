@@ -140,6 +140,9 @@ export interface BackendAddressPool extends SubResource {
  * an array of references to the external resources using subnet.
  * @member {array} [backendIPConfiguration.subnet.delegations] Gets an array of
  * references to the delegations on the subnet.
+ * @member {string} [backendIPConfiguration.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
  * @member {string} [backendIPConfiguration.subnet.provisioningState] The
  * provisioning state of the resource.
  * @member {string} [backendIPConfiguration.subnet.name] The name of the
@@ -243,6 +246,10 @@ export interface BackendAddressPool extends SubResource {
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
  * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose] A
+ * read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -848,6 +855,9 @@ export interface IpTag {
  * array of references to the external resources using subnet.
  * @member {array} [ipConfiguration.subnet.delegations] Gets an array of
  * references to the delegations on the subnet.
+ * @member {string} [ipConfiguration.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
  * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
  * state of the resource.
  * @member {string} [ipConfiguration.subnet.name] The name of the resource that
@@ -968,6 +978,9 @@ export interface PublicIPAddress extends Resource {
  * to the external resources using subnet.
  * @member {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
  * @member {string} [subnet.provisioningState] The provisioning state of the
  * resource.
  * @member {string} [subnet.name] The name of the resource that is unique
@@ -1125,6 +1138,8 @@ export interface Delegation {
  * external resources using subnet.
  * @member {array} [delegations] Gets an array of references to the delegations
  * on the subnet.
+ * @member {string} [purpose] A read-only string identifying the intention of
+ * use for this subnet based on delegations and other user-defined properties.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
@@ -1141,6 +1156,7 @@ export interface Subnet extends SubResource {
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   delegations?: Delegation[];
+  readonly purpose?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -1211,6 +1227,9 @@ export interface Subnet extends SubResource {
  * to the external resources using subnet.
  * @member {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
  * @member {string} [subnet.provisioningState] The provisioning state of the
  * resource.
  * @member {string} [subnet.name] The name of the resource that is unique
@@ -1298,6 +1317,9 @@ export interface Subnet extends SubResource {
  * array of references to the external resources using subnet.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets an
  * array of references to the delegations on the subnet.
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
+ * read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
@@ -1572,6 +1594,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * array of references to the external resources using subnet.
  * @member {array} [ipConfiguration.subnet.delegations] Gets an array of
  * references to the delegations on the subnet.
+ * @member {string} [ipConfiguration.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
  * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
  * state of the resource.
  * @member {string} [ipConfiguration.subnet.name] The name of the resource that
@@ -1672,6 +1697,10 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.delegations] Gets an
  * array of references to the delegations on the subnet.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.purpose] A read-only
+ * string identifying the intention of use for this subnet based on delegations
+ * and other user-defined properties.
  * @member {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -2615,6 +2644,29 @@ export interface TagsObject {
 
 /**
  * @class
+ * Initializes a new instance of the AvailableDelegation class.
+ * @constructor
+ * @member {string} [serviceName] The name of the service and resource
+ * @member {array} [actions] Describes the actions permitted to the service
+ * upon delegation
+ */
+export interface AvailableDelegation {
+  serviceName?: string;
+  actions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AvailableDelegationsResult class.
+ * @constructor
+ * @member {array} [delegations] An array of available delegations.
+ */
+export interface AvailableDelegationsResult {
+  delegations?: AvailableDelegation[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureFirewallIPConfiguration class.
  * @constructor
  * IP configuration of an Azure Firewall.
@@ -2624,11 +2676,8 @@ export interface TagsObject {
  * @member {object} [subnet] Reference of the subnet resource. This resource
  * must be named 'AzureFirewallSubnet'.
  * @member {string} [subnet.id] Resource ID.
- * @member {object} [internalPublicIpAddress] Reference of the PublicIP
- * resource. This field is a mandatory input.
- * @member {string} [internalPublicIpAddress.id] Resource ID.
  * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
- * field is populated in the output.
+ * field is a mandatory input if subnet is not null.
  * @member {string} [publicIPAddress.id] Resource ID.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
@@ -2640,7 +2689,6 @@ export interface TagsObject {
 export interface AzureFirewallIPConfiguration extends SubResource {
   privateIPAddress?: string;
   subnet?: SubResource;
-  internalPublicIpAddress?: SubResource;
   publicIPAddress?: SubResource;
   provisioningState?: string;
   name?: string;
@@ -3690,6 +3738,9 @@ export interface LoadBalancerSku {
  * to the external resources using subnet.
  * @member {array} [subnet.delegations] Gets an array of references to the
  * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
  * @member {string} [subnet.provisioningState] The provisioning state of the
  * resource.
  * @member {string} [subnet.name] The name of the resource that is unique
@@ -3774,6 +3825,9 @@ export interface LoadBalancerSku {
  * array of references to the external resources using subnet.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets an
  * array of references to the delegations on the subnet.
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
+ * read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
