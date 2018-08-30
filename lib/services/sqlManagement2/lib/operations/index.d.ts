@@ -30185,7 +30185,7 @@ export interface ManagedInstanceEncryptionProtectors {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServerWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
 
     /**
      * Gets a list of managed instance encryption protectors
@@ -30225,9 +30225,9 @@ export interface ManagedInstanceEncryptionProtectors {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByServer(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
-    listByServer(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
-    listByServer(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
 
 
     /**
@@ -30479,7 +30479,7 @@ export interface ManagedInstanceEncryptionProtectors {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
 
     /**
      * Gets a list of managed instance encryption protectors
@@ -30516,7 +30516,7 @@ export interface ManagedInstanceEncryptionProtectors {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
-    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
-    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
 }
