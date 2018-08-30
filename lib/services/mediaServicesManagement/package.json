@@ -1,35 +1,25 @@
 {
   "name": "azure-arm-mediaservices",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Blum, Brian <brianbl@microsoft.com>"
-  ],
-  "version": "1.1.0-preview",
-  "description": "Microsoft Azure MediaServices Management Client Library for node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "description": "AzureMediaServices Library with typescript type definitions for node",
+  "version": "3.0.1-preview",
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
   "keywords": [
     "node",
     "azure"
   ],
-  "main": "./lib/mediaServicesManagementClient.js",
-  "types": "./lib/mediaServicesManagementClient.d.ts",
   "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.0.0",
-    "ms-rest-azure": "^2.0.0"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "main": "./lib/azureMediaServices.js",
+  "types": "./lib/azureMediaServices.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/mediaServicesManagement",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }

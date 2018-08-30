@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class BatchServiceClient extends AzureServiceClient {
+export default class BatchServiceClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the BatchServiceClient class.
    * @constructor
@@ -31,11 +32,11 @@ declare class BatchServiceClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
@@ -62,4 +63,4 @@ declare class BatchServiceClient extends AzureServiceClient {
   computeNodeOperations: operations.ComputeNodeOperations;
 }
 
-export = BatchServiceClient;
+export { BatchServiceClient, models as BatchServiceModels };

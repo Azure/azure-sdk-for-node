@@ -1,44 +1,25 @@
 {
   "name": "azure-arm-monitor",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Kamath, Prarthana <pkamath@microsoft.com>",
-    "Medhekar, Shibani <shimedh@microsoft.com>",
-    "Vannelli, Leo <leovann@microsoft.com>",
-    "Shen, Andy <andyshen@microsoft.com>",
-    "Ruela, Vinicius <viruela@microsoft.com>",
-    "Moussa, George <georgenm@microsoft.com>",
-    "McKinlay, David <davmc@microsofto.com>",
-    "Kulkarni, Jagadish <jagadisk@microsoft.com>",
-    "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
-  ],
-  "version": "1.0.1-preview",
-  "description": "Microsoft Azure Monitor Management Client Library for node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "description": "MonitorManagementClient Library with typescript type definitions for node",
+  "version": "4.0.0",
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
   "keywords": [
     "node",
     "azure"
   ],
+  "license": "MIT",
   "main": "./lib/monitorManagementClient.js",
   "types": "./lib/monitorManagementClient.d.ts",
-  "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.2.2",
-    "ms-rest-azure": "^2.3.3",
-    "moment": "~2.18.1"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/monitorManagement",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }

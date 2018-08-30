@@ -34,6 +34,18 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the EnrollmentAccount class.
+ * @constructor
+ * An enrollment account resource.
+ *
+ * @member {string} [principalName] The account owner's principal name.
+ */
+export interface EnrollmentAccount extends Resource {
+  readonly principalName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the BillingPeriod class.
  * @constructor
  * A billing period resource.
@@ -161,6 +173,18 @@ export interface Operation {
   display?: OperationDisplay;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the EnrollmentAccountListResult class.
+ * @constructor
+ * Result of listing enrollment accounts.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface EnrollmentAccountListResult extends Array<EnrollmentAccount> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class

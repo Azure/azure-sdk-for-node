@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers?api-version=2017-12-01')
   .reply(200, "{\"value\":[{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149\",\"name\":\"testserver1149\",\"type\":\"Microsoft.DBforPostgreSQL/servers\",\"location\":\"westus\",\"sku\":{\"name\":\"PGSQLB100\",\"tier\":\"Basic\",\"capacity\":100},\"properties\":{\"administratorLogin\":\"postgres\",\"storageMB\":51200,\"version\":\"9.5\",\"sslEnforcement\":\"Enabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"testserver1149.postgres.database.azure.com\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '515',
@@ -26,7 +26,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers?api-version=2017-12-01')
   .reply(200, "{\"value\":[{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver1149\",\"name\":\"testserver1149\",\"type\":\"Microsoft.DBforPostgreSQL/servers\",\"location\":\"westus\",\"sku\":{\"name\":\"PGSQLB100\",\"tier\":\"Basic\",\"capacity\":100},\"properties\":{\"administratorLogin\":\"postgres\",\"storageMB\":51200,\"version\":\"9.5\",\"sslEnforcement\":\"Enabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"testserver1149.postgres.database.azure.com\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '515',

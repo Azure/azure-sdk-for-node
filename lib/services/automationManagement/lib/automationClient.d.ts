@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class AutomationClient extends AzureServiceClient {
+export default class AutomationClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AutomationClient class.
    * @constructor
@@ -21,6 +22,8 @@ declare class AutomationClient extends AzureServiceClient {
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
    * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   *
+   * @param {countType} countType1 - The type of counts to retrieve. Possible values include: 'status', 'nodeconfiguration'
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -33,20 +36,20 @@ declare class AutomationClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, countType1: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
-  apiVersion: string;
-
   subscriptionId: string;
+
+  countType1: string;
 
   acceptLanguage: string;
 
@@ -59,20 +62,15 @@ declare class AutomationClient extends AzureServiceClient {
   operations: operations.Operations;
   statisticsOperations: operations.StatisticsOperations;
   usages: operations.Usages;
+  keys: operations.Keys;
   certificateOperations: operations.CertificateOperations;
   connectionOperations: operations.ConnectionOperations;
   connectionTypeOperations: operations.ConnectionTypeOperations;
   credentialOperations: operations.CredentialOperations;
-  dscCompilationJobOperations: operations.DscCompilationJobOperations;
   dscConfigurationOperations: operations.DscConfigurationOperations;
-  agentRegistrationInformation: operations.AgentRegistrationInformation;
-  dscNodeOperations: operations.DscNodeOperations;
-  nodeReports: operations.NodeReports;
-  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
   hybridRunbookWorkerGroupOperations: operations.HybridRunbookWorkerGroupOperations;
-  jobOperations: operations.JobOperations;
-  jobStreamOperations: operations.JobStreamOperations;
   jobScheduleOperations: operations.JobScheduleOperations;
+  linkedWorkspaceOperations: operations.LinkedWorkspaceOperations;
   activityOperations: operations.ActivityOperations;
   moduleOperations: operations.ModuleOperations;
   objectDataTypes: operations.ObjectDataTypes;
@@ -80,10 +78,26 @@ declare class AutomationClient extends AzureServiceClient {
   runbookDraftOperations: operations.RunbookDraftOperations;
   runbookOperations: operations.RunbookOperations;
   testJobStreams: operations.TestJobStreams;
-  testJobs: operations.TestJobs;
+  testJobOperations: operations.TestJobOperations;
   scheduleOperations: operations.ScheduleOperations;
   variableOperations: operations.VariableOperations;
   webhookOperations: operations.WebhookOperations;
+  watcherOperations: operations.WatcherOperations;
+  softwareUpdateConfigurations: operations.SoftwareUpdateConfigurations;
+  softwareUpdateConfigurationRuns: operations.SoftwareUpdateConfigurationRuns;
+  softwareUpdateConfigurationMachineRuns: operations.SoftwareUpdateConfigurationMachineRuns;
+  sourceControlOperations: operations.SourceControlOperations;
+  sourceControlSyncJobOperations: operations.SourceControlSyncJobOperations;
+  sourceControlSyncJobStreams: operations.SourceControlSyncJobStreams;
+  jobOperations: operations.JobOperations;
+  jobStreamOperations: operations.JobStreamOperations;
+  agentRegistrationInformation: operations.AgentRegistrationInformation;
+  dscNodeOperations: operations.DscNodeOperations;
+  nodeReports: operations.NodeReports;
+  dscCompilationJobOperations: operations.DscCompilationJobOperations;
+  dscCompilationJobStream: operations.DscCompilationJobStream;
+  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
+  nodeCountInformation: operations.NodeCountInformation;
 }
 
-export = AutomationClient;
+export { AutomationClient, models as AutomationModels };

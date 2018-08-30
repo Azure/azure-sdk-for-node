@@ -35,9 +35,27 @@ export interface ErrorFieldContract {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
+ * Initializes a new instance of the ErrorResponseBody class.
  * @constructor
  * Error Body contract.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface ErrorResponseBody {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error Response.
  *
  * @member {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
@@ -73,10 +91,15 @@ export interface Resource extends BaseResource {
  * @constructor
  * Policy Contract details.
  *
- * @member {string} policyContent Xml Encoded contents of the Policy.
+ * @member {string} policyContent Json escaped Xml Encoded contents of the
+ * Policy.
+ * @member {string} [contentFormat] Format of the policyContent. Possible
+ * values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'. Default value:
+ * 'xml' .
  */
 export interface PolicyContract extends Resource {
   policyContent: string;
+  contentFormat?: string;
 }
 
 /**
@@ -154,6 +177,32 @@ export interface ApiExportResult {
 
 /**
  * @class
+ * Initializes a new instance of the ApiVersionSetContractDetails class.
+ * @constructor
+ * An API Version Set contains the common configuration for a set of API
+ * Versions relating
+ *
+ * @member {string} [id] Identifier for existing API Version Set. Omit this
+ * value to create a new Version Set.
+ * @member {string} [description] Description of API Version Set.
+ * @member {string} [versioningScheme] An value that determines where the API
+ * Version identifer will be located in a HTTP request. Possible values
+ * include: 'Segment', 'Query', 'Header'
+ * @member {string} [versionQueryName] Name of query parameter that indicates
+ * the API Version if versioningScheme is set to `query`.
+ * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * indicates the API Version if versioningScheme is set to `header`.
+ */
+export interface ApiVersionSetContractDetails {
+  id?: string;
+  description?: string;
+  versioningScheme?: string;
+  versionQueryName?: string;
+  versionHeaderName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApiEntityBaseContract class.
  * @constructor
  * API base contract details.
@@ -177,10 +226,16 @@ export interface ApiExportResult {
  * 'soap'
  * @member {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
+ * @member {string} [apiVersion] Indicates the Version identifier of the API if
+ * the API is versioned
  * @member {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
+ * @member {string} [apiVersionSetId] A resource identifier for the related
+ * ApiVersionSet.
  */
 export interface ApiEntityBaseContract {
   description?: string;
@@ -188,8 +243,12 @@ export interface ApiEntityBaseContract {
   subscriptionKeyParameterNames?: SubscriptionKeyParameterNamesContract;
   apiType?: string;
   apiRevision?: string;
-  isCurrent?: boolean;
-  isOnline?: boolean;
+  apiVersion?: string;
+  readonly isCurrent?: boolean;
+  readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
+  apiVersionSetId?: string;
 }
 
 /**
@@ -207,12 +266,25 @@ export interface ApiEntityBaseContract {
  * creation to form a public URL for this API.
  * @member {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
+ * @member {object} [apiVersionSet]
+ * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
+ * Omit this value to create a new Version Set.
+ * @member {string} [apiVersionSet.description] Description of API Version Set.
+ * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * where the API Version identifer will be located in a HTTP request. Possible
+ * values include: 'Segment', 'Query', 'Header'
+ * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * that indicates the API Version if versioningScheme is set to `query`.
+ * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * parameter that indicates the API Version if versioningScheme is set to
+ * `header`.
  */
 export interface ApiContractProperties extends ApiEntityBaseContract {
   displayName?: string;
   serviceUrl?: string;
   path: string;
   protocols?: string[];
+  apiVersionSet?: ApiVersionSetContractDetails;
 }
 
 /**
@@ -240,10 +312,16 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * 'soap'
  * @member {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
+ * @member {string} [apiVersion] Indicates the Version identifier of the API if
+ * the API is versioned
  * @member {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
+ * @member {string} [apiVersionSetId] A resource identifier for the related
+ * ApiVersionSet.
  * @member {string} [displayName] API name.
  * @member {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
@@ -253,6 +331,18 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * creation to form a public URL for this API.
  * @member {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
+ * @member {object} [apiVersionSet]
+ * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
+ * Omit this value to create a new Version Set.
+ * @member {string} [apiVersionSet.description] Description of API Version Set.
+ * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * where the API Version identifer will be located in a HTTP request. Possible
+ * values include: 'Segment', 'Query', 'Header'
+ * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * that indicates the API Version if versioningScheme is set to `query`.
+ * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * parameter that indicates the API Version if versioningScheme is set to
+ * `header`.
  */
 export interface ApiContract extends Resource {
   description?: string;
@@ -260,12 +350,32 @@ export interface ApiContract extends Resource {
   subscriptionKeyParameterNames?: SubscriptionKeyParameterNamesContract;
   apiType?: string;
   apiRevision?: string;
-  isCurrent?: boolean;
-  isOnline?: boolean;
+  apiVersion?: string;
+  readonly isCurrent?: boolean;
+  readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
+  apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
   path: string;
   protocols?: string[];
+  apiVersionSet?: ApiVersionSetContractDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiCreateOrUpdatePropertiesWsdlSelector class.
+ * @constructor
+ * Criteria to limit import of WSDL to a subset of the document.
+ *
+ * @member {string} [wsdlServiceName] Name of service to import from WSDL
+ * @member {string} [wsdlEndpointName] Name of endpoint(port) to import from
+ * WSDL
+ */
+export interface ApiCreateOrUpdatePropertiesWsdlSelector {
+  wsdlServiceName?: string;
+  wsdlEndpointName?: string;
 }
 
 /**
@@ -293,10 +403,16 @@ export interface ApiContract extends Resource {
  * 'soap'
  * @member {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
+ * @member {string} [apiVersion] Indicates the Version identifier of the API if
+ * the API is versioned
  * @member {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
+ * @member {string} [apiVersionSetId] A resource identifier for the related
+ * ApiVersionSet.
  * @member {string} [displayName] API name.
  * @member {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
@@ -306,10 +422,32 @@ export interface ApiContract extends Resource {
  * creation to form a public URL for this API.
  * @member {array} [protocols] Describes on which protocols the operations in
  * this API can be invoked.
+ * @member {object} [apiVersionSet]
+ * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
+ * Omit this value to create a new Version Set.
+ * @member {string} [apiVersionSet.description] Description of API Version Set.
+ * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * where the API Version identifer will be located in a HTTP request. Possible
+ * values include: 'Segment', 'Query', 'Header'
+ * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * that indicates the API Version if versioningScheme is set to `query`.
+ * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * parameter that indicates the API Version if versioningScheme is set to
+ * `header`.
  * @member {string} [contentValue] Content value when Importing an API.
  * @member {string} [contentFormat] Format of the Content in which the API is
  * getting imported. Possible values include: 'wadl-xml', 'wadl-link-json',
  * 'swagger-json', 'swagger-link-json', 'wsdl', 'wsdl-link'
+ * @member {object} [wsdlSelector] Criteria to limit import of WSDL to a subset
+ * of the document.
+ * @member {string} [wsdlSelector.wsdlServiceName] Name of service to import
+ * from WSDL
+ * @member {string} [wsdlSelector.wsdlEndpointName] Name of endpoint(port) to
+ * import from WSDL
+ * @member {string} [soapApiType] Type of Api to create.
+ * * `http` creates a SOAP to REST API
+ * * `soap` creates a SOAP pass-through API. Possible values include:
+ * 'SoapToRest', 'SoapPassThrough'
  */
 export interface ApiCreateOrUpdateParameter {
   description?: string;
@@ -317,14 +455,21 @@ export interface ApiCreateOrUpdateParameter {
   subscriptionKeyParameterNames?: SubscriptionKeyParameterNamesContract;
   apiType?: string;
   apiRevision?: string;
-  isCurrent?: boolean;
-  isOnline?: boolean;
+  apiVersion?: string;
+  readonly isCurrent?: boolean;
+  readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
+  apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
   path: string;
   protocols?: string[];
+  apiVersionSet?: ApiVersionSetContractDetails;
   contentValue?: string;
   contentFormat?: string;
+  wsdlSelector?: ApiCreateOrUpdatePropertiesWsdlSelector;
+  soapApiType?: string;
 }
 
 /**
@@ -352,10 +497,16 @@ export interface ApiCreateOrUpdateParameter {
  * 'soap'
  * @member {string} [apiRevision] Describes the Revision of the Api. If no
  * value is provided, default revision 1 is created
+ * @member {string} [apiVersion] Indicates the Version identifier of the API if
+ * the API is versioned
  * @member {boolean} [isCurrent] Indicates if API revision is current api
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
+ * @member {string} [apiVersionSetId] A resource identifier for the related
+ * ApiVersionSet.
  * @member {string} [displayName] API name.
  * @member {string} [serviceUrl] Absolute URL of the backend service
  * implementing this API.
@@ -372,8 +523,12 @@ export interface ApiUpdateContract {
   subscriptionKeyParameterNames?: SubscriptionKeyParameterNamesContract;
   apiType?: string;
   apiRevision?: string;
-  isCurrent?: boolean;
-  isOnline?: boolean;
+  apiVersion?: string;
+  readonly isCurrent?: boolean;
+  readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
+  apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
   path?: string;
@@ -422,6 +577,91 @@ export interface AuthenticationSettingsContract {
 export interface SubscriptionKeyParameterNamesContract {
   header?: string;
   query?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiRevisionContract class.
+ * @constructor
+ * Summary of revision metadata.
+ *
+ * @member {string} [apiId] Identifier of the API Revision.
+ * @member {string} [apiRevision] Revision number of API.
+ * @member {date} [createdDateTime] The time the API Revision was created. The
+ * date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by
+ * the ISO 8601 standard.
+ * @member {date} [updatedDateTime] The time the API Revision were updated. The
+ * date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by
+ * the ISO 8601 standard.
+ * @member {string} [description] Description of the API Revision.
+ * @member {string} [privateUrl] Gateway URL for accessing the non-current API
+ * Revision.
+ * @member {boolean} [isOnline] Indicates if API revision is the current api
+ * revision.
+ * @member {boolean} [isCurrent] Indicates if API revision is accessible via
+ * the gateway.
+ */
+export interface ApiRevisionContract {
+  readonly apiId?: string;
+  readonly apiRevision?: string;
+  readonly createdDateTime?: Date;
+  readonly updatedDateTime?: Date;
+  readonly description?: string;
+  readonly privateUrl?: string;
+  readonly isOnline?: boolean;
+  readonly isCurrent?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiRevisionInfoContract class.
+ * @constructor
+ * Object used to create an API Revision or Version based on an existing API
+ * Revision
+ *
+ * @member {string} [sourceApiId] Resource identifier of API to be used to
+ * create the revision from.
+ * @member {string} [apiVersionName] Version identifier for the new API
+ * Version.
+ * @member {string} [apiRevisionDescription] Description of new API Revision.
+ * @member {object} [apiVersionSet] Version set details
+ * @member {string} [apiVersionSet.id] Identifier for existing API Version Set.
+ * Omit this value to create a new Version Set.
+ * @member {string} [apiVersionSet.description] Description of API Version Set.
+ * @member {string} [apiVersionSet.versioningScheme] An value that determines
+ * where the API Version identifer will be located in a HTTP request. Possible
+ * values include: 'Segment', 'Query', 'Header'
+ * @member {string} [apiVersionSet.versionQueryName] Name of query parameter
+ * that indicates the API Version if versioningScheme is set to `query`.
+ * @member {string} [apiVersionSet.versionHeaderName] Name of HTTP header
+ * parameter that indicates the API Version if versioningScheme is set to
+ * `header`.
+ */
+export interface ApiRevisionInfoContract {
+  sourceApiId?: string;
+  apiVersionName?: string;
+  apiRevisionDescription?: string;
+  apiVersionSet?: ApiVersionSetContractDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiReleaseContract class.
+ * @constructor
+ * Api Release details.
+ *
+ * @member {string} [apiId] Identifier of the API the release belongs to.
+ * @member {date} [createdDateTime] The time the API was released. The date
+ * conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the
+ * ISO 8601 standard.
+ * @member {date} [updatedDateTime] The time the API release was updated.
+ * @member {string} [notes] Release Notes
+ */
+export interface ApiReleaseContract extends Resource {
+  apiId?: string;
+  readonly createdDateTime?: Date;
+  readonly updatedDateTime?: Date;
+  notes?: string;
 }
 
 /**
@@ -613,6 +853,118 @@ export interface OperationUpdateContract {
 
 /**
  * @class
+ * Initializes a new instance of the SchemaContract class.
+ * @constructor
+ * Schema Contract details.
+ *
+ * @member {string} contentType Must be a valid a media type used in a
+ * Content-Type header as defined in the RFC 2616. Media type of the schema
+ * document (e.g. application/json, application/xml).
+ * @member {string} [value] Json escaped string defining the document
+ * representing the Schema.
+ */
+export interface SchemaContract extends Resource {
+  contentType: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueContract class.
+ * @constructor
+ * Issue Contract details.
+ *
+ * @member {string} title The issue title.
+ * @member {string} description Text describing the issue.
+ * @member {date} [createdDate] Date and time when the issue was created.
+ * @member {string} [state] Status of the issue. Possible values include:
+ * 'proposed', 'open', 'removed', 'resolved', 'closed'
+ * @member {string} userId A resource identifier for the user created the
+ * issue.
+ * @member {string} [apiId] A resource identifier for the API the issue was
+ * created for.
+ */
+export interface IssueContract extends Resource {
+  title: string;
+  description: string;
+  createdDate?: Date;
+  state?: string;
+  userId: string;
+  apiId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentContract class.
+ * @constructor
+ * Issue Comment Contract details.
+ *
+ * @member {string} text Comment text.
+ * @member {date} [createdDate] Date and time when the comment was created.
+ * @member {string} userId A resource identifier for the user who left the
+ * comment.
+ */
+export interface IssueCommentContract extends Resource {
+  text: string;
+  createdDate?: Date;
+  userId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentContract class.
+ * @constructor
+ * Issue Attachment Contract details.
+ *
+ * @member {string} title Filename by which the binary data will be saved.
+ * @member {string} contentFormat Either 'link' if content is provided via an
+ * HTTP link or the MIME type of the Base64-encoded binary data provided in the
+ * 'content' property.
+ * @member {string} content An HTTP link or Base64-encoded binary data.
+ */
+export interface IssueAttachmentContract extends Resource {
+  title: string;
+  contentFormat: string;
+  content: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoggerContract class.
+ * @constructor
+ * Logger details.
+ *
+ * @member {string} loggerType Logger type. Possible values include:
+ * 'azureEventHub', 'applicationInsights'
+ * @member {string} [description] Logger description.
+ * @member {object} credentials The name and SendRule connection string of the
+ * event hub for azureEventHub logger.
+ * Instrumentation key for applicationInsights logger.
+ * @member {boolean} [isBuffered] Whether records are buffered in the logger
+ * before publishing. Default is assumed to be true.
+ */
+export interface LoggerContract extends Resource {
+  loggerType: string;
+  description?: string;
+  credentials: { [propertyName: string]: string };
+  isBuffered?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticContract class.
+ * @constructor
+ * Diagnostic details.
+ *
+ * @member {boolean} enabled Indicates whether a diagnostic should receive data
+ * or not.
+ */
+export interface DiagnosticContract extends Resource {
+  enabled: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ProductEntityBaseParameters class.
  * @constructor
  * Product Entity Base Parameters
@@ -651,6 +1003,135 @@ export interface ProductEntityBaseParameters {
   approvalRequired?: boolean;
   subscriptionsLimit?: number;
   state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProductTagResourceContractProperties class.
+ * @constructor
+ * Product profile.
+ *
+ * @member {string} [id] Identifier of the product in the form of
+ * /products/{productId}
+ * @member {string} name Product name.
+ */
+export interface ProductTagResourceContractProperties extends ProductEntityBaseParameters {
+  id?: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationTagResourceContractProperties class.
+ * @constructor
+ * Operation Entity contract Properties.
+ *
+ * @member {string} [id] Identifier of the operation in form
+ * /operations/{operationId}.
+ * @member {string} [name] Operation name.
+ * @member {string} [apiName] Api Name.
+ * @member {string} [apiRevision] Api Revision.
+ * @member {string} [apiVersion] Api Version.
+ * @member {string} [description] Operation Description.
+ * @member {string} [method] A Valid HTTP Operation Method. Typical Http
+ * Methods like GET, PUT, POST but not limited by only them.
+ * @member {string} [urlTemplate] Relative URL template identifying the target
+ * resource for this operation. May include parameters. Example:
+ * /customers/{cid}/orders/{oid}/?date={date}
+ */
+export interface OperationTagResourceContractProperties {
+  id?: string;
+  readonly name?: string;
+  readonly apiName?: string;
+  readonly apiRevision?: string;
+  readonly apiVersion?: string;
+  readonly description?: string;
+  readonly method?: string;
+  readonly urlTemplate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiTagResourceContractProperties class.
+ * @constructor
+ * API contract properties for the Tag Resources.
+ *
+ * @member {string} [id] API identifier in the form /apis/{apiId}.
+ * @member {string} [name] API name.
+ * @member {string} [serviceUrl] Absolute URL of the backend service
+ * implementing this API.
+ * @member {string} [path] Relative URL uniquely identifying this API and all
+ * of its resource paths within the API Management service instance. It is
+ * appended to the API endpoint base URL specified during the service instance
+ * creation to form a public URL for this API.
+ * @member {array} [protocols] Describes on which protocols the operations in
+ * this API can be invoked.
+ */
+export interface ApiTagResourceContractProperties extends ApiEntityBaseContract {
+  id?: string;
+  name?: string;
+  serviceUrl?: string;
+  path?: string;
+  protocols?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagTagResourceContractProperties class.
+ * @constructor
+ * Contract defining the Tag property in the Tag Resource Contract
+ *
+ * @member {string} [id] Tag identifier
+ * @member {string} [name] Tag Name
+ */
+export interface TagTagResourceContractProperties {
+  id?: string;
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagResourceContract class.
+ * @constructor
+ * TagResource contract properties.
+ *
+ * @member {object} tag Tag associated with the resource.
+ * @member {string} [tag.id] Tag identifier
+ * @member {string} [tag.name] Tag Name
+ * @member {object} [api] Api associated with the tag.
+ * @member {string} [api.id] API identifier in the form /apis/{apiId}.
+ * @member {string} [api.name] API name.
+ * @member {string} [api.serviceUrl] Absolute URL of the backend service
+ * implementing this API.
+ * @member {string} [api.path] Relative URL uniquely identifying this API and
+ * all of its resource paths within the API Management service instance. It is
+ * appended to the API endpoint base URL specified during the service instance
+ * creation to form a public URL for this API.
+ * @member {array} [api.protocols] Describes on which protocols the operations
+ * in this API can be invoked.
+ * @member {object} [operation] Operation associated with the tag.
+ * @member {string} [operation.id] Identifier of the operation in form
+ * /operations/{operationId}.
+ * @member {string} [operation.name] Operation name.
+ * @member {string} [operation.apiName] Api Name.
+ * @member {string} [operation.apiRevision] Api Revision.
+ * @member {string} [operation.apiVersion] Api Version.
+ * @member {string} [operation.description] Operation Description.
+ * @member {string} [operation.method] A Valid HTTP Operation Method. Typical
+ * Http Methods like GET, PUT, POST but not limited by only them.
+ * @member {string} [operation.urlTemplate] Relative URL template identifying
+ * the target resource for this operation. May include parameters. Example:
+ * /customers/{cid}/orders/{oid}/?date={date}
+ * @member {object} [product] Product associated with the tag.
+ * @member {string} [product.id] Identifier of the product in the form of
+ * /products/{productId}
+ * @member {string} [product.name] Product name.
+ */
+export interface TagResourceContract {
+  tag: TagTagResourceContractProperties;
+  api?: ApiTagResourceContractProperties;
+  operation?: OperationTagResourceContractProperties;
+  product?: ProductTagResourceContractProperties;
 }
 
 /**
@@ -1162,15 +1643,80 @@ export interface BackendContract extends Resource {
  * @class
  * Initializes a new instance of the BackendUpdateParameters class.
  * @constructor
- * Parameters supplied to the Update Backend operation.
+ * Backend update parameters.
  *
+ * @member {string} [title] Backend Title.
+ * @member {string} [description] Backend Description.
+ * @member {string} [resourceId] Management Uri of the Resource in External
+ * System. This url can be the Arm Resource Id of Logic Apps, Function Apps or
+ * Api Apps.
+ * @member {object} [properties] Backend Properties contract
+ * @member {object} [properties.serviceFabricCluster] Backend Service Fabric
+ * Cluster Properties
+ * @member {string}
+ * [properties.serviceFabricCluster.clientCertificatethumbprint] The client
+ * certificate thumbprint for the management endpoint.
+ * @member {number}
+ * [properties.serviceFabricCluster.maxPartitionResolutionRetries] Maximum
+ * number of retries while attempting resolve the parition.
+ * @member {array} [properties.serviceFabricCluster.managementEndpoints] The
+ * cluster management endpoint.
+ * @member {array}
+ * [properties.serviceFabricCluster.serverCertificateThumbprints] Thumbprints
+ * of certificates cluster management service uses for tls communication
+ * @member {array} [properties.serviceFabricCluster.serverX509Names] Server
+ * X509 Certificate Names Collection
+ * @member {object} [credentials] Backend Credentials Contract Properties
+ * @member {array} [credentials.certificate] List of Client Certificate
+ * Thumbprint.
+ * @member {object} [credentials.query] Query Parameter description.
+ * @member {object} [credentials.header] Header Parameter description.
+ * @member {object} [credentials.authorization] Authorization header
+ * authentication
+ * @member {string} [credentials.authorization.scheme] Authentication Scheme
+ * name.
+ * @member {string} [credentials.authorization.parameter] Authentication
+ * Parameter value.
+ * @member {object} [proxy] Backend Proxy Contract Properties
+ * @member {string} [proxy.url] WebProxy Server AbsoluteUri property which
+ * includes the entire URI stored in the Uri instance, including all fragments
+ * and query strings.
+ * @member {string} [proxy.username] Username to connect to the WebProxy server
+ * @member {string} [proxy.password] Password to connect to the WebProxy Server
+ * @member {object} [tls] Backend TLS Properties
+ * @member {boolean} [tls.validateCertificateChain] Flag indicating whether SSL
+ * certificate chain validation should be done when using self-signed
+ * certificates for this backend host.
+ * @member {boolean} [tls.validateCertificateName] Flag indicating whether SSL
+ * certificate name validation should be done when using self-signed
+ * certificates for this backend host.
  * @member {string} [url] Runtime Url of the Backend.
  * @member {string} [protocol] Backend communication protocol. Possible values
  * include: 'http', 'soap'
  */
-export interface BackendUpdateParameters extends BackendBaseParameters {
+export interface BackendUpdateParameters {
+  title?: string;
+  description?: string;
+  resourceId?: string;
+  properties?: BackendProperties;
+  credentials?: BackendCredentialsContract;
+  proxy?: BackendProxyContract;
+  tls?: BackendTlsProperties;
   url?: string;
   protocol?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackendReconnectContract class.
+ * @constructor
+ * Reconnect request parameters.
+ *
+ * @member {moment.duration} [after] Duration in ISO8601 format after which
+ * reconnect will be initiated. Minimum duration of the Reconect is PT2M.
+ */
+export interface BackendReconnectContract extends Resource {
+  after?: moment.Duration;
 }
 
 /**
@@ -1233,9 +1779,10 @@ export interface CertificateInformation {
  *
  * @member {string} [encodedCertificate] Base64 Encoded certificate.
  * @member {string} [certificatePassword] Certificate Password.
- * @member {string} storeName The local certificate store location. Only Root
- * and CertificateAuthority are valid locations. Possible values include:
- * 'CertificateAuthority', 'Root'
+ * @member {string} storeName The
+ * System.Security.Cryptography.x509certificates.Storename certificate store
+ * location. Only Root and CertificateAuthority are valid locations. Possible
+ * values include: 'CertificateAuthority', 'Root'
  * @member {object} [certificate] Certificate information.
  * @member {date} [certificate.expiry] Expiration date of the certificate. The
  * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
@@ -1247,7 +1794,7 @@ export interface CertificateConfiguration {
   encodedCertificate?: string;
   certificatePassword?: string;
   storeName: string;
-  readonly certificate?: CertificateInformation;
+  certificate?: CertificateInformation;
 }
 
 /**
@@ -1260,6 +1807,10 @@ export interface CertificateConfiguration {
  * 'Portal', 'Management', 'Scm'
  * @member {string} hostName Hostname to configure on the Api Management
  * service.
+ * @member {string} [keyVaultId] Url to the KeyVault Secret containing the Ssl
+ * Certificate. If absolute Url containing version is provided, auto-update of
+ * ssl certificate will not work. This requires Api Management service to be
+ * configured with MSI. The secret should be of type *application/x-pkcs12*
  * @member {string} [encodedCertificate] Base64 Encoded certificate.
  * @member {string} [certificatePassword] Certificate Password.
  * @member {boolean} [defaultSslBinding] Specify true to setup the certificate
@@ -1281,11 +1832,12 @@ export interface CertificateConfiguration {
 export interface HostnameConfiguration {
   type: string;
   hostName: string;
+  keyVaultId?: string;
   encodedCertificate?: string;
   certificatePassword?: string;
   defaultSslBinding?: boolean;
   negotiateClientCertificate?: boolean;
-  readonly certificate?: CertificateInformation;
+  certificate?: CertificateInformation;
 }
 
 /**
@@ -1314,7 +1866,7 @@ export interface VirtualNetworkConfiguration {
  * API Management service resource SKU properties.
  *
  * @member {string} name Name of the Sku. Possible values include: 'Developer',
- * 'Standard', 'Premium'
+ * 'Standard', 'Premium', 'Basic'
  * @member {number} [capacity] Capacity of the SKU (number of deployed units of
  * the SKU). The default value is 1. Default value: 1 .
  */
@@ -1333,11 +1885,16 @@ export interface ApiManagementServiceSkuProperties {
  * Azure Data center regions.
  * @member {object} sku SKU properties of the API Management service.
  * @member {string} [sku.name] Name of the Sku. Possible values include:
- * 'Developer', 'Standard', 'Premium'
+ * 'Developer', 'Standard', 'Premium', 'Basic'
  * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {array} [staticIps] Static IP addresses of the location's virtual
- * machines.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in the additional location. Available only for
+ * Basic, Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service which is deployed in an Internal
+ * Virtual Network in a particular additional location. Available only for
+ * Basic, Standard and Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * for the location.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1347,12 +1904,16 @@ export interface ApiManagementServiceSkuProperties {
  * @member {string} [virtualNetworkConfiguration.subnetResourceId] The full
  * resource ID of a subnet in a virtual network to deploy the API Management
  * service in.
+ * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * service in the Region.
  */
 export interface AdditionalLocation {
   location: string;
   sku: ApiManagementServiceSkuProperties;
-  readonly staticIps?: string[];
+  readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
+  readonly gatewayRegionalUrl?: string;
 }
 
 /**
@@ -1395,6 +1956,8 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
  * specified by the ISO 8601 standard.
  * @member {string} [gatewayUrl] Gateway URL of the API Management service.
+ * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * service in the Default Region.
  * @member {string} [portalUrl] Publisher portal endpoint Url of the API
  * Management service.
  * @member {string} [managementApiUrl] Management API endpoint URL of the API
@@ -1402,8 +1965,13 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * @member {string} [scmUrl] SCM endpoint URL of the API Management service.
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
- * @member {array} [staticIps] Static IP addresses of the API Management
- * service virtual machines. Available only for Standard and Premium SKU.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1442,16 +2010,32 @@ export interface ApiManagementServiceBaseProperties {
   readonly targetProvisioningState?: string;
   readonly createdAtUtc?: Date;
   readonly gatewayUrl?: string;
+  readonly gatewayRegionalUrl?: string;
   readonly portalUrl?: string;
   readonly managementApiUrl?: string;
   readonly scmUrl?: string;
   hostnameConfigurations?: HostnameConfiguration[];
-  readonly staticIps?: string[];
+  readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   additionalLocations?: AdditionalLocation[];
   customProperties?: { [propertyName: string]: string };
   certificates?: CertificateConfiguration[];
   virtualNetworkType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiManagementServiceIdentity class.
+ * @constructor
+ * Identity properties of the Api Management service resource.
+ *
+ * @member {uuid} [principalId] The principal id of the identity.
+ * @member {uuid} [tenantId] The client tenant id of the identity.
+ */
+export interface ApiManagementServiceIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
 }
 
 /**
@@ -1491,6 +2075,8 @@ export interface ApimResource extends BaseResource {
  * service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
  * specified by the ISO 8601 standard.
  * @member {string} [gatewayUrl] Gateway URL of the API Management service.
+ * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * service in the Default Region.
  * @member {string} [portalUrl] Publisher portal endpoint Url of the API
  * Management service.
  * @member {string} [managementApiUrl] Management API endpoint URL of the API
@@ -1498,8 +2084,13 @@ export interface ApimResource extends BaseResource {
  * @member {string} [scmUrl] SCM endpoint URL of the API Management service.
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
- * @member {array} [staticIps] Static IP addresses of the API Management
- * service virtual machines. Available only for Standard and Premium SKU.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1535,9 +2126,13 @@ export interface ApimResource extends BaseResource {
  * @member {string} publisherName Publisher name.
  * @member {object} sku SKU properties of the API Management service.
  * @member {string} [sku.name] Name of the Sku. Possible values include:
- * 'Developer', 'Standard', 'Premium'
+ * 'Developer', 'Standard', 'Premium', 'Basic'
  * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
+ * @member {object} [identity] Managed service identity of the Api Management
+ * service.
+ * @member {uuid} [identity.principalId] The principal id of the identity.
+ * @member {uuid} [identity.tenantId] The client tenant id of the identity.
  * @member {string} location Resource location.
  * @member {string} [etag] ETag of the resource.
  */
@@ -1547,11 +2142,13 @@ export interface ApiManagementServiceResource extends ApimResource {
   readonly targetProvisioningState?: string;
   readonly createdAtUtc?: Date;
   readonly gatewayUrl?: string;
+  readonly gatewayRegionalUrl?: string;
   readonly portalUrl?: string;
   readonly managementApiUrl?: string;
   readonly scmUrl?: string;
   hostnameConfigurations?: HostnameConfiguration[];
-  readonly staticIps?: string[];
+  readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   additionalLocations?: AdditionalLocation[];
   customProperties?: { [propertyName: string]: string };
@@ -1560,6 +2157,7 @@ export interface ApiManagementServiceResource extends ApimResource {
   publisherEmail: string;
   publisherName: string;
   sku: ApiManagementServiceSkuProperties;
+  identity?: ApiManagementServiceIdentity;
   location: string;
   readonly etag?: string;
 }
@@ -1582,6 +2180,8 @@ export interface ApiManagementServiceResource extends ApimResource {
  * service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
  * specified by the ISO 8601 standard.
  * @member {string} [gatewayUrl] Gateway URL of the API Management service.
+ * @member {string} [gatewayRegionalUrl] Gateway URL of the API Management
+ * service in the Default Region.
  * @member {string} [portalUrl] Publisher portal endpoint Url of the API
  * Management service.
  * @member {string} [managementApiUrl] Management API endpoint URL of the API
@@ -1589,8 +2189,13 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @member {string} [scmUrl] SCM endpoint URL of the API Management service.
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
- * @member {array} [staticIps] Static IP addresses of the API Management
- * service virtual machines. Available only for Standard and Premium SKU.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1626,9 +2231,13 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @member {string} [publisherName] Publisher name.
  * @member {object} [sku] SKU properties of the API Management service.
  * @member {string} [sku.name] Name of the Sku. Possible values include:
- * 'Developer', 'Standard', 'Premium'
+ * 'Developer', 'Standard', 'Premium', 'Basic'
  * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
+ * @member {object} [identity] Managed service identity of the Api Management
+ * service.
+ * @member {uuid} [identity.principalId] The principal id of the identity.
+ * @member {uuid} [identity.tenantId] The client tenant id of the identity.
  * @member {string} [etag] ETag of the resource.
  */
 export interface ApiManagementServiceUpdateParameters extends ApimResource {
@@ -1637,11 +2246,13 @@ export interface ApiManagementServiceUpdateParameters extends ApimResource {
   readonly targetProvisioningState?: string;
   readonly createdAtUtc?: Date;
   readonly gatewayUrl?: string;
+  readonly gatewayRegionalUrl?: string;
   readonly portalUrl?: string;
   readonly managementApiUrl?: string;
   readonly scmUrl?: string;
   hostnameConfigurations?: HostnameConfiguration[];
-  readonly staticIps?: string[];
+  readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   additionalLocations?: AdditionalLocation[];
   customProperties?: { [propertyName: string]: string };
@@ -1650,6 +2261,7 @@ export interface ApiManagementServiceUpdateParameters extends ApimResource {
   publisherEmail?: string;
   publisherName?: string;
   sku?: ApiManagementServiceSkuProperties;
+  identity?: ApiManagementServiceIdentity;
   readonly etag?: string;
 }
 
@@ -1719,6 +2331,60 @@ export interface ApiManagementServiceApplyNetworkConfigurationParameters {
 
 /**
  * @class
+ * Initializes a new instance of the ApiManagementServiceUploadCertificateParameters class.
+ * @constructor
+ * Parameters supplied to the Upload SSL certificate for an API Management
+ * service operation.
+ *
+ * @member {string} type Hostname type. Possible values include: 'Proxy',
+ * 'Portal', 'Management', 'Scm'
+ * @member {string} certificate Base64 Encoded certificate.
+ * @member {string} certificatePassword Certificate password.
+ */
+export interface ApiManagementServiceUploadCertificateParameters {
+  type: string;
+  certificate: string;
+  certificatePassword: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HostnameConfigurationOld class.
+ * @constructor
+ * Custom hostname configuration.
+ *
+ * @member {string} type Hostname type. Possible values include: 'Proxy',
+ * 'Portal', 'Management', 'Scm'
+ * @member {string} hostname Hostname to configure.
+ * @member {object} certificate Certificate information.
+ * @member {date} [certificate.expiry] Expiration date of the certificate. The
+ * date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified
+ * by the ISO 8601 standard.
+ * @member {string} [certificate.thumbprint] Thumbprint of the certificate.
+ * @member {string} [certificate.subject] Subject of the certificate.
+ */
+export interface HostnameConfigurationOld {
+  type: string;
+  hostname: string;
+  certificate: CertificateInformation;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiManagementServiceUpdateHostnameParameters class.
+ * @constructor
+ * Parameters supplied to the UpdateHostname operation.
+ *
+ * @member {array} [update] Hostnames to create or update.
+ * @member {array} [deleteProperty] Hostnames types to delete.
+ */
+export interface ApiManagementServiceUpdateHostnameParameters {
+  update?: HostnameConfigurationOld[];
+  deleteProperty?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * The object that describes the operation.
@@ -1751,10 +2417,14 @@ export interface OperationDisplay {
  * @member {string} [display.resource] Resource type on which the operation is
  * performed.
  * @member {string} [display.description] Friendly name of the operation
+ * @member {string} [origin] The operation origin.
+ * @member {object} [properties] The operation properties.
  */
 export interface Operation {
   name?: string;
   display?: OperationDisplay;
+  origin?: string;
+  properties?: any;
 }
 
 /**
@@ -1815,6 +2485,32 @@ export interface EmailTemplateUpdateParameters {
   description?: string;
   body?: string;
   parameters?: EmailTemplateParametersContractProperties[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GroupContractProperties class.
+ * @constructor
+ * Group contract Properties.
+ *
+ * @member {string} displayName Group name.
+ * @member {string} [description] Group description. Can contain HTML
+ * formatting tags.
+ * @member {boolean} [builtIn] true if the group is one of the three system
+ * groups (Administrators, Developers, or Guests); otherwise false.
+ * @member {string} [type] Group type. Possible values include: 'custom',
+ * 'system', 'external'
+ * @member {string} [externalId] For external groups, this property contains
+ * the id of the group from the external identity provider, e.g. for Azure
+ * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
+ * otherwise the value is null.
+ */
+export interface GroupContractProperties {
+  displayName: string;
+  description?: string;
+  readonly builtIn?: boolean;
+  type?: string;
+  externalId?: string;
 }
 
 /**
@@ -1910,7 +2606,8 @@ export interface UserIdentityContract {
  * @member {string} [state] Account state. Specifies whether the user is active
  * or not. Blocked users are unable to sign into the developer portal or call
  * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked'. Default value: 'active' .
+ * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
+ * .
  * @member {string} [note] Optional note about a user set by the administrator.
  * @member {array} [identities] Collection of user identities.
  */
@@ -1929,7 +2626,8 @@ export interface UserEntityBaseParameters {
  * @member {string} [state] Account state. Specifies whether the user is active
  * or not. Blocked users are unable to sign into the developer portal or call
  * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked'. Default value: 'active' .
+ * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
+ * .
  * @member {string} [note] Optional note about a user set by the administrator.
  * @member {array} [identities] Collection of user identities.
  * @member {string} [firstName] First name.
@@ -1948,7 +2646,7 @@ export interface UserContract extends Resource {
   lastName?: string;
   email?: string;
   registrationDate?: Date;
-  readonly groups?: GroupContract[];
+  readonly groups?: GroupContractProperties[];
 }
 
 /**
@@ -1987,20 +2685,6 @@ export interface IdentityProviderContract extends Resource {
   passwordResetPolicyName?: string;
   clientId: string;
   clientSecret: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IdentityProviderList class.
- * @constructor
- * List of all the Identity Providers configured on the service instance.
- *
- * @member {array} [value] Identity Provider configuration values.
- * @member {string} [nextLink] Next page link if any.
- */
-export interface IdentityProviderList {
-  value?: IdentityProviderContract[];
-  nextLink?: string;
 }
 
 /**
@@ -2070,30 +2754,12 @@ export interface IdentityProviderBaseParameters {
 
 /**
  * @class
- * Initializes a new instance of the LoggerContract class.
- * @constructor
- * Logger details.
- *
- * @member {string} [description] Logger description.
- * @member {object} credentials The name and SendRule connection string of the
- * event hub.
- * @member {boolean} [isBuffered] Whether records are buffered in the logger
- * before publishing. Default is assumed to be true.
- */
-export interface LoggerContract extends Resource {
-  description?: string;
-  credentials: { [propertyName: string]: string };
-  isBuffered?: boolean;
-}
-
-/**
- * @class
  * Initializes a new instance of the LoggerUpdateContract class.
  * @constructor
  * Logger update contract.
  *
  * @member {string} [loggerType] Logger type. Possible values include:
- * 'azureEventHub'
+ * 'azureEventHub', 'applicationInsights'
  * @member {string} [description] Logger description.
  * @member {object} [credentials] Logger credentials.
  * @member {boolean} [isBuffered] Whether records are buffered in the logger
@@ -2104,6 +2770,92 @@ export interface LoggerUpdateContract {
   description?: string;
   credentials?: { [propertyName: string]: string };
   isBuffered?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecipientsContractProperties class.
+ * @constructor
+ * Notification Parameter contract.
+ *
+ * @member {array} [emails] List of Emails subscribed for the notification.
+ * @member {array} [users] List of Users subscribed for the notification.
+ */
+export interface RecipientsContractProperties {
+  emails?: string[];
+  users?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NotificationContract class.
+ * @constructor
+ * Notification details.
+ *
+ * @member {string} title Title of the Notification.
+ * @member {string} [description] Description of the Notification.
+ * @member {object} [recipients] Recipient Parameter values.
+ * @member {array} [recipients.emails] List of Emails subscribed for the
+ * notification.
+ * @member {array} [recipients.users] List of Users subscribed for the
+ * notification.
+ */
+export interface NotificationContract extends Resource {
+  title: string;
+  description?: string;
+  recipients?: RecipientsContractProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecipientUserContract class.
+ * @constructor
+ * Recipient User details.
+ *
+ * @member {string} [userId] API Management UserId subscribed to notification.
+ */
+export interface RecipientUserContract extends Resource {
+  userId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecipientUserCollection class.
+ * @constructor
+ * Paged Recipient User list representation.
+ *
+ * @member {array} [value] Page values.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface RecipientUserCollection {
+  value?: RecipientUserContract[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecipientEmailContract class.
+ * @constructor
+ * Recipient Email details.
+ *
+ * @member {string} [email] User Email subscribed to notification.
+ */
+export interface RecipientEmailContract extends Resource {
+  email?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecipientEmailCollection class.
+ * @constructor
+ * Paged Recipient User list representation.
+ *
+ * @member {array} [value] Page values.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface RecipientEmailCollection {
+  value?: RecipientEmailContract[];
+  nextLink?: string;
 }
 
 /**
@@ -2150,6 +2902,24 @@ export interface ConnectivityStatusContract {
 export interface NetworkStatusContract {
   dnsServers: string[];
   connectivityStatus: ConnectivityStatusContract[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkStatusContractByLocation class.
+ * @constructor
+ * Network Status in the Location
+ *
+ * @member {string} [location] Location of service
+ * @member {object} [networkStatus] Network status in Location
+ * @member {array} [networkStatus.dnsServers] Gets the list of DNS servers IPV4
+ * addresses.
+ * @member {array} [networkStatus.connectivityStatus] Gets the list of
+ * Connectivity Status to the Resources on which the service depends upon.
+ */
+export interface NetworkStatusContractByLocation {
+  location?: string;
+  networkStatus?: NetworkStatusContract;
 }
 
 /**
@@ -2219,7 +2989,8 @@ export interface PortalSigninSettings extends Resource {
  * @member {string} [text] A terms of service text.
  * @member {boolean} [enabled] Display terms of service during a sign-up
  * process.
- * @member {boolean} [consentRequired] Ask user for concent.
+ * @member {boolean} [consentRequired] Ask user for consent to the terms of
+ * service.
  */
 export interface TermsOfServiceProperties {
   text?: string;
@@ -2238,7 +3009,8 @@ export interface TermsOfServiceProperties {
  * @member {string} [termsOfService.text] A terms of service text.
  * @member {boolean} [termsOfService.enabled] Display terms of service during a
  * sign-up process.
- * @member {boolean} [termsOfService.consentRequired] Ask user for concent.
+ * @member {boolean} [termsOfService.consentRequired] Ask user for consent to
+ * the terms of service.
  */
 export interface PortalSignupSettings extends Resource {
   enabled?: boolean;
@@ -2325,7 +3097,7 @@ export interface PortalDelegationSettings extends Resource {
  * products are discoverable by users of developer portal. Non published
  * products are visible only to administrators. Default state of Product is
  * notPublished. Possible values include: 'notPublished', 'published'
- * @member {string} [name] Product name.
+ * @member {string} [displayName] Product name.
  */
 export interface ProductUpdateParameters {
   description?: string;
@@ -2334,7 +3106,7 @@ export interface ProductUpdateParameters {
   approvalRequired?: boolean;
   subscriptionsLimit?: number;
   state?: string;
-  name?: string;
+  displayName?: string;
 }
 
 /**
@@ -2748,6 +3520,68 @@ export interface SubscriptionUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the TagContract class.
+ * @constructor
+ * Tag Contract details.
+ *
+ * @member {string} displayName Tag name.
+ */
+export interface TagContract extends Resource {
+  displayName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagCreateUpdateParameters class.
+ * @constructor
+ * Parameters supplied to Create/Update Tag operations.
+ *
+ * @member {string} displayName Tag name.
+ */
+export interface TagCreateUpdateParameters {
+  displayName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagDescriptionContract class.
+ * @constructor
+ * Contract details.
+ *
+ * @member {string} [description] Description of the Tag.
+ * @member {string} [externalDocsUrl] Absolute URL of external resources
+ * describing the tag.
+ * @member {string} [externalDocsDescription] Description of the external
+ * resources describing the tag.
+ * @member {string} [displayName] Tag name.
+ */
+export interface TagDescriptionContract extends Resource {
+  description?: string;
+  externalDocsUrl?: string;
+  externalDocsDescription?: string;
+  displayName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagDescriptionCreateParameters class.
+ * @constructor
+ * Parameters supplied to the Create TagDescription operation.
+ *
+ * @member {string} [description] Description of the Tag.
+ * @member {string} [externalDocsUrl] Absolute URL of external resources
+ * describing the tag.
+ * @member {string} [externalDocsDescription] Description of the external
+ * resources describing the tag.
+ */
+export interface TagDescriptionCreateParameters {
+  description?: string;
+  externalDocsUrl?: string;
+  externalDocsDescription?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AccessInformationContract class.
  * @constructor
  * Tenant access information contract of the API Management service.
@@ -2796,6 +3630,23 @@ export interface DeployConfigurationParameters {
 
 /**
  * @class
+ * Initializes a new instance of the OperationResultLogItemContract class.
+ * @constructor
+ * Log of the entity being created, updated or deleted.
+ *
+ * @member {string} [objectType] The type of entity contract.
+ * @member {string} [action] Action like create/update/delete.
+ * @member {string} [objectKey] Identifier of the entity being
+ * created/updated/deleted.
+ */
+export interface OperationResultLogItemContract {
+  objectType?: string;
+  action?: string;
+  objectKey?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationResultContract class.
  * @constructor
  * Operation Result.
@@ -2816,6 +3667,10 @@ export interface DeployConfigurationParameters {
  * @member {string} [error.message] Human-readable representation of the error.
  * @member {array} [error.details] The list of invalid fields send in request,
  * in case of validation error.
+ * @member {array} [actionLog] This property if only provided as part of the
+ * TenantConfiguration_Validate operation. It contains the log the entities
+ * which will be updated/created/deleted as part of the
+ * TenantConfiguration_Deploy operation.
  */
 export interface OperationResultContract {
   id?: string;
@@ -2823,7 +3678,8 @@ export interface OperationResultContract {
   started?: Date;
   updated?: Date;
   resultInfo?: string;
-  error?: ErrorResponse;
+  error?: ErrorResponseBody;
+  readonly actionLog?: OperationResultLogItemContract[];
 }
 
 /**
@@ -2895,7 +3751,8 @@ export interface GenerateSsoUrlResult {
  * @member {string} [state] Account state. Specifies whether the user is active
  * or not. Blocked users are unable to sign into the developer portal or call
  * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked'. Default value: 'active' .
+ * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
+ * .
  * @member {string} [note] Optional note about a user set by the administrator.
  * @member {array} [identities] Collection of user identities.
  * @member {string} email Email address. Must not be empty and must be unique
@@ -2904,6 +3761,9 @@ export interface GenerateSsoUrlResult {
  * @member {string} lastName Last name.
  * @member {string} [password] User Password. If no value is provided, a
  * default password is generated.
+ * @member {string} [confirmation] Determines the type of confirmation e-mail
+ * that will be sent to the newly created user. Possible values include:
+ * 'signup', 'invite'
  */
 export interface UserCreateParameters {
   state?: string;
@@ -2913,22 +3773,7 @@ export interface UserCreateParameters {
   firstName: string;
   lastName: string;
   password?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UserIdentityCollection class.
- * @constructor
- * List of Users Identity list representation.
- *
- * @member {array} [value] User Identity values.
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
- */
-export interface UserIdentityCollection {
-  value?: UserIdentityContract[];
-  count?: number;
-  nextLink?: string;
+  confirmation?: string;
 }
 
 /**
@@ -2969,7 +3814,8 @@ export interface UserTokenResult {
  * @member {string} [state] Account state. Specifies whether the user is active
  * or not. Blocked users are unable to sign into the developer portal or call
  * any APIs of subscribed products. Default state is Active. Possible values
- * include: 'active', 'blocked'. Default value: 'active' .
+ * include: 'active', 'blocked', 'pending', 'deleted'. Default value: 'active'
+ * .
  * @member {string} [note] Optional note about a user set by the administrator.
  * @member {array} [identities] Collection of user identities.
  * @member {string} [email] Email address. Must not be empty and must be unique
@@ -2986,6 +3832,72 @@ export interface UserUpdateParameters {
   password?: string;
   firstName?: string;
   lastName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiVersionSetContract class.
+ * @constructor
+ * Api Version Set Contract details.
+ *
+ * @member {string} [description] Description of API Version Set.
+ * @member {string} [versionQueryName] Name of query parameter that indicates
+ * the API Version if versioningScheme is set to `query`.
+ * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * indicates the API Version if versioningScheme is set to `header`.
+ * @member {string} displayName Name of API Version Set
+ * @member {string} versioningScheme An value that determines where the API
+ * Version identifer will be located in a HTTP request. Possible values
+ * include: 'Segment', 'Query', 'Header'
+ */
+export interface ApiVersionSetContract extends Resource {
+  description?: string;
+  versionQueryName?: string;
+  versionHeaderName?: string;
+  displayName: string;
+  versioningScheme: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiVersionSetEntityBase class.
+ * @constructor
+ * Api Version set base parameters
+ *
+ * @member {string} [description] Description of API Version Set.
+ * @member {string} [versionQueryName] Name of query parameter that indicates
+ * the API Version if versioningScheme is set to `query`.
+ * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * indicates the API Version if versioningScheme is set to `header`.
+ */
+export interface ApiVersionSetEntityBase {
+  description?: string;
+  versionQueryName?: string;
+  versionHeaderName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiVersionSetUpdateParameters class.
+ * @constructor
+ * Parameters to update or create an Api Version Set Contract.
+ *
+ * @member {string} [description] Description of API Version Set.
+ * @member {string} [versionQueryName] Name of query parameter that indicates
+ * the API Version if versioningScheme is set to `query`.
+ * @member {string} [versionHeaderName] Name of HTTP header parameter that
+ * indicates the API Version if versioningScheme is set to `header`.
+ * @member {string} [displayName] Name of API Version Set
+ * @member {string} [versioningScheme] An value that determines where the API
+ * Version identifer will be located in a HTTP request. Possible values
+ * include: 'Segment', 'Query', 'Header'
+ */
+export interface ApiVersionSetUpdateParameters {
+  description?: string;
+  versionQueryName?: string;
+  versionHeaderName?: string;
+  displayName?: string;
+  versioningScheme?: string;
 }
 
 
@@ -3011,7 +3923,44 @@ export interface RegionListResult extends Array<RegionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiCollection extends Array<ApiContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagResourceCollection class.
+ * @constructor
+ * Paged Tag list representation.
+ *
+ * @member {number} [count] Total record count number across all pages.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface TagResourceCollection extends Array<TagResourceContract> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiRevisionCollection class.
+ * @constructor
+ * Paged Api Revision list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiReleaseCollection class.
+ * @constructor
+ * Paged Api Revision list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -3023,7 +3972,7 @@ export interface ApiCollection extends Array<ApiContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface OperationCollection extends Array<OperationContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3036,6 +3985,79 @@ export interface OperationCollection extends Array<OperationContract> {
  */
 export interface ProductCollection extends Array<ProductContract> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SchemaCollection class.
+ * @constructor
+ * The response of the list schema operation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface SchemaCollection extends Array<SchemaContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticCollection class.
+ * @constructor
+ * Paged Diagnostic list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface DiagnosticCollection extends Array<DiagnosticContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoggerCollection class.
+ * @constructor
+ * Paged Logger list representation.
+ *
+ * @member {number} [count] Total record count number across all pages.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface LoggerCollection extends Array<LoggerContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCollection class.
+ * @constructor
+ * Paged Issue list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCollection extends Array<IssueContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentCollection class.
+ * @constructor
+ * Paged Issue Comment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCommentCollection extends Array<IssueCommentContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentCollection class.
+ * @constructor
+ * Paged Issue Attachment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueAttachmentCollection extends Array<IssueAttachmentContract> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -3140,14 +4162,25 @@ export interface UserCollection extends Array<UserContract> {
 
 /**
  * @class
- * Initializes a new instance of the LoggerCollection class.
+ * Initializes a new instance of the IdentityProviderList class.
  * @constructor
- * Paged Logger list representation.
+ * List of all the Identity Providers configured on the service instance.
  *
- * @member {number} [count] Total record count number across all pages.
  * @member {string} [nextLink] Next page link if any.
  */
-export interface LoggerCollection extends Array<LoggerContract> {
+export interface IdentityProviderList extends Array<IdentityProviderContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NotificationCollection class.
+ * @constructor
+ * Paged Notification list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface NotificationCollection extends Array<NotificationContract> {
   nextLink?: string;
 }
 
@@ -3209,4 +4242,53 @@ export interface ReportCollection extends Array<ReportRecordContract> {
  * @member {number} [count] Total record count number across all pages.
  */
 export interface RequestReportCollection extends Array<RequestReportRecordContract> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagCollection class.
+ * @constructor
+ * Paged Tag list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface TagCollection extends Array<TagContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagDescriptionCollection class.
+ * @constructor
+ * Paged TagDescription list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface TagDescriptionCollection extends Array<TagDescriptionContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserIdentityCollection class.
+ * @constructor
+ * List of Users Identity list representation.
+ *
+ * @member {number} [count] Total record count number across all pages.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface UserIdentityCollection extends Array<UserIdentityContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiVersionSetCollection class.
+ * @constructor
+ * Paged Api Version Set list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface ApiVersionSetCollection extends Array<ApiVersionSetContract> {
+  nextLink?: string;
 }

@@ -1,8 +1,14 @@
-# Microsoft Azure SDK for Node.js - DNSManagement
+---
+uid: azure-arm-dns
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
-## API-Version: 2017-09-01
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - DnsManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -10,28 +16,28 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-dns
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing zones as an example
+### Authentication, client creation and get recordSets as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const DNSManagement = require("azure-arm-dns");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new DNSManagement(credentials, 'your-subscription-id');
-   return client.zones.list();
- }).then((zones) => {
-  console.log('List of zones:');
-  console.dir(zones, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const DnsManagementClient = require("azure-arm-dns");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new DnsManagementClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const zoneName = "testzoneName";
+    const relativeRecordSetName = "testrelativeRecordSetName";
+    const recordType = "A";
+    return client.recordSets.get(resourceGroupName, zoneName, relativeRecordSetName, recordType).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 

@@ -1,35 +1,24 @@
 {
   "name": "azure-cognitiveservices-computervision",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Xu, Willie <wilx@microsoft.com>"
-  ],
-  "version": "1.0.0-preview",
-  "description": "Microsoft Azure Cognitive Services Computer Vision API Client Library for Node.js",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "description": "ComputerVisionClient Library with typescript type definitions for node",
+  "version": "3.0.0",
+  "dependencies": {
+    "ms-rest": "^2.3.3"
+  },
   "keywords": [
     "node",
     "azure"
   ],
-  "main": "./lib/computerVisionAPIClient.js",
-  "types": "./lib/computerVisionAPIClient.d.ts",
   "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.2.5",
-    "ms-rest-azure": "^2.5.0"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "main": "./lib/computerVisionClient.js",
+  "types": "./lib/computerVisionClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/computerVision",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }

@@ -634,7 +634,7 @@ export interface DataDisk {
  * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] If omitted,
  * the default value is true.
  * @member {array} [dataDisks] The configuration for data disks attached to the
- * comptue nodes in the pool. This property must be specified if the compute
+ * compute nodes in the pool. This property must be specified if the compute
  * nodes in the pool need to have empty data disks attached to them.
  * @member {string} [licenseType] The type of on-premises license to be used
  * when deploying the operating system. This only applies to images that
@@ -740,7 +740,8 @@ export interface DeploymentConfiguration {
  * @summary Fixed scale settings for the pool.
  *
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
- * compute nodes to the pool. The default value is 15 minutes. The minimum
+ * compute nodes to the pool. The default value is 15 minutes. Timeout values
+ * use ISO 8601 format. For example, use PT10M for 10 minutes. The minimum
  * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
  * service rejects the request with an error; if you are calling the REST API
  * directly, the HTTP status code is 400 (Bad Request).
@@ -794,6 +795,7 @@ export interface AutoScaleSettings {
  * property and autoScale are mutually exclusive and one of the properties must
  * be specified.
  * @member {moment.duration} [fixedScale.resizeTimeout] The default value is 15
+ * minutes. Timeout values use ISO 8601 format. For example, use PT10M for 10
  * minutes. The minimum value is 5 minutes. If you specify a value less than 5
  * minutes, the Batch service rejects the request with an error; if you are
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
@@ -1511,10 +1513,11 @@ export interface ResizeOperationStatus {
  * @member {object} [scaleSettings.fixedScale] This property and autoScale are
  * mutually exclusive and one of the properties must be specified.
  * @member {moment.duration} [scaleSettings.fixedScale.resizeTimeout] The
- * default value is 15 minutes. The minimum value is 5 minutes. If you specify
- * a value less than 5 minutes, the Batch service rejects the request with an
- * error; if you are calling the REST API directly, the HTTP status code is 400
- * (Bad Request).
+ * default value is 15 minutes. Timeout values use ISO 8601 format. For
+ * example, use PT10M for 10 minutes. The minimum value is 5 minutes. If you
+ * specify a value less than 5 minutes, the Batch service rejects the request
+ * with an error; if you are calling the REST API directly, the HTTP status
+ * code is 400 (Bad Request).
  * @member {number} [scaleSettings.fixedScale.targetDedicatedNodes] At least
  * one of targetDedicatedNodes, targetLowPriority nodes must be set.
  * @member {number} [scaleSettings.fixedScale.targetLowPriorityNodes] At least

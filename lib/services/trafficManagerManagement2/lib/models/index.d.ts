@@ -30,6 +30,94 @@ export interface DeleteOperationResult {
 
 /**
  * @class
+ * Initializes a new instance of the EndpointPropertiesSubnetsItem class.
+ * @constructor
+ * Subnet first address, scope, and/or last address.
+ *
+ * @member {string} [first] First address in the subnet.
+ * @member {string} [last] Last address in the subnet.
+ * @member {number} [scope] Block size (number of leading bits in the subnet
+ * mask).
+ */
+export interface EndpointPropertiesSubnetsItem {
+  first?: string;
+  last?: string;
+  scope?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EndpointPropertiesCustomHeadersItem class.
+ * @constructor
+ * Custom header name and value.
+ *
+ * @member {string} [name] Header name.
+ * @member {string} [value] Header value.
+ */
+export interface EndpointPropertiesCustomHeadersItem {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeatMapEndpoint class.
+ * @constructor
+ * Class which is a sparse representation of a Traffic Manager endpoint.
+ *
+ * @member {string} [resourceId] The ARM Resource ID of this Traffic Manager
+ * endpoint.
+ * @member {number} [endpointId] A number uniquely identifying this endpoint in
+ * query experiences.
+ */
+export interface HeatMapEndpoint {
+  resourceId?: string;
+  endpointId?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryExperience class.
+ * @constructor
+ * Class representing a Traffic Manager HeatMap query experience properties.
+ *
+ * @member {number} endpointId The id of the endpoint from the 'endpoints'
+ * array which these queries were routed to.
+ * @member {number} queryCount The number of queries originating from this
+ * location.
+ * @member {number} [latency] The latency experienced by queries originating
+ * from this location.
+ */
+export interface QueryExperience {
+  endpointId: number;
+  queryCount: number;
+  latency?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrafficFlow class.
+ * @constructor
+ * Class representing a Traffic Manager HeatMap traffic flow properties.
+ *
+ * @member {string} [sourceIp] The IP address that this query experience
+ * originated from.
+ * @member {number} [latitude] The approximate latitude that these queries
+ * originated from.
+ * @member {number} [longitude] The approximate longitude that these queries
+ * originated from.
+ * @member {array} [queryExperiences] The query experiences produced in this
+ * HeatMap calculation.
+ */
+export interface TrafficFlow {
+  sourceIp?: string;
+  latitude?: number;
+  longitude?: number;
+  queryExperiences?: QueryExperience[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The core properties of ARM resources
@@ -59,27 +147,60 @@ export interface ProxyResource extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the HeatMapModel class.
+ * @constructor
+ * Class representing a Traffic Manager HeatMap.
+ *
+ * @member {date} [startTime] The beginning of the time window for this
+ * HeatMap, inclusive.
+ * @member {date} [endTime] The ending of the time window for this HeatMap,
+ * exclusive.
+ * @member {array} [endpoints] The endpoints used in this HeatMap calculation.
+ * @member {array} [trafficFlows] The traffic flows produced in this HeatMap
+ * calculation.
+ */
+export interface HeatMapModel extends ProxyResource {
+  startTime?: Date;
+  endTime?: Date;
+  endpoints?: HeatMapEndpoint[];
+  trafficFlows?: TrafficFlow[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserMetricsModel class.
+ * @constructor
+ * Class representing Traffic Manager User Metrics.
+ *
+ * @member {string} [key] The key returned by the User Metrics operation.
+ */
+export interface UserMetricsModel extends ProxyResource {
+  key?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Endpoint class.
  * @constructor
  * Class representing a Traffic Manager endpoint.
  *
  * @member {string} [targetResourceId] The Azure Resource URI of the of the
  * endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
- * @member {string} [target] The fully-qualified DNS name of the endpoint.
- * Traffic Manager returns this value in DNS responses to direct traffic to
- * this endpoint.
+ * @member {string} [target] The fully-qualified DNS name or IP address of the
+ * endpoint. Traffic Manager returns this value in DNS responses to direct
+ * traffic to this endpoint.
  * @member {string} [endpointStatus] The status of the endpoint. If the
  * endpoint is Enabled, it is probed for endpoint health and is included in the
  * traffic routing method. Possible values include: 'Enabled', 'Disabled'
  * @member {number} [weight] The weight of this endpoint when using the
  * 'Weighted' traffic routing method. Possible values are from 1 to 1000.
  * @member {number} [priority] The priority of this endpoint when using the
- * ‘Priority’ traffic routing method. Possible values are from 1 to 1000, lower
+ * 'Priority' traffic routing method. Possible values are from 1 to 1000, lower
  * values represent higher priority. This is an optional parameter.  If
  * specified, it must be specified on all endpoints, and no two endpoints can
  * share the same priority value.
  * @member {string} [endpointLocation] Specifies the location of the external
- * or nested endpoints when using the ‘Performance’ traffic routing method.
+ * or nested endpoints when using the 'Performance' traffic routing method.
  * @member {string} [endpointMonitorStatus] The monitoring status of the
  * endpoint. Possible values include: 'CheckingEndpoint', 'Online', 'Degraded',
  * 'Disabled', 'Inactive', 'Stopped'
@@ -87,8 +208,12 @@ export interface ProxyResource extends Resource {
  * must be available in the child profile in order for the parent profile to be
  * considered available. Only applicable to endpoint of type 'NestedEndpoints'.
  * @member {array} [geoMapping] The list of countries/regions mapped to this
- * endpoint when using the ‘Geographic’ traffic routing method. Please consult
+ * endpoint when using the 'Geographic' traffic routing method. Please consult
  * Traffic Manager Geographic documentation for a full list of accepted values.
+ * @member {array} [subnets] The list of subnets, IP addresses, and/or address
+ * ranges mapped to this endpoint when using the 'Subnet' traffic routing
+ * method. An empty list will match all ranges not covered by other endpoints.
+ * @member {array} [customHeaders] List of custom headers.
  */
 export interface Endpoint extends ProxyResource {
   targetResourceId?: string;
@@ -100,6 +225,8 @@ export interface Endpoint extends ProxyResource {
   endpointMonitorStatus?: string;
   minChildEndpoints?: number;
   geoMapping?: string[];
+  subnets?: EndpointPropertiesSubnetsItem[];
+  customHeaders?: EndpointPropertiesCustomHeadersItem[];
 }
 
 /**
@@ -141,6 +268,34 @@ export interface DnsConfig {
 
 /**
  * @class
+ * Initializes a new instance of the MonitorConfigCustomHeadersItem class.
+ * @constructor
+ * Custom header name and value.
+ *
+ * @member {string} [name] Header name.
+ * @member {string} [value] Header value.
+ */
+export interface MonitorConfigCustomHeadersItem {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MonitorConfigExpectedStatusCodeRangesItem class.
+ * @constructor
+ * Min and max value of a status code range.
+ *
+ * @member {number} [min] Min status code.
+ * @member {number} [max] Max status code.
+ */
+export interface MonitorConfigExpectedStatusCodeRangesItem {
+  min?: number;
+  max?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MonitorConfig class.
  * @constructor
  * Class containing endpoint monitoring settings in a Traffic Manager profile.
@@ -162,6 +317,9 @@ export interface DnsConfig {
  * @member {number} [toleratedNumberOfFailures] The number of consecutive
  * failed health check that Traffic Manager tolerates before declaring an
  * endpoint in this profile Degraded after the next failed health check.
+ * @member {array} [customHeaders] List of custom headers.
+ * @member {array} [expectedStatusCodeRanges] List of expected status code
+ * ranges.
  */
 export interface MonitorConfig {
   profileMonitorStatus?: string;
@@ -171,6 +329,8 @@ export interface MonitorConfig {
   intervalInSeconds?: number;
   timeoutInSeconds?: number;
   toleratedNumberOfFailures?: number;
+  customHeaders?: MonitorConfigCustomHeadersItem[];
+  expectedStatusCodeRanges?: MonitorConfigExpectedStatusCodeRangesItem[];
 }
 
 /**
@@ -197,7 +357,7 @@ export interface TrackedResource extends Resource {
  * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [trafficRoutingMethod] The traffic routing method of the
  * Traffic Manager profile. Possible values include: 'Performance', 'Priority',
- * 'Weighted', 'Geographic'
+ * 'Weighted', 'Geographic', 'MultiValue', 'Subnet'
  * @member {object} [dnsConfig] The DNS settings of the Traffic Manager
  * profile.
  * @member {string} [dnsConfig.relativeName] The relative DNS name provided by
@@ -232,8 +392,17 @@ export interface TrackedResource extends Resource {
  * consecutive failed health check that Traffic Manager tolerates before
  * declaring an endpoint in this profile Degraded after the next failed health
  * check.
+ * @member {array} [monitorConfig.customHeaders] List of custom headers.
+ * @member {array} [monitorConfig.expectedStatusCodeRanges] List of expected
+ * status code ranges.
  * @member {array} [endpoints] The list of endpoints in the Traffic Manager
  * profile.
+ * @member {string} [trafficViewEnrollmentStatus] Indicates whether Traffic
+ * View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null,
+ * indicates 'Disabled'. Enabling this feature will increase the cost of the
+ * Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+ * @member {number} [maxReturn] Maximum number of endpoints to be returned for
+ * MultiValue routing type.
  */
 export interface Profile extends TrackedResource {
   profileStatus?: string;
@@ -241,6 +410,8 @@ export interface Profile extends TrackedResource {
   dnsConfig?: DnsConfig;
   monitorConfig?: MonitorConfig;
   endpoints?: Endpoint[];
+  trafficViewEnrollmentStatus?: string;
+  maxReturn?: number;
 }
 
 /**
@@ -300,84 +471,6 @@ export interface Region {
  */
 export interface TrafficManagerGeographicHierarchy extends ProxyResource {
   geographicHierarchy?: Region;
-}
-
-/**
- * @class
- * Initializes a new instance of the HeatMapEndpoint class.
- * @constructor
- * Class which is a sparse representation of a Traffic Manager endpoint.
- *
- * @member {string} [resourceId] The ARM Resource ID of this Traffic Manager
- * endpoint.
- * @member {number} [endpointId] A number uniquely identifying this endpoint in
- * query experiences.
- */
-export interface HeatMapEndpoint {
-  resourceId?: string;
-  endpointId?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryExperience class.
- * @constructor
- * Class representing a Traffic Manager HeatMap query experience properties.
- *
- * @member {number} [endpointId] The id of the endpoint from the 'endpoints'
- * array which these queries were routed to.
- * @member {number} [queryCount] The number of queries originating from this
- * location.
- * @member {number} [latency] The latency experienced by queries originating
- * from this location.
- */
-export interface QueryExperience {
-  endpointId?: number;
-  queryCount?: number;
-  latency?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrafficFlow class.
- * @constructor
- * Class representing a Traffic Manager HeatMap traffic flow properties.
- *
- * @member {string} [sourceIp] The IP address that this query experience
- * originated from.
- * @member {number} [latitude] The approximate latitude that these queries
- * originated from.
- * @member {number} [longitude] The approximate longitude that these queries
- * originated from.
- * @member {array} [queryExperiences] The query experiences produced in this
- * HeatMap calculation.
- */
-export interface TrafficFlow {
-  sourceIp?: string;
-  latitude?: number;
-  longitude?: number;
-  queryExperiences?: QueryExperience[];
-}
-
-/**
- * @class
- * Initializes a new instance of the HeatMapModel class.
- * @constructor
- * Class representing a Traffic Manager HeatMap.
- *
- * @member {date} [startTime] The beginning of the time window for this
- * HeatMap, inclusive.
- * @member {date} [endTime] The ending of the time window for this HeatMap,
- * exclusive.
- * @member {array} [endpoints] The endpoints used in this HeatMap calculation.
- * @member {array} [trafficFlows] The traffic flows produced in this HeatMap
- * calculation.
- */
-export interface HeatMapModel extends ProxyResource {
-  startTime?: Date;
-  endTime?: Date;
-  endpoints?: HeatMapEndpoint[];
-  trafficFlows?: TrafficFlow[];
 }
 
 

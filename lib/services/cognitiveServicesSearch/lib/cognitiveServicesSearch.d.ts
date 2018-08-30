@@ -10,6 +10,7 @@ import VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
 import NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
 import ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
 import CustomSearchAPIClient = require('azure-cognitiveservices-customsearch');
+import VisualSearchAPIClient = require('azure-cognitiveservices-visualsearch');
 
 export {EntitySearchAPIClient, WebSearchAPIClient, VideoSearchAPIClient, NewsSearchAPIClient,
-        ImageSearchAPIClient, CustomSearchAPIClient}
+        ImageSearchAPIClient, CustomSearchAPIClient, VisualSearchAPIClient}

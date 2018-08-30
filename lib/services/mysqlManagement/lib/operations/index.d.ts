@@ -36,11 +36,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -52,15 +52,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '5.6', '5.7'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -80,7 +90,7 @@ export interface Servers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Server>>;
+    createWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Server>>;
 
     /**
      * Creates a new server or updates an existing server. The update action will
@@ -97,11 +107,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -113,15 +123,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '5.6', '5.7'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -157,9 +177,9 @@ export interface Servers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Server>;
-    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, callback: ServiceCallback<models.Server>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Server>): void;
+    create(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Server>;
+    create(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, callback: ServiceCallback<models.Server>): void;
+    create(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Server>): void;
 
 
     /**
@@ -176,11 +196,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -190,7 +210,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -231,11 +261,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -245,7 +275,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -541,11 +581,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -557,15 +597,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '5.6', '5.7'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -585,7 +635,7 @@ export interface Servers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Server>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Server>>;
 
     /**
      * Creates a new server or updates an existing server. The update action will
@@ -602,11 +652,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -618,15 +668,25 @@ export interface Servers {
      *
      * @param {object} parameters.properties Properties of the server.
      *
-     * @param {number} [parameters.properties.storageMB] The maximum storage
-     * allowed for a server.
-     *
      * @param {string} [parameters.properties.version] Server version. Possible
      * values include: '5.6', '5.7'
      *
      * @param {string} [parameters.properties.sslEnforcement] Enable ssl
      * enforcement or not when connect to server. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.properties.storageProfile] Storage profile of a
+     * server.
+     *
+     * @param {number} [parameters.properties.storageProfile.backupRetentionDays]
+     * Backup retention days for the server.
+     *
+     * @param {string} [parameters.properties.storageProfile.geoRedundantBackup]
+     * Enable Geo-redundant or not for server backup. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.properties.storageProfile.storageMB] Max storage
+     * allowed for a server.
      *
      * @param {string} parameters.properties.createMode Polymorphic Discriminator
      *
@@ -662,9 +722,9 @@ export interface Servers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Server>;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, callback: ServiceCallback<models.Server>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Server>): void;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Server>;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, callback: ServiceCallback<models.Server>): void;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.ServerForCreate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Server>): void;
 
 
     /**
@@ -681,11 +741,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -695,7 +755,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -736,11 +806,11 @@ export interface Servers {
      *
      * @param {object} [parameters.sku] The SKU (pricing tier) of the server.
      *
-     * @param {string} [parameters.sku.name] The name of the sku, typically, a
-     * letter + Number code, e.g. P3.
+     * @param {string} [parameters.sku.name] The name of the sku, typically, tier +
+     * family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      *
      * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic. Possible values include: 'Basic', 'Standard'
+     * Basic. Possible values include: 'Basic', 'GeneralPurpose', 'MemoryOptimized'
      *
      * @param {number} [parameters.sku.capacity] The scale up/out capacity,
      * representing server's compute units.
@@ -750,7 +820,17 @@ export interface Servers {
      *
      * @param {string} [parameters.sku.family] The family of hardware.
      *
-     * @param {number} [parameters.storageMB] The max storage allowed for a server.
+     * @param {object} [parameters.storageProfile] Storage profile of a server.
+     *
+     * @param {number} [parameters.storageProfile.backupRetentionDays] Backup
+     * retention days for the server.
+     *
+     * @param {string} [parameters.storageProfile.geoRedundantBackup] Enable
+     * Geo-redundant or not for server backup. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {number} [parameters.storageProfile.storageMB] Max storage allowed
+     * for a server.
      *
      * @param {string} [parameters.administratorLoginPassword] The password of the
      * administrator login.
@@ -1298,6 +1378,506 @@ export interface FirewallRules {
     beginDeleteMethod(resourceGroupName: string, serverName: string, firewallRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, serverName: string, firewallRuleName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, serverName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * VirtualNetworkRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MySQLManagementClient.
+ */
+export interface VirtualNetworkRules {
+
+
+    /**
+     * Gets a virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Gets a virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    get(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    get(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    createOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRuleListResult>>;
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRuleListResult>>;
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
 }
 
 /**
@@ -2109,67 +2689,6 @@ export interface LogFiles {
 
 /**
  * @class
- * PerformanceTiers
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MySQLManagementClient.
- */
-export interface PerformanceTiers {
-
-
-    /**
-     * List all the performance tiers in a given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PerformanceTierListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PerformanceTierListResult>>;
-
-    /**
-     * List all the performance tiers in a given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PerformanceTierListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PerformanceTierListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PerformanceTierListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PerformanceTierListResult>;
-    list(callback: ServiceCallback<models.PerformanceTierListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PerformanceTierListResult>): void;
-}
-
-/**
- * @class
  * LocationBasedPerformanceTier
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the MySQLManagementClient.
@@ -2250,7 +2769,7 @@ export interface CheckNameAvailability {
      * @param {object} nameAvailabilityRequest The required parameters for checking
      * if resource name is available.
      *
-     * @param {string} [nameAvailabilityRequest.name] Resource name to verify.
+     * @param {string} nameAvailabilityRequest.name Resource name to verify.
      *
      * @param {string} [nameAvailabilityRequest.type] Resource type used for
      * verification.
@@ -2274,7 +2793,7 @@ export interface CheckNameAvailability {
      * @param {object} nameAvailabilityRequest The required parameters for checking
      * if resource name is available.
      *
-     * @param {string} [nameAvailabilityRequest.name] Resource name to verify.
+     * @param {string} nameAvailabilityRequest.name Resource name to verify.
      *
      * @param {string} [nameAvailabilityRequest.type] Resource type used for
      * verification.
@@ -2309,6 +2828,307 @@ export interface CheckNameAvailability {
     execute(nameAvailabilityRequest: models.NameAvailabilityRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NameAvailability>;
     execute(nameAvailabilityRequest: models.NameAvailabilityRequest, callback: ServiceCallback<models.NameAvailability>): void;
     execute(nameAvailabilityRequest: models.NameAvailabilityRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NameAvailability>): void;
+}
+
+/**
+ * @class
+ * ServerSecurityAlertPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MySQLManagementClient.
+ */
+export interface ServerSecurityAlertPolicies {
+
+
+    /**
+     * Get a server's security alert policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Get a server's security alert policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
 }
 
 /**

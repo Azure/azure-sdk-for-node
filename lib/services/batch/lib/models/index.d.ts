@@ -30,18 +30,8 @@ export { CloudError } from 'ms-rest-azure';
  * this entry.
  * @member {string} vmSize The size of virtual machines in the pool. All VMs in
  * a pool are the same size. For information about available sizes of virtual
- * machines for Cloud Services pools (pools created with
- * cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, STANDARD_A1_V2
- * and STANDARD_A2_V2. For information about available VM sizes for pools using
- * images from the Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * machines in pools, see Choose a VM size for compute nodes in an Azure Batch
+ * pool (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} totalCoreHours The total core hours used in the pool during
  * this aggregation interval.
  * @member {number} dataIngressGiB The cross data center network ingress to the
@@ -684,32 +674,20 @@ export interface EnvironmentSetting {
  *
  * @member {string} [jobAction] An action to take on the job containing the
  * task, if the task completes with the given exit condition and the job's
- * onTaskFailed property is 'performExitOptionsJobAction'. Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
+ * onTaskFailed property is 'performExitOptionsJobAction'. The default is none
+ * for exit code 0 and terminate for all other exit conditions. If the job's
+ * onTaskFailed property is noaction, then specifying this property returns an
+ * error and the add task request fails with an invalid property value error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
  * @member {string} [dependencyAction] An action that the Batch service
- * performs on tasks that depend on this task. Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * performs on tasks that depend on this task. The default is 'satisfy' for
+ * exit code 0, and 'block' for all other exit conditions. If the job's
+ * usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  */
 export interface ExitOptions {
   jobAction?: string;
@@ -726,31 +704,19 @@ export interface ExitOptions {
  * @member {number} code A process exit code.
  * @member {object} exitOptions How the Batch service should respond if the
  * task exits with this exit code.
- * @member {string} [exitOptions.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitOptions.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * @member {string} [exitOptions.jobAction] The default is none for exit code 0
+ * and terminate for all other exit conditions. If the job's onTaskFailed
+ * property is noaction, then specifying this property returns an error and the
+ * add task request fails with an invalid property value error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
+ * Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [exitOptions.dependencyAction] The default is 'satisfy' for
+ * exit code 0, and 'block' for all other exit conditions. If the job's
+ * usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  */
 export interface ExitCodeMapping {
   code: number;
@@ -768,31 +734,19 @@ export interface ExitCodeMapping {
  * @member {number} end The last exit code in the range.
  * @member {object} exitOptions How the Batch service should respond if the
  * task exits with an exit code in the range start to end (inclusive).
- * @member {string} [exitOptions.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitOptions.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * @member {string} [exitOptions.jobAction] The default is none for exit code 0
+ * and terminate for all other exit conditions. If the job's onTaskFailed
+ * property is noaction, then specifying this property returns an error and the
+ * add task request fails with an invalid property value error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
+ * Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [exitOptions.dependencyAction] The default is 'satisfy' for
+ * exit code 0, and 'block' for all other exit conditions. If the job's
+ * usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  */
 export interface ExitCodeRangeMapping {
   start: number;
@@ -813,60 +767,36 @@ export interface ExitCodeRangeMapping {
  * Batch service should respond to them.
  * @member {object} [preProcessingError] How the Batch service should respond
  * if the task fails to start due to an error.
- * @member {string} [preProcessingError.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [preProcessingError.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * @member {string} [preProcessingError.jobAction] The default is none for exit
+ * code 0 and terminate for all other exit conditions. If the job's
+ * onTaskFailed property is noaction, then specifying this property returns an
+ * error and the add task request fails with an invalid property value error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [preProcessingError.dependencyAction] The default is
+ * 'satisfy' for exit code 0, and 'block' for all other exit conditions. If the
+ * job's usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  * @member {object} [fileUploadError] How the Batch service should respond if a
  * file upload error occurs. If the task exited with an exit code that was
  * specified via exitCodes or exitCodeRanges, and then encountered a file
  * upload error, then the action specified by the exit code takes precedence.
- * @member {string} [fileUploadError.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [fileUploadError.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * @member {string} [fileUploadError.jobAction] The default is none for exit
+ * code 0 and terminate for all other exit conditions. If the job's
+ * onTaskFailed property is noaction, then specifying this property returns an
+ * error and the add task request fails with an invalid property value error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [fileUploadError.dependencyAction] The default is 'satisfy'
+ * for exit code 0, and 'block' for all other exit conditions. If the job's
+ * usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  * @member {object} [default] How the Batch service should respond if the task
  * fails with an exit condition not covered by any of the other properties.
  * This value is used if the task exits with any nonzero exit code not listed
@@ -875,31 +805,19 @@ export interface ExitCodeRangeMapping {
  * error if the fileUploadError property is not present. If you want
  * non-default behaviour on exit code 0, you must list it explicitly using the
  * exitCodes or exitCodeRanges collection.
- * @member {string} [default.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [default.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
+ * @member {string} [default.jobAction] The default is none for exit code 0 and
+ * terminate for all other exit conditions. If the job's onTaskFailed property
+ * is noaction, then specifying this property returns an error and the add task
  * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * REST API directly, the HTTP status code is 400 (Bad Request). Possible
+ * values include: 'none', 'disable', 'terminate'
+ * @member {string} [default.dependencyAction] The default is 'satisfy' for
+ * exit code 0, and 'block' for all other exit conditions. If the job's
+ * usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  */
 export interface ExitConditions {
   exitCodes?: ExitCodeMapping[];
@@ -916,17 +834,10 @@ export interface ExitConditions {
  * @summary Specifies the parameters for the auto user that runs a task on the
  * Batch service.
  *
- * @member {string} [scope] The scope for the auto user. Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [elevationLevel] The elevation level of the auto user.
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [scope] The scope for the auto user. The default value is
+ * task. Possible values include: 'task', 'pool'
+ * @member {string} [elevationLevel] The elevation level of the auto user. The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  */
 export interface AutoUserSpecification {
   scope?: string;
@@ -939,7 +850,10 @@ export interface AutoUserSpecification {
  * @constructor
  * @summary The definition of the user identity under which the task is run.
  *
- * Specify either the userName or autoUser property, but not both.
+ * Specify either the userName or autoUser property, but not both. On
+ * CloudServiceConfiguration pools, this user is logged in with the INTERACTIVE
+ * flag. On Windows VirtualMachineConfiguration pools, this user is logged in
+ * with the BATCH flag.
  *
  * @member {string} [userName] The name of the user identity under which the
  * task is run. The userName and autoUser properties are mutually exclusive;
@@ -947,16 +861,10 @@ export interface AutoUserSpecification {
  * @member {object} [autoUser] The auto user under which the task is run. The
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
- * @member {string} [autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [autoUser.elevationLevel] nonAdmin - The auto user is a
- * standard user without elevated access. admin - The auto user is a user with
- * elevated access and operates with full Administrator permissions. The
- * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [autoUser.scope] The default value is task. Possible values
+ * include: 'task', 'pool'
+ * @member {string} [autoUser.elevationLevel] The default value is nonAdmin.
+ * Possible values include: 'nonAdmin', 'admin'
  */
 export interface UserIdentity {
   userName?: string;
@@ -1000,10 +908,7 @@ export interface LinuxUserConfiguration {
  * @member {string} name The name of the user account.
  * @member {string} password The password for the user account.
  * @member {string} [elevationLevel] The elevation level of the user account.
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {object} [linuxUserConfiguration] The Linux-specific user
  * configuration for the user account. This property is ignored if specified on
  * a Windows pool. If not specified, the user is created with the default
@@ -1047,12 +952,15 @@ export interface UserAccount {
  * be retained until the compute node is removed or reimaged.
  * @member {number} [maxTaskRetryCount] The maximum number of times the task
  * may be retried. The Batch service retries a task if its exit code is
- * nonzero. Note that this value specifically controls the number of retries.
- * The Batch service will try the task once, and may then retry up to this
- * limit. For example, if the maximum retry count is 3, Batch tries the task up
- * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
- * the Batch service does not retry the task. If the maximum retry count is -1,
- * the Batch service retries the task without limit.
+ * nonzero. Note that this value specifically controls the number of retries
+ * for the task executable due to a nonzero exit code. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task after the first attempt. If the maximum retry count is
+ * -1, the Batch service retries the task without limit. Resource files and
+ * application packages are only downloaded again if the task is retried on a
+ * new compute node.
  */
 export interface TaskConstraints {
   maxWallClockTime?: moment.Duration;
@@ -1114,7 +1022,7 @@ export interface OutputFileDestination {
  * conditions to perform the upload.
  *
  * @member {string} uploadCondition The conditions under which the task output
- * file or set of files should be uploaded. The default is taskCompletion.
+ * file or set of files should be uploaded. The default is taskcompletion.
  * Possible values include: 'taskSuccess', 'taskFailure', 'taskCompletion'
  */
 export interface OutputFileUploadOptions {
@@ -1160,7 +1068,7 @@ export interface OutputFileUploadOptions {
  * @member {object} uploadOptions Additional options for the upload operation,
  * including under what conditions to perform the upload.
  * @member {string} [uploadOptions.uploadCondition] The default is
- * taskCompletion. Possible values include: 'taskSuccess', 'taskFailure',
+ * taskcompletion. Possible values include: 'taskSuccess', 'taskFailure',
  * 'taskCompletion'
  */
 export interface OutputFile {
@@ -1187,7 +1095,17 @@ export interface OutputFile {
  * task to restart. Note that a Job Manager task in one job does not have
  * priority over tasks in other jobs. Across jobs, only job level priorities
  * are observed. For example, if a Job Manager in a priority 0 job needs to be
- * restarted, it will not displace tasks of a priority 1 job.
+ * restarted, it will not displace tasks of a priority 1 job. Batch will retry
+ * tasks when a recovery operation is triggered on a compute node. Examples of
+ * recovery operations include (but are not limited to) when an unhealthy
+ * compute node is rebooted or a compute node disappeared due to host failure.
+ * Retries due to recovery operations are independent of and are not counted
+ * against the maxTaskRetryCount. Even if the maxTaskRetryCount is 0, an
+ * internal retry due to a recovery operation may occur. Because of this, all
+ * tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
  *
  * @member {string} id A string that uniquely identifies the Job Manager task
  * within the job. The ID can contain any combination of alphanumeric
@@ -1201,7 +1119,10 @@ export interface OutputFile {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Manager task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -1224,7 +1145,12 @@ export interface OutputFile {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -1239,12 +1165,14 @@ export interface OutputFile {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {boolean} [killJobOnCompletion] Whether completion of the Job
  * Manager task signifies completion of the entire job. If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
@@ -1265,16 +1193,10 @@ export interface OutputFile {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
- * user is a standard user without elevated access. admin - The auto user is a
- * user with elevated access and operates with full Administrator permissions.
- * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [userIdentity.autoUser.scope] The default value is task.
+ * Possible values include: 'task', 'pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] The default value is
+ * nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [runExclusive] Whether the Job Manager task requires
  * exclusive use of the compute node where it runs. If true, no other tasks
  * will run on the same compute node for as long as the Job Manager is running.
@@ -1304,7 +1226,7 @@ export interface OutputFile {
  * the only supported value for the access property is 'job', which grants
  * access to all operations related to the job which contains the task.
  * @member {boolean} [allowLowPriorityNode] Whether the Job Manager task may
- * run on a low-priority compute node. The default value is false.
+ * run on a low-priority compute node. The default value is true.
  */
 export interface JobManagerTask {
   id: string;
@@ -1346,7 +1268,17 @@ export interface JobManagerTask {
  * before scheduling any other task of the job, if
  * rerunOnNodeRebootAfterSuccess is true or if the Job Preparation task did not
  * previously complete. If the compute node is reimaged, the Job Preparation
- * task is run again before scheduling any task of the job.
+ * task is run again before scheduling any task of the job. Batch will retry
+ * tasks when a recovery operation is triggered on a compute node. Examples of
+ * recovery operations include (but are not limited to) when an unhealthy
+ * compute node is rebooted or a compute node disappeared due to host failure.
+ * Retries due to recovery operations are independent of and are not counted
+ * against the maxTaskRetryCount. Even if the maxTaskRetryCount is 0, an
+ * internal retry due to a recovery operation may occur. Because of this, all
+ * tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
  *
  * @member {string} [id] A string that uniquely identifies the Job Preparation
  * task within the job. The ID can contain any combination of alphanumeric
@@ -1362,7 +1294,10 @@ export interface JobManagerTask {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Preparation task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1383,7 +1318,12 @@ export interface JobManagerTask {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Preparation task.
  * @member {object} [constraints] Constraints that apply to the Job Preparation
@@ -1394,12 +1334,14 @@ export interface JobManagerTask {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
  * the Job Preparation task to complete successfully before scheduling any
  * other tasks of the job on the compute node. A Job Preparation task has
@@ -1422,16 +1364,10 @@ export interface JobManagerTask {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
- * user is a standard user without elevated access. admin - The auto user is a
- * user with elevated access and operates with full Administrator permissions.
- * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [userIdentity.autoUser.scope] The default value is task.
+ * Possible values include: 'task', 'pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] The default value is
+ * nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [rerunOnNodeRebootAfterSuccess] Whether the Batch service
  * should rerun the Job Preparation task after a compute node reboots. The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
@@ -1490,7 +1426,10 @@ export interface JobPreparationTask {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Release task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1510,8 +1449,13 @@ export interface JobPreparationTask {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Release task.
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
@@ -1533,16 +1477,10 @@ export interface JobPreparationTask {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
- * user is a standard user without elevated access. admin - The auto user is a
- * user with elevated access and operates with full Administrator permissions.
- * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [userIdentity.autoUser.scope] The default value is task.
+ * Possible values include: 'task', 'pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] The default value is
+ * nonAdmin. Possible values include: 'nonAdmin', 'admin'
  */
 export interface JobReleaseTask {
   id?: string;
@@ -1562,13 +1500,7 @@ export interface JobReleaseTask {
  * @summary Specifies how tasks should be distributed across compute nodes.
  *
  * @member {string} nodeFillType How tasks are distributed across compute nodes
- * in a pool. Values are:
- *
- * pack - As many tasks as possible (maxTasksPerNode) should be assigned to
- * each node in the pool before any tasks are assigned to the next node in the
- * pool.
- * spread - Tasks should be assigned evenly across all nodes in the pool.
- * Possible values include: 'spread', 'pack'
+ * in a pool. Possible values include: 'spread', 'pack'
  */
 export interface TaskSchedulingPolicy {
   nodeFillType: string;
@@ -1581,12 +1513,26 @@ export interface TaskSchedulingPolicy {
  * @summary A task which is run when a compute node joins a pool in the Azure
  * Batch service, or when the compute node is rebooted or reimaged.
  *
+ * Batch will retry tasks when a recovery operation is triggered on a compute
+ * node. Examples of recovery operations include (but are not limited to) when
+ * an unhealthy compute node is rebooted or a compute node disappeared due to
+ * host failure. Retries due to recovery operations are independent of and are
+ * not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is
+ * 0, an internal retry due to a recovery operation may occur. Because of this,
+ * all tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
+ *
  * @member {string} commandLine The command line of the start task. The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the start task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1606,8 +1552,13 @@ export interface TaskSchedulingPolicy {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files. When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the start task.
  * @member {object} [userIdentity] The user identity under which the start task
@@ -1617,16 +1568,10 @@ export interface TaskSchedulingPolicy {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
- * user is a standard user without elevated access. admin - The auto user is a
- * user with elevated access and operates with full Administrator permissions.
- * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [userIdentity.autoUser.scope] The default value is task.
+ * Possible values include: 'task', 'pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] The default value is
+ * nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [maxTaskRetryCount] The maximum number of times the task
  * may be retried. The Batch service retries a task if its exit code is
  * nonzero. Note that this value specifically controls the number of retries.
@@ -1670,7 +1615,7 @@ export interface StartTask {
  * is associated. This must be sha1.
  * @member {string} [storeLocation] The location of the certificate store on
  * the compute node into which to install the certificate. The default value is
- * currentUser. This property is applicable only for pools configured with
+ * currentuser. This property is applicable only for pools configured with
  * Windows nodes (that is, created with cloudServiceConfiguration, or with
  * virtualMachineConfiguration using a Windows image reference). For Linux
  * compute nodes, the certificates are stored in a directory inside the task
@@ -1687,14 +1632,8 @@ export interface StartTask {
  * Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any
  * custom store name can also be used. The default value is My.
  * @member {array} [visibility] Which user accounts on the compute node should
- * have access to the private data of the certificate. Values are:
- *
- * starttask - The user account under which the start task is run.
- * task - The accounts under which job tasks are run.
- * remoteuser - The accounts under which users remotely access the node.
- *
- * You can specify more than one visibility in this collection. The default is
- * all accounts.
+ * have access to the private data of the certificate. You can specify more
+ * than one visibility in this collection. The default is all accounts.
  */
 export interface CertificateReference {
   thumbprint: string;
@@ -1729,9 +1668,10 @@ export interface MetadataItem {
  * Services platform.
  *
  * @member {string} osFamily The Azure Guest OS family to be installed on the
- * virtual machines in the pool. Possible values are: 2 - OS Family 2,
- * equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to
- * Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * virtual machines in the pool. Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
  * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
  * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
@@ -1758,14 +1698,8 @@ export interface CloudServiceConfiguration {
  * @summary Settings for the operating system disk of the virtual machine.
  *
  * @member {string} [caching] The type of caching to enable for the OS disk.
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  */
@@ -1797,23 +1731,14 @@ export interface WindowsConfiguration {
  * identify each data disk. If attaching multiple disks, each should have a
  * distinct lun.
  * @member {string} [caching] The type of caching to be enabled for the data
- * disks. Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * disks. The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {number} diskSizeGB The initial disk size in gigabytes.
  * @member {string} [storageAccountType] The storage account type to be used
- * for the data disk. If omitted, the default is "Standard_LRS". Values are:
- *
- * Standard_LRS - The data disk should use standard locally redundant storage.
- * Premium_LRS - The data disk should use premium locally redundant storage.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * for the data disk. If omitted, the default is "standard_lrs". Possible
+ * values include: 'StandardLRS', 'PremiumLRS'
  */
 export interface DataDisk {
   lun: number;
@@ -1868,14 +1793,8 @@ export interface ContainerConfiguration {
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [osDisk] Settings for the operating system disk of the
  * Virtual Machine.
- * @member {string} [osDisk.caching] Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * @member {string} [osDisk.caching] The default value for caching is
+ * readwrite. For information about the caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} nodeAgentSKUId The SKU of the Batch node agent to be
@@ -1895,7 +1814,14 @@ export interface ContainerConfiguration {
  * @member {array} [dataDisks] The configuration for data disks attached to the
  * comptue nodes in the pool. This property must be specified if the compute
  * nodes in the pool need to have empty data disks attached to them. This
- * cannot be updated.
+ * cannot be updated. Each node gets its own disk (the disk is not a file
+ * share). Existing disks cannot be attached, each attached disk is empty. When
+ * the node is removed from the pool, the disk and all data associated with it
+ * is also deleted. The disk is not formatted after being attached, it must be
+ * formatted before use - for more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string} [licenseType] The type of on-premises license to be used
  * when deploying the operating system. This only applies to images that
  * contain the Windows operating system, and should only be used when you hold
@@ -1975,15 +1901,16 @@ export interface NetworkSecurityGroupRule {
  * of external ports that will be used to provide inbound access to the
  * backendPort on individual compute nodes. Acceptable values range between 1
  * and 65534 except ports from 50000 to 55000 which are reserved. All ranges
- * within a pool must be distinct and cannot overlap. If any reserved or
- * overlapping values are provided the request fails with HTTP status code 400.
+ * within a pool must be distinct and cannot overlap. Each range must contain
+ * at least 40 ports. If any reserved or overlapping values are provided the
+ * request fails with HTTP status code 400.
  * @member {number} frontendPortRangeEnd The last port number in the range of
  * external ports that will be used to provide inbound access to the
  * backendPort on individual compute nodes. Acceptable values range between 1
  * and 65534 except ports from 50000 to 55000 which are reserved by the Batch
- * service. All ranges within a pool must be distinct and cannot overlap. If
- * any reserved or overlapping values are provided the request fails with HTTP
- * status code 400.
+ * service. All ranges within a pool must be distinct and cannot overlap. Each
+ * range must contain at least 40 ports. If any reserved or overlapping values
+ * are provided the request fails with HTTP status code 400.
  * @member {array} [networkSecurityGroupRules] A list of network security group
  * rules that will be applied to the endpoint. The maximum number of rules that
  * can be specified across all the endpoints on a Batch pool is 25. If no
@@ -2073,18 +2000,9 @@ export interface NetworkConfiguration {
  * maximum length of 1024.
  * @member {string} vmSize The size of the virtual machines in the pool. All
  * virtual machines in a pool are the same size. For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [cloudServiceConfiguration] The cloud service configuration
  * for the pool. This property must be specified if the pool needs to be
  * created with Azure PaaS VMs. This property and virtualMachineConfiguration
@@ -2093,11 +2011,12 @@ export interface NetworkConfiguration {
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  * This property cannot be specified if the Batch account was created with its
  * poolAllocationMode property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -2132,14 +2051,9 @@ export interface NetworkConfiguration {
  * Batch node agent to communicate with the Batch service see
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
- * @member {string} [virtualMachineConfiguration.osDisk.caching] Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -2158,7 +2072,14 @@ export interface NetworkConfiguration {
  * omitted, the default value is true.
  * @member {array} [virtualMachineConfiguration.dataDisks] This property must
  * be specified if the compute nodes in the pool need to have empty data disks
- * attached to them. This cannot be updated.
+ * attached to them. This cannot be updated. Each node gets its own disk (the
+ * disk is not a file share). Existing disks cannot be attached, each attached
+ * disk is empty. When the node is removed from the pool, the disk and all data
+ * associated with it is also deleted. The disk is not formatted after being
+ * attached, it must be formatted before use - for more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string} [virtualMachineConfiguration.licenseType] This only applies
  * to images that contain the Windows operating system, and should only be used
  * when you hold valid on-premises licenses for the nodes which will be
@@ -2265,7 +2186,11 @@ export interface NetworkConfiguration {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -2292,17 +2217,10 @@ export interface NetworkConfiguration {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
- * The auto user is a standard user without elevated access. admin - The auto
- * user is a user with elevated access and operates with full Administrator
- * permissions. The default value is nonAdmin. Possible values include:
- * 'nonAdmin', 'admin'
+ * @member {string} [startTask.userIdentity.autoUser.scope] The default value
+ * is task. Possible values include: 'task', 'pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
  * task if its exit code is nonzero. Note that this value specifically controls
  * the number of retries. The Batch service will try the task once, and may
@@ -2335,7 +2253,9 @@ export interface NetworkConfiguration {
  * Batch service will make available on each compute node in the pool. The list
  * of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [userAccounts] The list of user accounts to be created on
  * each node in the pool.
  * @member {array} [metadata] A list of name-value pairs associated with the
@@ -2378,15 +2298,8 @@ export interface PoolSpecification {
  * created for different purposes, you can specify this element to add a prefix
  * to the ID that is assigned. The prefix can be up to 20 characters long.
  * @member {string} poolLifetimeOption The minimum lifetime of created auto
- * pools, and how multiple jobs on a schedule are assigned to pools. When the
- * pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
- * Possible values include: 'jobSchedule', 'job'
+ * pools, and how multiple jobs on a schedule are assigned to pools. Possible
+ * values include: 'jobSchedule', 'job'
  * @member {boolean} [keepAlive] Whether to keep an auto pool alive after its
  * lifetime expires. If false, the Batch service deletes the pool once its
  * lifetime (as determined by the poolLifetimeOption setting) expires; that is,
@@ -2397,18 +2310,9 @@ export interface PoolSpecification {
  * @member {string} [pool.displayName] The display name need not be unique and
  * can contain any Unicode characters up to a maximum length of 1024.
  * @member {string} [pool.vmSize] For information about available sizes of
- * virtual machines for Cloud Services pools (pools created with
- * cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * virtual machines in pools, see Choose a VM size for compute nodes in an
+ * Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [pool.cloudServiceConfiguration] This property must be
  * specified if the pool needs to be created with Azure PaaS VMs. This property
  * and virtualMachineConfiguration are mutually exclusive and one of the
@@ -2418,10 +2322,12 @@ export interface PoolSpecification {
  * account was created with its poolAllocationMode property set to
  * 'UserSubscription'.
  * @member {string} [pool.cloudServiceConfiguration.osFamily] Possible values
- * are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS
- * Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to
- * Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016.
- * For more information, see Azure Guest OS Releases
+ * are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [pool.cloudServiceConfiguration.targetOSVersion] The
  * default value is * which specifies the latest operating system version for
@@ -2455,14 +2361,8 @@ export interface PoolSpecification {
  * Batch node agent to communicate with the Batch service see
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [pool.virtualMachineConfiguration.osDisk]
- * @member {string} [pool.virtualMachineConfiguration.osDisk.caching] Values
- * are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
+ * @member {string} [pool.virtualMachineConfiguration.osDisk.caching] The
+ * default value for caching is readwrite. For information about the caching
  * options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
@@ -2482,7 +2382,14 @@ export interface PoolSpecification {
  * If omitted, the default value is true.
  * @member {array} [pool.virtualMachineConfiguration.dataDisks] This property
  * must be specified if the compute nodes in the pool need to have empty data
- * disks attached to them. This cannot be updated.
+ * disks attached to them. This cannot be updated. Each node gets its own disk
+ * (the disk is not a file share). Existing disks cannot be attached, each
+ * attached disk is empty. When the node is removed from the pool, the disk and
+ * all data associated with it is also deleted. The disk is not formatted after
+ * being attached, it must be formatted before use - for more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string} [pool.virtualMachineConfiguration.licenseType] This only
  * applies to images that contain the Windows operating system, and should only
  * be used when you hold valid on-premises licenses for the nodes which will be
@@ -2582,7 +2489,11 @@ export interface PoolSpecification {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [pool.startTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -2611,17 +2522,10 @@ export interface PoolSpecification {
  * @member {object} [pool.startTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [pool.startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [pool.startTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [pool.startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [pool.startTask.maxTaskRetryCount] The Batch service
  * retries a task if its exit code is nonzero. Note that this value
  * specifically controls the number of retries. The Batch service will try the
@@ -2651,7 +2555,10 @@ export interface PoolSpecification {
  * @member {array} [pool.applicationPackageReferences]
  * @member {array} [pool.applicationLicenses] The list of application licenses
  * must be a subset of available Batch service application licenses. If a
- * license is requested which is not supported, pool creation will fail.
+ * license is requested which is not supported, pool creation will fail. The
+ * permitted licenses available on the pool are 'maya', 'vray', '3dsmax',
+ * 'arnold'. An additional charge applies for each application license added to
+ * the pool.
  * @member {array} [pool.userAccounts]
  * @member {array} [pool.metadata] The Batch service does not assign any
  * meaning to metadata; it is solely for the use of user code.
@@ -2690,15 +2597,8 @@ export interface AutoPoolSpecification {
  * between pools created for different purposes, you can specify this element
  * to add a prefix to the ID that is assigned. The prefix can be up to 20
  * characters long.
- * @member {string} [autoPoolSpecification.poolLifetimeOption] When the pool
- * lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
- * Possible values include: 'jobSchedule', 'job'
+ * @member {string} [autoPoolSpecification.poolLifetimeOption] Possible values
+ * include: 'jobSchedule', 'job'
  * @member {boolean} [autoPoolSpecification.keepAlive] If false, the Batch
  * service deletes the pool once its lifetime (as determined by the
  * poolLifetimeOption setting) expires; that is, when the job or job schedule
@@ -2710,18 +2610,9 @@ export interface AutoPoolSpecification {
  * need not be unique and can contain any Unicode characters up to a maximum
  * length of 1024.
  * @member {string} [autoPoolSpecification.pool.vmSize] For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
  * VMs. This property and virtualMachineConfiguration are mutually exclusive
@@ -2732,10 +2623,12 @@ export interface AutoPoolSpecification {
  * property set to 'UserSubscription'.
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.osFamily] Possible
- * values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 -
- * OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent
- * to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server
- * 2016. For more information, see Azure Guest OS Releases
+ * values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion] The
@@ -2778,14 +2671,8 @@ export interface AutoPoolSpecification {
  * @member {object}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
- * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
+ * [autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching] The
+ * default value for caching is readwrite. For information about the caching
  * options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
@@ -2808,7 +2695,15 @@ export interface AutoPoolSpecification {
  * @member {array}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks] This
  * property must be specified if the compute nodes in the pool need to have
- * empty data disks attached to them. This cannot be updated.
+ * empty data disks attached to them. This cannot be updated. Each node gets
+ * its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.licenseType] This
  * only applies to images that contain the Windows operating system, and should
@@ -2914,7 +2809,10 @@ export interface AutoPoolSpecification {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -2953,19 +2851,11 @@ export interface AutoPoolSpecification {
  * and autoUser properties are mutually exclusive; you must specify one but not
  * both.
  * @member {string}
- * [autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [autoPoolSpecification.pool.startTask.maxTaskRetryCount]
  * The Batch service retries a task if its exit code is nonzero. Note that this
  * value specifically controls the number of retries. The Batch service will
@@ -2996,7 +2886,9 @@ export interface AutoPoolSpecification {
  * @member {array} [autoPoolSpecification.pool.applicationLicenses] The list of
  * application licenses must be a subset of available Batch service application
  * licenses. If a license is requested which is not supported, pool creation
- * will fail.
+ * will fail. The permitted licenses available on the pool are 'maya', 'vray',
+ * '3dsmax', 'arnold'. An additional charge applies for each application
+ * license added to the pool.
  * @member {array} [autoPoolSpecification.pool.userAccounts]
  * @member {array} [autoPoolSpecification.pool.metadata] The Batch service does
  * not assign any meaning to metadata; it is solely for the use of user code.
@@ -3028,16 +2920,16 @@ export interface PoolInformation {
  * completed state. Note that if a job contains no tasks, then all tasks are
  * considered complete. This option is therefore most commonly used with a Job
  * Manager task; if you want to use automatic job termination without a Job
- * Manager, you should initially set onAllTasksComplete to noAction and update
- * the job properties to set onAllTasksComplete to terminateJob once you have
- * finished adding tasks. The default is noAction. Possible values include:
+ * Manager, you should initially set onAllTasksComplete to noaction and update
+ * the job properties to set onAllTasksComplete to terminatejob once you have
+ * finished adding tasks. The default is noaction. Possible values include:
  * 'noAction', 'terminateJob'
  * @member {string} [onTaskFailure] The action the Batch service should take
  * when any task fails in a job created under this schedule. A task is
  * considered to have failed if it have failed if has a failureInfo. A
  * failureInfo is set if the task completes with a non-zero exit code after
  * exhausting its retry count, or if there was an error starting the task, for
- * example due to a resource file download error. The default is noAction.
+ * example due to a resource file download error. The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {object} [constraints] The execution constraints for jobs created
  * under this schedule.
@@ -3068,7 +2960,11 @@ export interface PoolInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -3090,7 +2986,11 @@ export interface PoolInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -3102,12 +3002,15 @@ export interface PoolInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -3128,17 +3031,10 @@ export interface PoolInformation {
  * @member {object} [jobManagerTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks will
  * run on the same compute node for as long as the Job Manager is running. If
  * false, other tasks can run simultaneously with the Job Manager on a compute
@@ -3166,7 +3062,7 @@ export interface PoolInformation {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
- * false.
+ * true.
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
  * created under this schedule. If a job has a Job Preparation task, the Batch
  * service will run the Job Preparation task on a compute node before starting
@@ -3183,7 +3079,11 @@ export interface PoolInformation {
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
  * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If
+ * the command line refers to file paths, it should use a relative path
+ * (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -3204,7 +3104,12 @@ export interface PoolInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -3214,12 +3119,15 @@ export interface PoolInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -3240,18 +3148,10 @@ export interface PoolInformation {
  * @member {object} [jobPreparationTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string} [jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
  * Job Preparation task did not complete (e.g. because the reboot occurred
@@ -3278,7 +3178,11 @@ export interface PoolInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobReleaseTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -3311,17 +3215,10 @@ export interface PoolInformation {
  * @member {object} [jobReleaseTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [commonEnvironmentSettings] A list of common environment
  * variable settings. These environment variables are set for all tasks in jobs
  * created under this schedule (including the Job Manager, Job Preparation and
@@ -3348,14 +3245,7 @@ export interface PoolInformation {
  * distinguish between pools created for different purposes, you can specify
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -3368,19 +3258,9 @@ export interface PoolInformation {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -3392,10 +3272,12 @@ export interface PoolInformation {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -3441,14 +3323,8 @@ export interface PoolInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -3470,7 +3346,15 @@ export interface PoolInformation {
  * @member {array}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -3580,7 +3464,10 @@ export interface PoolInformation {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -3624,18 +3511,10 @@ export interface PoolInformation {
  * one but not both.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
  * service retries a task if its exit code is nonzero. Note that this value
@@ -3669,7 +3548,9 @@ export interface PoolInformation {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -3877,10 +3758,10 @@ export interface JobScheduleStatistics {
  * contains no tasks, then all tasks are considered complete. This option is
  * therefore most commonly used with a Job Manager task; if you want to use
  * automatic job termination without a Job Manager, you should initially set
- * onAllTasksComplete to noAction and update the job properties to set
- * onAllTasksComplete to terminateJob once you have finished adding tasks. The
- * default is noAction. Possible values include: 'noAction', 'terminateJob'
- * @member {string} [jobSpecification.onTaskFailure] The default is noAction.
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
@@ -3911,7 +3792,10 @@ export interface JobScheduleStatistics {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -3939,7 +3823,12 @@ export interface JobScheduleStatistics {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -3954,12 +3843,15 @@ export interface JobScheduleStatistics {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -3981,18 +3873,11 @@ export interface JobScheduleStatistics {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
  * other tasks will run on the same compute node for as long as the Job Manager
  * is running. If false, other tasks can run simultaneously with the Job
@@ -4023,7 +3908,7 @@ export interface JobScheduleStatistics {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -4040,7 +3925,10 @@ export interface JobScheduleStatistics {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4067,6 +3955,11 @@ export interface JobScheduleStatistics {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -4078,12 +3971,15 @@ export interface JobScheduleStatistics {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -4106,19 +4002,11 @@ export interface JobScheduleStatistics {
  * The userName and autoUser properties are mutually exclusive; you must
  * specify one but not both.
  * @member {string}
- * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean}
  * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
@@ -4146,7 +4034,10 @@ export interface JobScheduleStatistics {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4186,18 +4077,11 @@ export interface JobScheduleStatistics {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
  * tasks can override an environment setting specified here by specifying the
  * same setting name with a different value.
@@ -4224,14 +4108,7 @@ export interface JobScheduleStatistics {
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -4247,19 +4124,9 @@ export interface JobScheduleStatistics {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -4271,10 +4138,12 @@ export interface JobScheduleStatistics {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -4320,14 +4189,8 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -4349,7 +4212,15 @@ export interface JobScheduleStatistics {
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -4467,7 +4338,10 @@ export interface JobScheduleStatistics {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -4511,18 +4385,10 @@ export interface JobScheduleStatistics {
  * specify one but not both.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
  * The Batch service retries a task if its exit code is nonzero. Note that this
@@ -4558,7 +4424,9 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -4583,7 +4451,9 @@ export interface JobScheduleStatistics {
  * schedule as metadata. The Batch service does not assign any meaning to
  * metadata; it is solely for the use of user code.
  * @member {object} [stats] The lifetime resource usage statistics for the job
- * schedule.
+ * schedule. The statistics may not be immediately available. The Batch service
+ * performs periodic roll-up of statistics. The typical delay is about 30
+ * minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -4684,10 +4554,10 @@ export interface CloudJobSchedule {
  * contains no tasks, then all tasks are considered complete. This option is
  * therefore most commonly used with a Job Manager task; if you want to use
  * automatic job termination without a Job Manager, you should initially set
- * onAllTasksComplete to noAction and update the job properties to set
- * onAllTasksComplete to terminateJob once you have finished adding tasks. The
- * default is noAction. Possible values include: 'noAction', 'terminateJob'
- * @member {string} [jobSpecification.onTaskFailure] The default is noAction.
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
@@ -4718,7 +4588,10 @@ export interface CloudJobSchedule {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -4746,7 +4619,12 @@ export interface CloudJobSchedule {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -4761,12 +4639,15 @@ export interface CloudJobSchedule {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -4788,18 +4669,11 @@ export interface CloudJobSchedule {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
  * other tasks will run on the same compute node for as long as the Job Manager
  * is running. If false, other tasks can run simultaneously with the Job
@@ -4830,7 +4704,7 @@ export interface CloudJobSchedule {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -4847,7 +4721,10 @@ export interface CloudJobSchedule {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4874,6 +4751,11 @@ export interface CloudJobSchedule {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -4885,12 +4767,15 @@ export interface CloudJobSchedule {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -4913,19 +4798,11 @@ export interface CloudJobSchedule {
  * The userName and autoUser properties are mutually exclusive; you must
  * specify one but not both.
  * @member {string}
- * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean}
  * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
@@ -4953,7 +4830,10 @@ export interface CloudJobSchedule {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4993,18 +4873,11 @@ export interface CloudJobSchedule {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
  * tasks can override an environment setting specified here by specifying the
  * same setting name with a different value.
@@ -5031,14 +4904,7 @@ export interface CloudJobSchedule {
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -5054,19 +4920,9 @@ export interface CloudJobSchedule {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -5078,10 +4934,12 @@ export interface CloudJobSchedule {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -5127,14 +4985,8 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -5156,7 +5008,15 @@ export interface CloudJobSchedule {
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -5274,7 +5134,10 @@ export interface CloudJobSchedule {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -5318,18 +5181,10 @@ export interface CloudJobSchedule {
  * specify one but not both.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
  * The Batch service retries a task if its exit code is nonzero. Note that this
@@ -5365,7 +5220,9 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -5441,10 +5298,10 @@ export interface JobSchedulingError {
  * to true. MaxWallClockTimeExpiry - the job reached its maxWallClockTime
  * constraint. TerminateJobSchedule - the job ran as part of a schedule, and
  * the schedule terminated. AllTasksComplete - the job's onAllTasksComplete
- * attribute is set to terminateJob, and all tasks in the job are complete.
+ * attribute is set to terminatejob, and all tasks in the job are complete.
  * TaskFailed - the job's onTaskFailure attribute is set to
  * performExitOptionsJobAction, and a task in the job failed with an exit
- * condition that specified a jobAction of terminateJob. Any other string is a
+ * condition that specified a jobAction of terminatejob. Any other string is a
  * user-defined reason specified in a call to the 'Terminate a job' operation.
  */
 export interface JobExecutionInformation {
@@ -5517,7 +5374,11 @@ export interface JobExecutionInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -5539,7 +5400,11 @@ export interface JobExecutionInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -5551,12 +5416,15 @@ export interface JobExecutionInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -5577,17 +5445,10 @@ export interface JobExecutionInformation {
  * @member {object} [jobManagerTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks will
  * run on the same compute node for as long as the Job Manager is running. If
  * false, other tasks can run simultaneously with the Job Manager on a compute
@@ -5615,7 +5476,7 @@ export interface JobExecutionInformation {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
- * false.
+ * true.
  * @member {object} [jobPreparationTask] The Job Preparation task. The Job
  * Preparation task is a special task run on each node before any other task of
  * the job.
@@ -5631,7 +5492,11 @@ export interface JobExecutionInformation {
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
  * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If
+ * the command line refers to file paths, it should use a relative path
+ * (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -5652,7 +5517,12 @@ export interface JobExecutionInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -5662,12 +5532,15 @@ export interface JobExecutionInformation {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -5688,18 +5561,10 @@ export interface JobExecutionInformation {
  * @member {object} [jobPreparationTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string} [jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
  * Job Preparation task did not complete (e.g. because the reboot occurred
@@ -5721,7 +5586,11 @@ export interface JobExecutionInformation {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobReleaseTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -5754,17 +5623,10 @@ export interface JobExecutionInformation {
  * @member {object} [jobReleaseTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [commonEnvironmentSettings] The list of common environment
  * variable settings. These environment variables are set for all tasks in the
  * job (including the Job Manager, Job Preparation and Job Release tasks).
@@ -5790,14 +5652,7 @@ export interface JobExecutionInformation {
  * distinguish between pools created for different purposes, you can specify
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -5810,19 +5665,9 @@ export interface JobExecutionInformation {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -5834,10 +5679,12 @@ export interface JobExecutionInformation {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -5883,14 +5730,8 @@ export interface JobExecutionInformation {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -5912,7 +5753,15 @@ export interface JobExecutionInformation {
  * @member {array}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -6022,7 +5871,10 @@ export interface JobExecutionInformation {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -6066,18 +5918,10 @@ export interface JobExecutionInformation {
  * one but not both.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
  * service retries a task if its exit code is nonzero. Note that this value
@@ -6111,27 +5955,22 @@ export interface JobExecutionInformation {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
  * user code.
  * @member {string} [onAllTasksComplete] The action the Batch service should
- * take when all tasks in the job are in the completed state. noAction - do
- * nothing. The job remains active unless terminated or disabled by some other
- * means. terminateJob - terminate the job. The job's terminateReason is set to
- * 'AllTasksComplete'. The default is noAction. Possible values include:
- * 'noAction', 'terminateJob'
+ * take when all tasks in the job are in the completed state. The default is
+ * noaction. Possible values include: 'noAction', 'terminateJob'
  * @member {string} [onTaskFailure] The action the Batch service should take
  * when any task in the job fails. A task is considered to have failed if has a
  * failureInfo. A failureInfo is set if the task completes with a non-zero exit
  * code after exhausting its retry count, or if there was an error starting the
- * task, for example due to a resource file download error. noAction - do
- * nothing. performExitOptionsJobAction - take the action associated with the
- * task exit condition in the task's exitConditions collection. (This may still
- * result in no action being taken, if that is what the task specifies.) The
- * default is noAction. Possible values include: 'noAction',
- * 'performExitOptionsJobAction'
+ * task, for example due to a resource file download error. The default is
+ * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {array} [metadata] A list of name-value pairs associated with the
  * job as metadata. The Batch service does not assign any meaning to metadata;
  * it is solely for the use of user code.
@@ -6160,14 +5999,16 @@ export interface JobExecutionInformation {
  * completed, and killJobOnCompletion was set to true. MaxWallClockTimeExpiry -
  * the job reached its maxWallClockTime constraint. TerminateJobSchedule - the
  * job ran as part of a schedule, and the schedule terminated. AllTasksComplete
- * - the job's onAllTasksComplete attribute is set to terminateJob, and all
+ * - the job's onAllTasksComplete attribute is set to terminatejob, and all
  * tasks in the job are complete. TaskFailed - the job's onTaskFailure
  * attribute is set to performExitOptionsJobAction, and a task in the job
- * failed with an exit condition that specified a jobAction of terminateJob.
+ * failed with an exit condition that specified a jobAction of terminatejob.
  * Any other string is a user-defined reason specified in a call to the
  * 'Terminate a job' operation.
  * @member {object} [stats] Resource usage statistics for the entire lifetime
- * of the job.
+ * of the job. The statistics may not be immediately available. The Batch
+ * service performs periodic roll-up of statistics. The typical delay is about
+ * 30 minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -6271,7 +6112,11 @@ export interface CloudJob {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -6293,7 +6138,11 @@ export interface CloudJob {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -6305,12 +6154,15 @@ export interface CloudJob {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -6331,17 +6183,10 @@ export interface CloudJob {
  * @member {object} [jobManagerTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks will
  * run on the same compute node for as long as the Job Manager is running. If
  * false, other tasks can run simultaneously with the Job Manager on a compute
@@ -6369,7 +6214,7 @@ export interface CloudJob {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
- * false.
+ * true.
  * @member {object} [jobPreparationTask] The Job Preparation task. If a job has
  * a Job Preparation task, the Batch service will run the Job Preparation task
  * on a compute node before starting any tasks of that job on that compute
@@ -6386,7 +6231,11 @@ export interface CloudJob {
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
  * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If
+ * the command line refers to file paths, it should use a relative path
+ * (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -6407,7 +6256,12 @@ export interface CloudJob {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -6417,12 +6271,15 @@ export interface CloudJob {
  * default is infinite, i.e. the task directory will be retained until the
  * compute node is removed or reimaged.
  * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -6443,18 +6300,10 @@ export interface CloudJob {
  * @member {object} [jobPreparationTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string} [jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
  * Job Preparation task did not complete (e.g. because the reboot occurred
@@ -6480,7 +6329,11 @@ export interface CloudJob {
  * under a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobReleaseTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -6513,17 +6366,10 @@ export interface CloudJob {
  * @member {object} [jobReleaseTask.userIdentity.autoUser] The userName and
  * autoUser properties are mutually exclusive; you must specify one but not
  * both.
- * @member {string} [jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * @member {string} [jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
+ * @member {string} [jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [commonEnvironmentSettings] The list of common environment
  * variable settings. These environment variables are set for all tasks in the
  * job (including the Job Manager, Job Preparation and Job Release tasks).
@@ -6550,14 +6396,7 @@ export interface CloudJob {
  * distinguish between pools created for different purposes, you can specify
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -6570,19 +6409,9 @@ export interface CloudJob {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -6594,10 +6423,12 @@ export interface CloudJob {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -6643,14 +6474,8 @@ export interface CloudJob {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -6672,7 +6497,15 @@ export interface CloudJob {
  * @member {array}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -6782,7 +6615,10 @@ export interface CloudJob {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -6826,18 +6662,10 @@ export interface CloudJob {
  * one but not both.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
  * service retries a task if its exit code is nonzero. Note that this value
@@ -6871,7 +6699,9 @@ export interface CloudJob {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -6881,22 +6711,15 @@ export interface CloudJob {
  * job contains no tasks, then all tasks are considered complete. This option
  * is therefore most commonly used with a Job Manager task; if you want to use
  * automatic job termination without a Job Manager, you should initially set
- * onAllTasksComplete to noAction and update the job properties to set
- * onAllTasksComplete to terminateJob once you have finished adding tasks.
- * Permitted values are: noAction - do nothing. The job remains active unless
- * terminated or disabled by some other means. terminateJob - terminate the
- * job. The job's terminateReason is set to 'AllTasksComplete'. The default is
- * noAction. Possible values include: 'noAction', 'terminateJob'
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
  * @member {string} [onTaskFailure] The action the Batch service should take
  * when any task in the job fails. A task is considered to have failed if has a
  * failureInfo. A failureInfo is set if the task completes with a non-zero exit
  * code after exhausting its retry count, or if there was an error starting the
- * task, for example due to a resource file download error. noAction - do
- * nothing. performExitOptionsJobAction - take the action associated with the
- * task exit condition in the task's exitConditions collection. (This may still
- * result in no action being taken, if that is what the task specifies.) The
- * default is noAction. Possible values include: 'noAction',
- * 'performExitOptionsJobAction'
+ * task, for example due to a resource file download error. The default is
+ * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {array} [metadata] A list of name-value pairs associated with the
  * job as metadata. The Batch service does not assign any meaning to metadata;
  * it is solely for the use of user code.
@@ -6973,13 +6796,7 @@ export interface TaskFailureInformation {
  * @member {date} [endTime] The time at which the Job Preparation task
  * completed. This property is set only if the task is in the Completed state.
  * @member {string} state The current state of the Job Preparation task on the
- * compute node. Values are:
- *
- * running - the task is currently running (including retrying).
- * completed - the task has exited with exit code 0, or the task has exhausted
- * its retry limit, or the Batch service was unable to start the task due to
- * task preparation errors (such as resource file download failures). Possible
- * values include: 'running', 'completed'
+ * compute node. Possible values include: 'running', 'completed'
  * @member {string} [taskRootDirectory] The root directory of the Job
  * Preparation task on the compute node. You can use this path to retrieve
  * files created by the task, such as log files.
@@ -7056,12 +6873,7 @@ export interface JobPreparationTaskExecutionInformation {
  * @member {date} [endTime] The time at which the Job Release task completed.
  * This property is set only if the task is in the Completed state.
  * @member {string} state The current state of the Job Release task on the
- * compute node. Values are:
- *
- * running - the task is currently running (including retrying).
- * completed - the task has exited, or the Batch service was unable to start
- * the task due to task preparation errors (such as resource file download
- * failures). Possible values include: 'running', 'completed'
+ * compute node. Possible values include: 'running', 'completed'
  * @member {string} [taskRootDirectory] The root directory of the Job Release
  * task on the compute node. You can use this path to retrieve files created by
  * the task, such as log files.
@@ -7129,13 +6941,8 @@ export interface JobReleaseTaskExecutionInformation {
  * started running.
  * @member {date} [jobPreparationTaskExecutionInfo.endTime] This property is
  * set only if the task is in the Completed state.
- * @member {string} [jobPreparationTaskExecutionInfo.state] Values are:
- *
- * running - the task is currently running (including retrying).
- * completed - the task has exited with exit code 0, or the task has exhausted
- * its retry limit, or the Batch service was unable to start the task due to
- * task preparation errors (such as resource file download failures). Possible
- * values include: 'running', 'completed'
+ * @member {string} [jobPreparationTaskExecutionInfo.state] Possible values
+ * include: 'running', 'completed'
  * @member {string} [jobPreparationTaskExecutionInfo.taskRootDirectory]
  * @member {string} [jobPreparationTaskExecutionInfo.taskRootDirectoryUrl]
  * @member {number} [jobPreparationTaskExecutionInfo.exitCode] This parameter
@@ -7184,12 +6991,8 @@ export interface JobReleaseTaskExecutionInformation {
  * running.
  * @member {date} [jobReleaseTaskExecutionInfo.endTime] This property is set
  * only if the task is in the Completed state.
- * @member {string} [jobReleaseTaskExecutionInfo.state] Values are:
- *
- * running - the task is currently running (including retrying).
- * completed - the task has exited, or the Batch service was unable to start
- * the task due to task preparation errors (such as resource file download
- * failures). Possible values include: 'running', 'completed'
+ * @member {string} [jobReleaseTaskExecutionInfo.state] Possible values
+ * include: 'running', 'completed'
  * @member {string} [jobReleaseTaskExecutionInfo.taskRootDirectory]
  * @member {string} [jobReleaseTaskExecutionInfo.taskRootDirectoryUrl]
  * @member {number} [jobReleaseTaskExecutionInfo.exitCode] This parameter is
@@ -7242,12 +7045,6 @@ export interface JobPreparationAndReleaseTaskExecutionInformation {
  * succeeds if its result (found in the executionInfo property) is 'success'.
  * @member {number} failed The number of tasks which failed. A task fails if
  * its result (found in the executionInfo property) is 'failure'.
- * @member {string} validationStatus Whether the task counts have been
- * validated. If the validationStatus is unvalidated, then the Batch service
- * has not been able to check state counts against the task states as reported
- * in the List Tasks API. The validationStatus may be unvalidated if the job
- * contains more than 200,000 tasks. Possible values include: 'validated',
- * 'unvalidated'
  */
 export interface TaskCounts {
   active: number;
@@ -7255,7 +7052,6 @@ export interface TaskCounts {
   completed: number;
   succeeded: number;
   failed: number;
-  validationStatus: string;
 }
 
 /**
@@ -7346,56 +7142,30 @@ export interface ResizeError {
  * or enableAutoscale settings, changed. It does not factor in node-level
  * changes such as a compute node changing state.
  * @member {date} [creationTime] The creation time of the pool.
- * @member {string} [state] The current state of the pool. Values are:
- *
- * active - The pool is available to run tasks subject to the availability of
- * compute nodes.
- * deleting - The user has requested that the pool be deleted, but the delete
- * operation has not yet completed.
- * upgrading - The user has requested that the operating system of the pool's
- * nodes be upgraded, but the upgrade operation has not yet completed (that is,
- * some nodes in the pool have not yet been upgraded). While upgrading, the
- * pool may be able to run tasks (with reduced capacity) but this is not
- * guaranteed. Possible values include: 'active', 'deleting', 'upgrading'
+ * @member {string} [state] The current state of the pool. Possible values
+ * include: 'active', 'deleting', 'upgrading'
  * @member {date} [stateTransitionTime] The time at which the pool entered its
  * current state.
- * @member {string} [allocationState] Whether the pool is resizing. Values are:
- *
- * steady - The pool is not resizing. There are no changes to the number of
- * nodes in the pool in progress. A pool enters this state when it is created
- * and when no operations are being performed on the pool to change the number
- * of dedicated nodes.
- * resizing - The pool is resizing; that is, compute nodes are being added to
- * or removed from the pool.
- * stopping - The pool was resizing, but the user has requested that the resize
- * be stopped, but the stop request has not yet been completed. Possible values
- * include: 'steady', 'resizing', 'stopping'
+ * @member {string} [allocationState] Whether the pool is resizing. Possible
+ * values include: 'steady', 'resizing', 'stopping'
  * @member {date} [allocationStateTransitionTime] The time at which the pool
  * entered its current allocation state.
  * @member {string} [vmSize] The size of virtual machines in the pool. All
  * virtual machines in a pool are the same size. For information about
- * available sizes of virtual machines for Cloud Services pools (pools created
- * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * available sizes of virtual machines in pools, see Choose a VM size for
+ * compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object} [cloudServiceConfiguration] The cloud service configuration
  * for the pool. This property and virtualMachineConfiguration are mutually
  * exclusive and one of the properties must be specified. This property cannot
  * be specified if the Batch account was created with its poolAllocationMode
  * property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -7426,14 +7196,9 @@ export interface ResizeError {
  * Batch node agent to communicate with the Batch service see
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
- * @member {string} [virtualMachineConfiguration.osDisk.caching] Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -7452,7 +7217,14 @@ export interface ResizeError {
  * omitted, the default value is true.
  * @member {array} [virtualMachineConfiguration.dataDisks] This property must
  * be specified if the compute nodes in the pool need to have empty data disks
- * attached to them. This cannot be updated.
+ * attached to them. This cannot be updated. Each node gets its own disk (the
+ * disk is not a file share). Existing disks cannot be attached, each attached
+ * disk is empty. When the node is removed from the pool, the disk and all data
+ * associated with it is also deleted. The disk is not formatted after being
+ * attached, it must be formatted before use - for more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string} [virtualMachineConfiguration.licenseType] This only applies
  * to images that contain the Windows operating system, and should only be used
  * when you hold valid on-premises licenses for the nodes which will be
@@ -7556,7 +7328,11 @@ export interface ResizeError {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -7583,17 +7359,10 @@ export interface ResizeError {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
- * The auto user is a standard user without elevated access. admin - The auto
- * user is a user with elevated access and operates with full Administrator
- * permissions. The default value is nonAdmin. Possible values include:
- * 'nonAdmin', 'admin'
+ * @member {string} [startTask.userIdentity.autoUser.scope] The default value
+ * is task. Possible values include: 'task', 'pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
  * task if its exit code is nonzero. Note that this value specifically controls
  * the number of retries. The Batch service will try the task once, and may
@@ -7638,7 +7407,9 @@ export interface ResizeError {
  * @member {array} [metadata] A list of name-value pairs associated with the
  * pool as metadata.
  * @member {object} [stats] Utilization and resource usage statistics for the
- * entire lifetime of the pool.
+ * entire lifetime of the pool. The statistics may not be immediately
+ * available. The Batch service performs periodic roll-up of statistics. The
+ * typical delay is about 30 minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -7716,7 +7487,7 @@ export interface CloudPool {
  * virtual machines in a pool are the same size. For information about
  * available sizes of virtual machines for Cloud Services pools (pools created
  * with cloudServiceConfiguration), see Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
  * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
  * For information about available VM sizes for pools using images from the
  * Virtual Machines Marketplace (pools created with
@@ -7731,11 +7502,12 @@ export interface CloudPool {
  * exclusive and one of the properties must be specified. This property cannot
  * be specified if the Batch account was created with its poolAllocationMode
  * property set to 'UserSubscription'.
- * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
- * - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3,
- * equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows
- * Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. For more
- * information, see Azure Guest OS Releases
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
@@ -7766,14 +7538,9 @@ export interface CloudPool {
  * Batch node agent to communicate with the Batch service see
  * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
  * @member {object} [virtualMachineConfiguration.osDisk]
- * @member {string} [virtualMachineConfiguration.osDisk.caching] Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * @member {string} [virtualMachineConfiguration.osDisk.caching] The default
+ * value for caching is readwrite. For information about the caching options
+ * see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
@@ -7792,7 +7559,14 @@ export interface CloudPool {
  * omitted, the default value is true.
  * @member {array} [virtualMachineConfiguration.dataDisks] This property must
  * be specified if the compute nodes in the pool need to have empty data disks
- * attached to them. This cannot be updated.
+ * attached to them. This cannot be updated. Each node gets its own disk (the
+ * disk is not a file share). Existing disks cannot be attached, each attached
+ * disk is empty. When the node is removed from the pool, the disk and all data
+ * associated with it is also deleted. The disk is not formatted after being
+ * attached, it must be formatted before use - for more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string} [virtualMachineConfiguration.licenseType] This only applies
  * to images that contain the Windows operating system, and should only be used
  * when you hold valid on-premises licenses for the nodes which will be
@@ -7893,7 +7667,11 @@ export interface CloudPool {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -7920,17 +7698,10 @@ export interface CloudPool {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
- * The auto user is a standard user without elevated access. admin - The auto
- * user is a user with elevated access and operates with full Administrator
- * permissions. The default value is nonAdmin. Possible values include:
- * 'nonAdmin', 'admin'
+ * @member {string} [startTask.userIdentity.autoUser.scope] The default value
+ * is task. Possible values include: 'task', 'pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
  * task if its exit code is nonzero. Note that this value specifically controls
  * the number of retries. The Batch service will try the task once, and may
@@ -8126,6 +7897,28 @@ export interface ComputeNodeInformation {
 
 /**
  * @class
+ * Initializes a new instance of the NodeAgentInformation class.
+ * @constructor
+ * @summary Information about the node agent.
+ *
+ * The Batch node agent is a program that runs on each node in the pool and
+ * provides Batch capability on the compute node.
+ *
+ * @member {string} version The version of the Batch node agent running on the
+ * compute node. This version number can be checked against the node agent
+ * release notes located at
+ * https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md.
+ * @member {date} lastUpdateTime The time when the node agent was updated on
+ * the compute node. This is the most recent time that the node agent was
+ * updated to a new version.
+ */
+export interface NodeAgentInformation {
+  version: string;
+  lastUpdateTime: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MultiInstanceSettings class.
  * @constructor
  * @summary Settings which specify how to run a multi-instance task.
@@ -8146,7 +7939,11 @@ export interface ComputeNodeInformation {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  */
 export interface MultiInstanceSettings {
   numberOfInstances?: number;
@@ -8249,6 +8046,17 @@ export interface TaskDependencies {
  * @constructor
  * @summary An Azure Batch task.
  *
+ * Batch will retry tasks when a recovery operation is triggered on a compute
+ * node. Examples of recovery operations include (but are not limited to) when
+ * an unhealthy compute node is rebooted or a compute node disappeared due to
+ * host failure. Retries due to recovery operations are independent of and are
+ * not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is
+ * 0, an internal retry due to a recovery operation may occur. Because of this,
+ * all tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
+ *
  * @member {string} [id] A string that uniquely identifies the task within the
  * job. The ID can contain any combination of alphanumeric characters including
  * hyphens and underscores, and cannot contain more than 64 characters.
@@ -8268,29 +8076,17 @@ export interface TaskDependencies {
  * @member {array} [exitConditions.exitCodes]
  * @member {array} [exitConditions.exitCodeRanges]
  * @member {object} [exitConditions.preProcessingError]
- * @member {string} [exitConditions.preProcessingError.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitConditions.preProcessingError.dependencyAction] Values
- * are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
+ * @member {string} [exitConditions.preProcessingError.jobAction] The default
+ * is none for exit code 0 and terminate for all other exit conditions. If the
+ * job's onTaskFailed property is noaction, then specifying this property
+ * returns an error and the add task request fails with an invalid property
+ * value error; if you are calling the REST API directly, the HTTP status code
+ * is 400 (Bad Request). Possible values include: 'none', 'disable',
+ * 'terminate'
+ * @member {string} [exitConditions.preProcessingError.dependencyAction] The
+ * default is 'satisfy' for exit code 0, and 'block' for all other exit
  * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
+ * specifying the dependencyAction property returns an error and the add task
  * request fails with an invalid property value error; if you are calling the
  * REST API directly, the HTTP status code is 400  (Bad Request). Possible
  * values include: 'satisfy', 'block'
@@ -8298,29 +8094,17 @@ export interface TaskDependencies {
  * exit code that was specified via exitCodes or exitCodeRanges, and then
  * encountered a file upload error, then the action specified by the exit code
  * takes precedence.
- * @member {string} [exitConditions.fileUploadError.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitConditions.fileUploadError.dependencyAction] Values
- * are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
+ * @member {string} [exitConditions.fileUploadError.jobAction] The default is
+ * none for exit code 0 and terminate for all other exit conditions. If the
+ * job's onTaskFailed property is noaction, then specifying this property
+ * returns an error and the add task request fails with an invalid property
+ * value error; if you are calling the REST API directly, the HTTP status code
+ * is 400 (Bad Request). Possible values include: 'none', 'disable',
+ * 'terminate'
+ * @member {string} [exitConditions.fileUploadError.dependencyAction] The
+ * default is 'satisfy' for exit code 0, and 'block' for all other exit
  * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
+ * specifying the dependencyAction property returns an error and the add task
  * request fails with an invalid property value error; if you are calling the
  * REST API directly, the HTTP status code is 400  (Bad Request). Possible
  * values include: 'satisfy', 'block'
@@ -8331,31 +8115,19 @@ export interface TaskDependencies {
  * the fileUploadError property is not present. If you want non-default
  * behaviour on exit code 0, you must list it explicitly using the exitCodes or
  * exitCodeRanges collection.
- * @member {string} [exitConditions.default.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitConditions.default.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * @member {string} [exitConditions.default.jobAction] The default is none for
+ * exit code 0 and terminate for all other exit conditions. If the job's
+ * onTaskFailed property is noaction, then specifying this property returns an
+ * error and the add task request fails with an invalid property value error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [exitConditions.default.dependencyAction] The default is
+ * 'satisfy' for exit code 0, and 'block' for all other exit conditions. If the
+ * job's usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  * @member {string} [state] The current state of the task. Possible values
  * include: 'active', 'preparing', 'running', 'completed'
  * @member {date} [stateTransitionTime] The time at which the task entered its
@@ -8373,7 +8145,10 @@ export interface TaskDependencies {
  * therefore cannot take advantage of shell features such as environment
  * variable expansion. If you want to take advantage of such features, you
  * should invoke the shell in the command line, for example using "cmd /c
- * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+ * line refers to file paths, it should use a relative path (relative to the
+ * task working directory), or use the Batch provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -8397,7 +8172,11 @@ export interface TaskDependencies {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8419,28 +8198,24 @@ export interface TaskDependencies {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
- * user is a standard user without elevated access. admin - The auto user is a
- * user with elevated access and operates with full Administrator permissions.
- * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [userIdentity.autoUser.scope] The default value is task.
+ * Possible values include: 'task', 'pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] The default value is
+ * nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {object} [executionInfo] Information about the execution of the
  * task.
  * @member {date} [executionInfo.startTime] 'Running' corresponds to the
@@ -8518,7 +8293,11 @@ export interface TaskDependencies {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [stats] Resource usage statistics for the task.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
@@ -8602,6 +8381,17 @@ export interface CloudTask {
  * @constructor
  * @summary An Azure Batch task to add.
  *
+ * Batch will retry tasks when a recovery operation is triggered on a compute
+ * node. Examples of recovery operations include (but are not limited to) when
+ * an unhealthy compute node is rebooted or a compute node disappeared due to
+ * host failure. Retries due to recovery operations are independent of and are
+ * not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is
+ * 0, an internal retry due to a recovery operation may occur. Because of this,
+ * all tasks should be idempotent. This means tasks need to tolerate being
+ * interrupted and restarted without causing any corruption or duplicate data.
+ * The best practice for long running tasks is to use some form of
+ * checkpointing.
+ *
  * @member {string} id A string that uniquely identifies the task within the
  * job. The ID can contain any combination of alphanumeric characters including
  * hyphens and underscores, and cannot contain more than 64 characters. The ID
@@ -8617,7 +8407,10 @@ export interface CloudTask {
  * therefore cannot take advantage of shell features such as environment
  * variable expansion. If you want to take advantage of such features, you
  * should invoke the shell in the command line, for example using "cmd /c
- * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+ * line refers to file paths, it should use a relative path (relative to the
+ * task working directory), or use the Batch provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [containerSettings] The settings for the container under
  * which the task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -8643,29 +8436,17 @@ export interface CloudTask {
  * @member {array} [exitConditions.exitCodes]
  * @member {array} [exitConditions.exitCodeRanges]
  * @member {object} [exitConditions.preProcessingError]
- * @member {string} [exitConditions.preProcessingError.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitConditions.preProcessingError.dependencyAction] Values
- * are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
+ * @member {string} [exitConditions.preProcessingError.jobAction] The default
+ * is none for exit code 0 and terminate for all other exit conditions. If the
+ * job's onTaskFailed property is noaction, then specifying this property
+ * returns an error and the add task request fails with an invalid property
+ * value error; if you are calling the REST API directly, the HTTP status code
+ * is 400 (Bad Request). Possible values include: 'none', 'disable',
+ * 'terminate'
+ * @member {string} [exitConditions.preProcessingError.dependencyAction] The
+ * default is 'satisfy' for exit code 0, and 'block' for all other exit
  * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
+ * specifying the dependencyAction property returns an error and the add task
  * request fails with an invalid property value error; if you are calling the
  * REST API directly, the HTTP status code is 400  (Bad Request). Possible
  * values include: 'satisfy', 'block'
@@ -8673,29 +8454,17 @@ export interface CloudTask {
  * exit code that was specified via exitCodes or exitCodeRanges, and then
  * encountered a file upload error, then the action specified by the exit code
  * takes precedence.
- * @member {string} [exitConditions.fileUploadError.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitConditions.fileUploadError.dependencyAction] Values
- * are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
+ * @member {string} [exitConditions.fileUploadError.jobAction] The default is
+ * none for exit code 0 and terminate for all other exit conditions. If the
+ * job's onTaskFailed property is noaction, then specifying this property
+ * returns an error and the add task request fails with an invalid property
+ * value error; if you are calling the REST API directly, the HTTP status code
+ * is 400 (Bad Request). Possible values include: 'none', 'disable',
+ * 'terminate'
+ * @member {string} [exitConditions.fileUploadError.dependencyAction] The
+ * default is 'satisfy' for exit code 0, and 'block' for all other exit
  * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
+ * specifying the dependencyAction property returns an error and the add task
  * request fails with an invalid property value error; if you are calling the
  * REST API directly, the HTTP status code is 400  (Bad Request). Possible
  * values include: 'satisfy', 'block'
@@ -8706,35 +8475,27 @@ export interface CloudTask {
  * the fileUploadError property is not present. If you want non-default
  * behaviour on exit code 0, you must list it explicitly using the exitCodes or
  * exitCodeRanges collection.
- * @member {string} [exitConditions.default.jobAction] Values are:
- *
- * none - Take no action.
- * disable - Disable the job. This is equivalent to calling the disable job
- * API, with a disableTasks value of requeue.
- * terminate - Terminate the job. The terminateReason in the job's
- * executionInfo is set to "TaskFailed". The default is none for exit code 0
- * and terminate for all other exit conditions.
- *
- * If the job's onTaskFailed property is noAction, then specifying this
- * property returns an error and the add task request fails with an invalid
- * property value error; if you are calling the REST API directly, the HTTP
- * status code is 400 (Bad Request). Possible values include: 'none',
- * 'disable', 'terminate'
- * @member {string} [exitConditions.default.dependencyAction] Values are:
- *
- * satisfy - Satisfy the task's dependencies.
- * block - Block the task's dependencies.
- *
- * The default is 'satisfy' for exit code 0, and 'block' for all other exit
- * conditions. If the job's usesTaskDependencies property is set to false, then
- * specifying the dependencyAction property returns an erro and the add task
- * request fails with an invalid property value error; if you are calling the
- * REST API directly, the HTTP status code is 400  (Bad Request). Possible
- * values include: 'satisfy', 'block'
+ * @member {string} [exitConditions.default.jobAction] The default is none for
+ * exit code 0 and terminate for all other exit conditions. If the job's
+ * onTaskFailed property is noaction, then specifying this property returns an
+ * error and the add task request fails with an invalid property value error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [exitConditions.default.dependencyAction] The default is
+ * 'satisfy' for exit code 0, and 'block' for all other exit conditions. If the
+ * job's usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error and the add task request fails
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400  (Bad Request). Possible values
+ * include: 'satisfy', 'block'
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8758,28 +8519,24 @@ export interface CloudTask {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [userIdentity.autoUser.elevationLevel] nonAdmin - The auto
- * user is a standard user without elevated access. admin - The auto user is a
- * user with elevated access and operates with full Administrator permissions.
- * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
+ * @member {string} [userIdentity.autoUser.scope] The default value is task.
+ * Possible values include: 'task', 'pool'
+ * @member {string} [userIdentity.autoUser.elevationLevel] The default value is
+ * nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {object} [multiInstanceSettings] An object that indicates that the
  * task is a multi-instance task, and contains information about how to run the
  * multi-instance task.
@@ -8794,7 +8551,11 @@ export interface CloudTask {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [dependsOn] The tasks that this task depends on. This task
  * will not be scheduled until all tasks that it depends on have completed
  * successfully. If any of those tasks fail and exhaust their retry counts,
@@ -8853,11 +8614,11 @@ export interface TaskAddParameter {
  * @constructor
  * @summary A collection of Azure Batch tasks to add.
  *
- * @member {array} value The collection of tasks to add. The total serialized
- * size of this collection must be less than 4MB. If it is greater than 4MB
- * (for example if each task has 100's of resource files or environment
- * variables), the request will fail with code 'RequestBodyTooLarge' and should
- * be retried again with fewer tasks.
+ * @member {array} value The collection of tasks to add. The maximum count of
+ * tasks is 100. The total serialized size of this collection must be less than
+ * 1MB. If it is greater than 1MB (for example if each task has 100's of
+ * resource files or environment variables), the request will fail with code
+ * 'RequestBodyTooLarge' and should be retried again with fewer tasks.
  */
 export interface TaskAddCollectionParameter {
   value: TaskAddParameter[];
@@ -8922,14 +8683,8 @@ export interface BatchError {
  * @summary Result for a single task added as part of an add task collection
  * operation.
  *
- * @member {string} status The status of the add task request. Values are:
- *
- * success - Task was added successfully.
- * clienterror - Task failed to add due to a client error and should not be
- * retried without modifying the request as appropriate.
- * servererror - Task failed to add due to a server error and can be retried
- * without modification. Possible values include: 'success', 'clientError',
- * 'serverError'
+ * @member {string} status The status of the add task request. Possible values
+ * include: 'success', 'clientError', 'serverError'
  * @member {string} taskId The ID of the task for which this is the result.
  * @member {string} [eTag] The ETag of the task, if the task was successfully
  * added. You can use this to detect whether the task has changed between
@@ -9141,13 +8896,7 @@ export interface TaskInformation {
  * @summary Information about a start task running on a compute node.
  *
  * @member {string} state The state of the start task on the compute node.
- * Values are:
- *
- * running - The start task is currently running.
- * completed - The start task has exited with exit code 0, or the start task
- * has failed and the retry limit has reached, or the start task process did
- * not run due to task preparation errors (such as resource file download
- * failures). Possible values include: 'running', 'completed'
+ * Possible values include: 'running', 'completed'
  * @member {date} startTime The time at which the start task started running.
  * This value is reset every time the task is restarted or retried (that is,
  * this is the most recent time at which the start task started running).
@@ -9276,40 +9025,14 @@ export interface ComputeNodeEndpointConfiguration {
  * all of its local files are deleted, and the ID is reclaimed and could be
  * reused for new nodes.
  * @member {string} [url] The URL of the compute node.
- * @member {string} [state] The current state of the compute node. Values are:
- *
- * idle - The node is not currently running a task.
- * rebooting - The node is rebooting.
- * reimaging - The node is reimaging.
- * running - The node is running one or more tasks (other than a start task).
- * unusable - The node cannot be used for task execution due to errors.
- * creating - The Batch service has obtained the underlying virtual machine
- * from Azure Compute, but it has not yet started to join the pool.
- * starting - the Batch service is starting on the underlying virtual machine.
- * waitingforstarttask - The start task has started running on the compute
- * node, but waitForSuccess is set and the start task has not yet completed.
- * starttaskfailed - The start task has failed on the compute node (and
- * exhausted all retries), and waitForSuccess is set. The node is not usable
- * for running tasks.
- * unknown - The Batch service has lost contact with the node, and does not
- * know its true state.
- * leavingpool - The node is leaving the pool, either because the user
- * explicitly removed it or because the pool is resizing or autoscaling down.
- * offline - The node is not currently running a task, and scheduling of new
- * tasks to the node is disabled.
- * preempted - The low-priority node has been preempted. Tasks which were
- * running on the node when it was pre-empted will be rescheduled when another
- * node becomes available. Possible values include: 'idle', 'rebooting',
- * 'reimaging', 'running', 'unusable', 'creating', 'starting',
- * 'waitingForStartTask', 'startTaskFailed', 'unknown', 'leavingPool',
- * 'offline', 'preempted'
+ * @member {string} [state] The current state of the compute node. The
+ * low-priority node has been preempted. Tasks which were running on the node
+ * when it was pre-empted will be rescheduled when another node becomes
+ * available. Possible values include: 'idle', 'rebooting', 'reimaging',
+ * 'running', 'unusable', 'creating', 'starting', 'waitingForStartTask',
+ * 'startTaskFailed', 'unknown', 'leavingPool', 'offline', 'preempted'
  * @member {string} [schedulingState] Whether the compute node is available for
- * task scheduling. Values are:
- *
- * enabled - Tasks can be scheduled on the node.
- * disabled - No new tasks will be scheduled on the node. Tasks already running
- * on the node may still run to completion. All nodes start with scheduling
- * enabled. Possible values include: 'enabled', 'disabled'
+ * task scheduling. Possible values include: 'enabled', 'disabled'
  * @member {date} [stateTransitionTime] The time at which the compute node
  * entered its current state.
  * @member {date} [lastBootTime] The time at which the compute node was
@@ -9326,29 +9049,19 @@ export interface ComputeNodeEndpointConfiguration {
  * just a soft affinity. If the target node is busy or unavailable at the time
  * the task is scheduled, then the task will be scheduled elsewhere.
  * @member {string} [vmSize] The size of the virtual machine hosting the
- * compute node. For information about available sizes of virtual machines for
- * Cloud Services pools (pools created with cloudServiceConfiguration), see
- * Sizes for Cloud Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * compute node. For information about available sizes of virtual machines in
+ * pools, see Choose a VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {number} [totalTasksRun] The total number of job tasks completed on
- * the compute node. This includes Job Preparation, Job Release and Job Manager
- * tasks, but not the pool start task.
+ * the compute node. This includes Job Manager tasks and normal tasks, but not
+ * Job Preparation, Job Release or Start tasks.
  * @member {number} [runningTasksCount] The total number of currently running
- * job tasks on the compute node. This includes Job Preparation, Job Release,
- * and Job Manager tasks, but not the pool start task.
+ * job tasks on the compute node. This includes Job Manager tasks and normal
+ * tasks, but not Job Preparation, Job Release or Start tasks.
  * @member {number} [totalTasksSucceeded] The total number of job tasks which
  * completed successfully (with exitCode 0) on the compute node. This includes
- * Job Preparation, Job Release, and Job Manager tasks, but not the pool start
- * task.
+ * Job Manager tasks and normal tasks, but not Job Preparation, Job Release or
+ * Start tasks.
  * @member {array} [recentTasks] A list of tasks whose state has recently
  * changed. This property is present only if at least one task has run on this
  * node since it was assigned to the pool.
@@ -9358,7 +9071,11 @@ export interface ComputeNodeEndpointConfiguration {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -9385,17 +9102,10 @@ export interface ComputeNodeEndpointConfiguration {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
- * The auto user is a standard user without elevated access. admin - The auto
- * user is a user with elevated access and operates with full Administrator
- * permissions. The default value is nonAdmin. Possible values include:
- * 'nonAdmin', 'admin'
+ * @member {string} [startTask.userIdentity.autoUser.scope] The default value
+ * is task. Possible values include: 'task', 'pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
  * task if its exit code is nonzero. Note that this value specifically controls
  * the number of retries. The Batch service will try the task once, and may
@@ -9415,13 +9125,8 @@ export interface ComputeNodeEndpointConfiguration {
  * scheduled on the node. The default is false.
  * @member {object} [startTaskInfo] Runtime information about the execution of
  * the start task on the compute node.
- * @member {string} [startTaskInfo.state] Values are:
- *
- * running - The start task is currently running.
- * completed - The start task has exited with exit code 0, or the start task
- * has failed and the retry limit has reached, or the start task process did
- * not run due to task preparation errors (such as resource file download
- * failures). Possible values include: 'running', 'completed'
+ * @member {string} [startTaskInfo.state] Possible values include: 'running',
+ * 'completed'
  * @member {date} [startTaskInfo.startTime] This value is reset every time the
  * task is restarted or retried (that is, this is the most recent time at which
  * the start task started running).
@@ -9482,6 +9187,13 @@ export interface ComputeNodeEndpointConfiguration {
  * @member {object} [endpointConfiguration] The endpoint configuration for the
  * compute node.
  * @member {array} [endpointConfiguration.inboundEndpoints]
+ * @member {object} [nodeAgentInfo] Information about the node agent version
+ * and the time the node upgraded to a new version.
+ * @member {string} [nodeAgentInfo.version] This version number can be checked
+ * against the node agent release notes located at
+ * https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md.
+ * @member {date} [nodeAgentInfo.lastUpdateTime] This is the most recent time
+ * that the node agent was updated to a new version.
  */
 export interface ComputeNode {
   id?: string;
@@ -9504,6 +9216,7 @@ export interface ComputeNode {
   errors?: ComputeNodeError[];
   isDedicated?: boolean;
   endpointConfiguration?: ComputeNodeEndpointConfiguration;
+  nodeAgentInfo?: NodeAgentInformation;
 }
 
 /**
@@ -9610,10 +9323,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * contains no tasks, then all tasks are considered complete. This option is
  * therefore most commonly used with a Job Manager task; if you want to use
  * automatic job termination without a Job Manager, you should initially set
- * onAllTasksComplete to noAction and update the job properties to set
- * onAllTasksComplete to terminateJob once you have finished adding tasks. The
- * default is noAction. Possible values include: 'noAction', 'terminateJob'
- * @member {string} [jobSpecification.onTaskFailure] The default is noAction.
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
@@ -9644,7 +9357,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -9672,7 +9388,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -9687,12 +9408,15 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -9714,18 +9438,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
  * other tasks will run on the same compute node for as long as the Job Manager
  * is running. If false, other tasks can run simultaneously with the Job
@@ -9756,7 +9473,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -9773,7 +9490,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9800,6 +9520,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -9811,12 +9536,15 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -9839,19 +9567,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * The userName and autoUser properties are mutually exclusive; you must
  * specify one but not both.
  * @member {string}
- * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean}
  * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
@@ -9879,7 +9599,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9919,18 +9642,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
  * tasks can override an environment setting specified here by specifying the
  * same setting name with a different value.
@@ -9957,14 +9673,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -9980,19 +9689,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -10004,10 +9703,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10053,14 +9754,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -10082,7 +9777,15 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -10200,7 +9903,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -10244,18 +9950,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * specify one but not both.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
  * The Batch service retries a task if its exit code is nonzero. Note that this
@@ -10291,7 +9989,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -10366,10 +10066,10 @@ export interface JobSchedulePatchParameter {
  * contains no tasks, then all tasks are considered complete. This option is
  * therefore most commonly used with a Job Manager task; if you want to use
  * automatic job termination without a Job Manager, you should initially set
- * onAllTasksComplete to noAction and update the job properties to set
- * onAllTasksComplete to terminateJob once you have finished adding tasks. The
- * default is noAction. Possible values include: 'noAction', 'terminateJob'
- * @member {string} [jobSpecification.onTaskFailure] The default is noAction.
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
  * Possible values include: 'noAction', 'performExitOptionsJobAction'
  * @member {object} [jobSpecification.constraints]
  * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
@@ -10400,7 +10100,10 @@ export interface JobSchedulePatchParameter {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -10428,7 +10131,12 @@ export interface JobSchedulePatchParameter {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -10443,12 +10151,15 @@ export interface JobSchedulePatchParameter {
  * removed or reimaged.
  * @member {number}
  * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
- * this value specifically controls the number of retries. The Batch service
- * will try the task once, and may then retry up to this limit. For example, if
- * the maximum retry count is 3, Batch tries the task up to 4 times (one
- * initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -10470,18 +10181,11 @@ export interface JobSchedulePatchParameter {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobManagerTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
  * other tasks will run on the same compute node for as long as the Job Manager
  * is running. If false, other tasks can run simultaneously with the Job
@@ -10512,7 +10216,7 @@ export interface JobSchedulePatchParameter {
  * 'job', which grants access to all operations related to the job which
  * contains the task.
  * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
- * default value is false.
+ * default value is true.
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
  * compute node before starting any tasks of that job on that compute node.
@@ -10529,7 +10233,10 @@ export interface JobSchedulePatchParameter {
  * of shell features such as environment variable expansion. If you want to
  * take advantage of such features, you should invoke the shell in the command
  * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -10556,6 +10263,11 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -10567,12 +10279,15 @@ export interface JobSchedulePatchParameter {
  * is removed or reimaged.
  * @member {number}
  * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
- * that this value specifically controls the number of retries. The Batch
- * service will try the task once, and may then retry up to this limit. For
- * example, if the maximum retry count is 3, Batch tries the task up to 4 times
- * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
- * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * that this value specifically controls the number of retries for the task
+ * executable due to a nonzero exit code. The Batch service will try the task
+ * once, and may then retry up to this limit. For example, if the maximum retry
+ * count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task after the first attempt. If the maximum retry count is -1, the
+ * Batch service retries the task without limit. Resource files and application
+ * packages are only downloaded again if the task is retried on a new compute
+ * node.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -10595,19 +10310,11 @@ export interface JobSchedulePatchParameter {
  * The userName and autoUser properties are mutually exclusive; you must
  * specify one but not both.
  * @member {string}
- * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] Values
- * are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobPreparationTask.userIdentity.autoUser.scope] The
+ * default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.jobPreparationTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {boolean}
  * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
  * Preparation task is always rerun if a compute node is reimaged, or if the
@@ -10635,7 +10342,10 @@ export interface JobSchedulePatchParameter {
  * shell features such as environment variable expansion. If you want to take
  * advantage of such features, you should invoke the shell in the command line,
  * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * Linux. If the command line refers to file paths, it should use a relative
+ * path (relative to the task working directory), or use the Batch provided
+ * environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [jobSpecification.jobReleaseTask.containerSettings] When
  * this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -10675,18 +10385,11 @@ export interface JobSchedulePatchParameter {
  * userName and autoUser properties are mutually exclusive; you must specify
  * one but not both.
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.scope] The default
+ * value is task. Possible values include: 'task', 'pool'
  * @member {string}
- * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * [jobSpecification.jobReleaseTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
  * tasks can override an environment setting specified here by specifying the
  * same setting name with a different value.
@@ -10713,14 +10416,7 @@ export interface JobSchedulePatchParameter {
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -10736,19 +10432,9 @@ export interface JobSchedulePatchParameter {
  * a maximum length of 1024.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
  * This property must be specified if the pool needs to be created with Azure
@@ -10760,10 +10446,12 @@ export interface JobSchedulePatchParameter {
  * poolAllocationMode property set to 'UserSubscription'.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -10809,14 +10497,8 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -10838,7 +10520,15 @@ export interface JobSchedulePatchParameter {
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -10956,7 +10646,10 @@ export interface JobSchedulePatchParameter {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -11000,18 +10693,10 @@ export interface JobSchedulePatchParameter {
  * specify one but not both.
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
  * The Batch service retries a task if its exit code is nonzero. Note that this
@@ -11047,7 +10732,9 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array}
@@ -11073,13 +10760,7 @@ export interface JobScheduleUpdateParameter {
  * @summary Options when disabling a job.
  *
  * @member {string} disableTasks What to do with active tasks associated with
- * the job. Values are:
- *
- * requeue - Terminate running tasks and requeue them. The tasks will run again
- * when the job is enabled.
- * terminate - Terminate running tasks. The tasks will not run again.
- * wait - Allow currently running tasks to complete. Possible values include:
- * 'requeue', 'terminate', 'wait'
+ * the job. Possible values include: 'requeue', 'terminate', 'wait'
  */
 export interface JobDisableParameter {
   disableTasks: string;
@@ -11111,7 +10792,7 @@ export interface JobTerminateParameter {
  * @member {string} [onAllTasksComplete] The action the Batch service should
  * take when all tasks in the job are in the completed state. If omitted, the
  * completion behavior is left unchanged. You may not change the value from
- * terminateJob to noAction - that is, once you have engaged automatic job
+ * terminatejob to noaction - that is, once you have engaged automatic job
  * termination, you cannot turn it off again. If you try to do this, the
  * request fails with an 'invalid property value' error response; if you are
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
@@ -11156,14 +10837,7 @@ export interface JobTerminateParameter {
  * distinguish between pools created for different purposes, you can specify
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -11176,19 +10850,9 @@ export interface JobTerminateParameter {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -11200,10 +10864,12 @@ export interface JobTerminateParameter {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -11249,14 +10915,8 @@ export interface JobTerminateParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -11278,7 +10938,15 @@ export interface JobTerminateParameter {
  * @member {array}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -11388,7 +11056,10 @@ export interface JobTerminateParameter {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -11432,18 +11103,10 @@ export interface JobTerminateParameter {
  * one but not both.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
  * service retries a task if its exit code is nonzero. Note that this value
@@ -11477,7 +11140,9 @@ export interface JobTerminateParameter {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -11541,14 +11206,7 @@ export interface JobPatchParameter {
  * distinguish between pools created for different purposes, you can specify
  * this element to add a prefix to the ID that is assigned. The prefix can be
  * up to 20 characters long.
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
- * the pool lifetime is jobSchedule the pool exists for the lifetime of the job
- * schedule. The Batch Service creates the pool when it creates the first job
- * on the schedule. You may apply this option only to job schedules, not to
- * jobs. When the pool lifetime is job the pool exists for the lifetime of the
- * job to which it is dedicated. The Batch service creates the pool when it
- * creates the job. If the 'job' option is applied to a job schedule, the Batch
- * service creates a new auto pool for every job created on the schedule.
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
  * Possible values include: 'jobSchedule', 'job'
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -11561,19 +11219,9 @@ export interface JobPatchParameter {
  * display name need not be unique and can contain any Unicode characters up to
  * a maximum length of 1024.
  * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
- * information about available sizes of virtual machines for Cloud Services
- * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
- * Services
- * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
- * For information about available VM sizes for pools using images from the
- * Virtual Machines Marketplace (pools created with
- * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
- * or Sizes for Virtual Machines (Windows)
- * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
- * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
- * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+ * information about available sizes of virtual machines in pools, see Choose a
+ * VM size for compute nodes in an Azure Batch pool
+ * (https://docs.microsoft.com/azure/batch/batch-pool-vm-sizes).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
  * property must be specified if the pool needs to be created with Azure PaaS
@@ -11585,10 +11233,12 @@ export interface JobPatchParameter {
  * property set to 'UserSubscription'.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
- * Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2
- * SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4,
- * equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows
- * Server 2016. For more information, see Azure Guest OS Releases
+ * Possible values are:
+ * 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1.
+ * 3 - OS Family 3, equivalent to Windows Server 2012.
+ * 4 - OS Family 4, equivalent to Windows Server 2012 R2.
+ * 5 - OS Family 5, equivalent to Windows Server 2016. For more information,
+ * see Azure Guest OS Releases
  * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -11634,14 +11284,8 @@ export interface JobPatchParameter {
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk]
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.osDisk.caching]
- * Values are:
- *
- * none - The caching mode for the disk is not enabled.
- * readOnly - The caching mode for the disk is read only.
- * readWrite - The caching mode for the disk is read and write.
- *
- * The default value for caching is none. For information about the caching
- * options see:
+ * The default value for caching is readwrite. For information about the
+ * caching options see:
  * https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
  * Possible values include: 'none', 'readOnly', 'readWrite'
  * @member {string}
@@ -11663,7 +11307,15 @@ export interface JobPatchParameter {
  * @member {array}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.dataDisks]
  * This property must be specified if the compute nodes in the pool need to
- * have empty data disks attached to them. This cannot be updated.
+ * have empty data disks attached to them. This cannot be updated. Each node
+ * gets its own disk (the disk is not a file share). Existing disks cannot be
+ * attached, each attached disk is empty. When the node is removed from the
+ * pool, the disk and all data associated with it is also deleted. The disk is
+ * not formatted after being attached, it must be formatted before use - for
+ * more information see
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux
+ * and
+ * https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.licenseType]
  * This only applies to images that contain the Windows operating system, and
@@ -11773,7 +11425,10 @@ export interface JobPatchParameter {
  * advantage of shell features such as environment variable expansion. If you
  * want to take advantage of such features, you should invoke the shell in the
  * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * MyCommand" in Linux. If the command line refers to file paths, it should use
+ * a relative path (relative to the task working directory), or use the Batch
+ * provided environment variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -11817,18 +11472,10 @@ export interface JobPatchParameter {
  * one but not both.
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.scope]
- * Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
  * The default value is task. Possible values include: 'task', 'pool'
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
- * nonAdmin - The auto user is a standard user without elevated access. admin -
- * The auto user is a user with elevated access and operates with full
- * Administrator permissions. The default value is nonAdmin. Possible values
- * include: 'nonAdmin', 'admin'
+ * The default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number}
  * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
  * service retries a task if its exit code is nonzero. Note that this value
@@ -11862,7 +11509,9 @@ export interface JobPatchParameter {
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
  * application licenses. If a license is requested which is not supported, pool
- * creation will fail.
+ * creation will fail. The permitted licenses available on the pool are 'maya',
+ * 'vray', '3dsmax', 'arnold'. An additional charge applies for each
+ * application license added to the pool.
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
  * service does not assign any meaning to metadata; it is solely for the use of
@@ -11872,9 +11521,9 @@ export interface JobPatchParameter {
  * effect, any existing metadata is deleted.
  * @member {string} [onAllTasksComplete] The action the Batch service should
  * take when all tasks in the job are in the completed state. If omitted, the
- * completion behavior is set to noAction. If the current value is
- * terminateJob, this is an error because a job's completion behavior may not
- * be changed from terminateJob to noAction. You may not change the value from
+ * completion behavior is set to noaction. If the current value is
+ * terminatejob, this is an error because a job's completion behavior may not
+ * be changed from terminatejob to noaction. You may not change the value from
  * terminatejob to noaction - that is, once you have engaged automatic job
  * termination, you cannot turn it off again. If you try to do this, the
  * request fails and Batch returns status code 400 (Bad Request) and an
@@ -11979,7 +11628,11 @@ export interface PoolResizeParameter {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -12006,17 +11659,10 @@ export interface PoolResizeParameter {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
- * The auto user is a standard user without elevated access. admin - The auto
- * user is a user with elevated access and operates with full Administrator
- * permissions. The default value is nonAdmin. Possible values include:
- * 'nonAdmin', 'admin'
+ * @member {string} [startTask.userIdentity.autoUser.scope] The default value
+ * is task. Possible values include: 'task', 'pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
  * task if its exit code is nonzero. Note that this value specifically controls
  * the number of retries. The Batch service will try the task once, and may
@@ -12092,7 +11738,11 @@ export interface PoolUpgradeOSParameter {
  * a shell, and therefore cannot take advantage of shell features such as
  * environment variable expansion. If you want to take advantage of such
  * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+ * command line refers to file paths, it should use a relative path (relative
+ * to the task working directory), or use the Batch provided environment
+ * variable
+ * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -12119,17 +11769,10 @@ export interface PoolUpgradeOSParameter {
  * properties are mutually exclusive; you must specify one but not both.
  * @member {object} [startTask.userIdentity.autoUser] The userName and autoUser
  * properties are mutually exclusive; you must specify one but not both.
- * @member {string} [startTask.userIdentity.autoUser.scope] Values are:
- *
- * pool - specifies that the task runs as the common auto user account which is
- * created on every node in a pool.
- * task - specifies that the service should create a new user for the task.
- * The default value is task. Possible values include: 'task', 'pool'
- * @member {string} [startTask.userIdentity.autoUser.elevationLevel] nonAdmin -
- * The auto user is a standard user without elevated access. admin - The auto
- * user is a user with elevated access and operates with full Administrator
- * permissions. The default value is nonAdmin. Possible values include:
- * 'nonAdmin', 'admin'
+ * @member {string} [startTask.userIdentity.autoUser.scope] The default value
+ * is task. Possible values include: 'task', 'pool'
+ * @member {string} [startTask.userIdentity.autoUser.elevationLevel] The
+ * default value is nonAdmin. Possible values include: 'nonAdmin', 'admin'
  * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
  * task if its exit code is nonzero. Note that this value specifically controls
  * the number of retries. The Batch service will try the task once, and may
@@ -12195,12 +11838,14 @@ export interface PoolPatchParameter {
  * infinite, i.e. the task directory will be retained until the compute node is
  * removed or reimaged.
  * @member {number} [constraints.maxTaskRetryCount] Note that this value
- * specifically controls the number of retries. The Batch service will try the
- * task once, and may then retry up to this limit. For example, if the maximum
- * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
- * retries). If the maximum retry count is 0, the Batch service does not retry
- * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * specifically controls the number of retries for the task executable due to a
+ * nonzero exit code. The Batch service will try the task once, and may then
+ * retry up to this limit. For example, if the maximum retry count is 3, Batch
+ * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+ * retry count is 0, the Batch service does not retry the task after the first
+ * attempt. If the maximum retry count is -1, the Batch service retries the
+ * task without limit. Resource files and application packages are only
+ * downloaded again if the task is retried on a new compute node.
  */
 export interface TaskUpdateParameter {
   constraints?: TaskConstraints;
@@ -12242,21 +11887,8 @@ export interface NodeUpdateUserParameter {
  * @summary Options for rebooting a compute node.
  *
  * @member {string} [nodeRebootOption] When to reboot the compute node and what
- * to do with currently running tasks. Values are:
- *
- * requeue - Terminate running task processes and requeue the tasks. The tasks
- * will run again when a node is available. Restart the node as soon as tasks
- * have been terminated.
- * terminate - Terminate running tasks. The tasks will not run again. Restart
- * the node as soon as tasks have been terminated.
- * taskcompletion - Allow currently running tasks to complete. Schedule no new
- * tasks while waiting. Restart the node when all tasks have completed.
- * retaineddata - Allow currently running tasks to complete, then wait for all
- * task data retention periods to expire. Schedule no new tasks while waiting.
- * Restart the node when all task retention periods have expired.
- *
- * The default value is requeue. Possible values include: 'requeue',
- * 'terminate', 'taskCompletion', 'retainedData'
+ * to do with currently running tasks. The default value is requeue. Possible
+ * values include: 'requeue', 'terminate', 'taskCompletion', 'retainedData'
  */
 export interface NodeRebootParameter {
   nodeRebootOption?: string;
@@ -12269,21 +11901,9 @@ export interface NodeRebootParameter {
  * @summary Options for reimaging a compute node.
  *
  * @member {string} [nodeReimageOption] When to reimage the compute node and
- * what to do with currently running tasks. Values are:
- *
- * requeue - Terminate running task processes and requeue the tasks. The tasks
- * will run again when a node is available. Reimage the node as soon as tasks
- * have been terminated.
- * terminate - Terminate running tasks. The tasks will not run again. Reimage
- * the node as soon as tasks have been terminated.
- * taskcompletion - Allow currently running tasks to complete. Schedule no new
- * tasks while waiting. Reimage the node when all tasks have completed.
- * retaineddata - Allow currently running tasks to complete, then wait for all
- * task data retention periods to expire. Schedule no new tasks while waiting.
- * Reimage the node when all task retention periods have expired.
- *
- * The default value is requeue. Possible values include: 'requeue',
- * 'terminate', 'taskCompletion', 'retainedData'
+ * what to do with currently running tasks. The default value is requeue.
+ * Possible values include: 'requeue', 'terminate', 'taskCompletion',
+ * 'retainedData'
  */
 export interface NodeReimageParameter {
   nodeReimageOption?: string;
@@ -12296,19 +11916,9 @@ export interface NodeReimageParameter {
  * @summary Options for disabling scheduling on a compute node.
  *
  * @member {string} [nodeDisableSchedulingOption] What to do with currently
- * running tasks when disabling task scheduling on the compute node. Values
- * are:
- *
- * requeue - Terminate running task processes and requeue the tasks. The tasks
- * may run again on other compute nodes, or when task scheduling is re-enabled
- * on this node. Enter offline state as soon as tasks have been terminated.
- * terminate - Terminate running tasks. The tasks will not run again. Enter
- * offline state as soon as tasks have been terminated.
- * taskcompletion - Allow currently running tasks to complete. Schedule no new
- * tasks while waiting. Enter offline state when all tasks have completed.
- *
- * The default value is requeue. Possible values include: 'requeue',
- * 'terminate', 'taskCompletion'
+ * running tasks when disabling task scheduling on the compute node. The
+ * default value is requeue. Possible values include: 'requeue', 'terminate',
+ * 'taskCompletion'
  */
 export interface NodeDisableSchedulingParameter {
   nodeDisableSchedulingOption?: string;
@@ -12336,6 +11946,140 @@ export interface NodeRemoveParameter {
   nodeList: string[];
   resizeTimeout?: moment.Duration;
   nodeDeallocationOption?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UploadBatchServiceLogsConfiguration class.
+ * @constructor
+ * @summary The Azure Batch service log files upload configuration for a
+ * compute node.
+ *
+ * @member {string} containerUrl The URL of the container within Azure Blob
+ * Storage to which to upload the Batch Service log file(s). The URL must
+ * include a Shared Access Signature (SAS) granting write permissions to the
+ * container. The SAS duration must allow enough time for the upload to finish.
+ * The start time for SAS is optional and recommended to not be specified.
+ * @member {date} startTime The start of the time range from which to upload
+ * Batch Service log file(s). Any log file containing a log message in the time
+ * range will be uploaded. This means that the operation might retrieve more
+ * logs than have been requested since the entire log file is always uploaded,
+ * but the operation should not retrieve fewer logs than have been requested.
+ * @member {date} [endTime] The end of the time range from which to upload
+ * Batch Service log file(s). Any log file containing a log message in the time
+ * range will be uploaded. This means that the operation might retrieve more
+ * logs than have been requested since the entire log file is always uploaded,
+ * but the operation should not retrieve fewer logs than have been requested.
+ * If omitted, the default is to upload all logs available after the startTime.
+ */
+export interface UploadBatchServiceLogsConfiguration {
+  containerUrl: string;
+  startTime: Date;
+  endTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UploadBatchServiceLogsResult class.
+ * @constructor
+ * @summary The result of uploading Batch service log files from a specific
+ * compute node.
+ *
+ * @member {string} virtualDirectoryName The virtual directory within Azure
+ * Blob Storage container to which the Batch Service log file(s) will be
+ * uploaded. The virtual directory name is part of the blob name for each log
+ * file uploaded, and it is built based poolId, nodeId and a unique identifier.
+ * @member {number} numberOfFilesUploaded The number of log files which will be
+ * uploaded.
+ */
+export interface UploadBatchServiceLogsResult {
+  virtualDirectoryName: string;
+  numberOfFilesUploaded: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeCounts class.
+ * @constructor
+ * @summary The number of nodes in each node state.
+ *
+ * @member {number} creating The number of nodes in the creating state.
+ * @member {number} idle The number of nodes in the idle state.
+ * @member {number} offline The number of nodes in the offline state.
+ * @member {number} preempted The number of nodes in the preempted state.
+ * @member {number} rebooting The count of nodes in the rebooting state.
+ * @member {number} reimaging The number of nodes in the reimaging state.
+ * @member {number} running The number of nodes in the running state.
+ * @member {number} starting The number of nodes in the starting state.
+ * @member {number} startTaskFailed The number of nodes in the startTaskFailed
+ * state.
+ * @member {number} leavingPool The number of nodes in the leavingPool state.
+ * @member {number} unknown The number of nodes in the unknown state.
+ * @member {number} unusable The number of nodes in the unusable state.
+ * @member {number} waitingForStartTask The number of nodes in the
+ * waitingForStartTask state.
+ * @member {number} total The total number of nodes.
+ */
+export interface NodeCounts {
+  creating: number;
+  idle: number;
+  offline: number;
+  preempted: number;
+  rebooting: number;
+  reimaging: number;
+  running: number;
+  starting: number;
+  startTaskFailed: number;
+  leavingPool: number;
+  unknown: number;
+  unusable: number;
+  waitingForStartTask: number;
+  total: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PoolNodeCounts class.
+ * @constructor
+ * @summary The number of nodes in each state for a pool.
+ *
+ * @member {string} poolId The ID of the pool.
+ * @member {object} [dedicated] The number of dedicated nodes in each state.
+ * @member {number} [dedicated.creating]
+ * @member {number} [dedicated.idle]
+ * @member {number} [dedicated.offline]
+ * @member {number} [dedicated.preempted]
+ * @member {number} [dedicated.rebooting]
+ * @member {number} [dedicated.reimaging]
+ * @member {number} [dedicated.running]
+ * @member {number} [dedicated.starting]
+ * @member {number} [dedicated.startTaskFailed]
+ * @member {number} [dedicated.leavingPool]
+ * @member {number} [dedicated.unknown]
+ * @member {number} [dedicated.unusable]
+ * @member {number} [dedicated.waitingForStartTask]
+ * @member {number} [dedicated.total]
+ * @member {object} [lowPriority] The number of low priority nodes in each
+ * state.
+ * @member {number} [lowPriority.creating]
+ * @member {number} [lowPriority.idle]
+ * @member {number} [lowPriority.offline]
+ * @member {number} [lowPriority.preempted]
+ * @member {number} [lowPriority.rebooting]
+ * @member {number} [lowPriority.reimaging]
+ * @member {number} [lowPriority.running]
+ * @member {number} [lowPriority.starting]
+ * @member {number} [lowPriority.startTaskFailed]
+ * @member {number} [lowPriority.leavingPool]
+ * @member {number} [lowPriority.unknown]
+ * @member {number} [lowPriority.unusable]
+ * @member {number} [lowPriority.waitingForStartTask]
+ * @member {number} [lowPriority.total]
+ */
+export interface PoolNodeCounts {
+  poolId: string;
+  dedicated?: NodeCounts;
+  lowPriority?: NodeCounts;
 }
 
 /**
@@ -13028,6 +12772,38 @@ export interface PoolRemoveNodesOptions {
  * you are calling the REST API directly.
  */
 export interface AccountListNodeAgentSkusOptions {
+  filter?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccountListPoolNodeCountsOptions class.
+ * @constructor
+ * Additional parameters for listPoolNodeCounts operation.
+ *
+ * @member {string} [filter] An OData $filter clause. For more information on
+ * constructing this filter, see
+ * https://docs.microsoft.com/en-us/rest/api/batchservice/odata-filters-in-batch.
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. Default value: 10 .
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * @member {uuid} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * @member {date} [ocpDate] The time the request was issued. Client libraries
+ * typically set this to the current system clock time; set it explicitly if
+ * you are calling the REST API directly.
+ */
+export interface AccountListPoolNodeCountsOptions {
   filter?: string;
   maxResults?: number;
   timeout?: number;
@@ -14955,6 +14731,31 @@ export interface ComputeNodeGetRemoteDesktopOptions {
 
 /**
  * @class
+ * Initializes a new instance of the ComputeNodeUploadBatchServiceLogsOptions class.
+ * @constructor
+ * Additional parameters for uploadBatchServiceLogs operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * @member {uuid} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * @member {date} [ocpDate] The time the request was issued. Client libraries
+ * typically set this to the current system clock time; set it explicitly if
+ * you are calling the REST API directly.
+ */
+export interface ComputeNodeUploadBatchServiceLogsOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ComputeNodeListOptions class.
  * @constructor
  * Additional parameters for list operation.
@@ -15066,6 +14867,27 @@ export interface PoolListNextOptions {
  * you are calling the REST API directly.
  */
 export interface AccountListNodeAgentSkusNextOptions {
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccountListPoolNodeCountsNextOptions class.
+ * @constructor
+ * Additional parameters for listPoolNodeCountsNext operation.
+ *
+ * @member {uuid} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * @member {date} [ocpDate] The time the request was issued. Client libraries
+ * typically set this to the current system clock time; set it explicitly if
+ * you are calling the REST API directly.
+ */
+export interface AccountListPoolNodeCountsNextOptions {
   clientRequestId?: string;
   returnClientRequestId?: boolean;
   ocpDate?: Date;
@@ -15306,6 +15128,18 @@ export interface CloudPoolListResult extends Array<CloudPool> {
  * @member {string} [odatanextLink]
  */
 export interface AccountListNodeAgentSkusResult extends Array<NodeAgentSku> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PoolNodeCountsListResult class.
+ * @constructor
+ * @summary The result of listing the node counts in the account.
+ *
+ * @member {string} [odatanextLink]
+ */
+export interface PoolNodeCountsListResult extends Array<PoolNodeCounts> {
   odatanextLink?: string;
 }
 

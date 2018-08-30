@@ -282,6 +282,8 @@ export interface MessageCountDetails {
  * messaging entity. Possible values include: 'Active', 'Disabled',
  * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
  * 'Renaming', 'Unknown'
+ * @member {boolean} [enableBatchedOperations] Value that indicates whether
+ * server-side batched operations are enabled.
  * @member {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle interval
  * after which the queue is automatically deleted. The minimum duration is 5
  * minutes.
@@ -310,6 +312,7 @@ export interface SBQueue extends Resource {
   duplicateDetectionHistoryTimeWindow?: moment.Duration;
   maxDeliveryCount?: number;
   status?: string;
+  enableBatchedOperations?: boolean;
   autoDeleteOnIdle?: moment.Duration;
   enablePartitioning?: boolean;
   enableExpress?: boolean;
@@ -592,6 +595,7 @@ export interface SqlFilter {
  * @constructor
  * Represents the correlation filter expression.
  *
+ * @member {object} [properties] dictionary object for custom filters
  * @member {string} [correlationId] Identifier of the correlation.
  * @member {string} [messageId] Identifier of the message.
  * @member {string} [to] Address to send to.
@@ -604,6 +608,7 @@ export interface SqlFilter {
  * rule action requires preprocessing. Default value: true .
  */
 export interface CorrelationFilter {
+  properties?: { [propertyName: string]: string };
   correlationId?: string;
   messageId?: string;
   to?: string;
@@ -642,6 +647,8 @@ export interface CorrelationFilter {
  * @member {boolean} [sqlFilter.requiresPreprocessing] Value that indicates
  * whether the rule action requires preprocessing.
  * @member {object} [correlationFilter] Properties of correlationFilter
+ * @member {object} [correlationFilter.properties] dictionary object for custom
+ * filters
  * @member {string} [correlationFilter.correlationId] Identifier of the
  * correlation.
  * @member {string} [correlationFilter.messageId] Identifier of the message.
@@ -824,6 +831,8 @@ export interface Eventhub extends Resource {
  * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
  * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
  * 'Failed'
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
  * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
  * namespace name, which is part of GEO DR pairning
  * @member {string} [alternateName] Primary/Secondary eventhub namespace name,
@@ -834,9 +843,32 @@ export interface Eventhub extends Resource {
  */
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
+  readonly pendingReplicationOperationsCount?: number;
   partnerNamespace?: string;
   alternateName?: string;
   readonly role?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationConfigProperties class.
+ * @constructor
+ * Single item in List or Get Migration Config operation
+ *
+ * @member {string} [provisioningState] Provisioning state of Migration
+ * Configuration
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
+ * @member {string} targetNamespace Existing premium Namespace ARM Id name
+ * which has no entities, will be used for migration
+ * @member {string} postMigrationName Name to access Standard Namespace after
+ * migration
+ */
+export interface MigrationConfigProperties extends Resource {
+  readonly provisioningState?: string;
+  readonly pendingReplicationOperationsCount?: number;
+  targetNamespace: string;
+  postMigrationName: string;
 }
 
 
@@ -890,6 +922,19 @@ export interface SBAuthorizationRuleListResult extends Array<SBAuthorizationRule
  * Value contains incomplete list of Alias(Disaster Recovery configuration)
  */
 export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationConfigListResult class.
+ * @constructor
+ * The result of the List migrationConfigurations operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of migrationConfigurations
+ */
+export interface MigrationConfigListResult extends Array<MigrationConfigProperties> {
   readonly nextLink?: string;
 }
 

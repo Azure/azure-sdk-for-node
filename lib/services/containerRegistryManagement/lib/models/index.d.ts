@@ -18,6 +18,57 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ImportSource class.
+ * @constructor
+ * @member {string} [resourceId] The resource identifier of the source Azure
+ * Container Registry.
+ * @member {string} [registryUri] The address of the source registry.
+ * @member {string} sourceImage Repository name of the source image.
+ * Specify an image by repository ('hello-world'). This will use the 'latest'
+ * tag.
+ * Specify an image by tag ('hello-world:latest').
+ * Specify an image by sha256-based manifest digest
+ * ('hello-world@sha256:abc123').
+ */
+export interface ImportSource {
+  resourceId?: string;
+  registryUri?: string;
+  sourceImage: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImportImageParameters class.
+ * @constructor
+ * @member {object} source The source of the image.
+ * @member {string} [source.resourceId] The resource identifier of the source
+ * Azure Container Registry.
+ * @member {string} [source.registryUri] The address of the source registry.
+ * @member {string} [source.sourceImage] Repository name of the source image.
+ * Specify an image by repository ('hello-world'). This will use the 'latest'
+ * tag.
+ * Specify an image by tag ('hello-world:latest').
+ * Specify an image by sha256-based manifest digest
+ * ('hello-world@sha256:abc123').
+ * @member {array} [targetTags] List of strings of the form repo[:tag]. When
+ * tag is omitted the source will be used (or 'latest' if source tag is also
+ * omitted).
+ * @member {array} [untaggedTargetRepositories] List of strings of repository
+ * names to do a manifest only copy. No tag will be created.
+ * @member {string} [mode] When Force, any existing target tags will be
+ * overwritten. When NoForce, any existing target tags will fail the operation
+ * before any copying begins. Possible values include: 'NoForce', 'Force'.
+ * Default value: 'NoForce' .
+ */
+export interface ImportImageParameters {
+  source: ImportSource;
+  targetTags?: string[];
+  untaggedTargetRepositories?: string[];
+  mode?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RegistryNameCheckRequest class.
  * @constructor
  * A request to check whether a container registry name is available.
@@ -69,10 +120,47 @@ export interface OperationDisplayDefinition {
 
 /**
  * @class
+ * Initializes a new instance of the OperationMetricSpecificationDefinition class.
+ * @constructor
+ * The definition of Azure Monitoring metric.
+ *
+ * @member {string} [name] Metric name.
+ * @member {string} [displayName] Metric display name.
+ * @member {string} [displayDescription] Metric description.
+ * @member {string} [unit] Metric unit.
+ * @member {string} [aggregationType] Metric aggregation type.
+ * @member {string} [internalMetricName] Internal metric name.
+ */
+export interface OperationMetricSpecificationDefinition {
+  name?: string;
+  displayName?: string;
+  displayDescription?: string;
+  unit?: string;
+  aggregationType?: string;
+  internalMetricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationServiceSpecificationDefinition class.
+ * @constructor
+ * The definition of Azure Monitoring metrics list.
+ *
+ * @member {array} [metricSpecifications] A list of Azure Monitoring metrics
+ * definition.
+ */
+export interface OperationServiceSpecificationDefinition {
+  metricSpecifications?: OperationMetricSpecificationDefinition[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDefinition class.
  * @constructor
  * The definition of a container registry operation.
  *
+ * @member {string} [origin] The origin information of the container registry
+ * operation.
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
  * @member {object} [display] The display information for the container
  * registry operation.
@@ -82,10 +170,16 @@ export interface OperationDisplayDefinition {
  * performed.
  * @member {string} [display.operation] The operation that users can perform.
  * @member {string} [display.description] The description for the operation.
+ * @member {object} [serviceSpecification] The definition of Azure Monitoring
+ * service.
+ * @member {array} [serviceSpecification.metricSpecifications] A list of Azure
+ * Monitoring metrics definition.
  */
 export interface OperationDefinition {
+  origin?: string;
   name?: string;
   display?: OperationDisplayDefinition;
+  serviceSpecification?: OperationServiceSpecificationDefinition;
 }
 
 /**
@@ -299,6 +393,57 @@ export interface RegistryUsage {
  */
 export interface RegistryUsageListResult {
   value?: RegistryUsage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QuarantinePolicy class.
+ * @constructor
+ * An object that represents quarantine policy for a container registry.
+ *
+ * @member {string} [status] The value that indicates whether the policy is
+ * enabled or not. Possible values include: 'enabled', 'disabled'
+ */
+export interface QuarantinePolicy {
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrustPolicy class.
+ * @constructor
+ * An object that represents content trust policy for a container registry.
+ *
+ * @member {string} [type] The type of trust policy. Possible values include:
+ * 'Notary'
+ * @member {string} [status] The value that indicates whether the policy is
+ * enabled or not. Possible values include: 'enabled', 'disabled'
+ */
+export interface TrustPolicy {
+  type?: string;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegistryPolicies class.
+ * @constructor
+ * An object that represents policies for a container registry.
+ *
+ * @member {object} [quarantinePolicy] An object that represents quarantine
+ * policy for a container registry.
+ * @member {string} [quarantinePolicy.status] The value that indicates whether
+ * the policy is enabled or not. Possible values include: 'enabled', 'disabled'
+ * @member {object} [trustPolicy] An object that represents content trust
+ * policy for a container registry.
+ * @member {string} [trustPolicy.type] The type of trust policy. Possible
+ * values include: 'Notary'
+ * @member {string} [trustPolicy.status] The value that indicates whether the
+ * policy is enabled or not. Possible values include: 'enabled', 'disabled'
+ */
+export interface RegistryPolicies {
+  quarantinePolicy?: QuarantinePolicy;
+  trustPolicy?: TrustPolicy;
 }
 
 /**
@@ -752,6 +897,1038 @@ export interface Event extends EventInfo {
   eventResponseMessage?: EventResponseMessage;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the RunRequest class.
+ * @constructor
+ * The request parameters for scheduling a run.
+ *
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled for the run or not. Default value: false .
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface RunRequest {
+  isArchiveEnabled?: boolean;
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageDescriptor class.
+ * @constructor
+ * Properties for a registry image.
+ *
+ * @member {string} [registry] The registry login server.
+ * @member {string} [repository] The repository name.
+ * @member {string} [tag] The tag name.
+ * @member {string} [digest] The sha256-based digest of the image manifest.
+ */
+export interface ImageDescriptor {
+  registry?: string;
+  repository?: string;
+  tag?: string;
+  digest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageUpdateTrigger class.
+ * @constructor
+ * The image update trigger that caused a build.
+ *
+ * @member {string} [id] The unique ID of the trigger.
+ * @member {date} [timestamp] The timestamp when the image update happened.
+ * @member {array} [images] The list of image updates that caused the build.
+ */
+export interface ImageUpdateTrigger {
+  id?: string;
+  timestamp?: Date;
+  images?: ImageDescriptor[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceTriggerDescriptor class.
+ * @constructor
+ * The source trigger that caused a run.
+ *
+ * @member {string} [id] The unique ID of the trigger.
+ * @member {string} [eventType] The event type of the trigger.
+ * @member {string} [commitId] The unique ID that identifies a commit.
+ * @member {string} [pullRequestId] The unique ID that identifies pull request.
+ * @member {string} [repositoryUrl] The repository URL.
+ * @member {string} [branchName] The branch name in the repository.
+ * @member {string} [providerType] The source control provider type.
+ */
+export interface SourceTriggerDescriptor {
+  id?: string;
+  eventType?: string;
+  commitId?: string;
+  pullRequestId?: string;
+  repositoryUrl?: string;
+  branchName?: string;
+  providerType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PlatformProperties class.
+ * @constructor
+ * The platform properties against which the run has to happen.
+ *
+ * @member {string} os The operating system type required for the run. Possible
+ * values include: 'Windows', 'Linux'
+ * @member {string} [architecture] The OS architecture. Possible values
+ * include: 'amd64', 'x86', 'arm'
+ * @member {string} [variant] Variant of the CPU. Possible values include:
+ * 'v6', 'v7', 'v8'
+ */
+export interface PlatformProperties {
+  os: string;
+  architecture?: string;
+  variant?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AgentProperties class.
+ * @constructor
+ * The properties that determine the run agent configuration.
+ *
+ * @member {number} [cpu] The CPU configuration in terms of number of cores
+ * required for the run.
+ */
+export interface AgentProperties {
+  cpu?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags.
+ *
+ * @member {string} [id] The resource ID.
+ * @member {string} [name] The name of the resource.
+ * @member {string} [type] The type of the resource.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Run class.
+ * @constructor
+ * Run resource properties
+ *
+ * @member {string} [runId] The unique identifier for the run.
+ * @member {string} [status] The current status of the run. Possible values
+ * include: 'Queued', 'Started', 'Running', 'Succeeded', 'Failed', 'Canceled',
+ * 'Error', 'Timeout'
+ * @member {date} [lastUpdatedTime] The last updated time for the run.
+ * @member {string} [runType] The type of run. Possible values include:
+ * 'QuickBuild', 'AutoBuild'
+ * @member {date} [createTime] The time the run was scheduled.
+ * @member {date} [startTime] The time the run started.
+ * @member {date} [finishTime] The time the run finished.
+ * @member {array} [outputImages] The list of all images that were generated
+ * from the run. This is applicable if the run is of type Build.
+ * @member {string} [task] The task against which run was scheduled.
+ * @member {object} [imageUpdateTrigger] The image update trigger that caused
+ * the run. This is applicable if the task is of build type.
+ * @member {string} [imageUpdateTrigger.id] The unique ID of the trigger.
+ * @member {date} [imageUpdateTrigger.timestamp] The timestamp when the image
+ * update happened.
+ * @member {array} [imageUpdateTrigger.images] The list of image updates that
+ * caused the build.
+ * @member {object} [sourceTrigger] The source trigger that caused the run.
+ * @member {string} [sourceTrigger.id] The unique ID of the trigger.
+ * @member {string} [sourceTrigger.eventType] The event type of the trigger.
+ * @member {string} [sourceTrigger.commitId] The unique ID that identifies a
+ * commit.
+ * @member {string} [sourceTrigger.pullRequestId] The unique ID that identifies
+ * pull request.
+ * @member {string} [sourceTrigger.repositoryUrl] The repository URL.
+ * @member {string} [sourceTrigger.branchName] The branch name in the
+ * repository.
+ * @member {string} [sourceTrigger.providerType] The source control provider
+ * type.
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled or not. Default value: false .
+ * @member {object} [platform] The platform properties against which the run
+ * will happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the run
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ * @member {string} [provisioningState] The provisioning state of a run.
+ * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
+ * 'Failed', 'Canceled'
+ */
+export interface Run extends ProxyResource {
+  runId?: string;
+  status?: string;
+  lastUpdatedTime?: Date;
+  runType?: string;
+  createTime?: Date;
+  startTime?: Date;
+  finishTime?: Date;
+  outputImages?: ImageDescriptor[];
+  task?: string;
+  imageUpdateTrigger?: ImageUpdateTrigger;
+  sourceTrigger?: SourceTriggerDescriptor;
+  isArchiveEnabled?: boolean;
+  platform?: PlatformProperties;
+  agentConfiguration?: AgentProperties;
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceUploadDefinition class.
+ * @constructor
+ * The properties of a response to source upload request.
+ *
+ * @member {string} [uploadUrl] The URL where the client can upload the source.
+ * @member {string} [relativePath] The relative path to the source. This is
+ * used to submit the subsequent queue build request.
+ */
+export interface SourceUploadDefinition {
+  uploadUrl?: string;
+  relativePath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunFilter class.
+ * @constructor
+ * Properties that are enabled for Odata querying on runs.
+ *
+ * @member {string} [runId] The unique identifier for the run.
+ * @member {string} [runType] The type of run. Possible values include:
+ * 'QuickBuild', 'AutoBuild'
+ * @member {string} [status] The current status of the run. Possible values
+ * include: 'Queued', 'Started', 'Running', 'Succeeded', 'Failed', 'Canceled',
+ * 'Error', 'Timeout'
+ * @member {date} [createTime] The create time for a run.
+ * @member {date} [finishTime] The time the run finished.
+ * @member {string} [outputImageManifests] The list of comma-separated image
+ * manifests that were generated from the run. This is applicable if the run is
+ * of
+ * build type.
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled or not.
+ * @member {string} [taskName] The name of the task that the run corresponds
+ * to.
+ */
+export interface RunFilter {
+  runId?: string;
+  runType?: string;
+  status?: string;
+  createTime?: Date;
+  finishTime?: Date;
+  outputImageManifests?: string;
+  isArchiveEnabled?: boolean;
+  taskName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunUpdateParameters class.
+ * @constructor
+ * The set of run properties that can be updated.
+ *
+ * @member {boolean} [isArchiveEnabled] The value that indicates whether
+ * archiving is enabled or not.
+ */
+export interface RunUpdateParameters {
+  isArchiveEnabled?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunGetLogResult class.
+ * @constructor
+ * The result of get log link operation.
+ *
+ * @member {string} [logLink] The link to logs for a run on a azure container
+ * registry.
+ */
+export interface RunGetLogResult {
+  logLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaseImageDependency class.
+ * @constructor
+ * Properties that describe a base image dependency.
+ *
+ * @member {string} [type] The type of the base image dependency. Possible
+ * values include: 'BuildTime', 'RunTime'
+ * @member {string} [registry] The registry login server.
+ * @member {string} [repository] The repository name.
+ * @member {string} [tag] The tag name.
+ * @member {string} [digest] The sha256-based digest of the image manifest.
+ */
+export interface BaseImageDependency {
+  type?: string;
+  registry?: string;
+  repository?: string;
+  tag?: string;
+  digest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskStepProperties class.
+ * @constructor
+ * Base properties for any task step.
+ *
+ * @member {array} [baseImageDependencies] List of base image dependencies for
+ * a step.
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface TaskStepProperties {
+  readonly baseImageDependencies?: BaseImageDependency[];
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AuthInfo class.
+ * @constructor
+ * The authorization properties for accessing the source code repository.
+ *
+ * @member {string} tokenType The type of Auth token. Possible values include:
+ * 'PAT', 'OAuth'
+ * @member {string} token The access token used to access the source control
+ * provider.
+ * @member {string} [refreshToken] The refresh token used to refresh the access
+ * token.
+ * @member {string} [scope] The scope of the access token.
+ * @member {number} [expiresIn] Time in seconds that the token remains valid
+ */
+export interface AuthInfo {
+  tokenType: string;
+  token: string;
+  refreshToken?: string;
+  scope?: string;
+  expiresIn?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceProperties class.
+ * @constructor
+ * The properties of the source code repository.
+ *
+ * @member {string} sourceControlType The type of source control service.
+ * Possible values include: 'Github', 'VisualStudioTeamService'
+ * @member {string} repositoryUrl The full URL to the source code respository
+ * @member {string} [branch] The branch name of the source code.
+ * @member {object} [sourceControlAuthProperties] The authorization properties
+ * for accessing the source code repository and to set up
+ * webhooks for notifications.
+ * @member {string} [sourceControlAuthProperties.tokenType] The type of Auth
+ * token. Possible values include: 'PAT', 'OAuth'
+ * @member {string} [sourceControlAuthProperties.token] The access token used
+ * to access the source control provider.
+ * @member {string} [sourceControlAuthProperties.refreshToken] The refresh
+ * token used to refresh the access token.
+ * @member {string} [sourceControlAuthProperties.scope] The scope of the access
+ * token.
+ * @member {number} [sourceControlAuthProperties.expiresIn] Time in seconds
+ * that the token remains valid
+ */
+export interface SourceProperties {
+  sourceControlType: string;
+  repositoryUrl: string;
+  branch?: string;
+  sourceControlAuthProperties?: AuthInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceTrigger class.
+ * @constructor
+ * The properties of a source based trigger.
+ *
+ * @member {object} sourceRepository The properties that describes the
+ * source(code) for the task.
+ * @member {string} [sourceRepository.sourceControlType] The type of source
+ * control service. Possible values include: 'Github',
+ * 'VisualStudioTeamService'
+ * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
+ * code respository
+ * @member {string} [sourceRepository.branch] The branch name of the source
+ * code.
+ * @member {object} [sourceRepository.sourceControlAuthProperties] The
+ * authorization properties for accessing the source code repository and to set
+ * up
+ * webhooks for notifications.
+ * @member {string} [sourceRepository.sourceControlAuthProperties.tokenType]
+ * The type of Auth token. Possible values include: 'PAT', 'OAuth'
+ * @member {string} [sourceRepository.sourceControlAuthProperties.token] The
+ * access token used to access the source control provider.
+ * @member {string} [sourceRepository.sourceControlAuthProperties.refreshToken]
+ * The refresh token used to refresh the access token.
+ * @member {string} [sourceRepository.sourceControlAuthProperties.scope] The
+ * scope of the access token.
+ * @member {number} [sourceRepository.sourceControlAuthProperties.expiresIn]
+ * Time in seconds that the token remains valid
+ * @member {array} sourceTriggerEvents The source event corresponding to the
+ * trigger.
+ * @member {string} [status] The current status of build trigger. Possible
+ * values include: 'Disabled', 'Enabled'
+ * @member {string} name The name of the trigger.
+ */
+export interface SourceTrigger {
+  sourceRepository: SourceProperties;
+  sourceTriggerEvents: string[];
+  status?: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaseImageTrigger class.
+ * @constructor
+ * The trigger based on base image dependency.
+ *
+ * @member {string} baseImageTriggerType The type of the auto trigger for base
+ * image dependency updates. Possible values include: 'All', 'Runtime'
+ * @member {string} [status] The current status of build trigger. Possible
+ * values include: 'Disabled', 'Enabled'
+ * @member {string} name The name of the trigger.
+ */
+export interface BaseImageTrigger {
+  baseImageTriggerType: string;
+  status?: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerProperties class.
+ * @constructor
+ * The properties of a build trigger.
+ *
+ * @member {array} [sourceTriggers] The collection of triggers based on source
+ * code repository.
+ * @member {object} [baseImageTrigger] The trigger based on base image
+ * dependencies.
+ * @member {string} [baseImageTrigger.baseImageTriggerType] The type of the
+ * auto trigger for base image dependency updates. Possible values include:
+ * 'All', 'Runtime'
+ * @member {string} [baseImageTrigger.status] The current status of build
+ * trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [baseImageTrigger.name] The name of the trigger.
+ */
+export interface TriggerProperties {
+  sourceTriggers?: SourceTrigger[];
+  baseImageTrigger?: BaseImageTrigger;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Task class.
+ * @constructor
+ * The task that has the ARM resource and task properties.
+ * The  task will have all information to schedule a run against it.
+ *
+ * @member {string} [provisioningState] The provisioning state of the task.
+ * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
+ * 'Failed', 'Canceled'
+ * @member {date} [creationDate] The creation date of task.
+ * @member {string} [status] The current status of task. Possible values
+ * include: 'Disabled', 'Enabled'
+ * @member {object} platform The platform properties against which the run has
+ * to happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the run
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @member {object} step The properties of a task step.
+ * @member {array} [step.baseImageDependencies] List of base image dependencies
+ * for a step.
+ * @member {string} [step.type] Polymorphic Discriminator
+ * @member {object} [trigger] The properties that describe all triggers for the
+ * task.
+ * @member {array} [trigger.sourceTriggers] The collection of triggers based on
+ * source code repository.
+ * @member {object} [trigger.baseImageTrigger] The trigger based on base image
+ * dependencies.
+ * @member {string} [trigger.baseImageTrigger.baseImageTriggerType] The type of
+ * the auto trigger for base image dependency updates. Possible values include:
+ * 'All', 'Runtime'
+ * @member {string} [trigger.baseImageTrigger.status] The current status of
+ * build trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
+ */
+export interface Task extends Resource {
+  readonly provisioningState?: string;
+  readonly creationDate?: Date;
+  status?: string;
+  platform: PlatformProperties;
+  agentConfiguration?: AgentProperties;
+  timeout?: number;
+  step: TaskStepProperties;
+  trigger?: TriggerProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PlatformUpdateParameters class.
+ * @constructor
+ * The properties for updating the platform configuration.
+ *
+ * @member {string} [os] The operating system type required for the run.
+ * Possible values include: 'Windows', 'Linux'
+ * @member {string} [architecture] The OS architecture. Possible values
+ * include: 'amd64', 'x86', 'arm'
+ * @member {string} [variant] Variant of the CPU. Possible values include:
+ * 'v6', 'v7', 'v8'
+ */
+export interface PlatformUpdateParameters {
+  os?: string;
+  architecture?: string;
+  variant?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskStepUpdateParameters class.
+ * @constructor
+ * Base properties for updating any task step.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface TaskStepUpdateParameters {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AuthInfoUpdateParameters class.
+ * @constructor
+ * The authorization properties for accessing the source code repository.
+ *
+ * @member {string} [tokenType] The type of Auth token. Possible values
+ * include: 'PAT', 'OAuth'
+ * @member {string} [token] The access token used to access the source control
+ * provider.
+ * @member {string} [refreshToken] The refresh token used to refresh the access
+ * token.
+ * @member {string} [scope] The scope of the access token.
+ * @member {number} [expiresIn] Time in seconds that the token remains valid
+ */
+export interface AuthInfoUpdateParameters {
+  tokenType?: string;
+  token?: string;
+  refreshToken?: string;
+  scope?: string;
+  expiresIn?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceUpdateParameters class.
+ * @constructor
+ * The properties for updating the source code repository.
+ *
+ * @member {string} [sourceControlType] The type of source control service.
+ * Possible values include: 'Github', 'VisualStudioTeamService'
+ * @member {string} [repositoryUrl] The full URL to the source code respository
+ * @member {string} [branch] The branch name of the source code.
+ * @member {object} [sourceControlAuthProperties] The authorization properties
+ * for accessing the source code repository and to set up
+ * webhooks for notifications.
+ * @member {string} [sourceControlAuthProperties.tokenType] The type of Auth
+ * token. Possible values include: 'PAT', 'OAuth'
+ * @member {string} [sourceControlAuthProperties.token] The access token used
+ * to access the source control provider.
+ * @member {string} [sourceControlAuthProperties.refreshToken] The refresh
+ * token used to refresh the access token.
+ * @member {string} [sourceControlAuthProperties.scope] The scope of the access
+ * token.
+ * @member {number} [sourceControlAuthProperties.expiresIn] Time in seconds
+ * that the token remains valid
+ */
+export interface SourceUpdateParameters {
+  sourceControlType?: string;
+  repositoryUrl?: string;
+  branch?: string;
+  sourceControlAuthProperties?: AuthInfoUpdateParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceTriggerUpdateParameters class.
+ * @constructor
+ * The properties for updating a source based trigger.
+ *
+ * @member {object} [sourceRepository] The properties that describes the
+ * source(code) for the task.
+ * @member {string} [sourceRepository.sourceControlType] The type of source
+ * control service. Possible values include: 'Github',
+ * 'VisualStudioTeamService'
+ * @member {string} [sourceRepository.repositoryUrl] The full URL to the source
+ * code respository
+ * @member {string} [sourceRepository.branch] The branch name of the source
+ * code.
+ * @member {object} [sourceRepository.sourceControlAuthProperties] The
+ * authorization properties for accessing the source code repository and to set
+ * up
+ * webhooks for notifications.
+ * @member {string} [sourceRepository.sourceControlAuthProperties.tokenType]
+ * The type of Auth token. Possible values include: 'PAT', 'OAuth'
+ * @member {string} [sourceRepository.sourceControlAuthProperties.token] The
+ * access token used to access the source control provider.
+ * @member {string} [sourceRepository.sourceControlAuthProperties.refreshToken]
+ * The refresh token used to refresh the access token.
+ * @member {string} [sourceRepository.sourceControlAuthProperties.scope] The
+ * scope of the access token.
+ * @member {number} [sourceRepository.sourceControlAuthProperties.expiresIn]
+ * Time in seconds that the token remains valid
+ * @member {array} [sourceTriggerEvents] The source event corresponding to the
+ * trigger.
+ * @member {string} [status] The current status of build trigger. Possible
+ * values include: 'Disabled', 'Enabled'
+ * @member {string} name The name of the trigger.
+ */
+export interface SourceTriggerUpdateParameters {
+  sourceRepository?: SourceUpdateParameters;
+  sourceTriggerEvents?: string[];
+  status?: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BaseImageTriggerUpdateParameters class.
+ * @constructor
+ * The properties for updating base image dependency trigger.
+ *
+ * @member {string} [baseImageTriggerType] The type of the auto trigger for
+ * base image dependency updates. Possible values include: 'All', 'Runtime'
+ * @member {string} [status] The current status of build trigger. Possible
+ * values include: 'Disabled', 'Enabled'
+ * @member {string} name The name of the trigger.
+ */
+export interface BaseImageTriggerUpdateParameters {
+  baseImageTriggerType?: string;
+  status?: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerUpdateParameters class.
+ * @constructor
+ * The properties for updating build triggers.
+ *
+ * @member {array} [sourceTriggers] The collection of triggers based on source
+ * code repository.
+ * @member {object} [baseImageTrigger] The trigger based on base image
+ * dependencies.
+ * @member {string} [baseImageTrigger.baseImageTriggerType] The type of the
+ * auto trigger for base image dependency updates. Possible values include:
+ * 'All', 'Runtime'
+ * @member {string} [baseImageTrigger.status] The current status of build
+ * trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [baseImageTrigger.name] The name of the trigger.
+ */
+export interface TriggerUpdateParameters {
+  sourceTriggers?: SourceTriggerUpdateParameters[];
+  baseImageTrigger?: BaseImageTriggerUpdateParameters;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskUpdateParameters class.
+ * @constructor
+ * The parameters for updating a task.
+ *
+ * @member {string} [status] The current status of task. Possible values
+ * include: 'Disabled', 'Enabled'
+ * @member {object} [platform] The platform properties against which the run
+ * has to happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the run
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ * @member {number} [timeout] Run timeout in seconds.
+ * @member {object} [step] The properties for updating a task step.
+ * @member {string} [step.type] Polymorphic Discriminator
+ * @member {object} [trigger] The properties for updating trigger properties.
+ * @member {array} [trigger.sourceTriggers] The collection of triggers based on
+ * source code repository.
+ * @member {object} [trigger.baseImageTrigger] The trigger based on base image
+ * dependencies.
+ * @member {string} [trigger.baseImageTrigger.baseImageTriggerType] The type of
+ * the auto trigger for base image dependency updates. Possible values include:
+ * 'All', 'Runtime'
+ * @member {string} [trigger.baseImageTrigger.status] The current status of
+ * build trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
+ * @member {object} [tags] The ARM resource tags.
+ */
+export interface TaskUpdateParameters {
+  status?: string;
+  platform?: PlatformUpdateParameters;
+  agentConfiguration?: AgentProperties;
+  timeout?: number;
+  step?: TaskStepUpdateParameters;
+  trigger?: TriggerUpdateParameters;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Argument class.
+ * @constructor
+ * The properties of a run argument.
+ *
+ * @member {string} name The name of the argument.
+ * @member {string} value The value of the argument.
+ * @member {boolean} [isSecret] Flag to indicate whether the argument
+ * represents a secret and want to be removed from build logs. Default value:
+ * false .
+ */
+export interface Argument {
+  name: string;
+  value: string;
+  isSecret?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DockerBuildRequest class.
+ * @constructor
+ * The parameters for a docker quick build.
+ *
+ * @member {array} [imageNames] The fully qualified image names including the
+ * repository and tag.
+ * @member {boolean} [isPushEnabled] The value of this property indicates
+ * whether the image built should be pushed to the registry or not. Default
+ * value: true .
+ * @member {boolean} [noCache] The value of this property indicates whether the
+ * image cache is enabled or not. Default value: false .
+ * @member {string} dockerFilePath The Docker file path relative to the source
+ * location.
+ * @member {array} [argumentsProperty] The collection of override arguments to
+ * be used when executing the run.
+ * @member {string} sourceLocation The URL(absolute or relative) of the source
+ * that needs to be built. For Docker build, it can be an URL to a tar or
+ * github repoistory as supported by Docker.
+ * If it is relative URL, the relative path should be obtained from calling
+ * getSourceUploadUrl API.
+ * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
+ * @member {object} platform The platform properties against which the build
+ * will happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the build
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ */
+export interface DockerBuildRequest extends RunRequest {
+  imageNames?: string[];
+  isPushEnabled?: boolean;
+  noCache?: boolean;
+  dockerFilePath: string;
+  argumentsProperty?: Argument[];
+  sourceLocation: string;
+  timeout?: number;
+  platform: PlatformProperties;
+  agentConfiguration?: AgentProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SetValue class.
+ * @constructor
+ * The properties of a overridable value that can be passed to a task template.
+ *
+ * @member {string} name The name of the overridable value.
+ * @member {string} value The overridable value.
+ * @member {boolean} [isSecret] Flag to indicate whether the value represents a
+ * secret or not. Default value: false .
+ */
+export interface SetValue {
+  name: string;
+  value: string;
+  isSecret?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileTaskRunRequest class.
+ * @constructor
+ * The request parameters for a scheduling run against a task file.
+ *
+ * @member {string} taskFilePath The template/definition file path relative to
+ * the source.
+ * @member {string} [valuesFilePath] The values/parameters file path relative
+ * to the source.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ * @member {string} sourceLocation The URL(absolute or relative) of the source
+ * that needs to be built. For Docker build, it can be an URL to a tar or
+ * github repoistory as supported by Docker.
+ * If it is relative URL, the relative path should be obtained from calling
+ * getSourceUploadUrl API.
+ * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
+ * @member {object} platform The platform properties against which the build
+ * will happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the build
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ */
+export interface FileTaskRunRequest extends RunRequest {
+  taskFilePath: string;
+  valuesFilePath?: string;
+  values?: SetValue[];
+  sourceLocation: string;
+  timeout?: number;
+  platform: PlatformProperties;
+  agentConfiguration?: AgentProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskRunRequest class.
+ * @constructor
+ * The parameters for a task run request.
+ *
+ * @member {string} taskName The name of task against which run has to be
+ * queued.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ */
+export interface TaskRunRequest extends RunRequest {
+  taskName: string;
+  values?: SetValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EncodedTaskRunRequest class.
+ * @constructor
+ * The parameters for a quick task run request.
+ *
+ * @member {string} encodedTaskContent Base64 encoded value of the
+ * template/definition file content.
+ * @member {string} [encodedValuesContent] Base64 encoded value of the
+ * parameters/values file content.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
+ * @member {object} platform The platform properties against which the build
+ * will happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the build
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ */
+export interface EncodedTaskRunRequest extends RunRequest {
+  encodedTaskContent: string;
+  encodedValuesContent?: string;
+  values?: SetValue[];
+  timeout?: number;
+  platform: PlatformProperties;
+  agentConfiguration?: AgentProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DockerBuildStep class.
+ * @constructor
+ * The Docker build step.
+ *
+ * @member {array} [imageNames] The fully qualified image names including the
+ * repository and tag.
+ * @member {boolean} [isPushEnabled] The value of this property indicates
+ * whether the image built should be pushed to the registry or not. Default
+ * value: true .
+ * @member {boolean} [noCache] The value of this property indicates whether the
+ * image cache is enabled or not. Default value: false .
+ * @member {string} dockerFilePath The Docker file path relative to the source
+ * context.
+ * @member {array} [argumentsProperty] The collection of override arguments to
+ * be used when executing this build step.
+ * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * context for the build task.
+ * If it is relative, the context will be relative to the source repository URL
+ * of the build task.
+ */
+export interface DockerBuildStep extends TaskStepProperties {
+  imageNames?: string[];
+  isPushEnabled?: boolean;
+  noCache?: boolean;
+  dockerFilePath: string;
+  argumentsProperty?: Argument[];
+  contextPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileTaskStep class.
+ * @constructor
+ * The properties of a task step.
+ *
+ * @member {string} taskFilePath The task template/definition file path
+ * relative to the source context.
+ * @member {string} [valuesFilePath] The task values/parameters file path
+ * relative to the source context.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * context for the build task.
+ * If it is relative, the context will be relative to the source repository URL
+ * of the build task.
+ */
+export interface FileTaskStep extends TaskStepProperties {
+  taskFilePath: string;
+  valuesFilePath?: string;
+  values?: SetValue[];
+  contextPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EncodedTaskStep class.
+ * @constructor
+ * The properties of a encoded task step.
+ *
+ * @member {string} encodedTaskContent Base64 encoded value of the
+ * template/definition file content.
+ * @member {string} [encodedValuesContent] Base64 encoded value of the
+ * parameters/values file content.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ */
+export interface EncodedTaskStep extends TaskStepProperties {
+  encodedTaskContent: string;
+  encodedValuesContent?: string;
+  values?: SetValue[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DockerBuildStepUpdateParameters class.
+ * @constructor
+ * The properties for updating a docker build step.
+ *
+ * @member {array} [imageNames] The fully qualified image names including the
+ * repository and tag.
+ * @member {boolean} [isPushEnabled] The value of this property indicates
+ * whether the image built should be pushed to the registry or not.
+ * @member {boolean} [noCache] The value of this property indicates whether the
+ * image cache is enabled or not.
+ * @member {string} [dockerFilePath] The Docker file path relative to the
+ * source context.
+ * @member {array} [argumentsProperty] The collection of override arguments to
+ * be used when executing this build step.
+ * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * context for the build task.
+ * If it is relative, the context will be relative to the source repository URL
+ * of the build task.
+ */
+export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameters {
+  imageNames?: string[];
+  isPushEnabled?: boolean;
+  noCache?: boolean;
+  dockerFilePath?: string;
+  argumentsProperty?: Argument[];
+  contextPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileTaskStepUpdateParameters class.
+ * @constructor
+ * The properties of updating a task step.
+ *
+ * @member {string} [taskFilePath] The task template/definition file path
+ * relative to the source context.
+ * @member {string} [valuesFilePath] The values/parameters file path relative
+ * to the source context.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * context for the build task.
+ * If it is relative, the context will be relative to the source repository URL
+ * of the build task.
+ */
+export interface FileTaskStepUpdateParameters extends TaskStepUpdateParameters {
+  taskFilePath?: string;
+  valuesFilePath?: string;
+  values?: SetValue[];
+  contextPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EncodedTaskStepUpdateParameters class.
+ * @constructor
+ * The properties for updating encoded task step.
+ *
+ * @member {string} [encodedTaskContent] Base64 encoded value of the
+ * template/definition file content.
+ * @member {string} [encodedValuesContent] Base64 encoded value of the
+ * parameters/values file content.
+ * @member {array} [values] The collection of overridable values that can be
+ * passed when running a task.
+ */
+export interface EncodedTaskStepUpdateParameters extends TaskStepUpdateParameters {
+  encodedTaskContent?: string;
+  encodedValuesContent?: string;
+  values?: SetValue[];
+}
+
 
 /**
  * @class
@@ -815,5 +1992,31 @@ export interface WebhookListResult extends Array<Webhook> {
  * list of events.
  */
 export interface EventListResult extends Array<Event> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunListResult class.
+ * @constructor
+ * Collection of runs.
+ *
+ * @member {string} [nextLink] The URI that can be used to request the next set
+ * of paged results.
+ */
+export interface RunListResult extends Array<Run> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskListResult class.
+ * @constructor
+ * The collection of tasks.
+ *
+ * @member {string} [nextLink] The URI that can be used to request the next set
+ * of paged results.
+ */
+export interface TaskListResult extends Array<Task> {
   nextLink?: string;
 }

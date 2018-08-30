@@ -41,9 +41,9 @@ export interface Endpoints {
      * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
      * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.target] The fully-qualified DNS name of the
-     * endpoint. Traffic Manager returns this value in DNS responses to direct
-     * traffic to this endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name or IP
+     * address of the endpoint. Traffic Manager returns this value in DNS responses
+     * to direct traffic to this endpoint.
      *
      * @param {string} [parameters.endpointStatus] The status of the endpoint. If
      * the endpoint is Enabled, it is probed for endpoint health and is included in
@@ -53,13 +53,13 @@ export interface Endpoints {
      * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
      * @param {number} [parameters.priority] The priority of this endpoint when
-     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * using the 'Priority' traffic routing method. Possible values are from 1 to
      * 1000, lower values represent higher priority. This is an optional parameter.
      * If specified, it must be specified on all endpoints, and no two endpoints
      * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
-     * external or nested endpoints when using the ‘Performance’ traffic routing
+     * external or nested endpoints when using the 'Performance' traffic routing
      * method.
      *
      * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
@@ -72,9 +72,16 @@ export interface Endpoints {
      * type 'NestedEndpoints'.
      *
      * @param {array} [parameters.geoMapping] The list of countries/regions mapped
-     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * to this endpoint when using the 'Geographic' traffic routing method. Please
      * consult Traffic Manager Geographic documentation for a full list of accepted
      * values.
+     *
+     * @param {array} [parameters.subnets] The list of subnets, IP addresses,
+     * and/or address ranges mapped to this endpoint when using the 'Subnet'
+     * traffic routing method. An empty list will match all ranges not covered by
+     * other endpoints.
+     *
+     * @param {array} [parameters.customHeaders] List of custom headers.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -109,9 +116,9 @@ export interface Endpoints {
      * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
      * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.target] The fully-qualified DNS name of the
-     * endpoint. Traffic Manager returns this value in DNS responses to direct
-     * traffic to this endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name or IP
+     * address of the endpoint. Traffic Manager returns this value in DNS responses
+     * to direct traffic to this endpoint.
      *
      * @param {string} [parameters.endpointStatus] The status of the endpoint. If
      * the endpoint is Enabled, it is probed for endpoint health and is included in
@@ -121,13 +128,13 @@ export interface Endpoints {
      * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
      * @param {number} [parameters.priority] The priority of this endpoint when
-     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * using the 'Priority' traffic routing method. Possible values are from 1 to
      * 1000, lower values represent higher priority. This is an optional parameter.
      * If specified, it must be specified on all endpoints, and no two endpoints
      * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
-     * external or nested endpoints when using the ‘Performance’ traffic routing
+     * external or nested endpoints when using the 'Performance' traffic routing
      * method.
      *
      * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
@@ -140,9 +147,16 @@ export interface Endpoints {
      * type 'NestedEndpoints'.
      *
      * @param {array} [parameters.geoMapping] The list of countries/regions mapped
-     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * to this endpoint when using the 'Geographic' traffic routing method. Please
      * consult Traffic Manager Geographic documentation for a full list of accepted
      * values.
+     *
+     * @param {array} [parameters.subnets] The list of subnets, IP addresses,
+     * and/or address ranges mapped to this endpoint when using the 'Subnet'
+     * traffic routing method. An empty list will match all ranges not covered by
+     * other endpoints.
+     *
+     * @param {array} [parameters.customHeaders] List of custom headers.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -265,9 +279,9 @@ export interface Endpoints {
      * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
      * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.target] The fully-qualified DNS name of the
-     * endpoint. Traffic Manager returns this value in DNS responses to direct
-     * traffic to this endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name or IP
+     * address of the endpoint. Traffic Manager returns this value in DNS responses
+     * to direct traffic to this endpoint.
      *
      * @param {string} [parameters.endpointStatus] The status of the endpoint. If
      * the endpoint is Enabled, it is probed for endpoint health and is included in
@@ -277,13 +291,13 @@ export interface Endpoints {
      * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
      * @param {number} [parameters.priority] The priority of this endpoint when
-     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * using the 'Priority' traffic routing method. Possible values are from 1 to
      * 1000, lower values represent higher priority. This is an optional parameter.
      * If specified, it must be specified on all endpoints, and no two endpoints
      * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
-     * external or nested endpoints when using the ‘Performance’ traffic routing
+     * external or nested endpoints when using the 'Performance' traffic routing
      * method.
      *
      * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
@@ -296,9 +310,16 @@ export interface Endpoints {
      * type 'NestedEndpoints'.
      *
      * @param {array} [parameters.geoMapping] The list of countries/regions mapped
-     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * to this endpoint when using the 'Geographic' traffic routing method. Please
      * consult Traffic Manager Geographic documentation for a full list of accepted
      * values.
+     *
+     * @param {array} [parameters.subnets] The list of subnets, IP addresses,
+     * and/or address ranges mapped to this endpoint when using the 'Subnet'
+     * traffic routing method. An empty list will match all ranges not covered by
+     * other endpoints.
+     *
+     * @param {array} [parameters.customHeaders] List of custom headers.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -333,9 +354,9 @@ export interface Endpoints {
      * @param {string} [parameters.targetResourceId] The Azure Resource URI of the
      * of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      *
-     * @param {string} [parameters.target] The fully-qualified DNS name of the
-     * endpoint. Traffic Manager returns this value in DNS responses to direct
-     * traffic to this endpoint.
+     * @param {string} [parameters.target] The fully-qualified DNS name or IP
+     * address of the endpoint. Traffic Manager returns this value in DNS responses
+     * to direct traffic to this endpoint.
      *
      * @param {string} [parameters.endpointStatus] The status of the endpoint. If
      * the endpoint is Enabled, it is probed for endpoint health and is included in
@@ -345,13 +366,13 @@ export interface Endpoints {
      * the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      *
      * @param {number} [parameters.priority] The priority of this endpoint when
-     * using the ‘Priority’ traffic routing method. Possible values are from 1 to
+     * using the 'Priority' traffic routing method. Possible values are from 1 to
      * 1000, lower values represent higher priority. This is an optional parameter.
      * If specified, it must be specified on all endpoints, and no two endpoints
      * can share the same priority value.
      *
      * @param {string} [parameters.endpointLocation] Specifies the location of the
-     * external or nested endpoints when using the ‘Performance’ traffic routing
+     * external or nested endpoints when using the 'Performance' traffic routing
      * method.
      *
      * @param {string} [parameters.endpointMonitorStatus] The monitoring status of
@@ -364,9 +385,16 @@ export interface Endpoints {
      * type 'NestedEndpoints'.
      *
      * @param {array} [parameters.geoMapping] The list of countries/regions mapped
-     * to this endpoint when using the ‘Geographic’ traffic routing method. Please
+     * to this endpoint when using the 'Geographic' traffic routing method. Please
      * consult Traffic Manager Geographic documentation for a full list of accepted
      * values.
+     *
+     * @param {array} [parameters.subnets] The list of subnets, IP addresses,
+     * and/or address ranges mapped to this endpoint when using the 'Subnet'
+     * traffic routing method. An empty list will match all ranges not covered by
+     * other endpoints.
+     *
+     * @param {array} [parameters.customHeaders] List of custom headers.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -733,7 +761,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
      * of the Traffic Manager profile. Possible values include: 'Performance',
-     * 'Priority', 'Weighted', 'Geographic'
+     * 'Priority', 'Weighted', 'Geographic', 'MultiValue', 'Subnet'
      *
      * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
      * Manager profile.
@@ -778,8 +806,22 @@ export interface Profiles {
      * before declaring an endpoint in this profile Degraded after the next failed
      * health check.
      *
+     * @param {array} [parameters.monitorConfig.expectedStatusCodeRanges] List of
+     * expected status code ranges.
+     *
+     * @param {array} [parameters.monitorConfig.customHeaders] List of custom
+     * headers.
+     *
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
+     *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.maxReturn] Maximum number of endpoints to be
+     * returned for MultiValue routing type.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -815,7 +857,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
      * of the Traffic Manager profile. Possible values include: 'Performance',
-     * 'Priority', 'Weighted', 'Geographic'
+     * 'Priority', 'Weighted', 'Geographic', 'MultiValue', 'Subnet'
      *
      * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
      * Manager profile.
@@ -860,8 +902,22 @@ export interface Profiles {
      * before declaring an endpoint in this profile Degraded after the next failed
      * health check.
      *
+     * @param {array} [parameters.monitorConfig.expectedStatusCodeRanges] List of
+     * expected status code ranges.
+     *
+     * @param {array} [parameters.monitorConfig.customHeaders] List of custom
+     * headers.
+     *
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
+     *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.maxReturn] Maximum number of endpoints to be
+     * returned for MultiValue routing type.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -979,7 +1035,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
      * of the Traffic Manager profile. Possible values include: 'Performance',
-     * 'Priority', 'Weighted', 'Geographic'
+     * 'Priority', 'Weighted', 'Geographic', 'MultiValue', 'Subnet'
      *
      * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
      * Manager profile.
@@ -1024,8 +1080,22 @@ export interface Profiles {
      * before declaring an endpoint in this profile Degraded after the next failed
      * health check.
      *
+     * @param {array} [parameters.monitorConfig.expectedStatusCodeRanges] List of
+     * expected status code ranges.
+     *
+     * @param {array} [parameters.monitorConfig.customHeaders] List of custom
+     * headers.
+     *
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
+     *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.maxReturn] Maximum number of endpoints to be
+     * returned for MultiValue routing type.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -1061,7 +1131,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] The traffic routing method
      * of the Traffic Manager profile. Possible values include: 'Performance',
-     * 'Priority', 'Weighted', 'Geographic'
+     * 'Priority', 'Weighted', 'Geographic', 'MultiValue', 'Subnet'
      *
      * @param {object} [parameters.dnsConfig] The DNS settings of the Traffic
      * Manager profile.
@@ -1106,8 +1176,22 @@ export interface Profiles {
      * before declaring an endpoint in this profile Degraded after the next failed
      * health check.
      *
+     * @param {array} [parameters.monitorConfig.expectedStatusCodeRanges] List of
+     * expected status code ranges.
+     *
+     * @param {array} [parameters.monitorConfig.customHeaders] List of custom
+     * headers.
+     *
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
+     *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {number} [parameters.maxReturn] Maximum number of endpoints to be
+     * returned for MultiValue routing type.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -1289,4 +1373,168 @@ export interface HeatMap {
     get(resourceGroupName: string, profileName: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.HeatMapModel>;
     get(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.HeatMapModel>): void;
     get(resourceGroupName: string, profileName: string, options: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HeatMapModel>): void;
+}
+
+/**
+ * @class
+ * TrafficManagerUserMetricsKeys
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the TrafficManagerManagementClient.
+ */
+export interface TrafficManagerUserMetricsKeys {
+
+
+    /**
+     * Get the subscription-level key used for Real User Metrics collection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UserMetricsModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserMetricsModel>>;
+
+    /**
+     * Get the subscription-level key used for Real User Metrics collection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UserMetricsModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UserMetricsModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UserMetricsModel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserMetricsModel>;
+    get(callback: ServiceCallback<models.UserMetricsModel>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserMetricsModel>): void;
+
+
+    /**
+     * Create or update a subscription-level key used for Real User Metrics
+     * collection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UserMetricsModel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserMetricsModel>>;
+
+    /**
+     * Create or update a subscription-level key used for Real User Metrics
+     * collection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UserMetricsModel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UserMetricsModel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UserMetricsModel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserMetricsModel>;
+    createOrUpdate(callback: ServiceCallback<models.UserMetricsModel>): void;
+    createOrUpdate(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserMetricsModel>): void;
+
+
+    /**
+     * Delete a subscription-level key used for Real User Metrics collection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DeleteOperationResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeleteOperationResult>>;
+
+    /**
+     * Delete a subscription-level key used for Real User Metrics collection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DeleteOperationResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DeleteOperationResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DeleteOperationResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeleteOperationResult>;
+    deleteMethod(callback: ServiceCallback<models.DeleteOperationResult>): void;
+    deleteMethod(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeleteOperationResult>): void;
 }

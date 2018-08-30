@@ -1,8 +1,9 @@
-# Microsoft Azure SDK for Node.js - ServiceMapManagement
+# Microsoft Azure SDK for Node.js - ServicemapManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure ServiceMap.
-## API-Version: 2016-04-01
-## Minimum node.js version >= 6.x.x
+## Features
+
 
 ## How to Install
 
@@ -10,28 +11,31 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-servicemap
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing machineGroups as an example
+### Authentication, client creation and listByWorkspace machines as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const ServiceMapManagement = require("azure-arm-servicemap");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new ServiceMapManagement(credentials, 'your-subscription-id');
-   return client.machineGroups.listByWorkspace('testrg', 'testworkspace');
- }).then((machineGroups) => {
-  console.log('List of machineGroups:');
-  console.dir(machineGroups, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const ServicemapManagementClient = require("azure-arm-servicemap");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new ServicemapManagementClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const workspaceName = "testworkspaceName";
+    const live = true;
+    const startTime = new Date().toISOString();
+    const endTime = new Date().toISOString();
+    const timestamp = new Date().toISOString();
+    const top = 1;
+    return client.machines.listByWorkspace(resourceGroupName, workspaceName, live, startTime, endTime, timestamp, top).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error ocurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
