@@ -2347,20 +2347,19 @@ export interface SoftwareUpdateConfigurationMachineRunListResult {
  * @constructor
  * Definition of the source control.
  *
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
+ * @member {string} [repoUrl] The repo url of the source control.
+ * @member {string} [branch] The repo branch of the source control. Include
+ * branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] The folder path of the source control.
+ * @member {boolean} [autoSync] The auto sync of the source control. Default is
+ * false.
+ * @member {boolean} [publishRunbook] The auto publish of the source control.
+ * Default is true.
  * @member {string} [sourceType] The source type. Must be one of VsoGit,
  * VsoTfvc, GitHub. Possible values include: 'VsoGit', 'VsoTfvc', 'GitHub'
- * @member {string} [description] Gets or sets the description.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] The description.
+ * @member {date} [creationTime] The creation time.
+ * @member {date} [lastModifiedTime] The last modified time.
  */
 export interface SourceControl extends ProxyResource {
   repoUrl?: string;
@@ -2376,29 +2375,48 @@ export interface SourceControl extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlSecurityTokenProperties class.
+ * @constructor
+ * @member {string} [accessToken] The access token.
+ * @member {string} [refreshToken] The refresh token.
+ * @member {string} [tokenType] The token type. Must be either
+ * PersonalAccessToken or Oauth. Possible values include:
+ * 'PersonalAccessToken', 'Oauth'
+ */
+export interface SourceControlSecurityTokenProperties {
+  accessToken?: string;
+  refreshToken?: string;
+  tokenType?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlUpdateParameters class.
  * @constructor
  * The parameters supplied to the update source control operation.
  *
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
+ * @member {string} [branch] The repo branch of the source control.
+ * @member {string} [folderPath] The folder path of the source control. Path
+ * must be relative.
+ * @member {boolean} [autoSync] The auto sync of the source control. Default is
+ * false.
+ * @member {boolean} [publishRunbook] The auto publish of the source control.
+ * Default is true.
+ * @member {object} [securityToken] The authorization token for the repo of the
  * source control.
+ * @member {string} [securityToken.accessToken] The access token.
+ * @member {string} [securityToken.refreshToken] The refresh token.
+ * @member {string} [securityToken.tokenType] The token type. Must be either
+ * PersonalAccessToken or Oauth. Possible values include:
+ * 'PersonalAccessToken', 'Oauth'
+ * @member {string} [description] The user description of the source control.
  */
 export interface SourceControlUpdateParameters {
   branch?: string;
   folderPath?: string;
   autoSync?: boolean;
   publishRunbook?: boolean;
-  securityToken?: string;
+  securityToken?: SourceControlSecurityTokenProperties;
   description?: string;
 }
 
@@ -2408,22 +2426,26 @@ export interface SourceControlUpdateParameters {
  * @constructor
  * The parameters supplied to the create or update source control operation.
  *
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
+ * @member {string} [repoUrl] The repo url of the source control.
+ * @member {string} [branch] The repo branch of the source control. Include
+ * branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] The folder path of the source control. Path
+ * must be relative.
+ * @member {boolean} [autoSync] The auto async of the source control. Default
+ * is false.
+ * @member {boolean} [publishRunbook] The auto publish of the source control.
+ * Default is true.
  * @member {string} [sourceType] The source type. Must be one of VsoGit,
  * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
  * 'VsoTfvc', 'GitHub'
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
+ * @member {object} [securityToken] The authorization token for the repo of the
  * source control.
+ * @member {string} [securityToken.accessToken] The access token.
+ * @member {string} [securityToken.refreshToken] The refresh token.
+ * @member {string} [securityToken.tokenType] The token type. Must be either
+ * PersonalAccessToken or Oauth. Possible values include:
+ * 'PersonalAccessToken', 'Oauth'
+ * @member {string} [description] The user description of the source control.
  */
 export interface SourceControlCreateOrUpdateParameters {
   repoUrl?: string;
@@ -2432,7 +2454,7 @@ export interface SourceControlCreateOrUpdateParameters {
   autoSync?: boolean;
   publishRunbook?: boolean;
   sourceType?: string;
-  securityToken?: string;
+  securityToken?: SourceControlSecurityTokenProperties;
   description?: string;
 }
 
@@ -2445,25 +2467,25 @@ export interface SourceControlCreateOrUpdateParameters {
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
  * @member {string} [id] Resource id.
- * @member {string} [syncJobId] Gets the source control sync job id.
- * @member {date} [creationTime] Gets the creation time of the job.
- * @member {string} [provisioningState] Gets the provisioning state of the job.
+ * @member {string} [sourceControlSyncJobId] The source control sync job id.
+ * @member {date} [creationTime] The creation time of the job.
+ * @member {string} [provisioningState] The provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
- * @member {date} [startTime] Gets the start time of the job.
- * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startType] Gets the type of start for the sync job.
- * Possible values include: 'AutoSync', 'ManualSync'
+ * @member {date} [startTime] The start time of the job.
+ * @member {date} [endTime] The end time of the job.
+ * @member {string} [syncType] The sync type. Possible values include:
+ * 'PartialSync', 'FullSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
   readonly type?: string;
   readonly id?: string;
-  syncJobId?: string;
+  sourceControlSyncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startType?: string;
+  syncType?: string;
 }
 
 /**
@@ -2472,11 +2494,11 @@ export interface SourceControlSyncJob {
  * @constructor
  * The parameters supplied to the create source control sync job operation.
  *
- * @member {string} [commitId] Sets the commit id of the source control sync
- * job.
+ * @member {string} commitId The commit id of the source control sync job. If
+ * not syncing to a commitId, enter an empty string.
  */
 export interface SourceControlSyncJobCreateParameters {
-  commitId?: string;
+  commitId: string;
 }
 
 /**
@@ -2485,26 +2507,26 @@ export interface SourceControlSyncJobCreateParameters {
  * @constructor
  * Definition of the source control sync job.
  *
- * @member {string} [id] Gets the id of the job.
- * @member {string} [syncJobId] Gets the source control sync job id.
- * @member {date} [creationTime] Gets the creation time of the job.
- * @member {string} [provisioningState] Gets the provisioning state of the job.
+ * @member {string} [id] The id of the job.
+ * @member {string} [sourceControlSyncJobId] The source control sync job id.
+ * @member {date} [creationTime] The creation time of the job.
+ * @member {string} [provisioningState] The provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
- * @member {date} [startTime] Gets the start time of the job.
- * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startType] Gets the type of start for the sync job.
- * Possible values include: 'AutoSync', 'ManualSync'
- * @member {string} [exception] Gets the exceptions that occured while running
- * the sync job.
+ * @member {date} [startTime] The start time of the job.
+ * @member {date} [endTime] The end time of the job.
+ * @member {string} [syncType] The sync type. Possible values include:
+ * 'PartialSync', 'FullSync'
+ * @member {string} [exception] The exceptions that occured while running the
+ * sync job.
  */
 export interface SourceControlSyncJobById {
   id?: string;
-  syncJobId?: string;
+  sourceControlSyncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startType?: string;
+  syncType?: string;
   exception?: string;
 }
 
@@ -2515,15 +2537,15 @@ export interface SourceControlSyncJobById {
  * Definition of the source control sync job stream.
  *
  * @member {string} [id] Resource id.
- * @member {string} [syncJobStreamId] Gets the sync job stream id.
- * @member {string} [summary] Gets the summary of the sync job stream.
- * @member {date} [time] Gets the time of the sync job stream.
- * @member {string} [streamType] Gets the type of the sync job stream. Possible
+ * @member {string} [sourceControlSyncJobStreamId] The sync job stream id.
+ * @member {string} [summary] The summary of the sync job stream.
+ * @member {date} [time] The time of the sync job stream.
+ * @member {string} [streamType] The type of the sync job stream. Possible
  * values include: 'Error', 'Output'
  */
 export interface SourceControlSyncJobStream {
   readonly id?: string;
-  syncJobStreamId?: string;
+  sourceControlSyncJobStreamId?: string;
   summary?: string;
   readonly time?: Date;
   streamType?: string;
@@ -2536,22 +2558,22 @@ export interface SourceControlSyncJobStream {
  * Definition of the source control sync job stream by id.
  *
  * @member {string} [id] Resource id.
- * @member {string} [syncJobStreamId] Gets the sync job stream id.
- * @member {string} [summary] Gets the summary of the sync job stream.
- * @member {date} [time] Gets the time of the sync job stream.
- * @member {string} [streamType] Gets the type of the sync job stream. Possible
+ * @member {string} [sourceControlSyncJobStreamId] The sync job stream id.
+ * @member {string} [summary] The summary of the sync job stream.
+ * @member {date} [time] The time of the sync job stream.
+ * @member {string} [streamType] The type of the sync job stream. Possible
  * values include: 'Error', 'Output'
- * @member {string} [streamText] Gets the text of the sync job stream.
- * @member {string} [value] Gets the value of the sync job stream.
+ * @member {string} [streamText] The text of the sync job stream.
+ * @member {object} [value] The values of the job stream.
  */
 export interface SourceControlSyncJobStreamById {
   readonly id?: string;
-  syncJobStreamId?: string;
+  sourceControlSyncJobStreamId?: string;
   summary?: string;
   readonly time?: Date;
   streamType?: string;
   streamText?: string;
-  value?: string;
+  value?: { [propertyName: string]: any };
 }
 
 /**
@@ -3373,7 +3395,7 @@ export interface WatcherListResult extends Array<Watcher> {
  * @constructor
  * The response model for the list source controls operation.
  *
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [nextLink] The next link.
  */
 export interface SourceControlListResult extends Array<SourceControl> {
   nextLink?: string;
@@ -3385,7 +3407,7 @@ export interface SourceControlListResult extends Array<SourceControl> {
  * @constructor
  * The response model for the list source control sync jobs operation.
  *
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [nextLink] The next link.
  */
 export interface SourceControlSyncJobListResult extends Array<SourceControlSyncJob> {
   nextLink?: string;
@@ -3397,7 +3419,7 @@ export interface SourceControlSyncJobListResult extends Array<SourceControlSyncJ
  * @constructor
  * The response model for the list source control sync job streams operation.
  *
- * @member {string} [nextLink] Gets or sets the next link.
+ * @member {string} [nextLink] The next link.
  */
 export interface SourceControlSyncJobStreamsListBySyncJob extends Array<SourceControlSyncJobStream> {
   readonly nextLink?: string;

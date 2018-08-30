@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-03-01.6.1')
+  .delete('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '184d98f5-9cad-4169-8a21-cbf29dec0eb0',
+  'request-id': '003f73cb-58f9-4ed5-a740-5e4da580f463',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:11 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .delete('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-03-01.6.1')
+  .delete('/jobs/HelloWorldJobNodeSDKTest?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '184d98f5-9cad-4169-8a21-cbf29dec0eb0',
+  'request-id': '003f73cb-58f9-4ed5-a740-5e4da580f463',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 09 Mar 2018 23:05:11 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:03 GMT',
   connection: 'close' });
  return result; }]];

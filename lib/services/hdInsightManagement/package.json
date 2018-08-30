@@ -2,7 +2,7 @@
   "name": "azure-arm-hdinsight",
   "author": "Microsoft Corporation",
   "description": "HDInsightManagementClient Library with typescript type definitions for node",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/hDInsightManagementClient.js",
   "types": "./lib/hDInsightManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/hdInsightManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/hdInsightManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
