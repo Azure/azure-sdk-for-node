@@ -29676,7 +29676,7 @@ export interface ManagedInstanceKeys {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServerWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
 
     /**
      * Gets a list of managed instance keys.
@@ -29718,9 +29718,9 @@ export interface ManagedInstanceKeys {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByServer(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
-    listByServer(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
-    listByServer(resourceGroupName: string, managedInstanceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
 
 
     /**
@@ -30115,7 +30115,7 @@ export interface ManagedInstanceKeys {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
 
     /**
      * Gets a list of managed instance keys.
@@ -30151,9 +30151,9 @@ export interface ManagedInstanceKeys {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
-    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
-    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
 }
 
 /**
