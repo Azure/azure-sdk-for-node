@@ -129,6 +129,9 @@ export interface SubResource extends BaseResource {
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
  * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
+ * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -237,6 +240,9 @@ export interface SubResource extends BaseResource {
  * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -417,6 +423,9 @@ export interface SubResource extends BaseResource {
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
  * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
+ * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -522,6 +531,9 @@ export interface SubResource extends BaseResource {
  * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -755,6 +767,50 @@ export interface SecurityRule extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the EndpointService class.
+ * @constructor
+ * Identifies the service being brought into the virtual network.
+ *
+ * @member {string} [id] A unique identifier of the service being referenced by
+ * the interface endpoint.
+ */
+export interface EndpointService {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InterfaceEndpoint class.
+ * @constructor
+ * Interface endpoint resource.
+ *
+ * @member {string} [fqdn] A first-party service's FQDN that is mapped to the
+ * private IP allocated via this interface endpoint.
+ * @member {object} [endpointService] A reference to the service being brought
+ * into the virtual network.
+ * @member {string} [endpointService.id] A unique identifier of the service
+ * being referenced by the interface endpoint.
+ * @member {object} [subnet] The ID of the subnet from which the private IP
+ * will be allocated.
+ * @member {string} [subnet.id] Resource ID.
+ * @member {array} [networkInterfaces] Gets an array of references to the
+ * network interfaces created for this interface endpoint.
+ * @member {string} [owner] A read-only property that identifies who created
+ * this interface endpoint.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface InterfaceEndpoint extends Resource {
+  fqdn?: string;
+  endpointService?: EndpointService;
+  subnet?: SubResource;
+  networkInterfaces?: SubResource[];
+  readonly owner?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NetworkInterfaceDnsSettings class.
  * @constructor
  * DNS settings of a network interface.
@@ -809,6 +865,23 @@ export interface NetworkInterfaceDnsSettings {
  * 'Deleting', and 'Failed'.
  * @member {string} [networkSecurityGroup.etag] A unique read-only string that
  * changes whenever the resource is updated.
+ * @member {object} [interfaceEndpoint] A reference to the interface endpoint
+ * to which the network interface is linked.
+ * @member {string} [interfaceEndpoint.fqdn] A first-party service's FQDN that
+ * is mapped to the private IP allocated via this interface endpoint.
+ * @member {object} [interfaceEndpoint.endpointService] A reference to the
+ * service being brought into the virtual network.
+ * @member {string} [interfaceEndpoint.endpointService.id] A unique identifier
+ * of the service being referenced by the interface endpoint.
+ * @member {object} [interfaceEndpoint.subnet] The ID of the subnet from which
+ * the private IP will be allocated.
+ * @member {string} [interfaceEndpoint.subnet.id] Resource ID.
+ * @member {array} [interfaceEndpoint.networkInterfaces] Gets an array of
+ * references to the network interfaces created for this interface endpoint.
+ * @member {string} [interfaceEndpoint.owner] A read-only property that
+ * identifies who created this interface endpoint.
+ * @member {string} [interfaceEndpoint.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated.
  * @member {array} [ipConfigurations] A list of IPConfigurations of the network
  * interface.
  * @member {object} [dnsSettings] The DNS settings in network interface.
@@ -846,6 +919,7 @@ export interface NetworkInterfaceDnsSettings {
 export interface NetworkInterface extends Resource {
   virtualMachine?: SubResource;
   networkSecurityGroup?: NetworkSecurityGroup;
+  interfaceEndpoint?: InterfaceEndpoint;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
   dnsSettings?: NetworkInterfaceDnsSettings;
   macAddress?: string;
@@ -1128,6 +1202,8 @@ export interface IpTag {
  * service endpoints.
  * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
  * service endpoint policies.
+ * @member {array} [ipConfiguration.subnet.interfaceEndpoints] An array of
+ * references to interface endpoints
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1246,6 +1322,8 @@ export interface PublicIPAddress extends Resource {
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1382,6 +1460,8 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {array} [serviceEndpoints] An array of service endpoints.
  * @member {array} [serviceEndpointPolicies] An array of service endpoint
  * policies.
+ * @member {array} [interfaceEndpoints] An array of references to interface
+ * endpoints
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
@@ -1399,6 +1479,7 @@ export interface Subnet extends SubResource {
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
   serviceEndpointPolicies?: ServiceEndpointPolicy[];
+  interfaceEndpoints?: SubResource[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -1463,6 +1544,8 @@ export interface Subnet extends SubResource {
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1543,6 +1626,8 @@ export interface Subnet extends SubResource {
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
  * service endpoint policies.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1725,6 +1810,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * [destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
  * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.interfaceEndpoints] An
+ * array of references to interface endpoints
+ * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array}
@@ -1828,6 +1916,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -2003,6 +2094,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
  * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
+ * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -2108,6 +2202,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -2328,6 +2425,8 @@ export interface BackendAddressPool extends SubResource {
  * service endpoints.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
  * array of service endpoint policies.
+ * @member {array} [backendIPConfiguration.subnet.interfaceEndpoints] An array
+ * of references to interface endpoints
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
@@ -2425,6 +2524,9 @@ export interface BackendAddressPool extends SubResource {
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -2604,6 +2706,8 @@ export interface InboundNatRule extends SubResource {
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -2687,6 +2791,8 @@ export interface InboundNatRule extends SubResource {
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
  * service endpoint policies.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -2964,6 +3070,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * service endpoints.
  * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
  * service endpoint policies.
+ * @member {array} [ipConfiguration.subnet.interfaceEndpoints] An array of
+ * references to interface endpoints
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -3058,6 +3166,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
  * An array of service endpoint policies.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.interfaceEndpoints]
+ * An array of references to interface endpoints
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -4261,23 +4372,6 @@ export interface AzureFirewall extends Resource {
   networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
   ipConfigurations?: AzureFirewallIPConfiguration[];
   provisioningState?: string;
-  readonly etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFirewallFqdnTag class.
- * @constructor
- * Azure Firewall FQDN Tag Resource
- *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * @member {string} [fqdnTagName] The name of this FQDN Tag.
- * @member {string} [etag] Gets a unique read-only string that changes whenever
- * the resource is updated.
- */
-export interface AzureFirewallFqdnTag extends Resource {
-  readonly provisioningState?: string;
-  readonly fqdnTagName?: string;
   readonly etag?: string;
 }
 
@@ -8791,6 +8885,18 @@ export interface ExpressRouteCrossConnectionListResult extends Array<ExpressRout
  */
 export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRouteCrossConnectionPeering> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InterfaceEndpointListResult class.
+ * @constructor
+ * Response for the ListInterfaceEndpoints API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface InterfaceEndpointListResult extends Array<InterfaceEndpoint> {
+  nextLink?: string;
 }
 
 /**
