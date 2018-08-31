@@ -57,6 +57,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
   azureFirewalls: operations.AzureFirewalls;
+  azureFirewallFqdnTags: operations.AzureFirewallFqdnTags;
   ddosProtectionPlans: operations.DdosProtectionPlans;
   availableEndpointServices: operations.AvailableEndpointServices;
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;

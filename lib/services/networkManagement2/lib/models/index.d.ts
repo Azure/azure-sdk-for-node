@@ -4017,11 +4017,8 @@ export interface TagsObject {
  * @member {object} [subnet] Reference of the subnet resource. This resource
  * must be named 'AzureFirewallSubnet'.
  * @member {string} [subnet.id] Resource ID.
- * @member {object} [internalPublicIpAddress] Reference of the PublicIP
- * resource. This field is a mandatory input.
- * @member {string} [internalPublicIpAddress.id] Resource ID.
  * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
- * field is populated in the output.
+ * field is a mandatory input if subnet is not null.
  * @member {string} [publicIPAddress.id] Resource ID.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
@@ -4033,7 +4030,6 @@ export interface TagsObject {
 export interface AzureFirewallIPConfiguration extends SubResource {
   privateIPAddress?: string;
   subnet?: SubResource;
-  internalPublicIpAddress?: SubResource;
   publicIPAddress?: SubResource;
   provisioningState?: string;
   name?: string;
@@ -4080,6 +4076,7 @@ export interface AzureFirewallApplicationRuleProtocol {
  * @member {array} [sourceAddresses] List of source IP addresses for this rule.
  * @member {array} [protocols] Array of ApplicationRuleProtocols.
  * @member {array} [targetUrls] List of URLs for this rule.
+ * @member {array} [fqdnTags] List of FQDN Tags for this rule.
  */
 export interface AzureFirewallApplicationRule {
   name?: string;
@@ -4087,6 +4084,7 @@ export interface AzureFirewallApplicationRule {
   sourceAddresses?: string[];
   protocols?: AzureFirewallApplicationRuleProtocol[];
   targetUrls?: string[];
+  fqdnTags?: string[];
 }
 
 /**
@@ -4191,6 +4189,23 @@ export interface AzureFirewall extends Resource {
   networkRuleCollections?: AzureFirewallNetworkRuleCollection[];
   ipConfigurations?: AzureFirewallIPConfiguration[];
   provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallFqdnTag class.
+ * @constructor
+ * Azure Firewall FQDN Tag Resource
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [fqdnTagName] The name of this FQDN Tag.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface AzureFirewallFqdnTag extends Resource {
+  readonly provisioningState?: string;
+  readonly fqdnTagName?: string;
   readonly etag?: string;
 }
 
@@ -8575,6 +8590,18 @@ export interface ApplicationSecurityGroupListResult extends Array<ApplicationSec
  * @member {string} [nextLink] URL to get the next set of results.
  */
 export interface AzureFirewallListResult extends Array<AzureFirewall> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFirewallFqdnTagListResult class.
+ * @constructor
+ * Response for ListAzureFirewallFqdnTags API service call.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ */
+export interface AzureFirewallFqdnTagListResult extends Array<AzureFirewallFqdnTag> {
   nextLink?: string;
 }
 
