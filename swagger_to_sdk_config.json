@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/lmazuel/swagger-to-sdk/master/swagger_to_sdk_config.schema.json",
   "meta": {
     "autorest_options": {
       "nodejs": "",
@@ -6,7 +7,6 @@
       "sdkrel:node-sdks-folder": ".",
       "use": "@microsoft.azure/autorest.nodejs@2.1.96"
     },
-    "repotag": "azure-sdk-for-node",
-    "version": "0.3.0"
+    "version": "0.2.0"
   }
 }
