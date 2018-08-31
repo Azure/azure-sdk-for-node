@@ -122,6 +122,64 @@ export interface SignedInUser {
     listOwnedObjects(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
     listOwnedObjects(callback: ServiceCallback<models.DirectoryObjectListResult>): void;
     listOwnedObjects(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+
+
+    /**
+     * Get the list of directory objects that are owned by the user.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOwnedObjectsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+
+    /**
+     * Get the list of directory objects that are owned by the user.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOwnedObjectsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwnedObjectsNext(nextPageLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwnedObjectsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 }
 
 /**
@@ -939,6 +997,70 @@ export interface Applications {
     listNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationListResult>;
     listNext(nextLink: string, callback: ServiceCallback<models.ApplicationListResult>): void;
     listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationListResult>): void;
+
+
+    /**
+     * @summary Directory objects that are owners of the application.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOwnersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+
+    /**
+     * @summary Directory objects that are owners of the application.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOwnersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwnersNext(nextPageLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwnersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 }
 
 /**
@@ -1923,6 +2045,70 @@ export interface Groups {
     getGroupMembersNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetObjectsResult>;
     getGroupMembersNext(nextLink: string, callback: ServiceCallback<models.GetObjectsResult>): void;
     getGroupMembersNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
+
+
+    /**
+     * @summary Directory objects that are owners of the group.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOwnersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+
+    /**
+     * @summary Directory objects that are owners of the group.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOwnersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwnersNext(nextPageLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwnersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 }
 
 /**
@@ -2526,6 +2712,70 @@ export interface ServicePrincipals {
     listNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalListResult>;
     listNext(nextLink: string, callback: ServiceCallback<models.ServicePrincipalListResult>): void;
     listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalListResult>): void;
+
+
+    /**
+     * @summary Directory objects that are owners of this service principal.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOwnersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+
+    /**
+     * @summary Directory objects that are owners of this service principal.
+     *
+     * The owners are a set of non-admin users who are allowed to modify this
+     * object.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOwnersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwnersNext(nextPageLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwnersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 }
 
 /**

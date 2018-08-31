@@ -829,6 +829,18 @@ export interface Permissions {
 
 /**
  * @class
+ * Initializes a new instance of the DirectoryObjectListResult class.
+ * @constructor
+ * DirectoryObject list operation result.
+ *
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ */
+export interface DirectoryObjectListResult extends Array<DirectoryObject> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationListResult class.
  * @constructor
  * Application list operation result.
@@ -837,16 +849,6 @@ export interface Permissions {
  */
 export interface ApplicationListResult extends Array<Application> {
   odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DirectoryObjectListResult class.
- * @constructor
- * DirectoryObject list operation result.
- *
- */
-export interface DirectoryObjectListResult extends Array<DirectoryObject> {
 }
 
 /**
