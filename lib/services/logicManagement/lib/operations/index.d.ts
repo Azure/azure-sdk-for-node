@@ -6501,7 +6501,7 @@ export interface IntegrationAccountAgreements {
      * @param {object} [agreement.metadata] The metadata.
      *
      * @param {string} agreement.agreementType The agreement type. Possible values
-     * include: 'NotSpecified', 'AS2', 'X12', 'Edifact'
+     * include: 'NotSpecified', 'AS2', 'X12', 'EDIFACT'
      *
      * @param {string} agreement.hostPartner The integration account partner that
      * is set as host partner for this agreement.
@@ -7521,7 +7521,7 @@ export interface IntegrationAccountAgreements {
      * @param {object} [agreement.metadata] The metadata.
      *
      * @param {string} agreement.agreementType The agreement type. Possible values
-     * include: 'NotSpecified', 'AS2', 'X12', 'Edifact'
+     * include: 'NotSpecified', 'AS2', 'X12', 'EDIFACT'
      *
      * @param {string} agreement.hostPartner The integration account partner that
      * is set as host partner for this agreement.
