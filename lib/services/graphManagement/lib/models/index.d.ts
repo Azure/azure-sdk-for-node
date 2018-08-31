@@ -235,11 +235,43 @@ export interface ApplicationUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the AppRole class.
+ * @constructor
+ * @member {string} [id] Unique role identifier inside the appRoles collection.
+ * @member {array} [allowedMemberTypes] Specifies whether this app role
+ * definition can be assigned to users and groups by setting to 'User', or to
+ * other applications (that are accessing this application in daemon service
+ * scenarios) by setting to 'Application', or to both.
+ * @member {string} [description] Permission help text that appears in the
+ * admin app assignment and consent experiences.
+ * @member {string} [displayName] Display name for the permission that appears
+ * in the admin consent and app assignment experiences.
+ * @member {boolean} [isEnabled] When creating or updating a role definition,
+ * this must be set to true (which is the default). To delete a role, this must
+ * first be set to false. At that point, in a subsequent call, this role may be
+ * removed.
+ * @member {string} [value] Specifies the value of the roles claim that the
+ * application should expect in the authentication and access tokens.
+ */
+export interface AppRole {
+  id?: string;
+  allowedMemberTypes?: string[];
+  description?: string;
+  displayName?: string;
+  isEnabled?: boolean;
+  value?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Application class.
  * @constructor
  * Active Directory application information.
  *
  * @member {string} [appId] The application ID.
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
  * @member {array} [appPermissions] The application permissions.
  * @member {boolean} [availableToOtherTenants] Whether the application is be
  * available to other tenants.
@@ -252,6 +284,7 @@ export interface ApplicationUpdateParameters {
  */
 export interface Application extends DirectoryObject {
   appId?: string;
+  appRoles?: AppRole[];
   appPermissions?: string[];
   availableToOtherTenants?: boolean;
   displayName?: string;
@@ -263,7 +296,7 @@ export interface Application extends DirectoryObject {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationAddOwnerParameters class.
+ * Initializes a new instance of the AddOwnerParameters class.
  * @constructor
  * Request parameters for adding a owner to an application.
  *
@@ -273,13 +306,21 @@ export interface Application extends DirectoryObject {
  * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the owner (user,
  * application, servicePrincipal, group) to be added.
  */
-export interface ApplicationAddOwnerParameters {
+export interface AddOwnerParameters {
   url: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
    */
   [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationAddOwnerParameters class.
+ * @constructor
+ */
+export interface ApplicationAddOwnerParameters extends AddOwnerParameters {
 }
 
 /**
@@ -410,11 +451,17 @@ export interface GroupCreateParameters {
  * Active Directory group information.
  *
  * @member {string} [displayName] The display name of the group.
+ * @member {boolean} [mailEnabled] Whether the group is mail-enabled. Must be
+ * false. This is because only pure security groups can be created using the
+ * Graph API.
+ * @member {string} [mailNickname] The mail alias for the group.
  * @member {boolean} [securityEnabled] Whether the group is security-enable.
  * @member {string} [mail] The primary email address of the group.
  */
 export interface ADGroup extends DirectoryObject {
   displayName?: string;
+  mailEnabled?: boolean;
+  mailNickname?: string;
   securityEnabled?: boolean;
   mail?: string;
 }
@@ -509,12 +556,16 @@ export interface ServicePrincipalCreateParameters {
  *
  * @member {string} [displayName] The display name of the service principal.
  * @member {string} [appId] The application ID.
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
  * @member {array} [servicePrincipalNames] A collection of service principal
  * names.
  */
 export interface ServicePrincipal extends DirectoryObject {
   displayName?: string;
   appId?: string;
+  appRoles?: AppRole[];
   servicePrincipalNames?: string[];
 }
 
@@ -778,18 +829,6 @@ export interface Permissions {
 
 /**
  * @class
- * Initializes a new instance of the GetObjectsResult class.
- * @constructor
- * The response to an Active Directory object inquiry API request.
- *
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface GetObjectsResult extends Array<AADObject> {
-  odatanextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationListResult class.
  * @constructor
  * Application list operation result.
@@ -839,6 +878,18 @@ export interface PasswordCredentialListResult extends Array<PasswordCredential> 
  * @member {string} [odatanextLink] The URL to get the next set of results.
  */
 export interface GroupListResult extends Array<ADGroup> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetObjectsResult class.
+ * @constructor
+ * The response to an Active Directory object inquiry API request.
+ *
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ */
+export interface GetObjectsResult extends Array<AADObject> {
   odatanextLink?: string;
 }
 
