@@ -2584,11 +2584,8 @@ export interface TagsObject {
  * @member {object} [subnet] Reference of the subnet resource. This resource
  * must be named 'AzureFirewallSubnet'.
  * @member {string} [subnet.id] Resource ID.
- * @member {object} [internalPublicIpAddress] Reference of the PublicIP
- * resource. This field is a mandatory input.
- * @member {string} [internalPublicIpAddress.id] Resource ID.
  * @member {object} [publicIPAddress] Reference of the PublicIP resource. This
- * field is populated in the output.
+ * field is a mandatory input if subnet is not null.
  * @member {string} [publicIPAddress.id] Resource ID.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
@@ -2600,7 +2597,6 @@ export interface TagsObject {
 export interface AzureFirewallIPConfiguration extends SubResource {
   privateIPAddress?: string;
   subnet?: SubResource;
-  internalPublicIpAddress?: SubResource;
   publicIPAddress?: SubResource;
   provisioningState?: string;
   name?: string;
