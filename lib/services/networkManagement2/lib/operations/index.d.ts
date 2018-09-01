@@ -186,6 +186,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.authenticationCertificates] Authentication
      * certificates of the application gateway resource.
      *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
+     * certificates of the application gateway resource.
+     *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
      * application gateway resource.
      *
@@ -340,6 +343,9 @@ export interface ApplicationGateways {
      * the gateway resource.
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
+     * certificates of the application gateway resource.
+     *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
      * certificates of the application gateway resource.
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
@@ -1150,6 +1156,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.authenticationCertificates] Authentication
      * certificates of the application gateway resource.
      *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
+     * certificates of the application gateway resource.
+     *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
      * application gateway resource.
      *
@@ -1304,6 +1313,9 @@ export interface ApplicationGateways {
      * the gateway resource.
      *
      * @param {array} [parameters.authenticationCertificates] Authentication
+     * certificates of the application gateway resource.
+     *
+     * @param {array} [parameters.trustedRootCertificates] Trusted Root
      * certificates of the application gateway resource.
      *
      * @param {array} [parameters.sslCertificates] SSL certificates of the
@@ -10407,6 +10419,652 @@ export interface ExpressRouteConnections {
 
 /**
  * @class
+ * InterfaceEndpoints
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface InterfaceEndpoints {
+
+
+    /**
+     * Deletes the specified interface endpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, interfaceEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified interface endpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, interfaceEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, interfaceEndpointName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, interfaceEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified interface endpoint by resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, interfaceEndpointName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpoint>>;
+
+    /**
+     * Gets the specified interface endpoint by resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, interfaceEndpointName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpoint>;
+    get(resourceGroupName: string, interfaceEndpointName: string, callback: ServiceCallback<models.InterfaceEndpoint>): void;
+    get(resourceGroupName: string, interfaceEndpointName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpoint>): void;
+
+
+    /**
+     * Creates or updates an interface endpoint in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * interface endpoint operation
+     *
+     * @param {string} [parameters.fqdn] A first-party service's FQDN that is
+     * mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.endpointService] A reference to the service
+     * being brought into the virtual network.
+     *
+     * @param {string} [parameters.endpointService.id] A unique identifier of the
+     * service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.subnet] The ID of the subnet from which the
+     * private IP will be allocated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.networkInterfaces] Gets an array of references to
+     * the network interfaces created for this interface endpoint.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpoint>>;
+
+    /**
+     * Creates or updates an interface endpoint in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * interface endpoint operation
+     *
+     * @param {string} [parameters.fqdn] A first-party service's FQDN that is
+     * mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.endpointService] A reference to the service
+     * being brought into the virtual network.
+     *
+     * @param {string} [parameters.endpointService.id] A unique identifier of the
+     * service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.subnet] The ID of the subnet from which the
+     * private IP will be allocated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.networkInterfaces] Gets an array of references to
+     * the network interfaces created for this interface endpoint.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpoint>;
+    createOrUpdate(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, callback: ServiceCallback<models.InterfaceEndpoint>): void;
+    createOrUpdate(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpoint>): void;
+
+
+    /**
+     * Gets all interface endpoints in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpointListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointListResult>>;
+
+    /**
+     * Gets all interface endpoints in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpointListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpointListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+
+
+    /**
+     * Gets all interface endpoints in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpointListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointListResult>>;
+
+    /**
+     * Gets all interface endpoints in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpointListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpointListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointListResult>;
+    listBySubscription(callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+
+
+    /**
+     * Deletes the specified interface endpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, interfaceEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified interface endpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, interfaceEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, interfaceEndpointName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, interfaceEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates an interface endpoint in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * interface endpoint operation
+     *
+     * @param {string} [parameters.fqdn] A first-party service's FQDN that is
+     * mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.endpointService] A reference to the service
+     * being brought into the virtual network.
+     *
+     * @param {string} [parameters.endpointService.id] A unique identifier of the
+     * service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.subnet] The ID of the subnet from which the
+     * private IP will be allocated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.networkInterfaces] Gets an array of references to
+     * the network interfaces created for this interface endpoint.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpoint>>;
+
+    /**
+     * Creates or updates an interface endpoint in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} interfaceEndpointName The name of the interface endpoint.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * interface endpoint operation
+     *
+     * @param {string} [parameters.fqdn] A first-party service's FQDN that is
+     * mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.endpointService] A reference to the service
+     * being brought into the virtual network.
+     *
+     * @param {string} [parameters.endpointService.id] A unique identifier of the
+     * service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.subnet] The ID of the subnet from which the
+     * private IP will be allocated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.networkInterfaces] Gets an array of references to
+     * the network interfaces created for this interface endpoint.
+     *
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpoint>;
+    beginCreateOrUpdate(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, callback: ServiceCallback<models.InterfaceEndpoint>): void;
+    beginCreateOrUpdate(resourceGroupName: string, interfaceEndpointName: string, parameters: models.InterfaceEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpoint>): void;
+
+
+    /**
+     * Gets all interface endpoints in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpointListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointListResult>>;
+
+    /**
+     * Gets all interface endpoints in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpointListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpointListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+
+
+    /**
+     * Gets all interface endpoints in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpointListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointListResult>>;
+
+    /**
+     * Gets all interface endpoints in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpointListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpointListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointListResult>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointListResult>): void;
+}
+
+/**
+ * @class
  * LoadBalancers
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -12956,8 +13614,6 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -12983,6 +13639,36 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
+     * endpoint to which the network interface is linked.
+     *
+     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
+     * FQDN that is mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
+     * to the service being brought into the virtual network.
+     *
+     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
+     * identifier of the service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
+     * from which the private IP will be allocated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
+     * array of references to the network interfaces created for this interface
+     * endpoint.
+     *
+     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
+     *
+     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
+     *
+     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -13024,6 +13710,9 @@ export interface NetworkInterfaces {
      *
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
+     *
+     * @param {string} [parameters.linkedResourceType] The type of resource to be
+     * linked to this network interface
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
@@ -13067,8 +13756,6 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -13094,6 +13781,36 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
+     * endpoint to which the network interface is linked.
+     *
+     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
+     * FQDN that is mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
+     * to the service being brought into the virtual network.
+     *
+     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
+     * identifier of the service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
+     * from which the private IP will be allocated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
+     * array of references to the network interfaces created for this interface
+     * endpoint.
+     *
+     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
+     *
+     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
+     *
+     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -13135,6 +13852,9 @@ export interface NetworkInterfaces {
      *
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
+     *
+     * @param {string} [parameters.linkedResourceType] The type of resource to be
+     * linked to this network interface
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
@@ -13911,8 +14631,6 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -13938,6 +14656,36 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
+     * endpoint to which the network interface is linked.
+     *
+     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
+     * FQDN that is mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
+     * to the service being brought into the virtual network.
+     *
+     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
+     * identifier of the service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
+     * from which the private IP will be allocated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
+     * array of references to the network interfaces created for this interface
+     * endpoint.
+     *
+     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
+     *
+     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
+     *
+     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -13979,6 +14727,9 @@ export interface NetworkInterfaces {
      *
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
+     *
+     * @param {string} [parameters.linkedResourceType] The type of resource to be
+     * linked to this network interface
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
@@ -14022,8 +14773,6 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -14049,6 +14798,36 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
+     * endpoint to which the network interface is linked.
+     *
+     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
+     * FQDN that is mapped to the private IP allocated via this interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
+     * to the service being brought into the virtual network.
+     *
+     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
+     * identifier of the service being referenced by the interface endpoint.
+     *
+     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
+     * from which the private IP will be allocated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
+     *
+     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
+     * array of references to the network interfaces created for this interface
+     * endpoint.
+     *
+     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
+     *
+     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
+     *
+     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -14090,6 +14869,9 @@ export interface NetworkInterfaces {
      *
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
+     *
+     * @param {string} [parameters.linkedResourceType] The type of resource to be
+     * linked to this network interface
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
@@ -15273,6 +16055,10 @@ export interface NetworkInterfaceTapConfigurations {
      * An array of service endpoint policies.
      *
      * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
+     *
+     * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -15652,6 +16438,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
@@ -16177,6 +16967,10 @@ export interface NetworkInterfaceTapConfigurations {
      * An array of service endpoint policies.
      *
      * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
+     *
+     * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -16556,6 +17350,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
@@ -30711,6 +31509,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
      *
+     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
+     * to interface endpoints
+     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -30811,6 +31612,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
+     *
+     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
+     * to interface endpoints
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -31053,6 +31857,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
      *
+     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
+     * to interface endpoints
+     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -31153,6 +31960,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
+     *
+     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
+     * to interface endpoints
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -32237,6 +33047,10 @@ export interface VirtualNetworkTaps {
      * An array of service endpoint policies.
      *
      * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
+     *
+     * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -32591,6 +33405,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
@@ -33203,6 +34021,10 @@ export interface VirtualNetworkTaps {
      * An array of service endpoint policies.
      *
      * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
+     *
+     * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -33557,6 +34379,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
+     * An array of references to interface endpoints
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
