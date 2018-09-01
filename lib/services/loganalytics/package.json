@@ -2,7 +2,7 @@
   "name": "azure-loganalytics",
   "author": "Microsoft Corporation",
   "description": "LogAnalyticsClient Library with typescript type definitions for node",
-  "version": "0.1.1",
+  "version": "",
   "dependencies": {
     "ms-rest": "^2.3.3"
   },
