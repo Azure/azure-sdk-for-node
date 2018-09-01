@@ -2,7 +2,7 @@
   "name": "azure-graph",
   "author": "Microsoft Corporation",
   "description": "GraphRbacManagementClient Library with typescript type definitions for node",
-  "version": "3.1.0",
+  "version": "",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"

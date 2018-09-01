@@ -157,84 +157,6 @@ export interface RequiredResourceAccess {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationCreateParameters class.
- * @constructor
- * Request parameters for creating a new application.
- *
- * @member {boolean} availableToOtherTenants Whether the application is
- * available to other tenants.
- * @member {string} displayName The display name of the application.
- * @member {string} [homepage] The home page of the application.
- * @member {array} identifierUris A collection of URIs for the application.
- * @member {array} [replyUrls] A collection of reply URLs for the application.
- * @member {array} [keyCredentials] The list of KeyCredential objects.
- * @member {array} [passwordCredentials] The list of PasswordCredential
- * objects.
- * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
- * flow for OAuth2
- * @member {array} [requiredResourceAccess] Specifies resources that this
- * application requires access to and the set of OAuth permission scopes and
- * application roles that it needs under each of those resources. This
- * pre-configuration of required resource access drives the consent experience.
- */
-export interface ApplicationCreateParameters {
-  availableToOtherTenants: boolean;
-  displayName: string;
-  homepage?: string;
-  identifierUris: string[];
-  replyUrls?: string[];
-  keyCredentials?: KeyCredential[];
-  passwordCredentials?: PasswordCredential[];
-  oauth2AllowImplicitFlow?: boolean;
-  requiredResourceAccess?: RequiredResourceAccess[];
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationUpdateParameters class.
- * @constructor
- * Request parameters for updating an existing application.
- *
- * @member {boolean} [availableToOtherTenants] Whether the application is
- * available to other tenants
- * @member {string} [displayName] The display name of the application.
- * @member {string} [homepage] The home page of the application.
- * @member {array} [identifierUris] A collection of URIs for the application.
- * @member {array} [replyUrls] A collection of reply URLs for the application.
- * @member {array} [keyCredentials] The list of KeyCredential objects.
- * @member {array} [passwordCredentials] The list of PasswordCredential
- * objects.
- * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
- * flow for OAuth2
- * @member {array} [requiredResourceAccess] Specifies resources that this
- * application requires access to and the set of OAuth permission scopes and
- * application roles that it needs under each of those resources. This
- * pre-configuration of required resource access drives the consent experience.
- */
-export interface ApplicationUpdateParameters {
-  availableToOtherTenants?: boolean;
-  displayName?: string;
-  homepage?: string;
-  identifierUris?: string[];
-  replyUrls?: string[];
-  keyCredentials?: KeyCredential[];
-  passwordCredentials?: PasswordCredential[];
-  oauth2AllowImplicitFlow?: boolean;
-  requiredResourceAccess?: RequiredResourceAccess[];
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the AppRole class.
  * @constructor
  * @member {string} [id] Unique role identifier inside the appRoles collection.
@@ -260,6 +182,92 @@ export interface AppRole {
   displayName?: string;
   isEnabled?: boolean;
   value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationCreateParameters class.
+ * @constructor
+ * Request parameters for creating a new application.
+ *
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
+ * @member {boolean} availableToOtherTenants Whether the application is
+ * available to other tenants.
+ * @member {string} displayName The display name of the application.
+ * @member {string} [homepage] The home page of the application.
+ * @member {array} identifierUris A collection of URIs for the application.
+ * @member {array} [replyUrls] A collection of reply URLs for the application.
+ * @member {array} [keyCredentials] The list of KeyCredential objects.
+ * @member {array} [passwordCredentials] The list of PasswordCredential
+ * objects.
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
+ * flow for OAuth2
+ * @member {array} [requiredResourceAccess] Specifies resources that this
+ * application requires access to and the set of OAuth permission scopes and
+ * application roles that it needs under each of those resources. This
+ * pre-configuration of required resource access drives the consent experience.
+ */
+export interface ApplicationCreateParameters {
+  appRoles?: AppRole[];
+  availableToOtherTenants: boolean;
+  displayName: string;
+  homepage?: string;
+  identifierUris: string[];
+  replyUrls?: string[];
+  keyCredentials?: KeyCredential[];
+  passwordCredentials?: PasswordCredential[];
+  oauth2AllowImplicitFlow?: boolean;
+  requiredResourceAccess?: RequiredResourceAccess[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationUpdateParameters class.
+ * @constructor
+ * Request parameters for updating an existing application.
+ *
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
+ * @member {boolean} [availableToOtherTenants] Whether the application is
+ * available to other tenants
+ * @member {string} [displayName] The display name of the application.
+ * @member {string} [homepage] The home page of the application.
+ * @member {array} [identifierUris] A collection of URIs for the application.
+ * @member {array} [replyUrls] A collection of reply URLs for the application.
+ * @member {array} [keyCredentials] The list of KeyCredential objects.
+ * @member {array} [passwordCredentials] The list of PasswordCredential
+ * objects.
+ * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
+ * flow for OAuth2
+ * @member {array} [requiredResourceAccess] Specifies resources that this
+ * application requires access to and the set of OAuth permission scopes and
+ * application roles that it needs under each of those resources. This
+ * pre-configuration of required resource access drives the consent experience.
+ */
+export interface ApplicationUpdateParameters {
+  appRoles?: AppRole[];
+  availableToOtherTenants?: boolean;
+  displayName?: string;
+  homepage?: string;
+  identifierUris?: string[];
+  replyUrls?: string[];
+  keyCredentials?: KeyCredential[];
+  passwordCredentials?: PasswordCredential[];
+  oauth2AllowImplicitFlow?: boolean;
+  requiredResourceAccess?: RequiredResourceAccess[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**

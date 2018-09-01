@@ -127,8 +127,7 @@ export interface SignedInUser {
     /**
      * Get the list of directory objects that are owned by the user.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} nextLink Next link for the list operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -141,13 +140,12 @@ export interface SignedInUser {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listOwnedObjectsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
+    listOwnedObjectsNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
 
     /**
      * Get the list of directory objects that are owned by the user.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} nextLink Next link for the list operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -177,9 +175,9 @@ export interface SignedInUser {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listOwnedObjectsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
-    listOwnedObjectsNext(nextPageLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
-    listOwnedObjectsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwnedObjectsNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    listOwnedObjectsNext(nextLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    listOwnedObjectsNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 }
 
 /**
@@ -195,6 +193,10 @@ export interface Applications {
      * Create a new application.
      *
      * @param {object} parameters The parameters for creating an application.
+     *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare. These roles can be assigned to users,
+     * groups or service principals.
      *
      * @param {boolean} parameters.availableToOtherTenants Whether the application
      * is available to other tenants.
@@ -240,6 +242,10 @@ export interface Applications {
      * Create a new application.
      *
      * @param {object} parameters The parameters for creating an application.
+     *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare. These roles can be assigned to users,
+     * groups or service principals.
      *
      * @param {boolean} parameters.availableToOtherTenants Whether the application
      * is available to other tenants.
@@ -471,6 +477,10 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to update an existing application.
      *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare. These roles can be assigned to users,
+     * groups or service principals.
+     *
      * @param {boolean} [parameters.availableToOtherTenants] Whether the
      * application is available to other tenants
      *
@@ -518,6 +528,10 @@ export interface Applications {
      * @param {string} applicationObjectId Application object ID.
      *
      * @param {object} parameters Parameters to update an existing application.
+     *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare. These roles can be assigned to users,
+     * groups or service principals.
      *
      * @param {boolean} [parameters.availableToOtherTenants] Whether the
      * application is available to other tenants
@@ -1132,6 +1146,8 @@ export interface DeletedApplications {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply to the operation.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1141,12 +1157,14 @@ export interface DeletedApplications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationListResult>>;
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationListResult>>;
 
     /**
      * Gets a list of deleted applications in the directory.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply to the operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1173,9 +1191,9 @@ export interface DeletedApplications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationListResult>;
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationListResult>;
     list(callback: ServiceCallback<models.ApplicationListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationListResult>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationListResult>): void;
 
 
     /**
