@@ -57,6 +57,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
   azureFirewalls: operations.AzureFirewalls;
+  azureFirewallFqdnTags: operations.AzureFirewallFqdnTags;
   ddosProtectionPlans: operations.DdosProtectionPlans;
   availableEndpointServices: operations.AvailableEndpointServices;
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;
@@ -66,6 +67,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   expressRouteServiceProviders: operations.ExpressRouteServiceProviders;
   expressRouteCrossConnections: operations.ExpressRouteCrossConnections;
   expressRouteCrossConnectionPeerings: operations.ExpressRouteCrossConnectionPeerings;
+  interfaceEndpoints: operations.InterfaceEndpoints;
   loadBalancers: operations.LoadBalancers;
   loadBalancerBackendAddressPools: operations.LoadBalancerBackendAddressPools;
   loadBalancerFrontendIPConfigurations: operations.LoadBalancerFrontendIPConfigurations;
@@ -76,6 +78,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   networkInterfaces: operations.NetworkInterfaces;
   networkInterfaceIPConfigurations: operations.NetworkInterfaceIPConfigurations;
   networkInterfaceLoadBalancers: operations.NetworkInterfaceLoadBalancers;
+  networkInterfaceTapConfigurations: operations.NetworkInterfaceTapConfigurations;
   networkSecurityGroups: operations.NetworkSecurityGroups;
   securityRules: operations.SecurityRules;
   defaultSecurityRules: operations.DefaultSecurityRules;
@@ -96,6 +99,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   virtualNetworks: operations.VirtualNetworks;
   subnets: operations.Subnets;
   virtualNetworkPeerings: operations.VirtualNetworkPeerings;
+  virtualNetworkTaps: operations.VirtualNetworkTaps;
   virtualNetworkGateways: operations.VirtualNetworkGateways;
   virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
   localNetworkGateways: operations.LocalNetworkGateways;
