@@ -113,7 +113,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('///providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20%27Storage%20Account%20Key%20Operator%20Service%20Role%27&api-version=2018-01-01-preview')
+  .get('///providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20%27Storage%20Account%20Key%20Operator%20Service%20Role%27&api-version=2018-09-01-preview')
   .reply(200, "{\"value\":[{\"properties\":{\"roleName\":\"Storage Account Key Operator Service Role\",\"type\":\"BuiltInRole\",\"description\":\"Storage Account Key Operators are allowed to list and regenerate keys on Storage Accounts\",\"assignableScopes\":[\"/\"],\"permissions\":[{\"actions\":[\"Microsoft.Storage/storageAccounts/listkeys/action\",\"Microsoft.Storage/storageAccounts/regeneratekey/action\"],\"notActions\":[],\"dataActions\":[],\"notDataActions\":[]}],\"createdOn\":\"2017-04-13T18:26:11.5770570Z\",\"updatedOn\":\"2017-04-13T20:57:14.5990198Z\",\"createdBy\":null,\"updatedBy\":null},\"id\":\"/providers/Microsoft.Authorization/roleDefinitions/81a9662b-bebf-436f-a333-f67b29880f12\",\"type\":\"Microsoft.Authorization/roleDefinitions\",\"name\":\"81a9662b-bebf-436f-a333-f67b29880f12\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '737',
