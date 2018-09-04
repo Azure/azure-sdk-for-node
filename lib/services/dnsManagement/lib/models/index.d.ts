@@ -192,7 +192,8 @@ export interface SubResource {
  * set.
  * @member {string} [fqdn] Fully qualified domain name of the record set.
  * @member {string} [provisioningState] provisioning State of the record set.
- * @member {object} [targetResource]
+ * @member {object} [targetResource] A reference to an azure resource from
+ * where the dns resource value is taken.
  * @member {string} [targetResource.id] Resource Id.
  * @member {array} [aRecords] The list of A records in the record set.
  * @member {array} [aaaaRecords] The list of AAAA records in the record set.
@@ -261,7 +262,8 @@ export interface RecordSet extends BaseResource {
  * set.
  * @member {string} [recordSet.provisioningState] provisioning State of the
  * record set.
- * @member {object} [recordSet.targetResource]
+ * @member {object} [recordSet.targetResource] A reference to an azure resource
+ * from where the dns resource value is taken.
  * @member {string} [recordSet.targetResource.id] Resource Id.
  * @member {array} [recordSet.aRecords] The list of A records in the record
  * set.
@@ -374,6 +376,8 @@ export interface ZoneUpdate {
  * @class
  * Initializes a new instance of the DnsResourceReferenceRequest class.
  * @constructor
+ * Represents the properties of the Dns Resource Reference Request.
+ *
  * @member {array} [targetResources] A list of references to azure resources
  * for which referencing dns records need to be queried.
  */
@@ -388,7 +392,8 @@ export interface DnsResourceReferenceRequest {
  * Represents a single Azure resource and its referencing DNS records.
  *
  * @member {array} [dnsResources] A list of dns Records
- * @member {object} [targetResource]
+ * @member {object} [targetResource] A reference to an azure resource from
+ * where the dns resource value is taken.
  * @member {string} [targetResource.id] Resource Id.
  */
 export interface DnsResourceReference {
@@ -400,6 +405,8 @@ export interface DnsResourceReference {
  * @class
  * Initializes a new instance of the DnsResourceReferenceResult class.
  * @constructor
+ * Represents the properties of the Dns Resource Reference Result.
+ *
  * @member {array} [dnsResourceReferences] The result of dns resource reference
  * request. A list of dns resource references for each of the azure resource in
  * the request

@@ -46,7 +46,8 @@ export interface RecordSets {
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
      *
-     * @param {object} [parameters.targetResource]
+     * @param {object} [parameters.targetResource] A reference to an azure resource
+     * from where the dns resource value is taken.
      *
      * @param {string} [parameters.targetResource.id] Resource Id.
      *
@@ -146,7 +147,8 @@ export interface RecordSets {
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
      *
-     * @param {object} [parameters.targetResource]
+     * @param {object} [parameters.targetResource] A reference to an azure resource
+     * from where the dns resource value is taken.
      *
      * @param {string} [parameters.targetResource.id] Resource Id.
      *
@@ -267,7 +269,8 @@ export interface RecordSets {
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
      *
-     * @param {object} [parameters.targetResource]
+     * @param {object} [parameters.targetResource] A reference to an azure resource
+     * from where the dns resource value is taken.
      *
      * @param {string} [parameters.targetResource.id] Resource Id.
      *
@@ -373,7 +376,8 @@ export interface RecordSets {
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
      *
-     * @param {object} [parameters.targetResource]
+     * @param {object} [parameters.targetResource] A reference to an azure resource
+     * from where the dns resource value is taken.
      *
      * @param {string} [parameters.targetResource.id] Resource Id.
      *
