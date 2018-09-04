@@ -4594,6 +4594,18 @@ export interface ExpressRouteCircuitStats {
 
 /**
  * @class
+ * Initializes a new instance of the ExpressRouteConnectionId class.
+ * @constructor
+ * The ID of the ExpressRouteConnection.
+ *
+ * @member {string} [id] The ID of the ExpressRouteConnection.
+ */
+export interface ExpressRouteConnectionId {
+  readonly id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExpressRouteCircuitConnection class.
  * @constructor
  * Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
@@ -4725,6 +4737,9 @@ export interface ExpressRouteCircuitConnection extends SubResource {
  * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
  * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
  * 'Enabled'
+ * @member {object} [expressRouteConnection] The ExpressRoute connection.
+ * @member {string} [expressRouteConnection.id] The ID of the
+ * ExpressRouteConnection.
  * @member {array} [connections] The list of circuit connections associated
  * with Azure Private Peering for this circuit.
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -4750,6 +4765,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   lastModifiedBy?: string;
   routeFilter?: RouteFilter;
   ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
+  expressRouteConnection?: ExpressRouteConnectionId;
   connections?: ExpressRouteCircuitConnection[];
   name?: string;
   readonly etag?: string;
@@ -5243,6 +5259,119 @@ export interface ExpressRouteCrossConnection extends Resource {
   readonly provisioningState?: string;
   peerings?: ExpressRouteCrossConnectionPeering[];
   readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds class.
+ * @constructor
+ * Minimum and maximum number of scale units to deploy.
+ *
+ * @member {number} [min] Minimum number of scale units deployed for
+ * ExpressRoute gateway.
+ * @member {number} [max] Maximum number of scale units deployed for
+ * ExpressRoute gateway.
+ */
+export interface ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds {
+  min?: number;
+  max?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteGatewayPropertiesAutoScaleConfiguration class.
+ * @constructor
+ * Configuration for auto scaling.
+ *
+ * @member {object} [bounds] Minimum and maximum number of scale units to
+ * deploy.
+ * @member {number} [bounds.min] Minimum number of scale units deployed for
+ * ExpressRoute gateway.
+ * @member {number} [bounds.max] Maximum number of scale units deployed for
+ * ExpressRoute gateway.
+ */
+export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
+  bounds?: ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteConnection class.
+ * @constructor
+ * ExpressRouteConnection resource.
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [expressRouteConnectionId] The ID of the ExpressRoute
+ * circuit peering.
+ * @member {string} [authorizationKey] Authorization key to establish the
+ * connection.
+ * @member {number} [routingWeight] The routing weight associated to the
+ * connection.
+ * @member {string} name The name of the resource.
+ */
+export interface ExpressRouteConnection extends SubResource {
+  readonly provisioningState?: string;
+  expressRouteConnectionId?: string;
+  authorizationKey?: string;
+  routingWeight?: number;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteGateway class.
+ * @constructor
+ * ExpressRoute gateway resource.
+ *
+ * @member {object} [autoScaleConfiguration] Configuration for auto scaling.
+ * @member {object} [autoScaleConfiguration.bounds] Minimum and maximum number
+ * of scale units to deploy.
+ * @member {number} [autoScaleConfiguration.bounds.min] Minimum number of scale
+ * units deployed for ExpressRoute gateway.
+ * @member {number} [autoScaleConfiguration.bounds.max] Maximum number of scale
+ * units deployed for ExpressRoute gateway.
+ * @member {array} [expressRouteConnections] List of ExpressRoute connections
+ * to the ExpressRoute gateway.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [expressRouteGatewayId] The resource URI for the Virtual
+ * Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub
+ * resource and the ExpressRoute gateway resource reside in the same
+ * subscription.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteGateway extends Resource {
+  autoScaleConfiguration?: ExpressRouteGatewayPropertiesAutoScaleConfiguration;
+  readonly expressRouteConnections?: ExpressRouteConnection[];
+  readonly provisioningState?: string;
+  expressRouteGatewayId?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteGatewayList class.
+ * @constructor
+ * List of ExpressRoute gateways.
+ *
+ * @member {array} [value] List of ExpressRoute gateways.
+ */
+export interface ExpressRouteGatewayList {
+  value?: ExpressRouteGateway[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteConnectionList class.
+ * @constructor
+ * ExpressRouteConnection list
+ *
+ * @member {array} [value] The list of ExpressRoute connections
+ */
+export interface ExpressRouteConnectionList {
+  value?: ExpressRouteConnection[];
 }
 
 /**
@@ -8675,7 +8804,7 @@ export interface P2SVpnServerConfiguration extends SubResource {
  * @member {string} [office365LocalBreakoutCategory] The office local breakout
  * category. Possible values include: 'Optimize', 'OptimizeAndAllow', 'All',
  * 'None'
- * @member {array} [p2sVpnServerConfigurations] list of all
+ * @member {array} [p2SVpnServerConfigurations] list of all
  * P2SVpnServerConfigurations associated with the virtual wan.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
@@ -8690,7 +8819,7 @@ export interface VirtualWAN extends Resource {
   allowBranchToBranchTraffic?: boolean;
   allowVnetToVnetTraffic?: boolean;
   office365LocalBreakoutCategory?: string;
-  p2sVpnServerConfigurations?: P2SVpnServerConfiguration[];
+  p2SVpnServerConfigurations?: P2SVpnServerConfiguration[];
   provisioningState?: string;
   readonly etag?: string;
 }
@@ -9015,35 +9144,35 @@ export interface VpnClientConnectionHealth {
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {number} [vpnGatewayScaleUnit] The scale unit for this p2s vpn
  * gateway.
- * @member {object} [p2sVpnServerConfiguration] The P2SVpnServerConfiguration
+ * @member {object} [p2SVpnServerConfiguration] The P2SVpnServerConfiguration
  * to which the p2sVpnGateway is attached to.
- * @member {array} [p2sVpnServerConfiguration.vpnProtocols] vpnProtocols for
+ * @member {array} [p2SVpnServerConfiguration.vpnProtocols] vpnProtocols for
  * the P2SVpnServerConfiguration.
  * @member {array}
- * [p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates] VPN
+ * [p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates] VPN
  * client root certificate of P2SVpnServerConfiguration.
  * @member {array}
- * [p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+ * [p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
  * VPN client revoked certificate of P2SVpnServerConfiguration.
  * @member {array}
- * [p2sVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+ * [p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
  * Radius Server root certificate of P2SVpnServerConfiguration.
  * @member {array}
- * [p2sVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+ * [p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
  * Radius client root certificate of P2SVpnServerConfiguration.
- * @member {array} [p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+ * @member {array} [p2SVpnServerConfiguration.vpnClientIpsecPolicies]
  * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
- * @member {string} [p2sVpnServerConfiguration.radiusServerAddress] The radius
+ * @member {string} [p2SVpnServerConfiguration.radiusServerAddress] The radius
  * server address property of the P2SVpnServerConfiguration resource for point
  * to site client connection.
- * @member {string} [p2sVpnServerConfiguration.radiusServerSecret] The radius
+ * @member {string} [p2SVpnServerConfiguration.radiusServerSecret] The radius
  * secret property of the P2SVpnServerConfiguration resource for for point to
  * site client connection.
- * @member {array} [p2sVpnServerConfiguration.p2SVpnGateways]
- * @member {string} [p2sVpnServerConfiguration.name] The name of the resource
+ * @member {array} [p2SVpnServerConfiguration.p2SVpnGateways]
+ * @member {string} [p2SVpnServerConfiguration.name] The name of the resource
  * that is unique within a resource group. This name can be used to access the
  * resource.
- * @member {string} [p2sVpnServerConfiguration.etag] Gets a unique read-only
+ * @member {string} [p2SVpnServerConfiguration.etag] Gets a unique read-only
  * string that changes whenever the resource is updated.
  * @member {object} [vpnClientAddressPool] The reference of the address space
  * resource which represents Address space for P2S VpnClient.
@@ -9058,7 +9187,7 @@ export interface P2SVpnGateway extends Resource {
   virtualHub?: SubResource;
   provisioningState?: string;
   vpnGatewayScaleUnit?: number;
-  p2sVpnServerConfiguration?: P2SVpnServerConfiguration;
+  p2SVpnServerConfiguration?: P2SVpnServerConfiguration;
   vpnClientAddressPool?: AddressSpace;
   readonly vpnClientConnectionHealth?: VpnClientConnectionHealth[];
   readonly etag?: string;

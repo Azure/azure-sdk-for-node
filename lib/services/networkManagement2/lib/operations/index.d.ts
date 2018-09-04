@@ -4662,6 +4662,9 @@ export interface ExpressRouteCircuitPeerings {
      * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
      * include: 'Disabled', 'Enabled'
      *
+     * @param {object} [peeringParameters.expressRouteConnection] The ExpressRoute
+     * connection.
+     *
      * @param {array} [peeringParameters.connections] The list of circuit
      * connections associated with Azure Private Peering for this circuit.
      *
@@ -4813,6 +4816,9 @@ export interface ExpressRouteCircuitPeerings {
      * @param {string} [peeringParameters.ipv6PeeringConfig.state] The state of
      * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
      * include: 'Disabled', 'Enabled'
+     *
+     * @param {object} [peeringParameters.expressRouteConnection] The ExpressRoute
+     * connection.
      *
      * @param {array} [peeringParameters.connections] The list of circuit
      * connections associated with Azure Private Peering for this circuit.
@@ -5108,6 +5114,9 @@ export interface ExpressRouteCircuitPeerings {
      * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
      * include: 'Disabled', 'Enabled'
      *
+     * @param {object} [peeringParameters.expressRouteConnection] The ExpressRoute
+     * connection.
+     *
      * @param {array} [peeringParameters.connections] The list of circuit
      * connections associated with Azure Private Peering for this circuit.
      *
@@ -5259,6 +5268,9 @@ export interface ExpressRouteCircuitPeerings {
      * @param {string} [peeringParameters.ipv6PeeringConfig.state] The state of
      * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
      * include: 'Disabled', 'Enabled'
+     *
+     * @param {object} [peeringParameters.expressRouteConnection] The ExpressRoute
+     * connection.
      *
      * @param {array} [peeringParameters.connections] The list of circuit
      * connections associated with Azure Private Peering for this circuit.
@@ -9382,6 +9394,1027 @@ export interface ExpressRouteCrossConnectionPeerings {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteCrossConnectionPeeringList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCrossConnectionPeeringList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCrossConnectionPeeringList>): void;
+}
+
+/**
+ * @class
+ * ExpressRouteGateways
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRouteGateways {
+
+
+    /**
+     * Lists ExpressRoute gateways under a given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteGatewayList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteGatewayList>>;
+
+    /**
+     * Lists ExpressRoute gateways under a given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteGatewayList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteGatewayList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteGatewayList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteGatewayList>;
+    listBySubscription(callback: ServiceCallback<models.ExpressRouteGatewayList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteGatewayList>): void;
+
+
+    /**
+     * Lists ExpressRoute gateways in a given resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteGatewayList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteGatewayList>>;
+
+    /**
+     * Lists ExpressRoute gateways in a given resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteGatewayList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteGatewayList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteGatewayList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteGatewayList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ExpressRouteGatewayList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteGatewayList>): void;
+
+
+    /**
+     * Creates or updates a ExpressRoute gateway in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} putExpressRouteGatewayParameters Parameters required in an
+     * ExpressRoute gateway PUT operation.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.autoScaleConfiguration]
+     * Configuration for auto scaling.
+     *
+     * @param {object}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds] Minimum and
+     * maximum number of scale units to deploy.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.min] Minimum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
+     * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
+     * reside in the same subscription.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.location] Resource
+     * location.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteGateway>>;
+
+    /**
+     * Creates or updates a ExpressRoute gateway in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} putExpressRouteGatewayParameters Parameters required in an
+     * ExpressRoute gateway PUT operation.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.autoScaleConfiguration]
+     * Configuration for auto scaling.
+     *
+     * @param {object}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds] Minimum and
+     * maximum number of scale units to deploy.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.min] Minimum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
+     * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
+     * reside in the same subscription.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.location] Resource
+     * location.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteGateway>;
+    createOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, callback: ServiceCallback<models.ExpressRouteGateway>): void;
+    createOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteGateway>): void;
+
+
+    /**
+     * Fetches the details of a ExpressRoute gateway in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteGateway>>;
+
+    /**
+     * Fetches the details of a ExpressRoute gateway in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteGateway>;
+    get(resourceGroupName: string, expressRouteGatewayName: string, callback: ServiceCallback<models.ExpressRouteGateway>): void;
+    get(resourceGroupName: string, expressRouteGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteGateway>): void;
+
+
+    /**
+     * Deletes the specified ExpressRoute gateway in a resource group. An
+     * ExpressRoute gateway resource can only be deleted when there are no
+     * connection subresources.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ExpressRoute gateway in a resource group. An
+     * ExpressRoute gateway resource can only be deleted when there are no
+     * connection subresources.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, expressRouteGatewayName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, expressRouteGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a ExpressRoute gateway in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} putExpressRouteGatewayParameters Parameters required in an
+     * ExpressRoute gateway PUT operation.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.autoScaleConfiguration]
+     * Configuration for auto scaling.
+     *
+     * @param {object}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds] Minimum and
+     * maximum number of scale units to deploy.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.min] Minimum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
+     * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
+     * reside in the same subscription.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.location] Resource
+     * location.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteGateway>>;
+
+    /**
+     * Creates or updates a ExpressRoute gateway in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} putExpressRouteGatewayParameters Parameters required in an
+     * ExpressRoute gateway PUT operation.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.autoScaleConfiguration]
+     * Configuration for auto scaling.
+     *
+     * @param {object}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds] Minimum and
+     * maximum number of scale units to deploy.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.min] Minimum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {number}
+     * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
+     * number of scale units deployed for ExpressRoute gateway.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
+     * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
+     * reside in the same subscription.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.location] Resource
+     * location.
+     *
+     * @param {object} [putExpressRouteGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteGateway>;
+    beginCreateOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, callback: ServiceCallback<models.ExpressRouteGateway>): void;
+    beginCreateOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, putExpressRouteGatewayParameters: models.ExpressRouteGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteGateway>): void;
+
+
+    /**
+     * Deletes the specified ExpressRoute gateway in a resource group. An
+     * ExpressRoute gateway resource can only be deleted when there are no
+     * connection subresources.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ExpressRoute gateway in a resource group. An
+     * ExpressRoute gateway resource can only be deleted when there are no
+     * connection subresources.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ExpressRouteConnections
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRouteConnections {
+
+
+    /**
+     * Creates a connection between an ExpressRoute gateway and an ExpressRoute
+     * circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} putExpressRouteConnectionParameters Parameters required in
+     * an ExpressRouteConnection PUT operation.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * ExpressRoute circuit peering.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
+     * Authorization key to establish the connection.
+     *
+     * @param {number} [putExpressRouteConnectionParameters.routingWeight] The
+     * routing weight associated to the connection.
+     *
+     * @param {string} putExpressRouteConnectionParameters.name The name of the
+     * resource.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteConnection>>;
+
+    /**
+     * Creates a connection between an ExpressRoute gateway and an ExpressRoute
+     * circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} putExpressRouteConnectionParameters Parameters required in
+     * an ExpressRouteConnection PUT operation.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * ExpressRoute circuit peering.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
+     * Authorization key to establish the connection.
+     *
+     * @param {number} [putExpressRouteConnectionParameters.routingWeight] The
+     * routing weight associated to the connection.
+     *
+     * @param {string} putExpressRouteConnectionParameters.name The name of the
+     * resource.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteConnection>;
+    createOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, callback: ServiceCallback<models.ExpressRouteConnection>): void;
+    createOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteConnection>): void;
+
+
+    /**
+     * Gets the specified ExpressRouteConnection.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the ExpressRoute connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteConnection>>;
+
+    /**
+     * Gets the specified ExpressRouteConnection.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the ExpressRoute connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteConnection>;
+    get(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, callback: ServiceCallback<models.ExpressRouteConnection>): void;
+    get(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteConnection>): void;
+
+
+    /**
+     * Deletes a connection to a ExpressRoute circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a connection to a ExpressRoute circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists ExpressRouteConnections.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteConnectionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteConnectionList>>;
+
+    /**
+     * Lists ExpressRouteConnections.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteConnectionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteConnectionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteConnectionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, expressRouteGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteConnectionList>;
+    list(resourceGroupName: string, expressRouteGatewayName: string, callback: ServiceCallback<models.ExpressRouteConnectionList>): void;
+    list(resourceGroupName: string, expressRouteGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteConnectionList>): void;
+
+
+    /**
+     * Creates a connection between an ExpressRoute gateway and an ExpressRoute
+     * circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} putExpressRouteConnectionParameters Parameters required in
+     * an ExpressRouteConnection PUT operation.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * ExpressRoute circuit peering.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
+     * Authorization key to establish the connection.
+     *
+     * @param {number} [putExpressRouteConnectionParameters.routingWeight] The
+     * routing weight associated to the connection.
+     *
+     * @param {string} putExpressRouteConnectionParameters.name The name of the
+     * resource.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteConnection>>;
+
+    /**
+     * Creates a connection between an ExpressRoute gateway and an ExpressRoute
+     * circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} putExpressRouteConnectionParameters Parameters required in
+     * an ExpressRouteConnection PUT operation.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * ExpressRoute circuit peering.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
+     * Authorization key to establish the connection.
+     *
+     * @param {number} [putExpressRouteConnectionParameters.routingWeight] The
+     * routing weight associated to the connection.
+     *
+     * @param {string} putExpressRouteConnectionParameters.name The name of the
+     * resource.
+     *
+     * @param {string} [putExpressRouteConnectionParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteConnection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteConnection>;
+    beginCreateOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, callback: ServiceCallback<models.ExpressRouteConnection>): void;
+    beginCreateOrUpdate(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, putExpressRouteConnectionParameters: models.ExpressRouteConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteConnection>): void;
+
+
+    /**
+     * Deletes a connection to a ExpressRoute circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a connection to a ExpressRoute circuit.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRouteGatewayName The name of the ExpressRoute
+     * gateway.
+     *
+     * @param {string} connectionName The name of the connection subresource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -38925,7 +39958,7 @@ export interface VirtualWANs {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -38979,7 +40012,7 @@ export interface VirtualWANs {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -39283,7 +40316,7 @@ export interface VirtualWANs {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -39337,7 +40370,7 @@ export interface VirtualWANs {
      * local breakout category. Possible values include: 'Optimize',
      * 'OptimizeAndAllow', 'All', 'None'
      *
-     * @param {array} [wANParameters.p2sVpnServerConfigurations] list of all
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
      * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
@@ -43806,48 +44839,48 @@ export interface P2SVpnGateways {
      * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
+     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
      * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
@@ -43901,48 +44934,48 @@ export interface P2SVpnGateways {
      * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
+     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
      * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
@@ -44331,48 +45364,48 @@ export interface P2SVpnGateways {
      * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
+     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
      * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
@@ -44426,48 +45459,48 @@ export interface P2SVpnGateways {
      * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2sVpnServerConfiguration] The
+     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnProtocols]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerAddress] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2sVpnServerConfiguration.radiusServerSecret] The
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.name] The
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2sVpnServerConfiguration.id]
+     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
      * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
