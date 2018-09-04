@@ -41788,6 +41788,9 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
      * with this VirtualHub
      *
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
+     *
      * @param {object} [virtualHubParameters.expressRouteGateway] The
      * expressRouteGateway associated with this VirtualHub
      *
@@ -41843,6 +41846,9 @@ export interface VirtualHubs {
      *
      * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
      * with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
      *
      * @param {object} [virtualHubParameters.expressRouteGateway] The
      * expressRouteGateway associated with this VirtualHub
@@ -42152,6 +42158,9 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
      * with this VirtualHub
      *
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
+     *
      * @param {object} [virtualHubParameters.expressRouteGateway] The
      * expressRouteGateway associated with this VirtualHub
      *
@@ -42207,6 +42216,9 @@ export interface VirtualHubs {
      *
      * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
      * with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
      *
      * @param {object} [virtualHubParameters.expressRouteGateway] The
      * expressRouteGateway associated with this VirtualHub

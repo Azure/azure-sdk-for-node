@@ -8966,6 +8966,9 @@ export interface VirtualHubRouteTable {
  * @member {string} [virtualWan.id] Resource ID.
  * @member {object} [vpnGateway] The VpnGateway associated with this VirtualHub
  * @member {string} [vpnGateway.id] Resource ID.
+ * @member {object} [p2SVpnGateway] The P2SVpnGateway associated with this
+ * VirtualHub
+ * @member {string} [p2SVpnGateway.id] Resource ID.
  * @member {object} [expressRouteGateway] The expressRouteGateway associated
  * with this VirtualHub
  * @member {string} [expressRouteGateway.id] Resource ID.
@@ -8983,6 +8986,7 @@ export interface VirtualHubRouteTable {
 export interface VirtualHub extends Resource {
   virtualWan?: SubResource;
   vpnGateway?: SubResource;
+  p2SVpnGateway?: SubResource;
   expressRouteGateway?: SubResource;
   virtualNetworkConnections?: HubVirtualNetworkConnection[];
   addressPrefix?: string;
