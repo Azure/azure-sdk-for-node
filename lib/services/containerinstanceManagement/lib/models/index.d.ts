@@ -508,10 +508,15 @@ export interface ContainerGroupPropertiesInstanceView {
  *
  * @member {string} workspaceId The workspace id for log analytics
  * @member {string} workspaceKey The workspace key for log analytics
+ * @member {string} [logType] The log type to be used. Possible values include:
+ * 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [metadata] Metadata for log analytics.
  */
 export interface LogAnalytics {
   workspaceId: string;
   workspaceKey: string;
+  logType?: string;
+  metadata?: { [propertyName: string]: string };
 }
 
 /**
@@ -525,9 +530,24 @@ export interface LogAnalytics {
  * analytics
  * @member {string} [logAnalytics.workspaceKey] The workspace key for log
  * analytics
+ * @member {string} [logAnalytics.logType] The log type to be used. Possible
+ * values include: 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [logAnalytics.metadata] Metadata for log analytics.
  */
 export interface ContainerGroupDiagnostics {
   logAnalytics?: LogAnalytics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupNetworkProfile class.
+ * @constructor
+ * Container group network profile information.
+ *
+ * @member {string} id The identifier for a network profile.
+ */
+export interface ContainerGroupNetworkProfile {
+  id: string;
 }
 
 /**
@@ -590,6 +610,13 @@ export interface Resource extends BaseResource {
  * log analytics
  * @member {string} [diagnostics.logAnalytics.workspaceKey] The workspace key
  * for log analytics
+ * @member {string} [diagnostics.logAnalytics.logType] The log type to be used.
+ * Possible values include: 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [diagnostics.logAnalytics.metadata] Metadata for log
+ * analytics.
+ * @member {object} [networkProfile] The network profile information for a
+ * container group.
+ * @member {string} [networkProfile.id] The identifier for a network profile.
  */
 export interface ContainerGroup extends Resource {
   readonly provisioningState?: string;
@@ -601,6 +628,7 @@ export interface ContainerGroup extends Resource {
   volumes?: Volume[];
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
   diagnostics?: ContainerGroupDiagnostics;
+  networkProfile?: ContainerGroupNetworkProfile;
 }
 
 /**
