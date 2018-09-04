@@ -467,7 +467,7 @@ describe('Batch Service', function () {
       client.account.listPoolNodeCounts( function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(1);
+        result.length.should.equal(2);
         result[0].poolId.should.equal('nodesdkinboundendpointpool');
         result[0].dedicated.idle.should.equal(1);
         result[0].lowPriority.total.should.equal(0);
@@ -1287,7 +1287,7 @@ describe('Batch Service', function () {
     it('should create a job schdule successfully', function (done) {
       var options = {
         id: 'NodeSDKTestSchedule', jobSpecification: { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } },
-        schedule: { doNotRunUntil: "2018-04-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
+        schedule: { doNotRunUntil: "2018-08-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
       };
 
       var requestModelMapper = new client.models['JobScheduleAddParameter']().mapper();
