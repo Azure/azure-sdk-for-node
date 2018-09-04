@@ -19,6 +19,7 @@ var usingAutoRestVersion;
 const azureRestAPISpecsRoot = args['azure-rest-api-specs-root'] || path.resolve(azureSDKForNodeRepoRoot, '..', 'azure-rest-api-specs');
 const package = args['package'];
 const use = args['use'];
+const whatif = args['whatif'];
 const regexForExcludedServices = /\/(intune|documentdbManagement|insightsManagement|insights|search)\//i;
 
 function findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot) {
@@ -275,6 +276,7 @@ gulp.task('publish', (cb) => {
   let errorPackages = 0;
   let upToDatePackages = 0;
   let publishedPackages = 0;
+  let publishedPackagesSkipped = 0;
 
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
@@ -317,14 +319,18 @@ gulp.task('publish', (cb) => {
               upToDatePackages++;
             }
             else {
-              console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
-              try {
-                npmInstall(packageFolderPath);
-                execSync(`npm publish`, { cwd: packageFolderPath });
-                publishedPackages++;
-              }
-              catch (error) {
-                errorPackages++;
+              console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...${whatif ? " (SKIPPED)" : ""}`);
+              if (!whatif) {
+                try {
+                  npmInstall(packageFolderPath);
+                  execSync(`npm publish`, { cwd: packageFolderPath });
+                  publishedPackages++;
+                }
+                catch (error) {
+                  errorPackages++;
+                }
+              } else {
+                publishedPackagesSkipped++;
               }
             }
           }
@@ -334,7 +340,8 @@ gulp.task('publish', (cb) => {
   }
 
   console.log();
-  console.log(`Error packages:      ${errorPackages}`);
-  console.log(`Up to date packages: ${upToDatePackages}`);
-  console.log(`Published packages:  ${publishedPackages}`);
+  console.log(`Error packages:             ${errorPackages}`);
+  console.log(`Up to date packages:        ${upToDatePackages}`);
+  console.log(`Published packages:         ${publishedPackages}`);
+  console.log(`Published packages skipped: ${publishedPackagesSkipped}`);
 });
