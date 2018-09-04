@@ -25,7 +25,7 @@ export interface CustomInstance {
      * @summary The Custom Search API lets you send a search query to Bing and get
      * back web pages found in your custom view of the web.
      *
-     * @param {number} customConfig The identifier for the custom search
+     * @param {string} customConfig The identifier for the custom search
      * configuration
      *
      * @param {string} query The user's search query term. The term may not be
@@ -230,13 +230,13 @@ export interface CustomInstance {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    searchWithHttpOperationResponse(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResponse>>;
+    searchWithHttpOperationResponse(customConfig: string, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResponse>>;
 
     /**
      * @summary The Custom Search API lets you send a search query to Bing and get
      * back web pages found in your custom view of the web.
      *
-     * @param {number} customConfig The identifier for the custom search
+     * @param {string} customConfig The identifier for the custom search
      * configuration
      *
      * @param {string} query The user's search query term. The term may not be
@@ -457,7 +457,7 @@ export interface CustomInstance {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    search(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResponse>;
-    search(customConfig: number, query: string, callback: ServiceCallback<models.SearchResponse>): void;
-    search(customConfig: number, query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResponse>): void;
+    search(customConfig: string, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResponse>;
+    search(customConfig: string, query: string, callback: ServiceCallback<models.SearchResponse>): void;
+    search(customConfig: string, query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResponse>): void;
 }

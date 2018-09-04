@@ -13,7 +13,7 @@
   "license": "MIT",
   "main": "./lib/customImageSearchAPIClient.js",
   "types": "./lib/customImageSearchAPIClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/cognitiveServicesCustomImageSearch",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
