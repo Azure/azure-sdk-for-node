@@ -2,7 +2,7 @@
   "name": "azure-arm-containerservice",
   "author": "Microsoft Corporation",
   "description": "ContainerServiceClient Library with typescript type definitions for node",
-  "version": "4.0.0",
+  "version": "",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"

@@ -61,34 +61,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the TagsObject class.
- * @constructor
- * Tags object for patch operations.
- *
- * @member {object} [tags] Resource tags.
- */
-export interface TagsObject {
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedClusterServicePrincipalProfile class.
- * @constructor
- * Information about a service principal identity for the cluster to use for
- * manipulating Azure APIs.
- *
- * @member {string} clientId The ID for the service principal.
- * @member {string} [secret] The secret password associated with the service
- * principal in plain text.
- */
-export interface ManagedClusterServicePrincipalProfile {
-  clientId: string;
-  secret?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the PurchasePlan class.
  * @constructor
  * Used for establishing the purchase context of any 3rd Party artifact through
@@ -98,13 +70,13 @@ export interface ManagedClusterServicePrincipalProfile {
  * @member {string} [product] Specifies the product of the image from the
  * marketplace. This is the same value as Offer under the imageReference
  * element.
- * @member {string} [promtionCode] The promotion code.
+ * @member {string} [promotionCode] The promotion code.
  * @member {string} [publisher] The plan ID.
  */
 export interface PurchasePlan {
   name?: string;
   product?: string;
-  promtionCode?: string;
+  promotionCode?: string;
   publisher?: string;
 }
 
@@ -126,9 +98,10 @@ export interface OpenShiftRouterProfile {
 
 /**
  * @class
- * Initializes a new instance of the OpenShiftManagedClusterProfileSpec class.
+ * Initializes a new instance of the OpenShiftManagedClusterAgentPoolProfile class.
  * @constructor
- * Profile for the container service agent pool.
+ * OpenShiftManagedClusterAgentPoolProfile represents configuration of
+ * OpenShift cluster VMs.
  *
  * @member {string} name Unique name of the pool profile in the context of the
  * subscription and resource group.
@@ -190,36 +163,66 @@ export interface OpenShiftRouterProfile {
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
+ * @member {string} [role] Define the role of the AgentPoolProfile. Possible
+ * values include: 'compute', 'infra', 'master'
  */
-export interface OpenShiftManagedClusterProfileSpec {
+export interface OpenShiftManagedClusterAgentPoolProfile {
   name: string;
   count: number;
   vmSize: string;
   vnetSubnetID?: string;
   osType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OpenShiftManagedClusterMasterPoolProfile class.
- * @constructor
- * OpenShift's configuration of the MasterPoolProfile.
- *
- */
-export interface OpenShiftManagedClusterMasterPoolProfile extends OpenShiftManagedClusterProfileSpec {
-}
-
-/**
- * @class
- * Initializes a new instance of the OpenShiftManagedClusterAgentPoolProfile class.
- * @constructor
- * OpenShift's configuration of the AgentPoolProfile.
- *
- * @member {string} [role] Define the role of the AgentPoolProfile. Possible
- * values include: 'compute', 'infra'
- */
-export interface OpenShiftManagedClusterAgentPoolProfile extends OpenShiftManagedClusterProfileSpec {
   role?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterIdentityProvider class.
+ * @constructor
+ * OpenShiftManagedClusterIdentityProvider is heavily cut down equivalent to
+ * IdentityProvider in the upstream.
+ *
+ * @member {string} [name] Name of the provider.
+ * @member {object} [provider] Configuration of the provider.
+ */
+export interface OpenShiftManagedClusterIdentityProvider {
+  name?: string;
+  provider?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedClusterServicePrincipalProfile class.
+ * @constructor
+ * Information about a service principal identity for the cluster to use for
+ * manipulating Azure APIs.
+ *
+ * @member {string} clientId The ID for the service principal.
+ * @member {string} [secret] The secret password associated with the service
+ * principal in plain text.
+ */
+export interface ManagedClusterServicePrincipalProfile {
+  clientId: string;
+  secret?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAzProfile class.
+ * @constructor
+ * AzProfile holds the azure context for where the cluster resides.
+ *
+ * @member {string} [tenantId] The tenantId of the subscription where the
+ * cluster resides.
+ * @member {string} [subscriptionId] The subscriptionId f the subscription
+ * where the cluster resides.
+ * @member {string} [resourceGroup] The resourceGroup f the subscription where
+ * the cluster resides.
+ */
+export interface OpenShiftManagedClusterAzProfile {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
 }
 
 /**
@@ -234,35 +237,73 @@ export interface OpenShiftManagedClusterAgentPoolProfile extends OpenShiftManage
  * @member {string} [plan.product] Specifies the product of the image from the
  * marketplace. This is the same value as Offer under the imageReference
  * element.
- * @member {string} [plan.promtionCode] The promotion code.
+ * @member {string} [plan.promotionCode] The promotion code.
  * @member {string} [plan.publisher] The plan ID.
  * @member {string} [provisioningState] The current deployment or provisioning
  * state, which only appears in the response.
- * @member {string} [openShiftVersion] Version of OpenShift specified when
+ * @member {string} openShiftVersion Version of OpenShift specified when
  * creating the cluster.
- * @member {string} [publicHostname] Public Hostname of the openshift managed
- * cluster.
- * @member {string} [fqdn] Auto-allocated FQDN for OpenShift API server.
+ * @member {string} [publicHostname] Optional user-specified FQDN for OpenShift
+ * API server.
+ * @member {string} [fqdn] User-specified FQDN for OpenShift API server
+ * loadbalancer internal hostname.
  * @member {array} [routerProfiles] Configuration for OpenShift router(s).
- * @member {object} [masterPoolProfile] Configuration for OpenShift master VMs.
  * @member {array} [agentPoolProfiles] Configuration of OpenShift cluster VMs.
+ * @member {array} [authProfile] Configures OpenShift authentication.
  * @member {object} [servicePrincipalProfile] Service principal for OpenShift
  * cluster.
  * @member {string} [servicePrincipalProfile.clientId] The ID for the service
  * principal.
  * @member {string} [servicePrincipalProfile.secret] The secret password
  * associated with the service principal in plain text.
+ * @member {object} [azProfile] Azure context for where the cluster resides.
+ * @member {string} [azProfile.tenantId] The tenantId of the subscription where
+ * the cluster resides.
+ * @member {string} [azProfile.subscriptionId] The subscriptionId f the
+ * subscription where the cluster resides.
+ * @member {string} [azProfile.resourceGroup] The resourceGroup f the
+ * subscription where the cluster resides.
  */
 export interface OpenShiftManagedCluster extends Resource {
   plan?: PurchasePlan;
   readonly provisioningState?: string;
-  openShiftVersion?: string;
+  openShiftVersion: string;
   publicHostname?: string;
-  readonly fqdn?: string;
+  fqdn?: string;
   routerProfiles?: OpenShiftRouterProfile[];
-  masterPoolProfile?: OpenShiftManagedClusterMasterPoolProfile;
   agentPoolProfiles?: OpenShiftManagedClusterAgentPoolProfile[];
+  authProfile?: OpenShiftManagedClusterIdentityProvider[];
   servicePrincipalProfile?: ManagedClusterServicePrincipalProfile;
+  azProfile?: OpenShiftManagedClusterAzProfile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterServiceAADIdentityProvider class.
+ * @constructor
+ * AADIdentityProvider defines Identity provider for MS AAD.
+ *
+ * @member {string} [kind] The kind of the provider.
+ * @member {string} [clientId] The clientId password associated with the
+ * provider.
+ * @member {string} [secret] The secret password associated with the provider.
+ */
+export interface OpenShiftManagedClusterServiceAADIdentityProvider {
+  kind?: string;
+  clientId?: string;
+  secret?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagsObject class.
+ * @constructor
+ * Tags object for patch operations.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface TagsObject {
+  tags?: { [propertyName: string]: string };
 }
 
 /**
