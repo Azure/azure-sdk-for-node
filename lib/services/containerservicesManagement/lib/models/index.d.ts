@@ -878,11 +878,11 @@ export interface ManagedClusterUpgradeProfile {
  * The credential result response.
  *
  * @member {string} [name] The name of the credential.
- * @member {string} [value] The value of the credential.
+ * @member {buffer} [value] Base64-encoded Kubernetes configuration file.
  */
 export interface CredentialResult {
   readonly name?: string;
-  readonly value?: string;
+  readonly value?: Buffer;
 }
 
 /**
@@ -891,10 +891,10 @@ export interface CredentialResult {
  * @constructor
  * The list of credential result response.
  *
- * @member {array} [values]
+ * @member {array} [kubeconfigs]
  */
 export interface CredentialResults {
-  readonly values?: CredentialResult[];
+  readonly kubeconfigs?: CredentialResult[];
 }
 
 /**
