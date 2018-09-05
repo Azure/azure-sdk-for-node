@@ -2423,11 +2423,11 @@ export interface ServicePrincipals {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ServicePrincipal>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+    updateWithHttpOperationResponse(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates a service principal in the directory.
@@ -2483,7 +2483,7 @@ export interface ServicePrincipals {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ServicePrincipal} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2491,16 +2491,15 @@ export interface ServicePrincipals {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ServicePrincipal} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServicePrincipal} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
-    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
-    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, callback: ServiceCallback<void>): void;
+    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
