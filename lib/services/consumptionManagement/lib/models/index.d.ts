@@ -716,6 +716,30 @@ export interface Forecast extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ManagementGroupAggregatedCostResult class.
+ * @constructor
+ * A management group aggregated cost resource.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the aggregated cost belongs to.
+ * @member {number} [azureCharges] Azure Charges.
+ * @member {number} [marketplaceCharges] Marketplace Charges.
+ * @member {number} [chargesBilledSeparately] Charges Billed Separately.
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {array} [children] Children of a management group
+ */
+export interface ManagementGroupAggregatedCostResult extends Resource {
+  readonly billingPeriodId?: string;
+  readonly azureCharges?: number;
+  readonly marketplaceCharges?: number;
+  readonly chargesBilledSeparately?: number;
+  readonly currency?: string;
+  children?: ManagementGroupAggregatedCostResult[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * The details of the error.
