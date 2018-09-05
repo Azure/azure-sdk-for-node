@@ -24,7 +24,8 @@ export interface RecordSets {
     /**
      * Updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -45,11 +46,6 @@ export interface RecordSets {
      *
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
-     *
-     * @param {object} [parameters.targetResource] A reference to an azure resource
-     * from where the dns resource value is taken.
-     *
-     * @param {string} [parameters.targetResource.id] Resource Id.
      *
      * @param {array} [parameters.aRecords] The list of A records in the record
      * set.
@@ -125,7 +121,8 @@ export interface RecordSets {
     /**
      * Updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -146,11 +143,6 @@ export interface RecordSets {
      *
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
-     *
-     * @param {object} [parameters.targetResource] A reference to an azure resource
-     * from where the dns resource value is taken.
-     *
-     * @param {string} [parameters.targetResource.id] Resource Id.
      *
      * @param {array} [parameters.aRecords] The list of A records in the record
      * set.
@@ -245,7 +237,8 @@ export interface RecordSets {
     /**
      * Creates or updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -268,11 +261,6 @@ export interface RecordSets {
      *
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
-     *
-     * @param {object} [parameters.targetResource] A reference to an azure resource
-     * from where the dns resource value is taken.
-     *
-     * @param {string} [parameters.targetResource.id] Resource Id.
      *
      * @param {array} [parameters.aRecords] The list of A records in the record
      * set.
@@ -352,7 +340,8 @@ export interface RecordSets {
     /**
      * Creates or updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -375,11 +364,6 @@ export interface RecordSets {
      *
      * @param {number} [parameters.tTL] The TTL (time-to-live) of the records in
      * the record set.
-     *
-     * @param {object} [parameters.targetResource] A reference to an azure resource
-     * from where the dns resource value is taken.
-     *
-     * @param {string} [parameters.targetResource.id] Resource Id.
      *
      * @param {array} [parameters.aRecords] The list of A records in the record
      * set.
@@ -478,7 +462,8 @@ export interface RecordSets {
     /**
      * Deletes a record set from a DNS zone. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -511,7 +496,8 @@ export interface RecordSets {
     /**
      * Deletes a record set from a DNS zone. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -562,7 +548,8 @@ export interface RecordSets {
     /**
      * Gets a record set.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -590,7 +577,8 @@ export interface RecordSets {
     /**
      * Gets a record set.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -637,7 +625,8 @@ export interface RecordSets {
     /**
      * Lists the record sets of a specified type in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -670,7 +659,8 @@ export interface RecordSets {
     /**
      * Lists the record sets of a specified type in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -722,7 +712,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -751,7 +742,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -799,7 +791,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -828,7 +821,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1056,7 +1050,8 @@ export interface Zones {
     /**
      * Creates or updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1077,9 +1072,10 @@ export interface Zones {
      * to virtual networks that resolve records in this DNS zone. This is a only
      * when ZoneType is Private.
      *
-     * @param {string} parameters.location Resource location.
-     *
      * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1105,7 +1101,8 @@ export interface Zones {
     /**
      * Creates or updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1126,9 +1123,10 @@ export interface Zones {
      * to virtual networks that resolve records in this DNS zone. This is a only
      * when ZoneType is Private.
      *
-     * @param {string} parameters.location Resource location.
-     *
      * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1174,7 +1172,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1200,7 +1199,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1244,7 +1244,8 @@ export interface Zones {
      * Gets a DNS zone. Retrieves the zone properties, but not the record sets
      * within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1266,7 +1267,8 @@ export interface Zones {
      * Gets a DNS zone. Retrieves the zone properties, but not the record sets
      * within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1306,7 +1308,8 @@ export interface Zones {
     /**
      * Updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1335,7 +1338,8 @@ export interface Zones {
     /**
      * Updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1383,7 +1387,8 @@ export interface Zones {
     /**
      * Lists the DNS zones within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1404,7 +1409,8 @@ export interface Zones {
     /**
      * Lists the DNS zones within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1502,7 +1508,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1528,7 +1535,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1680,75 +1688,4 @@ export interface Zones {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ZoneListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ZoneListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ZoneListResult>): void;
-}
-
-/**
- * @class
- * DnsResourceReferenceOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DnsManagementClient.
- */
-export interface DnsResourceReferenceOperations {
-
-
-    /**
-     * Returns the DNS records specified by the referencing targetResourceIds.
-     *
-     * @param {object} parameters Properties for dns resource reference request.
-     *
-     * @param {array} [parameters.targetResources] A list of references to azure
-     * resources for which referencing dns records need to be queried.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DnsResourceReferenceResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getByTargetResourcesWithHttpOperationResponse(parameters: models.DnsResourceReferenceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DnsResourceReferenceResult>>;
-
-    /**
-     * Returns the DNS records specified by the referencing targetResourceIds.
-     *
-     * @param {object} parameters Properties for dns resource reference request.
-     *
-     * @param {array} [parameters.targetResources] A list of references to azure
-     * resources for which referencing dns records need to be queried.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DnsResourceReferenceResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DnsResourceReferenceResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DnsResourceReferenceResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getByTargetResources(parameters: models.DnsResourceReferenceRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DnsResourceReferenceResult>;
-    getByTargetResources(parameters: models.DnsResourceReferenceRequest, callback: ServiceCallback<models.DnsResourceReferenceResult>): void;
-    getByTargetResources(parameters: models.DnsResourceReferenceRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DnsResourceReferenceResult>): void;
 }

@@ -2,7 +2,7 @@
   "name": "azure-arm-dns",
   "author": "Microsoft Corporation",
   "description": "DnsManagementClient Library with typescript type definitions for node",
-  "version": "",
+  "version": "3.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/dnsManagementClient.js",
   "types": "./lib/dnsManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/dnsManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"

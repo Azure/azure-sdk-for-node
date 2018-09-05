@@ -166,18 +166,6 @@ export interface CaaRecord {
 
 /**
  * @class
- * Initializes a new instance of the SubResource class.
- * @constructor
- * A reference to a another resource
- *
- * @member {string} [id] Resource Id.
- */
-export interface SubResource {
-  id?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RecordSet class.
  * @constructor
  * Describes a DNS record set (a collection of DNS records with the same name
@@ -191,10 +179,6 @@ export interface SubResource {
  * @member {number} [tTL] The TTL (time-to-live) of the records in the record
  * set.
  * @member {string} [fqdn] Fully qualified domain name of the record set.
- * @member {string} [provisioningState] provisioning State of the record set.
- * @member {object} [targetResource] A reference to an azure resource from
- * where the dns resource value is taken.
- * @member {string} [targetResource.id] Resource Id.
  * @member {array} [aRecords] The list of A records in the record set.
  * @member {array} [aaaaRecords] The list of AAAA records in the record set.
  * @member {array} [mxRecords] The list of MX records in the record set.
@@ -228,8 +212,6 @@ export interface RecordSet extends BaseResource {
   metadata?: { [propertyName: string]: string };
   tTL?: number;
   readonly fqdn?: string;
-  readonly provisioningState?: string;
-  targetResource?: SubResource;
   aRecords?: ARecord[];
   aaaaRecords?: AaaaRecord[];
   mxRecords?: MxRecord[];
@@ -260,11 +242,6 @@ export interface RecordSet extends BaseResource {
  * the record set.
  * @member {string} [recordSet.fqdn] Fully qualified domain name of the record
  * set.
- * @member {string} [recordSet.provisioningState] provisioning State of the
- * record set.
- * @member {object} [recordSet.targetResource] A reference to an azure resource
- * from where the dns resource value is taken.
- * @member {string} [recordSet.targetResource.id] Resource Id.
  * @member {array} [recordSet.aRecords] The list of A records in the record
  * set.
  * @member {array} [recordSet.aaaaRecords] The list of AAAA records in the
@@ -308,22 +285,44 @@ export interface RecordSetUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the SubResource class.
+ * @constructor
+ * A reference to a another resource
+ *
+ * @member {string} [id] Resource Id.
+ */
+export interface SubResource {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * Common properties of an Azure Resource Manager resource
- *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} location Resource location.
- * @member {object} [tags] Resource tags.
+ * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource. Ex-
+ * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} location The geo-location where the resource lives
+ */
+export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
+  location: string;
 }
 
 /**
@@ -350,7 +349,7 @@ export interface Resource extends BaseResource {
  * networks that resolve records in this DNS zone. This is a only when ZoneType
  * is Private.
  */
-export interface Zone extends Resource {
+export interface Zone extends TrackedResource {
   etag?: string;
   readonly maxNumberOfRecordSets?: number;
   readonly numberOfRecordSets?: number;
@@ -374,45 +373,26 @@ export interface ZoneUpdate {
 
 /**
  * @class
- * Initializes a new instance of the DnsResourceReferenceRequest class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * Represents the properties of the Dns Resource Reference Request.
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
  *
- * @member {array} [targetResources] A list of references to azure resources
- * for which referencing dns records need to be queried.
  */
-export interface DnsResourceReferenceRequest {
-  targetResources?: SubResource[];
+export interface ProxyResource extends Resource {
 }
 
 /**
  * @class
- * Initializes a new instance of the DnsResourceReference class.
+ * Initializes a new instance of the AzureEntityResource class.
  * @constructor
- * Represents a single Azure resource and its referencing DNS records.
+ * The resource model definition for a Azure Resource Manager resource with an
+ * etag.
  *
- * @member {array} [dnsResources] A list of dns Records
- * @member {object} [targetResource] A reference to an azure resource from
- * where the dns resource value is taken.
- * @member {string} [targetResource.id] Resource Id.
+ * @member {string} [etag] Resource Etag.
  */
-export interface DnsResourceReference {
-  dnsResources?: SubResource[];
-  targetResource?: SubResource;
-}
-
-/**
- * @class
- * Initializes a new instance of the DnsResourceReferenceResult class.
- * @constructor
- * Represents the properties of the Dns Resource Reference Result.
- *
- * @member {array} [dnsResourceReferences] The result of dns resource reference
- * request. A list of dns resource references for each of the azure resource in
- * the request
- */
-export interface DnsResourceReferenceResult {
-  dnsResourceReferences?: DnsResourceReference[];
+export interface AzureEntityResource extends Resource {
+  readonly etag?: string;
 }
 
 
