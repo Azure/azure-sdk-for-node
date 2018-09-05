@@ -2198,15 +2198,40 @@ export interface ServicePrincipals {
      *
      * @param {object} parameters Parameters to create a service principal.
      *
+     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
+     *
      * @param {string} parameters.appId application Id
      *
-     * @param {boolean} parameters.accountEnabled Whether the account is enabled
+     * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
+     * AppRoleAssignment to a user or group is required before Azure AD will issue
+     * a user or access token to the application.
+     *
+     * @param {string} [parameters.displayName] The display name for the service
+     * principal.
+     *
+     * @param {string} [parameters.errorUrl]
+     *
+     * @param {string} [parameters.homepage] The URL to the homepage of the
+     * associated application.
      *
      * @param {array} [parameters.keyCredentials] A collection of KeyCredential
      * objects.
      *
      * @param {array} [parameters.passwordCredentials] A collection of
      * PasswordCredential objects
+     *
+     * @param {string} [parameters.publisherName] The display name of the tenant in
+     * which the associated application is specified.
+     *
+     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
+     * service principal.
+     *
+     * @param {string} [parameters.samlMetadataUrl]
+     *
+     * @param {array} [parameters.servicePrincipalNames] A collection of service
+     * principal names.
+     *
+     * @param {array} [parameters.tags]
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2226,15 +2251,40 @@ export interface ServicePrincipals {
      *
      * @param {object} parameters Parameters to create a service principal.
      *
+     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
+     *
      * @param {string} parameters.appId application Id
      *
-     * @param {boolean} parameters.accountEnabled Whether the account is enabled
+     * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
+     * AppRoleAssignment to a user or group is required before Azure AD will issue
+     * a user or access token to the application.
+     *
+     * @param {string} [parameters.displayName] The display name for the service
+     * principal.
+     *
+     * @param {string} [parameters.errorUrl]
+     *
+     * @param {string} [parameters.homepage] The URL to the homepage of the
+     * associated application.
      *
      * @param {array} [parameters.keyCredentials] A collection of KeyCredential
      * objects.
      *
      * @param {array} [parameters.passwordCredentials] A collection of
      * PasswordCredential objects
+     *
+     * @param {string} [parameters.publisherName] The display name of the tenant in
+     * which the associated application is specified.
+     *
+     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
+     * service principal.
+     *
+     * @param {string} [parameters.samlMetadataUrl]
+     *
+     * @param {array} [parameters.servicePrincipalNames] A collection of service
+     * principal names.
+     *
+     * @param {array} [parameters.tags]
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2266,6 +2316,131 @@ export interface ServicePrincipals {
     create(parameters: models.ServicePrincipalCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
     create(parameters: models.ServicePrincipalCreateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
     create(parameters: models.ServicePrincipalCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+
+
+    /**
+     * Updates a service principal in the directory.
+     *
+     * @param {object} parameters Parameters to update a service principal.
+     *
+     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
+     *
+     * @param {string} [parameters.appId] application Id
+     *
+     * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
+     * AppRoleAssignment to a user or group is required before Azure AD will issue
+     * a user or access token to the application.
+     *
+     * @param {string} [parameters.displayName] The display name for the service
+     * principal.
+     *
+     * @param {string} [parameters.errorUrl]
+     *
+     * @param {string} [parameters.homepage] The URL to the homepage of the
+     * associated application.
+     *
+     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
+     * objects.
+     *
+     * @param {array} [parameters.passwordCredentials] A collection of
+     * PasswordCredential objects
+     *
+     * @param {string} [parameters.publisherName] The display name of the tenant in
+     * which the associated application is specified.
+     *
+     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
+     * service principal.
+     *
+     * @param {string} [parameters.samlMetadataUrl]
+     *
+     * @param {array} [parameters.servicePrincipalNames] A collection of service
+     * principal names.
+     *
+     * @param {array} [parameters.tags]
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServicePrincipal>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+
+    /**
+     * Updates a service principal in the directory.
+     *
+     * @param {object} parameters Parameters to update a service principal.
+     *
+     * @param {boolean} [parameters.accountEnabled] Whether the account is enabled
+     *
+     * @param {string} [parameters.appId] application Id
+     *
+     * @param {boolean} [parameters.appRoleAssignmentRequired] Specifies whether an
+     * AppRoleAssignment to a user or group is required before Azure AD will issue
+     * a user or access token to the application.
+     *
+     * @param {string} [parameters.displayName] The display name for the service
+     * principal.
+     *
+     * @param {string} [parameters.errorUrl]
+     *
+     * @param {string} [parameters.homepage] The URL to the homepage of the
+     * associated application.
+     *
+     * @param {array} [parameters.keyCredentials] A collection of KeyCredential
+     * objects.
+     *
+     * @param {array} [parameters.passwordCredentials] A collection of
+     * PasswordCredential objects
+     *
+     * @param {string} [parameters.publisherName] The display name of the tenant in
+     * which the associated application is specified.
+     *
+     * @param {array} [parameters.replyUrls] A collection of reply URLs for the
+     * service principal.
+     *
+     * @param {string} [parameters.samlMetadataUrl]
+     *
+     * @param {array} [parameters.servicePrincipalNames] A collection of service
+     * principal names.
+     *
+     * @param {array} [parameters.tags]
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServicePrincipal} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServicePrincipal} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServicePrincipal} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
+    update(parameters: models.ServicePrincipalUpdateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
+    update(parameters: models.ServicePrincipalUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
 
 
     /**

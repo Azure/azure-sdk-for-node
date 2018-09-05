@@ -538,17 +538,89 @@ export interface CheckGroupMembershipResult {
  * @constructor
  * Request parameters for creating a new service principal.
  *
+ * @member {boolean} [accountEnabled] Whether the account is enabled
  * @member {string} appId application Id
- * @member {boolean} accountEnabled Whether the account is enabled
+ * @member {boolean} [appRoleAssignmentRequired] Specifies whether an
+ * AppRoleAssignment to a user or group is required before Azure AD will issue
+ * a user or access token to the application.
+ * @member {string} [displayName] The display name for the service principal.
+ * @member {string} [errorUrl]
+ * @member {string} [homepage] The URL to the homepage of the associated
+ * application.
  * @member {array} [keyCredentials] A collection of KeyCredential objects.
  * @member {array} [passwordCredentials] A collection of PasswordCredential
  * objects
+ * @member {string} [publisherName] The display name of the tenant in which the
+ * associated application is specified.
+ * @member {array} [replyUrls] A collection of reply URLs for the service
+ * principal.
+ * @member {string} [samlMetadataUrl]
+ * @member {array} [servicePrincipalNames] A collection of service principal
+ * names.
+ * @member {array} [tags]
  */
 export interface ServicePrincipalCreateParameters {
+  accountEnabled?: boolean;
   appId: string;
-  accountEnabled: boolean;
+  appRoleAssignmentRequired?: boolean;
+  displayName?: string;
+  errorUrl?: string;
+  homepage?: string;
   keyCredentials?: KeyCredential[];
   passwordCredentials?: PasswordCredential[];
+  publisherName?: string;
+  replyUrls?: string[];
+  samlMetadataUrl?: string;
+  servicePrincipalNames?: string[];
+  tags?: string[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServicePrincipalUpdateParameters class.
+ * @constructor
+ * Request parameters for creating a new service principal.
+ *
+ * @member {boolean} [accountEnabled] Whether the account is enabled
+ * @member {string} [appId] application Id
+ * @member {boolean} [appRoleAssignmentRequired] Specifies whether an
+ * AppRoleAssignment to a user or group is required before Azure AD will issue
+ * a user or access token to the application.
+ * @member {string} [displayName] The display name for the service principal.
+ * @member {string} [errorUrl]
+ * @member {string} [homepage] The URL to the homepage of the associated
+ * application.
+ * @member {array} [keyCredentials] A collection of KeyCredential objects.
+ * @member {array} [passwordCredentials] A collection of PasswordCredential
+ * objects
+ * @member {string} [publisherName] The display name of the tenant in which the
+ * associated application is specified.
+ * @member {array} [replyUrls] A collection of reply URLs for the service
+ * principal.
+ * @member {string} [samlMetadataUrl]
+ * @member {array} [servicePrincipalNames] A collection of service principal
+ * names.
+ * @member {array} [tags]
+ */
+export interface ServicePrincipalUpdateParameters {
+  accountEnabled?: boolean;
+  appId?: string;
+  appRoleAssignmentRequired?: boolean;
+  displayName?: string;
+  errorUrl?: string;
+  homepage?: string;
+  keyCredentials?: KeyCredential[];
+  passwordCredentials?: PasswordCredential[];
+  publisherName?: string;
+  replyUrls?: string[];
+  samlMetadataUrl?: string;
+  servicePrincipalNames?: string[];
+  tags?: string[];
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
