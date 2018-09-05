@@ -2319,7 +2319,65 @@ export interface ServicePrincipals {
 
 
     /**
+     * Gets a list of service principals from the current tenant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply to the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServicePrincipalListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipalListResult>>;
+
+    /**
+     * Gets a list of service principals from the current tenant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply to the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServicePrincipalListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServicePrincipalListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServicePrincipalListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalListResult>;
+    list(callback: ServiceCallback<models.ServicePrincipalListResult>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalListResult>): void;
+
+
+    /**
      * Updates a service principal in the directory.
+     *
+     * @param {string} objectId The object ID of the service principal to delete.
      *
      * @param {object} parameters Parameters to update a service principal.
      *
@@ -2369,10 +2427,12 @@ export interface ServicePrincipals {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+    updateWithHttpOperationResponse(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
      * Updates a service principal in the directory.
+     *
+     * @param {string} objectId The object ID of the service principal to delete.
      *
      * @param {object} parameters Parameters to update a service principal.
      *
@@ -2438,65 +2498,9 @@ export interface ServicePrincipals {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
-    update(parameters: models.ServicePrincipalUpdateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
-    update(parameters: models.ServicePrincipalUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
-
-
-    /**
-     * Gets a list of service principals from the current tenant.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServicePrincipalListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipalListResult>>;
-
-    /**
-     * Gets a list of service principals from the current tenant.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply to the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServicePrincipalListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServicePrincipalListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServicePrincipalListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipalListResult>;
-    list(callback: ServiceCallback<models.ServicePrincipalListResult>): void;
-    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipalListResult>): void;
+    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
+    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, callback: ServiceCallback<models.ServicePrincipal>): void;
+    update(objectId: string, parameters: models.ServicePrincipalUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
 
 
     /**
