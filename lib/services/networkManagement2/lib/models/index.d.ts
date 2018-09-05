@@ -4304,13 +4304,16 @@ export interface TagsObject {
  * for a subnet.
  *
  * @member {string} [name] The name of the AvailableDelegation resource.
+ * @member {string} [id] A unique identifier of the AvailableDelegation
+ * resource.
  * @member {string} [type] Resource type.
  * @member {string} [serviceName] The name of the service and resource
  * @member {array} [actions] Describes the actions permitted to the service
  * upon delegation
  */
-export interface AvailableDelegation extends SubResource {
+export interface AvailableDelegation {
   name?: string;
+  id?: string;
   type?: string;
   serviceName?: string;
   actions?: string[];
