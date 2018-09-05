@@ -4896,6 +4896,24 @@ export interface NetworkFeatures extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the NetworkTrace class.
+ * @constructor
+ * Network trace
+ *
+ * @member {string} [path] Local file path for the captured network trace file.
+ * @member {string} [status] Current status of the network trace operation,
+ * same as Operation.Status (InProgress/Succeeded/Failed).
+ * @member {string} [message] Detailed message of a network trace operation,
+ * e.g. error message in case of failure.
+ */
+export interface NetworkTrace extends ProxyOnlyResource {
+  path?: string;
+  status?: string;
+  message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PerfMonSample class.
  * @constructor
  * Performance monitor sample in a set.
