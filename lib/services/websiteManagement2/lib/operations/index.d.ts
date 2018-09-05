@@ -7546,7 +7546,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7567,7 +7567,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7668,7 +7668,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7689,7 +7689,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
