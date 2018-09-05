@@ -3957,7 +3957,7 @@ export interface InboundNatPool extends SubResource {
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
- * @member {array} [frontendIPConfigurations] The Frontend IP addresses of the
+ * @member {array} frontendIPConfigurations The Frontend IP addresses of the
  * load balancer.
  * @member {object} backendAddressPool A reference to a pool of DIPs. Outbound
  * traffic is randomly load balanced across IPs in the backend IPs.
@@ -3965,7 +3965,7 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * @member {string} protocol Protocol - TCP, UDP or All. Possible values
  * include: 'Tcp', 'Udp', 'All'
  * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
  * flow idle timeout or unexpected connection termination. This element is only
@@ -3979,10 +3979,10 @@ export interface InboundNatPool extends SubResource {
  */
 export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
-  frontendIPConfigurations?: SubResource[];
+  frontendIPConfigurations: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
-  protocol?: string;
+  protocol: string;
   enableTcpReset?: boolean;
   idleTimeoutInMinutes?: number;
   name?: string;
