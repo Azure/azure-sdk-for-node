@@ -1484,7 +1484,7 @@ export interface ResourceNavigationLink extends SubResource {
 export interface Delegation extends SubResource {
   serviceName?: string;
   actions?: string[];
-  provisioningState?: string;
+  readonly provisioningState?: string;
   name?: string;
   etag?: string;
 }
@@ -9101,7 +9101,7 @@ export interface ApplicationSecurityGroupListResult extends Array<ApplicationSec
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface AvailableDelegationsResult extends Array<AvailableDelegation> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
