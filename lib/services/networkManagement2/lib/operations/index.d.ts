@@ -2450,6 +2450,264 @@ export interface ApplicationSecurityGroups {
 
 /**
  * @class
+ * AvailableDelegations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailableDelegations {
+
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} location The location of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} location The location of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    list(location: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+}
+
+/**
+ * @class
+ * AvailableResourceGroupDelegations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailableResourceGroupDelegations {
+
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} location The location of the domain name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} location The location of the domain name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    list(location: string, resourceGroupName: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    list(location: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+}
+
+/**
+ * @class
  * AzureFirewalls
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -16062,6 +16320,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -16446,6 +16708,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -16974,6 +17240,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -17358,6 +17628,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -17757,14 +18031,11 @@ export interface NetworkProfiles {
      * @param {object} parameters Parameters supplied to the create or update
      * network profile operation.
      *
-     * @param {object} [parameters.properties] Network profile properties.
+     * @param {array} [parameters.containerNetworkInterfaces] List of child
+     * container network interfaces.
      *
-     * @param {array} [parameters.properties.containerNetworkInterfaces] List of
-     * child container network interfaces.
-     *
-     * @param {array}
-     * [parameters.properties.containerNetworkInterfaceConfigurations] List of chid
-     * container network interface configurations.
+     * @param {array} [parameters.containerNetworkInterfaceConfigurations] List of
+     * chid container network interface configurations.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
@@ -17798,14 +18069,11 @@ export interface NetworkProfiles {
      * @param {object} parameters Parameters supplied to the create or update
      * network profile operation.
      *
-     * @param {object} [parameters.properties] Network profile properties.
+     * @param {array} [parameters.containerNetworkInterfaces] List of child
+     * container network interfaces.
      *
-     * @param {array} [parameters.properties.containerNetworkInterfaces] List of
-     * child container network interfaces.
-     *
-     * @param {array}
-     * [parameters.properties.containerNetworkInterfaceConfigurations] List of chid
-     * container network interface configurations.
+     * @param {array} [parameters.containerNetworkInterfaceConfigurations] List of
+     * chid container network interface configurations.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
@@ -32039,6 +32307,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -32142,6 +32413,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -32387,6 +32661,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -32490,6 +32767,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -33578,6 +33858,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -33937,6 +34221,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -34552,6 +34840,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -34911,6 +35203,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
