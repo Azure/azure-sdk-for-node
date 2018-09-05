@@ -725,9 +725,9 @@ export interface ManagementGroupAggregatedCostResult extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ChargeSummaryByEnrollmentAccount class.
+ * Initializes a new instance of the ChargeSummary class.
  * @constructor
- * A charge summary resource by enrollment account.
+ * A charge summary resource.
  *
  * @member {string} [billingPeriodId] The id of the billing period resource
  * that the charge belongs to.
@@ -738,7 +738,7 @@ export interface ManagementGroupAggregatedCostResult extends Resource {
  * @member {number} [marketplaceCharges] Marketplace Charges.
  * @member {string} [currency] Currency Code
  */
-export interface ChargeSummaryByEnrollmentAccount extends Resource {
+export interface ChargeSummary extends Resource {
   readonly billingPeriodId?: string;
   readonly usageStart?: string;
   readonly usageEnd?: string;
@@ -750,76 +750,14 @@ export interface ChargeSummaryByEnrollmentAccount extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ChargesListResultByEnrollmentAccount class.
+ * Initializes a new instance of the ChargesListResult class.
  * @constructor
- * Result of listing charge summary by enrollment account.
+ * Result of listing charge summary.
  *
- * @member {array} [value] The list of charge summary by enrollment account.
+ * @member {array} [value] The list of charge summary
  */
-export interface ChargesListResultByEnrollmentAccount {
-  readonly value?: ChargeSummaryByEnrollmentAccount[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ChargeSummaryByDepartment class.
- * @constructor
- * A charge summary resource by department.
- *
- * @member {string} [billingPeriodId] The id of the billing period resource
- * that the charge belongs to.
- * @member {string} [usageStart] Usage start date.
- * @member {string} [usageEnd] Usage end date.
- * @member {number} [azureCharges] Azure Charges.
- * @member {number} [chargesBilledSeparately] Charges Billed separately.
- * @member {number} [marketplaceCharges] Marketplace Charges.
- * @member {string} [currency] Currency Code
- */
-export interface ChargeSummaryByDepartment extends Resource {
-  readonly billingPeriodId?: string;
-  readonly usageStart?: string;
-  readonly usageEnd?: string;
-  readonly azureCharges?: number;
-  readonly chargesBilledSeparately?: number;
-  readonly marketplaceCharges?: number;
-  readonly currency?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ChargesListResultByDepartment class.
- * @constructor
- * Result of listing charge summary by deparment.
- *
- * @member {array} [value] The list of charge summary by department.
- */
-export interface ChargesListResultByDepartment {
-  readonly value?: ChargeSummaryByDepartment[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ChargeSummaryProperties class.
- * @constructor
- * The properties of the charge summary.
- *
- * @member {string} [billingPeriodId] The id of the billing period resource
- * that the charge belongs to.
- * @member {string} [usageStart] Usage start date.
- * @member {string} [usageEnd] Usage end date.
- * @member {number} [azureCharges] Azure Charges.
- * @member {number} [chargesBilledSeparately] Charges Billed separately.
- * @member {number} [marketplaceCharges] Marketplace Charges.
- * @member {string} [currency] Currency Code
- */
-export interface ChargeSummaryProperties {
-  readonly billingPeriodId?: string;
-  readonly usageStart?: string;
-  readonly usageEnd?: string;
-  readonly azureCharges?: number;
-  readonly chargesBilledSeparately?: number;
-  readonly marketplaceCharges?: number;
-  readonly currency?: string;
+export interface ChargesListResult {
+  readonly value?: ChargeSummary[];
 }
 
 /**

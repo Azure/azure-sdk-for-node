@@ -5091,11 +5091,11 @@ export interface Charges {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargesListResultByEnrollmentAccount>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargesListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByEnrollmentAccount>>;
+    listByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResult>>;
 
     /**
      * Lists the charges by enrollmentAccountId.
@@ -5122,7 +5122,7 @@ export interface Charges {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargesListResultByEnrollmentAccount} - The deserialized result object.
+     *                      @resolve {ChargesListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5130,17 +5130,16 @@ export interface Charges {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargesListResultByEnrollmentAccount} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargesListResultByEnrollmentAccount} for
-     *                      more information.
+     *                      {ChargesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByEnrollmentAccount>;
-    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, callback: ServiceCallback<models.ChargesListResultByEnrollmentAccount>): void;
-    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByEnrollmentAccount>): void;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResult>;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, callback: ServiceCallback<models.ChargesListResult>): void;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResult>): void;
 
 
     /**
@@ -5165,11 +5164,11 @@ export interface Charges {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargeSummaryByEnrollmentAccount>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargeSummary>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForBillingPeriodByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByEnrollmentAccount>>;
+    listForBillingPeriodByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummary>>;
 
     /**
      * Lists the charges based on enrollmentAccountId by billing period.
@@ -5198,7 +5197,7 @@ export interface Charges {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargeSummaryByEnrollmentAccount} - The deserialized result object.
+     *                      @resolve {ChargeSummary} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5206,17 +5205,16 @@ export interface Charges {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargeSummaryByEnrollmentAccount} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargeSummaryByEnrollmentAccount} for more
-     *                      information.
+     *                      {ChargeSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargeSummary} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByEnrollmentAccount>;
-    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByEnrollmentAccount>): void;
-    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByEnrollmentAccount>): void;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummary>;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummary>): void;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummary>): void;
 
 
     /**
@@ -5239,11 +5237,11 @@ export interface Charges {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargesListResultByDepartment>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargesListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByDepartment>>;
+    listByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResult>>;
 
     /**
      * Lists the charges by departmentId.
@@ -5270,7 +5268,7 @@ export interface Charges {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargesListResultByDepartment} - The deserialized result object.
+     *                      @resolve {ChargesListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5278,17 +5276,16 @@ export interface Charges {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargesListResultByDepartment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargesListResultByDepartment} for more
-     *                      information.
+     *                      {ChargesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByDepartment(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByDepartment>;
-    listByDepartment(billingAccountId: string, departmentId: string, callback: ServiceCallback<models.ChargesListResultByDepartment>): void;
-    listByDepartment(billingAccountId: string, departmentId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByDepartment>): void;
+    listByDepartment(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResult>;
+    listByDepartment(billingAccountId: string, departmentId: string, callback: ServiceCallback<models.ChargesListResult>): void;
+    listByDepartment(billingAccountId: string, departmentId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResult>): void;
 
 
     /**
@@ -5313,11 +5310,11 @@ export interface Charges {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargeSummaryByDepartment>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargeSummary>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForBillingPeriodByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByDepartment>>;
+    listForBillingPeriodByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummary>>;
 
     /**
      * Lists the charges based on departmentId by billing period.
@@ -5346,7 +5343,7 @@ export interface Charges {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargeSummaryByDepartment} - The deserialized result object.
+     *                      @resolve {ChargeSummary} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5354,15 +5351,14 @@ export interface Charges {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargeSummaryByDepartment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargeSummaryByDepartment} for more
-     *                      information.
+     *                      {ChargeSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargeSummary} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByDepartment>;
-    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByDepartment>): void;
-    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByDepartment>): void;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummary>;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummary>): void;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummary>): void;
 }
