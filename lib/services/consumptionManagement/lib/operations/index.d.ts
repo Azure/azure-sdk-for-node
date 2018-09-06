@@ -4672,149 +4672,6 @@ export interface PriceSheet {
 
 /**
  * @class
- * CostTags
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface CostTags {
-
-
-    /**
-     * Get cost tags for a billing account.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CostTag>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTag>>;
-
-    /**
-     * Get cost tags for a billing account.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CostTag} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CostTag} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTag} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTag>;
-    get(billingAccountId: string, callback: ServiceCallback<models.CostTag>): void;
-    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTag>): void;
-
-
-    /**
-     * The operation to create or update cost tags assiciated with a billing
-     * account. Update operation requires latest eTag to be set in the request
-     * mandatorily. You may obtain the latest eTag by performing a get operation.
-     * Create operation does not require eTag.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} parameters Parameters supplied to the Create cost tags
-     * operation.
-     *
-     * @param {array} [parameters.costTags] Cost tags.
-     *
-     * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
-     * updating the latest version or not.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CostTag>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTag>>;
-
-    /**
-     * The operation to create or update cost tags assiciated with a billing
-     * account. Update operation requires latest eTag to be set in the request
-     * mandatorily. You may obtain the latest eTag by performing a get operation.
-     * Create operation does not require eTag.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} parameters Parameters supplied to the Create cost tags
-     * operation.
-     *
-     * @param {array} [parameters.costTags] Cost tags.
-     *
-     * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
-     * updating the latest version or not.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CostTag} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CostTag} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTag} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(billingAccountId: string, parameters: models.CostTag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTag>;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTag, callback: ServiceCallback<models.CostTag>): void;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTag, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTag>): void;
-}
-
-/**
- * @class
  * Tags
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
@@ -5081,6 +4938,12 @@ export interface AggregatedCost {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] May be used to filter aggregated cost by
+     * properties/usageStart (Utc time), properties/usageEnd (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5090,7 +4953,7 @@ export interface AggregatedCost {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
+    getByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
 
     /**
      * Provides the aggregate cost of a management group and all child management
@@ -5099,6 +4962,12 @@ export interface AggregatedCost {
      * @param {string} managementGroupId Azure Management Group ID.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter aggregated cost by
+     * properties/usageStart (Utc time), properties/usageEnd (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5126,9 +4995,9 @@ export interface AggregatedCost {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
+    getByManagementGroup(managementGroupId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
     getByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
-    getByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getByManagementGroup(managementGroupId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
 
 
     /**
@@ -5191,4 +5060,305 @@ export interface AggregatedCost {
     getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
     getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
     getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+}
+
+/**
+ * @class
+ * Charges
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface Charges {
+
+
+    /**
+     * Lists the charges by enrollmentAccountId.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResult>>;
+
+    /**
+     * Lists the charges by enrollmentAccountId.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResult>;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, callback: ServiceCallback<models.ChargesListResult>): void;
+    listByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResult>): void;
+
+
+    /**
+     * Lists the charges based on enrollmentAccountId by billing period.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargeSummary>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForBillingPeriodByEnrollmentAccountWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummary>>;
+
+    /**
+     * Lists the charges based on enrollmentAccountId by billing period.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargeSummary} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargeSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargeSummary} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummary>;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummary>): void;
+    listForBillingPeriodByEnrollmentAccount(billingAccountId: string, enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummary>): void;
+
+
+    /**
+     * Lists the charges by departmentId.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResult>>;
+
+    /**
+     * Lists the charges by departmentId.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDepartment(billingAccountId: string, departmentId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResult>;
+    listByDepartment(billingAccountId: string, departmentId: string, callback: ServiceCallback<models.ChargesListResult>): void;
+    listByDepartment(billingAccountId: string, departmentId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResult>): void;
+
+
+    /**
+     * Lists the charges based on departmentId by billing period.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargeSummary>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForBillingPeriodByDepartmentWithHttpOperationResponse(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummary>>;
+
+    /**
+     * Lists the charges based on departmentId by billing period.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter charges by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter
+     * supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently
+     * support 'ne', 'or', or 'not'. Tag filter is a key value pair string where
+     * key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargeSummary} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargeSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargeSummary} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummary>;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummary>): void;
+    listForBillingPeriodByDepartment(billingAccountId: string, departmentId: string, billingPeriodName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummary>): void;
 }
