@@ -4388,7 +4388,7 @@ export interface AzureFirewallApplicationRuleProtocol {
  * @member {string} [description] Description of the rule.
  * @member {array} [sourceAddresses] List of source IP addresses for this rule.
  * @member {array} [protocols] Array of ApplicationRuleProtocols.
- * @member {array} [targetUrls] List of URLs for this rule.
+ * @member {array} [targetFqdns] List of FQDNs for this rule.
  * @member {array} [fqdnTags] List of FQDN Tags for this rule.
  */
 export interface AzureFirewallApplicationRule {
@@ -4396,7 +4396,7 @@ export interface AzureFirewallApplicationRule {
   description?: string;
   sourceAddresses?: string[];
   protocols?: AzureFirewallApplicationRuleProtocol[];
-  targetUrls?: string[];
+  targetFqdns?: string[];
   fqdnTags?: string[];
 }
 
@@ -5425,6 +5425,32 @@ export interface ExpressRouteCrossConnection extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualHubId class.
+ * @constructor
+ * Virtual Hub identifier.
+ *
+ * @member {string} [id] The resource URI for the Virtual Hub where the
+ * ExpressRoute gateway is or will be deployed. The Virtual Hub resource and
+ * the ExpressRoute gateway resource reside in the same subscription.
+ */
+export interface VirtualHubId {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCircuitPeeringId class.
+ * @constructor
+ * ExpressRoute circuit peering identifier.
+ *
+ * @member {string} [id] The ID of the ExpressRoute circuit peering.
+ */
+export interface ExpressRouteCircuitPeeringId {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds class.
  * @constructor
  * Minimum and maximum number of scale units to deploy.
@@ -5464,7 +5490,9 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
  *
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [expressRouteConnectionId] The ID of the ExpressRoute
+ * @member {object} expressRouteCircuitPeering The ExpressRoute circuit
+ * peering.
+ * @member {string} [expressRouteCircuitPeering.id] The ID of the ExpressRoute
  * circuit peering.
  * @member {string} [authorizationKey] Authorization key to establish the
  * connection.
@@ -5474,7 +5502,7 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
  */
 export interface ExpressRouteConnection extends SubResource {
   readonly provisioningState?: string;
-  expressRouteConnectionId?: string;
+  expressRouteCircuitPeering: ExpressRouteCircuitPeeringId;
   authorizationKey?: string;
   routingWeight?: number;
   name: string;
@@ -5497,10 +5525,11 @@ export interface ExpressRouteConnection extends SubResource {
  * to the ExpressRoute gateway.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [expressRouteGatewayId] The resource URI for the Virtual
- * Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub
- * resource and the ExpressRoute gateway resource reside in the same
- * subscription.
+ * @member {object} virtualHub The Virtual Hub where the ExpressRoute gateway
+ * is or will be deployed.
+ * @member {string} [virtualHub.id] The resource URI for the Virtual Hub where
+ * the ExpressRoute gateway is or will be deployed. The Virtual Hub resource
+ * and the ExpressRoute gateway resource reside in the same subscription.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
@@ -5508,7 +5537,7 @@ export interface ExpressRouteGateway extends Resource {
   autoScaleConfiguration?: ExpressRouteGatewayPropertiesAutoScaleConfiguration;
   readonly expressRouteConnections?: ExpressRouteConnection[];
   readonly provisioningState?: string;
-  expressRouteGatewayId?: string;
+  virtualHub: VirtualHubId;
   readonly etag?: string;
 }
 
@@ -6088,11 +6117,18 @@ export interface EffectiveRouteListResult {
  * within a resource group. This name can be used to access the resource.
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
 export interface IPConfigurationProfile extends SubResource {
   subnet?: Subnet;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
   etag?: string;
 }
 
@@ -6106,12 +6142,19 @@ export interface IPConfigurationProfile extends SubResource {
  * container network interface configuration.
  * @member {array} [containerNetworkInterfaces] A list of container network
  * interfaces created from this container network interface configuration.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
 export interface ContainerNetworkInterfaceConfiguration extends SubResource {
   ipConfigurations?: IPConfigurationProfile[];
   containerNetworkInterfaces?: ContainerNetworkInterface[];
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
   etag?: string;
 }
 
@@ -6121,12 +6164,27 @@ export interface ContainerNetworkInterfaceConfiguration extends SubResource {
  * @constructor
  * Reference to container resource in remote resource provider.
  *
- * @member {string} [containerUri] ARM Uri for the container.
+ */
+export interface Container extends SubResource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterfaceIpConfiguration class.
+ * @constructor
+ * The ip configuration for a container network interface.
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface Container {
-  containerUri?: string;
+export interface ContainerNetworkInterfaceIpConfiguration {
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
   etag?: string;
 }
 
@@ -6145,19 +6203,32 @@ export interface Container {
  * [containerNetworkInterfaceConfiguration.containerNetworkInterfaces] A list
  * of container network interfaces created from this container network
  * interface configuration.
+ * @member {string} [containerNetworkInterfaceConfiguration.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string} [containerNetworkInterfaceConfiguration.name] The name of
+ * the resource. This name can be used to access the resource.
+ * @member {string} [containerNetworkInterfaceConfiguration.type] Sub Resource
+ * type.
  * @member {string} [containerNetworkInterfaceConfiguration.etag] A unique
  * read-only string that changes whenever the resource is updated.
  * @member {object} [container] Reference to the conatinaer to which this
  * container network interface is attached.
- * @member {string} [container.containerUri] ARM Uri for the container.
- * @member {string} [container.etag] A unique read-only string that changes
- * whenever the resource is updated.
+ * @member {array} [ipConfigurations] Reference to the ip configuration on this
+ * container nic.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
 export interface ContainerNetworkInterface extends SubResource {
   containerNetworkInterfaceConfiguration?: ContainerNetworkInterfaceConfiguration;
   container?: Container;
+  ipConfigurations?: ContainerNetworkInterfaceIpConfiguration[];
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
   etag?: string;
 }
 
@@ -6171,12 +6242,17 @@ export interface ContainerNetworkInterface extends SubResource {
  * interfaces.
  * @member {array} [containerNetworkInterfaceConfigurations] List of chid
  * container network interface configurations.
+ * @member {string} [resourceGuid] The resource GUID property of the network
+ * interface resource.
+ * @member {string} [provisioningState] The provisioning state of the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
 export interface NetworkProfile extends Resource {
   containerNetworkInterfaces?: ContainerNetworkInterface[];
   containerNetworkInterfaceConfigurations?: ContainerNetworkInterfaceConfiguration[];
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
   etag?: string;
 }
 

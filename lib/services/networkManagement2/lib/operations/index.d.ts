@@ -9797,7 +9797,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9848,7 +9851,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -10043,7 +10049,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -10094,7 +10103,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -10225,9 +10237,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10267,9 +10283,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10521,9 +10541,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10563,9 +10587,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
