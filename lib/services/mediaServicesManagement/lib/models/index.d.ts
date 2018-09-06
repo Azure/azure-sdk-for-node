@@ -2612,7 +2612,8 @@ export interface Hls {
  * @member {moment.duration} archiveWindowLength ISO 8601 timespan duration of
  * the archive window length. This is duration that customer want to retain the
  * recorded content.
- * @member {string} [manifestName] The manifest file name.
+ * @member {string} [manifestName] The manifest file name.  If not provided,
+ * the service will generate one automatically.
  * @member {object} [hls] The HLS configuration.
  * @member {number} [hls.fragmentsPerTsSegment] The amount of fragments per
  * HTTP Live Streaming (HLS) segment.
@@ -2654,26 +2655,6 @@ export interface LiveEventEndpoint {
 
 /**
  * @class
- * Initializes a new instance of the LiveEventInput class.
- * @constructor
- * The Live Event input.
- *
- * @member {string} streamingProtocol The streaming protocol for the Live
- * Event. Possible values include: 'FragmentedMP4', 'RTMP'
- * @member {string} [keyFrameIntervalDuration] ISO 8601 timespan duration of
- * the key frame interval duration.
- * @member {string} [accessToken] The access token.
- * @member {array} [endpoints] The input endpoints for the Live Event.
- */
-export interface LiveEventInput {
-  streamingProtocol: string;
-  keyFrameIntervalDuration?: string;
-  accessToken?: string;
-  endpoints?: LiveEventEndpoint[];
-}
-
-/**
- * @class
  * Initializes a new instance of the IPRange class.
  * @constructor
  * The IP address range in the CIDR scheme.
@@ -2703,6 +2684,46 @@ export interface IPAccessControl {
 
 /**
  * @class
+ * Initializes a new instance of the LiveEventInputAccessControl class.
+ * @constructor
+ * The IP access control for Live Event Input.
+ *
+ * @member {object} [ip] The IP access control properties.
+ * @member {array} [ip.allow] The IP allow list.
+ */
+export interface LiveEventInputAccessControl {
+  ip?: IPAccessControl;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LiveEventInput class.
+ * @constructor
+ * The Live Event input.
+ *
+ * @member {string} streamingProtocol The streaming protocol for the Live
+ * Event.  This is specified at creation time and cannot be updated. Possible
+ * values include: 'FragmentedMP4', 'RTMP'
+ * @member {object} [accessControl] The access control for LiveEvent Input.
+ * @member {object} [accessControl.ip] The IP access control properties.
+ * @member {array} [accessControl.ip.allow] The IP allow list.
+ * @member {string} [keyFrameIntervalDuration] ISO 8601 timespan duration of
+ * the key frame interval duration.
+ * @member {string} [accessToken] A unique identifier for a stream.  This can
+ * be specified at creation time but cannot be updated.  If omitted, the
+ * service will generate a unique value.
+ * @member {array} [endpoints] The input endpoints for the Live Event.
+ */
+export interface LiveEventInput {
+  streamingProtocol: string;
+  accessControl?: LiveEventInputAccessControl;
+  keyFrameIntervalDuration?: string;
+  accessToken?: string;
+  endpoints?: LiveEventEndpoint[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the LiveEventPreviewAccessControl class.
  * @constructor
  * The IP access control for Live Event preview.
@@ -2724,11 +2745,20 @@ export interface LiveEventPreviewAccessControl {
  * @member {object} [accessControl] The access control for LiveEvent preview.
  * @member {object} [accessControl.ip] The IP access control properties.
  * @member {array} [accessControl.ip.allow] The IP allow list.
- * @member {string} [previewLocator] The preview locator Guid.
+ * @member {string} [previewLocator] The identifier of the preview locator in
+ * Guid format.  Specifying this at creation time allows the caller to know the
+ * preview locator url before the event is created.  If omitted, the service
+ * will generate a random identifier.  This value cannot be updated once the
+ * live event is created.
  * @member {string} [streamingPolicyName] The name of streaming policy used for
- * LiveEvent preview
- * @member {string} [alternativeMediaId] The alternative Media-Id associated
- * with the preview
+ * the LiveEvent preview.  This value is specified at creation time and cannot
+ * be updated.
+ * @member {string} [alternativeMediaId] An Alternative Media Identifier
+ * associated with the StreamingLocator created for the preview.  This value is
+ * specified at creation time and cannot be updated.  The identifier can be
+ * used in the CustomLicenseAcquisitionUrlTemplate or the
+ * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+ * StreamingPolicyName field.
  */
 export interface LiveEventPreview {
   endpoints?: LiveEventEndpoint[];
@@ -2744,9 +2774,11 @@ export interface LiveEventPreview {
  * @constructor
  * The Live Event encoding.
  *
- * @member {string} [encodingType] The encoding type for Live Event. Possible
- * values include: 'None', 'Basic'
- * @member {string} [presetName] The encoding preset name.
+ * @member {string} [encodingType] The encoding type for Live Event.  This
+ * value is specified at creation time and cannot be updated. Possible values
+ * include: 'None', 'Basic'
+ * @member {string} [presetName] The encoding preset name.  This value is
+ * specified at creation time and cannot be updated.
  */
 export interface LiveEventEncoding {
   encodingType?: string;
@@ -2791,10 +2823,17 @@ export interface LiveEventActionInput {
  * @member {string} [description] The Live Event description.
  * @member {object} input The Live Event input.
  * @member {string} [input.streamingProtocol] The streaming protocol for the
- * Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+ * Live Event.  This is specified at creation time and cannot be updated.
+ * Possible values include: 'FragmentedMP4', 'RTMP'
+ * @member {object} [input.accessControl] The access control for LiveEvent
+ * Input.
+ * @member {object} [input.accessControl.ip] The IP access control properties.
+ * @member {array} [input.accessControl.ip.allow] The IP allow list.
  * @member {string} [input.keyFrameIntervalDuration] ISO 8601 timespan duration
  * of the key frame interval duration.
- * @member {string} [input.accessToken] The access token.
+ * @member {string} [input.accessToken] A unique identifier for a stream.  This
+ * can be specified at creation time but cannot be updated.  If omitted, the
+ * service will generate a unique value.
  * @member {array} [input.endpoints] The input endpoints for the Live Event.
  * @member {object} [preview] The Live Event preview.
  * @member {array} [preview.endpoints] The endpoints for preview.
@@ -2803,15 +2842,26 @@ export interface LiveEventActionInput {
  * @member {object} [preview.accessControl.ip] The IP access control
  * properties.
  * @member {array} [preview.accessControl.ip.allow] The IP allow list.
- * @member {string} [preview.previewLocator] The preview locator Guid.
+ * @member {string} [preview.previewLocator] The identifier of the preview
+ * locator in Guid format.  Specifying this at creation time allows the caller
+ * to know the preview locator url before the event is created.  If omitted,
+ * the service will generate a random identifier.  This value cannot be updated
+ * once the live event is created.
  * @member {string} [preview.streamingPolicyName] The name of streaming policy
- * used for LiveEvent preview
- * @member {string} [preview.alternativeMediaId] The alternative Media-Id
- * associated with the preview
+ * used for the LiveEvent preview.  This value is specified at creation time
+ * and cannot be updated.
+ * @member {string} [preview.alternativeMediaId] An Alternative Media
+ * Identifier associated with the StreamingLocator created for the preview.
+ * This value is specified at creation time and cannot be updated.  The
+ * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
+ * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+ * StreamingPolicyName field.
  * @member {object} [encoding] The Live Event encoding.
  * @member {string} [encoding.encodingType] The encoding type for Live Event.
- * Possible values include: 'None', 'Basic'
- * @member {string} [encoding.presetName] The encoding preset name.
+ * This value is specified at creation time and cannot be updated. Possible
+ * values include: 'None', 'Basic'
+ * @member {string} [encoding.presetName] The encoding preset name.  This value
+ * is specified at creation time and cannot be updated.
  * @member {string} [provisioningState] The provisioning state of the Live
  * Event.
  * @member {string} [resourceState] The resource state of the Live Event.
@@ -2822,8 +2872,10 @@ export interface LiveEventActionInput {
  * clientaccesspolicy.xml used by Silverlight.
  * @member {string} [crossSiteAccessPolicies.crossDomainPolicy] The content of
  * crossdomain.xml used by Silverlight.
- * @member {boolean} [vanityUrl] The Live Event vanity URL flag.
- * @member {array} [streamOptions] The stream options.
+ * @member {boolean} [vanityUrl] Specifies whether to use a vanity url with the
+ * Live Event.  This value is specified at creation time and cannot be updated.
+ * @member {array} [streamOptions] The options to use for the LiveEvent.  This
+ * value is specified at creation time and cannot be updated.
  * @member {date} [created] The exact time the Live Event was created.
  * @member {date} [lastModified] The exact time the Live Event was last
  * modified.
@@ -2850,7 +2902,7 @@ export interface LiveEvent extends TrackedResource {
  *
  * @member {string} [identifier] identifier of the key
  * @member {string} [base64Key] authentication key
- * @member {date} [expiration] The exact time the authentication key.
+ * @member {date} [expiration] The expiration time of the authentication key.
  */
 export interface AkamaiSignatureHeaderAuthenticationKey {
   identifier?: string;
@@ -2894,8 +2946,7 @@ export interface StreamingEndpointAccessControl {
  * @constructor
  * scale units definition
  *
- * @member {number} [scaleUnit] ScaleUnit. The scale unit number of the
- * StreamingEndpoint.
+ * @member {number} [scaleUnit] The scale unit number of the StreamingEndpoint.
  */
 export interface StreamingEntityScaleUnit {
   scaleUnit?: number;
@@ -2908,8 +2959,11 @@ export interface StreamingEntityScaleUnit {
  * The StreamingEndpoint.
  *
  * @member {string} [description] The StreamingEndpoint description.
- * @member {number} scaleUnits The number of scale units.
- * @member {string} [availabilitySetName] AvailabilitySet name
+ * @member {number} scaleUnits The number of scale units.  Use the Scale
+ * operation to adjust this value.
+ * @member {string} [availabilitySetName] The name of the AvailabilitySet used
+ * with this StreamingEndpoint for high availability streaming.  This value can
+ * only be set at creation time.
  * @member {object} [accessControl] The access control definition of the
  * StreamingEndpoint.
  * @member {object} [accessControl.akamai] The access control of Akamai
