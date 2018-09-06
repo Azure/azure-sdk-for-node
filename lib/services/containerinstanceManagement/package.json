@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/containerInstanceManagementClient.js",
   "types": "./lib/containerInstanceManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/containerinstanceManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
