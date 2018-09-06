@@ -2450,6 +2450,264 @@ export interface ApplicationSecurityGroups {
 
 /**
  * @class
+ * AvailableDelegations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailableDelegations {
+
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} location The location of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} location The location of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    list(location: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+}
+
+/**
+ * @class
+ * AvailableResourceGroupDelegations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailableResourceGroupDelegations {
+
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} location The location of the domain name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} location The location of the domain name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    list(location: string, resourceGroupName: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    list(location: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+}
+
+/**
+ * @class
  * AzureFirewalls
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -9539,7 +9797,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9590,7 +9851,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9785,7 +10049,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9836,7 +10103,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9967,9 +10237,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10009,9 +10283,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10263,9 +10541,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10305,9 +10587,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -16062,6 +16348,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -16446,6 +16736,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -16974,6 +17268,10 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -17358,6 +17656,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -31515,6 +31817,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -31618,6 +31923,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -31863,6 +32171,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -31966,6 +32277,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -33054,6 +33368,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -33413,6 +33731,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -34028,6 +34350,10 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
+     *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
      * The provisioning state of the resource.
@@ -34387,6 +34713,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -44229,6 +44559,12 @@ export interface P2SVpnServerConfigurations {
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
      * create or Update a P2SVpnServerConfiguration.
      *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
@@ -44258,6 +44594,10 @@ export interface P2SVpnServerConfigurations {
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
      * resource that is unique within a resource group. This name can be used to
@@ -44292,6 +44632,12 @@ export interface P2SVpnServerConfigurations {
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
      * create or Update a P2SVpnServerConfiguration.
      *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
@@ -44321,6 +44667,10 @@ export interface P2SVpnServerConfigurations {
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
      * resource that is unique within a resource group. This name can be used to
@@ -44501,6 +44851,12 @@ export interface P2SVpnServerConfigurations {
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
      * create or Update a P2SVpnServerConfiguration.
      *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
@@ -44530,6 +44886,10 @@ export interface P2SVpnServerConfigurations {
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
      * resource that is unique within a resource group. This name can be used to
@@ -44564,6 +44924,12 @@ export interface P2SVpnServerConfigurations {
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
      * create or Update a P2SVpnServerConfiguration.
      *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
@@ -44593,6 +44959,10 @@ export interface P2SVpnServerConfigurations {
      * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
      * resource that is unique within a resource group. This name can be used to
@@ -44854,6 +45224,12 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array}
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -44887,6 +45263,10 @@ export interface P2SVpnGateways {
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
@@ -44949,6 +45329,12 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array}
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -44982,6 +45368,10 @@ export interface P2SVpnGateways {
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
@@ -45379,6 +45769,12 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array}
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -45412,6 +45808,10 @@ export interface P2SVpnGateways {
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
@@ -45474,6 +45874,12 @@ export interface P2SVpnGateways {
      * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
      * @param {array}
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
@@ -45507,6 +45913,10 @@ export interface P2SVpnGateways {
      * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
+     *
+     * @param {string}
+     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
      *
      * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
