@@ -279,6 +279,9 @@ gulp.task('publish', (cb) => {
   let publishedPackagesSkipped = 0;
 
   const npmAuth = process.env["npm-auth"];
+  if (npmAuth) {
+    console.log(`Found 'npm-auth' environment variable. Using it to authenticate with NPM for publish.`);
+  }
 
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
@@ -327,10 +330,12 @@ gulp.task('publish', (cb) => {
                   npmInstall(packageFolderPath);
                   const npmrcFilePath = path.join(packageFolderPath, ".npmrc");
                   if (npmAuth) {
+                    console.log(`Writing npm-auth value to "${npmrcFilePath}".`);
                     fs.writeFileSync(npmrcFilePath, npmAuth);
                   }
                   execSync(`npm publish --access public`, { cwd: packageFolderPath });
                   if (npmAuth) {
+                    console.log(`Deleting npm-auth value at "${npmrcFilePath}".`);
                     fs.unlinkSync(npmrcFilePath);
                   }
                   publishedPackages++;
