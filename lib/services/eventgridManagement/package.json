@@ -2,7 +2,7 @@
   "name": "azure-arm-eventgrid",
   "author": "Microsoft Corporation",
   "description": "EventGridManagementClient Library with typescript type definitions for node",
-  "version": "",
+  "version": "1.4.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/eventGridManagementClient.js",
   "types": "./lib/eventGridManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/eventgridManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
