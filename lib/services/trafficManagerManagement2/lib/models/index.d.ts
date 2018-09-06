@@ -61,16 +61,6 @@ export interface EndpointPropertiesCustomHeadersItem {
 
 /**
  * @class
- * Initializes a new instance of the HeatMapPropertyBase class.
- * @constructor
- * @member {string} heatMapType Polymorphic Discriminator
- */
-export interface HeatMapPropertyBase {
-  heatMapType: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The core properties of ARM resources
@@ -102,12 +92,10 @@ export interface ProxyResource extends Resource {
  * @class
  * Initializes a new instance of the HeatMapModel class.
  * @constructor
- * Class representing a Traffic Manager HeatMap.
+ * Super-class representing a Traffic Manager HeatMap.
  *
- * @member {string} heatMapType Polymorphic Discriminator
  */
 export interface HeatMapModel extends ProxyResource {
-  heatMapType: string;
 }
 
 /**
@@ -181,10 +169,17 @@ export interface HeatMapEndpoint {
 
 /**
  * @class
- * Initializes a new instance of the HeatMapProperties class.
+ * Initializes a new instance of the HeatMapModelDefault class.
  * @constructor
- * Sub-class representing default Traffic Manager HeatMap properties.
+ * Sub-class representing model for default Traffic Manager HeatMap traffic
+ * flow.
  *
+ * @member {string} [heatMapModelDefaultId] Fully qualified resource Id for the
+ * resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+ * @member {string} [heatMapModelDefaultName] The name of the resource
+ * @member {string} [heatMapModelDefaultType] The type of the resource. Ex-
+ * Microsoft.Network/trafficmanagerProfiles.
  * @member {date} [startTime] The beginning of the time window for this
  * HeatMap, inclusive.
  * @member {date} [endTime] The ending of the time window for this HeatMap,
@@ -193,7 +188,10 @@ export interface HeatMapEndpoint {
  * @member {array} [trafficFlows] The traffic flows produced in this HeatMap
  * calculation.
  */
-export interface HeatMapProperties extends HeatMapPropertyBase {
+export interface HeatMapModelDefault extends HeatMapModel {
+  readonly heatMapModelDefaultId?: string;
+  readonly heatMapModelDefaultName?: string;
+  readonly heatMapModelDefaultType?: string;
   startTime?: Date;
   endTime?: Date;
   endpoints?: HeatMapEndpoint[];
@@ -217,37 +215,67 @@ export interface TrafficLocation {
 
 /**
  * @class
- * Initializes a new instance of the HeatMapPropertyAsn class.
+ * Initializes a new instance of the HeatMapModelAsn class.
  * @constructor
- * Sub-class representing Traffic Manager HeatMap ASN location properties.
+ * Sub-class representing model for Traffic Manager HeatMap traffic fraction by
+ * ASN.
  *
+ * @member {string} [heatMapModelAsnId] Fully qualified resource Id for the
+ * resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+ * @member {string} [heatMapModelAsnName] The name of the resource
+ * @member {string} [heatMapModelAsnType] The type of the resource. Ex-
+ * Microsoft.Network/trafficmanagerProfiles.
  * @member {array} [trafficFlows]
  */
-export interface HeatMapPropertyAsn extends HeatMapPropertyBase {
+export interface HeatMapModelAsn extends HeatMapModel {
+  readonly heatMapModelAsnId?: string;
+  readonly heatMapModelAsnName?: string;
+  readonly heatMapModelAsnType?: string;
   trafficFlows?: TrafficLocation[];
 }
 
 /**
  * @class
- * Initializes a new instance of the HeatMapPropertyCountry class.
+ * Initializes a new instance of the HeatMapModelCountry class.
  * @constructor
- * Sub-class representing Traffic Manager HeatMap country location properties.
+ * Sub-class representing model for Traffic Manager HeatMap traffic fraction by
+ * country.
  *
+ * @member {string} [heatMapModelCountryId] Fully qualified resource Id for the
+ * resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+ * @member {string} [heatMapModelCountryName] The name of the resource
+ * @member {string} [heatMapModelCountryType] The type of the resource. Ex-
+ * Microsoft.Network/trafficmanagerProfiles.
  * @member {array} [trafficFlows]
  */
-export interface HeatMapPropertyCountry extends HeatMapPropertyBase {
+export interface HeatMapModelCountry extends HeatMapModel {
+  readonly heatMapModelCountryId?: string;
+  readonly heatMapModelCountryName?: string;
+  readonly heatMapModelCountryType?: string;
   trafficFlows?: TrafficLocation[];
 }
 
 /**
  * @class
- * Initializes a new instance of the HeatMapPropertyState class.
+ * Initializes a new instance of the HeatMapModelState class.
  * @constructor
- * Sub-class representing Traffic Manager HeatMap state location properties.
+ * Sub-class representing model for Traffic Manager HeatMap traffic fraction by
+ * country-state.
  *
+ * @member {string} [heatMapModelStateId] Fully qualified resource Id for the
+ * resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+ * @member {string} [heatMapModelStateName] The name of the resource
+ * @member {string} [heatMapModelStateType] The type of the resource. Ex-
+ * Microsoft.Network/trafficmanagerProfiles.
  * @member {array} [trafficFlows]
  */
-export interface HeatMapPropertyState extends HeatMapPropertyBase {
+export interface HeatMapModelState extends HeatMapModel {
+  readonly heatMapModelStateId?: string;
+  readonly heatMapModelStateName?: string;
+  readonly heatMapModelStateType?: string;
   trafficFlows?: TrafficLocation[];
 }
 
