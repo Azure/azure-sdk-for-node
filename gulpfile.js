@@ -278,6 +278,8 @@ gulp.task('publish', (cb) => {
   let publishedPackages = 0;
   let publishedPackagesSkipped = 0;
 
+  const npmAuth = process.env["npm-auth"];
+
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
     // console.log(`INFO: Processing ${nodejsReadmeFilePath}`);
@@ -323,7 +325,14 @@ gulp.task('publish', (cb) => {
               if (!whatif) {
                 try {
                   npmInstall(packageFolderPath);
-                  execSync(`npm publish`, { cwd: packageFolderPath });
+                  const npmrcFilePath = path.join(packageFolderPath, ".npmrc");
+                  if (npmAuth) {
+                    fs.writeFileSync(npmrcFilePath, npmAuth);
+                  }
+                  execSync(`npm publish --access public`, { cwd: packageFolderPath });
+                  if (npmAuth) {
+                    fs.unlinkSync(npmrcFilePath);
+                  }
                   publishedPackages++;
                 }
                 catch (error) {
