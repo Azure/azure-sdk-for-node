@@ -2419,6 +2419,38 @@ export interface AlertingAction extends Action {
   trigger: TriggerCondition;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MetricNamespaceName class.
+ * @constructor
+ * The fully qualified metric namespace name.
+ *
+ * @member {string} [metricNamespaceName] the metric namespace name.
+ */
+export interface MetricNamespaceName {
+  metricNamespaceName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricNamespace class.
+ * @constructor
+ * Metric namespace class specifies the metadata for a metric namespace.
+ *
+ * @member {string} [id] the id of the metricNamespace.
+ * @member {string} [type] the type of the namespace.
+ * @member {string} [name] the name of the namespace.
+ * @member {object} [properties] Properties which include the fully qualified
+ * namespace name.
+ * @member {string} [properties.metricNamespaceName] the metric namespace name.
+ */
+export interface MetricNamespace {
+  id?: string;
+  type?: string;
+  name?: string;
+  properties?: MetricNamespaceName;
+}
+
 
 /**
  * @class
@@ -2540,4 +2572,14 @@ export interface MetricAlertResourceCollection extends Array<MetricAlertResource
  *
  */
 export interface LogSearchRuleResourceCollection extends Array<LogSearchRuleResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricNamespaceCollection class.
+ * @constructor
+ * Represents collection of metric namespaces.
+ *
+ */
+export interface MetricNamespaceCollection extends Array<MetricNamespace> {
 }
