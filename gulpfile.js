@@ -239,7 +239,7 @@ gulp.task('publish', (cb) => {
   }
 
   const npmrcRootFilePath = path.join(currentDirectoryPath, ".npmrc");
-  const npmrcRootFileExists = fs.exists(npmrcRootFilePath);
+  const npmrcRootFileExists = fs.existsSync(npmrcRootFilePath);
   if (npmrcRootFileExists) {
     console.log(`Found ".npmrc" auth file at "${npmrcRootFilePath}". Using it to authenticate with NPM for publish.`);
   }
@@ -250,13 +250,13 @@ gulp.task('publish', (cb) => {
     const relativeOutputFolderPath = nodejsReadmeFileContents.match(/output\-folder: \$\(node\-sdks\-folder\)\/(lib\/services\/\S+)/)[1];
     const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, relativeOutputFolderPath);
     if (!fs.existsSync(packageFolderPath)) {
-      console.log(`ERROR: Package folder ${packageFolderPath} has not been generated.`);
+      console.log(`WARNING: Package folder ${packageFolderPath} has not been generated.`);
       errorPackages++;
     }
     else {
       const packageJsonFilePath = `${packageFolderPath}/package.json`;
       if (!fs.existsSync(packageJsonFilePath)) {
-        console.log(`ERROR: Package folder ${packageFolderPath} is missing its package.json file.`);
+        console.log(`WARNING: Package folder ${packageFolderPath} is missing its package.json file.`);
         errorPackages++;
       }
       else {
