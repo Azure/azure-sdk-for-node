@@ -772,7 +772,7 @@ export interface ManagedDiskParameters extends SubResource {
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
- * gigabytes. This element can be used to overwrite the name of the disk in a
+ * gigabytes. This element can be used to overwrite the size of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
@@ -825,7 +825,7 @@ export interface OSDisk {
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
- * gigabytes. This element can be used to overwrite the name of the disk in a
+ * gigabytes. This element can be used to overwrite the size of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
@@ -919,7 +919,7 @@ export interface DataDisk {
  * you are using a marketplace image, you  also use the plan element previously
  * described. Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of an empty data
- * disk in gigabytes. This element can be used to overwrite the name of the
+ * disk in gigabytes. This element can be used to overwrite the size of the
  * disk in a virtual machine image. <br><br> This value cannot be larger than
  * 1023 GB
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
@@ -1680,7 +1680,7 @@ export interface VirtualMachineInstanceView {
  * previously described. Possible values include: 'FromImage', 'Empty',
  * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
- * empty data disk in gigabytes. This element can be used to overwrite the name
+ * empty data disk in gigabytes. This element can be used to overwrite the size
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
  * than 1023 GB
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
@@ -2076,7 +2076,7 @@ export interface VirtualMachine extends Resource {
  * previously described. Possible values include: 'FromImage', 'Empty',
  * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
- * empty data disk in gigabytes. This element can be used to overwrite the name
+ * empty data disk in gigabytes. This element can be used to overwrite the size
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
  * than 1023 GB
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
@@ -5058,7 +5058,7 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * previously described. Possible values include: 'FromImage', 'Empty',
  * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
- * empty data disk in gigabytes. This element can be used to overwrite the name
+ * empty data disk in gigabytes. This element can be used to overwrite the size
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
  * than 1023 GB
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
