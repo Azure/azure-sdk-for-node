@@ -2425,7 +2425,7 @@ export interface AlertingAction extends Action {
  * @constructor
  * The fully qualified metric namespace name.
  *
- * @member {string} [metricNamespaceName] the metric namespace name.
+ * @member {string} [metricNamespaceName] The metric namespace name.
  */
 export interface MetricNamespaceName {
   metricNamespaceName?: string;
@@ -2437,12 +2437,12 @@ export interface MetricNamespaceName {
  * @constructor
  * Metric namespace class specifies the metadata for a metric namespace.
  *
- * @member {string} [id] the id of the metricNamespace.
- * @member {string} [type] the type of the namespace.
- * @member {string} [name] the name of the namespace.
+ * @member {string} [id] The ID of the metricNamespace.
+ * @member {string} [type] The type of the namespace.
+ * @member {string} [name] The name of the namespace.
  * @member {object} [properties] Properties which include the fully qualified
  * namespace name.
- * @member {string} [properties.metricNamespaceName] the metric namespace name.
+ * @member {string} [properties.metricNamespaceName] The metric namespace name.
  */
 export interface MetricNamespace {
   id?: string;
