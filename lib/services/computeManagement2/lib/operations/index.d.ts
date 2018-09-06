@@ -3748,7 +3748,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -4157,7 +4157,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -4585,7 +4585,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -4992,7 +4992,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -6414,7 +6414,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -6823,7 +6823,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -7251,7 +7251,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -7658,7 +7658,7 @@ export interface VirtualMachines {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -15163,7 +15163,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -15558,7 +15558,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -16830,7 +16830,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -17225,7 +17225,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed

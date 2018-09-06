@@ -876,7 +876,7 @@ export interface GenerateUpgradedDefinitionParameters {
  * The integration account sku.
  *
  * @member {string} name The sku name. Possible values include: 'NotSpecified',
- * 'Free', 'Standard'
+ * 'Free', 'Basic', 'Standard'
  */
 export interface IntegrationAccountSku {
   name: string;
@@ -891,7 +891,7 @@ export interface IntegrationAccountSku {
  * @member {object} [properties] The integration account properties.
  * @member {object} [sku] The sku.
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'NotSpecified', 'Free', 'Standard'
+ * 'NotSpecified', 'Free', 'Basic', 'Standard'
  */
 export interface IntegrationAccount extends Resource {
   properties?: any;
@@ -997,7 +997,7 @@ export interface IntegrationAccountMapPropertiesParametersSchema {
  * The integration account map.
  *
  * @member {string} mapType The map type. Possible values include:
- * 'NotSpecified', 'Xslt'
+ * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
  * @member {object} [parametersSchema] The parameters schema of integration
  * account map.
  * @member {string} [parametersSchema.ref] The reference name.
@@ -1035,7 +1035,7 @@ export interface IntegrationAccountMap extends Resource {
  * The integration account map filter for odata query.
  *
  * @member {string} mapType The map type of integration account map. Possible
- * values include: 'NotSpecified', 'Xslt'
+ * values include: 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
  */
 export interface IntegrationAccountMapFilter {
   mapType: string;
