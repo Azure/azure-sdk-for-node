@@ -44485,7 +44485,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} [options] Optional Parameters.
@@ -44499,7 +44499,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+    getWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
 
     /**
      * Retrieves the details of a P2SVpnServerConfiguration.
@@ -44509,7 +44509,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} [options] Optional Parameters.
@@ -44540,9 +44540,9 @@ export interface P2SVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
-    get(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
-    get(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
 
 
     /**
@@ -44553,7 +44553,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
@@ -44616,7 +44616,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
 
     /**
      * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
@@ -44626,7 +44626,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
@@ -44706,9 +44706,9 @@ export interface P2SVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
-    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
-    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
 
 
     /**
@@ -44719,7 +44719,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} [options] Optional Parameters.
@@ -44733,7 +44733,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a P2SVpnServerConfiguration.
@@ -44743,7 +44743,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} [options] Optional Parameters.
@@ -44772,9 +44772,9 @@ export interface P2SVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -44845,7 +44845,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
@@ -44908,7 +44908,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
 
     /**
      * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
@@ -44918,7 +44918,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
@@ -44998,9 +44998,9 @@ export interface P2SVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
-    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
-    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
 
 
     /**
@@ -45011,7 +45011,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} [options] Optional Parameters.
@@ -45025,7 +45025,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a P2SVpnServerConfiguration.
@@ -45035,7 +45035,7 @@ export interface P2SVpnServerConfigurations {
      *
      * @param {string} virtualWanName The name of the VirtualWan.
      *
-     * @param {string} p2sVpnServerConfigurationName The name of the
+     * @param {string} p2SVpnServerConfigurationName The name of the
      * P2SVpnServerConfiguration.
      *
      * @param {object} [options] Optional Parameters.
@@ -45064,9 +45064,9 @@ export interface P2SVpnServerConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2sVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -45206,88 +45206,88 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to create or
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
      * Update a virtual wan p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
      * A unique read-only string that changes whenever the resource is updated.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
-     * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
      * address blocks reserved for this virtual network in CIDR notation.
      *
-     * @param {string} [p2sVpnGatewayParameters.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.location] Resource location.
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45300,7 +45300,7 @@ export interface P2SVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
@@ -45311,88 +45311,88 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to create or
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
      * Update a virtual wan p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
      * A unique read-only string that changes whenever the resource is updated.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
-     * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
      * address blocks reserved for this virtual network in CIDR notation.
      *
-     * @param {string} [p2sVpnGatewayParameters.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.location] Resource location.
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45421,9 +45421,9 @@ export interface P2SVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    createOrUpdate(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
@@ -45751,88 +45751,88 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to create or
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
      * Update a virtual wan p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
      * A unique read-only string that changes whenever the resource is updated.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
-     * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
      * address blocks reserved for this virtual network in CIDR notation.
      *
-     * @param {string} [p2sVpnGatewayParameters.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.location] Resource location.
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45845,7 +45845,7 @@ export interface P2SVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
@@ -45856,88 +45856,88 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to create or
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
      * Update a virtual wan p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2sVpnGatewayParameters.virtualHub.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.provisioningState] The provisioning
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {number} [p2sVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
      * for this p2s vpn gateway.
      *
-     * @param {object} [p2sVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
      * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
      * in a resource group. This name can be used to access the resource along with
      * Paren VirtualWan resource name.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
      * vpnProtocols for the P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
      * VPN client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
      * Radius Server root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
      * Radius client root certificate of P2SVpnServerConfiguration.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
      * radius server address property of the P2SVpnServerConfiguration resource for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
      * radius secret property of the P2SVpnServerConfiguration resource for for
      * point to site client connection.
      *
      * @param {string}
-     * [p2sVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
+     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
      * A unique read-only string that changes whenever the resource is updated.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.name] The
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
      * name of the resource that is unique within a resource group. This name can
      * be used to access the resource.
      *
-     * @param {string} [p2sVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
      *
-     * @param {object} [p2sVpnGatewayParameters.vpnClientAddressPool] The reference
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
      * of the address space resource which represents Address space for P2S
      * VpnClient.
      *
      * @param {array}
-     * [p2sVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
      * address blocks reserved for this virtual network in CIDR notation.
      *
-     * @param {string} [p2sVpnGatewayParameters.id] Resource ID.
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
      *
-     * @param {string} [p2sVpnGatewayParameters.location] Resource location.
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45966,9 +45966,9 @@ export interface P2SVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**

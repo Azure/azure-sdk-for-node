@@ -9396,8 +9396,16 @@ export interface VpnClientConnectionHealth {
  * resource which represents Address space for P2S VpnClient.
  * @member {array} [vpnClientAddressPool.addressPrefixes] A list of address
  * blocks reserved for this virtual network in CIDR notation.
- * @member {array} [vpnClientConnectionHealth] Collection of the all P2S
- * vpnclients' connection health status.
+ * @member {object} [vpnClientConnectionHealth] All P2S vpnclients' connection
+ * health status.
+ * @member {number} [vpnClientConnectionHealth.totalIngressBytesTransferred]
+ * Total of the Ingress Bytes Transferred in this P2S Vpn connection
+ * @member {number} [vpnClientConnectionHealth.totalEgressBytesTransferred]
+ * Total of the Egress Bytes Transferred in this connection
+ * @member {number} [vpnClientConnectionHealth.vpnClientConnectionsCount] The
+ * total of p2s vpn clients connected at this time to this P2SVpnGateway.
+ * @member {array} [vpnClientConnectionHealth.allocatedIpAddresses] List of
+ * allocated ip addresses to the connected p2s vpn clients.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -9407,7 +9415,7 @@ export interface P2SVpnGateway extends Resource {
   vpnGatewayScaleUnit?: number;
   p2SVpnServerConfiguration?: P2SVpnServerConfiguration;
   vpnClientAddressPool?: AddressSpace;
-  readonly vpnClientConnectionHealth?: VpnClientConnectionHealth[];
+  readonly vpnClientConnectionHealth?: VpnClientConnectionHealth;
   readonly etag?: string;
 }
 
