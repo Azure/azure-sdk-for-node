@@ -196,6 +196,8 @@ export interface UsageDetail extends Resource {
  * item. By default this is not populated, unless it's specified in $expand.
  * @member {string} [publisherName] The name of publisher.
  * @member {string} [planName] The name of plan.
+ * @member {boolean} [isRecurringCharge] Flag indicating whether this is a
+ * recurring charge or not.
  */
 export interface Marketplace extends Resource {
   readonly billingPeriodId?: string;
@@ -222,6 +224,7 @@ export interface Marketplace extends Resource {
   readonly additionalProperties?: string;
   readonly publisherName?: string;
   readonly planName?: string;
+  readonly isRecurringCharge?: boolean;
 }
 
 /**
@@ -592,30 +595,6 @@ export interface Budget extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the CostTagProperties class.
- * @constructor
- * The properties of the cost tag.
- *
- * @member {string} [key] Cost tag key.
- */
-export interface CostTagProperties {
-  key?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CostTag class.
- * @constructor
- * A cost tag resource.
- *
- * @member {array} [costTags] Cost tags.
- */
-export interface CostTag extends ProxyResource {
-  costTags?: CostTagProperties[];
-}
-
-/**
- * @class
  * Initializes a new instance of the PriceSheetProperties class.
  * @constructor
  * The properties of the price sheet.
@@ -712,6 +691,73 @@ export interface Forecast extends Resource {
   readonly currency?: string;
   chargeType?: string;
   readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementGroupAggregatedCostResult class.
+ * @constructor
+ * A management group aggregated cost resource.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the aggregated cost belongs to.
+ * @member {date} [usageStart] The start of the date time range covered by
+ * aggregated cost.
+ * @member {date} [usageEnd] The end of the date time range covered by the
+ * aggregated cost.
+ * @member {number} [azureCharges] Azure Charges.
+ * @member {number} [marketplaceCharges] Marketplace Charges.
+ * @member {number} [chargesBilledSeparately] Charges Billed Separately.
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {array} [children] Children of a management group
+ */
+export interface ManagementGroupAggregatedCostResult extends Resource {
+  readonly billingPeriodId?: string;
+  readonly usageStart?: Date;
+  readonly usageEnd?: Date;
+  readonly azureCharges?: number;
+  readonly marketplaceCharges?: number;
+  readonly chargesBilledSeparately?: number;
+  readonly currency?: string;
+  children?: ManagementGroupAggregatedCostResult[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChargeSummary class.
+ * @constructor
+ * A charge summary resource.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the charge belongs to.
+ * @member {string} [usageStart] Usage start date.
+ * @member {string} [usageEnd] Usage end date.
+ * @member {number} [azureCharges] Azure Charges.
+ * @member {number} [chargesBilledSeparately] Charges Billed separately.
+ * @member {number} [marketplaceCharges] Marketplace Charges.
+ * @member {string} [currency] Currency Code
+ */
+export interface ChargeSummary extends Resource {
+  readonly billingPeriodId?: string;
+  readonly usageStart?: string;
+  readonly usageEnd?: string;
+  readonly azureCharges?: number;
+  readonly chargesBilledSeparately?: number;
+  readonly marketplaceCharges?: number;
+  readonly currency?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ChargesListResult class.
+ * @constructor
+ * Result of listing charge summary.
+ *
+ * @member {array} [value] The list of charge summary
+ */
+export interface ChargesListResult {
+  readonly value?: ChargeSummary[];
 }
 
 /**

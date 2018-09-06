@@ -35,8 +35,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -85,8 +88,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1014,7 +1020,7 @@ export interface Registries {
 
 
     /**
-     * Creates a new build based on the request parameters and add it to the build
+     * Schedules a new run based on the request parameters and add it to the run
      * queue.
      *
      * @param {string} resourceGroupName The name of the resource group to which
@@ -1022,9 +1028,12 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} buildRequest The parameters of a build that needs to queued.
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {string} buildRequest.type Polymorphic Discriminator
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1033,14 +1042,14 @@ export interface Registries {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Build>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    queueBuildWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Build>>;
+    scheduleRunWithHttpOperationResponse(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
 
     /**
-     * Creates a new build based on the request parameters and add it to the build
+     * Schedules a new run based on the request parameters and add it to the run
      * queue.
      *
      * @param {string} resourceGroupName The name of the resource group to which
@@ -1048,9 +1057,12 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} buildRequest The parameters of a build that needs to queued.
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {string} buildRequest.type Polymorphic Discriminator
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1064,7 +1076,7 @@ export interface Registries {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Build} - The deserialized result object.
+     *                      @resolve {Run} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1072,16 +1084,16 @@ export interface Registries {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Build} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Build} for more information.
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    queueBuild(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Build>;
-    queueBuild(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, callback: ServiceCallback<models.Build>): void;
-    queueBuild(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Build>): void;
+    scheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    scheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, callback: ServiceCallback<models.Run>): void;
+    scheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
 
 
     /**
@@ -1160,8 +1172,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1210,8 +1225,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1640,7 +1658,7 @@ export interface Registries {
 
 
     /**
-     * Creates a new build based on the request parameters and add it to the build
+     * Schedules a new run based on the request parameters and add it to the run
      * queue.
      *
      * @param {string} resourceGroupName The name of the resource group to which
@@ -1648,9 +1666,12 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} buildRequest The parameters of a build that needs to queued.
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {string} buildRequest.type Polymorphic Discriminator
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1659,14 +1680,14 @@ export interface Registries {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Build>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginQueueBuildWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Build>>;
+    beginScheduleRunWithHttpOperationResponse(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
 
     /**
-     * Creates a new build based on the request parameters and add it to the build
+     * Schedules a new run based on the request parameters and add it to the run
      * queue.
      *
      * @param {string} resourceGroupName The name of the resource group to which
@@ -1674,9 +1695,12 @@ export interface Registries {
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {object} buildRequest The parameters of a build that needs to queued.
+     * @param {object} runRequest The parameters of a run that needs to scheduled.
      *
-     * @param {string} buildRequest.type Polymorphic Discriminator
+     * @param {boolean} [runRequest.isArchiveEnabled] The value that indicates
+     * whether archiving is enabled for the run or not.
+     *
+     * @param {string} runRequest.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1690,7 +1714,7 @@ export interface Registries {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Build} - The deserialized result object.
+     *                      @resolve {Run} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1698,16 +1722,16 @@ export interface Registries {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Build} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Build} for more information.
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginQueueBuild(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Build>;
-    beginQueueBuild(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, callback: ServiceCallback<models.Build>): void;
-    beginQueueBuild(resourceGroupName: string, registryName: string, buildRequest: models.QueueBuildRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Build>): void;
+    beginScheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    beginScheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, callback: ServiceCallback<models.Run>): void;
+    beginScheduleRun(resourceGroupName: string, registryName: string, runRequest: models.RunRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
 
 
     /**
@@ -3611,15 +3635,15 @@ export interface Webhooks {
 
 /**
  * @class
- * Builds
+ * Runs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ContainerRegistryManagementClient.
  */
-export interface Builds {
+export interface Runs {
 
 
     /**
-     * Gets all the builds for a registry.
+     * Gets all the runs for a registry.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
@@ -3628,28 +3652,26 @@ export interface Builds {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The builds filter to apply on the
-     * operation.
+     * @param {string} [options.filter] The runs filter to apply on the operation.
+     * Arithmetic operators are not supported. The allowed string function is
+     * 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
      *
-     * @param {number} [options.top] $top is supported for get list of builds,
-     * which limits the maximum number of builds to return.
-     *
-     * @param {string} [options.skipToken] $skipToken is supported on get list of
-     * builds, which provides the next page in the list of builds.
+     * @param {number} [options.top] $top is supported for get list of runs, which
+     * limits the maximum number of runs to return.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<RunListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunListResult>>;
 
     /**
-     * Gets all the builds for a registry.
+     * Gets all the runs for a registry.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
@@ -3658,14 +3680,12 @@ export interface Builds {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The builds filter to apply on the
-     * operation.
+     * @param {string} [options.filter] The runs filter to apply on the operation.
+     * Arithmetic operators are not supported. The allowed string function is
+     * 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
      *
-     * @param {number} [options.top] $top is supported for get list of builds,
-     * which limits the maximum number of builds to return.
-     *
-     * @param {string} [options.skipToken] $skipToken is supported on get list of
-     * builds, which provides the next page in the list of builds.
+     * @param {number} [options.top] $top is supported for get list of runs, which
+     * limits the maximum number of runs to return.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3677,7 +3697,7 @@ export interface Builds {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildListResult} - The deserialized result object.
+     *                      @resolve {RunListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3685,27 +3705,27 @@ export interface Builds {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildListResult} for more information.
+     *                      {RunListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildListResult>;
-    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.BuildListResult>): void;
-    list(resourceGroupName: string, registryName: string, options: { filter? : string, top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildListResult>): void;
+    list(resourceGroupName: string, registryName: string, options?: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RunListResult>;
+    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RunListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunListResult>): void;
 
 
     /**
-     * Gets the detailed information for a given build.
+     * Gets the detailed information for a given run.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3714,21 +3734,21 @@ export interface Builds {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Build>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Build>>;
+    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
 
     /**
-     * Gets the detailed information for a given build.
+     * Gets the detailed information for a given run.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3742,7 +3762,7 @@ export interface Builds {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Build} - The deserialized result object.
+     *                      @resolve {Run} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3750,31 +3770,31 @@ export interface Builds {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Build} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Build} for more information.
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Build>;
-    get(resourceGroupName: string, registryName: string, buildId: string, callback: ServiceCallback<models.Build>): void;
-    get(resourceGroupName: string, registryName: string, buildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Build>): void;
+    get(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    get(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.Run>): void;
+    get(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
 
 
     /**
-     * Patch the build properties.
+     * Patch the run properties.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
-     * @param {object} buildUpdateParameters The build update properties.
+     * @param {object} runUpdateParameters The run update properties.
      *
-     * @param {boolean} [buildUpdateParameters.isArchiveEnabled] The value that
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
      * indicates whether archiving is enabled or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -3784,25 +3804,25 @@ export interface Builds {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Build>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Build>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
 
     /**
-     * Patch the build properties.
+     * Patch the run properties.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
-     * @param {object} buildUpdateParameters The build update properties.
+     * @param {object} runUpdateParameters The run update properties.
      *
-     * @param {boolean} [buildUpdateParameters.isArchiveEnabled] The value that
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
      * indicates whether archiving is enabled or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -3817,7 +3837,7 @@ export interface Builds {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Build} - The deserialized result object.
+     *                      @resolve {Run} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3825,27 +3845,27 @@ export interface Builds {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Build} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Build} for more information.
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Build>;
-    update(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, callback: ServiceCallback<models.Build>): void;
-    update(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Build>): void;
+    update(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    update(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, callback: ServiceCallback<models.Run>): void;
+    update(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
 
 
     /**
-     * Gets a link to download the build logs.
+     * Gets a link to download the run logs.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3854,21 +3874,21 @@ export interface Builds {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildGetLogResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<RunGetLogResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getLogLinkWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildGetLogResult>>;
+    getLogSasUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunGetLogResult>>;
 
     /**
-     * Gets a link to download the build logs.
+     * Gets a link to download the run logs.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3882,7 +3902,7 @@ export interface Builds {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildGetLogResult} - The deserialized result object.
+     *                      @resolve {RunGetLogResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3890,27 +3910,27 @@ export interface Builds {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildGetLogResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildGetLogResult} for more information.
+     *                      {RunGetLogResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunGetLogResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getLogLink(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildGetLogResult>;
-    getLogLink(resourceGroupName: string, registryName: string, buildId: string, callback: ServiceCallback<models.BuildGetLogResult>): void;
-    getLogLink(resourceGroupName: string, registryName: string, buildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildGetLogResult>): void;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunGetLogResult>;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.RunGetLogResult>): void;
+    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunGetLogResult>): void;
 
 
     /**
-     * Cancel an existing build.
+     * Cancel an existing run.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3923,17 +3943,17 @@ export interface Builds {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cancelWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    cancelWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Cancel an existing build.
+     * Cancel an existing run.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3961,24 +3981,24 @@ export interface Builds {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    cancel(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    cancel(resourceGroupName: string, registryName: string, buildId: string, callback: ServiceCallback<void>): void;
-    cancel(resourceGroupName: string, registryName: string, buildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Patch the build properties.
+     * Patch the run properties.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
-     * @param {object} buildUpdateParameters The build update properties.
+     * @param {object} runUpdateParameters The run update properties.
      *
-     * @param {boolean} [buildUpdateParameters.isArchiveEnabled] The value that
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
      * indicates whether archiving is enabled or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -3988,25 +4008,25 @@ export interface Builds {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Build>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Run>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Build>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Run>>;
 
     /**
-     * Patch the build properties.
+     * Patch the run properties.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
-     * @param {object} buildUpdateParameters The build update properties.
+     * @param {object} runUpdateParameters The run update properties.
      *
-     * @param {boolean} [buildUpdateParameters.isArchiveEnabled] The value that
+     * @param {boolean} [runUpdateParameters.isArchiveEnabled] The value that
      * indicates whether archiving is enabled or not.
      *
      * @param {object} [options] Optional Parameters.
@@ -4021,7 +4041,7 @@ export interface Builds {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Build} - The deserialized result object.
+     *                      @resolve {Run} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4029,27 +4049,27 @@ export interface Builds {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Build} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Build} for more information.
+     *                      {Run} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Run} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Build>;
-    beginUpdate(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, callback: ServiceCallback<models.Build>): void;
-    beginUpdate(resourceGroupName: string, registryName: string, buildId: string, buildUpdateParameters: models.BuildUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Build>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Run>;
+    beginUpdate(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, callback: ServiceCallback<models.Run>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, runId: string, runUpdateParameters: models.RunUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Run>): void;
 
 
     /**
-     * Cancel an existing build.
+     * Cancel an existing run.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4062,17 +4082,17 @@ export interface Builds {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCancelWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginCancelWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Cancel an existing build.
+     * Cancel an existing run.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildId The build ID.
+     * @param {string} runId The run ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4100,13 +4120,13 @@ export interface Builds {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCancel(resourceGroupName: string, registryName: string, buildId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginCancel(resourceGroupName: string, registryName: string, buildId: string, callback: ServiceCallback<void>): void;
-    beginCancel(resourceGroupName: string, registryName: string, buildId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginCancel(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCancel(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<void>): void;
+    beginCancel(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Gets all the builds for a registry.
+     * Gets all the runs for a registry.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4118,14 +4138,14 @@ export interface Builds {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<RunListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunListResult>>;
 
     /**
-     * Gets all the builds for a registry.
+     * Gets all the runs for a registry.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4142,7 +4162,7 @@ export interface Builds {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildListResult} - The deserialized result object.
+     *                      @resolve {RunListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4150,36 +4170,34 @@ export interface Builds {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildListResult} for more information.
+     *                      {RunListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.BuildListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RunListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunListResult>): void;
 }
 
 /**
  * @class
- * BuildSteps
+ * Tasks
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ContainerRegistryManagementClient.
  */
-export interface BuildSteps {
+export interface Tasks {
 
 
     /**
-     * List all the build steps for a given build task.
+     * Lists all the tasks for a specified container registry.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4188,21 +4206,19 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStepList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TaskListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStepList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TaskListResult>>;
 
     /**
-     * List all the build steps for a given build task.
+     * Lists all the tasks for a specified container registry.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4216,7 +4232,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildStepList} - The deserialized result object.
+     *                      @resolve {TaskListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4224,30 +4240,27 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildStepList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStepList} for more information.
+     *                      {TaskListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TaskListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStepList>;
-    list(resourceGroupName: string, registryName: string, buildTaskName: string, callback: ServiceCallback<models.BuildStepList>): void;
-    list(resourceGroupName: string, registryName: string, buildTaskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStepList>): void;
+    list(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TaskListResult>;
+    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.TaskListResult>): void;
+    list(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskListResult>): void;
 
 
     /**
-     * Gets the build step for a build task.
+     * Get the properties of a specified task.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4256,24 +4269,21 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStep>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStep>>;
+    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
-     * Gets the build step for a build task.
+     * Get the properties of a specified task.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4287,7 +4297,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildStep} - The deserialized result object.
+     *                      @resolve {Task} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4295,39 +4305,82 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildStep} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStep} for more information.
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStep>;
-    get(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, callback: ServiceCallback<models.BuildStep>): void;
-    get(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStep>): void;
+    get(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    get(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<models.Task>): void;
+    get(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
-     * Creates a build step for a build task.
+     * Creates a task for a container registry with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskCreateParameters The parameters for creating a task.
      *
-     * @param {object} buildStepCreateParameters The parameters for creating a
-     * build step.
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepCreateParameters.properties] The properties of a
-     * build step.
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepCreateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4336,33 +4389,76 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStep>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStep>>;
+    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
-     * Creates a build step for a build task.
+     * Creates a task for a container registry with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskCreateParameters The parameters for creating a task.
      *
-     * @param {object} buildStepCreateParameters The parameters for creating a
-     * build step.
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepCreateParameters.properties] The properties of a
-     * build step.
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepCreateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4376,7 +4472,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildStep} - The deserialized result object.
+     *                      @resolve {Task} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4384,30 +4480,27 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildStep} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStep} for more information.
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStep>;
-    create(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, callback: ServiceCallback<models.BuildStep>): void;
-    create(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStep>): void;
+    create(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    create(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, callback: ServiceCallback<models.Task>): void;
+    create(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
-     * Deletes a build step from the build task.
+     * Deletes a specified task.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4420,20 +4513,17 @@ export interface BuildSteps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a build step from the build task.
+     * Deletes a specified task.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4461,34 +4551,73 @@ export interface BuildSteps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Updates a build step in a build task.
+     * Updates a task with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {object} buildStepUpdateParameters The parameters for updating a
-     * build step.
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepUpdateParameters.properties] The properties for
-     * updating a build step.
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepUpdateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {object} [buildStepUpdateParameters.tags] The ARM resource tags.
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4497,35 +4626,74 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStep>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStep>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
-     * Updates a build step in a build task.
+     * Updates a task with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {object} buildStepUpdateParameters The parameters for updating a
-     * build step.
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepUpdateParameters.properties] The properties for
-     * updating a build step.
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepUpdateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {object} [buildStepUpdateParameters.tags] The ARM resource tags.
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4539,7 +4707,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildStep} - The deserialized result object.
+     *                      @resolve {Task} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4547,30 +4715,27 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildStep} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStep} for more information.
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStep>;
-    update(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, callback: ServiceCallback<models.BuildStep>): void;
-    update(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStep>): void;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, callback: ServiceCallback<models.Task>): void;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
-     * List the build arguments for a step including the secret arguments.
+     * Returns a task with extended information that includes all secrets.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4579,24 +4744,21 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildArgumentList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBuildArgumentsWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildArgumentList>>;
+    getDetailsWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
-     * List the build arguments for a step including the secret arguments.
+     * Returns a task with extended information that includes all secrets.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4610,7 +4772,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildArgumentList} - The deserialized result object.
+     *                      @resolve {Task} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4618,39 +4780,82 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildArgumentList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildArgumentList} for more information.
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBuildArguments(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildArgumentList>;
-    listBuildArguments(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, callback: ServiceCallback<models.BuildArgumentList>): void;
-    listBuildArguments(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildArgumentList>): void;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<models.Task>): void;
+    getDetails(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
-     * Creates a build step for a build task.
+     * Creates a task for a container registry with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskCreateParameters The parameters for creating a task.
      *
-     * @param {object} buildStepCreateParameters The parameters for creating a
-     * build step.
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepCreateParameters.properties] The properties of a
-     * build step.
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepCreateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4659,33 +4864,76 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStep>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStep>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
-     * Creates a build step for a build task.
+     * Creates a task for a container registry with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskCreateParameters The parameters for creating a task.
      *
-     * @param {object} buildStepCreateParameters The parameters for creating a
-     * build step.
+     * @param {string} [taskCreateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepCreateParameters.properties] The properties of a
-     * build step.
+     * @param {object} taskCreateParameters.platform The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepCreateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} taskCreateParameters.platform.os The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [taskCreateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskCreateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskCreateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskCreateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskCreateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} taskCreateParameters.step The properties of a task step.
+     *
+     * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskCreateParameters.trigger] The properties that describe
+     * all triggers for the task.
+     *
+     * @param {array} [taskCreateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskCreateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * taskCreateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
+     * of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {string} taskCreateParameters.location The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [taskCreateParameters.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4699,7 +4947,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildStep} - The deserialized result object.
+     *                      @resolve {Task} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4707,30 +4955,27 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildStep} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStep} for more information.
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStep>;
-    beginCreate(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, callback: ServiceCallback<models.BuildStep>): void;
-    beginCreate(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepCreateParameters: models.BuildStep, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStep>): void;
+    beginCreate(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    beginCreate(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, callback: ServiceCallback<models.Task>): void;
+    beginCreate(resourceGroupName: string, registryName: string, taskName: string, taskCreateParameters: models.Task, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
-     * Deletes a build step from the build task.
+     * Deletes a specified task.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4743,20 +4988,17 @@ export interface BuildSteps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a build step from the build task.
+     * Deletes a specified task.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {string} taskName The name of the container registry task.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4784,34 +5026,73 @@ export interface BuildSteps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, taskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, taskName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, registryName: string, taskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Updates a build step in a build task.
+     * Updates a task with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {object} buildStepUpdateParameters The parameters for updating a
-     * build step.
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepUpdateParameters.properties] The properties for
-     * updating a build step.
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepUpdateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {object} [buildStepUpdateParameters.tags] The ARM resource tags.
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4820,35 +5101,74 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStep>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Task>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStep>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
-     * Updates a build step in a build task.
+     * Updates a task with the specified parameters.
      *
      * @param {string} resourceGroupName The name of the resource group to which
      * the container registry belongs.
      *
      * @param {string} registryName The name of the container registry.
      *
-     * @param {string} buildTaskName The name of the container registry build task.
+     * @param {string} taskName The name of the container registry task.
      *
-     * @param {string} stepName The name of a build step for a container registry
-     * build task.
+     * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {object} buildStepUpdateParameters The parameters for updating a
-     * build step.
+     * @param {string} [taskUpdateParameters.status] The current status of task.
+     * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} [buildStepUpdateParameters.properties] The properties for
-     * updating a build step.
+     * @param {object} [taskUpdateParameters.platform] The platform properties
+     * against which the run has to happen.
      *
-     * @param {string} buildStepUpdateParameters.properties.type Polymorphic
-     * Discriminator
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
+     * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {object} [buildStepUpdateParameters.tags] The ARM resource tags.
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
+     * architecture. Possible values include: 'amd64', 'x86', 'arm'
+     *
+     * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
+     * Possible values include: 'v6', 'v7', 'v8'
+     *
+     * @param {object} [taskUpdateParameters.agentConfiguration] The machine
+     * configuration of the run agent.
+     *
+     * @param {number} [taskUpdateParameters.agentConfiguration.cpu] The CPU
+     * configuration in terms of number of cores required for the run.
+     *
+     * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
+     *
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
+     *
+     * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
+     *
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
+     *
+     * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
+     * of triggers based on source code repository.
+     *
+     * @param {object} [taskUpdateParameters.trigger.baseImageTrigger] The trigger
+     * based on base image dependencies.
+     *
+     * @param {string}
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
+     * include: 'All', 'Runtime'
+     *
+     * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
+     * current status of build trigger. Possible values include: 'Disabled',
+     * 'Enabled'
+     *
+     * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
+     * of the trigger.
+     *
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4862,7 +5182,7 @@ export interface BuildSteps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildStep} - The deserialized result object.
+     *                      @resolve {Task} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4870,20 +5190,20 @@ export interface BuildSteps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildStep} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStep} for more information.
+     *                      {Task} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Task} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStep>;
-    beginUpdate(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, callback: ServiceCallback<models.BuildStep>): void;
-    beginUpdate(resourceGroupName: string, registryName: string, buildTaskName: string, stepName: string, buildStepUpdateParameters: models.BuildStepUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStep>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, callback: ServiceCallback<models.Task>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
-     * List all the build steps for a given build task.
+     * Lists all the tasks for a specified container registry.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4895,1217 +5215,14 @@ export interface BuildSteps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BuildStepList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TaskListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildStepList>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TaskListResult>>;
 
     /**
-     * List all the build steps for a given build task.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildStepList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildStepList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildStepList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildStepList>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.BuildStepList>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildStepList>): void;
-
-
-    /**
-     * List the build arguments for a step including the secret arguments.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildArgumentList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBuildArgumentsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildArgumentList>>;
-
-    /**
-     * List the build arguments for a step including the secret arguments.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildArgumentList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildArgumentList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildArgumentList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBuildArgumentsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildArgumentList>;
-    listBuildArgumentsNext(nextPageLink: string, callback: ServiceCallback<models.BuildArgumentList>): void;
-    listBuildArgumentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildArgumentList>): void;
-}
-
-/**
- * @class
- * BuildTasks
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContainerRegistryManagementClient.
- */
-export interface BuildTasks {
-
-
-    /**
-     * Lists all the build tasks for a specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The build task filter to apply on the
-     * operation.
-     *
-     * @param {string} [options.skipToken] $skipToken is supported on get list of
-     * build tasks, which provides the next page in the list of tasks.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTaskListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { filter? : string, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTaskListResult>>;
-
-    /**
-     * Lists all the build tasks for a specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The build task filter to apply on the
-     * operation.
-     *
-     * @param {string} [options.skipToken] $skipToken is supported on get list of
-     * build tasks, which provides the next page in the list of tasks.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildTaskListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildTaskListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTaskListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, registryName: string, options?: { filter? : string, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTaskListResult>;
-    list(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.BuildTaskListResult>): void;
-    list(resourceGroupName: string, registryName: string, options: { filter? : string, skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTaskListResult>): void;
-
-
-    /**
-     * Get the properties of a specified build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTask>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTask>>;
-
-    /**
-     * Get the properties of a specified build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildTask} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildTask} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTask} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTask>;
-    get(resourceGroupName: string, registryName: string, buildTaskName: string, callback: ServiceCallback<models.BuildTask>): void;
-    get(resourceGroupName: string, registryName: string, buildTaskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTask>): void;
-
-
-    /**
-     * Creates a build task for a container registry with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskCreateParameters The parameters for creating a
-     * build task.
-     *
-     * @param {string} buildTaskCreateParameters.alias The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskCreateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} buildTaskCreateParameters.sourceRepository The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.sourceControlType
-     * The type of source control service. Possible values include: 'Github',
-     * 'VisualStudioTeamService'
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.repositoryUrl The
-     * full URL to the source code respository
-     *
-     * @param {boolean}
-     * [buildTaskCreateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {object} buildTaskCreateParameters.platform The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskCreateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskCreateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskCreateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {string} buildTaskCreateParameters.location The location of the
-     * resource. This cannot be changed after the resource is created.
-     *
-     * @param {object} [buildTaskCreateParameters.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTask>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTask>>;
-
-    /**
-     * Creates a build task for a container registry with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskCreateParameters The parameters for creating a
-     * build task.
-     *
-     * @param {string} buildTaskCreateParameters.alias The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskCreateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} buildTaskCreateParameters.sourceRepository The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.sourceControlType
-     * The type of source control service. Possible values include: 'Github',
-     * 'VisualStudioTeamService'
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.repositoryUrl The
-     * full URL to the source code respository
-     *
-     * @param {boolean}
-     * [buildTaskCreateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {object} buildTaskCreateParameters.platform The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskCreateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskCreateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskCreateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {string} buildTaskCreateParameters.location The location of the
-     * resource. This cannot be changed after the resource is created.
-     *
-     * @param {object} [buildTaskCreateParameters.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildTask} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildTask} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTask} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTask>;
-    create(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, callback: ServiceCallback<models.BuildTask>): void;
-    create(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTask>): void;
-
-
-    /**
-     * Deletes a specified build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a specified build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Updates a build task with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskUpdateParameters The parameters for updating a
-     * build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.alias] The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} [buildTaskUpdateParameters.platform] The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskUpdateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskUpdateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskUpdateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {object} [buildTaskUpdateParameters.sourceRepository] The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {object}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {boolean}
-     * [buildTaskUpdateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object} [buildTaskUpdateParameters.tags] The ARM resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTask>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTask>>;
-
-    /**
-     * Updates a build task with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskUpdateParameters The parameters for updating a
-     * build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.alias] The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} [buildTaskUpdateParameters.platform] The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskUpdateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskUpdateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskUpdateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {object} [buildTaskUpdateParameters.sourceRepository] The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {object}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {boolean}
-     * [buildTaskUpdateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object} [buildTaskUpdateParameters.tags] The ARM resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildTask} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildTask} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTask} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTask>;
-    update(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, callback: ServiceCallback<models.BuildTask>): void;
-    update(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTask>): void;
-
-
-    /**
-     * Get the source control properties for a build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SourceRepositoryProperties>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listSourceRepositoryPropertiesWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceRepositoryProperties>>;
-
-    /**
-     * Get the source control properties for a build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SourceRepositoryProperties} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SourceRepositoryProperties} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SourceRepositoryProperties} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listSourceRepositoryProperties(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceRepositoryProperties>;
-    listSourceRepositoryProperties(resourceGroupName: string, registryName: string, buildTaskName: string, callback: ServiceCallback<models.SourceRepositoryProperties>): void;
-    listSourceRepositoryProperties(resourceGroupName: string, registryName: string, buildTaskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceRepositoryProperties>): void;
-
-
-    /**
-     * Creates a build task for a container registry with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskCreateParameters The parameters for creating a
-     * build task.
-     *
-     * @param {string} buildTaskCreateParameters.alias The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskCreateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} buildTaskCreateParameters.sourceRepository The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.sourceControlType
-     * The type of source control service. Possible values include: 'Github',
-     * 'VisualStudioTeamService'
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.repositoryUrl The
-     * full URL to the source code respository
-     *
-     * @param {boolean}
-     * [buildTaskCreateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {object} buildTaskCreateParameters.platform The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskCreateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskCreateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskCreateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {string} buildTaskCreateParameters.location The location of the
-     * resource. This cannot be changed after the resource is created.
-     *
-     * @param {object} [buildTaskCreateParameters.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTask>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTask>>;
-
-    /**
-     * Creates a build task for a container registry with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskCreateParameters The parameters for creating a
-     * build task.
-     *
-     * @param {string} buildTaskCreateParameters.alias The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskCreateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} buildTaskCreateParameters.sourceRepository The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.sourceControlType
-     * The type of source control service. Possible values include: 'Github',
-     * 'VisualStudioTeamService'
-     *
-     * @param {string} buildTaskCreateParameters.sourceRepository.repositoryUrl The
-     * full URL to the source code respository
-     *
-     * @param {boolean}
-     * [buildTaskCreateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskCreateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {object} buildTaskCreateParameters.platform The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskCreateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskCreateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskCreateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {string} buildTaskCreateParameters.location The location of the
-     * resource. This cannot be changed after the resource is created.
-     *
-     * @param {object} [buildTaskCreateParameters.tags] The tags of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildTask} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildTask} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTask} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreate(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTask>;
-    beginCreate(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, callback: ServiceCallback<models.BuildTask>): void;
-    beginCreate(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskCreateParameters: models.BuildTask, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTask>): void;
-
-
-    /**
-     * Deletes a specified build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a specified build task.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, registryName: string, buildTaskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Updates a build task with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskUpdateParameters The parameters for updating a
-     * build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.alias] The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} [buildTaskUpdateParameters.platform] The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskUpdateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskUpdateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskUpdateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {object} [buildTaskUpdateParameters.sourceRepository] The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {object}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {boolean}
-     * [buildTaskUpdateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object} [buildTaskUpdateParameters.tags] The ARM resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTask>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTask>>;
-
-    /**
-     * Updates a build task with the specified parameters.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {string} buildTaskName The name of the container registry build task.
-     *
-     * @param {object} buildTaskUpdateParameters The parameters for updating a
-     * build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.alias] The alternative updatable
-     * name for a build task.
-     *
-     * @param {string} [buildTaskUpdateParameters.status] The current status of
-     * build task. Possible values include: 'Disabled', 'Enabled'
-     *
-     * @param {object} [buildTaskUpdateParameters.platform] The platform properties
-     * against which the build has to happen.
-     *
-     * @param {string} buildTaskUpdateParameters.platform.osType The operating
-     * system type required for the build. Possible values include: 'Windows',
-     * 'Linux'
-     *
-     * @param {number} [buildTaskUpdateParameters.platform.cpu] The CPU
-     * configuration in terms of number of cores required for the build.
-     *
-     * @param {number} [buildTaskUpdateParameters.timeout] Build timeout in
-     * seconds.
-     *
-     * @param {object} [buildTaskUpdateParameters.sourceRepository] The properties
-     * that describes the source(code) for the build task.
-     *
-     * @param {object}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties] The
-     * authorization properties for accessing the source code repository.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.tokenType]
-     * The type of Auth token. Possible values include: 'PAT', 'OAuth'
-     *
-     * @param {string}
-     * buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.token
-     * The access token used to access the source control provider.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.refreshToken]
-     * The refresh token used to refresh the access token.
-     *
-     * @param {string}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.scope]
-     * The scope of the access token.
-     *
-     * @param {number}
-     * [buildTaskUpdateParameters.sourceRepository.sourceControlAuthProperties.expiresIn]
-     * Time in seconds that the token remains valid
-     *
-     * @param {boolean}
-     * [buildTaskUpdateParameters.sourceRepository.isCommitTriggerEnabled] The
-     * value of this property indicates whether the source control commit trigger
-     * is enabled or not.
-     *
-     * @param {object} [buildTaskUpdateParameters.tags] The ARM resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BuildTask} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BuildTask} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTask} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTask>;
-    beginUpdate(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, callback: ServiceCallback<models.BuildTask>): void;
-    beginUpdate(resourceGroupName: string, registryName: string, buildTaskName: string, buildTaskUpdateParameters: models.BuildTaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTask>): void;
-
-
-    /**
-     * Lists all the build tasks for a specified container registry.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BuildTaskListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BuildTaskListResult>>;
-
-    /**
-     * Lists all the build tasks for a specified container registry.
+     * Lists all the tasks for a specified container registry.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -6122,7 +5239,7 @@ export interface BuildTasks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BuildTaskListResult} - The deserialized result object.
+     *                      @resolve {TaskListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6130,14 +5247,14 @@ export interface BuildTasks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BuildTaskListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BuildTaskListResult} for more information.
+     *                      {TaskListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TaskListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BuildTaskListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.BuildTaskListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BuildTaskListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TaskListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.TaskListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskListResult>): void;
 }
