@@ -28,13 +28,13 @@ export interface SkuName {
 
 /**
  * @class
- * Initializes a new instance of the SkuCapability class.
+ * Initializes a new instance of the SkuProperty class.
  * @constructor
  * @member {string} [name] An invariant to describe the feature.
  * @member {string} [value] An invariant if the feature is measured by
  * quantity.
  */
-export interface SkuCapability {
+export interface SkuProperty {
   name?: string;
   value?: string;
 }
@@ -61,21 +61,17 @@ export interface SkuRestriction {
  * @constructor
  * @member {string} [resourceType] The type of resource the SKU applies to.
  * @member {string} [name] The name of SKU
- * @member {string} [tier] The tier of this SKU
- * @member {string} [size] The size of this SKU
  * @member {array} [terms] Available reservation terms for this resource
  * @member {array} [locations]
- * @member {array} [capabilities]
+ * @member {array} [skuProperties]
  * @member {array} [restrictions]
  */
 export interface Catalog {
   readonly resourceType?: string;
   readonly name?: string;
-  readonly tier?: string;
-  readonly size?: string;
   readonly terms?: string[];
   readonly locations?: string[];
-  readonly capabilities?: SkuCapability[];
+  readonly skuProperties?: SkuProperty[];
   readonly restrictions?: SkuRestriction[];
 }
 
@@ -130,6 +126,10 @@ export interface ReservationMergeProperties {
  * @class
  * Initializes a new instance of the ReservationProperties class.
  * @constructor
+ * @member {string} [reservedResourceType] Possible values include:
+ * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb'
+ * @member {string} [instanceFlexibility] Possible values include: 'On', 'Off',
+ * 'NotSupported'
  * @member {string} [displayName] Friendly name for user to easily identify the
  * reservation
  * @member {array} [appliedScopes]
@@ -137,16 +137,14 @@ export interface ReservationMergeProperties {
  * 'Shared'
  * @member {number} [quantity] Quantity of the SKUs that are part of the
  * Reservation.
- * @member {string} [provisioningState] Possible values include: 'Creating',
- * 'PendingResourceHold', 'ConfirmedResourceHold', 'PendingBilling',
- * 'ConfirmedBilling', 'Created', 'Succeeded', 'Cancelled', 'Expired',
- * 'BillingFailed', 'Failed', 'Split', 'Merged'
+ * @member {string} [provisioningState] Current state of the reservation.
  * @member {date} [effectiveDateTime] DateTime of the Reservation starting when
  * this version is effective from.
  * @member {date} [lastUpdatedDateTime] DateTime of the last time the
  * Reservation was updated.
  * @member {date} [expiryDate] This is the date when the Reservation will
  * expire.
+ * @member {string} [skuDescription] Description of the SKU in english.
  * @member {object} [extendedStatusInfo]
  * @member {string} [extendedStatusInfo.statusCode] Possible values include:
  * 'None', 'Pending', 'Active', 'PurchaseError', 'PaymentInstrumentError',
@@ -169,6 +167,8 @@ export interface ReservationMergeProperties {
  * /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
  */
 export interface ReservationProperties {
+  reservedResourceType?: string;
+  instanceFlexibility?: string;
   displayName?: string;
   appliedScopes?: string[];
   appliedScopeType?: string;
@@ -177,6 +177,7 @@ export interface ReservationProperties {
   effectiveDateTime?: Date;
   readonly lastUpdatedDateTime?: Date;
   expiryDate?: Date;
+  skuDescription?: string;
   extendedStatusInfo?: ExtendedStatusInfo;
   splitProperties?: ReservationSplitProperties;
   mergeProperties?: ReservationMergeProperties;
@@ -186,20 +187,18 @@ export interface ReservationProperties {
  * @class
  * Initializes a new instance of the ReservationResponse class.
  * @constructor
- * @member {string} [location] Possible values include: 'westus', 'eastus',
- * 'eastus2', 'northcentralus', 'westus2', 'southcentralus', 'centralus',
- * 'westeurope', 'northeurope', 'eastasia', 'southeastasia', 'japaneast',
- * 'japanwest', 'brazilsouth', 'australiaeast', 'australiasoutheast',
- * 'southindia', 'westindia', 'centralindia', 'canadacentral', 'canadaeast',
- * 'uksouth', 'westcentralus', 'ukwest'
+ * @member {string} [location] The Azure Region where the reserved resource
+ * lives.
  * @member {number} [etag]
  * @member {string} [id] Identifier of the reservation
  * @member {string} [name] Name of the reservation
- * @member {string} [kind] Resource Provider type to be reserved. Possible
- * values include: 'Microsoft.Compute'
  * @member {object} [sku]
  * @member {string} [sku.name]
  * @member {object} [properties]
+ * @member {string} [properties.reservedResourceType] Possible values include:
+ * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb'
+ * @member {string} [properties.instanceFlexibility] Possible values include:
+ * 'On', 'Off', 'NotSupported'
  * @member {string} [properties.displayName] Friendly name for user to easily
  * identify the reservation
  * @member {array} [properties.appliedScopes]
@@ -207,16 +206,16 @@ export interface ReservationProperties {
  * 'Single', 'Shared'
  * @member {number} [properties.quantity] Quantity of the SKUs that are part of
  * the Reservation.
- * @member {string} [properties.provisioningState] Possible values include:
- * 'Creating', 'PendingResourceHold', 'ConfirmedResourceHold',
- * 'PendingBilling', 'ConfirmedBilling', 'Created', 'Succeeded', 'Cancelled',
- * 'Expired', 'BillingFailed', 'Failed', 'Split', 'Merged'
+ * @member {string} [properties.provisioningState] Current state of the
+ * reservation.
  * @member {date} [properties.effectiveDateTime] DateTime of the Reservation
  * starting when this version is effective from.
  * @member {date} [properties.lastUpdatedDateTime] DateTime of the last time
  * the Reservation was updated.
  * @member {date} [properties.expiryDate] This is the date when the Reservation
  * will expire.
+ * @member {string} [properties.skuDescription] Description of the SKU in
+ * english.
  * @member {object} [properties.extendedStatusInfo]
  * @member {string} [properties.extendedStatusInfo.statusCode] Possible values
  * include: 'None', 'Pending', 'Active', 'PurchaseError',
@@ -243,11 +242,10 @@ export interface ReservationProperties {
  * "Microsoft.Capacity/reservationOrders/reservations"
  */
 export interface ReservationResponse extends BaseResource {
-  location?: string;
+  readonly location?: string;
   etag?: number;
   readonly id?: string;
   readonly name?: string;
-  kind?: string;
   sku?: SkuName;
   properties?: ReservationProperties;
   readonly type?: string;
@@ -271,10 +269,7 @@ export interface ReservationResponse extends BaseResource {
  * @member {number} [originalQuantity] Total Quantity of the SKUs purchased in
  * the Reservation.
  * @member {string} [term] Possible values include: 'P1Y', 'P3Y'
- * @member {string} [provisioningState] Possible values include: 'Creating',
- * 'PendingResourceHold', 'ConfirmedResourceHold', 'PendingBilling',
- * 'ConfirmedBilling', 'Created', 'Succeeded', 'Cancelled', 'Expired',
- * 'BillingFailed', 'Failed', 'Split', 'Merged'
+ * @member {string} [provisioningState] Current state of the reservation.
  * @member {array} [reservations]
  * @member {string} [type] Type of resource. "Microsoft.Capacity/reservations"
  */
@@ -311,10 +306,15 @@ export interface MergeRequest {
  * @member {string} [appliedScopeType] Possible values include: 'Single',
  * 'Shared'
  * @member {array} [appliedScopes]
+ * @member {string} [instanceFlexibility] Possible values include: 'On', 'Off',
+ * 'NotSupported'
+ * @member {string} [name] Name of the Reservation
  */
 export interface Patch {
   appliedScopeType?: string;
   appliedScopes?: string[];
+  instanceFlexibility?: string;
+  name?: string;
 }
 
 /**
@@ -346,7 +346,7 @@ export interface SplitRequest {
  * 'InvalidLocationId', 'UnauthenticatedRequestsThrottled',
  * 'InvalidHealthCheckType', 'Forbidden', 'BillingScopeIdCannotBeChanged',
  * 'AppliedScopesNotAssociatedWithCommerceAccount',
- * 'AppliedScopesSameAsExisting', 'RoleAssignmentCreationFailed',
+ * 'PatchValuesSameAsExisting', 'RoleAssignmentCreationFailed',
  * 'ReservationOrderCreationFailed', 'ReservationOrderNotEnabled',
  * 'CapacityUpdateScopesFailed', 'UnsupportedReservationTerm',
  * 'ReservationOrderIdAlreadyExists', 'RiskCheckFailed', 'CreateQuoteFailed',
@@ -382,7 +382,7 @@ export interface ExtendedErrorInfo {
  * 'InvalidLocationId', 'UnauthenticatedRequestsThrottled',
  * 'InvalidHealthCheckType', 'Forbidden', 'BillingScopeIdCannotBeChanged',
  * 'AppliedScopesNotAssociatedWithCommerceAccount',
- * 'AppliedScopesSameAsExisting', 'RoleAssignmentCreationFailed',
+ * 'PatchValuesSameAsExisting', 'RoleAssignmentCreationFailed',
  * 'ReservationOrderCreationFailed', 'ReservationOrderNotEnabled',
  * 'CapacityUpdateScopesFailed', 'UnsupportedReservationTerm',
  * 'ReservationOrderIdAlreadyExists', 'RiskCheckFailed', 'CreateQuoteFailed',
