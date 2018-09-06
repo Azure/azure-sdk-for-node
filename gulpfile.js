@@ -229,6 +229,14 @@ gulp.task('publish', (cb) => {
   let publishedPackages = 0;
   let publishedPackagesSkipped = 0;
 
+  console.log(`Files found in current directory (${__dirname})`:);
+  const fileEntryPaths = fs.readdirSync();
+  if (fileEntryPaths) {
+    for (let i = 0; i < fileEntryPaths.length; ++i) {
+      console.log(`  ${fileEntryPaths[i]}`);
+    }
+  }
+
   const npmrcRootFilePath = "./.npmrc";
   const npmrcRootFileExists = fs.exists(npmrcRootFilePath);
   if (npmrcRootFileExists) {
