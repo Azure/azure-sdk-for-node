@@ -229,23 +229,28 @@ gulp.task('publish', (cb) => {
   let publishedPackages = 0;
   let publishedPackagesSkipped = 0;
 
-  const npmAuth = process.env["npm-auth"];
+  const currentDirectoryPath = __dirname;
+
+  const npmrcFileName = ".npmrc";
+  const npmrcRootFilePath = path.join(currentDirectoryPath, npmrcFileName);
+  const npmrcRootFileExists = fs.existsSync(npmrcRootFilePath);
+  if (npmrcRootFileExists) {
+    console.log(`Found ".npmrc" auth file at "${npmrcRootFilePath}". Using it to authenticate with NPM for publish.`);
+  }
 
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
     const nodejsReadmeFilePath = nodejsReadmeFilePaths[i];
-    // console.log(`INFO: Processing ${nodejsReadmeFilePath}`);
-
     const nodejsReadmeFileContents = fs.readFileSync(nodejsReadmeFilePath, 'utf8');
     const relativeOutputFolderPath = nodejsReadmeFileContents.match(/output\-folder: \$\(node\-sdks\-folder\)\/(lib\/services\/\S+)/)[1];
     const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, relativeOutputFolderPath);
     if (!fs.existsSync(packageFolderPath)) {
-      console.log(`ERROR: Package folder ${packageFolderPath} has not been generated.`);
+      console.log(`WARNING: Package folder ${packageFolderPath} has not been generated.`);
       errorPackages++;
     }
     else {
       const packageJsonFilePath = `${packageFolderPath}/package.json`;
       if (!fs.existsSync(packageJsonFilePath)) {
-        console.log(`ERROR: Package folder ${packageFolderPath} is missing its package.json file.`);
+        console.log(`WARNING: Package folder ${packageFolderPath} is missing its package.json file.`);
         errorPackages++;
       }
       else {
@@ -275,17 +280,15 @@ gulp.task('publish', (cb) => {
               console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...${whatif ? " (SKIPPED)" : ""}`);
               if (!whatif) {
                 try {
-                  const npmrcFilePath = path.join(packageFolderPath, ".npmrc");
-                  if (npmAuth) {
-                    fs.writeFileSync(npmrcFilePath, npmAuth);
+                  const npmrcPackageFilePath = path.join(packageFolderPath, npmrcFileName);
+                  if (npmrcRootFileExists) {
+                    fs.copyFileSync(npmrcRootFilePath, npmrcPackageFilePath);
                   }
                   execSync(`npm publish --access public`, { cwd: packageFolderPath });
-                  if (npmAuth) {
-                    fs.unlinkSync(npmrcFilePath);
-                  }
                   publishedPackages++;
                 }
                 catch (error) {
+                  console.log(`ERROR: ${JSON.stringify(error)}`);
                   errorPackages++;
                 }
               } else {
