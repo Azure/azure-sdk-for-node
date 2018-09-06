@@ -230,15 +230,9 @@ gulp.task('publish', (cb) => {
   let publishedPackagesSkipped = 0;
 
   const currentDirectoryPath = __dirname;
-  console.log(`Files found in current directory (${currentDirectoryPath})`);
-  const fileEntryPaths = fs.readdirSync(currentDirectoryPath);
-  if (fileEntryPaths) {
-    for (let i = 0; i < fileEntryPaths.length; ++i) {
-      console.log(`  ${fileEntryPaths[i]}`);
-    }
-  }
 
-  const npmrcRootFilePath = path.join(currentDirectoryPath, ".npmrc");
+  const npmrcFileName = ".npmrc";
+  const npmrcRootFilePath = path.join(currentDirectoryPath, npmrcFileName);
   const npmrcRootFileExists = fs.existsSync(npmrcRootFilePath);
   if (npmrcRootFileExists) {
     console.log(`Found ".npmrc" auth file at "${npmrcRootFilePath}". Using it to authenticate with NPM for publish.`);
@@ -286,7 +280,7 @@ gulp.task('publish', (cb) => {
               console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...${whatif ? " (SKIPPED)" : ""}`);
               if (!whatif) {
                 try {
-                  const npmrcPackageFilePath = path.join(packageFolderPath, npmrcRootFilePath);
+                  const npmrcPackageFilePath = path.join(packageFolderPath, npmrcFileName);
                   if (npmrcRootFileExists) {
                     console.log(`Copying "${npmrcRootFilePath}" to "${npmrcPackageFilePath}".`);
                     fs.copyFileSync(npmrcRootFilePath, npmrcPackageFilePath);
@@ -295,6 +289,7 @@ gulp.task('publish', (cb) => {
                   publishedPackages++;
                 }
                 catch (error) {
+                  console.log(`ERROR: ${JSON.stringify(error)}`);
                   errorPackages++;
                 }
               } else {
