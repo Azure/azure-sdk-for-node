@@ -732,7 +732,8 @@ export interface ManagedClusterAADProfile {
  * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
  * cluster.
  * @member {string} [fqdn] FDQN for the master pool.
- * @member {array} [agentPoolProfiles] Properties of the agent pool.
+ * @member {array} [agentPoolProfiles] Properties of the agent pool. Currently
+ * only one agent pool can exist.
  * @member {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.
  * @member {string} [linuxProfile.adminUsername] The administrator username to
