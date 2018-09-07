@@ -730,6 +730,34 @@ export interface FactoryRepoUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the GitHubAccessTokenRequest class.
+ * @constructor
+ * Get GitHub access token request definition.
+ *
+ * @member {string} gitHubAccessCode GitHub access code.
+ * @member {string} [gitHubClientId] GitHub application client ID.
+ * @member {string} gitHubAccessTokenBaseUrl GitHub access token base URL.
+ */
+export interface GitHubAccessTokenRequest {
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubAccessTokenBaseUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenResponse class.
+ * @constructor
+ * Get GitHub access token response definition.
+ *
+ * @member {string} [gitHubAccessToken] GitHub access token.
+ */
+export interface GitHubAccessTokenResponse {
+  gitHubAccessToken?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineReference class.
  * @constructor
  * Pipeline reference type.
