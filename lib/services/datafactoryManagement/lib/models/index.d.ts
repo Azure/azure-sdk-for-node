@@ -1241,9 +1241,9 @@ export interface ResponsysLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [newClusterNodeType] The node types of new cluster. Type:
  * string (or Expression with resultType string).
- * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * @member {object} [newClusterSparkConf] A set of optional, user-specified
  * Spark configuration key-value pairs.
- * @member {object} [newClusterSparkEnvVars] a set of optional, user-specified
+ * @member {object} [newClusterSparkEnvVars] A set of optional, user-specified
  * Spark environment variables key-value pairs.
  * @member {object} [newClusterCustomTags] Additional tags for cluster
  * resources.
