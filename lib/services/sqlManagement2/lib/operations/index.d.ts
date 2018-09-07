@@ -25097,88 +25097,6 @@ export interface SensitivityLabels {
 
 
     /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} sensitivityLabelSource Optional source of the sensitivity
-     * label. Valid values are current or recommeneded. In not specified both
-     * returned. Possible values include: 'current', 'recommended'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] An OData filter expression that filters
-     * elements in the collection.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithSourceWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} sensitivityLabelSource Optional source of the sensitivity
-     * label. Valid values are current or recommeneded. In not specified both
-     * returned. Possible values include: 'current', 'recommended'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] An OData filter expression that filters
-     * elements in the collection.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SensitivityLabelListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabaseWithSource(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
-    listByDatabaseWithSource(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listByDatabaseWithSource(resourceGroupName: string, serverName: string, databaseName: string, sensitivityLabelSource: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-
-
-    /**
      * Gets the sensitivity label of a given column
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -25488,64 +25406,6 @@ export interface SensitivityLabels {
     listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
     listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
     listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithSourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
-
-    /**
-     * Gets the sensitivity labels of a given database
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SensitivityLabelListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabaseWithSourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
-    listByDatabaseWithSourceNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
-    listByDatabaseWithSourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
 }
 
 /**
@@ -29646,51 +29506,51 @@ export interface ManagedInstanceTdeCertificates {
 
 /**
  * @class
- * ManagedInstanceKeys
+ * InterfaceEndpointProfiles
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
  */
-export interface ManagedInstanceKeys {
+export interface InterfaceEndpointProfiles {
 
 
     /**
-     * Gets a list of managed instance keys.
+     * Gets a interface endpoint profile.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} interfaceEndpointProfileName The name of the interface
+     * endpoint profile.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] An OData filter expression that filters
-     * elements in the collection.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedInstanceKeyListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<InterfaceEndpointProfile>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointProfile>>;
 
     /**
-     * Gets a list of managed instance keys.
+     * Gets a interface endpoint profile.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} interfaceEndpointProfileName The name of the interface
+     * endpoint profile.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] An OData filter expression that filters
-     * elements in the collection.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -29702,7 +29562,7 @@ export interface ManagedInstanceKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedInstanceKeyListResult} - The deserialized result object.
+     *                      @resolve {InterfaceEndpointProfile} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -29710,30 +29570,34 @@ export interface ManagedInstanceKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedInstanceKeyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceKeyListResult} for more
+     *                      {InterfaceEndpointProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointProfile} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
-    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
-    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
+    get(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointProfile>;
+    get(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, callback: ServiceCallback<models.InterfaceEndpointProfile>): void;
+    get(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointProfile>): void;
 
 
     /**
-     * Gets a managed instance key.
+     * Creates or updates a interface endpoint profile.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
      *
-     * @param {string} keyName The name of the managed instance key to be
-     * retrieved.
+     * @param {string} interfaceEndpointProfileName
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29742,23 +29606,27 @@ export interface ManagedInstanceKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedInstanceKey>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<InterfaceEndpointProfile>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKey>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointProfile>>;
 
     /**
-     * Gets a managed instance key.
+     * Creates or updates a interface endpoint profile.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
      *
-     * @param {string} keyName The name of the managed instance key to be
-     * retrieved.
+     * @param {string} interfaceEndpointProfileName
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29772,7 +29640,7 @@ export interface ManagedInstanceKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedInstanceKey} - The deserialized result object.
+     *                      @resolve {InterfaceEndpointProfile} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -29780,115 +29648,29 @@ export interface ManagedInstanceKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedInstanceKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceKey} for more information.
+     *                      {InterfaceEndpointProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointProfile} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKey>;
-    get(resourceGroupName: string, managedInstanceName: string, keyName: string, callback: ServiceCallback<models.ManagedInstanceKey>): void;
-    get(resourceGroupName: string, managedInstanceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointProfile>;
+    createOrUpdate(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, callback: ServiceCallback<models.InterfaceEndpointProfile>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointProfile>): void;
 
 
     /**
-     * Creates or updates a managed instance key.
+     * Deletes the interface endpoint profile with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
      *
-     * @param {string} keyName The name of the managed instance key to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The requested managed instance key resource
-     * state.
-     *
-     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
-     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
-     * AzureKeyVault, then the URI is required.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagedInstanceKey>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKey>>;
-
-    /**
-     * Creates or updates a managed instance key.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {string} keyName The name of the managed instance key to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The requested managed instance key resource
-     * state.
-     *
-     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
-     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
-     * AzureKeyVault, then the URI is required.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagedInstanceKey} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagedInstanceKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceKey} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKey>;
-    createOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, callback: ServiceCallback<models.ManagedInstanceKey>): void;
-    createOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKey>): void;
-
-
-    /**
-     * Deletes the managed instance key with the given name.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {string} keyName The name of the managed instance key to be deleted.
+     * @param {string} interfaceEndpointProfileName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29901,18 +29683,18 @@ export interface ManagedInstanceKeys {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the managed instance key with the given name.
+     * Deletes the interface endpoint profile with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
      *
-     * @param {string} keyName The name of the managed instance key to be deleted.
+     * @param {string} interfaceEndpointProfileName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29940,31 +29722,19 @@ export interface ManagedInstanceKeys {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Creates or updates a managed instance key.
+     * Gets a list of interface endpoint profiles attached to a server.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {string} keyName The name of the managed instance key to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The requested managed instance key resource
-     * state.
-     *
-     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
-     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
-     * AzureKeyVault, then the URI is required.
+     * @param {string} serverName The name of the server.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29973,32 +29743,20 @@ export interface ManagedInstanceKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedInstanceKey>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<InterfaceEndpointProfilesListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKey>>;
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointProfilesListResult>>;
 
     /**
-     * Creates or updates a managed instance key.
+     * Gets a list of interface endpoint profiles attached to a server.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {string} keyName The name of the managed instance key to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The requested managed instance key resource
-     * state.
-     *
-     * @param {string} parameters.serverKeyType The key type like 'ServiceManaged',
-     * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {string} [parameters.uri] The URI of the key. If the ServerKeyType is
-     * AzureKeyVault, then the URI is required.
+     * @param {string} serverName The name of the server.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30012,7 +29770,7 @@ export interface ManagedInstanceKeys {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedInstanceKey} - The deserialized result object.
+     *                      @resolve {InterfaceEndpointProfilesListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -30020,28 +29778,107 @@ export interface ManagedInstanceKeys {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedInstanceKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceKey} for more information.
+     *                      {InterfaceEndpointProfilesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointProfilesListResult} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKey>;
-    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, callback: ServiceCallback<models.ManagedInstanceKey>): void;
-    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, keyName: string, parameters: models.ManagedInstanceKey, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKey>): void;
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointProfilesListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.InterfaceEndpointProfilesListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointProfilesListResult>): void;
 
 
     /**
-     * Deletes the managed instance key with the given name.
+     * Creates or updates a interface endpoint profile.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
      *
-     * @param {string} keyName The name of the managed instance key to be deleted.
+     * @param {string} interfaceEndpointProfileName
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InterfaceEndpointProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointProfile>>;
+
+    /**
+     * Creates or updates a interface endpoint profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} interfaceEndpointProfileName
+     *
+     * @param {object} parameters
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InterfaceEndpointProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InterfaceEndpointProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointProfile} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointProfile>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, callback: ServiceCallback<models.InterfaceEndpointProfile>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, parameters: models.InterfaceEndpointProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointProfile>): void;
+
+
+    /**
+     * Deletes the interface endpoint profile with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} interfaceEndpointProfileName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30054,18 +29891,18 @@ export interface ManagedInstanceKeys {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the managed instance key with the given name.
+     * Deletes the interface endpoint profile with the given name.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the resource. You can obtain this value from the Azure Resource
      * Manager API or the portal.
      *
-     * @param {string} managedInstanceName The name of the managed instance.
+     * @param {string} serverName The name of the server.
      *
-     * @param {string} keyName The name of the managed instance key to be deleted.
+     * @param {string} interfaceEndpointProfileName
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30093,13 +29930,13 @@ export interface ManagedInstanceKeys {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, interfaceEndpointProfileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Gets a list of managed instance keys.
+     * Gets a list of interface endpoint profiles attached to a server.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -30111,378 +29948,14 @@ export interface ManagedInstanceKeys {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ManagedInstanceKeyListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<InterfaceEndpointProfilesListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceKeyListResult>>;
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InterfaceEndpointProfilesListResult>>;
 
     /**
-     * Gets a list of managed instance keys.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagedInstanceKeyListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagedInstanceKeyListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceKeyListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceKeyListResult>;
-    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
-    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceKeyListResult>): void;
-}
-
-/**
- * @class
- * ManagedInstanceEncryptionProtectors
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface ManagedInstanceEncryptionProtectors {
-
-
-    /**
-     * Gets a list of managed instance encryption protectors
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtectorListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
-
-    /**
-     * Gets a list of managed instance encryption protectors
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagedInstanceEncryptionProtectorListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagedInstanceEncryptionProtectorListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ManagedInstanceEncryptionProtectorListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
-    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
-    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
-
-
-    /**
-     * Gets a managed instance encryption protector.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtector>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtector>>;
-
-    /**
-     * Gets a managed instance encryption protector.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagedInstanceEncryptionProtector} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagedInstanceEncryptionProtector} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceEncryptionProtector} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtector>;
-    get(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
-    get(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
-
-
-    /**
-     * Updates an existing encryption protector.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} parameters The requested encryption protector resource
-     * state.
-     *
-     * @param {string} [parameters.serverKeyName] The name of the managed instance
-     * key.
-     *
-     * @param {string} parameters.serverKeyType The encryption protector type like
-     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
-     * 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtector>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtector>>;
-
-    /**
-     * Updates an existing encryption protector.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} parameters The requested encryption protector resource
-     * state.
-     *
-     * @param {string} [parameters.serverKeyName] The name of the managed instance
-     * key.
-     *
-     * @param {string} parameters.serverKeyType The encryption protector type like
-     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
-     * 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagedInstanceEncryptionProtector} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagedInstanceEncryptionProtector} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceEncryptionProtector} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtector>;
-    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
-    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
-
-
-    /**
-     * Updates an existing encryption protector.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} parameters The requested encryption protector resource
-     * state.
-     *
-     * @param {string} [parameters.serverKeyName] The name of the managed instance
-     * key.
-     *
-     * @param {string} parameters.serverKeyType The encryption protector type like
-     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
-     * 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtector>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtector>>;
-
-    /**
-     * Updates an existing encryption protector.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} managedInstanceName The name of the managed instance.
-     *
-     * @param {object} parameters The requested encryption protector resource
-     * state.
-     *
-     * @param {string} [parameters.serverKeyName] The name of the managed instance
-     * key.
-     *
-     * @param {string} parameters.serverKeyType The encryption protector type like
-     * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
-     * 'ServiceManaged', 'AzureKeyVault'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagedInstanceEncryptionProtector} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagedInstanceEncryptionProtector} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagedInstanceEncryptionProtector} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtector>;
-    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
-    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceEncryptionProtector, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtector>): void;
-
-
-    /**
-     * Gets a list of managed instance encryption protectors
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagedInstanceEncryptionProtectorListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceEncryptionProtectorListResult>>;
-
-    /**
-     * Gets a list of managed instance encryption protectors
+     * Gets a list of interface endpoint profiles attached to a server.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -30499,7 +29972,7 @@ export interface ManagedInstanceEncryptionProtectors {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ManagedInstanceEncryptionProtectorListResult} - The deserialized result object.
+     *                      @resolve {InterfaceEndpointProfilesListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -30507,16 +29980,15 @@ export interface ManagedInstanceEncryptionProtectors {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ManagedInstanceEncryptionProtectorListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link
-     *                      ManagedInstanceEncryptionProtectorListResult} for more
-     *                      information.
+     *                      {InterfaceEndpointProfilesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InterfaceEndpointProfilesListResult} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceEncryptionProtectorListResult>;
-    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
-    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceEncryptionProtectorListResult>): void;
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InterfaceEndpointProfilesListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.InterfaceEndpointProfilesListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InterfaceEndpointProfilesListResult>): void;
 }
