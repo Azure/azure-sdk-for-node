@@ -4158,48 +4158,22 @@ export interface TdeCertificate extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the ManagedInstanceKey class.
+ * Initializes a new instance of the InterfaceEndpointProfile class.
  * @constructor
- * A managed instance key.
+ * A interface endpoint profile resource.
  *
- * @member {string} [kind] Kind of encryption protector. This is metadata used
- * for the Azure portal experience.
- * @member {string} serverKeyType The key type like 'ServiceManaged',
- * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
- * @member {string} [uri] The URI of the key. If the ServerKeyType is
- * AzureKeyVault, then the URI is required.
- * @member {string} [thumbprint] Thumbprint of the key.
- * @member {date} [creationDate] The key creation date.
+ * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * network subnet.
+ * @member {string} [privateIp] The Private ip associated with the interface
+ * endpoint profile
+ * @member {string} [state] State of the interface endpoint profile. Possible
+ * values include: 'Initializing', 'InProgress', 'Ready', 'Failed', 'Deleting',
+ * 'Unknown'
  */
-export interface ManagedInstanceKey extends ProxyResource {
-  readonly kind?: string;
-  serverKeyType: string;
-  uri?: string;
-  readonly thumbprint?: string;
-  readonly creationDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedInstanceEncryptionProtector class.
- * @constructor
- * The managed instance encryption protector.
- *
- * @member {string} [kind] Kind of encryption protector. This is metadata used
- * for the Azure portal experience.
- * @member {string} [serverKeyName] The name of the managed instance key.
- * @member {string} serverKeyType The encryption protector type like
- * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
- * 'ServiceManaged', 'AzureKeyVault'
- * @member {string} [uri] The URI of the server key.
- * @member {string} [thumbprint] Thumbprint of the server key.
- */
-export interface ManagedInstanceEncryptionProtector extends ProxyResource {
-  readonly kind?: string;
-  serverKeyName?: string;
-  serverKeyType: string;
-  readonly uri?: string;
-  readonly thumbprint?: string;
+export interface InterfaceEndpointProfile extends ProxyResource {
+  virtualNetworkSubnetId: string;
+  readonly privateIp?: string;
+  readonly state?: string;
 }
 
 
@@ -4804,24 +4778,12 @@ export interface BackupShortTermRetentionPolicyListResult extends Array<BackupSh
 
 /**
  * @class
- * Initializes a new instance of the ManagedInstanceKeyListResult class.
+ * Initializes a new instance of the InterfaceEndpointProfilesListResult class.
  * @constructor
- * A list of managed instance keys.
+ * A list of interface endpoint profiles.
  *
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
-export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedInstanceEncryptionProtectorListResult class.
- * @constructor
- * A list of managed instance encryption protectors.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
+export interface InterfaceEndpointProfilesListResult extends Array<InterfaceEndpointProfile> {
   readonly nextLink?: string;
 }
