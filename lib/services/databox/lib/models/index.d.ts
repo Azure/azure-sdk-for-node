@@ -32,14 +32,18 @@ export interface CopyLogDetails {
  * @class
  * Initializes a new instance of the AccountCopyLogDetails class.
  * @constructor
- * Copy log details for an storage account
+ * Copy log details for a storage account
  *
  * @member {string} accountName Destination account name.
  * @member {string} copyLogLink Link for copy logs.
+ * @member {string} auditLogLink Link for audit logs.
+ * @member {string} bomPath Link for BOM files.
  */
 export interface AccountCopyLogDetails extends CopyLogDetails {
   accountName: string;
   copyLogLink: string;
+  auditLogLink: string;
+  bomPath: string;
 }
 
 /**
@@ -49,13 +53,19 @@ export interface AccountCopyLogDetails extends CopyLogDetails {
  * Credential details of the shares in account.
  *
  * @member {string} [shareName] Name of the share.
+ * @member {string} [shareType] Type of the share. Possible values include:
+ * 'UnknownType', 'HCS', 'BlockBlob', 'PageBlob', 'AzureFile', 'HDC'
  * @member {string} [userName] User name for the share.
  * @member {string} [password] Password for the share.
+ * @member {array} [supportedAccessProtocols] Access protocols supported on the
+ * device.
  */
 export interface ShareCredentialDetails {
   shareName?: string;
+  shareType?: string;
   userName?: string;
   password?: string;
+  supportedAccessProtocols?: string[];
 }
 
 /**
@@ -65,11 +75,14 @@ export interface ShareCredentialDetails {
  * Credential details of the account.
  *
  * @member {string} [accountName] Name of the account.
+ * @member {string} [accountConnectionString] Connection string of the account
+ * endpoint to use the account as a storage endpoint on the device.
  * @member {array} shareCredentialDetails Per share level unencrypted access
  * credentials.
  */
 export interface AccountCredentialDetails {
   accountName?: string;
+  accountConnectionString?: string;
   shareCredentialDetails: ShareCredentialDetails[];
 }
 
@@ -117,6 +130,20 @@ export interface ShippingAddress {
 export interface AddressValidationOutput {
   validationStatus?: string;
   alternateAddresses?: ShippingAddress[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplianceNetworkConfiguration class.
+ * @constructor
+ * The Network Adapter configuration of a Pod.
+ *
+ * @member {string} [name] Name of the network
+ * @member {string} [macAddress] Mac Address
+ */
+export interface ApplianceNetworkConfiguration {
+  name?: string;
+  macAddress?: string;
 }
 
 /**
@@ -249,12 +276,18 @@ export interface SkuInformation {
  * @member {string} [deviceSerialNumber] Serial number of the assigned device.
  * @member {string} [devicePassword] Password for out of the box experience on
  * device.
+ * @member {array} [networkConfigurations] Network configuration of the
+ * appliance.
+ * @member {string} [encodedValidationCertPubKey] The base 64 encoded public
+ * key to authenticate with the device
  * @member {array} [accountCredentialDetails] Per account level access
  * credentials.
  */
 export interface CabinetPodSecret {
   deviceSerialNumber?: string;
   devicePassword?: string;
+  networkConfigurations?: ApplianceNetworkConfiguration[];
+  encodedValidationCertPubKey?: string;
   accountCredentialDetails?: AccountCredentialDetails[];
 }
 
@@ -344,6 +377,8 @@ export interface ContactDetails {
  *
  * @member {string} [storageAccountName] Name of the storage account where the
  * data needs to be uploaded.
+ * @member {string} [accountId] Id of the account where the data needs to be
+ * uploaded.
  * @member {number} [bytesSentToCloud] Amount of data uploaded by the job as of
  * now.
  * @member {number} [totalBytesToProcess] Total amount of data to be processed
@@ -351,6 +386,7 @@ export interface ContactDetails {
  */
 export interface CopyProgress {
   storageAccountName?: string;
+  accountId?: string;
   bytesSentToCloud?: number;
   totalBytesToProcess?: number;
 }
@@ -362,9 +398,21 @@ export interface CopyProgress {
  * Details for the destination account.
  *
  * @member {string} accountId Destination storage account id.
+ * @member {string} [sharedAccessSignature] Shared access signature for the
+ * storage account.
+ * @member {string} [accountType] Account type. Possible values include:
+ * 'UnknownType', 'GeneralPurposeStorage', 'BlobStorage'
+ * @member {string} [storageAccessTier] Access tier of the account. Possible
+ * values include: 'Invalid', 'Hot', 'Cool', 'Cold'
+ * @member {string} [storagePerformanceTier] Performance tier of the account.
+ * Possible values include: 'Standard', 'Premium'
  */
 export interface DestinationAccountDetails {
   accountId: string;
+  sharedAccessSignature?: string;
+  accountType?: string;
+  storageAccessTier?: string;
+  storagePerformanceTier?: string;
 }
 
 /**
@@ -491,9 +539,14 @@ export interface DiskSecret {
  *
  * @member {array} [diskSecrets] Contains the list of secrets object for that
  * device.
+ * @member {string} [passKey] PaasKey for the disk Job.
+ * @member {boolean} [isPasskeyUserDefined] Whether passkey is provided by
+ * user.
  */
 export interface DiskJobSecrets extends JobSecrets {
   diskSecrets?: DiskSecret[];
+  passKey?: string;
+  isPasskeyUserDefined?: boolean;
 }
 
 /**
@@ -528,6 +581,36 @@ export interface GetCopyLogsUriOutput {
 
 /**
  * @class
+ * Initializes a new instance of the HeavyAccountCopyLogDetails class.
+ * @constructor
+ * Copy log details for a storage account for heavy
+ *
+ * @member {string} accountName Destination account name.
+ * @member {array} copyLogLink Link for copy logs.
+ * @member {array} auditLogLink Link for audit logs.
+ * @member {array} bomPath Link for bill of material files.
+ */
+export interface HeavyAccountCopyLogDetails extends CopyLogDetails {
+  accountName: string;
+  copyLogLink: string[];
+  auditLogLink: string[];
+  bomPath: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeavyJobDetails class.
+ * @constructor
+ * Heavy Device Job Details
+ *
+ * @member {array} [copyProgress] Copy progress per account.
+ */
+export interface HeavyJobDetails extends JobDetails {
+  copyProgress?: CopyProgress[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobErrorDetails class.
  * @constructor
  * Job Error Details for providing the information and recommended action.
@@ -554,7 +637,8 @@ export interface JobErrorDetails {
  * @member {string} stageName Name of the job stage. Possible values include:
  * 'DeviceOrdered', 'DevicePrepared', 'Dispatched', 'Delivered', 'PickedUp',
  * 'AtAzureDC', 'DataCopy', 'Completed', 'CompletedWithErrors', 'Cancelled',
- * 'Failed_IssueReportedAtCustomer', 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+ * 'Failed_IssueReportedAtCustomer', 'Failed_IssueDetectedAtAzureDC',
+ * 'Aborted', 'Current'
  * @member {string} [displayName] Display name of the job stage.
  * @member {string} stageStatus Status of the job stage. Possible values
  * include: 'None', 'InProgress', 'Succeeded', 'Failed', 'Cancelled',
@@ -601,7 +685,7 @@ export interface PackageShippingDetails {
  * @member {object} [tags] The list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups).
- * @member {object} sku The sku type.
+ * @member {object} [sku] The sku type.
  * @member {string} [sku.name] The sku name.
  * @member {string} [sku.displayName] The display name of the sku.
  * @member {string} [sku.family] The sku family.
@@ -609,7 +693,7 @@ export interface PackageShippingDetails {
 export interface Resource extends BaseResource {
   location: string;
   tags?: { [propertyName: string]: string };
-  sku: Sku;
+  sku?: Sku;
 }
 
 /**
@@ -619,16 +703,18 @@ export interface Resource extends BaseResource {
  * Job Resource.
  *
  * @member {string} [deviceType] Type of the device to be used for the job.
- * Possible values include: 'Pod', 'Disk', 'Cabinet'
+ * Possible values include: 'Pod', 'Disk', 'Heavy'
  * @member {boolean} [isCancellable] Describes whether the job is cancellable
  * or not.
+ * @member {boolean} [isDeletable] Describes whether the job is deletable or
+ * not.
  * @member {boolean} [isShippingAddressEditable] Describes whether the shipping
  * address is editable or not.
  * @member {string} [status] Name of the stage which is in progress. Possible
  * values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
  * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
  * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
- * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+ * 'Failed_IssueDetectedAtAzureDC', 'Aborted', 'Current'
  * @member {date} [startTime] Time at which the job was started in UTC ISO 8601
  * format.
  * @member {object} [error] Top level error for the job.
@@ -687,6 +773,10 @@ export interface Resource extends BaseResource {
  * optional.
  * @member {string} [details.jobDetailsType] Polymorphic Discriminator
  * @member {string} [cancellationReason] Reason for cancellation.
+ * @member {string} [reverseShipmentLabelSasKey] Sas Key of the return shipment
+ * label blob
+ * @member {string} [chainOfCustodySasKey] chain of custody blob Sas key
+ * @member {string} [passkey] User entered passkey for Disk job.
  * @member {string} [name] Name of the object.
  * @member {string} [id] Id of the object.
  * @member {string} [type] Type of the object.
@@ -694,6 +784,7 @@ export interface Resource extends BaseResource {
 export interface JobResource extends Resource {
   deviceType?: string;
   isCancellable?: boolean;
+  isDeletable?: boolean;
   isShippingAddressEditable?: boolean;
   status?: string;
   startTime?: Date;
@@ -703,6 +794,9 @@ export interface JobResource extends Resource {
   destinationAccountDetails: DestinationAccountDetails[];
   details?: JobDetails;
   cancellationReason?: string;
+  reverseShipmentLabelSasKey?: string;
+  chainOfCustodySasKey?: string;
+  passkey?: string;
   readonly name?: string;
   readonly id?: string;
   readonly type?: string;
@@ -751,7 +845,7 @@ export interface UpdateJobDetails {
  * @constructor
  * The JobResourceUpdateParameter.
  *
- * @member {object} details Details of a job to be updated.
+ * @member {object} [details] Details of a job to be updated.
  * @member {object} [details.contactDetails] Contact details for notification
  * and shipping.
  * @member {string} [details.contactDetails.contactName] Contact name of the
@@ -783,12 +877,14 @@ export interface UpdateJobDetails {
  * @member {string} [details.shippingAddress.companyName] Name of the company.
  * @member {string} [details.shippingAddress.addressType] Type of address.
  * Possible values include: 'None', 'Residential', 'Commercial'
+ * @member {array} [destinationAccountDetails] Destination account details.
  * @member {object} [tags] The list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups).
  */
 export interface JobResourceUpdateParameter {
-  details: UpdateJobDetails;
+  details?: UpdateJobDetails;
+  destinationAccountDetails?: DestinationAccountDetails[];
   tags?: { [propertyName: string]: string };
 }
 
@@ -859,12 +955,18 @@ export interface PodJobDetails extends JobDetails {
  * @member {string} [deviceSerialNumber] Serial number of the assigned device.
  * @member {string} [devicePassword] Password for out of the box experience on
  * device.
+ * @member {array} [networkConfigurations] Network configuration of the
+ * appliance.
+ * @member {string} [encodedValidationCertPubKey] The base 64 encoded public
+ * key to authenticate with the device
  * @member {array} [accountCredentialDetails] Per account level access
  * credentials.
  */
 export interface PodSecret {
   deviceSerialNumber?: string;
   devicePassword?: string;
+  networkConfigurations?: ApplianceNetworkConfiguration[];
+  encodedValidationCertPubKey?: string;
   accountCredentialDetails?: AccountCredentialDetails[];
 }
 
@@ -955,7 +1057,7 @@ export interface ShippingLabelDetails {
  *
  * @member {string} jobName Name of the job.
  * @member {string} [deviceType] The Device Type used in the job. Possible
- * values include: 'Pod', 'Disk', 'Cabinet'
+ * values include: 'Pod', 'Disk', 'Heavy'
  * @member {object} [jobSecrets] Secrets related to this job.
  * @member {string} [jobSecrets.jobSecretsType] Polymorphic Discriminator
  */
@@ -986,7 +1088,7 @@ export interface UnencryptedSecrets {
  * @member {string} [shippingAddress.addressType] Type of address. Possible
  * values include: 'None', 'Residential', 'Commercial'
  * @member {string} [deviceType] Device type to be used for the job. Possible
- * values include: 'Pod', 'Disk', 'Cabinet'
+ * values include: 'Pod', 'Disk', 'Heavy'
  */
 export interface ValidateAddress {
   shippingAddress?: ShippingAddress;
