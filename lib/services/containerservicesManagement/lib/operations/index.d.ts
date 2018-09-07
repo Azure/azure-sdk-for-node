@@ -254,31 +254,29 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
+     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * specifies the vnet's subnet identifier.
+     *
+     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
      * @param {array} [parameters.authProfile] Configures OpenShift authentication.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Service principal for
-     * OpenShift cluster.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} [parameters.servicePrincipalProfile.secret] The secret
-     * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.azProfile] Azure context for where the cluster
-     * resides.
-     *
-     * @param {string} [parameters.azProfile.tenantId] The tenantId of the
-     * subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.subscriptionId] The subscriptionId f
-     * the subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.resourceGroup] The resourceGroup f the
-     * subscription where the cluster resides.
      *
      * @param {string} parameters.location Resource location
      *
@@ -336,31 +334,29 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
+     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * specifies the vnet's subnet identifier.
+     *
+     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
      * @param {array} [parameters.authProfile] Configures OpenShift authentication.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Service principal for
-     * OpenShift cluster.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} [parameters.servicePrincipalProfile.secret] The secret
-     * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.azProfile] Azure context for where the cluster
-     * resides.
-     *
-     * @param {string} [parameters.azProfile.tenantId] The tenantId of the
-     * subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.subscriptionId] The subscriptionId f
-     * the subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.resourceGroup] The resourceGroup f the
-     * subscription where the cluster resides.
      *
      * @param {string} parameters.location Resource location
      *
@@ -580,31 +576,29 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
+     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * specifies the vnet's subnet identifier.
+     *
+     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
      * @param {array} [parameters.authProfile] Configures OpenShift authentication.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Service principal for
-     * OpenShift cluster.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} [parameters.servicePrincipalProfile.secret] The secret
-     * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.azProfile] Azure context for where the cluster
-     * resides.
-     *
-     * @param {string} [parameters.azProfile.tenantId] The tenantId of the
-     * subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.subscriptionId] The subscriptionId f
-     * the subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.resourceGroup] The resourceGroup f the
-     * subscription where the cluster resides.
      *
      * @param {string} parameters.location Resource location
      *
@@ -662,31 +656,29 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
+     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * specifies the vnet's subnet identifier.
+     *
+     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
      * @param {array} [parameters.authProfile] Configures OpenShift authentication.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Service principal for
-     * OpenShift cluster.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} [parameters.servicePrincipalProfile.secret] The secret
-     * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.azProfile] Azure context for where the cluster
-     * resides.
-     *
-     * @param {string} [parameters.azProfile.tenantId] The tenantId of the
-     * subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.subscriptionId] The subscriptionId f
-     * the subscription where the cluster resides.
-     *
-     * @param {string} [parameters.azProfile.resourceGroup] The resourceGroup f the
-     * subscription where the cluster resides.
      *
      * @param {string} parameters.location Resource location
      *
@@ -2875,6 +2867,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2983,6 +2976,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -3245,6 +3239,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -3353,6 +3348,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
