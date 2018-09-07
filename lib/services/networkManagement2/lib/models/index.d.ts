@@ -9410,8 +9410,8 @@ export interface VirtualHub extends Resource {
  * @member {number} [routingWeight] routing weight for vpn connection.
  * @member {string} [connectionStatus] The connection status. Possible values
  * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
- * @member {string} [connectionProtocol] Connection protocol used for this
- * connection. Possible values include: 'IKEv2', 'IKEv1'
+ * @member {string} [vpnConnectionProtocolType] Connection protocol used for
+ * this connection. Possible values include: 'IKEv2', 'IKEv1'
  * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
  * @member {number} [egressBytesTransferred] Egress bytes transferred.
  * @member {number} [connectionBandwidth] Expected bandwidth in MBPS.
@@ -9432,7 +9432,7 @@ export interface VpnConnection extends SubResource {
   remoteVpnSite?: SubResource;
   routingWeight?: number;
   connectionStatus?: string;
-  connectionProtocol?: string;
+  vpnConnectionProtocolType?: string;
   readonly ingressBytesTransferred?: number;
   readonly egressBytesTransferred?: number;
   connectionBandwidth?: number;

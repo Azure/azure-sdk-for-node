@@ -44463,8 +44463,9 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
-     * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
      *
      * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
      * bandwidth in MBPS.
@@ -44530,8 +44531,9 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
-     * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
      *
      * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
      * bandwidth in MBPS.
@@ -44738,8 +44740,9 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
-     * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
      *
      * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
      * bandwidth in MBPS.
@@ -44805,8 +44808,9 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.connectionProtocol] Connection
-     * protocol used for this connection. Possible values include: 'IKEv2', 'IKEv1'
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
      *
      * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
      * bandwidth in MBPS.
