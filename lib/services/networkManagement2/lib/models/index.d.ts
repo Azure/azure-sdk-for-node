@@ -6057,6 +6057,207 @@ export interface EffectiveRouteListResult {
 
 /**
  * @class
+ * Initializes a new instance of the IPConfigurationProfile class.
+ * @constructor
+ * IP configuration profile child resource.
+ *
+ * @member {object} [subnet] The reference of the subnet resource to create a
+ * contatainer network interface ip configruation.
+ * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
+ * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * NetworkSecurityGroup resource.
+ * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
+ * security rules of the network security group.
+ * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * default security rules of network security group.
+ * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
+ * of references to network interfaces.
+ * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * references to subnets.
+ * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * GUID property of the network security group resource.
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * resource.
+ * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * within a route table.
+ * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
+ * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * state of the resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
+ * @member {array} [subnet.ipConfigurations] Gets an array of references to the
+ * network interface IP configurations using subnet.
+ * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
+ * to the external resources using subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
+ * @member {string} [subnet.provisioningState] The provisioning state of the
+ * resource.
+ * @member {string} [subnet.name] The name of the resource that is unique
+ * within a resource group. This name can be used to access the resource.
+ * @member {string} [subnet.etag] A unique read-only string that changes
+ * whenever the resource is updated.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface IPConfigurationProfile extends SubResource {
+  subnet?: Subnet;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterfaceConfiguration class.
+ * @constructor
+ * Container network interface configruation child resource.
+ *
+ * @member {array} [ipConfigurations] A list of ip configurations of the
+ * container network interface configuration.
+ * @member {array} [containerNetworkInterfaces] A list of container network
+ * interfaces created from this container network interface configuration.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ContainerNetworkInterfaceConfiguration extends SubResource {
+  ipConfigurations?: IPConfigurationProfile[];
+  containerNetworkInterfaces?: ContainerNetworkInterface[];
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Container class.
+ * @constructor
+ * Reference to container resource in remote resource provider.
+ *
+ */
+export interface Container extends SubResource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterfaceIpConfiguration class.
+ * @constructor
+ * The ip configuration for a container network interface.
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ContainerNetworkInterfaceIpConfiguration {
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterface class.
+ * @constructor
+ * Container network interface child resource.
+ *
+ * @member {object} [containerNetworkInterfaceConfiguration] Container network
+ * interface configuration from which this container network interface is
+ * created.
+ * @member {array} [containerNetworkInterfaceConfiguration.ipConfigurations] A
+ * list of ip configurations of the container network interface configuration.
+ * @member {array}
+ * [containerNetworkInterfaceConfiguration.containerNetworkInterfaces] A list
+ * of container network interfaces created from this container network
+ * interface configuration.
+ * @member {string} [containerNetworkInterfaceConfiguration.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string} [containerNetworkInterfaceConfiguration.name] The name of
+ * the resource. This name can be used to access the resource.
+ * @member {string} [containerNetworkInterfaceConfiguration.type] Sub Resource
+ * type.
+ * @member {string} [containerNetworkInterfaceConfiguration.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {object} [container] Reference to the conatinaer to which this
+ * container network interface is attached.
+ * @member {array} [ipConfigurations] Reference to the ip configuration on this
+ * container nic.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ContainerNetworkInterface extends SubResource {
+  containerNetworkInterfaceConfiguration?: ContainerNetworkInterfaceConfiguration;
+  container?: Container;
+  ipConfigurations?: ContainerNetworkInterfaceIpConfiguration[];
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfile class.
+ * @constructor
+ * Network profile resource.
+ *
+ * @member {array} [containerNetworkInterfaces] List of child container network
+ * interfaces.
+ * @member {array} [containerNetworkInterfaceConfigurations] List of chid
+ * container network interface configurations.
+ * @member {string} [resourceGuid] The resource GUID property of the network
+ * interface resource.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface NetworkProfile extends Resource {
+  containerNetworkInterfaces?: ContainerNetworkInterface[];
+  containerNetworkInterfaceConfigurations?: ContainerNetworkInterfaceConfiguration[];
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
  * The error object.
@@ -9353,45 +9554,7 @@ export interface VpnClientConnectionHealth {
  * gateway.
  * @member {object} [p2SVpnServerConfiguration] The P2SVpnServerConfiguration
  * to which the p2sVpnGateway is attached to.
- * @member {string}
- * [p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName] The name
- * of the P2SVpnServerConfiguration that is unique within a VirtualWan in a
- * resource group. This name can be used to access the resource along with
- * Paren VirtualWan resource name.
- * @member {array} [p2SVpnServerConfiguration.vpnProtocols] vpnProtocols for
- * the P2SVpnServerConfiguration.
- * @member {array}
- * [p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates] VPN
- * client root certificate of P2SVpnServerConfiguration.
- * @member {array}
- * [p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
- * VPN client revoked certificate of P2SVpnServerConfiguration.
- * @member {array}
- * [p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
- * Radius Server root certificate of P2SVpnServerConfiguration.
- * @member {array}
- * [p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
- * Radius client root certificate of P2SVpnServerConfiguration.
- * @member {array} [p2SVpnServerConfiguration.vpnClientIpsecPolicies]
- * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
- * @member {string} [p2SVpnServerConfiguration.radiusServerAddress] The radius
- * server address property of the P2SVpnServerConfiguration resource for point
- * to site client connection.
- * @member {string} [p2SVpnServerConfiguration.radiusServerSecret] The radius
- * secret property of the P2SVpnServerConfiguration resource for for point to
- * site client connection.
- * @member {string} [p2SVpnServerConfiguration.provisioningState] The
- * provisioning state of the P2SVpnServerConfiguration resource. Possible
- * values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [p2SVpnServerConfiguration.p2SVpnGateways]
- * @member {string}
- * [p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag] A unique
- * read-only string that changes whenever the resource is updated.
- * @member {string} [p2SVpnServerConfiguration.name] The name of the resource
- * that is unique within a resource group. This name can be used to access the
- * resource.
- * @member {string} [p2SVpnServerConfiguration.etag] Gets a unique read-only
- * string that changes whenever the resource is updated.
+ * @member {string} [p2SVpnServerConfiguration.id] Resource ID.
  * @member {object} [vpnClientAddressPool] The reference of the address space
  * resource which represents Address space for P2S VpnClient.
  * @member {array} [vpnClientAddressPool.addressPrefixes] A list of address
@@ -9413,7 +9576,7 @@ export interface P2SVpnGateway extends Resource {
   virtualHub?: SubResource;
   provisioningState?: string;
   vpnGatewayScaleUnit?: number;
-  p2SVpnServerConfiguration?: P2SVpnServerConfiguration;
+  p2SVpnServerConfiguration?: SubResource;
   vpnClientAddressPool?: AddressSpace;
   readonly vpnClientConnectionHealth?: VpnClientConnectionHealth;
   readonly etag?: string;
@@ -9747,6 +9910,18 @@ export interface NetworkInterfaceLoadBalancerListResult extends Array<LoadBalanc
  */
 export interface NetworkInterfaceTapConfigurationListResult extends Array<NetworkInterfaceTapConfiguration> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfileListResult class.
+ * @constructor
+ * Response for ListNetworkProfiles API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface NetworkProfileListResult extends Array<NetworkProfile> {
+  nextLink?: string;
 }
 
 /**

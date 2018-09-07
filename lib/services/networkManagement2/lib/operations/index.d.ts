@@ -17921,6 +17921,524 @@ export interface NetworkInterfaceTapConfigurations {
 
 /**
  * @class
+ * NetworkProfiles
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface NetworkProfiles {
+
+
+    /**
+     * Deletes the specified network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the NetworkProfile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the NetworkProfile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, networkProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, networkProfileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, networkProfileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified network profile in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the PublicIPPrefx.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfile>>;
+
+    /**
+     * Gets the specified network profile in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the PublicIPPrefx.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, networkProfileName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfile>;
+    get(resourceGroupName: string, networkProfileName: string, callback: ServiceCallback<models.NetworkProfile>): void;
+    get(resourceGroupName: string, networkProfileName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfile>): void;
+
+
+    /**
+     * Creates or updates a network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * network profile operation.
+     *
+     * @param {array} [parameters.containerNetworkInterfaces] List of child
+     * container network interfaces.
+     *
+     * @param {array} [parameters.containerNetworkInterfaceConfigurations] List of
+     * chid container network interface configurations.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfile>>;
+
+    /**
+     * Creates or updates a network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * network profile operation.
+     *
+     * @param {array} [parameters.containerNetworkInterfaces] List of child
+     * container network interfaces.
+     *
+     * @param {array} [parameters.containerNetworkInterfaceConfigurations] List of
+     * chid container network interface configurations.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfile>;
+    createOrUpdate(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, callback: ServiceCallback<models.NetworkProfile>): void;
+    createOrUpdate(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfile>): void;
+
+
+    /**
+     * Updates network profile tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to update network profile
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfile>>;
+
+    /**
+     * Updates network profile tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to update network profile
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfile>;
+    updateTags(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkProfile>): void;
+    updateTags(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfile>): void;
+
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    listAll(callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+}
+
+/**
+ * @class
  * NetworkSecurityGroups
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -45212,8 +45730,6 @@ export interface P2SVpnGateways {
      * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
-     *
      * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -45223,54 +45739,6 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
-     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
-     * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
-     * VPN client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
-     * VPN client revoked certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
-     * Radius Server root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
-     * Radius client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
-     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
-     * radius server address property of the P2SVpnServerConfiguration resource for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
      *
      * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
@@ -45317,8 +45785,6 @@ export interface P2SVpnGateways {
      * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
-     *
      * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -45328,54 +45794,6 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
-     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
-     * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
-     * VPN client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
-     * VPN client revoked certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
-     * Radius Server root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
-     * Radius client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
-     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
-     * radius server address property of the P2SVpnServerConfiguration resource for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
      *
      * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
@@ -45757,8 +46175,6 @@ export interface P2SVpnGateways {
      * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
-     *
      * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -45768,54 +46184,6 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
-     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
-     * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
-     * VPN client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
-     * VPN client revoked certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
-     * Radius Server root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
-     * Radius client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
-     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
-     * radius server address property of the P2SVpnServerConfiguration resource for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
      *
      * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.
@@ -45862,8 +46230,6 @@ export interface P2SVpnGateways {
      * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
      * the gateway belongs
      *
-     * @param {string} [p2SVpnGatewayParameters.virtualHub.id] Resource ID.
-     *
      * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
@@ -45873,54 +46239,6 @@ export interface P2SVpnGateways {
      *
      * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
      * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesName]
-     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
-     * in a resource group. This name can be used to access the resource along with
-     * Paren VirtualWan resource name.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnProtocols]
-     * vpnProtocols for the P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRootCertificates]
-     * VPN client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigVpnClientRevokedCertificates]
-     * VPN client revoked certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusServerRootCertificates]
-     * Radius Server root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigRadiusClientRootCertificates]
-     * Radius client root certificate of P2SVpnServerConfiguration.
-     *
-     * @param {array}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.vpnClientIpsecPolicies]
-     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerAddress] The
-     * radius server address property of the P2SVpnServerConfiguration resource for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.radiusServerSecret] The
-     * radius secret property of the P2SVpnServerConfiguration resource for for
-     * point to site client connection.
-     *
-     * @param {string}
-     * [p2SVpnGatewayParameters.p2SVpnServerConfiguration.p2SVpnServerConfigurationPropertiesEtag]
-     * A unique read-only string that changes whenever the resource is updated.
-     *
-     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.name] The
-     * name of the resource that is unique within a resource group. This name can
-     * be used to access the resource.
      *
      * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
      * Resource ID.

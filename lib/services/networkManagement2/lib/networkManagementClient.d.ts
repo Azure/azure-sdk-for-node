@@ -83,6 +83,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   networkInterfaceIPConfigurations: operations.NetworkInterfaceIPConfigurations;
   networkInterfaceLoadBalancers: operations.NetworkInterfaceLoadBalancers;
   networkInterfaceTapConfigurations: operations.NetworkInterfaceTapConfigurations;
+  networkProfiles: operations.NetworkProfiles;
   networkSecurityGroups: operations.NetworkSecurityGroups;
   securityRules: operations.SecurityRules;
   defaultSecurityRules: operations.DefaultSecurityRules;
