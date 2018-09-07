@@ -27,9 +27,9 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [type] The type.
  */
 export interface BaseModel {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
 }
 
 /**
@@ -343,9 +343,9 @@ export interface Backup extends BaseModel {
  * @constructor
  * Backup OData filter class
  *
- * @member {string} [initiatedBy] InitiatedBy. Possible values include:
- * 'Manual', 'Scheduled'
- * @member {date} [createdTime] CreatedTime
+ * @member {string} [initiatedBy] Gets or sets InitiatedBy. Possible values
+ * include: 'Manual', 'Scheduled'
+ * @member {date} [createdTime] Gets or sets CreatedTime
  */
 export interface BackupFilter {
   initiatedBy?: string;
@@ -1107,6 +1107,18 @@ export interface ManagerExtendedInfo extends BaseModel {
 
 /**
  * @class
+ * Initializes a new instance of the ManagerPatch class.
+ * @constructor
+ * The StorSimple Manager patch.
+ *
+ * @member {object} [tags] The tags attached to the StorSimple Manager.
+ */
+export interface ManagerPatch {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the MetricAvailablity class.
  * @constructor
  * Metric availability specifies the time grain (aggregation interval or
@@ -1319,16 +1331,32 @@ export interface NodeNetwork {
  * @constructor
  * The NetworkSettings of a device
  *
- * @member {string} primaryDNSServer The Primary DNS server for the device
- * @member {string} [secondaryDNSServer] The secondary DNS server for the
+ * @member {string} primaryDnsServer The Primary DNS server for the device
+ * @member {string} [secondaryDnsServer] The secondary DNS server for the
  * device
  * @member {array} nodeNetworks The NetworkAdapters under each node of the
  * device.
  */
 export interface NetworkSettings extends BaseModel {
-  primaryDNSServer: string;
-  secondaryDNSServer?: string;
+  primaryDnsServer: string;
+  secondaryDnsServer?: string;
   nodeNetworks: NodeNetwork[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RawCertificateData class.
+ * @constructor
+ * Raw Certificate Data From IDM
+ *
+ * @member {string} [authType] Specify the Authentication type. Possible values
+ * include: 'Invalid', 'AccessControlService', 'AzureActiveDirectory'
+ * @member {string} certificate Gets or sets the base64 encoded certificate raw
+ * data string
+ */
+export interface RawCertificateData {
+  authType?: string;
+  certificate: string;
 }
 
 /**
@@ -1342,6 +1370,47 @@ export interface NetworkSettings extends BaseModel {
  */
 export interface RegistrationCertificate {
   certificate: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceCertificateAndAADDetails class.
+ * @constructor
+ * Resource Certificate And AAD Details from IDM
+ *
+ * @member {string} [authType] Specify the Authentication type. Possible values
+ * include: 'Invalid', 'AccessControlService', 'AzureActiveDirectory'
+ * @member {string} certificate Gets or sets the base64 encoded certificate raw
+ * data string
+ * @member {number} resourceId Gets or Sets the ResourceId
+ * @member {string} aadAuthority AAD tenant authority
+ * @member {string} aadTenantId AAD tenant Id
+ * @member {string} servicePrincipalClientId AAD service principal clientId
+ * @member {string} servicePrincipalObjectId AAD service principal ObjectId
+ * @member {string} azureManagementEndpointAudience Azure Management Endpoint
+ * Audience
+ * @member {string} subject Certificate Subject Name
+ * @member {date} validFrom Certificate Validity start Date time
+ * @member {date} validTo Certificate Validity End Date time
+ * @member {string} thumbprint Certificate thumbrprint
+ * @member {string} friendlyName Certificate friendlyname
+ * @member {string} issuer Certificate issuer
+ */
+export interface ResourceCertificateAndAADDetails {
+  authType?: string;
+  certificate: string;
+  resourceId: number;
+  aadAuthority: string;
+  aadTenantId: string;
+  servicePrincipalClientId: string;
+  servicePrincipalObjectId: string;
+  azureManagementEndpointAudience: string;
+  subject: string;
+  validFrom: Date;
+  validTo: Date;
+  thumbprint: string;
+  friendlyName: string;
+  issuer: string;
 }
 
 /**
@@ -1567,10 +1636,13 @@ export interface Updates extends BaseModel {
  * @constructor
  * Upload Certificate Request to IDM
  *
- * @member {string} [authType] Specify the Authentication type. Possible values
- * include: 'Invalid', 'AccessControlService', 'AzureActiveDirectory'
- * @member {string} certificate Gets or sets the base64 encoded certificate raw
- * data string
+ * @member {object} rawCertificateDetails Gets or sets the base64 encoded
+ * certificate raw data string
+ * @member {string} [rawCertificateDetails.authType] Specify the Authentication
+ * type. Possible values include: 'Invalid', 'AccessControlService',
+ * 'AzureActiveDirectory'
+ * @member {string} [rawCertificateDetails.certificate] Gets or sets the base64
+ * encoded certificate raw data string
  * @member {string} [contractVersion] Gets ContractVersion. Possible values
  * include: 'InvalidVersion', 'V2011_09', 'V2012_02', 'V2012_05', 'V2012_12',
  * 'V2013_04', 'V2013_10', 'V2013_11', 'V2014_04', 'V2014_06', 'V2014_07',
@@ -1579,8 +1651,7 @@ export interface Updates extends BaseModel {
  * 'V2016_01', 'V2016_02', 'V2016_04', 'V2016_05', 'V2016_07', 'V2016_08'
  */
 export interface UploadCertificateRequest {
-  authType?: string;
-  certificate: string;
+  rawCertificateDetails: RawCertificateData;
   readonly contractVersion?: string;
 }
 
@@ -1590,23 +1661,29 @@ export interface UploadCertificateRequest {
  * @constructor
  * Upload Certificate Response from IDM
  *
- * @member {string} [authType] Specify the Authentication type. Possible values
- * include: 'Invalid', 'AccessControlService', 'AzureActiveDirectory'
- * @member {string} certificate Gets or sets the base64 encoded certificate raw
- * data string
- * @member {number} resourceId Gets or Sets the ResourceId
- * @member {string} aadAuthority AAD tenant authority
- * @member {string} aadTenantId AAD tenant Id
- * @member {string} servicePrincipalClientId AAD service principal clientId
- * @member {string} servicePrincipalObjectId AAD service principal ObjectId
- * @member {string} azureManagementEndpointAudience Azure Management Endpoint
- * Audience
- * @member {string} subject Certificate Subject Name
- * @member {date} validFrom Certificate Validity start Date time
- * @member {date} validTo Certificate Validity End Date time
- * @member {string} thumbprint Certificate thumbrprint
- * @member {string} friendlyName Certificate friendlyname
- * @member {string} issuer Certificate issuer
+ * @member {object} resourceAADDetails Gets or sets Properties
+ * @member {string} [resourceAADDetails.authType] Specify the Authentication
+ * type. Possible values include: 'Invalid', 'AccessControlService',
+ * 'AzureActiveDirectory'
+ * @member {string} [resourceAADDetails.certificate] Gets or sets the base64
+ * encoded certificate raw data string
+ * @member {number} [resourceAADDetails.resourceId] Gets or Sets the ResourceId
+ * @member {string} [resourceAADDetails.aadAuthority] AAD tenant authority
+ * @member {string} [resourceAADDetails.aadTenantId] AAD tenant Id
+ * @member {string} [resourceAADDetails.servicePrincipalClientId] AAD service
+ * principal clientId
+ * @member {string} [resourceAADDetails.servicePrincipalObjectId] AAD service
+ * principal ObjectId
+ * @member {string} [resourceAADDetails.azureManagementEndpointAudience] Azure
+ * Management Endpoint Audience
+ * @member {string} [resourceAADDetails.subject] Certificate Subject Name
+ * @member {date} [resourceAADDetails.validFrom] Certificate Validity start
+ * Date time
+ * @member {date} [resourceAADDetails.validTo] Certificate Validity End Date
+ * time
+ * @member {string} [resourceAADDetails.thumbprint] Certificate thumbrprint
+ * @member {string} [resourceAADDetails.friendlyName] Certificate friendlyname
+ * @member {string} [resourceAADDetails.issuer] Certificate issuer
  * @member {string} [contractVersion] Constructor. Possible values include:
  * 'InvalidVersion', 'V2011_09', 'V2012_02', 'V2012_05', 'V2012_12',
  * 'V2013_04', 'V2013_10', 'V2013_11', 'V2014_04', 'V2014_06', 'V2014_07',
@@ -1615,20 +1692,7 @@ export interface UploadCertificateRequest {
  * 'V2016_01', 'V2016_02', 'V2016_04', 'V2016_05', 'V2016_07', 'V2016_08'
  */
 export interface UploadCertificateResponse extends BaseModel {
-  authType?: string;
-  certificate: string;
-  resourceId: number;
-  aadAuthority: string;
-  aadTenantId: string;
-  servicePrincipalClientId: string;
-  servicePrincipalObjectId: string;
-  azureManagementEndpointAudience: string;
-  subject: string;
-  validFrom: Date;
-  validTo: Date;
-  thumbprint: string;
-  friendlyName: string;
-  issuer: string;
+  resourceAADDetails: ResourceCertificateAndAADDetails;
   readonly contractVersion?: string;
 }
 

@@ -344,6 +344,75 @@ export interface Managers {
 
 
     /**
+     * Updates the StorSimple Manager.
+     *
+     * @param {object} parameters The manager update parameters.
+     *
+     * @param {object} [parameters.tags] The tags attached to the StorSimple
+     * Manager.
+     *
+     * @param {string} resourceGroupName The resource group name
+     *
+     * @param {string} managerName The manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Manager>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(parameters: models.ManagerPatch, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Manager>>;
+
+    /**
+     * Updates the StorSimple Manager.
+     *
+     * @param {object} parameters The manager update parameters.
+     *
+     * @param {object} [parameters.tags] The tags attached to the StorSimple
+     * Manager.
+     *
+     * @param {string} resourceGroupName The resource group name
+     *
+     * @param {string} managerName The manager name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Manager} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Manager} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Manager} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(parameters: models.ManagerPatch, resourceGroupName: string, managerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Manager>;
+    update(parameters: models.ManagerPatch, resourceGroupName: string, managerName: string, callback: ServiceCallback<models.Manager>): void;
+    update(parameters: models.ManagerPatch, resourceGroupName: string, managerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Manager>): void;
+
+
+    /**
      * Upload Vault Cred Certificate.
      * Returns UploadCertificateResponse
      *
@@ -352,12 +421,17 @@ export interface Managers {
      * @param {object} uploadCertificateRequestrequest UploadCertificateRequest
      * Request
      *
-     * @param {string} [uploadCertificateRequestrequest.authType] Specify the
+     * @param {object} uploadCertificateRequestrequest.rawCertificateDetails Gets
+     * or sets the base64 encoded certificate raw data string
+     *
+     * @param {string}
+     * [uploadCertificateRequestrequest.rawCertificateDetails.authType] Specify the
      * Authentication type. Possible values include: 'Invalid',
      * 'AccessControlService', 'AzureActiveDirectory'
      *
-     * @param {string} uploadCertificateRequestrequest.certificate Gets or sets the
-     * base64 encoded certificate raw data string
+     * @param {string}
+     * uploadCertificateRequestrequest.rawCertificateDetails.certificate Gets or
+     * sets the base64 encoded certificate raw data string
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -385,12 +459,17 @@ export interface Managers {
      * @param {object} uploadCertificateRequestrequest UploadCertificateRequest
      * Request
      *
-     * @param {string} [uploadCertificateRequestrequest.authType] Specify the
+     * @param {object} uploadCertificateRequestrequest.rawCertificateDetails Gets
+     * or sets the base64 encoded certificate raw data string
+     *
+     * @param {string}
+     * [uploadCertificateRequestrequest.rawCertificateDetails.authType] Specify the
      * Authentication type. Possible values include: 'Invalid',
      * 'AccessControlService', 'AzureActiveDirectory'
      *
-     * @param {string} uploadCertificateRequestrequest.certificate Gets or sets the
-     * base64 encoded certificate raw data string
+     * @param {string}
+     * uploadCertificateRequestrequest.rawCertificateDetails.certificate Gets or
+     * sets the base64 encoded certificate raw data string
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -574,12 +653,6 @@ export interface Managers {
      *
      * @param {string} [managerExtendedInfo.etag] ETag of the Resource
      *
-     * @param {string} [managerExtendedInfo.id] The identifier.
-     *
-     * @param {string} [managerExtendedInfo.name] The name.
-     *
-     * @param {string} [managerExtendedInfo.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -623,12 +696,6 @@ export interface Managers {
      * in plain text format. AlgorithmName - if encryption is used
      *
      * @param {string} [managerExtendedInfo.etag] ETag of the Resource
-     *
-     * @param {string} [managerExtendedInfo.id] The identifier.
-     *
-     * @param {string} [managerExtendedInfo.name] The name.
-     *
-     * @param {string} [managerExtendedInfo.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -751,12 +818,6 @@ export interface Managers {
      *
      * @param {string} [managerExtendedInfo.etag] ETag of the Resource
      *
-     * @param {string} [managerExtendedInfo.id] The identifier.
-     *
-     * @param {string} [managerExtendedInfo.name] The name.
-     *
-     * @param {string} [managerExtendedInfo.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -802,12 +863,6 @@ export interface Managers {
      * in plain text format. AlgorithmName - if encryption is used
      *
      * @param {string} [managerExtendedInfo.etag] ETag of the Resource
-     *
-     * @param {string} [managerExtendedInfo.id] The identifier.
-     *
-     * @param {string} [managerExtendedInfo.name] The name.
-     *
-     * @param {string} [managerExtendedInfo.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -1523,12 +1578,6 @@ export interface AccessControlRecords {
      * @param {string} accessControlRecord.initiatorName The Iscsi initiator name
      * (IQN)
      *
-     * @param {string} [accessControlRecord.id] The identifier.
-     *
-     * @param {string} [accessControlRecord.name] The name.
-     *
-     * @param {string} [accessControlRecord.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -1557,12 +1606,6 @@ export interface AccessControlRecords {
      *
      * @param {string} accessControlRecord.initiatorName The Iscsi initiator name
      * (IQN)
-     *
-     * @param {string} [accessControlRecord.id] The identifier.
-     *
-     * @param {string} [accessControlRecord.name] The name.
-     *
-     * @param {string} [accessControlRecord.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -1676,12 +1719,6 @@ export interface AccessControlRecords {
      * @param {string} accessControlRecord.initiatorName The Iscsi initiator name
      * (IQN)
      *
-     * @param {string} [accessControlRecord.id] The identifier.
-     *
-     * @param {string} [accessControlRecord.name] The name.
-     *
-     * @param {string} [accessControlRecord.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -1710,12 +1747,6 @@ export interface AccessControlRecords {
      *
      * @param {string} accessControlRecord.initiatorName The Iscsi initiator name
      * (IQN)
-     *
-     * @param {string} [accessControlRecord.id] The identifier.
-     *
-     * @param {string} [accessControlRecord.name] The name.
-     *
-     * @param {string} [accessControlRecord.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -2341,12 +2372,6 @@ export interface Backups {
      * @param {string} cloneRequest.share.monitoringStatus The monitoring status.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [cloneRequest.share.id] The identifier.
-     *
-     * @param {string} [cloneRequest.share.name] The name.
-     *
-     * @param {string} [cloneRequest.share.type] The type.
-     *
      * @param {object} [cloneRequest.disk] Disk Object
      *
      * @param {string} [cloneRequest.disk.description] The description.
@@ -2365,12 +2390,6 @@ export interface Backups {
      *
      * @param {string} cloneRequest.disk.monitoringStatus The monitoring. Possible
      * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [cloneRequest.disk.id] The identifier.
-     *
-     * @param {string} [cloneRequest.disk.name] The name.
-     *
-     * @param {string} [cloneRequest.disk.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -2429,12 +2448,6 @@ export interface Backups {
      * @param {string} cloneRequest.share.monitoringStatus The monitoring status.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [cloneRequest.share.id] The identifier.
-     *
-     * @param {string} [cloneRequest.share.name] The name.
-     *
-     * @param {string} [cloneRequest.share.type] The type.
-     *
      * @param {object} [cloneRequest.disk] Disk Object
      *
      * @param {string} [cloneRequest.disk.description] The description.
@@ -2453,12 +2466,6 @@ export interface Backups {
      *
      * @param {string} cloneRequest.disk.monitoringStatus The monitoring. Possible
      * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [cloneRequest.disk.id] The identifier.
-     *
-     * @param {string} [cloneRequest.disk.name] The name.
-     *
-     * @param {string} [cloneRequest.disk.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -2601,12 +2608,6 @@ export interface Backups {
      * @param {string} cloneRequest.share.monitoringStatus The monitoring status.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [cloneRequest.share.id] The identifier.
-     *
-     * @param {string} [cloneRequest.share.name] The name.
-     *
-     * @param {string} [cloneRequest.share.type] The type.
-     *
      * @param {object} [cloneRequest.disk] Disk Object
      *
      * @param {string} [cloneRequest.disk.description] The description.
@@ -2625,12 +2626,6 @@ export interface Backups {
      *
      * @param {string} cloneRequest.disk.monitoringStatus The monitoring. Possible
      * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [cloneRequest.disk.id] The identifier.
-     *
-     * @param {string} [cloneRequest.disk.name] The name.
-     *
-     * @param {string} [cloneRequest.disk.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -2689,12 +2684,6 @@ export interface Backups {
      * @param {string} cloneRequest.share.monitoringStatus The monitoring status.
      * Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [cloneRequest.share.id] The identifier.
-     *
-     * @param {string} [cloneRequest.share.name] The name.
-     *
-     * @param {string} [cloneRequest.share.type] The type.
-     *
      * @param {object} [cloneRequest.disk] Disk Object
      *
      * @param {string} [cloneRequest.disk.description] The description.
@@ -2713,12 +2702,6 @@ export interface Backups {
      *
      * @param {string} cloneRequest.disk.monitoringStatus The monitoring. Possible
      * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [cloneRequest.disk.id] The identifier.
-     *
-     * @param {string} [cloneRequest.disk.name] The name.
-     *
-     * @param {string} [cloneRequest.disk.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -3235,12 +3218,6 @@ export interface Devices {
      * addresses (apart from admin/coadmin of subscription) to whom the alert
      * emails need to be sent
      *
-     * @param {string} [alertSettings.id] The identifier.
-     *
-     * @param {string} [alertSettings.name] The name.
-     *
-     * @param {string} [alertSettings.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -3280,12 +3257,6 @@ export interface Devices {
      * @param {array} [alertSettings.additionalRecipientEmailList] List of email
      * addresses (apart from admin/coadmin of subscription) to whom the alert
      * emails need to be sent
-     *
-     * @param {string} [alertSettings.id] The identifier.
-     *
-     * @param {string} [alertSettings.name] The name.
-     *
-     * @param {string} [alertSettings.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -4052,12 +4023,6 @@ export interface Devices {
      * Algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [securitySettings.id] The identifier.
-     *
-     * @param {string} [securitySettings.name] The name.
-     *
-     * @param {string} [securitySettings.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -4099,12 +4064,6 @@ export interface Devices {
      * @param {string} securitySettings.deviceAdminPassword.encryptionAlgorithm
      * Algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
-     *
-     * @param {string} [securitySettings.id] The identifier.
-     *
-     * @param {string} [securitySettings.name] The name.
-     *
-     * @param {string} [securitySettings.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -4425,12 +4384,6 @@ export interface Devices {
      * addresses (apart from admin/coadmin of subscription) to whom the alert
      * emails need to be sent
      *
-     * @param {string} [alertSettings.id] The identifier.
-     *
-     * @param {string} [alertSettings.name] The name.
-     *
-     * @param {string} [alertSettings.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -4470,12 +4423,6 @@ export interface Devices {
      * @param {array} [alertSettings.additionalRecipientEmailList] List of email
      * addresses (apart from admin/coadmin of subscription) to whom the alert
      * emails need to be sent
-     *
-     * @param {string} [alertSettings.id] The identifier.
-     *
-     * @param {string} [alertSettings.name] The name.
-     *
-     * @param {string} [alertSettings.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -4978,12 +4925,6 @@ export interface Devices {
      * Algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [securitySettings.id] The identifier.
-     *
-     * @param {string} [securitySettings.name] The name.
-     *
-     * @param {string} [securitySettings.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -5025,12 +4966,6 @@ export interface Devices {
      * @param {string} securitySettings.deviceAdminPassword.encryptionAlgorithm
      * Algorithm used to encrypt "Value". Possible values include: 'None',
      * 'AES256', 'RSAES_PKCS1_v_1_5'
-     *
-     * @param {string} [securitySettings.id] The identifier.
-     *
-     * @param {string} [securitySettings.name] The name.
-     *
-     * @param {string} [securitySettings.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5223,12 +5158,6 @@ export interface BackupScheduleGroups {
      *
      * @param {number} scheduleGroup.startTime.minute The minute.
      *
-     * @param {string} [scheduleGroup.id] The identifier.
-     *
-     * @param {string} [scheduleGroup.name] The name.
-     *
-     * @param {string} [scheduleGroup.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -5261,12 +5190,6 @@ export interface BackupScheduleGroups {
      * @param {number} scheduleGroup.startTime.hour The hour.
      *
      * @param {number} scheduleGroup.startTime.minute The minute.
-     *
-     * @param {string} [scheduleGroup.id] The identifier.
-     *
-     * @param {string} [scheduleGroup.name] The name.
-     *
-     * @param {string} [scheduleGroup.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5386,12 +5309,6 @@ export interface BackupScheduleGroups {
      *
      * @param {number} scheduleGroup.startTime.minute The minute.
      *
-     * @param {string} [scheduleGroup.id] The identifier.
-     *
-     * @param {string} [scheduleGroup.name] The name.
-     *
-     * @param {string} [scheduleGroup.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -5424,12 +5341,6 @@ export interface BackupScheduleGroups {
      * @param {number} scheduleGroup.startTime.hour The hour.
      *
      * @param {number} scheduleGroup.startTime.minute The minute.
-     *
-     * @param {string} [scheduleGroup.id] The identifier.
-     *
-     * @param {string} [scheduleGroup.name] The name.
-     *
-     * @param {string} [scheduleGroup.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5694,12 +5605,6 @@ export interface ChapSettingsOperations {
      * encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [chapSetting.id] The identifier.
-     *
-     * @param {string} [chapSetting.name] The name.
-     *
-     * @param {string} [chapSetting.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -5738,12 +5643,6 @@ export interface ChapSettingsOperations {
      * @param {string} chapSetting.password.encryptionAlgorithm Algorithm used to
      * encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
-     *
-     * @param {string} [chapSetting.id] The identifier.
-     *
-     * @param {string} [chapSetting.name] The name.
-     *
-     * @param {string} [chapSetting.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -5869,12 +5768,6 @@ export interface ChapSettingsOperations {
      * encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [chapSetting.id] The identifier.
-     *
-     * @param {string} [chapSetting.name] The name.
-     *
-     * @param {string} [chapSetting.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -5913,12 +5806,6 @@ export interface ChapSettingsOperations {
      * @param {string} chapSetting.password.encryptionAlgorithm Algorithm used to
      * encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
-     *
-     * @param {string} [chapSetting.id] The identifier.
-     *
-     * @param {string} [chapSetting.name] The name.
-     *
-     * @param {string} [chapSetting.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -6259,12 +6146,6 @@ export interface IscsiDisks {
      * @param {string} iscsiDisk.monitoringStatus The monitoring. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [iscsiDisk.id] The identifier.
-     *
-     * @param {string} [iscsiDisk.name] The name.
-     *
-     * @param {string} [iscsiDisk.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -6308,12 +6189,6 @@ export interface IscsiDisks {
      *
      * @param {string} iscsiDisk.monitoringStatus The monitoring. Possible values
      * include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [iscsiDisk.id] The identifier.
-     *
-     * @param {string} [iscsiDisk.name] The name.
-     *
-     * @param {string} [iscsiDisk.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -6594,12 +6469,6 @@ export interface IscsiDisks {
      * @param {string} iscsiDisk.monitoringStatus The monitoring. Possible values
      * include: 'Enabled', 'Disabled'
      *
-     * @param {string} [iscsiDisk.id] The identifier.
-     *
-     * @param {string} [iscsiDisk.name] The name.
-     *
-     * @param {string} [iscsiDisk.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -6643,12 +6512,6 @@ export interface IscsiDisks {
      *
      * @param {string} iscsiDisk.monitoringStatus The monitoring. Possible values
      * include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [iscsiDisk.id] The identifier.
-     *
-     * @param {string} [iscsiDisk.name] The name.
-     *
-     * @param {string} [iscsiDisk.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -6912,12 +6775,6 @@ export interface FileServers {
      *
      * @param {string} [fileServer.description] The description of the file server
      *
-     * @param {string} [fileServer.id] The identifier.
-     *
-     * @param {string} [fileServer.name] The name.
-     *
-     * @param {string} [fileServer.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -6951,12 +6808,6 @@ export interface FileServers {
      * @param {string} fileServer.backupScheduleGroupId The backup policy id.
      *
      * @param {string} [fileServer.description] The description of the file server
-     *
-     * @param {string} [fileServer.id] The identifier.
-     *
-     * @param {string} [fileServer.name] The name.
-     *
-     * @param {string} [fileServer.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7340,12 +7191,6 @@ export interface FileServers {
      *
      * @param {string} [fileServer.description] The description of the file server
      *
-     * @param {string} [fileServer.id] The identifier.
-     *
-     * @param {string} [fileServer.name] The name.
-     *
-     * @param {string} [fileServer.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -7379,12 +7224,6 @@ export interface FileServers {
      * @param {string} fileServer.backupScheduleGroupId The backup policy id.
      *
      * @param {string} [fileServer.description] The description of the file server
-     *
-     * @param {string} [fileServer.id] The identifier.
-     *
-     * @param {string} [fileServer.name] The name.
-     *
-     * @param {string} [fileServer.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -7730,12 +7569,6 @@ export interface FileShares {
      * @param {string} fileShare.monitoringStatus The monitoring status. Possible
      * values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [fileShare.id] The identifier.
-     *
-     * @param {string} [fileShare.name] The name.
-     *
-     * @param {string} [fileShare.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -7781,12 +7614,6 @@ export interface FileShares {
      *
      * @param {string} fileShare.monitoringStatus The monitoring status. Possible
      * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [fileShare.id] The identifier.
-     *
-     * @param {string} [fileShare.name] The name.
-     *
-     * @param {string} [fileShare.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8132,12 +7959,6 @@ export interface FileShares {
      * @param {string} fileShare.monitoringStatus The monitoring status. Possible
      * values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [fileShare.id] The identifier.
-     *
-     * @param {string} [fileShare.name] The name.
-     *
-     * @param {string} [fileShare.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -8183,12 +8004,6 @@ export interface FileShares {
      *
      * @param {string} fileShare.monitoringStatus The monitoring status. Possible
      * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [fileShare.id] The identifier.
-     *
-     * @param {string} [fileShare.name] The name.
-     *
-     * @param {string} [fileShare.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8454,12 +8269,6 @@ export interface IscsiServers {
      *
      * @param {string} [iscsiServer.reverseChapId] The reverse chap id.
      *
-     * @param {string} [iscsiServer.id] The identifier.
-     *
-     * @param {string} [iscsiServer.name] The name.
-     *
-     * @param {string} [iscsiServer.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -8495,12 +8304,6 @@ export interface IscsiServers {
      * @param {string} [iscsiServer.chapId] The chap id.
      *
      * @param {string} [iscsiServer.reverseChapId] The reverse chap id.
-     *
-     * @param {string} [iscsiServer.id] The identifier.
-     *
-     * @param {string} [iscsiServer.name] The name.
-     *
-     * @param {string} [iscsiServer.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -8886,12 +8689,6 @@ export interface IscsiServers {
      *
      * @param {string} [iscsiServer.reverseChapId] The reverse chap id.
      *
-     * @param {string} [iscsiServer.id] The identifier.
-     *
-     * @param {string} [iscsiServer.name] The name.
-     *
-     * @param {string} [iscsiServer.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -8927,12 +8724,6 @@ export interface IscsiServers {
      * @param {string} [iscsiServer.chapId] The chap id.
      *
      * @param {string} [iscsiServer.reverseChapId] The reverse chap id.
-     *
-     * @param {string} [iscsiServer.id] The identifier.
-     *
-     * @param {string} [iscsiServer.name] The name.
-     *
-     * @param {string} [iscsiServer.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -9591,12 +9382,6 @@ export interface StorageAccountCredentials {
      * to encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [storageAccount.id] The identifier.
-     *
-     * @param {string} [storageAccount.name] The name.
-     *
-     * @param {string} [storageAccount.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -9647,12 +9432,6 @@ export interface StorageAccountCredentials {
      * @param {string} storageAccount.accessKey.encryptionAlgorithm Algorithm used
      * to encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
-     *
-     * @param {string} [storageAccount.id] The identifier.
-     *
-     * @param {string} [storageAccount.name] The name.
-     *
-     * @param {string} [storageAccount.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -9787,12 +9566,6 @@ export interface StorageAccountCredentials {
      * to encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
      *
-     * @param {string} [storageAccount.id] The identifier.
-     *
-     * @param {string} [storageAccount.name] The name.
-     *
-     * @param {string} [storageAccount.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -9843,12 +9616,6 @@ export interface StorageAccountCredentials {
      * @param {string} storageAccount.accessKey.encryptionAlgorithm Algorithm used
      * to encrypt "Value". Possible values include: 'None', 'AES256',
      * 'RSAES_PKCS1_v_1_5'
-     *
-     * @param {string} [storageAccount.id] The identifier.
-     *
-     * @param {string} [storageAccount.name] The name.
-     *
-     * @param {string} [storageAccount.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -10108,12 +9875,6 @@ export interface StorageDomains {
      * @param {string} storageDomain.encryptionStatus The encryption status
      * "Enabled | Disabled". Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [storageDomain.id] The identifier.
-     *
-     * @param {string} [storageDomain.name] The name.
-     *
-     * @param {string} [storageDomain.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -10158,12 +9919,6 @@ export interface StorageDomains {
      *
      * @param {string} storageDomain.encryptionStatus The encryption status
      * "Enabled | Disabled". Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [storageDomain.id] The identifier.
-     *
-     * @param {string} [storageDomain.name] The name.
-     *
-     * @param {string} [storageDomain.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -10291,12 +10046,6 @@ export interface StorageDomains {
      * @param {string} storageDomain.encryptionStatus The encryption status
      * "Enabled | Disabled". Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {string} [storageDomain.id] The identifier.
-     *
-     * @param {string} [storageDomain.name] The name.
-     *
-     * @param {string} [storageDomain.type] The type.
-     *
      * @param {string} resourceGroupName The resource group name
      *
      * @param {string} managerName The manager name
@@ -10341,12 +10090,6 @@ export interface StorageDomains {
      *
      * @param {string} storageDomain.encryptionStatus The encryption status
      * "Enabled | Disabled". Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [storageDomain.id] The identifier.
-     *
-     * @param {string} [storageDomain.name] The name.
-     *
-     * @param {string} [storageDomain.type] The type.
      *
      * @param {string} resourceGroupName The resource group name
      *
