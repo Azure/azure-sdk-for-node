@@ -156,7 +156,7 @@ export interface OpenShiftManagedClusterAgentPoolProfile {
 
 /**
  * @class
- * Initializes a new instance of the OpenShiftManagedClusterIdentityProvider class.
+ * Initializes a new instance of the OpenShiftManagedClusterIdentityProviders class.
  * @constructor
  * OpenShiftManagedClusterIdentityProvider is heavily cut down equivalent to
  * IdentityProvider in the upstream.
@@ -164,9 +164,20 @@ export interface OpenShiftManagedClusterAgentPoolProfile {
  * @member {string} [name] Name of the provider.
  * @member {object} [provider] Configuration of the provider.
  */
-export interface OpenShiftManagedClusterIdentityProvider {
+export interface OpenShiftManagedClusterIdentityProviders {
   name?: string;
   provider?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAuthProfile class.
+ * @constructor
+ * @member {array} [value] OpenShiftManagedClusterAuthProfile defines all
+ * possible authentication profiles for the OpenShift cluster.
+ */
+export interface OpenShiftManagedClusterAuthProfile {
+  value?: OpenShiftManagedClusterIdentityProviders[];
 }
 
 /**
@@ -192,21 +203,22 @@ export interface OpenShiftManagedClusterIdentityProvider {
  * @member {string} [fqdn] User-specified FQDN for OpenShift API server
  * loadbalancer internal hostname.
  * @member {array} [routerProfiles] Configuration for OpenShift router(s).
- * @member {object} [masterPoolProfiles] Configuration for OpenShift master
- * VMs.
- * @member {string} [masterPoolProfiles.name] Unique name of the master pool
+ * @member {object} [masterPoolProfile] Configuration for OpenShift master VMs.
+ * @member {string} [masterPoolProfile.name] Unique name of the master pool
  * profile in the context of the subscription and resource group.
- * @member {number} [masterPoolProfiles.count] Number of masters (VMs) to host
+ * @member {number} [masterPoolProfile.count] Number of masters (VMs) to host
  * docker containers. The default value is 3.
- * @member {string} [masterPoolProfiles.vmSize] Size of agent VMs. Possible
+ * @member {string} [masterPoolProfile.vmSize] Size of agent VMs. Possible
  * values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [masterPoolProfiles.vnetSubnetID] VNet SubnetID specifies
+ * @member {string} [masterPoolProfile.vnetSubnetID] VNet SubnetID specifies
  * the vnet's subnet identifier.
- * @member {string} [masterPoolProfiles.osType] OsType to be used to specify os
+ * @member {string} [masterPoolProfile.osType] OsType to be used to specify os
  * type. Choose from Linux and Windows. Default to Linux. Possible values
  * include: 'Linux', 'Windows'
  * @member {array} [agentPoolProfiles] Configuration of OpenShift cluster VMs.
- * @member {array} [authProfile] Configures OpenShift authentication.
+ * @member {object} [authProfile] Configures OpenShift authentication.
+ * @member {array} [authProfile.value] OpenShiftManagedClusterAuthProfile
+ * defines all possible authentication profiles for the OpenShift cluster.
  */
 export interface OpenShiftManagedCluster extends Resource {
   plan?: PurchasePlan;
@@ -215,9 +227,9 @@ export interface OpenShiftManagedCluster extends Resource {
   publicHostname?: string;
   fqdn?: string;
   routerProfiles?: OpenShiftRouterProfile[];
-  masterPoolProfiles?: OpenShiftManagedClusterMasterPoolProfile;
+  masterPoolProfile?: OpenShiftManagedClusterMasterPoolProfile;
   agentPoolProfiles?: OpenShiftManagedClusterAgentPoolProfile[];
-  authProfile?: OpenShiftManagedClusterIdentityProvider[];
+  authProfile?: OpenShiftManagedClusterAuthProfile;
 }
 
 /**

@@ -254,29 +254,34 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
-     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * @param {string} parameters.masterPoolProfile.name Unique name of the master
      * pool profile in the context of the subscription and resource group.
      *
-     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
      *
-     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * @param {string} [parameters.masterPoolProfile.vnetSubnetID] VNet SubnetID
      * specifies the vnet's subnet identifier.
      *
-     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
      * specify os type. Choose from Linux and Windows. Default to Linux. Possible
      * values include: 'Linux', 'Windows'
      *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
-     * @param {array} [parameters.authProfile] Configures OpenShift authentication.
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.value]
+     * OpenShiftManagedClusterAuthProfile defines all possible authentication
+     * profiles for the OpenShift cluster.
      *
      * @param {string} parameters.location Resource location
      *
@@ -334,29 +339,34 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
-     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * @param {string} parameters.masterPoolProfile.name Unique name of the master
      * pool profile in the context of the subscription and resource group.
      *
-     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
      *
-     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * @param {string} [parameters.masterPoolProfile.vnetSubnetID] VNet SubnetID
      * specifies the vnet's subnet identifier.
      *
-     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
      * specify os type. Choose from Linux and Windows. Default to Linux. Possible
      * values include: 'Linux', 'Windows'
      *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
-     * @param {array} [parameters.authProfile] Configures OpenShift authentication.
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.value]
+     * OpenShiftManagedClusterAuthProfile defines all possible authentication
+     * profiles for the OpenShift cluster.
      *
      * @param {string} parameters.location Resource location
      *
@@ -576,29 +586,34 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
-     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * @param {string} parameters.masterPoolProfile.name Unique name of the master
      * pool profile in the context of the subscription and resource group.
      *
-     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
      *
-     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * @param {string} [parameters.masterPoolProfile.vnetSubnetID] VNet SubnetID
      * specifies the vnet's subnet identifier.
      *
-     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
      * specify os type. Choose from Linux and Windows. Default to Linux. Possible
      * values include: 'Linux', 'Windows'
      *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
-     * @param {array} [parameters.authProfile] Configures OpenShift authentication.
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.value]
+     * OpenShiftManagedClusterAuthProfile defines all possible authentication
+     * profiles for the OpenShift cluster.
      *
      * @param {string} parameters.location Resource location
      *
@@ -656,29 +671,34 @@ export interface OpenShiftManagedClusters {
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
      * router(s).
      *
-     * @param {object} [parameters.masterPoolProfiles] Configuration for OpenShift
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfiles.name Unique name of the master
+     * @param {string} parameters.masterPoolProfile.name Unique name of the master
      * pool profile in the context of the subscription and resource group.
      *
-     * @param {number} parameters.masterPoolProfiles.count Number of masters (VMs)
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
      *
-     * @param {string} parameters.masterPoolProfiles.vmSize Size of agent VMs.
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfiles.vnetSubnetID] VNet SubnetID
+     * @param {string} [parameters.masterPoolProfile.vnetSubnetID] VNet SubnetID
      * specifies the vnet's subnet identifier.
      *
-     * @param {string} [parameters.masterPoolProfiles.osType] OsType to be used to
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
      * specify os type. Choose from Linux and Windows. Default to Linux. Possible
      * values include: 'Linux', 'Windows'
      *
      * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
      * cluster VMs.
      *
-     * @param {array} [parameters.authProfile] Configures OpenShift authentication.
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.value]
+     * OpenShiftManagedClusterAuthProfile defines all possible authentication
+     * profiles for the OpenShift cluster.
      *
      * @param {string} parameters.location Resource location
      *
