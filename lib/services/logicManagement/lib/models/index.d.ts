@@ -6212,7 +6212,7 @@ export interface AgreementContent {
  * @member {date} [changedTime] The changed time.
  * @member {object} [metadata] The metadata.
  * @member {string} agreementType The agreement type. Possible values include:
- * 'NotSpecified', 'AS2', 'X12', 'EDIFACT'
+ * 'NotSpecified', 'AS2', 'X12', 'Edifact'
  * @member {string} hostPartner The integration account partner that is set as
  * host partner for this agreement.
  * @member {string} guestPartner The integration account partner that is set as
@@ -7743,7 +7743,7 @@ export interface IntegrationAccountAgreement extends Resource {
  * The integration account agreement filter for odata query.
  *
  * @member {string} agreementType The agreement type of integration account
- * agreement. Possible values include: 'NotSpecified', 'AS2', 'X12', 'EDIFACT'
+ * agreement. Possible values include: 'NotSpecified', 'AS2', 'X12', 'Edifact'
  */
 export interface IntegrationAccountAgreementFilter {
   agreementType: string;
