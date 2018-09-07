@@ -72,6 +72,7 @@ export default class MonitorManagementClient extends AzureServiceClient {
   metricAlerts: operations.MetricAlerts;
   metricAlertsStatus: operations.MetricAlertsStatus;
   scheduledQueryRules: operations.ScheduledQueryRules;
+  metricNamespaces: operations.MetricNamespaces;
 }
 
 export { MonitorManagementClient, models as MonitorManagementModels };

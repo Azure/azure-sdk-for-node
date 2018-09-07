@@ -205,12 +205,17 @@ export interface RoleAssignment {
  * @member {string} [principalId] The principal ID assigned to the role. This
  * maps to the ID inside the Active Directory. It can point to a user, service
  * principal, or security group.
+ * @member {string} [principalType] The principal type of the assigned
+ * principal ID. Possible values include: 'User', 'Group', 'ServicePrincipal',
+ * 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup', 'Application', 'MSI',
+ * 'DirectoryObjectOrGroup', 'Everyone'
  * @member {boolean} [canDelegate] The delgation flag used for creating a role
  * assignment
  */
 export interface RoleAssignmentCreateParameters {
   roleDefinitionId?: string;
   principalId?: string;
+  principalType?: string;
   canDelegate?: boolean;
 }
 
