@@ -54,6 +54,10 @@ export interface ClusterDefinition {
  * @member {string} [domainUserPassword] The domain admin password.
  * @member {array} [clusterUsersGroupDNs] Optional. The Distinguished Names for
  * cluster user groups
+ * @member {string} [aaddsResourceId] The resource ID of the user's Azure
+ * Active Directory Domain Service.
+ * @member {string} [msiResourceId] User assigned identity that has permissions
+ * to read and create cluster-related artifacts in the user's AADDS.
  */
 export interface SecurityProfile {
   directoryType?: string;
@@ -63,6 +67,8 @@ export interface SecurityProfile {
   domainUsername?: string;
   domainUserPassword?: string;
   clusterUsersGroupDNs?: string[];
+  aaddsResourceId?: string;
+  msiResourceId?: string;
 }
 
 /**
@@ -305,6 +311,11 @@ export interface StorageProfile {
  * password.
  * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
  * Distinguished Names for cluster user groups
+ * @member {string} [securityProfile.aaddsResourceId] The resource ID of the
+ * user's Azure Active Directory Domain Service.
+ * @member {string} [securityProfile.msiResourceId] User assigned identity that
+ * has permissions to read and create cluster-related artifacts in the user's
+ * AADDS.
  * @member {object} [computeProfile] The compute profile.
  * @member {array} [computeProfile.roles] The list of roles in the cluster.
  * @member {object} [storageProfile] The storage profile.
@@ -359,6 +370,11 @@ export interface ClusterCreateProperties {
  * admin password.
  * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
  * The Distinguished Names for cluster user groups
+ * @member {string} [properties.securityProfile.aaddsResourceId] The resource
+ * ID of the user's Azure Active Directory Domain Service.
+ * @member {string} [properties.securityProfile.msiResourceId] User assigned
+ * identity that has permissions to read and create cluster-related artifacts
+ * in the user's AADDS.
  * @member {object} [properties.computeProfile] The compute profile.
  * @member {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
@@ -461,6 +477,11 @@ export interface ConnectivityEndpoint {
  * password.
  * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
  * Distinguished Names for cluster user groups
+ * @member {string} [securityProfile.aaddsResourceId] The resource ID of the
+ * user's Azure Active Directory Domain Service.
+ * @member {string} [securityProfile.msiResourceId] User assigned identity that
+ * has permissions to read and create cluster-related artifacts in the user's
+ * AADDS.
  * @member {object} [computeProfile] The compute profile.
  * @member {array} [computeProfile.roles] The list of roles in the cluster.
  * @member {string} [provisioningState] The provisioning state, which only
@@ -555,6 +576,11 @@ export interface TrackedResource extends Resource {
  * admin password.
  * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
  * The Distinguished Names for cluster user groups
+ * @member {string} [properties.securityProfile.aaddsResourceId] The resource
+ * ID of the user's Azure Active Directory Domain Service.
+ * @member {string} [properties.securityProfile.msiResourceId] User assigned
+ * identity that has permissions to read and create cluster-related artifacts
+ * in the user's AADDS.
  * @member {object} [properties.computeProfile] The compute profile.
  * @member {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
