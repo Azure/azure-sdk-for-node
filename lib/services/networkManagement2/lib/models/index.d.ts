@@ -912,6 +912,8 @@ export interface NetworkInterfaceDnsSettings {
  * that changes whenever the resource is updated.
  * @member {array} [ipConfigurations] A list of IPConfigurations of the network
  * interface.
+ * @member {array} [tapConfigurations] A list of TapConfigurations of the
+ * network interface.
  * @member {object} [dnsSettings] The DNS settings in network interface.
  * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses.
  * Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
@@ -953,6 +955,7 @@ export interface NetworkInterface extends Resource {
   networkSecurityGroup?: NetworkSecurityGroup;
   interfaceEndpoint?: InterfaceEndpoint;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
+  tapConfigurations?: NetworkInterfaceTapConfiguration[];
   dnsSettings?: NetworkInterfaceDnsSettings;
   macAddress?: string;
   primary?: boolean;
