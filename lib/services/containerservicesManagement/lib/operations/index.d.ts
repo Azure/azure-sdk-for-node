@@ -279,7 +279,7 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.value]
+     * @param {array} [parameters.authProfile.identityProviders]
      * OpenShiftManagedClusterAuthProfile defines all possible authentication
      * profiles for the OpenShift cluster.
      *
@@ -364,7 +364,7 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.value]
+     * @param {array} [parameters.authProfile.identityProviders]
      * OpenShiftManagedClusterAuthProfile defines all possible authentication
      * profiles for the OpenShift cluster.
      *
@@ -611,7 +611,7 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.value]
+     * @param {array} [parameters.authProfile.identityProviders]
      * OpenShiftManagedClusterAuthProfile defines all possible authentication
      * profiles for the OpenShift cluster.
      *
@@ -696,7 +696,7 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.value]
+     * @param {array} [parameters.authProfile.identityProviders]
      * OpenShiftManagedClusterAuthProfile defines all possible authentication
      * profiles for the OpenShift cluster.
      *
