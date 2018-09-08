@@ -16170,11 +16170,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16558,11 +16553,6 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
-     *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
@@ -17090,11 +17080,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -17478,11 +17463,6 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
-     *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
@@ -33714,10 +33694,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34077,10 +34053,6 @@ export interface VirtualNetworkTaps {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
-     *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
      *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
@@ -34696,10 +34668,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -35059,10 +35027,6 @@ export interface VirtualNetworkTaps {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
-     *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
      *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive

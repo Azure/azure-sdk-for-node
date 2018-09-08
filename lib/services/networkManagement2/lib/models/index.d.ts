@@ -2424,7 +2424,7 @@ export interface FrontendIPConfiguration extends SubResource {
  * the resource is updated.
  */
 export interface VirtualNetworkTap extends Resource {
-  networkInterfaceTapConfigurations?: NetworkInterfaceTapConfiguration[];
+  readonly networkInterfaceTapConfigurations?: NetworkInterfaceTapConfiguration[];
   destinationNetworkInterfaceIPConfiguration?: NetworkInterfaceIPConfiguration;
   destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfiguration;
   destinationPort?: number;
