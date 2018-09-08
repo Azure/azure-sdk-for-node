@@ -13959,6 +13959,9 @@ export interface NetworkInterfaces {
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
      *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
+     * the network interface.
+     *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
      * interface.
      *
@@ -14099,6 +14102,9 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
+     * the network interface.
+     *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
      * the network interface.
      *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
@@ -14976,6 +14982,9 @@ export interface NetworkInterfaces {
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
      *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
+     * the network interface.
+     *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
      * interface.
      *
@@ -15116,6 +15125,9 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
+     * the network interface.
+     *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
      * the network interface.
      *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
