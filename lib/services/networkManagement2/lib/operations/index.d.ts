@@ -257,13 +257,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -416,13 +411,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1227,13 +1217,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1386,13 +1371,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -13959,6 +13939,9 @@ export interface NetworkInterfaces {
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
      *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
+     * the network interface.
+     *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
      * interface.
      *
@@ -14099,6 +14082,9 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
+     * the network interface.
+     *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
      * the network interface.
      *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
@@ -14976,6 +14962,9 @@ export interface NetworkInterfaces {
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
      *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
+     * the network interface.
+     *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
      * interface.
      *
@@ -15116,6 +15105,9 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
+     * the network interface.
+     *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
      * the network interface.
      *
      * @param {object} [parameters.dnsSettings] The DNS settings in network

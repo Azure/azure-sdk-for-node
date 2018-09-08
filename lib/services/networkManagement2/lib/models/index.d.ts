@@ -912,6 +912,8 @@ export interface NetworkInterfaceDnsSettings {
  * that changes whenever the resource is updated.
  * @member {array} [ipConfigurations] A list of IPConfigurations of the network
  * interface.
+ * @member {array} [tapConfigurations] A list of TapConfigurations of the
+ * network interface.
  * @member {object} [dnsSettings] The DNS settings in network interface.
  * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses.
  * Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
@@ -953,6 +955,7 @@ export interface NetworkInterface extends Resource {
   networkSecurityGroup?: NetworkSecurityGroup;
   interfaceEndpoint?: InterfaceEndpoint;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
+  tapConfigurations?: NetworkInterfaceTapConfiguration[];
   dnsSettings?: NetworkInterfaceDnsSettings;
   macAddress?: string;
   primary?: boolean;
@@ -4029,33 +4032,15 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGatewayAutoscaleBounds class.
- * @constructor
- * Application Gateway autoscale bounds on number of Application Gateway
- * instance.
- *
- * @member {number} min Lower bound on number of Application Gateway instances.
- * @member {number} max Upper bound on number of Application Gateway instances.
- */
-export interface ApplicationGatewayAutoscaleBounds {
-  min: number;
-  max: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationGatewayAutoscaleConfiguration class.
  * @constructor
  * Application Gateway autoscale configuration.
  *
- * @member {object} bounds Autoscale bounds
- * @member {number} [bounds.min] Lower bound on number of Application Gateway
- * instances.
- * @member {number} [bounds.max] Upper bound on number of Application Gateway
- * instances.
+ * @member {number} minCapacity Lower bound on number of Application Gateway
+ * instances
  */
 export interface ApplicationGatewayAutoscaleConfiguration {
-  bounds: ApplicationGatewayAutoscaleBounds;
+  minCapacity: number;
 }
 
 /**
@@ -4135,11 +4120,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * @member {boolean} [enableFips] Whether FIPS is enabled on the application
  * gateway resource.
  * @member {object} [autoscaleConfiguration] Autoscale Configuration.
- * @member {object} [autoscaleConfiguration.bounds] Autoscale bounds
- * @member {number} [autoscaleConfiguration.bounds.min] Lower bound on number
- * of Application Gateway instances.
- * @member {number} [autoscaleConfiguration.bounds.max] Upper bound on number
- * of Application Gateway instances.
+ * @member {number} [autoscaleConfiguration.minCapacity] Lower bound on number
+ * of Application Gateway instances
  * @member {string} [resourceGuid] Resource GUID property of the application
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
