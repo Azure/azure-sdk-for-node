@@ -16361,6 +16361,10 @@ export interface NetworkInterfaceTapConfigurations {
      * Gets an array of references to the external resources using subnet.
      *
      * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
      * Gets an array of references to the delegations on the subnet.
      *
@@ -16748,6 +16752,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -17281,6 +17289,10 @@ export interface NetworkInterfaceTapConfigurations {
      * Gets an array of references to the external resources using subnet.
      *
      * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
      * Gets an array of references to the delegations on the subnet.
      *
@@ -17668,6 +17680,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -32347,6 +32363,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
      *
@@ -32453,6 +32472,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
      *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
@@ -32701,6 +32723,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
      *
@@ -32807,6 +32832,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
      *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
@@ -33899,6 +33927,10 @@ export interface VirtualNetworkTaps {
      * Gets an array of references to the external resources using subnet.
      *
      * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
      * Gets an array of references to the delegations on the subnet.
      *
@@ -34261,6 +34293,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -34881,6 +34917,10 @@ export interface VirtualNetworkTaps {
      * Gets an array of references to the external resources using subnet.
      *
      * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
      * Gets an array of references to the delegations on the subnet.
      *
@@ -35243,6 +35283,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
