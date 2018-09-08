@@ -747,6 +747,34 @@ export interface FactoryRepoUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the GitHubAccessTokenRequest class.
+ * @constructor
+ * Get GitHub access token request definition.
+ *
+ * @member {string} gitHubAccessCode GitHub access code.
+ * @member {string} [gitHubClientId] GitHub application client ID.
+ * @member {string} gitHubAccessTokenBaseUrl GitHub access token base URL.
+ */
+export interface GitHubAccessTokenRequest {
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubAccessTokenBaseUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenResponse class.
+ * @constructor
+ * Get GitHub access token response definition.
+ *
+ * @member {string} [gitHubAccessToken] GitHub access token.
+ */
+export interface GitHubAccessTokenResponse {
+  gitHubAccessToken?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineReference class.
  * @constructor
  * Pipeline reference type.
@@ -1258,8 +1286,10 @@ export interface ResponsysLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [newClusterNodeType] The node types of new cluster. Type:
  * string (or Expression with resultType string).
- * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * @member {object} [newClusterSparkConf] A set of optional, user-specified
  * Spark configuration key-value pairs.
+ * @member {object} [newClusterSparkEnvVars] A set of optional, user-specified
+ * Spark environment variables key-value pairs.
  * @member {object} [newClusterCustomTags] Additional tags for cluster
  * resources.
  * @member {object} [encryptedCredential] The encrypted credential used for
@@ -1274,6 +1304,7 @@ export interface AzureDatabricksLinkedService extends LinkedService {
   newClusterNumOfWorker?: any;
   newClusterNodeType?: any;
   newClusterSparkConf?: { [propertyName: string]: any };
+  newClusterSparkEnvVars?: { [propertyName: string]: any };
   newClusterCustomTags?: { [propertyName: string]: any };
   encryptedCredential?: any;
 }
@@ -6788,33 +6819,33 @@ export interface ControlActivity extends Activity {
 
 /**
  * @class
- * Initializes a new instance of the AppendVaraibleActivity class.
+ * Initializes a new instance of the AppendVariableActivity class.
  * @constructor
  * Append value to a array Variable.
  *
- * @member {string} appendVaraibleActivityName Name of the variable to which
+ * @member {string} appendVariableActivityName Name of the variable to which
  * value needs to be appended.
  * @member {object} value Value to be appended. Could be a static value or
  * Expression
  */
-export interface AppendVaraibleActivity extends ControlActivity {
-  appendVaraibleActivityName: string;
+export interface AppendVariableActivity extends ControlActivity {
+  appendVariableActivityName: string;
   value: any;
 }
 
 /**
  * @class
- * Initializes a new instance of the SetVaraibleActivity class.
+ * Initializes a new instance of the SetVariableActivity class.
  * @constructor
  * Set value for a Variable.
  *
- * @member {string} setVaraibleActivityName Name of the variable whose value
+ * @member {string} setVariableActivityName Name of the variable whose value
  * needs to be set.
  * @member {object} value Value to be set. Could be a static value or
  * Expression
  */
-export interface SetVaraibleActivity extends ControlActivity {
-  setVaraibleActivityName: string;
+export interface SetVariableActivity extends ControlActivity {
+  setVariableActivityName: string;
   value: any;
 }
 
