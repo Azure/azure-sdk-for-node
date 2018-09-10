@@ -409,17 +409,12 @@ export interface Managers {
      * @param {object} uploadCertificateRequestrequest UploadCertificateRequest
      * Request
      *
-     * @param {object} uploadCertificateRequestrequest.rawCertificateDetails Gets
-     * or sets the base64 encoded certificate raw data string
-     *
-     * @param {string}
-     * [uploadCertificateRequestrequest.rawCertificateDetails.authType] Specify the
+     * @param {string} [uploadCertificateRequestrequest.authType] Specify the
      * Authentication type. Possible values include: 'Invalid',
      * 'AccessControlService', 'AzureActiveDirectory'
      *
-     * @param {string}
-     * uploadCertificateRequestrequest.rawCertificateDetails.certificate Gets or
-     * sets the base64 encoded certificate raw data string
+     * @param {string} uploadCertificateRequestrequest.certificate Gets or sets the
+     * base64 encoded certificate raw data string
      *
      * @param {string} resourceGroupName The resource group name
      *
@@ -447,17 +442,12 @@ export interface Managers {
      * @param {object} uploadCertificateRequestrequest UploadCertificateRequest
      * Request
      *
-     * @param {object} uploadCertificateRequestrequest.rawCertificateDetails Gets
-     * or sets the base64 encoded certificate raw data string
-     *
-     * @param {string}
-     * [uploadCertificateRequestrequest.rawCertificateDetails.authType] Specify the
+     * @param {string} [uploadCertificateRequestrequest.authType] Specify the
      * Authentication type. Possible values include: 'Invalid',
      * 'AccessControlService', 'AzureActiveDirectory'
      *
-     * @param {string}
-     * uploadCertificateRequestrequest.rawCertificateDetails.certificate Gets or
-     * sets the base64 encoded certificate raw data string
+     * @param {string} uploadCertificateRequestrequest.certificate Gets or sets the
+     * base64 encoded certificate raw data string
      *
      * @param {string} resourceGroupName The resource group name
      *
