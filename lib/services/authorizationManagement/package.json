@@ -2,7 +2,7 @@
   "name": "azure-arm-authorization",
   "author": "Microsoft Corporation",
   "description": "AuthorizationManagementClient Library with typescript type definitions for node",
-  "version": "6.0.0",
+  "version": "5.0.1",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/authorizationManagementClient.js",
   "types": "./lib/authorizationManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/authorizationManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
