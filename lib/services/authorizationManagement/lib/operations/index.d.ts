@@ -811,15 +811,17 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
      * @param {string} [parameters.principalType] The principal type of the
-     * assigned principal ID, e.g. user, service principal.
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
@@ -853,15 +855,17 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
      * @param {string} [parameters.principalType] The principal type of the
-     * assigned principal ID, e.g. user, service principal.
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
@@ -1019,15 +1023,17 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
      * @param {string} [parameters.principalType] The principal type of the
-     * assigned principal ID, e.g. user, service principal.
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
@@ -1052,15 +1058,17 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
      * @param {string} [parameters.principalType] The principal type of the
-     * assigned principal ID, e.g. user, service principal.
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
