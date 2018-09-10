@@ -730,6 +730,34 @@ export interface FactoryRepoUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the GitHubAccessTokenRequest class.
+ * @constructor
+ * Get GitHub access token request definition.
+ *
+ * @member {string} gitHubAccessCode GitHub access code.
+ * @member {string} [gitHubClientId] GitHub application client ID.
+ * @member {string} gitHubAccessTokenBaseUrl GitHub access token base URL.
+ */
+export interface GitHubAccessTokenRequest {
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubAccessTokenBaseUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenResponse class.
+ * @constructor
+ * Get GitHub access token response definition.
+ *
+ * @member {string} [gitHubAccessToken] GitHub access token.
+ */
+export interface GitHubAccessTokenResponse {
+  gitHubAccessToken?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineReference class.
  * @constructor
  * Pipeline reference type.
@@ -1241,8 +1269,10 @@ export interface ResponsysLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [newClusterNodeType] The node types of new cluster. Type:
  * string (or Expression with resultType string).
- * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * @member {object} [newClusterSparkConf] A set of optional, user-specified
  * Spark configuration key-value pairs.
+ * @member {object} [newClusterSparkEnvVars] A set of optional, user-specified
+ * Spark environment variables key-value pairs.
  * @member {object} [newClusterCustomTags] Additional tags for cluster
  * resources.
  * @member {object} [encryptedCredential] The encrypted credential used for
@@ -1257,6 +1287,7 @@ export interface AzureDatabricksLinkedService extends LinkedService {
   newClusterNumOfWorker?: any;
   newClusterNodeType?: any;
   newClusterSparkConf?: { [propertyName: string]: any };
+  newClusterSparkEnvVars?: { [propertyName: string]: any };
   newClusterCustomTags?: { [propertyName: string]: any };
   encryptedCredential?: any;
 }
