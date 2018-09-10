@@ -98,12 +98,6 @@ export interface Domains {
      *
      * @param {object} domainInfo Domain information
      *
-     * @param {string} [domainInfo.provisioningState] Provisioning state of the
-     * domain. Possible values include: 'Creating', 'Updating', 'Deleting',
-     * 'Succeeded', 'Canceled', 'Failed'
-     *
-     * @param {string} [domainInfo.endpoint] Endpoint for the domain.
-     *
      * @param {string} [domainInfo.inputSchema] This determines the format that
      * Event Grid should expect for incoming events published to the domain.
      * Possible values include: 'EventGridSchema', 'CustomEventSchema',
@@ -143,12 +137,6 @@ export interface Domains {
      * @param {string} domainName Name of the domain
      *
      * @param {object} domainInfo Domain information
-     *
-     * @param {string} [domainInfo.provisioningState] Provisioning state of the
-     * domain. Possible values include: 'Creating', 'Updating', 'Deleting',
-     * 'Succeeded', 'Canceled', 'Failed'
-     *
-     * @param {string} [domainInfo.endpoint] Endpoint for the domain.
      *
      * @param {string} [domainInfo.inputSchema] This determines the format that
      * Event Grid should expect for incoming events published to the domain.
@@ -604,12 +592,6 @@ export interface Domains {
      *
      * @param {object} domainInfo Domain information
      *
-     * @param {string} [domainInfo.provisioningState] Provisioning state of the
-     * domain. Possible values include: 'Creating', 'Updating', 'Deleting',
-     * 'Succeeded', 'Canceled', 'Failed'
-     *
-     * @param {string} [domainInfo.endpoint] Endpoint for the domain.
-     *
      * @param {string} [domainInfo.inputSchema] This determines the format that
      * Event Grid should expect for incoming events published to the domain.
      * Possible values include: 'EventGridSchema', 'CustomEventSchema',
@@ -649,12 +631,6 @@ export interface Domains {
      * @param {string} domainName Name of the domain
      *
      * @param {object} domainInfo Domain information
-     *
-     * @param {string} [domainInfo.provisioningState] Provisioning state of the
-     * domain. Possible values include: 'Creating', 'Updating', 'Deleting',
-     * 'Succeeded', 'Canceled', 'Failed'
-     *
-     * @param {string} [domainInfo.endpoint] Endpoint for the domain.
      *
      * @param {string} [domainInfo.inputSchema] This determines the format that
      * Event Grid should expect for incoming events published to the domain.

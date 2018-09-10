@@ -80,8 +80,8 @@ export interface TrackedResource extends Resource {
  * Discriminator
  */
 export interface Domain extends TrackedResource {
-  provisioningState?: string;
-  endpoint?: string;
+  readonly provisioningState?: string;
+  readonly endpoint?: string;
   inputSchema?: string;
   inputSchemaMapping?: InputSchemaMapping;
 }
@@ -254,6 +254,18 @@ export interface StorageBlobDeadLetterDestination extends DeadLetterDestination 
 
 /**
  * @class
+ * Initializes a new instance of the NumberNotInAdvancedFilter class.
+ * @constructor
+ * NumberNotIn Filter
+ *
+ * @member {array} [values] The set of filter values
+ */
+export interface NumberNotInAdvancedFilter extends AdvancedFilter {
+  values?: number[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the NumberLessThanAdvancedFilter class.
  * @constructor
  * NumberLessThan Filter
@@ -357,6 +369,18 @@ export interface StringBeginsWithAdvancedFilter extends AdvancedFilter {
  * @member {array} [values] The set of filter values
  */
 export interface StringEndsWithAdvancedFilter extends AdvancedFilter {
+  values?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StringContainsAdvancedFilter class.
+ * @constructor
+ * StringContains Filter
+ *
+ * @member {array} [values] The set of filter values
+ */
+export interface StringContainsAdvancedFilter extends AdvancedFilter {
   values?: string[];
 }
 
