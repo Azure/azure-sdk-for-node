@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/dataFactoryManagementClient.js",
   "types": "./lib/dataFactoryManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/datafactoryManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
