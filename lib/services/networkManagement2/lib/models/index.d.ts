@@ -4759,13 +4759,13 @@ export interface ExpressRouteCircuitStats {
 
 /**
  * @class
- * Initializes a new instance of the ExpressRouteConnectionId class.
+ * Initializes a new instance of the ExpressRouteCircuitPeeringPropertiesFormatExpressRouteConnection class.
  * @constructor
- * The ID of the ExpressRouteConnection.
+ * The ExpressRoute connection.
  *
  * @member {string} [id] The ID of the ExpressRouteConnection.
  */
-export interface ExpressRouteConnectionId {
+export interface ExpressRouteCircuitPeeringPropertiesFormatExpressRouteConnection {
   readonly id?: string;
 }
 
@@ -4930,7 +4930,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   lastModifiedBy?: string;
   routeFilter?: RouteFilter;
   ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
-  expressRouteConnection?: ExpressRouteConnectionId;
+  expressRouteConnection?: ExpressRouteCircuitPeeringPropertiesFormatExpressRouteConnection;
   connections?: ExpressRouteCircuitConnection[];
   name?: string;
   readonly etag?: string;
@@ -5428,32 +5428,6 @@ export interface ExpressRouteCrossConnection extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the VirtualHubId class.
- * @constructor
- * Virtual Hub identifier.
- *
- * @member {string} [id] The resource URI for the Virtual Hub where the
- * ExpressRoute gateway is or will be deployed. The Virtual Hub resource and
- * the ExpressRoute gateway resource reside in the same subscription.
- */
-export interface VirtualHubId {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteCircuitPeeringId class.
- * @constructor
- * ExpressRoute circuit peering identifier.
- *
- * @member {string} [id] The ID of the ExpressRoute circuit peering.
- */
-export interface ExpressRouteCircuitPeeringId {
-  id?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds class.
  * @constructor
  * Minimum and maximum number of scale units to deploy.
@@ -5487,6 +5461,18 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the ExpressRouteConnectionPropertiesExpressRouteCircuitPeering class.
+ * @constructor
+ * The ExpressRoute circuit peering.
+ *
+ * @member {string} [id] The ID of the ExpressRoute circuit peering.
+ */
+export interface ExpressRouteConnectionPropertiesExpressRouteCircuitPeering {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExpressRouteConnection class.
  * @constructor
  * ExpressRouteConnection resource.
@@ -5505,10 +5491,24 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
  */
 export interface ExpressRouteConnection extends SubResource {
   readonly provisioningState?: string;
-  expressRouteCircuitPeering: ExpressRouteCircuitPeeringId;
+  expressRouteCircuitPeering: ExpressRouteConnectionPropertiesExpressRouteCircuitPeering;
   authorizationKey?: string;
   routingWeight?: number;
   name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteGatewayPropertiesVirtualHub class.
+ * @constructor
+ * The Virtual Hub where the ExpressRoute gateway is or will be deployed.
+ *
+ * @member {string} [id] The resource URI for the Virtual Hub where the
+ * ExpressRoute gateway is or will be deployed. The Virtual Hub resource and
+ * the ExpressRoute gateway resource reside in the same subscription.
+ */
+export interface ExpressRouteGatewayPropertiesVirtualHub {
+  id?: string;
 }
 
 /**
@@ -5540,7 +5540,7 @@ export interface ExpressRouteGateway extends Resource {
   autoScaleConfiguration?: ExpressRouteGatewayPropertiesAutoScaleConfiguration;
   readonly expressRouteConnections?: ExpressRouteConnection[];
   readonly provisioningState?: string;
-  virtualHub: VirtualHubId;
+  virtualHub: ExpressRouteGatewayPropertiesVirtualHub;
   readonly etag?: string;
 }
 
