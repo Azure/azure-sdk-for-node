@@ -199,12 +199,6 @@ export interface Managers {
      *
      * @param {string} [manager.etag] ETag of the Manager
      *
-     * @param {string} [manager.id] The Resource Id
-     *
-     * @param {string} [manager.name] The Resource Name
-     *
-     * @param {string} [manager.type] The Resource type
-     *
      * @param {string} manager.location The Geo location of the Manager
      *
      * @param {object} [manager.tags] Tags attached to the Manager
@@ -238,12 +232,6 @@ export interface Managers {
      * StorSimple Manager. Possible values include: 'GardaV1', 'HelsinkiV1'
      *
      * @param {string} [manager.etag] ETag of the Manager
-     *
-     * @param {string} [manager.id] The Resource Id
-     *
-     * @param {string} [manager.name] The Resource Name
-     *
-     * @param {string} [manager.type] The Resource type
      *
      * @param {string} manager.location The Geo location of the Manager
      *
