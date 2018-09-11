@@ -34,21 +34,52 @@ export interface StorageSyncErrorDetails {
 
 /**
  * @class
- * Initializes a new instance of the StorageSyncError class.
+ * Initializes a new instance of the StorageSyncApiError class.
  * @constructor
  * Error type
  *
  * @member {string} [code] Error code of the given entry.
  * @member {string} [message] Error message of the given entry.
+ * @member {string} [target] Target of the given error entry.
  * @member {object} [details] Error details of the given entry.
  * @member {string} [details.code] Error code of the given entry.
  * @member {string} [details.message] Error message of the given entry.
  * @member {string} [details.target] Target of the given entry.
  */
-export interface StorageSyncError {
+export interface StorageSyncApiError {
   code?: string;
   message?: string;
+  target?: string;
   details?: StorageSyncErrorDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSyncError class.
+ * @constructor
+ * Error type
+ *
+ * @member {object} [error] Error details of the given entry.
+ * @member {string} [error.code] Error code of the given entry.
+ * @member {string} [error.message] Error message of the given entry.
+ * @member {string} [error.target] Target of the given error entry.
+ * @member {object} [error.details] Error details of the given entry.
+ * @member {string} [error.details.code] Error code of the given entry.
+ * @member {string} [error.details.message] Error message of the given entry.
+ * @member {string} [error.details.target] Target of the given entry.
+ * @member {object} [innererror] Error details of the given entry.
+ * @member {string} [innererror.code] Error code of the given entry.
+ * @member {string} [innererror.message] Error message of the given entry.
+ * @member {string} [innererror.target] Target of the given error entry.
+ * @member {object} [innererror.details] Error details of the given entry.
+ * @member {string} [innererror.details.code] Error code of the given entry.
+ * @member {string} [innererror.details.message] Error message of the given
+ * entry.
+ * @member {string} [innererror.details.target] Target of the given entry.
+ */
+export interface StorageSyncError {
+  error?: StorageSyncApiError;
+  innererror?: StorageSyncApiError;
 }
 
 /**
@@ -132,8 +163,6 @@ export interface SyncGroup extends Resource {
  * @constructor
  * Cloud Endpoint object.
  *
- * @member {string} [storageAccountKey] Storage Account access key.
- * @member {string} [storageAccount] Storage Account name.
  * @member {string} [storageAccountResourceId] Storage Account Resource Id
  * @member {string} [storageAccountShareName] Storage Account Share name
  * @member {string} [storageAccountTenantId] Storage Account Tenant Id
@@ -145,8 +174,6 @@ export interface SyncGroup extends Resource {
  * @member {string} [lastOperationName] Resource Last Operation Name
  */
 export interface CloudEndpoint extends Resource {
-  storageAccountKey?: string;
-  storageAccount?: string;
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -156,6 +183,168 @@ export interface CloudEndpoint extends Resource {
   provisioningState?: string;
   lastWorkflowId?: string;
   lastOperationName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecallActionParameters class.
+ * @constructor
+ * The parameters used when calling recall action on server endpoint.
+ *
+ * @member {string} [pattern] Pattern of the files.
+ * @member {string} [recallPath] Recall path.
+ */
+export interface RecallActionParameters {
+  pattern?: string;
+  recallPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSyncServiceCreateParameters class.
+ * @constructor
+ * The parameters used when creating a storage sync service.
+ *
+ * @member {string} [location] Required. Gets or sets the location of the
+ * resource. This will be one of the supported and registered Azure Geo Regions
+ * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
+ * cannot be changed once it is created, but if an identical geo region is
+ * specified on update, the request will succeed.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used for viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key with a length no greater than 128
+ * characters and a value with a length no greater than 256 characters.
+ */
+export interface StorageSyncServiceCreateParameters {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SyncGroupCreateParameters class.
+ * @constructor
+ * The parameters used when creating a sync group.
+ *
+ * @member {string} [location] Required. Gets or sets the location of the
+ * resource. This will be one of the supported and registered Azure Geo Regions
+ * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
+ * cannot be changed once it is created, but if an identical geo region is
+ * specified on update, the request will succeed.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used for viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key with a length no greater than 128
+ * characters and a value with a length no greater than 256 characters.
+ * @member {object} [properties] The parameters used to create the sync group
+ */
+export interface SyncGroupCreateParameters {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  properties?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudEndpointCreateParameters class.
+ * @constructor
+ * The parameters used when creating a storage sync service.
+ *
+ * @member {string} [location] Required. Gets or sets the location of the
+ * resource. This will be one of the supported and registered Azure Geo Regions
+ * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
+ * cannot be changed once it is created, but if an identical geo region is
+ * specified on update, the request will succeed.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used for viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key with a length no greater than 128
+ * characters and a value with a length no greater than 256 characters.
+ * @member {string} [storageAccountResourceId] Storage Account Resource Id
+ * @member {string} [storageAccountShareName] Storage Account Share name
+ * @member {string} [storageAccountTenantId] Storage Account Tenant Id
+ */
+export interface CloudEndpointCreateParameters {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  storageAccountResourceId?: string;
+  storageAccountShareName?: string;
+  storageAccountTenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerEndpointCreateParameters class.
+ * @constructor
+ * The parameters used when creating a storage sync service.
+ *
+ * @member {string} [location] Required. Gets or sets the location of the
+ * resource. This will be one of the supported and registered Azure Geo Regions
+ * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
+ * cannot be changed once it is created, but if an identical geo region is
+ * specified on update, the request will succeed.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used for viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key with a length no greater than 128
+ * characters and a value with a length no greater than 256 characters.
+ * @member {string} [serverLocalPath] Server Local path.
+ * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * 'on', 'off'
+ * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * maintained by Cloud Tiering if it is enabled.
+ * @member {string} [friendlyName] Friendly Name
+ * @member {string} [serverResourceId] Server Resource Id.
+ */
+export interface ServerEndpointCreateParameters {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  serverLocalPath?: string;
+  cloudTiering?: string;
+  volumeFreeSpacePercent?: number;
+  friendlyName?: string;
+  serverResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegisteredServerCreateParameters class.
+ * @constructor
+ * The parameters used when creating a storage sync service.
+ *
+ * @member {string} [location] Required. Gets or sets the location of the
+ * resource. This will be one of the supported and registered Azure Geo Regions
+ * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
+ * cannot be changed once it is created, but if an identical geo region is
+ * specified on update, the request will succeed.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used for viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key with a length no greater than 128
+ * characters and a value with a length no greater than 256 characters.
+ * @member {string} [serverCertificate] Registered Server Certificate
+ * @member {string} [agentVersion] Registered Server Agent Version
+ * @member {string} [serverOSVersion] Registered Server OS Version
+ * @member {string} [lastHeartBeat] Registered Server last heart beat
+ * @member {string} [serverRole] Registered Server serverRole
+ * @member {string} [clusterId] Registered Server clusterId
+ * @member {string} [clusterName] Registered Server clusterName
+ * @member {string} [serverId] Registered Server serverId
+ * @member {string} [friendlyName] Friendly Name
+ */
+export interface RegisteredServerCreateParameters {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  serverCertificate?: string;
+  agentVersion?: string;
+  serverOSVersion?: string;
+  lastHeartBeat?: string;
+  serverRole?: string;
+  clusterId?: string;
+  clusterName?: string;
+  serverId?: string;
+  friendlyName?: string;
 }
 
 /**
