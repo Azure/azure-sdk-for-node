@@ -2,7 +2,7 @@
   "name": "azure-arm-website",
   "author": "Microsoft Corporation",
   "description": "WebSiteManagementClient Library with typescript type definitions for node",
-  "version": "",
+  "version": "5.0.1",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
