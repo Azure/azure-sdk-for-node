@@ -282,7 +282,6 @@ gulp.task('publish', (cb) => {
                 try {
                   const npmrcPackageFilePath = path.join(packageFolderPath, npmrcFileName);
                   if (npmrcRootFileExists) {
-                    console.log(`Copying "${npmrcRootFilePath}" to "${npmrcPackageFilePath}".`);
                     fs.copyFileSync(npmrcRootFilePath, npmrcPackageFilePath);
                   }
                   execSync(`npm publish --access public`, { cwd: packageFolderPath });
