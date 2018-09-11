@@ -136,8 +136,21 @@ export interface SubResource extends BaseResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -248,8 +261,21 @@ export interface SubResource extends BaseResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -430,8 +456,21 @@ export interface SubResource extends BaseResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -539,8 +578,21 @@ export interface SubResource extends BaseResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -884,6 +936,8 @@ export interface NetworkInterfaceDnsSettings {
  * that changes whenever the resource is updated.
  * @member {array} [ipConfigurations] A list of IPConfigurations of the network
  * interface.
+ * @member {array} [tapConfigurations] A list of TapConfigurations of the
+ * network interface.
  * @member {object} [dnsSettings] The DNS settings in network interface.
  * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses.
  * Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
@@ -925,6 +979,7 @@ export interface NetworkInterface extends Resource {
   networkSecurityGroup?: NetworkSecurityGroup;
   interfaceEndpoint?: InterfaceEndpoint;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
+  tapConfigurations?: NetworkInterfaceTapConfiguration[];
   dnsSettings?: NetworkInterfaceDnsSettings;
   macAddress?: string;
   primary?: boolean;
@@ -1212,8 +1267,17 @@ export interface IpTag {
  * references to interface endpoints
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
+ * @member {array} [ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
+ * configuration profiles which reference this subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
+ * @member {array} [ipConfiguration.subnet.serviceAssociationLinks] Gets an
+ * array of references to services injecting into this subnet.
+ * @member {array} [ipConfiguration.subnet.delegations] Gets an array of
+ * references to the delegations on the subnet.
+ * @member {string} [ipConfiguration.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
  * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
  * state of the resource.
  * @member {string} [ipConfiguration.subnet.name] The name of the resource that
@@ -1332,8 +1396,17 @@ export interface PublicIPAddress extends Resource {
  * interface endpoints
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
+ * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
  * to the external resources using subnet.
+ * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
+ * to services injecting into this subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
  * @member {string} [subnet.provisioningState] The provisioning state of the
  * resource.
  * @member {string} [subnet.name] The name of the resource that is unique
@@ -1406,6 +1479,87 @@ export interface IPConfiguration extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the IPConfigurationProfile class.
+ * @constructor
+ * IP configuration profile child resource.
+ *
+ * @member {object} [subnet] The reference of the subnet resource to create a
+ * contatainer network interface ip configruation.
+ * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
+ * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * NetworkSecurityGroup resource.
+ * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
+ * security rules of the network security group.
+ * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * default security rules of network security group.
+ * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
+ * of references to network interfaces.
+ * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * references to subnets.
+ * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * GUID property of the network security group resource.
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * resource.
+ * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * within a route table.
+ * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
+ * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * state of the resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
+ * @member {array} [subnet.ipConfigurations] Gets an array of references to the
+ * network interface IP configurations using subnet.
+ * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
+ * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
+ * to the external resources using subnet.
+ * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
+ * to services injecting into this subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
+ * @member {string} [subnet.provisioningState] The provisioning state of the
+ * resource.
+ * @member {string} [subnet.name] The name of the resource that is unique
+ * within a resource group. This name can be used to access the resource.
+ * @member {string} [subnet.etag] A unique read-only string that changes
+ * whenever the resource is updated.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface IPConfigurationProfile extends SubResource {
+  subnet?: Subnet;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResourceNavigationLink class.
  * @constructor
  * ResourceNavigationLink resource.
@@ -1425,6 +1579,53 @@ export interface ResourceNavigationLink extends SubResource {
   readonly provisioningState?: string;
   name?: string;
   readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceAssociationLink class.
+ * @constructor
+ * ServiceAssociationLink resource.
+ *
+ * @member {string} [linkedResourceType] Resource type of the linked resource.
+ * @member {string} [link] Link to the external resource.
+ * @member {string} [provisioningState] Provisioning state of the
+ * ServiceAssociationLink resource.
+ * @member {string} [name] Name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceAssociationLink extends SubResource {
+  linkedResourceType?: string;
+  link?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Delegation class.
+ * @constructor
+ * Details the service to which the subnet is delegated.
+ *
+ * @member {string} [serviceName] The name of the service to whom the subnet
+ * should be delegated (e.g. Microsoft.Sql/servers)
+ * @member {array} [actions] Describes the actions permitted to the service
+ * upon delegation
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource that is unique within a
+ * subnet. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface Delegation extends SubResource {
+  serviceName?: string;
+  actions?: string[];
+  readonly provisioningState?: string;
+  name?: string;
+  etag?: string;
 }
 
 /**
@@ -1470,8 +1671,16 @@ export interface ResourceNavigationLink extends SubResource {
  * endpoints
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
+ * @member {array} [ipConfigurationProfiles] Array of IP configuration profiles
+ * which reference this subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
  * external resources using subnet.
+ * @member {array} [serviceAssociationLinks] Gets an array of references to
+ * services injecting into this subnet.
+ * @member {array} [delegations] Gets an array of references to the delegations
+ * on the subnet.
+ * @member {string} [purpose] A read-only string identifying the intention of
+ * use for this subnet based on delegations and other user-defined properties.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
@@ -1487,7 +1696,11 @@ export interface Subnet extends SubResource {
   serviceEndpointPolicies?: ServiceEndpointPolicy[];
   interfaceEndpoints?: SubResource[];
   readonly ipConfigurations?: IPConfiguration[];
+  readonly ipConfigurationProfiles?: IPConfigurationProfile[];
   resourceNavigationLinks?: ResourceNavigationLink[];
+  serviceAssociationLinks?: ServiceAssociationLink[];
+  delegations?: Delegation[];
+  readonly purpose?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -1554,8 +1767,17 @@ export interface Subnet extends SubResource {
  * interface endpoints
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
+ * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
  * to the external resources using subnet.
+ * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
+ * to services injecting into this subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
  * @member {string} [subnet.provisioningState] The provisioning state of the
  * resource.
  * @member {string} [subnet.name] The name of the resource that is unique
@@ -1638,8 +1860,19 @@ export interface Subnet extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
+ * configuration profiles which reference this subnet.
+ * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks] Gets an
+ * array of references to services injecting into this subnet.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets an
+ * array of references to the delegations on the subnet.
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
+ * read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
@@ -1822,8 +2055,20 @@ export interface FrontendIPConfiguration extends SubResource {
  * [destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.delegations] Gets an
+ * array of references to the delegations on the subnet.
+ * @member {string} [destinationNetworkInterfaceIPConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.provisioningState] The
  * provisioning state of the resource.
@@ -1930,8 +2175,21 @@ export interface FrontendIPConfiguration extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -2107,8 +2365,21 @@ export interface FrontendIPConfiguration extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations] Gets an
+ * array of references to the delegations on the subnet.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.purpose] A read-only
+ * string identifying the intention of use for this subnet based on delegations
+ * and other user-defined properties.
  * @member {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -2216,8 +2487,21 @@ export interface FrontendIPConfiguration extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose]
+ * A read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -2316,7 +2600,7 @@ export interface FrontendIPConfiguration extends SubResource {
  * the resource is updated.
  */
 export interface VirtualNetworkTap extends Resource {
-  networkInterfaceTapConfigurations?: NetworkInterfaceTapConfiguration[];
+  readonly networkInterfaceTapConfigurations?: NetworkInterfaceTapConfiguration[];
   destinationNetworkInterfaceIPConfiguration?: NetworkInterfaceIPConfiguration;
   destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfiguration;
   destinationPort?: number;
@@ -2435,8 +2719,17 @@ export interface BackendAddressPool extends SubResource {
  * of references to interface endpoints
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
+ * @member {array} [backendIPConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
  * an array of references to the external resources using subnet.
+ * @member {array} [backendIPConfiguration.subnet.serviceAssociationLinks] Gets
+ * an array of references to services injecting into this subnet.
+ * @member {array} [backendIPConfiguration.subnet.delegations] Gets an array of
+ * references to the delegations on the subnet.
+ * @member {string} [backendIPConfiguration.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
  * @member {string} [backendIPConfiguration.subnet.provisioningState] The
  * provisioning state of the resource.
  * @member {string} [backendIPConfiguration.subnet.name] The name of the
@@ -2538,8 +2831,21 @@ export interface BackendAddressPool extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.delegations]
+ * Gets an array of references to the delegations on the subnet.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.purpose] A
+ * read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -2716,8 +3022,17 @@ export interface InboundNatRule extends SubResource {
  * interface endpoints
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
+ * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
  * to the external resources using subnet.
+ * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
+ * to services injecting into this subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
  * @member {string} [subnet.provisioningState] The provisioning state of the
  * resource.
  * @member {string} [subnet.name] The name of the resource that is unique
@@ -2803,8 +3118,19 @@ export interface InboundNatRule extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
+ * configuration profiles which reference this subnet.
+ * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks] Gets an
+ * array of references to services injecting into this subnet.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.delegations] Gets an
+ * array of references to the delegations on the subnet.
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.purpose] A
+ * read-only string identifying the intention of use for this subnet based on
+ * delegations and other user-defined properties.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
  * @member {string} [publicIPAddress.ipConfiguration.subnet.name] The name of
@@ -3083,8 +3409,17 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * references to interface endpoints
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
+ * @member {array} [ipConfiguration.subnet.ipConfigurationProfiles] Array of IP
+ * configuration profiles which reference this subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
  * array of references to the external resources using subnet.
+ * @member {array} [ipConfiguration.subnet.serviceAssociationLinks] Gets an
+ * array of references to services injecting into this subnet.
+ * @member {array} [ipConfiguration.subnet.delegations] Gets an array of
+ * references to the delegations on the subnet.
+ * @member {string} [ipConfiguration.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
  * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
  * state of the resource.
  * @member {string} [ipConfiguration.subnet.name] The name of the resource that
@@ -3183,8 +3518,21 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * Gets an array of references to the network interface IP configurations using
  * subnet.
  * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurationProfiles]
+ * Array of IP configuration profiles which reference this subnet.
+ * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
  * Gets an array of references to the external resources using subnet.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceAssociationLinks]
+ * Gets an array of references to services injecting into this subnet.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.delegations] Gets an
+ * array of references to the delegations on the subnet.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.purpose] A read-only
+ * string identifying the intention of use for this subnet based on delegations
+ * and other user-defined properties.
  * @member {string}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
  * The provisioning state of the resource.
@@ -3890,33 +4238,15 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGatewayAutoscaleBounds class.
- * @constructor
- * Application Gateway autoscale bounds on number of Application Gateway
- * instance.
- *
- * @member {number} min Lower bound on number of Application Gateway instances.
- * @member {number} max Upper bound on number of Application Gateway instances.
- */
-export interface ApplicationGatewayAutoscaleBounds {
-  min: number;
-  max: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationGatewayAutoscaleConfiguration class.
  * @constructor
  * Application Gateway autoscale configuration.
  *
- * @member {object} bounds Autoscale bounds
- * @member {number} [bounds.min] Lower bound on number of Application Gateway
- * instances.
- * @member {number} [bounds.max] Upper bound on number of Application Gateway
- * instances.
+ * @member {number} minCapacity Lower bound on number of Application Gateway
+ * instances
  */
 export interface ApplicationGatewayAutoscaleConfiguration {
-  bounds: ApplicationGatewayAutoscaleBounds;
+  minCapacity: number;
 }
 
 /**
@@ -3996,11 +4326,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * @member {boolean} [enableFips] Whether FIPS is enabled on the application
  * gateway resource.
  * @member {object} [autoscaleConfiguration] Autoscale Configuration.
- * @member {object} [autoscaleConfiguration.bounds] Autoscale bounds
- * @member {number} [autoscaleConfiguration.bounds.min] Lower bound on number
- * of Application Gateway instances.
- * @member {number} [autoscaleConfiguration.bounds.max] Upper bound on number
- * of Application Gateway instances.
+ * @member {number} [autoscaleConfiguration.minCapacity] Lower bound on number
+ * of Application Gateway instances
  * @member {string} [resourceGuid] Resource GUID property of the application
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
@@ -4159,6 +4486,29 @@ export interface TagsObject {
 
 /**
  * @class
+ * Initializes a new instance of the AvailableDelegation class.
+ * @constructor
+ * The serviceName of an AvailableDelegation indicates a possible delegation
+ * for a subnet.
+ *
+ * @member {string} [name] The name of the AvailableDelegation resource.
+ * @member {string} [id] A unique identifier of the AvailableDelegation
+ * resource.
+ * @member {string} [type] Resource type.
+ * @member {string} [serviceName] The name of the service and resource
+ * @member {array} [actions] Describes the actions permitted to the service
+ * upon delegation
+ */
+export interface AvailableDelegation {
+  name?: string;
+  id?: string;
+  type?: string;
+  serviceName?: string;
+  actions?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureFirewallIPConfiguration class.
  * @constructor
  * IP configuration of an Azure Firewall.
@@ -4226,7 +4576,7 @@ export interface AzureFirewallApplicationRuleProtocol {
  * @member {string} [description] Description of the rule.
  * @member {array} [sourceAddresses] List of source IP addresses for this rule.
  * @member {array} [protocols] Array of ApplicationRuleProtocols.
- * @member {array} [targetUrls] List of URLs for this rule.
+ * @member {array} [targetFqdns] List of FQDNs for this rule.
  * @member {array} [fqdnTags] List of FQDN Tags for this rule.
  */
 export interface AzureFirewallApplicationRule {
@@ -4234,7 +4584,7 @@ export interface AzureFirewallApplicationRule {
   description?: string;
   sourceAddresses?: string[];
   protocols?: AzureFirewallApplicationRuleProtocol[];
-  targetUrls?: string[];
+  targetFqdns?: string[];
   fqdnTags?: string[];
 }
 
@@ -5263,6 +5613,32 @@ export interface ExpressRouteCrossConnection extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualHubId class.
+ * @constructor
+ * Virtual Hub identifier.
+ *
+ * @member {string} [id] The resource URI for the Virtual Hub where the
+ * ExpressRoute gateway is or will be deployed. The Virtual Hub resource and
+ * the ExpressRoute gateway resource reside in the same subscription.
+ */
+export interface VirtualHubId {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCircuitPeeringId class.
+ * @constructor
+ * ExpressRoute circuit peering identifier.
+ *
+ * @member {string} [id] The ID of the ExpressRoute circuit peering.
+ */
+export interface ExpressRouteCircuitPeeringId {
+  id?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds class.
  * @constructor
  * Minimum and maximum number of scale units to deploy.
@@ -5302,7 +5678,9 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
  *
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [expressRouteConnectionId] The ID of the ExpressRoute
+ * @member {object} expressRouteCircuitPeering The ExpressRoute circuit
+ * peering.
+ * @member {string} [expressRouteCircuitPeering.id] The ID of the ExpressRoute
  * circuit peering.
  * @member {string} [authorizationKey] Authorization key to establish the
  * connection.
@@ -5312,7 +5690,7 @@ export interface ExpressRouteGatewayPropertiesAutoScaleConfiguration {
  */
 export interface ExpressRouteConnection extends SubResource {
   readonly provisioningState?: string;
-  expressRouteConnectionId?: string;
+  expressRouteCircuitPeering: ExpressRouteCircuitPeeringId;
   authorizationKey?: string;
   routingWeight?: number;
   name: string;
@@ -5335,10 +5713,11 @@ export interface ExpressRouteConnection extends SubResource {
  * to the ExpressRoute gateway.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
- * @member {string} [expressRouteGatewayId] The resource URI for the Virtual
- * Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub
- * resource and the ExpressRoute gateway resource reside in the same
- * subscription.
+ * @member {object} virtualHub The Virtual Hub where the ExpressRoute gateway
+ * is or will be deployed.
+ * @member {string} [virtualHub.id] The resource URI for the Virtual Hub where
+ * the ExpressRoute gateway is or will be deployed. The Virtual Hub resource
+ * and the ExpressRoute gateway resource reside in the same subscription.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
@@ -5346,7 +5725,7 @@ export interface ExpressRouteGateway extends Resource {
   autoScaleConfiguration?: ExpressRouteGatewayPropertiesAutoScaleConfiguration;
   readonly expressRouteConnections?: ExpressRouteConnection[];
   readonly provisioningState?: string;
-  expressRouteGatewayId?: string;
+  virtualHub: VirtualHubId;
   readonly etag?: string;
 }
 
@@ -5862,6 +6241,130 @@ export interface EffectiveRoute {
 export interface EffectiveRouteListResult {
   value?: EffectiveRoute[];
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterfaceConfiguration class.
+ * @constructor
+ * Container network interface configruation child resource.
+ *
+ * @member {array} [ipConfigurations] A list of ip configurations of the
+ * container network interface configuration.
+ * @member {array} [containerNetworkInterfaces] A list of container network
+ * interfaces created from this container network interface configuration.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ContainerNetworkInterfaceConfiguration extends SubResource {
+  ipConfigurations?: IPConfigurationProfile[];
+  containerNetworkInterfaces?: ContainerNetworkInterface[];
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Container class.
+ * @constructor
+ * Reference to container resource in remote resource provider.
+ *
+ */
+export interface Container extends SubResource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterfaceIpConfiguration class.
+ * @constructor
+ * The ip configuration for a container network interface.
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ContainerNetworkInterfaceIpConfiguration {
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerNetworkInterface class.
+ * @constructor
+ * Container network interface child resource.
+ *
+ * @member {object} [containerNetworkInterfaceConfiguration] Container network
+ * interface configuration from which this container network interface is
+ * created.
+ * @member {array} [containerNetworkInterfaceConfiguration.ipConfigurations] A
+ * list of ip configurations of the container network interface configuration.
+ * @member {array}
+ * [containerNetworkInterfaceConfiguration.containerNetworkInterfaces] A list
+ * of container network interfaces created from this container network
+ * interface configuration.
+ * @member {string} [containerNetworkInterfaceConfiguration.provisioningState]
+ * The provisioning state of the resource.
+ * @member {string} [containerNetworkInterfaceConfiguration.name] The name of
+ * the resource. This name can be used to access the resource.
+ * @member {string} [containerNetworkInterfaceConfiguration.type] Sub Resource
+ * type.
+ * @member {string} [containerNetworkInterfaceConfiguration.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {object} [container] Reference to the conatinaer to which this
+ * container network interface is attached.
+ * @member {array} [ipConfigurations] Reference to the ip configuration on this
+ * container nic.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] The name of the resource. This name can be used to
+ * access the resource.
+ * @member {string} [type] Sub Resource type.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ContainerNetworkInterface extends SubResource {
+  containerNetworkInterfaceConfiguration?: ContainerNetworkInterfaceConfiguration;
+  container?: Container;
+  ipConfigurations?: ContainerNetworkInterfaceIpConfiguration[];
+  readonly provisioningState?: string;
+  name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfile class.
+ * @constructor
+ * Network profile resource.
+ *
+ * @member {array} [containerNetworkInterfaces] List of child container network
+ * interfaces.
+ * @member {array} [containerNetworkInterfaceConfigurations] List of chid
+ * container network interface configurations.
+ * @member {string} [resourceGuid] The resource GUID property of the network
+ * interface resource.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface NetworkProfile extends Resource {
+  containerNetworkInterfaces?: ContainerNetworkInterface[];
+  containerNetworkInterfaceConfigurations?: ContainerNetworkInterfaceConfiguration[];
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
+  etag?: string;
 }
 
 /**
@@ -8935,6 +9438,18 @@ export interface ApplicationSecurityGroupListResult extends Array<ApplicationSec
 
 /**
  * @class
+ * Initializes a new instance of the AvailableDelegationsResult class.
+ * @constructor
+ * An array of available delegations.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface AvailableDelegationsResult extends Array<AvailableDelegation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureFirewallListResult class.
  * @constructor
  * Response for ListAzureFirewalls API service call.
@@ -9186,6 +9701,18 @@ export interface NetworkInterfaceLoadBalancerListResult extends Array<LoadBalanc
  */
 export interface NetworkInterfaceTapConfigurationListResult extends Array<NetworkInterfaceTapConfiguration> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfileListResult class.
+ * @constructor
+ * Response for ListNetworkProfiles API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface NetworkProfileListResult extends Array<NetworkProfile> {
+  nextLink?: string;
 }
 
 /**

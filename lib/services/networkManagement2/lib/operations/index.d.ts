@@ -257,13 +257,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -416,13 +411,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1227,13 +1217,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1386,13 +1371,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -2446,6 +2426,264 @@ export interface ApplicationSecurityGroups {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationSecurityGroupListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationSecurityGroupListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationSecurityGroupListResult>): void;
+}
+
+/**
+ * @class
+ * AvailableDelegations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailableDelegations {
+
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} location The location of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} location The location of the subnet.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    list(location: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this subscription in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+}
+
+/**
+ * @class
+ * AvailableResourceGroupDelegations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailableResourceGroupDelegations {
+
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} location The location of the domain name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} location The location of the domain name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    list(location: string, resourceGroupName: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    list(location: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailableDelegationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableDelegationsResult>>;
+
+    /**
+     * Gets all of the available subnet delegations for this resource group in this
+     * region.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailableDelegationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailableDelegationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailableDelegationsResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableDelegationsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableDelegationsResult>): void;
 }
 
 /**
@@ -9539,7 +9777,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9590,7 +9831,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9785,7 +10029,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9836,7 +10083,10 @@ export interface ExpressRouteGateways {
      * [putExpressRouteGatewayParameters.autoScaleConfiguration.bounds.max] Maximum
      * number of scale units deployed for ExpressRoute gateway.
      *
-     * @param {string} [putExpressRouteGatewayParameters.expressRouteGatewayId] The
+     * @param {object} putExpressRouteGatewayParameters.virtualHub The Virtual Hub
+     * where the ExpressRoute gateway is or will be deployed.
+     *
+     * @param {string} [putExpressRouteGatewayParameters.virtualHub.id] The
      * resource URI for the Virtual Hub where the ExpressRoute gateway is or will
      * be deployed. The Virtual Hub resource and the ExpressRoute gateway resource
      * reside in the same subscription.
@@ -9967,9 +10217,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10009,9 +10263,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10263,9 +10521,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -10305,9 +10567,13 @@ export interface ExpressRouteConnections {
      * @param {object} putExpressRouteConnectionParameters Parameters required in
      * an ExpressRouteConnection PUT operation.
      *
-     * @param {string}
-     * [putExpressRouteConnectionParameters.expressRouteConnectionId] The ID of the
+     * @param {object}
+     * putExpressRouteConnectionParameters.expressRouteCircuitPeering The
      * ExpressRoute circuit peering.
+     *
+     * @param {string}
+     * [putExpressRouteConnectionParameters.expressRouteCircuitPeering.id] The ID
+     * of the ExpressRoute circuit peering.
      *
      * @param {string} [putExpressRouteConnectionParameters.authorizationKey]
      * Authorization key to establish the connection.
@@ -13673,6 +13939,9 @@ export interface NetworkInterfaces {
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
      *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
+     * the network interface.
+     *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
      * interface.
      *
@@ -13813,6 +14082,9 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
+     * the network interface.
+     *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
      * the network interface.
      *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
@@ -14690,6 +14962,9 @@ export interface NetworkInterfaces {
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
      *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
+     * the network interface.
+     *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
      * interface.
      *
@@ -14830,6 +15105,9 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
+     * the network interface.
+     *
+     * @param {array} [parameters.tapConfigurations] A list of TapConfigurations of
      * the network interface.
      *
      * @param {object} [parameters.dnsSettings] The DNS settings in network
@@ -15872,11 +16150,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16061,6 +16334,14 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -16257,11 +16538,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16446,6 +16722,14 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -16784,11 +17068,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16973,6 +17252,14 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -17169,11 +17456,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -17358,6 +17640,14 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -17615,6 +17905,524 @@ export interface NetworkInterfaceTapConfigurations {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkInterfaceTapConfigurationListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.NetworkInterfaceTapConfigurationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkInterfaceTapConfigurationListResult>): void;
+}
+
+/**
+ * @class
+ * NetworkProfiles
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface NetworkProfiles {
+
+
+    /**
+     * Deletes the specified network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the NetworkProfile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the NetworkProfile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, networkProfileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, networkProfileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, networkProfileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified network profile in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the PublicIPPrefx.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfile>>;
+
+    /**
+     * Gets the specified network profile in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the PublicIPPrefx.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, networkProfileName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfile>;
+    get(resourceGroupName: string, networkProfileName: string, callback: ServiceCallback<models.NetworkProfile>): void;
+    get(resourceGroupName: string, networkProfileName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfile>): void;
+
+
+    /**
+     * Creates or updates a network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * network profile operation.
+     *
+     * @param {array} [parameters.containerNetworkInterfaces] List of child
+     * container network interfaces.
+     *
+     * @param {array} [parameters.containerNetworkInterfaceConfigurations] List of
+     * chid container network interface configurations.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfile>>;
+
+    /**
+     * Creates or updates a network profile.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * network profile operation.
+     *
+     * @param {array} [parameters.containerNetworkInterfaces] List of child
+     * container network interfaces.
+     *
+     * @param {array} [parameters.containerNetworkInterfaceConfigurations] List of
+     * chid container network interface configurations.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfile>;
+    createOrUpdate(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, callback: ServiceCallback<models.NetworkProfile>): void;
+    createOrUpdate(resourceGroupName: string, networkProfileName: string, parameters: models.NetworkProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfile>): void;
+
+
+    /**
+     * Updates network profile tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to update network profile
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfile>>;
+
+    /**
+     * Updates network profile tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkProfileName The name of the network profile.
+     *
+     * @param {object} parameters Parameters supplied to update network profile
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfile>;
+    updateTags(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, callback: ServiceCallback<models.NetworkProfile>): void;
+    updateTags(resourceGroupName: string, networkProfileName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfile>): void;
+
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    listAll(callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all the network profiles in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkProfileListResult>>;
+
+    /**
+     * Gets all network profiles in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkProfileListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.NetworkProfileListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkProfileListResult>): void;
 }
 
 /**
@@ -31515,6 +32323,12 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -31618,6 +32432,12 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -31863,6 +32683,12 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
+     *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
      *
@@ -31966,6 +32792,12 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [subnetParameters.delegations] Gets an array of references to
+     * the delegations on the subnet.
      *
      * @param {string} [subnetParameters.provisioningState] The provisioning state
      * of the resource.
@@ -32870,10 +33702,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -33053,6 +33881,14 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -33230,10 +34066,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -33413,6 +34245,14 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -33844,10 +34684,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34027,6 +34863,14 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]
@@ -34204,10 +35048,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34387,6 +35227,14 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
+     * Gets an array of references to the delegations on the subnet.
      *
      * @param {string}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.provisioningState]

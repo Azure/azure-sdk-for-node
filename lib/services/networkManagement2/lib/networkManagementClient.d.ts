@@ -56,6 +56,8 @@ export default class NetworkManagementClient extends AzureServiceClient {
   // Operation groups
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
+  availableDelegations: operations.AvailableDelegations;
+  availableResourceGroupDelegations: operations.AvailableResourceGroupDelegations;
   azureFirewalls: operations.AzureFirewalls;
   azureFirewallFqdnTags: operations.AzureFirewallFqdnTags;
   ddosProtectionPlans: operations.DdosProtectionPlans;
@@ -81,6 +83,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   networkInterfaceIPConfigurations: operations.NetworkInterfaceIPConfigurations;
   networkInterfaceLoadBalancers: operations.NetworkInterfaceLoadBalancers;
   networkInterfaceTapConfigurations: operations.NetworkInterfaceTapConfigurations;
+  networkProfiles: operations.NetworkProfiles;
   networkSecurityGroups: operations.NetworkSecurityGroups;
   securityRules: operations.SecurityRules;
   defaultSecurityRules: operations.DefaultSecurityRules;
