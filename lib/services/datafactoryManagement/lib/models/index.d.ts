@@ -584,6 +584,21 @@ export interface Activity {
 
 /**
  * @class
+ * Initializes a new instance of the VariableSpecification class.
+ * @constructor
+ * Definition of a single variable for an pipeline.
+ *
+ * @member {string} type Variable type. Possible values include: 'String',
+ * 'Bool', 'Array'
+ * @member {object} [defaultValue] Default value of variable.
+ */
+export interface VariableSpecification {
+  type: string;
+  defaultValue?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineFolder class.
  * @constructor
  * The folder that this Pipeline is in. If not specified, Pipeline will appear
@@ -604,6 +619,7 @@ export interface PipelineFolder {
  * @member {string} [description] The description of the pipeline.
  * @member {array} [activities] List of activities in pipeline.
  * @member {object} [parameters] List of parameters for pipeline.
+ * @member {object} [variables] List of variables for pipeline.
  * @member {number} [concurrency] The max number of concurrent runs for the
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
@@ -617,6 +633,7 @@ export interface PipelineResource extends SubResource {
   description?: string;
   activities?: Activity[];
   parameters?: { [propertyName: string]: ParameterSpecification };
+  variables?: { [propertyName: string]: VariableSpecification };
   concurrency?: number;
   annotations?: any[];
   folder?: PipelineFolder;
@@ -4853,6 +4870,8 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureInput] When set to true, input from activity is
+ * considered as secure and will not be logged to monitoring.
  * @member {boolean} [secureOutput] When set to true, Output from activity is
  * considered as secure and will not be logged to monitoring.
  */
@@ -4860,6 +4879,7 @@ export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureInput?: boolean;
   secureOutput?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -4887,6 +4907,8 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureInput] When set to true, input from activity
+ * is considered as secure and will not be logged to monitoring.
  * @member {boolean} [policy.secureOutput] When set to true, Output from
  * activity is considered as secure and will not be logged to monitoring.
  */
@@ -6793,6 +6815,38 @@ export interface CopyActivity extends ExecutionActivity {
  *
  */
 export interface ControlActivity extends Activity {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AppendVariableActivity class.
+ * @constructor
+ * Append value to a array Variable.
+ *
+ * @member {string} appendVariableActivityName Name of the variable to which
+ * value needs to be appended.
+ * @member {object} value Value to be appended. Could be a static value or
+ * Expression
+ */
+export interface AppendVariableActivity extends ControlActivity {
+  appendVariableActivityName: string;
+  value: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SetVariableActivity class.
+ * @constructor
+ * Set value for a Variable.
+ *
+ * @member {string} setVariableActivityName Name of the variable whose value
+ * needs to be set.
+ * @member {object} value Value to be set. Could be a static value or
+ * Expression
+ */
+export interface SetVariableActivity extends ControlActivity {
+  setVariableActivityName: string;
+  value: any;
 }
 
 /**
