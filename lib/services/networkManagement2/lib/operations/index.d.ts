@@ -257,13 +257,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -416,13 +411,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1227,13 +1217,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1386,13 +1371,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -13900,6 +13880,8 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
+     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -13925,36 +13907,6 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
-     *
-     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
-     * endpoint to which the network interface is linked.
-     *
-     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
-     * FQDN that is mapped to the private IP allocated via this interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
-     * to the service being brought into the virtual network.
-     *
-     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
-     * identifier of the service being referenced by the interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
-     * from which the private IP will be allocated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
-     *
-     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
-     * array of references to the network interfaces created for this interface
-     * endpoint.
-     *
-     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
-     *
-     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
-     *
-     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -14045,6 +13997,8 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
+     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -14070,36 +14024,6 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
-     *
-     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
-     * endpoint to which the network interface is linked.
-     *
-     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
-     * FQDN that is mapped to the private IP allocated via this interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
-     * to the service being brought into the virtual network.
-     *
-     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
-     * identifier of the service being referenced by the interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
-     * from which the private IP will be allocated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
-     *
-     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
-     * array of references to the network interfaces created for this interface
-     * endpoint.
-     *
-     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
-     *
-     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
-     *
-     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -14923,6 +14847,8 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
+     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -14948,36 +14874,6 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
-     *
-     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
-     * endpoint to which the network interface is linked.
-     *
-     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
-     * FQDN that is mapped to the private IP allocated via this interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
-     * to the service being brought into the virtual network.
-     *
-     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
-     * identifier of the service being referenced by the interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
-     * from which the private IP will be allocated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
-     *
-     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
-     * array of references to the network interfaces created for this interface
-     * endpoint.
-     *
-     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
-     *
-     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
-     *
-     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -15068,6 +14964,8 @@ export interface NetworkInterfaces {
      * @param {object} [parameters.virtualMachine] The reference of a virtual
      * machine.
      *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
+     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -15093,36 +14991,6 @@ export interface NetworkInterfaces {
      * location.
      *
      * @param {object} [parameters.networkSecurityGroup.tags] Resource tags.
-     *
-     * @param {object} [parameters.interfaceEndpoint] A reference to the interface
-     * endpoint to which the network interface is linked.
-     *
-     * @param {string} [parameters.interfaceEndpoint.fqdn] A first-party service's
-     * FQDN that is mapped to the private IP allocated via this interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.endpointService] A reference
-     * to the service being brought into the virtual network.
-     *
-     * @param {string} [parameters.interfaceEndpoint.endpointService.id] A unique
-     * identifier of the service being referenced by the interface endpoint.
-     *
-     * @param {object} [parameters.interfaceEndpoint.subnet] The ID of the subnet
-     * from which the private IP will be allocated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.subnet.id] Resource ID.
-     *
-     * @param {array} [parameters.interfaceEndpoint.networkInterfaces] Gets an
-     * array of references to the network interfaces created for this interface
-     * endpoint.
-     *
-     * @param {string} [parameters.interfaceEndpoint.etag] Gets a unique read-only
-     * string that changes whenever the resource is updated.
-     *
-     * @param {string} [parameters.interfaceEndpoint.id] Resource ID.
-     *
-     * @param {string} [parameters.interfaceEndpoint.location] Resource location.
-     *
-     * @param {object} [parameters.interfaceEndpoint.tags] Resource tags.
      *
      * @param {array} [parameters.ipConfigurations] A list of IPConfigurations of
      * the network interface.
@@ -16170,11 +16038,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16359,6 +16222,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -16559,11 +16426,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16748,6 +16610,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -17090,11 +16956,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -17279,6 +17140,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -17479,11 +17344,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -17668,6 +17528,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -29774,13 +29638,6 @@ export interface ServiceEndpointPolicies {
      * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
      * service endpoint policy definitions of the service endpoint policy.
      *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
@@ -29816,13 +29673,6 @@ export interface ServiceEndpointPolicies {
      *
      * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
      * service endpoint policy definitions of the service endpoint policy.
-     *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
@@ -30118,13 +29968,6 @@ export interface ServiceEndpointPolicies {
      * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
      * service endpoint policy definitions of the service endpoint policy.
      *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
-     *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
      *
@@ -30160,13 +30003,6 @@ export interface ServiceEndpointPolicies {
      *
      * @param {array} [parameters.serviceEndpointPolicyDefinitions] A collection of
      * service endpoint policy definitions of the service endpoint policy.
-     *
-     * @param {string} [parameters.resourceGuid] The resource GUID property of the
-     * service endpoint policy resource.
-     *
-     * @param {string} [parameters.provisioningState] The provisioning state of the
-     * service endpoint policy. Possible values are: 'Updating', 'Deleting', and
-     * 'Failed'.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
@@ -30565,10 +30401,6 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
      * service resources.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
      * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
      * resource that is unique within a resource group. This name can be used to
      * access the resource.
@@ -30614,10 +30446,6 @@ export interface ServiceEndpointPolicyDefinitions {
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
      * service resources.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
      * resource that is unique within a resource group. This name can be used to
@@ -30813,10 +30641,6 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
      * service resources.
      *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
-     *
      * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
      * resource that is unique within a resource group. This name can be used to
      * access the resource.
@@ -30862,10 +30686,6 @@ export interface ServiceEndpointPolicyDefinitions {
      *
      * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
      * service resources.
-     *
-     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
-     * provisioning state of the service end point policy definition. Possible
-     * values are: 'Updating', 'Deleting', and 'Failed'.
      *
      * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
      * resource that is unique within a resource group. This name can be used to
@@ -32347,6 +32167,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
      *
@@ -32453,6 +32276,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
      *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
@@ -32701,6 +32527,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
      *
@@ -32807,6 +32636,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
      *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
@@ -33714,10 +33546,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -33897,6 +33725,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -34078,10 +33910,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34261,6 +34089,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -34696,10 +34528,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34879,6 +34707,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -35060,10 +34892,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -35243,6 +35071,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -36263,6 +36095,68 @@ export interface VirtualNetworkGateways {
     reset(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
     reset(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
     reset(resourceGroupName: string, virtualNetworkGatewayName: string, options: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resetVpnClientSharedKeyWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
+    resetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -37537,6 +37431,68 @@ export interface VirtualNetworkGateways {
 
 
     /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetVpnClientSharedKeyWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
+    beginResetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Generates VPN client package for P2S client of the virtual network gateway
      * in the specified resource group.
      *
@@ -38484,6 +38440,9 @@ export interface VirtualNetworkGatewayConnections {
      * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
+     * @param {string} [parameters.connectionProtocol] Connection protocol used for
+     * this connection. Possible values include: 'IKEv2', 'IKEv1'
+     *
      * @param {number} [parameters.routingWeight] The routing weight.
      *
      * @param {string} [parameters.sharedKey] The IPSec shared key.
@@ -38680,6 +38639,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} parameters.connectionType Gateway connection type. Possible
      * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+     *
+     * @param {string} [parameters.connectionProtocol] Connection protocol used for
+     * this connection. Possible values include: 'IKEv2', 'IKEv1'
      *
      * @param {number} [parameters.routingWeight] The routing weight.
      *
@@ -39382,6 +39344,9 @@ export interface VirtualNetworkGatewayConnections {
      * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
      *
+     * @param {string} [parameters.connectionProtocol] Connection protocol used for
+     * this connection. Possible values include: 'IKEv2', 'IKEv1'
+     *
      * @param {number} [parameters.routingWeight] The routing weight.
      *
      * @param {string} [parameters.sharedKey] The IPSec shared key.
@@ -39578,6 +39543,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} parameters.connectionType Gateway connection type. Possible
      * values are: 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient. Possible
      * values include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'
+     *
+     * @param {string} [parameters.connectionProtocol] Connection protocol used for
+     * this connection. Possible values include: 'IKEv2', 'IKEv1'
      *
      * @param {number} [parameters.routingWeight] The routing weight.
      *
@@ -40793,6 +40761,22 @@ export interface VirtualWANs {
      * @param {boolean} [wANParameters.disableVpnEncryption] Vpn encryption to be
      * disabled or not.
      *
+     * @param {string} [wANParameters.securityProviderName] The Security Provider
+     * name.
+     *
+     * @param {boolean} [wANParameters.allowBranchToBranchTraffic] True if branch
+     * to branch traffic is allowed.
+     *
+     * @param {boolean} [wANParameters.allowVnetToVnetTraffic] True if Vnet to Vnet
+     * traffic is allowed.
+     *
+     * @param {string} [wANParameters.office365LocalBreakoutCategory] The office
+     * local breakout category. Possible values include: 'Optimize',
+     * 'OptimizeAndAllow', 'All', 'None'
+     *
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * P2SVpnServerConfigurations associated with the virtual wan.
+     *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
@@ -40830,6 +40814,22 @@ export interface VirtualWANs {
      *
      * @param {boolean} [wANParameters.disableVpnEncryption] Vpn encryption to be
      * disabled or not.
+     *
+     * @param {string} [wANParameters.securityProviderName] The Security Provider
+     * name.
+     *
+     * @param {boolean} [wANParameters.allowBranchToBranchTraffic] True if branch
+     * to branch traffic is allowed.
+     *
+     * @param {boolean} [wANParameters.allowVnetToVnetTraffic] True if Vnet to Vnet
+     * traffic is allowed.
+     *
+     * @param {string} [wANParameters.office365LocalBreakoutCategory] The office
+     * local breakout category. Possible values include: 'Optimize',
+     * 'OptimizeAndAllow', 'All', 'None'
+     *
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
@@ -41119,6 +41119,22 @@ export interface VirtualWANs {
      * @param {boolean} [wANParameters.disableVpnEncryption] Vpn encryption to be
      * disabled or not.
      *
+     * @param {string} [wANParameters.securityProviderName] The Security Provider
+     * name.
+     *
+     * @param {boolean} [wANParameters.allowBranchToBranchTraffic] True if branch
+     * to branch traffic is allowed.
+     *
+     * @param {boolean} [wANParameters.allowVnetToVnetTraffic] True if Vnet to Vnet
+     * traffic is allowed.
+     *
+     * @param {string} [wANParameters.office365LocalBreakoutCategory] The office
+     * local breakout category. Possible values include: 'Optimize',
+     * 'OptimizeAndAllow', 'All', 'None'
+     *
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * P2SVpnServerConfigurations associated with the virtual wan.
+     *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
      * 'Failed'
@@ -41156,6 +41172,22 @@ export interface VirtualWANs {
      *
      * @param {boolean} [wANParameters.disableVpnEncryption] Vpn encryption to be
      * disabled or not.
+     *
+     * @param {string} [wANParameters.securityProviderName] The Security Provider
+     * name.
+     *
+     * @param {boolean} [wANParameters.allowBranchToBranchTraffic] True if branch
+     * to branch traffic is allowed.
+     *
+     * @param {boolean} [wANParameters.allowVnetToVnetTraffic] True if Vnet to Vnet
+     * traffic is allowed.
+     *
+     * @param {string} [wANParameters.office365LocalBreakoutCategory] The office
+     * local breakout category. Possible values include: 'Optimize',
+     * 'OptimizeAndAllow', 'All', 'None'
+     *
+     * @param {array} [wANParameters.p2SVpnServerConfigurations] list of all
+     * P2SVpnServerConfigurations associated with the virtual wan.
      *
      * @param {string} [wANParameters.provisioningState] The provisioning state of
      * the resource. Possible values include: 'Succeeded', 'Updating', 'Deleting',
@@ -41518,10 +41550,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -41559,6 +41591,8 @@ export interface VpnSites {
      * @param {string} [vpnSiteParameters.provisioningState] The provisioning state
      * of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {boolean} [vpnSiteParameters.isSecuritySite] IsSecuritySite flag
      *
      * @param {string} [vpnSiteParameters.id] Resource ID.
      *
@@ -41591,10 +41625,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -41632,6 +41666,8 @@ export interface VpnSites {
      * @param {string} [vpnSiteParameters.provisioningState] The provisioning state
      * of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {boolean} [vpnSiteParameters.isSecuritySite] IsSecuritySite flag
      *
      * @param {string} [vpnSiteParameters.id] Resource ID.
      *
@@ -41916,10 +41952,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -41957,6 +41993,8 @@ export interface VpnSites {
      * @param {string} [vpnSiteParameters.provisioningState] The provisioning state
      * of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {boolean} [vpnSiteParameters.isSecuritySite] IsSecuritySite flag
      *
      * @param {string} [vpnSiteParameters.id] Resource ID.
      *
@@ -41989,10 +42027,10 @@ export interface VpnSites {
      * @param {object} vpnSiteParameters Parameters supplied to create or update
      * VpnSite.
      *
-     * @param {object} [vpnSiteParameters.virtualWAN] The VirtualWAN to which the
+     * @param {object} [vpnSiteParameters.virtualWan] The VirtualWAN to which the
      * vpnSite belongs
      *
-     * @param {string} [vpnSiteParameters.virtualWAN.id] Resource ID.
+     * @param {string} [vpnSiteParameters.virtualWan.id] Resource ID.
      *
      * @param {object} [vpnSiteParameters.deviceProperties] The device properties
      *
@@ -42030,6 +42068,8 @@ export interface VpnSites {
      * @param {string} [vpnSiteParameters.provisioningState] The provisioning state
      * of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {boolean} [vpnSiteParameters.isSecuritySite] IsSecuritySite flag
      *
      * @param {string} [vpnSiteParameters.id] Resource ID.
      *
@@ -42561,13 +42601,27 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
      *
-     * @param {array} [virtualHubParameters.hubVirtualNetworkConnections] list of
-     * all vnet connections with this VirtualHub.
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
+     *
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
+     *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -42606,13 +42660,27 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
      *
-     * @param {array} [virtualHubParameters.hubVirtualNetworkConnections] list of
-     * all vnet connections with this VirtualHub.
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
+     *
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
+     *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -42903,13 +42971,27 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
      *
-     * @param {array} [virtualHubParameters.hubVirtualNetworkConnections] list of
-     * all vnet connections with this VirtualHub.
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
+     *
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
+     *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -42948,13 +43030,27 @@ export interface VirtualHubs {
      * @param {object} [virtualHubParameters.virtualWan] The VirtualWAN to which
      * the VirtualHub belongs
      *
-     * @param {string} [virtualHubParameters.virtualWan.id] Resource ID.
+     * @param {object} [virtualHubParameters.vpnGateway] The VpnGateway associated
+     * with this VirtualHub
      *
-     * @param {array} [virtualHubParameters.hubVirtualNetworkConnections] list of
-     * all vnet connections with this VirtualHub.
+     * @param {object} [virtualHubParameters.p2SVpnGateway] The P2SVpnGateway
+     * associated with this VirtualHub
+     *
+     * @param {object} [virtualHubParameters.expressRouteGateway] The
+     * expressRouteGateway associated with this VirtualHub
+     *
+     * @param {string} [virtualHubParameters.expressRouteGateway.id] Resource ID.
+     *
+     * @param {array} [virtualHubParameters.virtualNetworkConnections] list of all
+     * vnet connections with this VirtualHub.
      *
      * @param {string} [virtualHubParameters.addressPrefix] Address-prefix for this
      * VirtualHub.
+     *
+     * @param {object} [virtualHubParameters.routeTable] The routeTable associated
+     * with this virtual hub.
+     *
+     * @param {array} [virtualHubParameters.routeTable.routes] list of all routes.
      *
      * @param {string} [virtualHubParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -43533,14 +43629,8 @@ export interface VpnGateways {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
-     * vpn gateway.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
-     * True if branch to branch traffic is allowed.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
-     * if Vnet to Vnet traffic is allowed.
+     * @param {number} [vpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this vpn gateway.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -43596,14 +43686,8 @@ export interface VpnGateways {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
-     * vpn gateway.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
-     * True if branch to branch traffic is allowed.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
-     * if Vnet to Vnet traffic is allowed.
+     * @param {number} [vpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this vpn gateway.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -43911,14 +43995,8 @@ export interface VpnGateways {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
-     * vpn gateway.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
-     * True if branch to branch traffic is allowed.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
-     * if Vnet to Vnet traffic is allowed.
+     * @param {number} [vpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this vpn gateway.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -43974,14 +44052,8 @@ export interface VpnGateways {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
-     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
-     * vpn gateway.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
-     * True if branch to branch traffic is allowed.
-     *
-     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
-     * if Vnet to Vnet traffic is allowed.
+     * @param {number} [vpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this vpn gateway.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -44359,6 +44431,13 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
+     *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -44367,15 +44446,20 @@ export interface VpnConnections {
      * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
      * be considered by this connection.
      *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting] EnableBgp flag
+     *
+     * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44415,6 +44499,13 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
+     *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -44423,15 +44514,20 @@ export interface VpnConnections {
      * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
      * be considered by this connection.
      *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting] EnableBgp flag
+     *
+     * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44612,6 +44708,13 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
+     *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -44620,15 +44723,20 @@ export interface VpnConnections {
      * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
      * be considered by this connection.
      *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting] EnableBgp flag
+     *
+     * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44668,6 +44776,13 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
+     * @param {string} [vpnConnectionParameters.vpnConnectionProtocolType]
+     * Connection protocol used for this connection. Possible values include:
+     * 'IKEv2', 'IKEv1'
+     *
+     * @param {number} [vpnConnectionParameters.connectionBandwidth] Expected
+     * bandwidth in MBPS.
+     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
@@ -44676,15 +44791,20 @@ export interface VpnConnections {
      * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
      * be considered by this connection.
      *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting] EnableBgp flag
+     *
+     * @param {boolean} [vpnConnectionParameters.enableInternetSecurity] Enable
+     * internet security
+     *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {string} [vpnConnectionParameters.name] The name of the resource that
+     * is unique within a resource group. This name can be used to access the
+     * resource.
+     *
      * @param {string} [vpnConnectionParameters.id] Resource ID.
-     *
-     * @param {string} [vpnConnectionParameters.location] Resource location.
-     *
-     * @param {object} [vpnConnectionParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -44836,4 +44956,1629 @@ export interface VpnConnections {
     listByVpnGatewayNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
     listByVpnGatewayNext(nextPageLink: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
     listByVpnGatewayNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
+}
+
+/**
+ * @class
+ * P2SVpnServerConfigurations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface P2SVpnServerConfigurations {
+
+
+    /**
+     * Retrieves the details of a P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnServerConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+
+    /**
+     * Retrieves the details of a P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnServerConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnServerConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnServerConfiguration} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    get(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+
+
+    /**
+     * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
+     * doesn't exist else updates the existing P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the VirtualWan.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
+     * create or Update a P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
+     * The radius server address property of the P2SVpnServerConfiguration resource
+     * for point to site client connection.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnServerConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+
+    /**
+     * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
+     * doesn't exist else updates the existing P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the VirtualWan.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
+     * create or Update a P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
+     * The radius server address property of the P2SVpnServerConfiguration resource
+     * for point to site client connection.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnServerConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnServerConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnServerConfiguration} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+
+
+    /**
+     * Deletes a P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves all P2SVpnServerConfigurations for a particular VirtualWan.
+     *
+     * @param {string} resourceGroupName The resource group name of the VirtualWan.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListP2SVpnServerConfigurationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByVirtualWanWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnServerConfigurationsResult>>;
+
+    /**
+     * Retrieves all P2SVpnServerConfigurations for a particular VirtualWan.
+     *
+     * @param {string} resourceGroupName The resource group name of the VirtualWan.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListP2SVpnServerConfigurationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListP2SVpnServerConfigurationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListP2SVpnServerConfigurationsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByVirtualWan(resourceGroupName: string, virtualWanName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnServerConfigurationsResult>;
+    listByVirtualWan(resourceGroupName: string, virtualWanName: string, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
+    listByVirtualWan(resourceGroupName: string, virtualWanName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
+
+
+    /**
+     * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
+     * doesn't exist else updates the existing P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the VirtualWan.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
+     * create or Update a P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
+     * The radius server address property of the P2SVpnServerConfiguration resource
+     * for point to site client connection.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnServerConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnServerConfiguration>>;
+
+    /**
+     * Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it
+     * doesn't exist else updates the existing P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the VirtualWan.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} p2SVpnServerConfigurationParameters Parameters supplied to
+     * create or Update a P2SVpnServerConfiguration.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesName]
+     * The name of the P2SVpnServerConfiguration that is unique within a VirtualWan
+     * in a resource group. This name can be used to access the resource along with
+     * Paren VirtualWan resource name.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnProtocols]
+     * vpnProtocols for the P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRootCertificates]
+     * VPN client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigVpnClientRevokedCertificates]
+     * VPN client revoked certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusServerRootCertificates]
+     * Radius Server root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigRadiusClientRootCertificates]
+     * Radius client root certificate of P2SVpnServerConfiguration.
+     *
+     * @param {array} [p2SVpnServerConfigurationParameters.vpnClientIpsecPolicies]
+     * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerAddress]
+     * The radius server address property of the P2SVpnServerConfiguration resource
+     * for point to site client connection.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.radiusServerSecret] The
+     * radius secret property of the P2SVpnServerConfiguration resource for for
+     * point to site client connection.
+     *
+     * @param {string}
+     * [p2SVpnServerConfigurationParameters.p2SVpnServerConfigurationPropertiesEtag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
+     *
+     * @param {string} [p2SVpnServerConfigurationParameters.id] Resource ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnServerConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnServerConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnServerConfiguration} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnServerConfiguration>;
+    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, p2SVpnServerConfigurationParameters: models.P2SVpnServerConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnServerConfiguration>): void;
+
+
+    /**
+     * Deletes a P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a P2SVpnServerConfiguration.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {string} virtualWanName The name of the VirtualWan.
+     *
+     * @param {string} p2SVpnServerConfigurationName The name of the
+     * P2SVpnServerConfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, virtualWanName: string, p2SVpnServerConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves all P2SVpnServerConfigurations for a particular VirtualWan.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListP2SVpnServerConfigurationsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByVirtualWanNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnServerConfigurationsResult>>;
+
+    /**
+     * Retrieves all P2SVpnServerConfigurations for a particular VirtualWan.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListP2SVpnServerConfigurationsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListP2SVpnServerConfigurationsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListP2SVpnServerConfigurationsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByVirtualWanNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnServerConfigurationsResult>;
+    listByVirtualWanNext(nextPageLink: string, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
+    listByVirtualWanNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnServerConfigurationsResult>): void;
+}
+
+/**
+ * @class
+ * P2SVpnGateways
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface P2SVpnGateways {
+
+
+    /**
+     * Retrieves the details of a virtual wan p2s vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+
+    /**
+     * Retrieves the details of a virtual wan p2s vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    get(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    get(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+
+
+    /**
+     * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
+     * existing gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
+     * Update a virtual wan p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * the gateway belongs
+     *
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
+     * of the address space resource which represents Address space for P2S
+     * VpnClient.
+     *
+     * @param {array}
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * address blocks reserved for this virtual network in CIDR notation.
+     *
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+
+    /**
+     * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
+     * existing gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
+     * Update a virtual wan p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * the gateway belongs
+     *
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
+     * of the address space resource which represents Address space for P2S
+     * VpnClient.
+     *
+     * @param {array}
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * address blocks reserved for this virtual network in CIDR notation.
+     *
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+
+
+    /**
+     * Updates virtual wan p2s vpn gateway tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
+     * virtual wan p2s vpn gateway tags.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+
+    /**
+     * Updates virtual wan p2s vpn gateway tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
+     * virtual wan p2s vpn gateway tags.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+
+
+    /**
+     * Deletes a virtual wan p2s vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a virtual wan p2s vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all the P2SVpnGateways in a resource group.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListP2SVpnGatewaysResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnGatewaysResult>>;
+
+    /**
+     * Lists all the P2SVpnGateways in a resource group.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListP2SVpnGatewaysResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListP2SVpnGatewaysResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListP2SVpnGatewaysResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+
+
+    /**
+     * Lists all the P2SVpnGateways in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListP2SVpnGatewaysResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnGatewaysResult>>;
+
+    /**
+     * Lists all the P2SVpnGateways in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListP2SVpnGatewaysResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListP2SVpnGatewaysResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListP2SVpnGatewaysResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
+    list(callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+
+
+    /**
+     * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
+     * resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} gatewayName The name of the P2SVpnGateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
+     * VPN client package operation.
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnProfileResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    generateVpnProfileWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnProfileResponse>>;
+
+    /**
+     * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
+     * resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} gatewayName The name of the P2SVpnGateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
+     * VPN client package operation.
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnProfileResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnProfileResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnProfileResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnProfileResponse>;
+    generateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, callback: ServiceCallback<models.VpnProfileResponse>): void;
+    generateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnProfileResponse>): void;
+
+
+    /**
+     * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
+     * existing gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
+     * Update a virtual wan p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * the gateway belongs
+     *
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
+     * of the address space resource which represents Address space for P2S
+     * VpnClient.
+     *
+     * @param {array}
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * address blocks reserved for this virtual network in CIDR notation.
+     *
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+
+    /**
+     * Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the
+     * existing gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to create or
+     * Update a virtual wan p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.virtualHub] The VirtualHub to which
+     * the gateway belongs
+     *
+     * @param {string} [p2SVpnGatewayParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {number} [p2SVpnGatewayParameters.vpnGatewayScaleUnit] The scale unit
+     * for this p2s vpn gateway.
+     *
+     * @param {object} [p2SVpnGatewayParameters.p2SVpnServerConfiguration] The
+     * P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
+     *
+     * @param {string} [p2SVpnGatewayParameters.p2SVpnServerConfiguration.id]
+     * Resource ID.
+     *
+     * @param {object} [p2SVpnGatewayParameters.vpnClientAddressPool] The reference
+     * of the address space resource which represents Address space for P2S
+     * VpnClient.
+     *
+     * @param {array}
+     * [p2SVpnGatewayParameters.vpnClientAddressPool.addressPrefixes] A list of
+     * address blocks reserved for this virtual network in CIDR notation.
+     *
+     * @param {string} [p2SVpnGatewayParameters.id] Resource ID.
+     *
+     * @param {string} [p2SVpnGatewayParameters.location] Resource location.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.P2SVpnGateway, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+
+
+    /**
+     * Updates virtual wan p2s vpn gateway tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
+     * virtual wan p2s vpn gateway tags.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<P2SVpnGateway>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+
+    /**
+     * Updates virtual wan p2s vpn gateway tags.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
+     * virtual wan p2s vpn gateway tags.
+     *
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {P2SVpnGateway} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {P2SVpnGateway} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link P2SVpnGateway} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+
+
+    /**
+     * Deletes a virtual wan p2s vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a virtual wan p2s vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the
+     * P2SVpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
+     * resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} gatewayName The name of the P2SVpnGateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
+     * VPN client package operation.
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnProfileResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGenerateVpnProfileWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnProfileResponse>>;
+
+    /**
+     * Generates VPN profile for P2S client of the P2SVpnGateway in the specified
+     * resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} gatewayName The name of the P2SVpnGateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate P2SVpnGateway
+     * VPN client package operation.
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnProfileResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnProfileResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnProfileResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGenerateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnProfileResponse>;
+    beginGenerateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, callback: ServiceCallback<models.VpnProfileResponse>): void;
+    beginGenerateVpnProfile(resourceGroupName: string, gatewayName: string, parameters: models.P2SVpnProfileParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnProfileResponse>): void;
+
+
+    /**
+     * Lists all the P2SVpnGateways in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListP2SVpnGatewaysResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnGatewaysResult>>;
+
+    /**
+     * Lists all the P2SVpnGateways in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListP2SVpnGatewaysResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListP2SVpnGatewaysResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListP2SVpnGatewaysResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+
+
+    /**
+     * Lists all the P2SVpnGateways in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListP2SVpnGatewaysResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListP2SVpnGatewaysResult>>;
+
+    /**
+     * Lists all the P2SVpnGateways in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListP2SVpnGatewaysResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListP2SVpnGatewaysResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListP2SVpnGatewaysResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListP2SVpnGatewaysResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListP2SVpnGatewaysResult>): void;
 }
