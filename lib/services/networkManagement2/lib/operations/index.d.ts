@@ -257,13 +257,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -416,13 +411,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1227,13 +1217,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -1386,13 +1371,8 @@ export interface ApplicationGateways {
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
-     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
-     * number of Application Gateway instances.
-     *
-     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
-     * number of Application Gateway instances.
+     * @param {number} parameters.autoscaleConfiguration.minCapacity Lower bound on
+     * number of Application Gateway instances
      *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
@@ -16170,11 +16150,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16359,6 +16334,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -16559,11 +16538,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -16748,6 +16722,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -17090,11 +17068,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -17279,6 +17252,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -17479,11 +17456,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {object} [tapConfigurationParameters.virtualNetworkTap] The reference
      * of the Virtual Network Tap resource.
      *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.networkInterfaceTapConfigurations]
-     * Specifies the list of resource IDs for the network interface IP
-     * configuration that needs to be tapped.
-     *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationNetworkInterfaceIPConfiguration]
      * The reference to the private IP Address of the collector nic that will
@@ -17668,6 +17640,10 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -32347,6 +32323,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
      *
@@ -32453,6 +32432,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
      *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
@@ -32701,6 +32683,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
      *
@@ -32807,6 +32792,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
+     *
+     * @param {array} [subnetParameters.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
      *
      * @param {array} [subnetParameters.delegations] Gets an array of references to
      * the delegations on the subnet.
@@ -33714,10 +33702,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -33897,6 +33881,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -34078,10 +34066,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34261,6 +34245,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -34696,10 +34684,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -34879,6 +34863,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -35060,10 +35048,6 @@ export interface VirtualNetworkTaps {
      * @param {object} parameters Parameters supplied to the create or update
      * virtual network tap operation.
      *
-     * @param {array} [parameters.networkInterfaceTapConfigurations] Specifies the
-     * list of resource IDs for the network interface IP configuration that needs
-     * to be tapped.
-     *
      * @param {object} [parameters.destinationNetworkInterfaceIPConfiguration] The
      * reference to the private IP Address of the collector nic that will receive
      * the tap
@@ -35243,6 +35227,10 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceAssociationLinks]
+     * Gets an array of references to services injecting into this subnet.
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.delegations]
@@ -36263,6 +36251,68 @@ export interface VirtualNetworkGateways {
     reset(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
     reset(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
     reset(resourceGroupName: string, virtualNetworkGatewayName: string, options: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resetVpnClientSharedKeyWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
+    resetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -37534,6 +37584,68 @@ export interface VirtualNetworkGateways {
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, options: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetVpnClientSharedKeyWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
+    beginResetVpnClientSharedKey(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -45868,10 +45980,10 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to update a
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
      * virtual wan p2s vpn gateway tags.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45884,7 +45996,7 @@ export interface P2SVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Updates virtual wan p2s vpn gateway tags.
@@ -45894,10 +46006,10 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to update a
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
      * virtual wan p2s vpn gateway tags.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -45926,9 +46038,9 @@ export interface P2SVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    updateTags(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    updateTags(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    updateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
@@ -46313,10 +46425,10 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to update a
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
      * virtual wan p2s vpn gateway tags.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46329,7 +46441,7 @@ export interface P2SVpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.P2SVpnGateway>>;
 
     /**
      * Updates virtual wan p2s vpn gateway tags.
@@ -46339,10 +46451,10 @@ export interface P2SVpnGateways {
      *
      * @param {string} gatewayName The name of the gateway.
      *
-     * @param {object} p2sVpnGatewayParameters Parameters supplied to update a
+     * @param {object} p2SVpnGatewayParameters Parameters supplied to update a
      * virtual wan p2s vpn gateway tags.
      *
-     * @param {object} [p2sVpnGatewayParameters.tags] Resource tags.
+     * @param {object} [p2SVpnGatewayParameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -46371,9 +46483,9 @@ export interface P2SVpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
-    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2sVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.P2SVpnGateway>;
+    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, callback: ServiceCallback<models.P2SVpnGateway>): void;
+    beginUpdateTags(resourceGroupName: string, gatewayName: string, p2SVpnGatewayParameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.P2SVpnGateway>): void;
 
 
     /**
