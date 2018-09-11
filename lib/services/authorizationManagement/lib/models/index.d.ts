@@ -200,9 +200,9 @@ export interface RoleAssignment {
  * @constructor
  * Role assignment create parameters.
  *
- * @member {string} [roleDefinitionId] The role definition ID used in the role
+ * @member {string} roleDefinitionId The role definition ID used in the role
  * assignment.
- * @member {string} [principalId] The principal ID assigned to the role. This
+ * @member {string} principalId The principal ID assigned to the role. This
  * maps to the ID inside the Active Directory. It can point to a user, service
  * principal, or security group.
  * @member {string} [principalType] The principal type of the assigned
@@ -213,8 +213,8 @@ export interface RoleAssignment {
  * assignment
  */
 export interface RoleAssignmentCreateParameters {
-  roleDefinitionId?: string;
-  principalId?: string;
+  roleDefinitionId: string;
+  principalId: string;
   principalType?: string;
   canDelegate?: boolean;
 }
