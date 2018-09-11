@@ -2869,20 +2869,6 @@ export interface ManagedDatabaseUpdate {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabel class.
- * @constructor
- * A sensitivity label.
- *
- * @member {string} [labelName] The label name.
- * @member {string} [informationType] The information type.
- */
-export interface SensitivityLabel extends ProxyResource {
-  labelName?: string;
-  informationType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutomaticTuningServerOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -4202,6 +4188,26 @@ export interface ManagedInstanceEncryptionProtector extends ProxyResource {
   readonly thumbprint?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the InterfaceEndpointProfile class.
+ * @constructor
+ * A interface endpoint profile resource.
+ *
+ * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * network subnet.
+ * @member {string} [privateIp] The Private ip associated with the interface
+ * endpoint profile
+ * @member {string} [state] State of the interface endpoint profile. Possible
+ * values include: 'Initializing', 'InProgress', 'Ready', 'Failed', 'Deleting',
+ * 'Unknown'
+ */
+export interface InterfaceEndpointProfile extends ProxyResource {
+  virtualNetworkSubnetId: string;
+  readonly privateIp?: string;
+  readonly state?: string;
+}
+
 
 /**
  * @class
@@ -4708,18 +4714,6 @@ export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabelListResult class.
- * @constructor
- * A list of sensitivity labels.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ServerDnsAliasListResult class.
  * @constructor
  * A list of server DNS aliases.
@@ -4823,5 +4817,17 @@ export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> 
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InterfaceEndpointProfilesListResult class.
+ * @constructor
+ * A list of interface endpoint profiles.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface InterfaceEndpointProfilesListResult extends Array<InterfaceEndpointProfile> {
   readonly nextLink?: string;
 }
