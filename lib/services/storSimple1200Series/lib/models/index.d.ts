@@ -1001,18 +1001,6 @@ export interface JobFilter {
 
 /**
  * @class
- * Initializes a new instance of the Key class.
- * @constructor
- * The key.
- *
- * @member {string} activationKey The activation key for the device
- */
-export interface Key {
-  activationKey: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ManagerIntrinsicSettings class.
  * @constructor
  * Intrinsic settings which refers to the type of the Storsimple manager
@@ -1345,19 +1333,6 @@ export interface NetworkSettings extends BaseModel {
 
 /**
  * @class
- * Initializes a new instance of the RegistrationCertificate class.
- * @constructor
- * Registration Certificate.
- *
- * @member {string} certificate Registration Certificate which Needs to be
- * Uploaded to IDM
- */
-export interface RegistrationCertificate {
-  certificate: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SecuritySettings class.
  * @constructor
  * The SecuritySettings of a device
@@ -1447,33 +1422,6 @@ export interface StorageDomain extends BaseModel {
   storageAccountCredentialIds: string[];
   encryptionKey?: AsymmetricEncryptedSecret;
   encryptionStatus: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SupportPackageRequest class.
- * @constructor
- * Support package request entity
- *
- * @member {string} sdpPassKey The SDPPassKey
- * @member {string} [packageType] The support package type. Possible values
- * include: 'None', 'IncludeDefault', 'IncludeAll', 'Mini', 'Custom'
- * @member {date} [endTime] The maximum time stamp of the logs.
- * @member {date} [startTime] The minimum time stamp of the logs.
- * @member {boolean} [includeArchived] The bool which determines whether the
- * archived logs are included or not.
- * @member {string} [sourceType] The support package source type. Possible
- * values include: 'None', 'OpsTriggered', 'ClientTriggered'
- * @member {array} [customIncludeList] The list of log categories
- */
-export interface SupportPackageRequest {
-  sdpPassKey: string;
-  packageType?: string;
-  endTime?: Date;
-  startTime?: Date;
-  includeArchived?: boolean;
-  sourceType?: string;
-  customIncludeList?: string[];
 }
 
 /**
@@ -1619,12 +1567,6 @@ export interface UploadCertificateRequest {
  * @member {string} thumbprint Certificate thumbrprint
  * @member {string} friendlyName Certificate friendlyname
  * @member {string} issuer Certificate issuer
- * @member {string} [contractVersion] Constructor. Possible values include:
- * 'InvalidVersion', 'V2011_09', 'V2012_02', 'V2012_05', 'V2012_12',
- * 'V2013_04', 'V2013_10', 'V2013_11', 'V2014_04', 'V2014_06', 'V2014_07',
- * 'V2014_09', 'V2014_10', 'V2014_12', 'V2015_01', 'V2015_02', 'V2015_04',
- * 'V2015_05', 'V2015_06', 'V2015_07', 'V2015_08', 'V2015_10', 'V2015_12',
- * 'V2016_01', 'V2016_02', 'V2016_04', 'V2016_05', 'V2016_07', 'V2016_08'
  */
 export interface UploadCertificateResponse extends BaseModel {
   authType?: string;
@@ -1641,7 +1583,6 @@ export interface UploadCertificateResponse extends BaseModel {
   thumbprint: string;
   friendlyName: string;
   issuer: string;
-  readonly contractVersion?: string;
 }
 
 
