@@ -853,7 +853,64 @@ export interface EndpointService {
  * being referenced by the interface endpoint.
  * @member {object} [subnet] The ID of the subnet from which the private IP
  * will be allocated.
- * @member {string} [subnet.id] Resource ID.
+ * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
+ * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * NetworkSecurityGroup resource.
+ * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
+ * security rules of the network security group.
+ * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * default security rules of network security group.
+ * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
+ * of references to network interfaces.
+ * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * references to subnets.
+ * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * GUID property of the network security group resource.
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * resource.
+ * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * within a route table.
+ * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
+ * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * state of the resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
+ * @member {array} [subnet.ipConfigurations] Gets an array of references to the
+ * network interface IP configurations using subnet.
+ * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
+ * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
+ * to the external resources using subnet.
+ * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
+ * to services injecting into this subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
+ * @member {string} [subnet.provisioningState] The provisioning state of the
+ * resource.
+ * @member {string} [subnet.name] The name of the resource that is unique
+ * within a resource group. This name can be used to access the resource.
+ * @member {string} [subnet.etag] A unique read-only string that changes
+ * whenever the resource is updated.
  * @member {array} [networkInterfaces] Gets an array of references to the
  * network interfaces created for this interface endpoint.
  * @member {string} [owner] A read-only property that identifies who created
@@ -866,8 +923,8 @@ export interface EndpointService {
 export interface InterfaceEndpoint extends Resource {
   fqdn?: string;
   endpointService?: EndpointService;
-  subnet?: SubResource;
-  networkInterfaces?: SubResource[];
+  subnet?: Subnet;
+  readonly networkInterfaces?: NetworkInterface[];
   readonly owner?: string;
   readonly provisioningState?: string;
   etag?: string;
@@ -939,7 +996,73 @@ export interface NetworkInterfaceDnsSettings {
  * of the service being referenced by the interface endpoint.
  * @member {object} [interfaceEndpoint.subnet] The ID of the subnet from which
  * the private IP will be allocated.
- * @member {string} [interfaceEndpoint.subnet.id] Resource ID.
+ * @member {string} [interfaceEndpoint.subnet.addressPrefix] The address prefix
+ * for the subnet.
+ * @member {array} [interfaceEndpoint.subnet.addressPrefixes] List of  address
+ * prefixes for the subnet.
+ * @member {object} [interfaceEndpoint.subnet.networkSecurityGroup] The
+ * reference of the NetworkSecurityGroup resource.
+ * @member {array}
+ * [interfaceEndpoint.subnet.networkSecurityGroup.securityRules] A collection
+ * of security rules of the network security group.
+ * @member {array}
+ * [interfaceEndpoint.subnet.networkSecurityGroup.defaultSecurityRules] The
+ * default security rules of network security group.
+ * @member {array}
+ * [interfaceEndpoint.subnet.networkSecurityGroup.networkInterfaces] A
+ * collection of references to network interfaces.
+ * @member {array} [interfaceEndpoint.subnet.networkSecurityGroup.subnets] A
+ * collection of references to subnets.
+ * @member {string}
+ * [interfaceEndpoint.subnet.networkSecurityGroup.resourceGuid] The resource
+ * GUID property of the network security group resource.
+ * @member {string}
+ * [interfaceEndpoint.subnet.networkSecurityGroup.provisioningState] The
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [interfaceEndpoint.subnet.networkSecurityGroup.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {object} [interfaceEndpoint.subnet.routeTable] The reference of the
+ * RouteTable resource.
+ * @member {array} [interfaceEndpoint.subnet.routeTable.routes] Collection of
+ * routes contained within a route table.
+ * @member {array} [interfaceEndpoint.subnet.routeTable.subnets] A collection
+ * of references to subnets.
+ * @member {boolean}
+ * [interfaceEndpoint.subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
+ * @member {string} [interfaceEndpoint.subnet.routeTable.provisioningState] The
+ * provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [interfaceEndpoint.subnet.routeTable.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {array} [interfaceEndpoint.subnet.serviceEndpoints] An array of
+ * service endpoints.
+ * @member {array} [interfaceEndpoint.subnet.serviceEndpointPolicies] An array
+ * of service endpoint policies.
+ * @member {array} [interfaceEndpoint.subnet.interfaceEndpoints] An array of
+ * references to interface endpoints
+ * @member {array} [interfaceEndpoint.subnet.ipConfigurations] Gets an array of
+ * references to the network interface IP configurations using subnet.
+ * @member {array} [interfaceEndpoint.subnet.ipConfigurationProfiles] Array of
+ * IP configuration profiles which reference this subnet.
+ * @member {array} [interfaceEndpoint.subnet.resourceNavigationLinks] Gets an
+ * array of references to the external resources using subnet.
+ * @member {array} [interfaceEndpoint.subnet.serviceAssociationLinks] Gets an
+ * array of references to services injecting into this subnet.
+ * @member {array} [interfaceEndpoint.subnet.delegations] Gets an array of
+ * references to the delegations on the subnet.
+ * @member {string} [interfaceEndpoint.subnet.purpose] A read-only string
+ * identifying the intention of use for this subnet based on delegations and
+ * other user-defined properties.
+ * @member {string} [interfaceEndpoint.subnet.provisioningState] The
+ * provisioning state of the resource.
+ * @member {string} [interfaceEndpoint.subnet.name] The name of the resource
+ * that is unique within a resource group. This name can be used to access the
+ * resource.
+ * @member {string} [interfaceEndpoint.subnet.etag] A unique read-only string
+ * that changes whenever the resource is updated.
  * @member {array} [interfaceEndpoint.networkInterfaces] Gets an array of
  * references to the network interfaces created for this interface endpoint.
  * @member {string} [interfaceEndpoint.owner] A read-only property that
@@ -980,8 +1103,6 @@ export interface NetworkInterfaceDnsSettings {
  * enabled on this network interface.
  * @member {array} [hostedWorkloads] A list of references to linked BareMetal
  * resources
- * @member {string} [linkedResourceType] The type of resource to be linked to
- * this network interface
  * @member {string} [resourceGuid] The resource GUID property of the network
  * interface resource.
  * @member {string} [provisioningState] The provisioning state of the public IP
@@ -1001,7 +1122,6 @@ export interface NetworkInterface extends Resource {
   enableAcceleratedNetworking?: boolean;
   enableIPForwarding?: boolean;
   readonly hostedWorkloads?: string[];
-  linkedResourceType?: string;
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
@@ -1711,7 +1831,7 @@ export interface Subnet extends SubResource {
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
   serviceEndpointPolicies?: ServiceEndpointPolicy[];
-  interfaceEndpoints?: SubResource[];
+  readonly interfaceEndpoints?: InterfaceEndpoint[];
   readonly ipConfigurations?: IPConfiguration[];
   readonly ipConfigurationProfiles?: IPConfigurationProfile[];
   resourceNavigationLinks?: ResourceNavigationLink[];

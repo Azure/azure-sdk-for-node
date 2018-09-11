@@ -10835,10 +10835,87 @@ export interface InterfaceEndpoints {
      * @param {object} [parameters.subnet] The ID of the subnet from which the
      * private IP will be allocated.
      *
-     * @param {string} [parameters.subnet.id] Resource ID.
+     * @param {string} [parameters.subnet.addressPrefix] The address prefix for the
+     * subnet.
      *
-     * @param {array} [parameters.networkInterfaces] Gets an array of references to
-     * the network interfaces created for this interface endpoint.
+     * @param {array} [parameters.subnet.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup] The reference of
+     * the NetworkSecurityGroup resource.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.securityRules] A
+     * collection of security rules of the network security group.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.resourceGuid] The
+     * resource GUID property of the network security group resource.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.location] Resource
+     * location.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.routeTable] The reference of the
+     * RouteTable resource.
+     *
+     * @param {array} [parameters.subnet.routeTable.routes] Collection of routes
+     * contained within a route table.
+     *
+     * @param {boolean} [parameters.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string} [parameters.subnet.routeTable.provisioningState] The
+     * provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.routeTable.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.routeTable.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.routeTable.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {array} [parameters.subnet.serviceEndpoints] An array of service
+     * endpoints.
+     *
+     * @param {array} [parameters.subnet.serviceEndpointPolicies] An array of
+     * service endpoint policies.
+     *
+     * @param {array} [parameters.subnet.resourceNavigationLinks] Gets an array of
+     * references to the external resources using subnet.
+     *
+     * @param {array} [parameters.subnet.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [parameters.subnet.delegations] Gets an array of references
+     * to the delegations on the subnet.
+     *
+     * @param {string} [parameters.subnet.provisioningState] The provisioning state
+     * of the resource.
+     *
+     * @param {string} [parameters.subnet.name] The name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource.
+     *
+     * @param {string} [parameters.subnet.etag] A unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -10884,10 +10961,87 @@ export interface InterfaceEndpoints {
      * @param {object} [parameters.subnet] The ID of the subnet from which the
      * private IP will be allocated.
      *
-     * @param {string} [parameters.subnet.id] Resource ID.
+     * @param {string} [parameters.subnet.addressPrefix] The address prefix for the
+     * subnet.
      *
-     * @param {array} [parameters.networkInterfaces] Gets an array of references to
-     * the network interfaces created for this interface endpoint.
+     * @param {array} [parameters.subnet.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup] The reference of
+     * the NetworkSecurityGroup resource.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.securityRules] A
+     * collection of security rules of the network security group.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.resourceGuid] The
+     * resource GUID property of the network security group resource.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.location] Resource
+     * location.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.routeTable] The reference of the
+     * RouteTable resource.
+     *
+     * @param {array} [parameters.subnet.routeTable.routes] Collection of routes
+     * contained within a route table.
+     *
+     * @param {boolean} [parameters.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string} [parameters.subnet.routeTable.provisioningState] The
+     * provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.routeTable.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.routeTable.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.routeTable.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {array} [parameters.subnet.serviceEndpoints] An array of service
+     * endpoints.
+     *
+     * @param {array} [parameters.subnet.serviceEndpointPolicies] An array of
+     * service endpoint policies.
+     *
+     * @param {array} [parameters.subnet.resourceNavigationLinks] Gets an array of
+     * references to the external resources using subnet.
+     *
+     * @param {array} [parameters.subnet.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [parameters.subnet.delegations] Gets an array of references
+     * to the delegations on the subnet.
+     *
+     * @param {string} [parameters.subnet.provisioningState] The provisioning state
+     * of the resource.
+     *
+     * @param {string} [parameters.subnet.name] The name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource.
+     *
+     * @param {string} [parameters.subnet.etag] A unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -11118,10 +11272,87 @@ export interface InterfaceEndpoints {
      * @param {object} [parameters.subnet] The ID of the subnet from which the
      * private IP will be allocated.
      *
-     * @param {string} [parameters.subnet.id] Resource ID.
+     * @param {string} [parameters.subnet.addressPrefix] The address prefix for the
+     * subnet.
      *
-     * @param {array} [parameters.networkInterfaces] Gets an array of references to
-     * the network interfaces created for this interface endpoint.
+     * @param {array} [parameters.subnet.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup] The reference of
+     * the NetworkSecurityGroup resource.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.securityRules] A
+     * collection of security rules of the network security group.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.resourceGuid] The
+     * resource GUID property of the network security group resource.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.location] Resource
+     * location.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.routeTable] The reference of the
+     * RouteTable resource.
+     *
+     * @param {array} [parameters.subnet.routeTable.routes] Collection of routes
+     * contained within a route table.
+     *
+     * @param {boolean} [parameters.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string} [parameters.subnet.routeTable.provisioningState] The
+     * provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.routeTable.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.routeTable.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.routeTable.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {array} [parameters.subnet.serviceEndpoints] An array of service
+     * endpoints.
+     *
+     * @param {array} [parameters.subnet.serviceEndpointPolicies] An array of
+     * service endpoint policies.
+     *
+     * @param {array} [parameters.subnet.resourceNavigationLinks] Gets an array of
+     * references to the external resources using subnet.
+     *
+     * @param {array} [parameters.subnet.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [parameters.subnet.delegations] Gets an array of references
+     * to the delegations on the subnet.
+     *
+     * @param {string} [parameters.subnet.provisioningState] The provisioning state
+     * of the resource.
+     *
+     * @param {string} [parameters.subnet.name] The name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource.
+     *
+     * @param {string} [parameters.subnet.etag] A unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -11167,10 +11398,87 @@ export interface InterfaceEndpoints {
      * @param {object} [parameters.subnet] The ID of the subnet from which the
      * private IP will be allocated.
      *
-     * @param {string} [parameters.subnet.id] Resource ID.
+     * @param {string} [parameters.subnet.addressPrefix] The address prefix for the
+     * subnet.
      *
-     * @param {array} [parameters.networkInterfaces] Gets an array of references to
-     * the network interfaces created for this interface endpoint.
+     * @param {array} [parameters.subnet.addressPrefixes] List of  address prefixes
+     * for the subnet.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup] The reference of
+     * the NetworkSecurityGroup resource.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.securityRules] A
+     * collection of security rules of the network security group.
+     *
+     * @param {array} [parameters.subnet.networkSecurityGroup.defaultSecurityRules]
+     * The default security rules of network security group.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.resourceGuid] The
+     * resource GUID property of the network security group resource.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.provisioningState]
+     * The provisioning state of the public IP resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.etag] A unique
+     * read-only string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.networkSecurityGroup.location] Resource
+     * location.
+     *
+     * @param {object} [parameters.subnet.networkSecurityGroup.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.routeTable] The reference of the
+     * RouteTable resource.
+     *
+     * @param {array} [parameters.subnet.routeTable.routes] Collection of routes
+     * contained within a route table.
+     *
+     * @param {boolean} [parameters.subnet.routeTable.disableBgpRoutePropagation]
+     * Gets or sets whether to disable the routes learned by BGP on that route
+     * table. True means disable.
+     *
+     * @param {string} [parameters.subnet.routeTable.provisioningState] The
+     * provisioning state of the resource. Possible values are: 'Updating',
+     * 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.routeTable.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.routeTable.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.routeTable.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {array} [parameters.subnet.serviceEndpoints] An array of service
+     * endpoints.
+     *
+     * @param {array} [parameters.subnet.serviceEndpointPolicies] An array of
+     * service endpoint policies.
+     *
+     * @param {array} [parameters.subnet.resourceNavigationLinks] Gets an array of
+     * references to the external resources using subnet.
+     *
+     * @param {array} [parameters.subnet.serviceAssociationLinks] Gets an array of
+     * references to services injecting into this subnet.
+     *
+     * @param {array} [parameters.subnet.delegations] Gets an array of references
+     * to the delegations on the subnet.
+     *
+     * @param {string} [parameters.subnet.provisioningState] The provisioning state
+     * of the resource.
+     *
+     * @param {string} [parameters.subnet.name] The name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource.
+     *
+     * @param {string} [parameters.subnet.etag] A unique read-only string that
+     * changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.id] Resource ID.
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -13952,9 +14260,6 @@ export interface NetworkInterfaces {
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
      *
-     * @param {string} [parameters.linkedResourceType] The type of resource to be
-     * linked to this network interface
-     *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
      *
@@ -14068,9 +14373,6 @@ export interface NetworkInterfaces {
      *
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
-     *
-     * @param {string} [parameters.linkedResourceType] The type of resource to be
-     * linked to this network interface
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
@@ -14919,9 +15221,6 @@ export interface NetworkInterfaces {
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
      *
-     * @param {string} [parameters.linkedResourceType] The type of resource to be
-     * linked to this network interface
-     *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
      *
@@ -15035,9 +15334,6 @@ export interface NetworkInterfaces {
      *
      * @param {boolean} [parameters.enableIPForwarding] Indicates whether IP
      * forwarding is enabled on this network interface.
-     *
-     * @param {string} [parameters.linkedResourceType] The type of resource to be
-     * linked to this network interface
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * network interface resource.
@@ -16216,10 +16512,6 @@ export interface NetworkInterfaceTapConfigurations {
      * An array of service endpoint policies.
      *
      * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
-     *
-     * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -16602,10 +16894,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
@@ -17134,10 +17422,6 @@ export interface NetworkInterfaceTapConfigurations {
      * An array of service endpoint policies.
      *
      * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
-     *
-     * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -17520,10 +17804,6 @@ export interface NetworkInterfaceTapConfigurations {
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
      *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
@@ -32161,9 +32441,6 @@ export interface Subnets {
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
      *
-     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
-     * to interface endpoints
-     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -32270,9 +32547,6 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
-     *
-     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
-     * to interface endpoints
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -32521,9 +32795,6 @@ export interface Subnets {
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
      *
-     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
-     * to interface endpoints
-     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -32630,9 +32901,6 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
      * service endpoint policies.
-     *
-     * @param {array} [subnetParameters.interfaceEndpoints] An array of references
-     * to interface endpoints
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -33719,10 +33987,6 @@ export interface VirtualNetworkTaps {
      * An array of service endpoint policies.
      *
      * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
-     *
-     * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -34081,10 +34345,6 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
@@ -34701,10 +34961,6 @@ export interface VirtualNetworkTaps {
      * An array of service endpoint policies.
      *
      * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
-     *
-     * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
      * Gets an array of references to the external resources using subnet.
      *
@@ -35063,10 +35319,6 @@ export interface VirtualNetworkTaps {
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpointPolicies]
      * An array of service endpoint policies.
-     *
-     * @param {array}
-     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.interfaceEndpoints]
-     * An array of references to interface endpoints
      *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.resourceNavigationLinks]
