@@ -998,7 +998,7 @@ export interface Workflows {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    validateWorkflowWithHttpOperationResponse(resourceGroupName: string, workflowName: string, validate: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    validateByResourceGroupWithHttpOperationResponse(resourceGroupName: string, workflowName: string, validate: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Validates the workflow.
@@ -1055,9 +1055,9 @@ export interface Workflows {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    validateWorkflow(resourceGroupName: string, workflowName: string, validate: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    validateWorkflow(resourceGroupName: string, workflowName: string, validate: models.Workflow, callback: ServiceCallback<void>): void;
-    validateWorkflow(resourceGroupName: string, workflowName: string, validate: models.Workflow, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    validateByResourceGroup(resourceGroupName: string, workflowName: string, validate: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    validateByResourceGroup(resourceGroupName: string, workflowName: string, validate: models.Workflow, callback: ServiceCallback<void>): void;
+    validateByResourceGroup(resourceGroupName: string, workflowName: string, validate: models.Workflow, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1102,7 +1102,7 @@ export interface Workflows {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    validateWithHttpOperationResponse(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    validateByLocationWithHttpOperationResponse(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Validates the workflow definition.
@@ -1161,9 +1161,9 @@ export interface Workflows {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    validate(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    validate(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, callback: ServiceCallback<void>): void;
-    validate(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    validateByLocation(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    validateByLocation(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, callback: ServiceCallback<void>): void;
+    validateByLocation(resourceGroupName: string, location: string, workflowName: string, workflow: models.Workflow, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1416,88 +1416,6 @@ export interface WorkflowVersions {
     get(resourceGroupName: string, workflowName: string, versionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowVersion>;
     get(resourceGroupName: string, workflowName: string, versionId: string, callback: ServiceCallback<models.WorkflowVersion>): void;
     get(resourceGroupName: string, workflowName: string, versionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowVersion>): void;
-
-
-    /**
-     * Get the callback url for a trigger of a workflow version.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} workflowName The workflow name.
-     *
-     * @param {string} versionId The workflow versionId.
-     *
-     * @param {string} triggerName The workflow trigger name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.parameters] The callback URL parameters.
-     *
-     * @param {date} [options.parameters.notAfter] The expiry time.
-     *
-     * @param {string} [options.parameters.keyType] The key type. Possible values
-     * include: 'NotSpecified', 'Primary', 'Secondary'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options?: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
-
-    /**
-     * Get the callback url for a trigger of a workflow version.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} workflowName The workflow name.
-     *
-     * @param {string} versionId The workflow versionId.
-     *
-     * @param {string} triggerName The workflow trigger name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.parameters] The callback URL parameters.
-     *
-     * @param {date} [options.parameters.notAfter] The expiry time.
-     *
-     * @param {string} [options.parameters.keyType] The key type. Possible values
-     * include: 'NotSpecified', 'Primary', 'Secondary'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkflowTriggerCallbackUrl} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listCallbackUrl(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options?: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
-    listCallbackUrl(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
-    listCallbackUrl(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
 
 
     /**
@@ -2077,6 +1995,97 @@ export interface WorkflowTriggers {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.WorkflowTriggerListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerListResult>): void;
+}
+
+/**
+ * @class
+ * WorkflowVersionTriggers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface WorkflowVersionTriggers {
+
+
+    /**
+     * Get the callback url for a trigger of a workflow version.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} versionId The workflow versionId.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The callback URL parameters.
+     *
+     * @param {date} [options.parameters.notAfter] The expiry time.
+     *
+     * @param {string} [options.parameters.keyType] The key type. Possible values
+     * include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options?: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * Get the callback url for a trigger of a workflow version.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} versionId The workflow versionId.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The callback URL parameters.
+     *
+     * @param {date} [options.parameters.notAfter] The expiry time.
+     *
+     * @param {string} [options.parameters.keyType] The key type. Possible values
+     * include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listCallbackUrl(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options?: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listCallbackUrl(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listCallbackUrl(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
 }
 
 /**
@@ -3122,11 +3131,11 @@ export interface WorkflowRunActionRepetitions {
 
 /**
  * @class
- * WorkflowRunActionScopedRepetitions
+ * WorkflowRunActionScopeRepetitions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface WorkflowRunActionScopedRepetitions {
+export interface WorkflowRunActionScopeRepetitions {
 
 
     /**
@@ -3549,7 +3558,7 @@ export interface IntegrationAccounts {
      * @param {object} [integrationAccount.sku] The sku.
      *
      * @param {string} integrationAccount.sku.name The sku name. Possible values
-     * include: 'NotSpecified', 'Free', 'Standard'
+     * include: 'NotSpecified', 'Free', 'Basic', 'Standard'
      *
      * @param {string} [integrationAccount.location] The resource location.
      *
@@ -3583,7 +3592,7 @@ export interface IntegrationAccounts {
      * @param {object} [integrationAccount.sku] The sku.
      *
      * @param {string} integrationAccount.sku.name The sku name. Possible values
-     * include: 'NotSpecified', 'Free', 'Standard'
+     * include: 'NotSpecified', 'Free', 'Basic', 'Standard'
      *
      * @param {string} [integrationAccount.location] The resource location.
      *
@@ -3636,7 +3645,7 @@ export interface IntegrationAccounts {
      * @param {object} [integrationAccount.sku] The sku.
      *
      * @param {string} integrationAccount.sku.name The sku name. Possible values
-     * include: 'NotSpecified', 'Free', 'Standard'
+     * include: 'NotSpecified', 'Free', 'Basic', 'Standard'
      *
      * @param {string} [integrationAccount.location] The resource location.
      *
@@ -3670,7 +3679,7 @@ export interface IntegrationAccounts {
      * @param {object} [integrationAccount.sku] The sku.
      *
      * @param {string} integrationAccount.sku.name The sku name. Possible values
-     * include: 'NotSpecified', 'Free', 'Standard'
+     * include: 'NotSpecified', 'Free', 'Basic', 'Standard'
      *
      * @param {string} [integrationAccount.location] The resource location.
      *
@@ -3791,7 +3800,7 @@ export interface IntegrationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackUrl>>;
+    listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackUrl>>;
 
     /**
      * Gets the integration account callback URL.
@@ -3834,9 +3843,9 @@ export interface IntegrationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackUrl>;
-    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, callback: ServiceCallback<models.CallbackUrl>): void;
-    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackUrl>): void;
+    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackUrl>;
+    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, callback: ServiceCallback<models.CallbackUrl>): void;
+    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackUrl>): void;
 
 
     /**
@@ -4998,11 +5007,11 @@ export interface IntegrationAccountBatchConfigurations {
 
 /**
  * @class
- * Schemas
+ * IntegrationAccountSchemas
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface Schemas {
+export interface IntegrationAccountSchemas {
 
 
     /**
@@ -5029,7 +5038,7 @@ export interface Schemas {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSchemaListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSchemaListResult>>;
 
     /**
      * Gets a list of integration account schemas.
@@ -5072,9 +5081,9 @@ export interface Schemas {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSchemaListResult>;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSchemaListResult>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
 
 
     /**
@@ -5404,7 +5413,7 @@ export interface Schemas {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSchemaListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSchemaListResult>>;
 
     /**
      * Gets a list of integration account schemas.
@@ -5440,18 +5449,18 @@ export interface Schemas {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSchemaListResult>;
-    listByIntegrationAccountsNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
-    listByIntegrationAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSchemaListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSchemaListResult>): void;
 }
 
 /**
  * @class
- * Maps
+ * IntegrationAccountMaps
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface Maps {
+export interface IntegrationAccountMaps {
 
 
     /**
@@ -5478,7 +5487,7 @@ export interface Maps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountMapListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountMapListResult>>;
 
     /**
      * Gets a list of integration account maps.
@@ -5521,9 +5530,9 @@ export interface Maps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountMapListResult>;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountMapListResult>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
 
 
     /**
@@ -5601,7 +5610,7 @@ export interface Maps {
      * @param {object} map The integration account map.
      *
      * @param {string} map.mapType The map type. Possible values include:
-     * 'NotSpecified', 'Xslt'
+     * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
      *
      * @param {object} [map.parametersSchema] The parameters schema of integration
      * account map.
@@ -5643,7 +5652,7 @@ export interface Maps {
      * @param {object} map The integration account map.
      *
      * @param {string} map.mapType The map type. Possible values include:
-     * 'NotSpecified', 'Xslt'
+     * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
      *
      * @param {object} [map.parametersSchema] The parameters schema of integration
      * account map.
@@ -5849,7 +5858,7 @@ export interface Maps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountMapListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountMapListResult>>;
 
     /**
      * Gets a list of integration account maps.
@@ -5885,18 +5894,18 @@ export interface Maps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountMapListResult>;
-    listByIntegrationAccountsNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
-    listByIntegrationAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountMapListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountMapListResult>): void;
 }
 
 /**
  * @class
- * Partners
+ * IntegrationAccountPartners
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface Partners {
+export interface IntegrationAccountPartners {
 
 
     /**
@@ -5923,7 +5932,7 @@ export interface Partners {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountPartnerListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountPartnerListResult>>;
 
     /**
      * Gets a list of integration account partners.
@@ -5966,9 +5975,9 @@ export interface Partners {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountPartnerListResult>;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountPartnerListResult>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
 
 
     /**
@@ -6292,7 +6301,7 @@ export interface Partners {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountPartnerListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountPartnerListResult>>;
 
     /**
      * Gets a list of integration account partners.
@@ -6328,18 +6337,18 @@ export interface Partners {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountPartnerListResult>;
-    listByIntegrationAccountsNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
-    listByIntegrationAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountPartnerListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountPartnerListResult>): void;
 }
 
 /**
  * @class
- * Agreements
+ * IntegrationAccountAgreements
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface Agreements {
+export interface IntegrationAccountAgreements {
 
 
     /**
@@ -6366,7 +6375,7 @@ export interface Agreements {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountAgreementListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountAgreementListResult>>;
 
     /**
      * Gets a list of integration account agreements.
@@ -6409,9 +6418,9 @@ export interface Agreements {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountAgreementListResult>;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountAgreementListResult>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
 
 
     /**
@@ -8695,7 +8704,7 @@ export interface Agreements {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountAgreementListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountAgreementListResult>>;
 
     /**
      * Gets a list of integration account agreements.
@@ -8731,18 +8740,18 @@ export interface Agreements {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountAgreementListResult>;
-    listByIntegrationAccountsNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
-    listByIntegrationAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountAgreementListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountAgreementListResult>): void;
 }
 
 /**
  * @class
- * Certificates
+ * IntegrationAccountCertificates
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface Certificates {
+export interface IntegrationAccountCertificates {
 
 
     /**
@@ -8766,7 +8775,7 @@ export interface Certificates {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountCertificateListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountCertificateListResult>>;
 
     /**
      * Gets a list of integration account certificates.
@@ -8806,9 +8815,9 @@ export interface Certificates {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountCertificateListResult>;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountCertificateListResult>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
 
 
     /**
@@ -9060,7 +9069,7 @@ export interface Certificates {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountCertificateListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountCertificateListResult>>;
 
     /**
      * Gets a list of integration account certificates.
@@ -9096,18 +9105,18 @@ export interface Certificates {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountCertificateListResult>;
-    listByIntegrationAccountsNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
-    listByIntegrationAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountCertificateListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountCertificateListResult>): void;
 }
 
 /**
  * @class
- * Sessions
+ * IntegrationAccountSessions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the LogicManagementClient.
  */
-export interface Sessions {
+export interface IntegrationAccountSessions {
 
 
     /**
@@ -9134,7 +9143,7 @@ export interface Sessions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSessionListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSessionListResult>>;
 
     /**
      * Gets a list of integration account sessions.
@@ -9177,9 +9186,9 @@ export interface Sessions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSessionListResult>;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
-    listByIntegrationAccounts(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSessionListResult>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
 
 
     /**
@@ -9405,7 +9414,7 @@ export interface Sessions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByIntegrationAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSessionListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccountSessionListResult>>;
 
     /**
      * Gets a list of integration account sessions.
@@ -9441,7 +9450,124 @@ export interface Sessions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByIntegrationAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSessionListResult>;
-    listByIntegrationAccountsNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
-    listByIntegrationAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountSessionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountSessionListResult>): void;
+}
+
+/**
+ * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Logic REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Logic REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available Logic REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Logic REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }

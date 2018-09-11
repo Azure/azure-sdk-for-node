@@ -217,6 +217,11 @@ export interface StorageSyncServices {
      *
      * @param {object} parameters Storage Sync Service resource name.
      *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -240,6 +245,11 @@ export interface StorageSyncServices {
      * resource.
      *
      * @param {object} parameters Storage Sync Service resource name.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *

@@ -732,7 +732,8 @@ export interface ManagedClusterAADProfile {
  * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
  * cluster.
  * @member {string} [fqdn] FDQN for the master pool.
- * @member {array} [agentPoolProfiles] Properties of the agent pool.
+ * @member {array} [agentPoolProfiles] Properties of the agent pool. Currently
+ * only one agent pool can exist.
  * @member {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.
  * @member {string} [linuxProfile.adminUsername] The administrator username to
@@ -878,11 +879,11 @@ export interface ManagedClusterUpgradeProfile {
  * The credential result response.
  *
  * @member {string} [name] The name of the credential.
- * @member {string} [value] The value of the credential.
+ * @member {buffer} [value] Base64-encoded Kubernetes configuration file.
  */
 export interface CredentialResult {
   readonly name?: string;
-  readonly value?: string;
+  readonly value?: Buffer;
 }
 
 /**
@@ -891,10 +892,10 @@ export interface CredentialResult {
  * @constructor
  * The list of credential result response.
  *
- * @member {array} [values]
+ * @member {array} [kubeconfigs]
  */
 export interface CredentialResults {
-  readonly values?: CredentialResult[];
+  readonly kubeconfigs?: CredentialResult[];
 }
 
 /**
