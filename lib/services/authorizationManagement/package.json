@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/authorizationManagementClient.js",
   "types": "./lib/authorizationManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/authorizationManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
