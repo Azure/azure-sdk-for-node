@@ -141,8 +141,7 @@ export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate
  * @constructor
  * The properties to create a new replica.
  *
- * @member {string} sourceServerId The primary server id to create replica
- * from.
+ * @member {string} sourceServerId The master server id to create replica from.
  */
 export interface ServerPropertiesForReplica extends ServerPropertiesForCreate {
   sourceServerId: string;
@@ -209,9 +208,9 @@ export interface Sku {
  * @member {number} [storageProfile.storageMB] Max storage allowed for a
  * server.
  * @member {string} [replicationRole] The replication role of the server.
- * @member {string} [primaryServerId] The primary server id of a relica server.
+ * @member {string} [masterServerId] The master server id of a relica server.
  * @member {number} [replicaCapacity] The maximum number of replicas that a
- * primary server can have.
+ * master server can have.
  */
 export interface Server extends TrackedResource {
   sku?: Sku;
@@ -223,7 +222,7 @@ export interface Server extends TrackedResource {
   earliestRestoreDate?: Date;
   storageProfile?: StorageProfile;
   replicationRole?: string;
-  primaryServerId?: string;
+  masterServerId?: string;
   replicaCapacity?: number;
 }
 
@@ -532,6 +531,39 @@ export interface NameAvailability {
   message?: string;
   nameAvailable?: boolean;
   reason?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerSecurityAlertPolicy class.
+ * @constructor
+ * A server security alert policy.
+ *
+ * @member {string} state Specifies the state of the policy, whether it is
+ * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {array} [disabledAlerts] Specifies an array of alerts that are
+ * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
+ * Access_Anomaly
+ * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * which the alert is sent.
+ * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators.
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). This blob storage will hold all
+ * Threat Detection audit logs.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * Threat Detection audit logs.
+ */
+export interface ServerSecurityAlertPolicy extends ProxyResource {
+  state: string;
+  disabledAlerts?: string[];
+  emailAddresses?: string[];
+  emailAccountAdmins?: boolean;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
 }
 
 
