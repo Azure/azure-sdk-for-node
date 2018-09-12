@@ -2,7 +2,7 @@
   "name": "azure-arm-databox",
   "author": "Microsoft Corporation",
   "description": "DataBoxManagementClient Library with typescript type definitions for node",
-  "version": "1.0.0-preview",
+  "version": "",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/dataBoxManagementClient.js",
   "types": "./lib/dataBoxManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/databox",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
