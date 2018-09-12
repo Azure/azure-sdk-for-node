@@ -573,9 +573,9 @@ export interface Identity {
  * @member {boolean} [enableAzureFilesAadIntegration] Enables Azure Files AAD
  * Integration for SMB if sets to true.
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
- * storage service if sets to true. Default value: false .
+ * storage service if sets to true.
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
- * sets to true. Default value: false .
+ * sets to true.
  */
 export interface StorageAccountCreateParameters {
   sku: Sku;
@@ -776,9 +776,9 @@ export interface TrackedResource extends Resource {
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
  * @member {boolean} [enableAzureFilesAadIntegration] Enables Azure Files AAD
- * Integration for SMB if sets to true. Default value: false .
+ * Integration for SMB if sets to true.
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
- * storage service if sets to true. Default value: false .
+ * storage service if sets to true.
  * @member {object} [networkRuleSet] Network rule set
  * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
  * bypassed for Logging/Metrics/AzureServices. Possible values are any
@@ -792,7 +792,7 @@ export interface TrackedResource extends Resource {
  * of allow or deny when no other rules match. Possible values include:
  * 'Allow', 'Deny'
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
- * sets to true. Default value: false .
+ * sets to true.
  */
 export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
@@ -959,7 +959,7 @@ export interface StorageAccountRegenerateKeyParameters {
  * @member {boolean} [enableAzureFilesAadIntegration] Enables Azure Files AAD
  * Integration for SMB if sets to true.
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
- * storage service if sets to true. Default value: false .
+ * storage service if sets to true.
  * @member {object} [networkRuleSet] Network rule set
  * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
  * bypassed for Logging/Metrics/AzureServices. Possible values are any

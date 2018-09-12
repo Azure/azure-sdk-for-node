@@ -1749,11 +1749,11 @@ export interface StorageAccounts {
 
 /**
  * @class
- * UsageOperations
+ * Usages
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the StorageManagementClient.
  */
-export interface UsageOperations {
+export interface Usages {
 
 
     /**
@@ -1807,6 +1807,15 @@ export interface UsageOperations {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageListResult>;
     list(callback: ServiceCallback<models.UsageListResult>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageListResult>): void;
+}
+
+/**
+ * @class
+ * UsageOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageManagementClient.
+ */
+export interface UsageOperations {
 
 
     /**
