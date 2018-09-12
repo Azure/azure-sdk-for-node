@@ -325,14 +325,6 @@ export interface AddOwnerParameters {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationAddOwnerParameters class.
- * @constructor
- */
-export interface ApplicationAddOwnerParameters extends AddOwnerParameters {
-}
-
-/**
- * @class
  * Initializes a new instance of the KeyCredentialsUpdateParameters class.
  * @constructor
  * Request parameters for a KeyCredentials update operation
@@ -353,63 +345,6 @@ export interface KeyCredentialsUpdateParameters {
  */
 export interface PasswordCredentialsUpdateParameters {
   value: PasswordCredential[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AADObject class.
- * @constructor
- * The properties of an Active Directory object.
- *
- * @member {string} [objectId] The ID of the object.
- * @member {string} [objectType] The type of AAD object.
- * @member {string} [displayName] The display name of the object.
- * @member {string} [userPrincipalName] The principal name of the object.
- * @member {string} [mail] The primary email address of the object.
- * @member {boolean} [mailEnabled] Whether the AAD object is mail-enabled.
- * @member {string} [mailNickname] The mail alias for the user.
- * @member {boolean} [securityEnabled] Whether the AAD object is
- * security-enabled.
- * @member {string} [signInName] The sign-in name of the object.
- * @member {array} [servicePrincipalNames] A collection of service principal
- * names associated with the object.
- * @member {string} [userType] The user type of the object.
- * @member {string} [usageLocation] A two letter country code (ISO standard
- * 3166). Required for users that will be assigned licenses due to legal
- * requirement to check for availability of services in countries. Examples
- * include: "US", "JP", and "GB".
- * @member {string} [appId] The application ID.
- * @member {array} [appPermissions] The application permissions.
- * @member {boolean} [availableToOtherTenants] Whether the application is be
- * available to other tenants.
- * @member {array} [identifierUris] A collection of URIs for the application.
- * @member {array} [replyUrls] A collection of reply URLs for the application.
- * @member {string} [homepage] The home page of the application.
- */
-export interface AADObject {
-  objectId?: string;
-  objectType?: string;
-  displayName?: string;
-  userPrincipalName?: string;
-  mail?: string;
-  mailEnabled?: boolean;
-  readonly mailNickname?: string;
-  securityEnabled?: boolean;
-  signInName?: string;
-  servicePrincipalNames?: string[];
-  userType?: string;
-  readonly usageLocation?: string;
-  readonly appId?: string;
-  readonly appPermissions?: string[];
-  readonly availableToOtherTenants?: boolean;
-  readonly identifierUris?: string[];
-  readonly replyUrls?: string[];
-  readonly homepage?: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
 }
 
 /**
@@ -841,13 +776,13 @@ export interface UserGetMemberGroupsParameters {
  *
  * @member {array} [objectIds] The requested object IDs.
  * @member {array} [types] The requested object types.
- * @member {boolean} includeDirectoryObjectReferences If true, also searches
+ * @member {boolean} [includeDirectoryObjectReferences] If true, also searches
  * for object IDs in the partner tenant.
  */
 export interface GetObjectsParameters {
   objectIds?: string[];
   types?: string[];
-  includeDirectoryObjectReferences: boolean;
+  includeDirectoryObjectReferences?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -960,18 +895,6 @@ export interface PasswordCredentialListResult extends Array<PasswordCredential> 
  * @member {string} [odatanextLink] The URL to get the next set of results.
  */
 export interface GroupListResult extends Array<ADGroup> {
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GetObjectsResult class.
- * @constructor
- * The response to an Active Directory object inquiry API request.
- *
- * @member {string} [odatanextLink] The URL to get the next set of results.
- */
-export interface GetObjectsResult extends Array<AADObject> {
   odatanextLink?: string;
 }
 

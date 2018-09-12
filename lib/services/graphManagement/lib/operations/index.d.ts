@@ -682,7 +682,7 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addOwnerWithHttpOperationResponse(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    addOwnerWithHttpOperationResponse(applicationObjectId: string, parameters: models.AddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Add an owner to an application.
@@ -725,9 +725,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addOwner(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    addOwner(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, callback: ServiceCallback<void>): void;
-    addOwner(applicationObjectId: string, parameters: models.ApplicationAddOwnerParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addOwner(applicationObjectId: string, parameters: models.AddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    addOwner(applicationObjectId: string, parameters: models.AddOwnerParameters, callback: ServiceCallback<void>): void;
+    addOwner(applicationObjectId: string, parameters: models.AddOwnerParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1647,11 +1647,11 @@ export interface Groups {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<GetObjectsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getGroupMembersWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetObjectsResult>>;
+    getGroupMembersWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
 
     /**
      * Gets the members of a group.
@@ -1671,7 +1671,7 @@ export interface Groups {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {GetObjectsResult} - The deserialized result object.
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1679,16 +1679,17 @@ export interface Groups {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {GetObjectsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GetObjectsResult} for more information.
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getGroupMembers(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetObjectsResult>;
-    getGroupMembers(objectId: string, callback: ServiceCallback<models.GetObjectsResult>): void;
-    getGroupMembers(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
+    getGroupMembers(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    getGroupMembers(objectId: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    getGroupMembers(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 
 
     /**
@@ -2077,11 +2078,11 @@ export interface Groups {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<GetObjectsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getGroupMembersNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetObjectsResult>>;
+    getGroupMembersNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
 
     /**
      * Gets the members of a group.
@@ -2100,7 +2101,7 @@ export interface Groups {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {GetObjectsResult} - The deserialized result object.
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2108,16 +2109,17 @@ export interface Groups {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {GetObjectsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GetObjectsResult} for more information.
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getGroupMembersNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetObjectsResult>;
-    getGroupMembersNext(nextLink: string, callback: ServiceCallback<models.GetObjectsResult>): void;
-    getGroupMembersNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
+    getGroupMembersNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    getGroupMembersNext(nextLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    getGroupMembersNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 
 
     /**
@@ -3608,7 +3610,9 @@ export interface Objects {
 
 
     /**
-     * Gets AD group membership for the specified AD object IDs.
+     * Gets the directory objects specified in a list of object IDs. You can also
+     * specify which resource collections (users, groups, etc.) should be searched
+     * by specifying the optional types parameter.
      *
      * @param {object} parameters Objects filtering parameters.
      *
@@ -3616,7 +3620,7 @@ export interface Objects {
      *
      * @param {array} [parameters.types] The requested object types.
      *
-     * @param {boolean} parameters.includeDirectoryObjectReferences If true, also
+     * @param {boolean} [parameters.includeDirectoryObjectReferences] If true, also
      * searches for object IDs in the partner tenant.
      *
      * @param {object} [options] Optional Parameters.
@@ -3626,14 +3630,16 @@ export interface Objects {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<GetObjectsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getObjectsByObjectIdsWithHttpOperationResponse(parameters: models.GetObjectsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetObjectsResult>>;
+    getObjectsByObjectIdsWithHttpOperationResponse(parameters: models.GetObjectsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
 
     /**
-     * Gets AD group membership for the specified AD object IDs.
+     * Gets the directory objects specified in a list of object IDs. You can also
+     * specify which resource collections (users, groups, etc.) should be searched
+     * by specifying the optional types parameter.
      *
      * @param {object} parameters Objects filtering parameters.
      *
@@ -3641,7 +3647,7 @@ export interface Objects {
      *
      * @param {array} [parameters.types] The requested object types.
      *
-     * @param {boolean} parameters.includeDirectoryObjectReferences If true, also
+     * @param {boolean} [parameters.includeDirectoryObjectReferences] If true, also
      * searches for object IDs in the partner tenant.
      *
      * @param {object} [options] Optional Parameters.
@@ -3656,7 +3662,7 @@ export interface Objects {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {GetObjectsResult} - The deserialized result object.
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3664,67 +3670,17 @@ export interface Objects {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {GetObjectsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GetObjectsResult} for more information.
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getObjectsByObjectIds(parameters: models.GetObjectsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetObjectsResult>;
-    getObjectsByObjectIds(parameters: models.GetObjectsParameters, callback: ServiceCallback<models.GetObjectsResult>): void;
-    getObjectsByObjectIds(parameters: models.GetObjectsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
-
-
-    /**
-     * Gets the details for the currently logged-in user.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AADObject>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getCurrentUserWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AADObject>>;
-
-    /**
-     * Gets the details for the currently logged-in user.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AADObject} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AADObject} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AADObject} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getCurrentUser(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AADObject>;
-    getCurrentUser(callback: ServiceCallback<models.AADObject>): void;
-    getCurrentUser(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AADObject>): void;
+    getObjectsByObjectIds(parameters: models.GetObjectsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    getObjectsByObjectIds(parameters: models.GetObjectsParameters, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    getObjectsByObjectIds(parameters: models.GetObjectsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 
 
     /**
@@ -3739,11 +3695,11 @@ export interface Objects {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<GetObjectsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DirectoryObjectListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getObjectsByObjectIdsNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetObjectsResult>>;
+    getObjectsByObjectIdsNextWithHttpOperationResponse(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DirectoryObjectListResult>>;
 
     /**
      * Gets AD group membership for the specified AD object IDs.
@@ -3762,7 +3718,7 @@ export interface Objects {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {GetObjectsResult} - The deserialized result object.
+     *                      @resolve {DirectoryObjectListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3770,16 +3726,17 @@ export interface Objects {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {GetObjectsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GetObjectsResult} for more information.
+     *                      {DirectoryObjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DirectoryObjectListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getObjectsByObjectIdsNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetObjectsResult>;
-    getObjectsByObjectIdsNext(nextLink: string, callback: ServiceCallback<models.GetObjectsResult>): void;
-    getObjectsByObjectIdsNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
+    getObjectsByObjectIdsNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DirectoryObjectListResult>;
+    getObjectsByObjectIdsNext(nextLink: string, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
+    getObjectsByObjectIdsNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DirectoryObjectListResult>): void;
 }
 
 /**
