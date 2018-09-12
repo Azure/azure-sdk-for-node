@@ -474,12 +474,15 @@ export interface Port {
  * IP address for the container group.
  *
  * @member {array} ports The list of ports exposed on the container group.
+ * @member {string} type Specifies if the IP is exposed to the public internet.
+ * Possible values include: 'Public', 'Private'
  * @member {string} [ip] The IP exposed to the public internet.
  * @member {string} [dnsNameLabel] The Dns name label for the IP.
  * @member {string} [fqdn] The FQDN for the IP.
  */
 export interface IpAddress {
   ports: Port[];
+  type: string;
   ip?: string;
   dnsNameLabel?: string;
   readonly fqdn?: string;
@@ -590,6 +593,8 @@ export interface Resource extends BaseResource {
  * @member {object} [ipAddress] The IP address type of the container group.
  * @member {array} [ipAddress.ports] The list of ports exposed on the container
  * group.
+ * @member {string} [ipAddress.type] Specifies if the IP is exposed to the
+ * public internet. Possible values include: 'Public', 'Private'
  * @member {string} [ipAddress.ip] The IP exposed to the public internet.
  * @member {string} [ipAddress.dnsNameLabel] The Dns name label for the IP.
  * @member {string} [ipAddress.fqdn] The FQDN for the IP.
