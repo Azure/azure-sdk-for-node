@@ -337,48 +337,6 @@ export interface Jobs {
      *
      * @param {object} jobResource Job details from request body.
      *
-     * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
-     *
-     * @param {boolean} [jobResource.isCancellable] Describes whether the job is
-     * cancellable or not.
-     *
-     * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
-     * the shipping address is editable or not.
-     *
-     * @param {string} [jobResource.status] Name of the stage which is in progress.
-     * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
-     * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
-     * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
-     *
-     * @param {date} [jobResource.startTime] Time at which the job was started in
-     * UTC ISO 8601 format.
-     *
-     * @param {object} [jobResource.error] Top level error for the job.
-     *
-     * @param {string} jobResource.error.code Error code that can be used to
-     * programmatically identify the error.
-     *
-     * @param {string} [jobResource.error.message] Describes the error in detail
-     * and provides debugging information.
-     *
-     * @param {object} [jobResource.deliveryPackage] Delivery package shipping
-     * details.
-     *
-     * @param {object} [jobResource.returnPackage] Return package shipping details.
-     *
-     * @param {string} [jobResource.returnPackage.carrierName] Name of the carrier.
-     *
-     * @param {string} [jobResource.returnPackage.trackingId] Tracking Id of
-     * shipment.
-     *
-     * @param {string} [jobResource.returnPackage.trackingUrl] Url where shipment
-     * can be tracked.
-     *
-     * @param {array} jobResource.destinationAccountDetails Destination account
-     * details.
-     *
      * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
@@ -386,14 +344,11 @@ export interface Jobs {
      * expected size of the data, which needs to be transfered in this job, in tera
      * bytes.
      *
-     * @param {array} [jobResource.details.jobStages] List of stages that run in
-     * the job.
-     *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
      *
-     * @param {string} [jobResource.details.contactDetails.contactName] Contact
-     * name of the person.
+     * @param {string} jobResource.details.contactDetails.contactName Contact name
+     * of the person.
      *
      * @param {string} jobResource.details.contactDetails.phone Phone number of the
      * contact person.
@@ -441,8 +396,12 @@ export interface Jobs {
      * @param {string} [jobResource.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {array} [jobResource.details.errorDetails] Error details for failure.
-     * This is optional.
+     * @param {array} jobResource.details.destinationAccountDetails Destination
+     * account details.
+     *
+     * @param {object} [jobResource.details.preferences] Preferences for the order.
+     *
+     * @param {array} [jobResource.details.preferences.preferredDataCenterRegion]
      *
      * @param {string} jobResource.details.jobDetailsType Polymorphic Discriminator
      *
@@ -460,7 +419,8 @@ export interface Jobs {
      *
      * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} jobResource.sku.name The sku name.
+     * @param {string} jobResource.sku.name The sku name. Possible values include:
+     * 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -491,48 +451,6 @@ export interface Jobs {
      *
      * @param {object} jobResource Job details from request body.
      *
-     * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
-     *
-     * @param {boolean} [jobResource.isCancellable] Describes whether the job is
-     * cancellable or not.
-     *
-     * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
-     * the shipping address is editable or not.
-     *
-     * @param {string} [jobResource.status] Name of the stage which is in progress.
-     * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
-     * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
-     * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
-     *
-     * @param {date} [jobResource.startTime] Time at which the job was started in
-     * UTC ISO 8601 format.
-     *
-     * @param {object} [jobResource.error] Top level error for the job.
-     *
-     * @param {string} jobResource.error.code Error code that can be used to
-     * programmatically identify the error.
-     *
-     * @param {string} [jobResource.error.message] Describes the error in detail
-     * and provides debugging information.
-     *
-     * @param {object} [jobResource.deliveryPackage] Delivery package shipping
-     * details.
-     *
-     * @param {object} [jobResource.returnPackage] Return package shipping details.
-     *
-     * @param {string} [jobResource.returnPackage.carrierName] Name of the carrier.
-     *
-     * @param {string} [jobResource.returnPackage.trackingId] Tracking Id of
-     * shipment.
-     *
-     * @param {string} [jobResource.returnPackage.trackingUrl] Url where shipment
-     * can be tracked.
-     *
-     * @param {array} jobResource.destinationAccountDetails Destination account
-     * details.
-     *
      * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
@@ -540,14 +458,11 @@ export interface Jobs {
      * expected size of the data, which needs to be transfered in this job, in tera
      * bytes.
      *
-     * @param {array} [jobResource.details.jobStages] List of stages that run in
-     * the job.
-     *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
      *
-     * @param {string} [jobResource.details.contactDetails.contactName] Contact
-     * name of the person.
+     * @param {string} jobResource.details.contactDetails.contactName Contact name
+     * of the person.
      *
      * @param {string} jobResource.details.contactDetails.phone Phone number of the
      * contact person.
@@ -595,8 +510,12 @@ export interface Jobs {
      * @param {string} [jobResource.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {array} [jobResource.details.errorDetails] Error details for failure.
-     * This is optional.
+     * @param {array} jobResource.details.destinationAccountDetails Destination
+     * account details.
+     *
+     * @param {object} [jobResource.details.preferences] Preferences for the order.
+     *
+     * @param {array} [jobResource.details.preferences.preferredDataCenterRegion]
      *
      * @param {string} jobResource.details.jobDetailsType Polymorphic Discriminator
      *
@@ -614,7 +533,8 @@ export interface Jobs {
      *
      * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} jobResource.sku.name The sku name.
+     * @param {string} jobResource.sku.name The sku name. Possible values include:
+     * 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -726,14 +646,14 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
      * details for notification and shipping.
      *
      * @param {string}
-     * [jobResourceUpdateParameter.details.contactDetails.contactName] Contact name
+     * jobResourceUpdateParameter.details.contactDetails.contactName Contact name
      * of the person.
      *
      * @param {string} jobResourceUpdateParameter.details.contactDetails.phone
@@ -792,6 +712,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -826,14 +749,14 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
      * details for notification and shipping.
      *
      * @param {string}
-     * [jobResourceUpdateParameter.details.contactDetails.contactName] Contact name
+     * jobResourceUpdateParameter.details.contactDetails.contactName Contact name
      * of the person.
      *
      * @param {string} jobResourceUpdateParameter.details.contactDetails.phone
@@ -892,6 +815,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -944,14 +870,14 @@ export interface Jobs {
      *
      * @param {object} shipmentPickUpRequest Details of shipment pick up request.
      *
-     * @param {date} [shipmentPickUpRequest.startTime] Minimum date after which the
+     * @param {date} shipmentPickUpRequest.startTime Minimum date after which the
      * pick up should commence, this must be in local time of pick up area.
      *
-     * @param {date} [shipmentPickUpRequest.endTime] Maximum date before which the
+     * @param {date} shipmentPickUpRequest.endTime Maximum date before which the
      * pick up should commence, this must be in local time of pick up area.
      *
-     * @param {string} [shipmentPickUpRequest.shipmentLocation] Shipment Location
-     * in the pickup place. Eg.front desk
+     * @param {string} shipmentPickUpRequest.shipmentLocation Shipment Location in
+     * the pickup place. Eg.front desk
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -977,14 +903,14 @@ export interface Jobs {
      *
      * @param {object} shipmentPickUpRequest Details of shipment pick up request.
      *
-     * @param {date} [shipmentPickUpRequest.startTime] Minimum date after which the
+     * @param {date} shipmentPickUpRequest.startTime Minimum date after which the
      * pick up should commence, this must be in local time of pick up area.
      *
-     * @param {date} [shipmentPickUpRequest.endTime] Maximum date before which the
+     * @param {date} shipmentPickUpRequest.endTime Maximum date before which the
      * pick up should commence, this must be in local time of pick up area.
      *
-     * @param {string} [shipmentPickUpRequest.shipmentLocation] Shipment Location
-     * in the pickup place. Eg.front desk
+     * @param {string} shipmentPickUpRequest.shipmentLocation Shipment Location in
+     * the pickup place. Eg.front desk
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1090,132 +1016,6 @@ export interface Jobs {
 
 
     /**
-     * Provides list of copy logs uri.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GetCopyLogsUriOutput>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getCopyLogsUriWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetCopyLogsUriOutput>>;
-
-    /**
-     * Provides list of copy logs uri.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GetCopyLogsUriOutput} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GetCopyLogsUriOutput} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GetCopyLogsUriOutput} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getCopyLogsUri(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetCopyLogsUriOutput>;
-    getCopyLogsUri(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.GetCopyLogsUriOutput>): void;
-    getCopyLogsUri(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetCopyLogsUriOutput>): void;
-
-
-    /**
-     * Get shipping label sas uri.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ShippingLabelDetails>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    downloadShippingLabelUriWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShippingLabelDetails>>;
-
-    /**
-     * Get shipping label sas uri.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ShippingLabelDetails} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ShippingLabelDetails} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShippingLabelDetails} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    downloadShippingLabelUri(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShippingLabelDetails>;
-    downloadShippingLabelUri(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.ShippingLabelDetails>): void;
-    downloadShippingLabelUri(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShippingLabelDetails>): void;
-
-
-    /**
      * This method gets the unencrypted secrets related to the job.
      *
      * @param {string} resourceGroupName The Resource Group Name
@@ -1279,90 +1079,6 @@ export interface Jobs {
 
 
     /**
-     * Reports an issue.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} reportIssueDetails Details of reported issue.
-     *
-     * @param {string} [reportIssueDetails.issueType] Issue Type. Possible values
-     * include: 'DeviceMismatch', 'ValidationStringMismatch',
-     * 'CredentialNotWorking', 'DeviceFailure'
-     *
-     * @param {string} [reportIssueDetails.deviceIssueType] Device Issue Type. Only
-     * used for Device failure issue. Possible values include: 'DeviceTampering',
-     * 'DeviceNotBootingUp', 'DeviceHealthCheckShowFailures', 'NICsAreNotWorking',
-     * 'Misc'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    reportIssueWithHttpOperationResponse(resourceGroupName: string, jobName: string, reportIssueDetails: models.ReportIssueDetails, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Reports an issue.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} reportIssueDetails Details of reported issue.
-     *
-     * @param {string} [reportIssueDetails.issueType] Issue Type. Possible values
-     * include: 'DeviceMismatch', 'ValidationStringMismatch',
-     * 'CredentialNotWorking', 'DeviceFailure'
-     *
-     * @param {string} [reportIssueDetails.deviceIssueType] Device Issue Type. Only
-     * used for Device failure issue. Possible values include: 'DeviceTampering',
-     * 'DeviceNotBootingUp', 'DeviceHealthCheckShowFailures', 'NICsAreNotWorking',
-     * 'Misc'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    reportIssue(resourceGroupName: string, jobName: string, reportIssueDetails: models.ReportIssueDetails, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    reportIssue(resourceGroupName: string, jobName: string, reportIssueDetails: models.ReportIssueDetails, callback: ServiceCallback<void>): void;
-    reportIssue(resourceGroupName: string, jobName: string, reportIssueDetails: models.ReportIssueDetails, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * Creates a new job with the specified parameters. Existing job cannot be
      * updated with this API and should instead be updated with the Update job API.
      *
@@ -1374,48 +1090,6 @@ export interface Jobs {
      *
      * @param {object} jobResource Job details from request body.
      *
-     * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
-     *
-     * @param {boolean} [jobResource.isCancellable] Describes whether the job is
-     * cancellable or not.
-     *
-     * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
-     * the shipping address is editable or not.
-     *
-     * @param {string} [jobResource.status] Name of the stage which is in progress.
-     * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
-     * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
-     * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
-     *
-     * @param {date} [jobResource.startTime] Time at which the job was started in
-     * UTC ISO 8601 format.
-     *
-     * @param {object} [jobResource.error] Top level error for the job.
-     *
-     * @param {string} jobResource.error.code Error code that can be used to
-     * programmatically identify the error.
-     *
-     * @param {string} [jobResource.error.message] Describes the error in detail
-     * and provides debugging information.
-     *
-     * @param {object} [jobResource.deliveryPackage] Delivery package shipping
-     * details.
-     *
-     * @param {object} [jobResource.returnPackage] Return package shipping details.
-     *
-     * @param {string} [jobResource.returnPackage.carrierName] Name of the carrier.
-     *
-     * @param {string} [jobResource.returnPackage.trackingId] Tracking Id of
-     * shipment.
-     *
-     * @param {string} [jobResource.returnPackage.trackingUrl] Url where shipment
-     * can be tracked.
-     *
-     * @param {array} jobResource.destinationAccountDetails Destination account
-     * details.
-     *
      * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
@@ -1423,14 +1097,11 @@ export interface Jobs {
      * expected size of the data, which needs to be transfered in this job, in tera
      * bytes.
      *
-     * @param {array} [jobResource.details.jobStages] List of stages that run in
-     * the job.
-     *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
      *
-     * @param {string} [jobResource.details.contactDetails.contactName] Contact
-     * name of the person.
+     * @param {string} jobResource.details.contactDetails.contactName Contact name
+     * of the person.
      *
      * @param {string} jobResource.details.contactDetails.phone Phone number of the
      * contact person.
@@ -1478,8 +1149,12 @@ export interface Jobs {
      * @param {string} [jobResource.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {array} [jobResource.details.errorDetails] Error details for failure.
-     * This is optional.
+     * @param {array} jobResource.details.destinationAccountDetails Destination
+     * account details.
+     *
+     * @param {object} [jobResource.details.preferences] Preferences for the order.
+     *
+     * @param {array} [jobResource.details.preferences.preferredDataCenterRegion]
      *
      * @param {string} jobResource.details.jobDetailsType Polymorphic Discriminator
      *
@@ -1497,7 +1172,8 @@ export interface Jobs {
      *
      * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} jobResource.sku.name The sku name.
+     * @param {string} jobResource.sku.name The sku name. Possible values include:
+     * 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -1528,48 +1204,6 @@ export interface Jobs {
      *
      * @param {object} jobResource Job details from request body.
      *
-     * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
-     *
-     * @param {boolean} [jobResource.isCancellable] Describes whether the job is
-     * cancellable or not.
-     *
-     * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
-     * the shipping address is editable or not.
-     *
-     * @param {string} [jobResource.status] Name of the stage which is in progress.
-     * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
-     * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
-     * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
-     *
-     * @param {date} [jobResource.startTime] Time at which the job was started in
-     * UTC ISO 8601 format.
-     *
-     * @param {object} [jobResource.error] Top level error for the job.
-     *
-     * @param {string} jobResource.error.code Error code that can be used to
-     * programmatically identify the error.
-     *
-     * @param {string} [jobResource.error.message] Describes the error in detail
-     * and provides debugging information.
-     *
-     * @param {object} [jobResource.deliveryPackage] Delivery package shipping
-     * details.
-     *
-     * @param {object} [jobResource.returnPackage] Return package shipping details.
-     *
-     * @param {string} [jobResource.returnPackage.carrierName] Name of the carrier.
-     *
-     * @param {string} [jobResource.returnPackage.trackingId] Tracking Id of
-     * shipment.
-     *
-     * @param {string} [jobResource.returnPackage.trackingUrl] Url where shipment
-     * can be tracked.
-     *
-     * @param {array} jobResource.destinationAccountDetails Destination account
-     * details.
-     *
      * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
@@ -1577,14 +1211,11 @@ export interface Jobs {
      * expected size of the data, which needs to be transfered in this job, in tera
      * bytes.
      *
-     * @param {array} [jobResource.details.jobStages] List of stages that run in
-     * the job.
-     *
      * @param {object} jobResource.details.contactDetails Contact details for
      * notification and shipping.
      *
-     * @param {string} [jobResource.details.contactDetails.contactName] Contact
-     * name of the person.
+     * @param {string} jobResource.details.contactDetails.contactName Contact name
+     * of the person.
      *
      * @param {string} jobResource.details.contactDetails.phone Phone number of the
      * contact person.
@@ -1632,8 +1263,12 @@ export interface Jobs {
      * @param {string} [jobResource.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {array} [jobResource.details.errorDetails] Error details for failure.
-     * This is optional.
+     * @param {array} jobResource.details.destinationAccountDetails Destination
+     * account details.
+     *
+     * @param {object} [jobResource.details.preferences] Preferences for the order.
+     *
+     * @param {array} [jobResource.details.preferences.preferredDataCenterRegion]
      *
      * @param {string} jobResource.details.jobDetailsType Polymorphic Discriminator
      *
@@ -1651,7 +1286,8 @@ export interface Jobs {
      *
      * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} jobResource.sku.name The sku name.
+     * @param {string} jobResource.sku.name The sku name. Possible values include:
+     * 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -1690,6 +1326,68 @@ export interface Jobs {
 
 
     /**
+     * Deletes a job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, jobName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Updates the properties of an existing job.
      *
      * @param {string} resourceGroupName The Resource Group Name
@@ -1701,14 +1399,14 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
      * details for notification and shipping.
      *
      * @param {string}
-     * [jobResourceUpdateParameter.details.contactDetails.contactName] Contact name
+     * jobResourceUpdateParameter.details.contactDetails.contactName Contact name
      * of the person.
      *
      * @param {string} jobResourceUpdateParameter.details.contactDetails.phone
@@ -1767,6 +1465,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -1801,14 +1502,14 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
      * details for notification and shipping.
      *
      * @param {string}
-     * [jobResourceUpdateParameter.details.contactDetails.contactName] Contact name
+     * jobResourceUpdateParameter.details.contactDetails.contactName Contact name
      * of the person.
      *
      * @param {string} jobResourceUpdateParameter.details.contactDetails.phone
@@ -1867,6 +1568,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -2116,7 +1820,7 @@ export interface Service {
      *
      * @param {object} validateAddress Shipping address of the customer.
      *
-     * @param {object} [validateAddress.shippingAddress] Shipping address of the
+     * @param {object} validateAddress.shippingAddress Shipping address of the
      * customer.
      *
      * @param {string} validateAddress.shippingAddress.streetAddress1 Street
@@ -2146,8 +1850,8 @@ export interface Service {
      * @param {string} [validateAddress.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {string} [validateAddress.deviceType] Device type to be used for the
-     * job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * @param {string} validateAddress.deviceType Device type to be used for the
+     * job. Possible values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2170,7 +1874,7 @@ export interface Service {
      *
      * @param {object} validateAddress Shipping address of the customer.
      *
-     * @param {object} [validateAddress.shippingAddress] Shipping address of the
+     * @param {object} validateAddress.shippingAddress Shipping address of the
      * customer.
      *
      * @param {string} validateAddress.shippingAddress.streetAddress1 Street
@@ -2200,8 +1904,8 @@ export interface Service {
      * @param {string} [validateAddress.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {string} [validateAddress.deviceType] Device type to be used for the
-     * job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * @param {string} validateAddress.deviceType Device type to be used for the
+     * job. Possible values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {object} [options] Optional Parameters.
      *
