@@ -402,9 +402,6 @@ export interface ServerEndpoint extends Resource {
  * @constructor
  * Registered Server resource.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
  * @member {string} [serverCertificate] Registered Server Certificate
  * @member {string} [agentVersion] Registered Server Agent Version
  * @member {string} [serverOSVersion] Registered Server OS Version
@@ -426,10 +423,7 @@ export interface ServerEndpoint extends Resource {
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [managementEndpointUri] Management Endpoint Uri
  */
-export interface RegisteredServer extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
+export interface RegisteredServer extends Resource {
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
