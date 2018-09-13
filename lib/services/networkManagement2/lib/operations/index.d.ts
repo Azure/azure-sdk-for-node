@@ -21799,7 +21799,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -21828,7 +21833,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22928,7 +22938,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22957,7 +22972,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
