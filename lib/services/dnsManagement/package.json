@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/dnsManagementClient.js",
   "types": "./lib/dnsManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/dnsManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
