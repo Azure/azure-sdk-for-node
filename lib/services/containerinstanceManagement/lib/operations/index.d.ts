@@ -251,6 +251,9 @@ export interface ContainerGroups {
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
      *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
+     *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
      *
@@ -336,6 +339,9 @@ export interface ContainerGroups {
      *
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
+     *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
      *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
@@ -714,6 +720,9 @@ export interface ContainerGroups {
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
      *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
+     *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
      *
@@ -799,6 +808,9 @@ export interface ContainerGroups {
      *
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
+     *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
      *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
