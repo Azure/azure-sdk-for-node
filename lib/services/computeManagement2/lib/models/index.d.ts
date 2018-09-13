@@ -708,9 +708,9 @@ export interface VirtualHardDisk {
  * The parameters of a managed disk.
  *
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. UltraSSD_LRS can only be used for data disks. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  */
 export interface ManagedDiskParameters extends SubResource {
   storageAccountType?: string;
@@ -776,9 +776,9 @@ export interface ManagedDiskParameters extends SubResource {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. UltraSSD_LRS can only be used for data
+ * disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface OSDisk {
   osType?: string;
@@ -829,9 +829,9 @@ export interface OSDisk {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. UltraSSD_LRS can only be used for data
+ * disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface DataDisk {
   lun: number;
@@ -924,9 +924,9 @@ export interface DataDisk {
  * 1023 GB
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. UltraSSD_LRS can only be used for
+ * data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add a
  * data disk to a virtual machine. <br><br> For more information about disks,
  * see [About disks and VHDs for Azure virtual
@@ -936,6 +936,23 @@ export interface StorageProfile {
   imageReference?: ImageReference;
   osDisk?: OSDisk;
   dataDisks?: DataDisk[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdditionalCapabilities class.
+ * @constructor
+ * Enables or disables a capability on the virtual machine or virtual machine
+ * scale set
+ *
+ * @member {boolean} [ultraSSDEnabled] Enables or disables a capability to have
+ * 1 or more managed data disks with UltraSSD_LRS storage account on the VM or
+ * VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a
+ * virtual machine or virtual machine scale set only if this property is
+ * enabled.
+ */
+export interface AdditionalCapabilities {
+  ultraSSDEnabled?: boolean;
 }
 
 /**
@@ -1686,13 +1703,22 @@ export interface VirtualMachineInstanceView {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. UltraSSD_LRS can
+ * only be used for data disks. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine. For instance: whether the
+ * virtual machine has the capability to support attaching managed data disks
+ * with UltraSSD_LRS storage account type.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] Enables or
+ * disables a capability to have 1 or more managed data disks with UltraSSD_LRS
+ * storage account on the VM or VMSS. Managed disks with storage account type
+ * UltraSSD_LRS can be added to a virtual machine or virtual machine scale set
+ * only if this property is enabled.
  * @member {object} [osProfile] Specifies the operating system settings for the
  * virtual machine.
  * @member {string} [osProfile.computerName] Specifies the host OS name of the
@@ -1903,6 +1929,7 @@ export interface VirtualMachine extends Resource {
   plan?: Plan;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
@@ -2082,13 +2109,22 @@ export interface VirtualMachine extends Resource {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. UltraSSD_LRS can
+ * only be used for data disks. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine. For instance: whether the
+ * virtual machine has the capability to support attaching managed data disks
+ * with UltraSSD_LRS storage account type.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] Enables or
+ * disables a capability to have 1 or more managed data disks with UltraSSD_LRS
+ * storage account on the VM or VMSS. Managed disks with storage account type
+ * UltraSSD_LRS can be added to a virtual machine or virtual machine scale set
+ * only if this property is enabled.
  * @member {object} [osProfile] Specifies the operating system settings for the
  * virtual machine.
  * @member {string} [osProfile.computerName] Specifies the host OS name of the
@@ -2298,6 +2334,7 @@ export interface VirtualMachineUpdate extends UpdateResource {
   plan?: Plan;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
@@ -2312,15 +2349,19 @@ export interface VirtualMachineUpdate extends UpdateResource {
 
 /**
  * @class
- * Initializes a new instance of the AutoOSUpgradePolicy class.
+ * Initializes a new instance of the AutomaticOSUpgradePolicy class.
  * @constructor
  * The configuration parameters used for performing automatic OS upgrade.
  *
- * @member {boolean} [disableAutoRollback] Whether OS image rollback feature
- * should be disabled. Default value is false.
+ * @member {boolean} [enableAutomaticOSUpgrade] Whether OS upgrades should
+ * automatically be applied to scale set instances in a rolling fashion when a
+ * newer version of the image becomes available. Default value is false.
+ * @member {boolean} [disableAutomaticRollback] Whether OS image rollback
+ * feature should be disabled. Default value is false.
  */
-export interface AutoOSUpgradePolicy {
-  disableAutoRollback?: boolean;
+export interface AutomaticOSUpgradePolicy {
+  enableAutomaticOSUpgrade?: boolean;
+  disableAutomaticRollback?: boolean;
 }
 
 /**
@@ -2394,19 +2435,20 @@ export interface RollingUpgradePolicy {
  * time between completing the update for all virtual machines in one batch and
  * starting the next batch. The time duration should be specified in ISO 8601
  * format. The default value is 0 seconds (PT0S).
- * @member {boolean} [automaticOSUpgrade] Whether OS upgrades should
- * automatically be applied to scale set instances in a rolling fashion when a
- * newer version of the image becomes available.
- * @member {object} [autoOSUpgradePolicy] Configuration parameters used for
- * performing automatic OS Upgrade.
- * @member {boolean} [autoOSUpgradePolicy.disableAutoRollback] Whether OS image
- * rollback feature should be disabled. Default value is false.
+ * @member {object} [automaticOSUpgradePolicy] Configuration parameters used
+ * for performing automatic OS Upgrade.
+ * @member {boolean} [automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+ * Whether OS upgrades should automatically be applied to scale set instances
+ * in a rolling fashion when a newer version of the image becomes available.
+ * Default value is false.
+ * @member {boolean} [automaticOSUpgradePolicy.disableAutomaticRollback]
+ * Whether OS image rollback feature should be disabled. Default value is
+ * false.
  */
 export interface UpgradePolicy {
   mode?: string;
   rollingUpgradePolicy?: RollingUpgradePolicy;
-  automaticOSUpgrade?: boolean;
-  autoOSUpgradePolicy?: AutoOSUpgradePolicy;
+  automaticOSUpgradePolicy?: AutomaticOSUpgradePolicy;
 }
 
 /**
@@ -2436,7 +2478,7 @@ export interface UpgradePolicy {
  * @member {string} [storageAccountType] Specifies the storage account type for
  * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
  * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface ImageOSDisk {
   osType: string;
@@ -2473,7 +2515,7 @@ export interface ImageOSDisk {
  * @member {string} [storageAccountType] Specifies the storage account type for
  * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
  * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface ImageDataDisk {
   lun: number;
@@ -2517,7 +2559,7 @@ export interface ImageDataDisk {
  * @member {string} [osDisk.storageAccountType] Specifies the storage account
  * type for the managed disk. Possible values are: Standard_LRS, Premium_LRS,
  * and StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add a
  * data disk to a virtual machine. <br><br> For more information about disks,
  * see [About disks and VHDs for Azure virtual
@@ -2572,7 +2614,7 @@ export interface ImageStorageProfile {
  * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
  * storage account type for the managed disk. Possible values are:
  * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2626,7 +2668,7 @@ export interface Image extends Resource {
  * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
  * storage account type for the managed disk. Possible values are:
  * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2833,7 +2875,7 @@ export interface VirtualMachineScaleSetUpdateOSProfile {
  * @member {string} [storageAccountType] Specifies the storage account type for
  * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
  * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetManagedDiskParameters {
   storageAccountType?: string;
@@ -2876,7 +2918,7 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
  * account type for the managed disk. Possible values are: Standard_LRS,
  * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetOSDisk {
   name?: string;
@@ -2916,7 +2958,7 @@ export interface VirtualMachineScaleSetOSDisk {
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
  * account type for the managed disk. Possible values are: Standard_LRS,
  * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetUpdateOSDisk {
   caching?: string;
@@ -2952,7 +2994,7 @@ export interface VirtualMachineScaleSetUpdateOSDisk {
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
  * account type for the managed disk. Possible values are: Standard_LRS,
  * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetDataDisk {
   name?: string;
@@ -3022,7 +3064,7 @@ export interface VirtualMachineScaleSetDataDisk {
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
  * storage account type for the managed disk. Possible values are:
  * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add
  * data disks to the virtual machines in the scale set. <br><br> For more
  * information about disks, see [About disks and VHDs for Azure virtual
@@ -3072,7 +3114,7 @@ export interface VirtualMachineScaleSetStorageProfile {
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
  * storage account type for the managed disk. Possible values are:
  * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] The data disks.
  */
 export interface VirtualMachineScaleSetUpdateStorageProfile {
@@ -3603,12 +3645,21 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
  * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add data disks to the virtual machines in the scale set. <br><br>
  * For more information about disks, see [About disks and VHDs for Azure
  * virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine in the scale set. For instance:
+ * whether the virtual machine has the capability to support attaching managed
+ * data disks with UltraSSD_LRS storage account type.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] Enables or
+ * disables a capability to have 1 or more managed data disks with UltraSSD_LRS
+ * storage account on the VM or VMSS. Managed disks with storage account type
+ * UltraSSD_LRS can be added to a virtual machine or virtual machine scale set
+ * only if this property is enabled.
  * @member {object} [networkProfile] Specifies properties of the network
  * interfaces of the virtual machines in the scale set.
  * @member {object} [networkProfile.healthProbe] A reference to a load balancer
@@ -3655,6 +3706,7 @@ export interface VirtualMachineScaleSetExtensionProfile {
 export interface VirtualMachineScaleSetVMProfile {
   osProfile?: VirtualMachineScaleSetOSProfile;
   storageProfile?: VirtualMachineScaleSetStorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   networkProfile?: VirtualMachineScaleSetNetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
   extensionProfile?: VirtualMachineScaleSetExtensionProfile;
@@ -3744,7 +3796,7 @@ export interface VirtualMachineScaleSetVMProfile {
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
  * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] The data disks.
  * @member {object} [networkProfile] The virtual machine scale set network
  * profile.
@@ -3839,14 +3891,16 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * between completing the update for all virtual machines in one batch and
  * starting the next batch. The time duration should be specified in ISO 8601
  * format. The default value is 0 seconds (PT0S).
- * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
- * should automatically be applied to scale set instances in a rolling fashion
- * when a newer version of the image becomes available.
- * @member {object} [upgradePolicy.autoOSUpgradePolicy] Configuration
+ * @member {object} [upgradePolicy.automaticOSUpgradePolicy] Configuration
  * parameters used for performing automatic OS Upgrade.
- * @member {boolean} [upgradePolicy.autoOSUpgradePolicy.disableAutoRollback]
- * Whether OS image rollback feature should be disabled. Default value is
- * false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade] Whether OS
+ * upgrades should automatically be applied to scale set instances in a rolling
+ * fashion when a newer version of the image becomes available. Default value
+ * is false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback] Whether OS
+ * image rollback feature should be disabled. Default value is false.
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  * @member {object} [virtualMachineProfile.osProfile] Specifies the operating
  * system settings for the virtual machines in the scale set.
@@ -4009,12 +4063,22 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
  * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [virtualMachineProfile.storageProfile.dataDisks] Specifies
  * the parameters that are used to add data disks to the virtual machines in
  * the scale set. <br><br> For more information about disks, see [About disks
  * and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [virtualMachineProfile.additionalCapabilities] Specifies
+ * additional capabilities enabled or disabled on the virtual machine in the
+ * scale set. For instance: whether the virtual machine has the capability to
+ * support attaching managed data disks with UltraSSD_LRS storage account type.
+ * @member {boolean}
+ * [virtualMachineProfile.additionalCapabilities.ultraSSDEnabled] Enables or
+ * disables a capability to have 1 or more managed data disks with UltraSSD_LRS
+ * storage account on the VM or VMSS. Managed disks with storage account type
+ * UltraSSD_LRS can be added to a virtual machine or virtual machine scale set
+ * only if this property is enabled.
  * @member {object} [virtualMachineProfile.networkProfile] Specifies properties
  * of the network interfaces of the virtual machines in the scale set.
  * @member {object} [virtualMachineProfile.networkProfile.healthProbe] A
@@ -4167,14 +4231,16 @@ export interface VirtualMachineScaleSet extends Resource {
  * between completing the update for all virtual machines in one batch and
  * starting the next batch. The time duration should be specified in ISO 8601
  * format. The default value is 0 seconds (PT0S).
- * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
- * should automatically be applied to scale set instances in a rolling fashion
- * when a newer version of the image becomes available.
- * @member {object} [upgradePolicy.autoOSUpgradePolicy] Configuration
+ * @member {object} [upgradePolicy.automaticOSUpgradePolicy] Configuration
  * parameters used for performing automatic OS Upgrade.
- * @member {boolean} [upgradePolicy.autoOSUpgradePolicy.disableAutoRollback]
- * Whether OS image rollback feature should be disabled. Default value is
- * false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade] Whether OS
+ * upgrades should automatically be applied to scale set instances in a rolling
+ * fashion when a newer version of the image becomes available. Default value
+ * is false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback] Whether OS
+ * image rollback feature should be disabled. Default value is false.
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  * @member {object} [virtualMachineProfile.osProfile] The virtual machine scale
  * set OS profile.
@@ -4267,7 +4333,7 @@ export interface VirtualMachineScaleSet extends Resource {
  * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
  * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [virtualMachineProfile.storageProfile.dataDisks] The data
  * disks.
  * @member {object} [virtualMachineProfile.networkProfile] The virtual machine
@@ -5064,13 +5130,22 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. UltraSSD_LRS can
+ * only be used for data disks. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine in the scale set. For instance:
+ * whether the virtual machine has the capability to support attaching managed
+ * data disks with UltraSSD_LRS storage account type.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] Enables or
+ * disables a capability to have 1 or more managed data disks with UltraSSD_LRS
+ * storage account on the VM or VMSS. Managed disks with storage account type
+ * UltraSSD_LRS can be added to a virtual machine or virtual machine scale set
+ * only if this property is enabled.
  * @member {object} [osProfile] Specifies the operating system settings for the
  * virtual machine.
  * @member {string} [osProfile.computerName] Specifies the host OS name of the
@@ -5220,6 +5295,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
   readonly instanceView?: VirtualMachineScaleSetVMInstanceView;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
@@ -5659,10 +5735,11 @@ export interface ResourceSku {
  * @class
  * Initializes a new instance of the DiskSku class.
  * @constructor
- * The disks sku name. Can be Standard_LRS, Premium_LRS, or StandardSSD_LRS.
+ * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, or
+ * UltraSSD_LRS.
  *
  * @member {string} [name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {string} [tier] The sku tier. Default value: 'Standard' .
  */
 export interface DiskSku {
@@ -5806,7 +5883,7 @@ export interface EncryptionSettings {
  * has the disk attached.
  * @member {object} [sku]
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {string} [sku.tier] The sku tier.
  * @member {array} [zones] The Logical zone list for Disk.
  * @member {date} [timeCreated] The time when the disk was created.
@@ -5860,6 +5937,12 @@ export interface EncryptionSettings {
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
  * @member {string} [provisioningState] The disk provisioning state.
+ * @member {number} [diskIOPSReadWrite] The number of IOPS allowed for this
+ * disk; only settable for UltraSSD disks. One operation can transfer between
+ * 4k and 256k bytes.
+ * @member {number} [diskMBpsReadWrite] The bandwidth allowed for this disk;
+ * only settable for UltraSSD disks. MBps means millions of bytes per second -
+ * MB here uses the ISO notation, of powers of 10.
  */
 export interface Disk extends Resource {
   readonly managedBy?: string;
@@ -5871,6 +5954,8 @@ export interface Disk extends Resource {
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
   readonly provisioningState?: string;
+  diskIOPSReadWrite?: number;
+  diskMBpsReadWrite?: number;
 }
 
 /**
@@ -5909,16 +5994,24 @@ export interface Disk extends Resource {
  * Resource Id
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
+ * @member {number} [diskIOPSReadWrite] The number of IOPS allowed for this
+ * disk; only settable for UltraSSD disks. One operation can transfer between
+ * 4k and 256k bytes.
+ * @member {number} [diskMBpsReadWrite] The bandwidth allowed for this disk;
+ * only settable for UltraSSD disks. MBps means millions of bytes per second -
+ * MB here uses the ISO notation, of powers of 10.
  * @member {object} [tags] Resource tags
  * @member {object} [sku]
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {string} [sku.tier] The sku tier.
  */
 export interface DiskUpdate {
   osType?: string;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
+  diskIOPSReadWrite?: number;
+  diskMBpsReadWrite?: number;
   tags?: { [propertyName: string]: string };
   sku?: DiskSku;
 }
@@ -6087,6 +6180,382 @@ export interface SnapshotUpdate {
   encryptionSettings?: EncryptionSettings;
   tags?: { [propertyName: string]: string };
   sku?: SnapshotSku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryIdentifier class.
+ * @constructor
+ * Describes the gallery unique name.
+ *
+ * @member {string} [uniqueName] The unique name of the gallery
+ */
+export interface GalleryIdentifier {
+  readonly uniqueName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Gallery class.
+ * @constructor
+ * Specifies information about the gallery that you want to create or update.
+ *
+ * @member {string} [description] The description of this gallery resource.
+ * @member {object} [identifier]
+ * @member {string} [identifier.uniqueName] The unique name of the gallery
+ * @member {string} [provisioningState] The current state of the gallery. The
+ * provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface Gallery extends Resource {
+  description?: string;
+  identifier?: GalleryIdentifier;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageIdentifier class.
+ * @constructor
+ * This is the gallery image identifier.
+ *
+ * @member {string} publisher The gallery image publisher name.
+ * @member {string} offer The gallery image offer name.
+ * @member {string} sku The gallery image sku name.
+ */
+export interface GalleryImageIdentifier {
+  publisher: string;
+  offer: string;
+  sku: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRange class.
+ * @constructor
+ * Describes the resource range.
+ *
+ * @member {number} [min] The minimum number of the resource.
+ * @member {number} [max] The maximum number of the resource.
+ */
+export interface ResourceRange {
+  min?: number;
+  max?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedMachineConfiguration class.
+ * @constructor
+ * Describes the recommended machine configuration.
+ *
+ * @member {object} [vCPUs]
+ * @member {number} [vCPUs.min] The minimum number of the resource.
+ * @member {number} [vCPUs.max] The maximum number of the resource.
+ * @member {object} [memory]
+ * @member {number} [memory.min] The minimum number of the resource.
+ * @member {number} [memory.max] The maximum number of the resource.
+ */
+export interface RecommendedMachineConfiguration {
+  vCPUs?: ResourceRange;
+  memory?: ResourceRange;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Disallowed class.
+ * @constructor
+ * Describes the disallowed disk types.
+ *
+ * @member {array} [diskTypes] A list of disk types.
+ */
+export interface Disallowed {
+  diskTypes?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImagePurchasePlan class.
+ * @constructor
+ * Describes the gallery image purchase plan. This is used by marketplace
+ * images.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [publisher] The publisher ID.
+ * @member {string} [product] The product ID.
+ */
+export interface ImagePurchasePlan {
+  name?: string;
+  publisher?: string;
+  product?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImage class.
+ * @constructor
+ * Specifies information about the gallery image that you want to create or
+ * update.
+ *
+ * @member {string} [description] The description of this gallery image
+ * resource.
+ * @member {string} [eula] The Eula agreement for the gallery image.
+ * @member {string} [privacyStatementUri] The privacy statement uri.
+ * @member {string} [releaseNoteUri] The release note uri.
+ * @member {string} osType This property allows you to specify the type of the
+ * OS that is included in the disk if creating a VM from user-image or a
+ * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
+ * **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {string} osState The OS State. Possible values include:
+ * 'Generalized', 'Specialized'
+ * @member {date} [endOfLifeDate] The end of life of this gallery image.
+ * @member {object} identifier
+ * @member {string} [identifier.publisher] The gallery image publisher name.
+ * @member {string} [identifier.offer] The gallery image offer name.
+ * @member {string} [identifier.sku] The gallery image sku name.
+ * @member {object} [recommended]
+ * @member {object} [recommended.vCPUs]
+ * @member {number} [recommended.vCPUs.min] The minimum number of the resource.
+ * @member {number} [recommended.vCPUs.max] The maximum number of the resource.
+ * @member {object} [recommended.memory]
+ * @member {number} [recommended.memory.min] The minimum number of the
+ * resource.
+ * @member {number} [recommended.memory.max] The maximum number of the
+ * resource.
+ * @member {object} [disallowed]
+ * @member {array} [disallowed.diskTypes] A list of disk types.
+ * @member {object} [purchasePlan]
+ * @member {string} [purchasePlan.name] The plan ID.
+ * @member {string} [purchasePlan.publisher] The publisher ID.
+ * @member {string} [purchasePlan.product] The product ID.
+ * @member {string} [provisioningState] The current state of the gallery image.
+ * The provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface GalleryImage extends Resource {
+  description?: string;
+  eula?: string;
+  privacyStatementUri?: string;
+  releaseNoteUri?: string;
+  osType: string;
+  osState: string;
+  endOfLifeDate?: Date;
+  identifier: GalleryImageIdentifier;
+  recommended?: RecommendedMachineConfiguration;
+  disallowed?: Disallowed;
+  purchasePlan?: ImagePurchasePlan;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactPublishingProfileBase class.
+ * @constructor
+ * Describes the basic gallery artifact publishing profile.
+ *
+ * @member {array} [targetRegions] The target regions where the artifact is
+ * going to be published.
+ * @member {object} source
+ * @member {object} [source.managedImage]
+ * @member {string} [source.managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactPublishingProfileBase {
+  targetRegions?: TargetRegion[];
+  source: GalleryArtifactSource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionPublishingProfile class.
+ * @constructor
+ * The publishing profile of a gallery image version.
+ *
+ * @member {number} [replicaCount] This is the number of source blob copies in
+ * a region.
+ * @member {boolean} [excludeFromLatest] The flag means that if it is set to
+ * true, people deploying VMs with 'latest' as version will not use this
+ * version.
+ * @member {date} [publishedDate] The time when the gallery image version is
+ * published.
+ * @member {date} [endOfLifeDate] The end of life date of the gallery image
+ * version.
+ */
+export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
+  replicaCount?: number;
+  excludeFromLatest?: boolean;
+  readonly publishedDate?: Date;
+  endOfLifeDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDiskImage class.
+ * @constructor
+ * This is the disk image base class.
+ *
+ * @member {number} [sizeInGB] It indicates the size of the VHD to create.
+ * @member {string} [hostCaching] The host caching of the disk. Valid values
+ * are 'None', 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ */
+export interface GalleryDiskImage {
+  readonly sizeInGB?: number;
+  readonly hostCaching?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryOSDiskImage class.
+ * @constructor
+ * This is the OS disk image.
+ *
+ */
+export interface GalleryOSDiskImage extends GalleryDiskImage {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDataDiskImage class.
+ * @constructor
+ * This is the data disk image.
+ *
+ * @member {number} [lun] Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ */
+export interface GalleryDataDiskImage extends GalleryDiskImage {
+  readonly lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionStorageProfile class.
+ * @constructor
+ * This is the storage profile of a gallery image version.
+ *
+ * @member {object} [osDiskImage]
+ * @member {array} [dataDiskImages] A list of data disk images.
+ */
+export interface GalleryImageVersionStorageProfile {
+  readonly osDiskImage?: GalleryOSDiskImage;
+  readonly dataDiskImages?: GalleryDataDiskImage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegionalReplicationStatus class.
+ * @constructor
+ * This is the regional replication status.
+ *
+ * @member {string} [region] The region where the gallery image version is
+ * published to.
+ * @member {string} [state] This is the regional replication state. Possible
+ * values include: 'Unknown', 'Replicating', 'Completed', 'Failed'
+ * @member {string} [details] The details of the replication status.
+ * @member {number} [progress] It indicates progress of the replication job.
+ */
+export interface RegionalReplicationStatus {
+  readonly region?: string;
+  readonly state?: string;
+  readonly details?: string;
+  readonly progress?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationStatus class.
+ * @constructor
+ * This is the replication status of the gallery image version.
+ *
+ * @member {string} [aggregatedState] This is the aggregated replication status
+ * based on the regional replication status. Possible values include:
+ * 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [summary] This is a summary of replication status for each
+ * region.
+ */
+export interface ReplicationStatus {
+  readonly aggregatedState?: string;
+  readonly summary?: RegionalReplicationStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersion class.
+ * @constructor
+ * Specifies information about the gallery image version that you want to
+ * create or update.
+ *
+ * @member {object} publishingProfile
+ * @member {number} [publishingProfile.replicaCount] This is the number of
+ * source blob copies in a region.
+ * @member {boolean} [publishingProfile.excludeFromLatest] The flag means that
+ * if it is set to true, people deploying VMs with 'latest' as version will not
+ * use this version.
+ * @member {date} [publishingProfile.publishedDate] The time when the gallery
+ * image version is published.
+ * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
+ * gallery image version.
+ * @member {string} [provisioningState] The current state of the gallery image
+ * version. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
+ * @member {object} [storageProfile]
+ * @member {object} [storageProfile.osDiskImage]
+ * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
+ * @member {object} [replicationStatus]
+ * @member {string} [replicationStatus.aggregatedState] This is the aggregated
+ * replication status based on the regional replication status. Possible values
+ * include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [replicationStatus.summary] This is a summary of replication
+ * status for each region.
+ */
+export interface GalleryImageVersion extends Resource {
+  publishingProfile: GalleryImageVersionPublishingProfile;
+  readonly provisioningState?: string;
+  readonly storageProfile?: GalleryImageVersionStorageProfile;
+  readonly replicationStatus?: ReplicationStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetRegion class.
+ * @constructor
+ * Describes the target region information.
+ *
+ * @member {string} [name] The name of the region.
+ * @member {number} [regionalReplicaCount] This is the number of source blob
+ * copies in this specific region.
+ */
+export interface TargetRegion {
+  name?: string;
+  regionalReplicaCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedArtifact class.
+ * @constructor
+ * The managed artifact.
+ *
+ * @member {string} id The managed artifact id.
+ */
+export interface ManagedArtifact {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactSource class.
+ * @constructor
+ * The source of the gallery artifact.
+ *
+ * @member {object} managedImage
+ * @member {string} [managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactSource {
+  managedImage: ManagedArtifact;
 }
 
 /**
@@ -6545,6 +7014,46 @@ export interface DiskList extends Array<Disk> {
  * Call ListNext() with this to fetch the next page of snapshots.
  */
 export interface SnapshotList extends Array<Snapshot> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryList class.
+ * @constructor
+ * The List Galleries operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of galleries.
+ * Call ListNext() with this to fetch the next page of galleries.
+ */
+export interface GalleryList extends Array<Gallery> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageList class.
+ * @constructor
+ * The List Gallery Images operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery
+ * images. Call ListNext() with this to fetch the next page of gallery images.
+ */
+export interface GalleryImageList extends Array<GalleryImage> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionList class.
+ * @constructor
+ * The List Gallery Image version operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery image
+ * versions. Call ListNext() with this to fetch the next page of gallery image
+ * versions.
+ */
+export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
   nextLink?: string;
 }
 
