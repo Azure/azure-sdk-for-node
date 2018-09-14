@@ -2919,11 +2919,11 @@ export interface DscConfigurationOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * Retrieve the configuration script identified by configuration name.
@@ -2946,7 +2946,7 @@ export interface DscConfigurationOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {Object} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2954,15 +2954,15 @@ export interface DscConfigurationOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<string>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -4922,11 +4922,6 @@ export interface Python2Package {
      * @param {string} [parameters.contentLink.version] Gets or sets the version of
      * the content.
      *
-     * @param {string} [parameters.name] Gets or sets name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
      *
@@ -4941,7 +4936,7 @@ export interface Python2Package {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
 
     /**
      * Create or Update the python 2 package identified by package name.
@@ -4971,11 +4966,6 @@ export interface Python2Package {
      * @param {string} [parameters.contentLink.version] Gets or sets the version of
      * the content.
      *
-     * @param {string} [parameters.name] Gets or sets name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
      *
@@ -5006,9 +4996,9 @@ export interface Python2Package {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, callback: ServiceCallback<models.Module>): void;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageCreateParameters, callback: ServiceCallback<models.Module>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
 
 
     /**
@@ -5021,28 +5011,6 @@ export interface Python2Package {
      * @param {string} packageName The name of python package.
      *
      * @param {object} parameters The update parameters for python package.
-     *
-     * @param {object} [parameters.contentLink] Gets or sets the module content
-     * link.
-     *
-     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
-     * runbook content.
-     *
-     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
-     *
-     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
-     * the content hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.contentLink.contentHash.value Gets or sets
-     * expected hash value of the content.
-     *
-     * @param {string} [parameters.contentLink.version] Gets or sets the version of
-     * the content.
-     *
-     * @param {string} [parameters.name] Gets or sets name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
@@ -5058,7 +5026,7 @@ export interface Python2Package {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
 
     /**
      * Update the python 2 package identified by package name.
@@ -5070,28 +5038,6 @@ export interface Python2Package {
      * @param {string} packageName The name of python package.
      *
      * @param {object} parameters The update parameters for python package.
-     *
-     * @param {object} [parameters.contentLink] Gets or sets the module content
-     * link.
-     *
-     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
-     * runbook content.
-     *
-     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
-     *
-     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
-     * the content hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.contentLink.contentHash.value Gets or sets
-     * expected hash value of the content.
-     *
-     * @param {string} [parameters.contentLink.version] Gets or sets the version of
-     * the content.
-     *
-     * @param {string} [parameters.name] Gets or sets name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
@@ -5123,9 +5069,9 @@ export interface Python2Package {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
-    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, callback: ServiceCallback<models.Module>): void;
-    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.PythonPackageUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
 
 
     /**
