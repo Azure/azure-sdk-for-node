@@ -50,8 +50,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -93,8 +91,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -283,8 +279,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -323,8 +317,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -516,8 +508,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -571,8 +561,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -806,8 +794,6 @@ export interface ManagementLocks {
      *
      * @param {array} [parameters.owners] The owners of the lock.
      *
-     * @param {string} [parameters.name] The name of the lock.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -847,8 +833,6 @@ export interface ManagementLocks {
      * characters.
      *
      * @param {array} [parameters.owners] The owners of the lock.
-     *
-     * @param {string} [parameters.name] The name of the lock.
      *
      * @param {object} [options] Optional Parameters.
      *

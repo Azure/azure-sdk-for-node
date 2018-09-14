@@ -251,6 +251,9 @@ export interface ContainerGroups {
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
      *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
+     *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
      *
@@ -275,6 +278,19 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
      * workspace key for log analytics
+     *
+     * @param {string} [containerGroup.diagnostics.logAnalytics.logType] The log
+     * type to be used. Possible values include: 'ContainerInsights',
+     * 'ContainerInstanceLogs'
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics.metadata] Metadata
+     * for log analytics.
+     *
+     * @param {object} [containerGroup.networkProfile] The network profile
+     * information for a container group.
+     *
+     * @param {string} containerGroup.networkProfile.id The identifier for a
+     * network profile.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -324,6 +340,9 @@ export interface ContainerGroups {
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
      *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
+     *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
      *
@@ -348,6 +367,19 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
      * workspace key for log analytics
+     *
+     * @param {string} [containerGroup.diagnostics.logAnalytics.logType] The log
+     * type to be used. Possible values include: 'ContainerInsights',
+     * 'ContainerInstanceLogs'
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics.metadata] Metadata
+     * for log analytics.
+     *
+     * @param {object} [containerGroup.networkProfile] The network profile
+     * information for a container group.
+     *
+     * @param {string} containerGroup.networkProfile.id The identifier for a
+     * network profile.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -532,7 +564,7 @@ export interface ContainerGroups {
     /**
      * @summary Restarts all containers in a container group.
      *
-     * Restarts all containers in a contaienr group in place. If container image
+     * Restarts all containers in a container group in place. If container image
      * has updates, new image will be downloaded.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -555,7 +587,7 @@ export interface ContainerGroups {
     /**
      * @summary Restarts all containers in a container group.
      *
-     * Restarts all containers in a contaienr group in place. If container image
+     * Restarts all containers in a container group in place. If container image
      * has updates, new image will be downloaded.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -596,7 +628,7 @@ export interface ContainerGroups {
     /**
      * @summary Stops all containers in a container group.
      *
-     * Stops all containers in a contaienr group. Compute resources will be
+     * Stops all containers in a container group. Compute resources will be
      * deallocated and billing will stop.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -619,7 +651,7 @@ export interface ContainerGroups {
     /**
      * @summary Stops all containers in a container group.
      *
-     * Stops all containers in a contaienr group. Compute resources will be
+     * Stops all containers in a container group. Compute resources will be
      * deallocated and billing will stop.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -688,6 +720,9 @@ export interface ContainerGroups {
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
      *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
+     *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
      *
@@ -712,6 +747,19 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
      * workspace key for log analytics
+     *
+     * @param {string} [containerGroup.diagnostics.logAnalytics.logType] The log
+     * type to be used. Possible values include: 'ContainerInsights',
+     * 'ContainerInstanceLogs'
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics.metadata] Metadata
+     * for log analytics.
+     *
+     * @param {object} [containerGroup.networkProfile] The network profile
+     * information for a container group.
+     *
+     * @param {string} containerGroup.networkProfile.id The identifier for a
+     * network profile.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -761,6 +809,9 @@ export interface ContainerGroups {
      * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
      * the container group.
      *
+     * @param {string} containerGroup.ipAddress.type Specifies if the IP is exposed
+     * to the public internet. Possible values include: 'Public', 'Private'
+     *
      * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
      * internet.
      *
@@ -785,6 +836,19 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
      * workspace key for log analytics
+     *
+     * @param {string} [containerGroup.diagnostics.logAnalytics.logType] The log
+     * type to be used. Possible values include: 'ContainerInsights',
+     * 'ContainerInstanceLogs'
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics.metadata] Metadata
+     * for log analytics.
+     *
+     * @param {object} [containerGroup.networkProfile] The network profile
+     * information for a container group.
+     *
+     * @param {string} containerGroup.networkProfile.id The identifier for a
+     * network profile.
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -825,7 +889,7 @@ export interface ContainerGroups {
     /**
      * @summary Restarts all containers in a container group.
      *
-     * Restarts all containers in a contaienr group in place. If container image
+     * Restarts all containers in a container group in place. If container image
      * has updates, new image will be downloaded.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -848,7 +912,7 @@ export interface ContainerGroups {
     /**
      * @summary Restarts all containers in a container group.
      *
-     * Restarts all containers in a contaienr group in place. If container image
+     * Restarts all containers in a container group in place. If container image
      * has updates, new image will be downloaded.
      *
      * @param {string} resourceGroupName The name of the resource group.
