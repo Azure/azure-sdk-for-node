@@ -49,13 +49,13 @@ export interface PresentationTimeRange {
  *
  * @member {string} property The track property type. Possible values include:
  * 'Unknown', 'Type', 'Name', 'Language', 'FourCC', 'Bitrate'
- * @member {string} [value] The track proprty value.
+ * @member {string} value The track proprty value.
  * @member {string} operation The track property condition operation. Possible
  * values include: 'Equal', 'NotEqual'
  */
 export interface FilterTrackPropertyCondition {
   property: string;
-  value?: string;
+  value: string;
   operation: string;
 }
 
@@ -78,10 +78,10 @@ export interface FirstQuality {
  * Representing a list of FilterTrackPropertyConditions to select a track.  The
  * filters are combined using a logical AND operation.
  *
- * @member {array} [trackSelections] The track selections.
+ * @member {array} trackSelections The track selections.
  */
 export interface FilterTrackSelection {
-  trackSelections?: FilterTrackPropertyCondition[];
+  trackSelections: FilterTrackPropertyCondition[];
 }
 
 /**
@@ -227,13 +227,13 @@ export interface OperationDisplay {
  *
  * @member {string} [name] The metric dimension name.
  * @member {string} [displayName] The display name for the dimension.
- * @member {boolean} toBeExportedForShoebox Whether to export metric to
+ * @member {boolean} [toBeExportedForShoebox] Whether to export metric to
  * shoebox.
  */
 export interface MetricDimension {
-  name?: string;
-  displayName?: string;
-  toBeExportedForShoebox: boolean;
+  readonly name?: string;
+  readonly displayName?: string;
+  readonly toBeExportedForShoebox?: boolean;
 }
 
 /**
@@ -245,19 +245,19 @@ export interface MetricDimension {
  * @member {string} [name] The metric name.
  * @member {string} [displayName] The metric display name.
  * @member {string} [displayDescription] The metric display description.
- * @member {string} unit The metric unit. Possible values include: 'Bytes',
+ * @member {string} [unit] The metric unit. Possible values include: 'Bytes',
  * 'Count', 'Milliseconds'
- * @member {string} aggregationType The metric aggregation type. Possible
+ * @member {string} [aggregationType] The metric aggregation type. Possible
  * values include: 'Average', 'Count', 'Total'
  * @member {array} [dimensions] The metric dimensions.
  */
 export interface Metric {
-  name?: string;
-  displayName?: string;
-  displayDescription?: string;
-  unit: string;
-  aggregationType: string;
-  dimensions?: MetricDimension[];
+  readonly name?: string;
+  readonly displayName?: string;
+  readonly displayDescription?: string;
+  readonly unit?: string;
+  readonly aggregationType?: string;
+  readonly dimensions?: MetricDimension[];
 }
 
 /**
@@ -269,7 +269,7 @@ export interface Metric {
  * @member {array} [metricSpecifications] List of metric specifications.
  */
 export interface ServiceSpecification {
-  metricSpecifications?: Metric[];
+  readonly metricSpecifications?: Metric[];
 }
 
 /**
@@ -283,7 +283,7 @@ export interface ServiceSpecification {
  * specifications.
  */
 export interface MetricProperties {
-  serviceSpecification?: ServiceSpecification;
+  readonly serviceSpecification?: ServiceSpecification;
 }
 
 /**
@@ -463,40 +463,41 @@ export interface StorageEncryptedAssetDecryptionData {
  * @class
  * Initializes a new instance of the AssetStreamingLocator class.
  * @constructor
- * Properties of Streaming Locator.
+ * Properties of the Streaming Locator.
  *
  * @member {string} [name] Streaming Locator name.
  * @member {string} [assetName] Asset Name.
- * @member {date} [created] Creation time of Streaming Locator.
- * @member {date} [startTime] StartTime of Streaming Locator.
- * @member {date} [endTime] EndTime of Streaming Locator.
- * @member {uuid} [streamingLocatorId] StreamingLocatorId of Streaming Locator.
- * @member {string} [streamingPolicyName] Streaming policy name used by this
- * streaming locator.
- * @member {string} [defaultContentKeyPolicyName] Default ContentKeyPolicy used
- * by this Streaming Locator
+ * @member {date} [created] The creation time of the Streaming Locator.
+ * @member {date} [startTime] The start time of the Streaming Locator.
+ * @member {date} [endTime] The end time of the Streaming Locator.
+ * @member {uuid} [streamingLocatorId] StreamingLocatorId of the Streaming
+ * Locator.
+ * @member {string} [streamingPolicyName] Name of the Streaming Policy used by
+ * this Streaming Locator.
+ * @member {string} [defaultContentKeyPolicyName] Name of the default
+ * ContentKeyPolicy used by this Streaming Locator.
  */
 export interface AssetStreamingLocator {
-  name?: string;
-  assetName?: string;
-  created?: Date;
-  startTime?: Date;
-  endTime?: Date;
-  streamingLocatorId?: string;
-  streamingPolicyName?: string;
-  defaultContentKeyPolicyName?: string;
+  readonly name?: string;
+  readonly assetName?: string;
+  readonly created?: Date;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly streamingLocatorId?: string;
+  readonly streamingPolicyName?: string;
+  readonly defaultContentKeyPolicyName?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ListStreamingLocatorsResponse class.
  * @constructor
- * The Streaming Locators associated with this asset.
+ * The Streaming Locators associated with this Asset.
  *
  * @member {array} [streamingLocators] The list of Streaming Locators.
  */
 export interface ListStreamingLocatorsResponse {
-  streamingLocators?: AssetStreamingLocator[];
+  readonly streamingLocators?: AssetStreamingLocator[];
 }
 
 /**
@@ -953,7 +954,8 @@ export interface ContentKeyPolicyPlayReadyConfiguration extends ContentKeyPolicy
  * @constructor
  * Specifies a configuration for FairPlay licenses.
  *
- * @member {buffer} ask The key that must be used as FairPlay ASk.
+ * @member {buffer} ask The key that must be used as FairPlay Application
+ * Secret key.
  * @member {string} fairPlayPfxPassword The password encrypting FairPlay
  * certificate in PKCS 12 (pfx) format.
  * @member {string} fairPlayPfx The Base64 representation of FairPlay
@@ -2555,26 +2557,24 @@ export interface ListPathsResponse {
  * A Streaming Locator resource
  *
  * @member {string} assetName Asset Name
- * @member {date} [created] Creation time of Streaming Locator
- * @member {date} [startTime] StartTime of Streaming Locator
- * @member {date} [endTime] EndTime of Streaming Locator
- * @member {uuid} [streamingLocatorId] StreamingLocatorId of Streaming Locator
- * @member {string} streamingPolicyName Streaming policy name used by this
- * streaming locator. Either specify the name of streaming policy you created
- * or use one of the predefined streaming polices. The predefined streaming
- * policies available are: 'Predefined_DownloadOnly',
+ * @member {date} [created] The creation time of the Streaming Locator.
+ * @member {date} [startTime] The start time of the Streaming Locator.
+ * @member {date} [endTime] The end time of the Streaming Locator.
+ * @member {uuid} [streamingLocatorId] The StreamingLocatorId of the Streaming
+ * Locator.
+ * @member {string} streamingPolicyName Name of the Streaming Policy used by
+ * this Streaming Locator. Either specify the name of Streaming Policy you
+ * created or use one of the predefined Streaming Policies. The predefined
+ * Streaming Policies available are: 'Predefined_DownloadOnly',
  * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
  * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
  * 'Predefined_MultiDrmStreaming'
- * @member {string} [defaultContentKeyPolicyName] Default ContentKeyPolicy used
- * by this Streaming Locator
- * @member {array} [contentKeys] ContentKeys used by this Streaming Locator
- * @member {string} [alternativeMediaId] An Alternative Media Identifier
- * associated with the StreamingLocator.  This identifier can be used to
- * distinguish different StreamingLocators for the same Asset for authorization
- * purposes in the CustomLicenseAcquisitionUrlTemplate or the
- * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
- * StreamingPolicyName field.
+ * @member {string} [defaultContentKeyPolicyName] Name of the default
+ * ContentKeyPolicy used by this Streaming Locator.
+ * @member {array} [contentKeys] The ContentKeys used by this Streaming
+ * Locator.
+ * @member {string} [alternativeMediaId] Alternative Media ID of this Streaming
+ * Locator
  */
 export interface StreamingLocator extends ProxyResource {
   assetName: string;
