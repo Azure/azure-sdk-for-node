@@ -182,7 +182,7 @@ export interface Restriction {
  * @member {string} name Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
  * Possible values include: 'Standard', 'Premium'
  * @member {string} [resourceType] The type of the resource, usually it is
@@ -465,7 +465,7 @@ export interface Identity {
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
  * @member {string} [sku.resourceType] The type of the resource, usually it is
@@ -655,7 +655,7 @@ export interface TrackedResource extends Resource {
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
  * @member {string} [sku.resourceType] The type of the resource, usually it is
@@ -867,12 +867,12 @@ export interface StorageAccountRegenerateKeyParameters {
  * properties.
  *
  * @member {object} [sku] Gets or sets the SKU name. Note that the SKU name
- * cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts of those
- * sku names be updated to any other value.
+ * cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor can
+ * accounts of those sku names be updated to any other value.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
  * @member {string} [sku.resourceType] The type of the resource, usually it is

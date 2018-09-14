@@ -221,7 +221,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
      * account creation; optional for update. Note that in older versions, sku name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -354,7 +355,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
      * account creation; optional for update. Note that in older versions, sku name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -639,13 +641,14 @@ export interface StorageAccounts {
      * account.
      *
      * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
-     * SKU name cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts
-     * of those sku names be updated to any other value.
+     * SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
+     * can accounts of those sku names be updated to any other value.
      *
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
      * account creation; optional for update. Note that in older versions, sku name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -769,13 +772,14 @@ export interface StorageAccounts {
      * account.
      *
      * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
-     * SKU name cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts
-     * of those sku names be updated to any other value.
+     * SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor
+     * can accounts of those sku names be updated to any other value.
      *
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
      * account creation; optional for update. Note that in older versions, sku name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1484,7 +1488,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
      * account creation; optional for update. Note that in older versions, sku name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
@@ -1617,7 +1622,8 @@ export interface StorageAccounts {
      * @param {string} parameters.sku.name Gets or sets the sku name. Required for
      * account creation; optional for update. Note that in older versions, sku name
      * was called accountType. Possible values include: 'Standard_LRS',
-     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+     * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS',
+     * 'Premium_ZRS'
      *
      * @param {array} [parameters.sku.restrictions] The restrictions because of
      * which SKU cannot be used. This is empty if there are no restrictions.
