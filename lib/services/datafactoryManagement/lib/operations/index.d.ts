@@ -665,6 +665,90 @@ export interface Factories {
 
 
     /**
+     * Get GitHub Access Token.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} gitHubAccessTokenRequest Get GitHub access token request
+     * definition.
+     *
+     * @param {string} gitHubAccessTokenRequest.gitHubAccessCode GitHub access
+     * code.
+     *
+     * @param {string} [gitHubAccessTokenRequest.gitHubClientId] GitHub application
+     * client ID.
+     *
+     * @param {string} gitHubAccessTokenRequest.gitHubAccessTokenBaseUrl GitHub
+     * access token base URL.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GitHubAccessTokenResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getGitHubAccessTokenWithHttpOperationResponse(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GitHubAccessTokenResponse>>;
+
+    /**
+     * Get GitHub Access Token.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} gitHubAccessTokenRequest Get GitHub access token request
+     * definition.
+     *
+     * @param {string} gitHubAccessTokenRequest.gitHubAccessCode GitHub access
+     * code.
+     *
+     * @param {string} [gitHubAccessTokenRequest.gitHubClientId] GitHub application
+     * client ID.
+     *
+     * @param {string} gitHubAccessTokenRequest.gitHubAccessTokenBaseUrl GitHub
+     * access token base URL.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GitHubAccessTokenResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GitHubAccessTokenResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GitHubAccessTokenResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getGitHubAccessToken(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GitHubAccessTokenResponse>;
+    getGitHubAccessToken(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, callback: ServiceCallback<models.GitHubAccessTokenResponse>): void;
+    getGitHubAccessToken(resourceGroupName: string, factoryName: string, gitHubAccessTokenRequest: models.GitHubAccessTokenRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GitHubAccessTokenResponse>): void;
+
+
+    /**
      * Lists factories under the specified subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1834,6 +1918,102 @@ export interface IntegrationRuntimes {
 
 
     /**
+     * Create a linked integration runtime entry in a shared integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} createLinkedIntegrationRuntimeRequest The linked integration
+     * runtime properties.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.name] The name of the
+     * linked integration runtime.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.subscriptionId] The
+     * ID of the subscription that the linked integration runtime belongs to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryName] The
+     * name of the data factory that the linked integration runtime belongs to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryLocation]
+     * The location of the data factory that the linked integration runtime belongs
+     * to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createLinkedIntegrationRuntimeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeStatusResponse>>;
+
+    /**
+     * Create a linked integration runtime entry in a shared integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} createLinkedIntegrationRuntimeRequest The linked integration
+     * runtime properties.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.name] The name of the
+     * linked integration runtime.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.subscriptionId] The
+     * ID of the subscription that the linked integration runtime belongs to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryName] The
+     * name of the data factory that the linked integration runtime belongs to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryLocation]
+     * The location of the data factory that the linked integration runtime belongs
+     * to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createLinkedIntegrationRuntime(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeStatusResponse>;
+    createLinkedIntegrationRuntime(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+    createLinkedIntegrationRuntime(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+
+
+    /**
      * Starts a ManagedReserved type integration runtime.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2024,6 +2204,74 @@ export interface IntegrationRuntimes {
  * instance of the DataFactoryManagementClient.
  */
 export interface IntegrationRuntimeNodes {
+
+
+    /**
+     * Gets a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SelfHostedIntegrationRuntimeNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SelfHostedIntegrationRuntimeNode>>;
+
+    /**
+     * Gets a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SelfHostedIntegrationRuntimeNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SelfHostedIntegrationRuntimeNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SelfHostedIntegrationRuntimeNode} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SelfHostedIntegrationRuntimeNode>;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, callback: ServiceCallback<models.SelfHostedIntegrationRuntimeNode>): void;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SelfHostedIntegrationRuntimeNode>): void;
 
 
     /**
@@ -2722,6 +2970,12 @@ export interface Datasets {
      * @param {array} [dataset.properties.annotations] List of tags that can be
      * used for describing the Dataset.
      *
+     * @param {object} [dataset.properties.folder] The folder that this Dataset is
+     * in. If not specified, Dataset will appear at the root level.
+     *
+     * @param {string} [dataset.properties.folder.name] The name of the folder that
+     * this Dataset is in.
+     *
      * @param {string} dataset.properties.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
@@ -2773,6 +3027,12 @@ export interface Datasets {
      *
      * @param {array} [dataset.properties.annotations] List of tags that can be
      * used for describing the Dataset.
+     *
+     * @param {object} [dataset.properties.folder] The folder that this Dataset is
+     * in. If not specified, Dataset will appear at the root level.
+     *
+     * @param {string} [dataset.properties.folder.name] The name of the folder that
+     * this Dataset is in.
      *
      * @param {string} dataset.properties.type Polymorphic Discriminator
      *
@@ -3096,6 +3356,12 @@ export interface Pipelines {
      * @param {array} [pipelineParameter.annotations] List of tags that can be used
      * for describing the Pipeline.
      *
+     * @param {object} [pipelineParameter.folder] The folder that this Pipeline is
+     * in. If not specified, Pipeline will appear at the root level.
+     *
+     * @param {string} [pipelineParameter.folder.name] The name of the folder that
+     * this Pipeline is in.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.ifMatch] ETag of the pipeline entity.  Should only
@@ -3138,6 +3404,12 @@ export interface Pipelines {
      *
      * @param {array} [pipelineParameter.annotations] List of tags that can be used
      * for describing the Pipeline.
+     *
+     * @param {object} [pipelineParameter.folder] The folder that this Pipeline is
+     * in. If not specified, Pipeline will appear at the root level.
+     *
+     * @param {string} [pipelineParameter.folder.name] The name of the folder that
+     * this Pipeline is in.
      *
      * @param {object} [options] Optional Parameters.
      *

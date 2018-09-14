@@ -355,6 +355,27 @@ export interface LinkedIntegrationRuntimeRequest {
 
 /**
  * @class
+ * Initializes a new instance of the CreateLinkedIntegrationRuntimeRequest class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The ID of the subscription that the linked
+ * integration runtime belongs to.
+ * @member {string} [dataFactoryName] The name of the data factory that the
+ * linked integration runtime belongs to.
+ * @member {string} [dataFactoryLocation] The location of the data factory that
+ * the linked integration runtime belongs to.
+ */
+export interface CreateLinkedIntegrationRuntimeRequest {
+  name?: string;
+  subscriptionId?: string;
+  dataFactoryName?: string;
+  dataFactoryLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ParameterSpecification class.
  * @constructor
  * Definition of a single parameter for an entity.
@@ -423,6 +444,19 @@ export interface LinkedServiceResource extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the DatasetFolder class.
+ * @constructor
+ * The folder that this Dataset is in. If not specified, Dataset will appear at
+ * the root level.
+ *
+ * @member {string} [name] The name of the folder that this Dataset is in.
+ */
+export interface DatasetFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Dataset class.
  * @constructor
  * The Azure Data Factory nested object which identifies data within different
@@ -439,6 +473,10 @@ export interface LinkedServiceResource extends SubResource {
  * @member {object} [parameters] Parameters for dataset.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Dataset.
+ * @member {object} [folder] The folder that this Dataset is in. If not
+ * specified, Dataset will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Dataset is
+ * in.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Dataset {
@@ -447,6 +485,7 @@ export interface Dataset {
   linkedServiceName: LinkedServiceReference;
   parameters?: { [propertyName: string]: ParameterSpecification };
   annotations?: any[];
+  folder?: DatasetFolder;
   type: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -474,6 +513,10 @@ export interface Dataset {
  * @member {object} [properties.parameters] Parameters for dataset.
  * @member {array} [properties.annotations] List of tags that can be used for
  * describing the Dataset.
+ * @member {object} [properties.folder] The folder that this Dataset is in. If
+ * not specified, Dataset will appear at the root level.
+ * @member {string} [properties.folder.name] The name of the folder that this
+ * Dataset is in.
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface DatasetResource extends SubResource {
@@ -541,6 +584,19 @@ export interface Activity {
 
 /**
  * @class
+ * Initializes a new instance of the PipelineFolder class.
+ * @constructor
+ * The folder that this Pipeline is in. If not specified, Pipeline will appear
+ * at the root level.
+ *
+ * @member {string} [name] The name of the folder that this Pipeline is in.
+ */
+export interface PipelineFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineResource class.
  * @constructor
  * Pipeline resource type.
@@ -552,6 +608,10 @@ export interface Activity {
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Pipeline.
+ * @member {object} [folder] The folder that this Pipeline is in. If not
+ * specified, Pipeline will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Pipeline is
+ * in.
  */
 export interface PipelineResource extends SubResource {
   description?: string;
@@ -559,6 +619,7 @@ export interface PipelineResource extends SubResource {
   parameters?: { [propertyName: string]: ParameterSpecification };
   concurrency?: number;
   annotations?: any[];
+  folder?: PipelineFolder;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -665,6 +726,34 @@ export interface FactoryGitHubConfiguration extends FactoryRepoConfiguration {
 export interface FactoryRepoUpdate {
   factoryResourceId?: string;
   repoConfiguration?: FactoryRepoConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenRequest class.
+ * @constructor
+ * Get GitHub access token request definition.
+ *
+ * @member {string} gitHubAccessCode GitHub access code.
+ * @member {string} [gitHubClientId] GitHub application client ID.
+ * @member {string} gitHubAccessTokenBaseUrl GitHub access token base URL.
+ */
+export interface GitHubAccessTokenRequest {
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubAccessTokenBaseUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenResponse class.
+ * @constructor
+ * Get GitHub access token response definition.
+ *
+ * @member {string} [gitHubAccessToken] GitHub access token.
+ */
+export interface GitHubAccessTokenResponse {
+  gitHubAccessToken?: string;
 }
 
 /**
@@ -1180,8 +1269,10 @@ export interface ResponsysLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [newClusterNodeType] The node types of new cluster. Type:
  * string (or Expression with resultType string).
- * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * @member {object} [newClusterSparkConf] A set of optional, user-specified
  * Spark configuration key-value pairs.
+ * @member {object} [newClusterSparkEnvVars] A set of optional, user-specified
+ * Spark environment variables key-value pairs.
  * @member {object} [newClusterCustomTags] Additional tags for cluster
  * resources.
  * @member {object} [encryptedCredential] The encrypted credential used for
@@ -1196,6 +1287,7 @@ export interface AzureDatabricksLinkedService extends LinkedService {
   newClusterNumOfWorker?: any;
   newClusterNodeType?: any;
   newClusterSparkConf?: { [propertyName: string]: any };
+  newClusterSparkEnvVars?: { [propertyName: string]: any };
   newClusterCustomTags?: { [propertyName: string]: any };
   encryptedCredential?: any;
 }
@@ -4451,6 +4543,75 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the DependencyReference class.
+ * @constructor
+ * Referenced dependency.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface DependencyReference {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
+ * @constructor
+ * Self referenced tumbling window trigger dependency.
+ *
+ * @member {string} offset Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
+  offset: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerReference class.
+ * @constructor
+ * Trigger reference type.
+ *
+ * @member {string} referenceName Reference trigger name.
+ */
+export interface TriggerReference {
+  referenceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerDependencyReference class.
+ * @constructor
+ * Trigger referenced dependency.
+ *
+ * @member {object} referenceTrigger Referenced trigger.
+ * @member {string} [referenceTrigger.referenceName] Reference trigger name.
+ */
+export interface TriggerDependencyReference extends DependencyReference {
+  referenceTrigger: TriggerReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
+ * @constructor
+ * Referenced tumbling window trigger dependency.
+ *
+ * @member {string} [offset] Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
+  offset?: string;
+  size?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RetryPolicy class.
  * @constructor
  * Execution policy for an activity.
@@ -4503,6 +4664,8 @@ export interface RetryPolicy {
  * minimum: 0.
  * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
  * seconds. Default is 30.
+ * @member {array} [dependsOn] Triggers that this trigger depends on. Only
+ * tumbling window triggers are supported.
  */
 export interface TumblingWindowTrigger extends Trigger {
   pipelineProperty: TriggerPipelineReference;
@@ -4513,6 +4676,7 @@ export interface TumblingWindowTrigger extends Trigger {
   delay?: any;
   maxConcurrency: number;
   retryPolicy?: RetryPolicy;
+  dependsOn?: DependencyReference[];
 }
 
 /**
@@ -6800,7 +6964,7 @@ export interface LinkedIntegrationRuntime {
  * @member {date} [lastStartTime] The time the node last started up.
  * @member {date} [lastStopTime] The integration runtime node last stop time.
  * @member {string} [lastUpdateResult] The result of the last integration
- * runtime node update. Possible values include: 'Succeed', 'Fail'
+ * runtime node update. Possible values include: 'None', 'Succeed', 'Fail'
  * @member {date} [lastStartUpdateTime] The last time for the integration
  * runtime node update start.
  * @member {date} [lastEndUpdateTime] The last time for the integration runtime
@@ -6870,6 +7034,8 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [pushedVersion] The version that the integration runtime is
  * going to update to.
  * @member {string} [latestVersion] The latest version on download center.
+ * @member {date} [autoUpdateETA] The estimated time when the self-hosted
+ * integration runtime will be updated.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6887,6 +7053,7 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   links?: LinkedIntegrationRuntime[];
   readonly pushedVersion?: string;
   readonly latestVersion?: string;
+  readonly autoUpdateETA?: Date;
 }
 
 /**

@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool2/resize?api-version=2018-03-01.6.1', '*')
+.post('/pools/nodesdktestpool2/resize?api-version=2018-08-01.7.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:22 GMT',
-  etag: '0x8D5861165C6B797',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:22 GMT',
+  etag: '0x8D607A4389CE6FD',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '65a71cde-7e2e-458a-93ca-8b04d5f1becb',
+  'request-id': 'f2ceedbf-aa0e-4233-8917-ddffaea2e83f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool2/resize',
-  date: 'Fri, 09 Mar 2018 22:59:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool2/resize?api-version=2018-03-01.6.1', '*')
+.post('/pools/nodesdktestpool2/resize?api-version=2018-08-01.7.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 22:59:22 GMT',
-  etag: '0x8D5861165C6B797',
+  'last-modified': 'Tue, 21 Aug 2018 20:25:22 GMT',
+  etag: '0x8D607A4389CE6FD',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '65a71cde-7e2e-458a-93ca-8b04d5f1becb',
+  'request-id': 'f2ceedbf-aa0e-4233-8917-ddffaea2e83f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool2/resize',
-  date: 'Fri, 09 Mar 2018 22:59:22 GMT',
+  date: 'Tue, 21 Aug 2018 20:25:22 GMT',
   connection: 'close' });
  return result; }]];
