@@ -82,6 +82,7 @@ export interface AzureFileshareProtectedItemExtendedInfo {
  * @member {string} [createMode] Create mode to indicate recovery of existing
  * soft deleted data source or creation of new data source. Possible values
  * include: 'Invalid', 'Default', 'Recover'
+ * @member {string} [vaultId] ID of the vault which protects this item
  * @member {string} protectedItemType Polymorphic Discriminator
  */
 export interface ProtectedItem {
@@ -93,6 +94,7 @@ export interface ProtectedItem {
   lastRecoveryPoint?: Date;
   backupSetName?: string;
   createMode?: string;
+  vaultId?: string;
   protectedItemType: string;
 }
 
@@ -180,7 +182,10 @@ export interface ProtectionPolicy {
  * @constructor
  * AzureStorage backup policy.
  *
- * @member {string} [workLoadType] Type of workload for the backup management
+ * @member {string} [workLoadType] Type of workload for the backup management.
+ * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+ * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+ * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
  * @member {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
  * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
@@ -866,7 +871,8 @@ export interface Settings {
  * @constructor
  * Sub-protection policy which includes schedule and retention
  *
- * @member {string} [policyType] Type of backup policy type
+ * @member {string} [policyType] Type of backup policy type. Possible values
+ * include: 'Invalid', 'Full', 'Differential', 'Log', 'CopyOnlyFull'
  * @member {object} [schedulePolicy] Backup schedule specified as part of
  * backup policy.
  * @member {string} [schedulePolicy.schedulePolicyType] Polymorphic
@@ -888,7 +894,10 @@ export interface SubProtectionPolicy {
  * @constructor
  * Azure VM (Mercury) workload-specific backup policy.
  *
- * @member {string} [workLoadType] Type of workload for the backup management
+ * @member {string} [workLoadType] Type of workload for the backup management.
+ * Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+ * 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
+ * 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase'
  * @member {object} [settings] Common settings for the backup management
  * @member {string} [settings.timeZone] TimeZone optional input as string. For
  * example: TimeZone = "Pacific Standard Time".
@@ -2375,10 +2384,34 @@ export interface ProtectedItemQueryObject {
  * @member {string} [properties.createMode] Create mode to indicate recovery of
  * existing soft deleted data source or creation of new data source. Possible
  * values include: 'Invalid', 'Default', 'Recover'
+ * @member {string} [properties.vaultId] ID of the vault which protects this
+ * item
  * @member {string} [properties.protectedItemType] Polymorphic Discriminator
  */
 export interface ProtectedItemResource extends Resource {
   properties?: ProtectedItem;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtectionIntentQueryObject class.
+ * @constructor
+ * Filters to list protection intent.
+ *
+ * @member {string} [backupManagementType] Backup management type for the
+ * backed up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+ * 'DPM', 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
+ * 'DefaultBackup'
+ * @member {string} [itemType] Type of workload this item represents. Possible
+ * values include: 'Invalid', 'SQLInstance', 'SQLAvailabilityGroupContainer'
+ * @member {string} [parentName] Parent name of the intent
+ * @member {string} [itemName] Item name of the intent
+ */
+export interface ProtectionIntentQueryObject {
+  backupManagementType?: string;
+  itemType?: string;
+  parentName?: string;
+  itemName?: string;
 }
 
 /**
@@ -3088,6 +3121,8 @@ export interface PreBackupValidation {
  * @member {string} [serverName] Host/Cluster Name for instance or AG
  * @member {boolean} [isAutoProtectable] Indicates if protectable item is
  * auto-protectable
+ * @member {boolean} [isAutoProtected] Indicates if protectable item is
+ * auto-protected
  * @member {number} [subinquireditemcount] For instance or AG, indicates number
  * of DB's present
  * @member {number} [subprotectableitemcount] For instance or AG, indicates
@@ -3106,6 +3141,7 @@ export interface AzureVmWorkloadProtectableItem extends WorkloadProtectableItem 
   parentUniqueName?: string;
   serverName?: string;
   isAutoProtectable?: boolean;
+  isAutoProtected?: boolean;
   subinquireditemcount?: number;
   subprotectableitemcount?: number;
   prebackupvalidation?: PreBackupValidation;
@@ -4634,6 +4670,16 @@ export interface ProtectionPolicyResourceList extends Array<ProtectionPolicyReso
  *
  */
 export interface ProtectedItemResourceList extends Array<ProtectedItemResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtectionIntentResourceList class.
+ * @constructor
+ * List of ProtectionIntent resources
+ *
+ */
+export interface ProtectionIntentResourceList extends Array<ProtectionIntentResource> {
 }
 
 /**
