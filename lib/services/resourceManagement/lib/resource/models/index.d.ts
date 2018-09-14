@@ -534,7 +534,8 @@ export interface DeploymentValidateResult {
  * Deployment information.
  *
  * @member {string} [id] The ID of the deployment.
- * @member {string} name The name of the deployment.
+ * @member {string} [name] The name of the deployment.
+ * @member {object} [type] The deployment extension object.
  * @member {string} [location] the location of the deployment.
  * @member {object} [properties] Deployment properties.
  * @member {string} [properties.provisioningState] The state of the
@@ -589,7 +590,8 @@ export interface DeploymentValidateResult {
  */
 export interface DeploymentExtended extends BaseResource {
   readonly id?: string;
-  name: string;
+  readonly name?: string;
+  readonly type?: any;
   location?: string;
   properties?: DeploymentPropertiesExtended;
 }
@@ -674,7 +676,7 @@ export interface Identity {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * Resource.
+ * Specified resource.
  *
  * @member {string} [id] Resource ID
  * @member {string} [name] Resource name
@@ -752,6 +754,7 @@ export interface ResourceGroupProperties {
  *
  * @member {string} [id] The ID of the resource group.
  * @member {string} [name] The name of the resource group.
+ * @member {object} [type] The resource group object.
  * @member {object} [properties]
  * @member {string} [properties.provisioningState] The provisioning state.
  * @member {string} location The location of the resource group. It cannot be
@@ -763,7 +766,8 @@ export interface ResourceGroupProperties {
  */
 export interface ResourceGroup extends BaseResource {
   readonly id?: string;
-  name?: string;
+  readonly name?: string;
+  readonly type?: any;
   properties?: ResourceGroupProperties;
   location: string;
   managedBy?: string;
@@ -869,7 +873,7 @@ export interface TagValue extends BaseResource {
  * @member {number} [count.value] Value of count.
  * @member {array} [values] The list of tag values.
  */
-export interface TagDetails {
+export interface TagDetails extends BaseResource {
   readonly id?: string;
   tagName?: string;
   count?: TagCount;
@@ -977,7 +981,7 @@ export interface DeploymentOperation {
  * @member {string} [publisher] Operation description.
  * @member {string} [provider] Operation provider.
  * @member {string} [resource] Operation resource.
- * @member {string} [operation] Operation.
+ * @member {string} [operation] Resource provider operation.
  * @member {string} [description] Operation description.
  */
 export interface ResourceProviderOperationDisplayProperties {
@@ -1020,6 +1024,56 @@ export interface ResourceGroupExportResult {
   error?: ResourceManagementErrorWithDetails;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft.Resources
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Profile, endpoint, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Microsoft.Resources operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Microsoft.Resources
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Profile, endpoint, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Microsoft.Resources operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
 
 /**
  * @class

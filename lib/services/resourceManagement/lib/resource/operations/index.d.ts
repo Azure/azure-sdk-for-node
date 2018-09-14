@@ -5218,8 +5218,6 @@ export interface ResourceGroups {
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
      *
-     * @param {string} [parameters.name] The name of the resource group.
-     *
      * @param {object} [parameters.properties]
      *
      * @param {string} parameters.location The location of the resource group. It
@@ -5252,8 +5250,6 @@ export interface ResourceGroups {
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
      *
      * @param {object} [parameters.properties]
      *
