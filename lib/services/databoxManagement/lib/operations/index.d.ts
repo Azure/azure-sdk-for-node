@@ -950,9 +950,7 @@ export interface Jobs {
      * resource group. job names must be between 3 and 24 characters in length and
      * use any alphanumeric and underscore only
      *
-     * @param {object} cancellationReason Reason for cancellation.
-     *
-     * @param {string} cancellationReason.reason Reason for cancellation.
+     * @param {string} reason Reason for cancellation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -965,7 +963,7 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cancelWithHttpOperationResponse(resourceGroupName: string, jobName: string, cancellationReason: models.CancellationReason, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    cancelWithHttpOperationResponse(resourceGroupName: string, jobName: string, reason: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * CancelJob.
@@ -976,9 +974,7 @@ export interface Jobs {
      * resource group. job names must be between 3 and 24 characters in length and
      * use any alphanumeric and underscore only
      *
-     * @param {object} cancellationReason Reason for cancellation.
-     *
-     * @param {string} cancellationReason.reason Reason for cancellation.
+     * @param {string} reason Reason for cancellation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1006,9 +1002,9 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    cancel(resourceGroupName: string, jobName: string, cancellationReason: models.CancellationReason, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    cancel(resourceGroupName: string, jobName: string, cancellationReason: models.CancellationReason, callback: ServiceCallback<void>): void;
-    cancel(resourceGroupName: string, jobName: string, cancellationReason: models.CancellationReason, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, jobName: string, reason: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, jobName: string, reason: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, jobName: string, reason: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1734,14 +1730,11 @@ export interface Service {
      *
      * @param {string} location The location of the resource
      *
-     * @param {object} availableSkuRequest Filters for showing the available skus.
-     *
-     * @param {string} availableSkuRequest.country ISO country code. Country for
-     * hardware shipment. For codes check:
+     * @param {string} country ISO country code. Country for hardware shipment. For
+     * codes check:
      * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
      *
-     * @param {string} availableSkuRequest.location Location for data transfer. For
-     * locations check:
+     * @param {string} location1 Location for data transfer. For locations check:
      * https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
      *
      * @param {object} [options] Optional Parameters.
@@ -1755,7 +1748,7 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableSkusWithHttpOperationResponse(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
+    listAvailableSkusWithHttpOperationResponse(location: string, country: string, location1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
 
     /**
      * This method provides the list of available skus for the given subscription
@@ -1763,14 +1756,11 @@ export interface Service {
      *
      * @param {string} location The location of the resource
      *
-     * @param {object} availableSkuRequest Filters for showing the available skus.
-     *
-     * @param {string} availableSkuRequest.country ISO country code. Country for
-     * hardware shipment. For codes check:
+     * @param {string} country ISO country code. Country for hardware shipment. For
+     * codes check:
      * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
      *
-     * @param {string} availableSkuRequest.location Location for data transfer. For
-     * locations check:
+     * @param {string} location1 Location for data transfer. For locations check:
      * https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
      *
      * @param {object} [options] Optional Parameters.
@@ -1800,9 +1790,9 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
-    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, callback: ServiceCallback<models.AvailableSkusResult>): void;
-    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
+    listAvailableSkus(location: string, country: string, location1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
+    listAvailableSkus(location: string, country: string, location1: string, callback: ServiceCallback<models.AvailableSkusResult>): void;
+    listAvailableSkus(location: string, country: string, location1: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
 
 
     /**
@@ -1811,40 +1801,32 @@ export interface Service {
      *
      * @param {string} location The location of the resource
      *
-     * @param {object} validateAddress Shipping address of the customer.
+     * @param {object} shippingAddress Shipping address of the customer.
      *
-     * @param {object} validateAddress.shippingAddress Shipping address of the
-     * customer.
+     * @param {string} shippingAddress.streetAddress1 Street Address line 1.
      *
-     * @param {string} validateAddress.shippingAddress.streetAddress1 Street
-     * Address line 1.
+     * @param {string} [shippingAddress.streetAddress2] Street Address line 2.
      *
-     * @param {string} [validateAddress.shippingAddress.streetAddress2] Street
-     * Address line 2.
+     * @param {string} [shippingAddress.streetAddress3] Street Address line 3.
      *
-     * @param {string} [validateAddress.shippingAddress.streetAddress3] Street
-     * Address line 3.
+     * @param {string} [shippingAddress.city] Name of the City.
      *
-     * @param {string} [validateAddress.shippingAddress.city] Name of the City.
+     * @param {string} [shippingAddress.stateOrProvince] Name of the State or
+     * Province.
      *
-     * @param {string} [validateAddress.shippingAddress.stateOrProvince] Name of
-     * the State or Province.
+     * @param {string} shippingAddress.country Name of the Country.
      *
-     * @param {string} validateAddress.shippingAddress.country Name of the Country.
+     * @param {string} shippingAddress.postalCode Postal code.
      *
-     * @param {string} validateAddress.shippingAddress.postalCode Postal code.
+     * @param {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
      *
-     * @param {string} [validateAddress.shippingAddress.zipExtendedCode] Extended
-     * Zip Code.
+     * @param {string} [shippingAddress.companyName] Name of the company.
      *
-     * @param {string} [validateAddress.shippingAddress.companyName] Name of the
-     * company.
+     * @param {string} [shippingAddress.addressType] Type of address. Possible
+     * values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {string} [validateAddress.shippingAddress.addressType] Type of
-     * address. Possible values include: 'None', 'Residential', 'Commercial'
-     *
-     * @param {string} validateAddress.deviceType Device type to be used for the
-     * job. Possible values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
+     * @param {string} deviceType Device type to be used for the job. Possible
+     * values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1857,7 +1839,7 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    validateAddressMethodWithHttpOperationResponse(location: string, validateAddress: models.ValidateAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AddressValidationOutput>>;
+    validateAddressMethodWithHttpOperationResponse(location: string, shippingAddress: models.ShippingAddress, deviceType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AddressValidationOutput>>;
 
     /**
      * This method validates the customer shipping address and provide alternate
@@ -1865,40 +1847,32 @@ export interface Service {
      *
      * @param {string} location The location of the resource
      *
-     * @param {object} validateAddress Shipping address of the customer.
+     * @param {object} shippingAddress Shipping address of the customer.
      *
-     * @param {object} validateAddress.shippingAddress Shipping address of the
-     * customer.
+     * @param {string} shippingAddress.streetAddress1 Street Address line 1.
      *
-     * @param {string} validateAddress.shippingAddress.streetAddress1 Street
-     * Address line 1.
+     * @param {string} [shippingAddress.streetAddress2] Street Address line 2.
      *
-     * @param {string} [validateAddress.shippingAddress.streetAddress2] Street
-     * Address line 2.
+     * @param {string} [shippingAddress.streetAddress3] Street Address line 3.
      *
-     * @param {string} [validateAddress.shippingAddress.streetAddress3] Street
-     * Address line 3.
+     * @param {string} [shippingAddress.city] Name of the City.
      *
-     * @param {string} [validateAddress.shippingAddress.city] Name of the City.
+     * @param {string} [shippingAddress.stateOrProvince] Name of the State or
+     * Province.
      *
-     * @param {string} [validateAddress.shippingAddress.stateOrProvince] Name of
-     * the State or Province.
+     * @param {string} shippingAddress.country Name of the Country.
      *
-     * @param {string} validateAddress.shippingAddress.country Name of the Country.
+     * @param {string} shippingAddress.postalCode Postal code.
      *
-     * @param {string} validateAddress.shippingAddress.postalCode Postal code.
+     * @param {string} [shippingAddress.zipExtendedCode] Extended Zip Code.
      *
-     * @param {string} [validateAddress.shippingAddress.zipExtendedCode] Extended
-     * Zip Code.
+     * @param {string} [shippingAddress.companyName] Name of the company.
      *
-     * @param {string} [validateAddress.shippingAddress.companyName] Name of the
-     * company.
+     * @param {string} [shippingAddress.addressType] Type of address. Possible
+     * values include: 'None', 'Residential', 'Commercial'
      *
-     * @param {string} [validateAddress.shippingAddress.addressType] Type of
-     * address. Possible values include: 'None', 'Residential', 'Commercial'
-     *
-     * @param {string} validateAddress.deviceType Device type to be used for the
-     * job. Possible values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
+     * @param {string} deviceType Device type to be used for the job. Possible
+     * values include: 'DataBox', 'DataBoxDisk', 'DataBoxHeavy'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1928,9 +1902,9 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    validateAddressMethod(location: string, validateAddress: models.ValidateAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AddressValidationOutput>;
-    validateAddressMethod(location: string, validateAddress: models.ValidateAddress, callback: ServiceCallback<models.AddressValidationOutput>): void;
-    validateAddressMethod(location: string, validateAddress: models.ValidateAddress, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AddressValidationOutput>): void;
+    validateAddressMethod(location: string, shippingAddress: models.ShippingAddress, deviceType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AddressValidationOutput>;
+    validateAddressMethod(location: string, shippingAddress: models.ShippingAddress, deviceType: string, callback: ServiceCallback<models.AddressValidationOutput>): void;
+    validateAddressMethod(location: string, shippingAddress: models.ShippingAddress, deviceType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AddressValidationOutput>): void;
 
 
     /**
