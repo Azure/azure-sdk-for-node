@@ -4906,7 +4906,7 @@ export interface NetworkFeatures extends ProxyOnlyResource {
  * @member {string} [message] Detailed message of a network trace operation,
  * e.g. error message in case of failure.
  */
-export interface NetworkTrace extends ProxyOnlyResource {
+export interface NetworkTrace {
   path?: string;
   status?: string;
   message?: string;
