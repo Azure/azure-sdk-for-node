@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/storageSyncManagementClient.js",
   "types": "./lib/storageSyncManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/storagesyncManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
