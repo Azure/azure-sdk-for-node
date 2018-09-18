@@ -2370,7 +2370,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2453,7 +2453,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2555,7 +2555,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2636,7 +2636,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2969,7 +2969,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3052,7 +3052,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3154,7 +3154,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3235,7 +3235,7 @@ export interface Images {
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3756,9 +3756,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -3768,6 +3768,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -4165,9 +4176,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -4177,6 +4188,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -4593,9 +4615,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -4605,6 +4627,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -5000,9 +5033,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -5012,6 +5045,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -6422,9 +6466,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -6434,6 +6478,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -6831,9 +6886,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -6843,6 +6898,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -7259,9 +7325,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -7271,6 +7337,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -7666,9 +7743,9 @@ export interface VirtualMachines {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -7678,6 +7755,17 @@ export interface VirtualMachines {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine. For instance:
+     * whether the virtual machine has the capability to support attaching managed
+     * data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -8879,13 +8967,26 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * Enables or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -9312,13 +9413,26 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * Enables or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -9683,7 +9797,7 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -9990,7 +10104,7 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -11568,13 +11682,26 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * Enables or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -12001,13 +12128,26 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * Enables or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -12372,7 +12512,7 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -12679,7 +12819,7 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
      * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -15171,9 +15311,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -15183,6 +15323,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -15566,9 +15717,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -15578,6 +15729,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -16838,9 +17000,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -16850,6 +17012,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -17233,9 +17406,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * the storage account type for the managed disk. UltraSSD_LRS can only be used
+     * for data disks. Possible values include: 'Standard_LRS', 'Premium_LRS',
+     * 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -17245,6 +17418,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] Enables
+     * or disables a capability to have 1 or more managed data disks with
+     * UltraSSD_LRS storage account on the VM or VMSS. Managed disks with storage
+     * account type UltraSSD_LRS can be added to a virtual machine or virtual
+     * machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -18715,7 +18899,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18784,6 +18968,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -18818,7 +19010,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18887,6 +19079,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -18976,12 +19176,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19048,12 +19256,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19485,7 +19701,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -19554,6 +19770,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -19588,7 +19812,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -19657,6 +19881,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -19746,12 +19978,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19818,12 +20058,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
