@@ -7546,7 +7546,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7567,7 +7567,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7668,7 +7668,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7689,7 +7689,7 @@ export interface Provider {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.osTypeSelected] Possible values include: 'Windows',
-     * 'Linux'
+     * 'Linux', 'WindowsFunctions', 'LinuxFunctions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7933,9 +7933,9 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7960,9 +7960,9 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8129,9 +8129,9 @@ export interface Recommendations {
      * expired recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8162,9 +8162,9 @@ export interface Recommendations {
      * expired recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8214,7 +8214,7 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Return only channels specified in the
-     * filter. Filter is specified by using OData syntax. Example: $filter=channels
+     * filter. Filter is specified by using OData syntax. Example: $filter=channel
      * eq 'Api' or channel eq 'Notification'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -8245,7 +8245,7 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Return only channels specified in the
-     * filter. Filter is specified by using OData syntax. Example: $filter=channels
+     * filter. Filter is specified by using OData syntax. Example: $filter=channel
      * eq 'Api' or channel eq 'Notification'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -8974,7 +8974,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -9025,6 +9027,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -9354,7 +9359,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -9405,6 +9412,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -9833,7 +9843,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -9884,6 +9896,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -10201,7 +10216,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -10252,6 +10269,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -10727,6 +10747,8 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -10784,6 +10806,8 @@ export interface WebApps {
      *
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -11071,6 +11095,8 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -11135,6 +11161,8 @@ export interface WebApps {
      * @param {string} backupId ID of backup.
      *
      * @param {object} request Information on backup request.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -11983,6 +12011,150 @@ export interface WebApps {
 
 
     /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateAzureStorageAccountsWithHttpOperationResponse(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateAzureStorageAccounts(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    updateAzureStorageAccounts(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    updateAzureStorageAccounts(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAzureStorageAccountsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAzureStorageAccounts(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    listAzureStorageAccounts(resourceGroupName: string, name: string, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    listAzureStorageAccounts(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
      * @summary Updates the backup configuration of an app.
      *
      * Updates the backup configuration of an app.
@@ -11993,6 +12165,8 @@ export interface WebApps {
      * @param {string} name Name of the app.
      *
      * @param {object} request Edited backup configuration.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -12050,6 +12224,8 @@ export interface WebApps {
      * @param {string} name Name of the app.
      *
      * @param {object} request Edited backup configuration.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -13162,6 +13338,9 @@ export interface WebApps {
      * @param {array} [slotConfigNames.appSettingNames] List of application
      * settings names.
      *
+     * @param {array} [slotConfigNames.azureStorageConfigNames] List of external
+     * Azure storage account identifiers.
+     *
      * @param {string} [slotConfigNames.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -13197,6 +13376,9 @@ export interface WebApps {
      *
      * @param {array} [slotConfigNames.appSettingNames] List of application
      * settings names.
+     *
+     * @param {array} [slotConfigNames.azureStorageConfigNames] List of external
+     * Azure storage account identifiers.
      *
      * @param {string} [slotConfigNames.kind] Kind of resource.
      *
@@ -13690,6 +13872,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -13933,6 +14118,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -14197,6 +14385,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -14440,6 +14631,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -19474,8 +19668,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -19506,8 +19700,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -19878,9 +20072,81 @@ export interface WebApps {
 
 
     /**
-     * @summary Start capturing network packets for the site.
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
      *
-     * Start capturing network packets for the site.
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Start capturing network packets for the site (To be deprecated).
+     *
+     * Start capturing network packets for the site (To be deprecated).
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -19909,9 +20175,9 @@ export interface WebApps {
     startWebSiteNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Start capturing network packets for the site.
+     * @summary Start capturing network packets for the site (To be deprecated).
      *
-     * Start capturing network packets for the site.
+     * Start capturing network packets for the site (To be deprecated).
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -19958,6 +20224,86 @@ export interface WebApps {
 
 
     /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWebSiteNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
      * @summary Stop ongoing capturing network packets for the site.
      *
      * Stop ongoing capturing network packets for the site.
@@ -19974,11 +20320,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopWebSiteNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    stopWebSiteNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Stop ongoing capturing network packets for the site.
@@ -20002,7 +20348,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20010,15 +20356,87 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stopWebSiteNetworkTrace(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    stopWebSiteNetworkTrace(resourceGroupName: string, name: string, callback: ServiceCallback<string>): void;
-    stopWebSiteNetworkTrace(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    stopWebSiteNetworkTrace(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stopWebSiteNetworkTrace(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    stopWebSiteNetworkTrace(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkTracesWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTraces(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTraces(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraces(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -20103,8 +20521,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -20131,8 +20549,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -21699,12 +22117,20 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
      *
-     * @param {string} [options.format] Name of the format. Valid values are:
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
      * FileZilla3
      * WebDeploy -- default
      * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -21715,7 +22141,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPublishingProfileXmlWithSecretsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    listPublishingProfileXmlWithSecretsWithHttpOperationResponse(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Gets the publishing profile for an app (or deployment slot, if
@@ -21728,12 +22154,20 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
      *
-     * @param {string} [options.format] Name of the format. Valid values are:
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
      * FileZilla3
      * WebDeploy -- default
      * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -21759,9 +22193,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, callback: ServiceCallback<stream.Readable>): void;
-    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -22722,7 +23156,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -22773,6 +23209,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -23105,7 +23544,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -23156,6 +23597,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -23593,7 +24037,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -23644,6 +24090,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -23964,7 +24413,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -24015,6 +24466,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -24505,6 +24959,8 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -24565,6 +25021,8 @@ export interface WebApps {
      *
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -24873,6 +25331,8 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -24940,6 +25400,8 @@ export interface WebApps {
      * @param {string} backupId ID of backup.
      *
      * @param {object} request Information on backup request.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -25831,6 +26293,166 @@ export interface WebApps {
 
 
     /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateAzureStorageAccountsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateAzureStorageAccountsSlot(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    updateAzureStorageAccountsSlot(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    updateAzureStorageAccountsSlot(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAzureStorageAccountsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAzureStorageAccountsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    listAzureStorageAccountsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    listAzureStorageAccountsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
      * @summary Updates the backup configuration of an app.
      *
      * Updates the backup configuration of an app.
@@ -25841,6 +26463,8 @@ export interface WebApps {
      * @param {string} name Name of the app.
      *
      * @param {object} request Edited backup configuration.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -25902,6 +26526,8 @@ export interface WebApps {
      * @param {string} name Name of the app.
      *
      * @param {object} request Edited backup configuration.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -27494,6 +28120,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -27740,6 +28369,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -28007,6 +28639,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -28253,6 +28888,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -33645,8 +34283,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -33680,8 +34318,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -33869,9 +34507,87 @@ export interface WebApps {
 
 
     /**
-     * @summary Start capturing network packets for the site.
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
      *
-     * Start capturing network packets for the site.
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Start capturing network packets for the site (To be deprecated).
+     *
+     * Start capturing network packets for the site (To be deprecated).
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -33902,9 +34618,9 @@ export interface WebApps {
     startWebSiteNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
-     * @summary Start capturing network packets for the site.
+     * @summary Start capturing network packets for the site (To be deprecated).
      *
-     * Start capturing network packets for the site.
+     * Start capturing network packets for the site (To be deprecated).
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
@@ -33953,6 +34669,90 @@ export interface WebApps {
 
 
     /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {string} slot The name of the slot for this web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWebSiteNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {string} slot The name of the slot for this web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
+    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
      * @summary Stop ongoing capturing network packets for the site.
      *
      * Stop ongoing capturing network packets for the site.
@@ -33971,11 +34771,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    stopWebSiteNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    stopWebSiteNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Stop ongoing capturing network packets for the site.
@@ -34001,7 +34801,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -34009,15 +34809,93 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    stopWebSiteNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    stopWebSiteNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<string>): void;
-    stopWebSiteNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    stopWebSiteNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stopWebSiteNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
+    stopWebSiteNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkTracesSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTracesSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTracesSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTracesSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -34113,8 +34991,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -34144,8 +35022,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -35828,15 +36706,23 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
+     *
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
+     * FileZilla3
+     * WebDeploy -- default
+     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API will get the publishing profile for the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.format] Name of the format. Valid values are:
-     * FileZilla3
-     * WebDeploy -- default
-     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -35847,7 +36733,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPublishingProfileXmlWithSecretsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    listPublishingProfileXmlWithSecretsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Gets the publishing profile for an app (or deployment slot, if
@@ -35860,15 +36746,23 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
+     *
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
+     * FileZilla3
+     * WebDeploy -- default
+     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API will get the publishing profile for the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.format] Name of the format. Valid values are:
-     * FileZilla3
-     * WebDeploy -- default
-     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -35894,9 +36788,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, slot: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
-    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, slot: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -38132,8 +39026,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -38166,8 +39060,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -40365,8 +41259,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -40396,8 +41290,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -41279,7 +42173,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -41330,6 +42226,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -41659,7 +42558,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -41710,6 +42611,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -42800,6 +43704,86 @@ export interface WebApps {
 
 
     /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWebSiteNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
      * @summary Restores an app from a backup blob in Azure Storage.
      *
      * Restores an app from a backup blob in Azure Storage.
@@ -43266,7 +44250,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -43317,6 +44303,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -43649,7 +44638,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -43700,6 +44691,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -44629,6 +45623,90 @@ export interface WebApps {
     beginCreateInstanceMSDeployOperationSlot(resourceGroupName: string, name: string, slot: string, instanceId: string, mSDeploy: models.MSDeploy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MSDeployStatus>;
     beginCreateInstanceMSDeployOperationSlot(resourceGroupName: string, name: string, slot: string, instanceId: string, mSDeploy: models.MSDeploy, callback: ServiceCallback<models.MSDeployStatus>): void;
     beginCreateInstanceMSDeployOperationSlot(resourceGroupName: string, name: string, slot: string, instanceId: string, mSDeploy: models.MSDeploy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MSDeployStatus>): void;
+
+
+    /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {string} slot The name of the slot for this web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWebSiteNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Start capturing network packets for the site.
+     *
+     * Start capturing network packets for the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {string} slot The name of the slot for this web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.durationInSeconds] The duration to keep capturing
+     * in seconds.
+     *
+     * @param {number} [options.maxFrameLength] The maximum frame length in bytes
+     * (Optional).
+     *
+     * @param {string} [options.sasUrl] The Blob URL to store capture file.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
+    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -50134,9 +51212,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -50166,9 +51244,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -50914,9 +51992,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -50952,9 +52030,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -51530,9 +52608,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -51559,9 +52637,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52175,9 +53253,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52213,9 +53291,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52341,9 +53419,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52377,9 +53455,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -55349,7 +56427,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -55450,7 +56531,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -55634,7 +56718,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -55697,7 +56784,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -56314,9 +57404,9 @@ export interface AppServicePlans {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -56346,9 +57436,9 @@ export interface AppServicePlans {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -57534,7 +58624,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -57635,7 +58728,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -58210,4 +59306,683 @@ export interface AppServicePlans {
     listUsagesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsmUsageQuotaCollection>;
     listUsagesNext(nextPageLink: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
     listUsagesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+}
+
+/**
+ * @class
+ * ResourceHealthMetadataOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface ResourceHealthMetadataOperations {
+
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    list(callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the resource group
+     * in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the resource group in the
+     * subscription.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the resource group
+     * in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the resource group in the
+     * subscription.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySiteWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySite(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listBySite(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listBySite(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadata>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getBySiteWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadata>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadata} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadata} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadata} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBySite(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadata>;
+    getBySite(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+    getBySite(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySiteSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySiteSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listBySiteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listBySiteSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadata>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getBySiteSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadata>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadata} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadata} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadata} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBySiteSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadata>;
+    getBySiteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+    getBySiteSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the resource group
+     * in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the resource group in the
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary List all ResourceHealthMetadata for all sites in the resource group
+     * in the subscription.
+     *
+     * List all ResourceHealthMetadata for all sites in the resource group in the
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySiteNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySiteNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listBySiteNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listBySiteNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySiteSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site as a collection
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site as a
+     * collection
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadataCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySiteSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
+    listBySiteSlotNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
+    listBySiteSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
 }
