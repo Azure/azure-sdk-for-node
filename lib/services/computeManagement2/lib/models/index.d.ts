@@ -5582,6 +5582,984 @@ export interface RunCommandResult {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceSkuCapacity class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {number} [minimum] The minimum capacity.
+ * @member {number} [maximum] The maximum capacity that can be set.
+ * @member {number} [default] The default capacity.
+ * @member {string} [scaleType] The scale type applicable to the sku. Possible
+ * values include: 'Automatic', 'Manual', 'None'
+ */
+export interface ResourceSkuCapacity {
+  readonly minimum?: number;
+  readonly maximum?: number;
+  readonly default?: number;
+  readonly scaleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCosts class.
+ * @constructor
+ * Describes metadata for retrieving price info.
+ *
+ * @member {string} [meterID] Used for querying price from commerce.
+ * @member {number} [quantity] The multiplier is needed to extend the base
+ * metered cost.
+ * @member {string} [extendedUnit] An invariant to show the extended unit.
+ */
+export interface ResourceSkuCosts {
+  readonly meterID?: string;
+  readonly quantity?: number;
+  readonly extendedUnit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCapabilities class.
+ * @constructor
+ * Describes The SKU capabilites object.
+ *
+ * @member {string} [name] An invariant to describe the feature.
+ * @member {string} [value] An invariant if the feature is measured by
+ * quantity.
+ */
+export interface ResourceSkuCapabilities {
+  readonly name?: string;
+  readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictionInfo class.
+ * @constructor
+ * @member {array} [locations] Locations where the SKU is restricted
+ * @member {array} [zones] List of availability zones where the SKU is
+ * restricted.
+ */
+export interface ResourceSkuRestrictionInfo {
+  readonly locations?: string[];
+  readonly zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictions class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {string} [type] The type of restrictions. Possible values include:
+ * 'Location', 'Zone'
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ * @member {object} [restrictionInfo] The information about the restriction
+ * where the SKU cannot be used.
+ * @member {array} [restrictionInfo.locations] Locations where the SKU is
+ * restricted
+ * @member {array} [restrictionInfo.zones] List of availability zones where the
+ * SKU is restricted.
+ * @member {string} [reasonCode] The reason for restriction. Possible values
+ * include: 'QuotaId', 'NotAvailableForSubscription'
+ */
+export interface ResourceSkuRestrictions {
+  readonly type?: string;
+  readonly values?: string[];
+  readonly restrictionInfo?: ResourceSkuRestrictionInfo;
+  readonly reasonCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuLocationInfo class.
+ * @constructor
+ * @member {string} [location] Location of the SKU
+ * @member {array} [zones] List of availability zones where the SKU is
+ * supported.
+ */
+export interface ResourceSkuLocationInfo {
+  readonly location?: string;
+  readonly zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSku class.
+ * @constructor
+ * Describes an available Compute SKU.
+ *
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ * @member {string} [name] The name of SKU.
+ * @member {string} [tier] Specifies the tier of virtual machines in a scale
+ * set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
+ * **Basic**
+ * @member {string} [size] The Size of the SKU.
+ * @member {string} [family] The Family of this particular SKU.
+ * @member {string} [kind] The Kind of resources that are supported in this
+ * SKU.
+ * @member {object} [capacity] Specifies the number of virtual machines in the
+ * scale set.
+ * @member {number} [capacity.minimum] The minimum capacity.
+ * @member {number} [capacity.maximum] The maximum capacity that can be set.
+ * @member {number} [capacity.default] The default capacity.
+ * @member {string} [capacity.scaleType] The scale type applicable to the sku.
+ * Possible values include: 'Automatic', 'Manual', 'None'
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * @member {array} [locationInfo] A list of locations and availability zones in
+ * those locations where the SKU is available.
+ * @member {array} [apiVersions] The api versions that support this SKU.
+ * @member {array} [costs] Metadata for retrieving price info.
+ * @member {array} [capabilities] A name value pair to describe the capability.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
+ */
+export interface ResourceSku {
+  readonly resourceType?: string;
+  readonly name?: string;
+  readonly tier?: string;
+  readonly size?: string;
+  readonly family?: string;
+  readonly kind?: string;
+  readonly capacity?: ResourceSkuCapacity;
+  readonly locations?: string[];
+  readonly locationInfo?: ResourceSkuLocationInfo[];
+  readonly apiVersions?: string[];
+  readonly costs?: ResourceSkuCosts[];
+  readonly capabilities?: ResourceSkuCapabilities[];
+  readonly restrictions?: ResourceSkuRestrictions[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskSku class.
+ * @constructor
+ * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, or
+ * UltraSSD_LRS.
+ *
+ * @member {string} [name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+ * @member {string} [tier] The sku tier. Default value: 'Standard' .
+ */
+export interface DiskSku {
+  name?: string;
+  readonly tier?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageDiskReference class.
+ * @constructor
+ * The source image used for creating the disk.
+ *
+ * @member {string} id A relative uri containing either a Platform Imgage
+ * Repository or user image reference.
+ * @member {number} [lun] If the disk is created from an image's data disk,
+ * this is an index that indicates which of the data disks in the image to use.
+ * For OS disks, this field is null.
+ */
+export interface ImageDiskReference {
+  id: string;
+  lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreationData class.
+ * @constructor
+ * Data used when creating a disk.
+ *
+ * @member {string} createOption This enumerates the possible sources of a
+ * disk's creation. Possible values include: 'Empty', 'Attach', 'FromImage',
+ * 'Import', 'Copy', 'Restore'
+ * @member {string} [storageAccountId] If createOption is Import, the Azure
+ * Resource Manager identifier of the storage account containing the blob to
+ * import as a disk. Required only if the blob is in a different subscription
+ * @member {object} [imageReference] Disk source information.
+ * @member {string} [imageReference.id] A relative uri containing either a
+ * Platform Imgage Repository or user image reference.
+ * @member {number} [imageReference.lun] If the disk is created from an image's
+ * data disk, this is an index that indicates which of the data disks in the
+ * image to use. For OS disks, this field is null.
+ * @member {string} [sourceUri] If createOption is Import, this is the URI of a
+ * blob to be imported into a managed disk.
+ * @member {string} [sourceResourceId] If createOption is Copy, this is the ARM
+ * id of the source snapshot or disk.
+ */
+export interface CreationData {
+  createOption: string;
+  storageAccountId?: string;
+  imageReference?: ImageDiskReference;
+  sourceUri?: string;
+  sourceResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceVault class.
+ * @constructor
+ * The vault id is an Azure Resource Manager Resoure id in the form
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
+ *
+ * @member {string} [id] Resource Id
+ */
+export interface SourceVault {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultAndSecretReference class.
+ * @constructor
+ * Key Vault Secret Url and vault id of the encryption key
+ *
+ * @member {object} sourceVault Resource id of the KeyVault containing the key
+ * or secret
+ * @member {string} [sourceVault.id] Resource Id
+ * @member {string} secretUrl Url pointing to a key or secret in KeyVault
+ */
+export interface KeyVaultAndSecretReference {
+  sourceVault: SourceVault;
+  secretUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultAndKeyReference class.
+ * @constructor
+ * Key Vault Key Url and vault id of KeK, KeK is optional and when provided is
+ * used to unwrap the encryptionKey
+ *
+ * @member {object} sourceVault Resource id of the KeyVault containing the key
+ * or secret
+ * @member {string} [sourceVault.id] Resource Id
+ * @member {string} keyUrl Url pointing to a key or secret in KeyVault
+ */
+export interface KeyVaultAndKeyReference {
+  sourceVault: SourceVault;
+  keyUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EncryptionSettings class.
+ * @constructor
+ * Encryption settings for disk or snapshot
+ *
+ * @member {boolean} [enabled] Set this flag to true and provide
+ * DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set
+ * this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to
+ * disable encryption. If EncryptionSettings is null in the request object, the
+ * existing settings remain unchanged.
+ * @member {object} [diskEncryptionKey] Key Vault Secret Url and vault id of
+ * the disk encryption key
+ * @member {object} [diskEncryptionKey.sourceVault] Resource id of the KeyVault
+ * containing the key or secret
+ * @member {string} [diskEncryptionKey.sourceVault.id] Resource Id
+ * @member {string} [diskEncryptionKey.secretUrl] Url pointing to a key or
+ * secret in KeyVault
+ * @member {object} [keyEncryptionKey] Key Vault Key Url and vault id of the
+ * key encryption key
+ * @member {object} [keyEncryptionKey.sourceVault] Resource id of the KeyVault
+ * containing the key or secret
+ * @member {string} [keyEncryptionKey.sourceVault.id] Resource Id
+ * @member {string} [keyEncryptionKey.keyUrl] Url pointing to a key or secret
+ * in KeyVault
+ */
+export interface EncryptionSettings {
+  enabled?: boolean;
+  diskEncryptionKey?: KeyVaultAndSecretReference;
+  keyEncryptionKey?: KeyVaultAndKeyReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Disk class.
+ * @constructor
+ * Disk resource.
+ *
+ * @member {string} [managedBy] A relative URI containing the ID of the VM that
+ * has the disk attached.
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+ * @member {string} [sku.tier] The sku tier.
+ * @member {array} [zones] The Logical zone list for Disk.
+ * @member {date} [timeCreated] The time when the disk was created.
+ * @member {string} [osType] The Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {object} creationData Disk source information. CreationData
+ * information cannot be changed after the disk has been created.
+ * @member {string} [creationData.createOption] This enumerates the possible
+ * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+ * 'FromImage', 'Import', 'Copy', 'Restore'
+ * @member {string} [creationData.storageAccountId] If createOption is Import,
+ * the Azure Resource Manager identifier of the storage account containing the
+ * blob to import as a disk. Required only if the blob is in a different
+ * subscription
+ * @member {object} [creationData.imageReference] Disk source information.
+ * @member {string} [creationData.imageReference.id] A relative uri containing
+ * either a Platform Imgage Repository or user image reference.
+ * @member {number} [creationData.imageReference.lun] If the disk is created
+ * from an image's data disk, this is an index that indicates which of the data
+ * disks in the image to use. For OS disks, this field is null.
+ * @member {string} [creationData.sourceUri] If createOption is Import, this is
+ * the URI of a blob to be imported into a managed disk.
+ * @member {string} [creationData.sourceResourceId] If createOption is Copy,
+ * this is the ARM id of the source snapshot or disk.
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ * @member {string} [provisioningState] The disk provisioning state.
+ * @member {number} [diskIOPSReadWrite] The number of IOPS allowed for this
+ * disk; only settable for UltraSSD disks. One operation can transfer between
+ * 4k and 256k bytes.
+ * @member {number} [diskMBpsReadWrite] The bandwidth allowed for this disk;
+ * only settable for UltraSSD disks. MBps means millions of bytes per second -
+ * MB here uses the ISO notation, of powers of 10.
+ */
+export interface Disk extends Resource {
+  readonly managedBy?: string;
+  sku?: DiskSku;
+  zones?: string[];
+  readonly timeCreated?: Date;
+  osType?: string;
+  creationData: CreationData;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+  readonly provisioningState?: string;
+  diskIOPSReadWrite?: number;
+  diskMBpsReadWrite?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskUpdate class.
+ * @constructor
+ * Disk update resource.
+ *
+ * @member {string} [osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ * @member {number} [diskIOPSReadWrite] The number of IOPS allowed for this
+ * disk; only settable for UltraSSD disks. One operation can transfer between
+ * 4k and 256k bytes.
+ * @member {number} [diskMBpsReadWrite] The bandwidth allowed for this disk;
+ * only settable for UltraSSD disks. MBps means millions of bytes per second -
+ * MB here uses the ISO notation, of powers of 10.
+ * @member {object} [tags] Resource tags
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+ * @member {string} [sku.tier] The sku tier.
+ */
+export interface DiskUpdate {
+  osType?: string;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+  diskIOPSReadWrite?: number;
+  diskMBpsReadWrite?: number;
+  tags?: { [propertyName: string]: string };
+  sku?: DiskSku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SnapshotSku class.
+ * @constructor
+ * The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS.
+ *
+ * @member {string} [name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+ * @member {string} [tier] The sku tier. Default value: 'Standard' .
+ */
+export interface SnapshotSku {
+  name?: string;
+  readonly tier?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GrantAccessData class.
+ * @constructor
+ * Data used for requesting a SAS.
+ *
+ * @member {string} access Possible values include: 'None', 'Read'
+ * @member {number} durationInSeconds Time duration in seconds until the SAS
+ * access expires.
+ */
+export interface GrantAccessData {
+  access: string;
+  durationInSeconds: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccessUri class.
+ * @constructor
+ * A disk access SAS uri.
+ *
+ * @member {string} [accessSAS] A SAS uri for accessing a disk.
+ */
+export interface AccessUri {
+  readonly accessSAS?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Snapshot class.
+ * @constructor
+ * Snapshot resource.
+ *
+ * @member {string} [managedBy] Unused. Always Null.
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+ * @member {string} [sku.tier] The sku tier.
+ * @member {date} [timeCreated] The time when the disk was created.
+ * @member {string} [osType] The Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {object} creationData Disk source information. CreationData
+ * information cannot be changed after the disk has been created.
+ * @member {string} [creationData.createOption] This enumerates the possible
+ * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+ * 'FromImage', 'Import', 'Copy', 'Restore'
+ * @member {string} [creationData.storageAccountId] If createOption is Import,
+ * the Azure Resource Manager identifier of the storage account containing the
+ * blob to import as a disk. Required only if the blob is in a different
+ * subscription
+ * @member {object} [creationData.imageReference] Disk source information.
+ * @member {string} [creationData.imageReference.id] A relative uri containing
+ * either a Platform Imgage Repository or user image reference.
+ * @member {number} [creationData.imageReference.lun] If the disk is created
+ * from an image's data disk, this is an index that indicates which of the data
+ * disks in the image to use. For OS disks, this field is null.
+ * @member {string} [creationData.sourceUri] If createOption is Import, this is
+ * the URI of a blob to be imported into a managed disk.
+ * @member {string} [creationData.sourceResourceId] If createOption is Copy,
+ * this is the ARM id of the source snapshot or disk.
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ * @member {string} [provisioningState] The disk provisioning state.
+ */
+export interface Snapshot extends Resource {
+  readonly managedBy?: string;
+  sku?: SnapshotSku;
+  readonly timeCreated?: Date;
+  osType?: string;
+  creationData: CreationData;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SnapshotUpdate class.
+ * @constructor
+ * Snapshot update resource.
+ *
+ * @member {string} [osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
+ * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
+ * field is mandatory and it indicates the size of the VHD to create. If this
+ * field is present for updates or creation with other options, it indicates a
+ * resize. Resizes are only allowed if the disk is not attached to a running
+ * VM, and can only increase the disk's size.
+ * @member {object} [encryptionSettings] Encryption settings for disk or
+ * snapshot
+ * @member {boolean} [encryptionSettings.enabled] Set this flag to true and
+ * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+ * encryption. Set this flag to false and remove DiskEncryptionKey and
+ * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+ * request object, the existing settings remain unchanged.
+ * @member {object} [encryptionSettings.diskEncryptionKey] Key Vault Secret Url
+ * and vault id of the disk encryption key
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Url
+ * pointing to a key or secret in KeyVault
+ * @member {object} [encryptionSettings.keyEncryptionKey] Key Vault Key Url and
+ * vault id of the key encryption key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Resource
+ * id of the KeyVault containing the key or secret
+ * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
+ * Resource Id
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
+ * to a key or secret in KeyVault
+ * @member {object} [tags] Resource tags
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+ * @member {string} [sku.tier] The sku tier.
+ */
+export interface SnapshotUpdate {
+  osType?: string;
+  diskSizeGB?: number;
+  encryptionSettings?: EncryptionSettings;
+  tags?: { [propertyName: string]: string };
+  sku?: SnapshotSku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryIdentifier class.
+ * @constructor
+ * Describes the gallery unique name.
+ *
+ * @member {string} [uniqueName] The unique name of the gallery
+ */
+export interface GalleryIdentifier {
+  readonly uniqueName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Gallery class.
+ * @constructor
+ * Specifies information about the gallery that you want to create or update.
+ *
+ * @member {string} [description] The description of this gallery resource.
+ * @member {object} [identifier]
+ * @member {string} [identifier.uniqueName] The unique name of the gallery
+ * @member {string} [provisioningState] The current state of the gallery. The
+ * provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface Gallery extends Resource {
+  description?: string;
+  identifier?: GalleryIdentifier;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageIdentifier class.
+ * @constructor
+ * This is the gallery image identifier.
+ *
+ * @member {string} publisher The gallery image publisher name.
+ * @member {string} offer The gallery image offer name.
+ * @member {string} sku The gallery image sku name.
+ */
+export interface GalleryImageIdentifier {
+  publisher: string;
+  offer: string;
+  sku: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRange class.
+ * @constructor
+ * Describes the resource range.
+ *
+ * @member {number} [min] The minimum number of the resource.
+ * @member {number} [max] The maximum number of the resource.
+ */
+export interface ResourceRange {
+  min?: number;
+  max?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedMachineConfiguration class.
+ * @constructor
+ * Describes the recommended machine configuration.
+ *
+ * @member {object} [vCPUs]
+ * @member {number} [vCPUs.min] The minimum number of the resource.
+ * @member {number} [vCPUs.max] The maximum number of the resource.
+ * @member {object} [memory]
+ * @member {number} [memory.min] The minimum number of the resource.
+ * @member {number} [memory.max] The maximum number of the resource.
+ */
+export interface RecommendedMachineConfiguration {
+  vCPUs?: ResourceRange;
+  memory?: ResourceRange;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Disallowed class.
+ * @constructor
+ * Describes the disallowed disk types.
+ *
+ * @member {array} [diskTypes] A list of disk types.
+ */
+export interface Disallowed {
+  diskTypes?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImagePurchasePlan class.
+ * @constructor
+ * Describes the gallery image purchase plan. This is used by marketplace
+ * images.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [publisher] The publisher ID.
+ * @member {string} [product] The product ID.
+ */
+export interface ImagePurchasePlan {
+  name?: string;
+  publisher?: string;
+  product?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImage class.
+ * @constructor
+ * Specifies information about the gallery image that you want to create or
+ * update.
+ *
+ * @member {string} [description] The description of this gallery image
+ * resource.
+ * @member {string} [eula] The Eula agreement for the gallery image.
+ * @member {string} [privacyStatementUri] The privacy statement uri.
+ * @member {string} [releaseNoteUri] The release note uri.
+ * @member {string} osType This property allows you to specify the type of the
+ * OS that is included in the disk if creating a VM from user-image or a
+ * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
+ * **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {string} osState The OS State. Possible values include:
+ * 'Generalized', 'Specialized'
+ * @member {date} [endOfLifeDate] The end of life of this gallery image.
+ * @member {object} identifier
+ * @member {string} [identifier.publisher] The gallery image publisher name.
+ * @member {string} [identifier.offer] The gallery image offer name.
+ * @member {string} [identifier.sku] The gallery image sku name.
+ * @member {object} [recommended]
+ * @member {object} [recommended.vCPUs]
+ * @member {number} [recommended.vCPUs.min] The minimum number of the resource.
+ * @member {number} [recommended.vCPUs.max] The maximum number of the resource.
+ * @member {object} [recommended.memory]
+ * @member {number} [recommended.memory.min] The minimum number of the
+ * resource.
+ * @member {number} [recommended.memory.max] The maximum number of the
+ * resource.
+ * @member {object} [disallowed]
+ * @member {array} [disallowed.diskTypes] A list of disk types.
+ * @member {object} [purchasePlan]
+ * @member {string} [purchasePlan.name] The plan ID.
+ * @member {string} [purchasePlan.publisher] The publisher ID.
+ * @member {string} [purchasePlan.product] The product ID.
+ * @member {string} [provisioningState] The current state of the gallery image.
+ * The provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface GalleryImage extends Resource {
+  description?: string;
+  eula?: string;
+  privacyStatementUri?: string;
+  releaseNoteUri?: string;
+  osType: string;
+  osState: string;
+  endOfLifeDate?: Date;
+  identifier: GalleryImageIdentifier;
+  recommended?: RecommendedMachineConfiguration;
+  disallowed?: Disallowed;
+  purchasePlan?: ImagePurchasePlan;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactPublishingProfileBase class.
+ * @constructor
+ * Describes the basic gallery artifact publishing profile.
+ *
+ * @member {array} [targetRegions] The target regions where the artifact is
+ * going to be published.
+ * @member {object} source
+ * @member {object} [source.managedImage]
+ * @member {string} [source.managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactPublishingProfileBase {
+  targetRegions?: TargetRegion[];
+  source: GalleryArtifactSource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionPublishingProfile class.
+ * @constructor
+ * The publishing profile of a gallery image version.
+ *
+ * @member {number} [replicaCount] This is the number of source blob copies in
+ * a region.
+ * @member {boolean} [excludeFromLatest] The flag means that if it is set to
+ * true, people deploying VMs with 'latest' as version will not use this
+ * version.
+ * @member {date} [publishedDate] The time when the gallery image version is
+ * published.
+ * @member {date} [endOfLifeDate] The end of life date of the gallery image
+ * version.
+ */
+export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
+  replicaCount?: number;
+  excludeFromLatest?: boolean;
+  readonly publishedDate?: Date;
+  endOfLifeDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDiskImage class.
+ * @constructor
+ * This is the disk image base class.
+ *
+ * @member {number} [sizeInGB] It indicates the size of the VHD to create.
+ * @member {string} [hostCaching] The host caching of the disk. Valid values
+ * are 'None', 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ */
+export interface GalleryDiskImage {
+  readonly sizeInGB?: number;
+  readonly hostCaching?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryOSDiskImage class.
+ * @constructor
+ * This is the OS disk image.
+ *
+ */
+export interface GalleryOSDiskImage extends GalleryDiskImage {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDataDiskImage class.
+ * @constructor
+ * This is the data disk image.
+ *
+ * @member {number} [lun] Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ */
+export interface GalleryDataDiskImage extends GalleryDiskImage {
+  readonly lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionStorageProfile class.
+ * @constructor
+ * This is the storage profile of a gallery image version.
+ *
+ * @member {object} [osDiskImage]
+ * @member {array} [dataDiskImages] A list of data disk images.
+ */
+export interface GalleryImageVersionStorageProfile {
+  readonly osDiskImage?: GalleryOSDiskImage;
+  readonly dataDiskImages?: GalleryDataDiskImage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegionalReplicationStatus class.
+ * @constructor
+ * This is the regional replication status.
+ *
+ * @member {string} [region] The region where the gallery image version is
+ * published to.
+ * @member {string} [state] This is the regional replication state. Possible
+ * values include: 'Unknown', 'Replicating', 'Completed', 'Failed'
+ * @member {string} [details] The details of the replication status.
+ * @member {number} [progress] It indicates progress of the replication job.
+ */
+export interface RegionalReplicationStatus {
+  readonly region?: string;
+  readonly state?: string;
+  readonly details?: string;
+  readonly progress?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationStatus class.
+ * @constructor
+ * This is the replication status of the gallery image version.
+ *
+ * @member {string} [aggregatedState] This is the aggregated replication status
+ * based on the regional replication status. Possible values include:
+ * 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [summary] This is a summary of replication status for each
+ * region.
+ */
+export interface ReplicationStatus {
+  readonly aggregatedState?: string;
+  readonly summary?: RegionalReplicationStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersion class.
+ * @constructor
+ * Specifies information about the gallery image version that you want to
+ * create or update.
+ *
+ * @member {object} publishingProfile
+ * @member {number} [publishingProfile.replicaCount] This is the number of
+ * source blob copies in a region.
+ * @member {boolean} [publishingProfile.excludeFromLatest] The flag means that
+ * if it is set to true, people deploying VMs with 'latest' as version will not
+ * use this version.
+ * @member {date} [publishingProfile.publishedDate] The time when the gallery
+ * image version is published.
+ * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
+ * gallery image version.
+ * @member {string} [provisioningState] The current state of the gallery image
+ * version. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
+ * @member {object} [storageProfile]
+ * @member {object} [storageProfile.osDiskImage]
+ * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
+ * @member {object} [replicationStatus]
+ * @member {string} [replicationStatus.aggregatedState] This is the aggregated
+ * replication status based on the regional replication status. Possible values
+ * include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [replicationStatus.summary] This is a summary of replication
+ * status for each region.
+ */
+export interface GalleryImageVersion extends Resource {
+  publishingProfile: GalleryImageVersionPublishingProfile;
+  readonly provisioningState?: string;
+  readonly storageProfile?: GalleryImageVersionStorageProfile;
+  readonly replicationStatus?: ReplicationStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetRegion class.
+ * @constructor
+ * Describes the target region information.
+ *
+ * @member {string} [name] The name of the region.
+ * @member {number} [regionalReplicaCount] This is the number of source blob
+ * copies in this specific region.
+ */
+export interface TargetRegion {
+  name?: string;
+  regionalReplicaCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedArtifact class.
+ * @constructor
+ * The managed artifact.
+ *
+ * @member {string} id The managed artifact id.
+ */
+export interface ManagedArtifact {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactSource class.
+ * @constructor
+ * The source of the gallery artifact.
+ *
+ * @member {object} managedImage
+ * @member {string} [managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactSource {
+  managedImage: ManagedArtifact;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerServiceCustomProfile class.
  * @constructor
  * Properties to configure a custom container service cluster.
@@ -5997,6 +6975,85 @@ export interface VirtualMachineScaleSetVMListResult extends Array<VirtualMachine
  * Call ListNext() with this to fetch the next page of run commands.
  */
 export interface RunCommandListResult extends Array<RunCommandDocumentBase> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkusResult class.
+ * @constructor
+ * The Compute List Skus operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Compute Skus.
+ * Call ListNext() with this to fetch the next page of VMSS Skus.
+ */
+export interface ResourceSkusResult extends Array<ResourceSku> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskList class.
+ * @constructor
+ * The List Disks operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of disks. Call
+ * ListNext() with this to fetch the next page of disks.
+ */
+export interface DiskList extends Array<Disk> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SnapshotList class.
+ * @constructor
+ * The List Snapshots operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of snapshots.
+ * Call ListNext() with this to fetch the next page of snapshots.
+ */
+export interface SnapshotList extends Array<Snapshot> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryList class.
+ * @constructor
+ * The List Galleries operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of galleries.
+ * Call ListNext() with this to fetch the next page of galleries.
+ */
+export interface GalleryList extends Array<Gallery> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageList class.
+ * @constructor
+ * The List Gallery Images operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery
+ * images. Call ListNext() with this to fetch the next page of gallery images.
+ */
+export interface GalleryImageList extends Array<GalleryImage> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionList class.
+ * @constructor
+ * The List Gallery Image version operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery image
+ * versions. Call ListNext() with this to fetch the next page of gallery image
+ * versions.
+ */
+export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
   nextLink?: string;
 }
 

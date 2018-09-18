@@ -18783,6 +18783,5027 @@ export interface VirtualMachineRunCommands {
 
 /**
  * @class
+ * ResourceSkus
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface ResourceSkus {
+
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceSkusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceSkusResult>>;
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceSkusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceSkusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceSkusResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceSkusResult>;
+    list(callback: ServiceCallback<models.ResourceSkusResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceSkusResult>): void;
+
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceSkusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceSkusResult>>;
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceSkusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceSkusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceSkusResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceSkusResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceSkusResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceSkusResult>): void;
+}
+
+/**
+ * @class
+ * Disks
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface Disks {
+
+
+    /**
+     * Creates or updates a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Put disk
+     * operation.
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [disk.zones] The Logical zone list for Disk.
+     *
+     * @param {string} [disk.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} disk.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {string} disk.location Resource location
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Creates or updates a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Put disk
+     * operation.
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [disk.zones] The Logical zone list for Disk.
+     *
+     * @param {string} [disk.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} disk.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {string} disk.location Resource location
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
+    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
+
+    /**
+     * Updates (patches) a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Patch disk
+     * operation.
+     *
+     * @param {string} [disk.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Updates (patches) a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Patch disk
+     * operation.
+     *
+     * @param {string} [disk.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
+    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
+
+    /**
+     * Gets information about a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Gets information about a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    get(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.Disk>): void;
+    get(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
+
+    /**
+     * Deletes a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all the disks under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+
+
+    /**
+     * Lists all the disks under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
+    list(callback: ServiceCallback<models.DiskList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+
+
+    /**
+     * Grants access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get disk access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    grantAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get disk access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
+
+    /**
+     * Revokes access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Revokes access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Put disk
+     * operation.
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [disk.zones] The Logical zone list for Disk.
+     *
+     * @param {string} [disk.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} disk.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {string} disk.location Resource location
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Creates or updates a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Put disk
+     * operation.
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [disk.zones] The Logical zone list for Disk.
+     *
+     * @param {string} [disk.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} disk.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {string} disk.location Resource location
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
+    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
+
+    /**
+     * Updates (patches) a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Patch disk
+     * operation.
+     *
+     * @param {string} [disk.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Updates (patches) a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} disk Disk object supplied in the body of the Patch disk
+     * operation.
+     *
+     * @param {string} [disk.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
+    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
+
+    /**
+     * Deletes a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Grants access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get disk access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGrantAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get disk access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
+
+    /**
+     * Revokes access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Revokes access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the managed disk that is being created.
+     * The name can't be changed after the disk is created. Supported characters
+     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all the disks under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+
+
+    /**
+     * Lists all the disks under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.DiskList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+}
+
+/**
+ * @class
+ * Snapshots
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface Snapshots {
+
+
+    /**
+     * Creates or updates a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Put
+     * disk operation.
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {string} [snapshot.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} snapshot.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {string} snapshot.location Resource location
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Creates or updates a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Put
+     * disk operation.
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {string} [snapshot.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} snapshot.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {string} snapshot.location Resource location
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
+    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Updates (patches) a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Patch
+     * snapshot operation.
+     *
+     * @param {string} [snapshot.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Updates (patches) a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Patch
+     * snapshot operation.
+     *
+     * @param {string} [snapshot.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
+    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Gets information about a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Gets information about a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    get(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.Snapshot>): void;
+    get(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Deletes a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists snapshots under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+
+
+    /**
+     * Lists snapshots under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
+    list(callback: ServiceCallback<models.SnapshotList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+
+
+    /**
+     * Grants access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get snapshot access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    grantAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get snapshot access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
+
+    /**
+     * Revokes access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Revokes access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Put
+     * disk operation.
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {string} [snapshot.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} snapshot.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {string} snapshot.location Resource location
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Creates or updates a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Put
+     * disk operation.
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {string} [snapshot.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} snapshot.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If createOption is Import,
+     * this is the URI of a blob to be imported into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {string} snapshot.location Resource location
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
+    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Updates (patches) a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Patch
+     * snapshot operation.
+     *
+     * @param {string} [snapshot.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Updates (patches) a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Patch
+     * snapshot operation.
+     *
+     * @param {string} [snapshot.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
+    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
+
+    /**
+     * Deletes a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Grants access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get snapshot access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGrantAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get snapshot access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
+
+    /**
+     * Revokes access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Revokes access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot that is being created.
+     * The name can't be changed after the snapshot is created. Supported
+     * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
+     * characters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists snapshots under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+
+
+    /**
+     * Lists snapshots under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+}
+
+/**
+ * @class
+ * Galleries
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface Galleries {
+
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} gallery Parameters supplied to the create or update gallery
+     * operation.
+     *
+     * @param {string} [gallery.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} gallery Parameters supplied to the create or update gallery
+     * operation.
+     *
+     * @param {string} [gallery.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Retrieves information about a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Retrieves information about a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    get(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.Gallery>): void;
+    get(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    list(callback: ServiceCallback<models.GalleryList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} gallery Parameters supplied to the create or update gallery
+     * operation.
+     *
+     * @param {string} [gallery.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} gallery Parameters supplied to the create or update gallery
+     * operation.
+     *
+     * @param {string} [gallery.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+}
+
+/**
+ * @class
+ * GalleryImages
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryImages {
+
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
+     * image.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The gallery image
+     * publisher name.
+     *
+     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     *
+     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
+     * image.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The gallery image
+     * publisher name.
+     *
+     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     *
+     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Retrieves information about a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Retrieves information about a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImage>): void;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGallery(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listByGallery(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listByGallery(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
+
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
+     * image.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The gallery image
+     * publisher name.
+     *
+     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     *
+     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
+     * image.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The gallery image
+     * publisher name.
+     *
+     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     *
+     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGalleryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listByGalleryNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listByGalleryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
+}
+
+/**
+ * @class
+ * GalleryImageVersions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryImageVersions {
+
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery image version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
+     * the number of source blob copies in a region.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * The flag means that if it is set to true, people deploying VMs with 'latest'
+     * as version will not use this version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery image version.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the artifact is going to be published.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery image version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
+     * the number of source blob copies in a region.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * The flag means that if it is set to true, people deploying VMs with 'latest'
+     * as version will not use this version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery image version.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the artifact is going to be published.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Retrieves information about a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'ReplicationStatus'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Retrieves information about a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'ReplicationStatus'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Delete a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery image version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
+     * the number of source blob copies in a region.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * The flag means that if it is set to true, people deploying VMs with 'latest'
+     * as version will not use this version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery image version.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the artifact is going to be published.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery image version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
+     * the number of source blob copies in a region.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * The flag means that if it is set to true, people deploying VMs with 'latest'
+     * as version will not use this version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery image version.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the artifact is going to be published.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Delete a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryImageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGalleryImageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listByGalleryImageNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listByGalleryImageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+}
+
+/**
+ * @class
  * ContainerServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
