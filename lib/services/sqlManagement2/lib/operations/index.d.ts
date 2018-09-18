@@ -1419,7 +1419,8 @@ export interface DatabaseThreatDetectionPolicies {
      * @param {string} [parameters.disabledAlerts] Specifies the
      * semicolon-separated list of alerts that are disabled, or empty string to
      * disable no alerts. Possible values: Sql_Injection;
-     * Sql_Injection_Vulnerability; Access_Anomaly; Usage_Anomaly.
+     * Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration;
+     * Unsafe_Action.
      *
      * @param {string} [parameters.emailAddresses] Specifies the
      * semicolon-separated list of e-mail addresses to which the alert is sent.
@@ -1480,7 +1481,8 @@ export interface DatabaseThreatDetectionPolicies {
      * @param {string} [parameters.disabledAlerts] Specifies the
      * semicolon-separated list of alerts that are disabled, or empty string to
      * disable no alerts. Possible values: Sql_Injection;
-     * Sql_Injection_Vulnerability; Access_Anomaly; Usage_Anomaly.
+     * Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration;
+     * Unsafe_Action.
      *
      * @param {string} [parameters.emailAddresses] Specifies the
      * semicolon-separated list of e-mail addresses to which the alert is sent.
@@ -25916,7 +25918,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -25964,7 +25967,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -26032,7 +26036,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
@@ -26080,7 +26085,8 @@ export interface ServerSecurityAlertPolicies {
      *
      * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
      * are disabled. Allowed values are: Sql_Injection,
-     * Sql_Injection_Vulnerability, Access_Anomaly
+     * Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration,
+     * Unsafe_Action
      *
      * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
      * addresses to which the alert is sent.
