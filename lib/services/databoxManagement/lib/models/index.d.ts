@@ -143,10 +143,12 @@ export interface ArmBaseObject {
  * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
  * @member {string} location Location for data transfer. For locations check:
  * https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
+ * @member {array} [skuNames] Sku Names to filter for available skus
  */
 export interface AvailableSkuRequest {
   country: string;
   location: string;
+  skuNames?: string[];
 }
 
 /**

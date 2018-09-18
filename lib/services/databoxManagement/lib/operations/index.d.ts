@@ -1730,12 +1730,18 @@ export interface Service {
      *
      * @param {string} location The location of the resource
      *
-     * @param {string} country ISO country code. Country for hardware shipment. For
-     * codes check:
+     * @param {object} availableSkuRequest Filters for showing the available skus.
+     *
+     * @param {string} availableSkuRequest.country ISO country code. Country for
+     * hardware shipment. For codes check:
      * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
      *
-     * @param {string} location1 Location for data transfer. For locations check:
+     * @param {string} availableSkuRequest.location Location for data transfer. For
+     * locations check:
      * https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
+     *
+     * @param {array} [availableSkuRequest.skuNames] Sku Names to filter for
+     * available skus
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1748,7 +1754,7 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableSkusWithHttpOperationResponse(location: string, country: string, location1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
+    listAvailableSkusWithHttpOperationResponse(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
 
     /**
      * This method provides the list of available skus for the given subscription
@@ -1756,12 +1762,18 @@ export interface Service {
      *
      * @param {string} location The location of the resource
      *
-     * @param {string} country ISO country code. Country for hardware shipment. For
-     * codes check:
+     * @param {object} availableSkuRequest Filters for showing the available skus.
+     *
+     * @param {string} availableSkuRequest.country ISO country code. Country for
+     * hardware shipment. For codes check:
      * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
      *
-     * @param {string} location1 Location for data transfer. For locations check:
+     * @param {string} availableSkuRequest.location Location for data transfer. For
+     * locations check:
      * https://management.azure.com/subscriptions/SUBSCRIPTIONID/locations?api-version=2018-01-01
+     *
+     * @param {array} [availableSkuRequest.skuNames] Sku Names to filter for
+     * available skus
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1790,9 +1802,9 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAvailableSkus(location: string, country: string, location1: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
-    listAvailableSkus(location: string, country: string, location1: string, callback: ServiceCallback<models.AvailableSkusResult>): void;
-    listAvailableSkus(location: string, country: string, location1: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
+    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
+    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, callback: ServiceCallback<models.AvailableSkusResult>): void;
+    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
 
 
     /**
