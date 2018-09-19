@@ -7776,7 +7776,7 @@ export interface ConnectionMonitorQueryResult {
 
 /**
  * @class
- * Initializes a new instance of the TrafficQuery class.
+ * Initializes a new instance of the NetworkConfigurationDiagnosticProfile class.
  * @constructor
  * Parameters to compare with network configuration.
  *
@@ -7791,7 +7791,7 @@ export interface ConnectionMonitorQueryResult {
  * @member {string} destinationPort Traffice destination port. Accepted values
  * are '*', port (for example, 3389) and port range (for example, 80-100).
  */
-export interface TrafficQuery {
+export interface NetworkConfigurationDiagnosticProfile {
   direction: string;
   protocol: string;
   source: string;
@@ -7808,11 +7808,15 @@ export interface TrafficQuery {
  * @member {string} targetResourceId The ID of the target resource to perform
  * network configuration diagnostic. Valid options are VM, NetworkInterface,
  * VMSS/NetworkInterface and Application Gateway.
- * @member {array} queries List of traffic queries.
+ * @member {string} [verbosityLevel] Verbosity level. Accepted values are
+ * 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal', 'Minimum',
+ * 'Full'
+ * @member {array} profiles List of network configuration diagnostic profiles.
  */
 export interface NetworkConfigurationDiagnosticParameters {
   targetResourceId: string;
-  queries: TrafficQuery[];
+  verbosityLevel?: string;
+  profiles: NetworkConfigurationDiagnosticProfile[];
 }
 
 /**
@@ -7864,6 +7868,8 @@ export interface NetworkSecurityRulesEvaluationResult {
  * Results of network security group evaluation.
  *
  * @member {string} [networkSecurityGroupId] Network security group ID.
+ * @member {string} [appliedTo] Resource ID of nic or subnet to which network
+ * security group is applied.
  * @member {object} [matchedRule]
  * @member {string} [matchedRule.ruleName] Name of the matched network security
  * rule.
@@ -7874,6 +7880,7 @@ export interface NetworkSecurityRulesEvaluationResult {
  */
 export interface EvaluatedNetworkSecurityGroup {
   networkSecurityGroupId?: string;
+  appliedTo?: string;
   matchedRule?: MatchedRule;
   readonly rulesEvaluationResult?: NetworkSecurityRulesEvaluationResult[];
 }
@@ -7902,17 +7909,17 @@ export interface NetworkSecurityGroupResult {
  * Network configuration diagnostic result corresponded to provided traffic
  * query.
  *
- * @member {object} [trafficQuery]
- * @member {string} [trafficQuery.direction] The direction of the traffic.
- * Accepted values are 'Inbound' and 'Outbound'. Possible values include:
- * 'Inbound', 'Outbound'
- * @member {string} [trafficQuery.protocol] Protocol to be verified on.
- * Accepted values are '*', TCP, UDP.
- * @member {string} [trafficQuery.source] Traffic source. Accepted values are
- * '*', IP Address/CIDR, Service Tag.
- * @member {string} [trafficQuery.destination] Traffic destination. Accepted
- * values are: '*', IP Address/CIDR, Service Tag.
- * @member {string} [trafficQuery.destinationPort] Traffice destination port.
+ * @member {object} [profile]
+ * @member {string} [profile.direction] The direction of the traffic. Accepted
+ * values are 'Inbound' and 'Outbound'. Possible values include: 'Inbound',
+ * 'Outbound'
+ * @member {string} [profile.protocol] Protocol to be verified on. Accepted
+ * values are '*', TCP, UDP.
+ * @member {string} [profile.source] Traffic source. Accepted values are '*',
+ * IP Address/CIDR, Service Tag.
+ * @member {string} [profile.destination] Traffic destination. Accepted values
+ * are: '*', IP Address/CIDR, Service Tag.
+ * @member {string} [profile.destinationPort] Traffice destination port.
  * Accepted values are '*', port (for example, 3389) and port range (for
  * example, 80-100).
  * @member {object} [networkSecurityGroupResult]
@@ -7923,7 +7930,7 @@ export interface NetworkSecurityGroupResult {
  * List of results network security groups diagnostic.
  */
 export interface NetworkConfigurationDiagnosticResult {
-  trafficQuery?: TrafficQuery;
+  profile?: NetworkConfigurationDiagnosticProfile;
   networkSecurityGroupResult?: NetworkSecurityGroupResult;
 }
 
