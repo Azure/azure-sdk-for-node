@@ -3887,6 +3887,9 @@ export interface PipelineRuns {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.isRecursive] If true, cancel all the Child
+     * pipelines that are triggered by the current pipeline.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3896,7 +3899,7 @@ export interface PipelineRuns {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cancelWithHttpOperationResponse(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    cancelWithHttpOperationResponse(resourceGroupName: string, factoryName: string, runId: string, options?: { isRecursive? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Cancel a pipeline run by its run ID.
@@ -3908,6 +3911,9 @@ export interface PipelineRuns {
      * @param {string} runId The pipeline run identifier.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.isRecursive] If true, cancel all the Child
+     * pipelines that are triggered by the current pipeline.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3933,9 +3939,9 @@ export interface PipelineRuns {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    cancel(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, factoryName: string, runId: string, options?: { isRecursive? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     cancel(resourceGroupName: string, factoryName: string, runId: string, callback: ServiceCallback<void>): void;
-    cancel(resourceGroupName: string, factoryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, factoryName: string, runId: string, options: { isRecursive? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**

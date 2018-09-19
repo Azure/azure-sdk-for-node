@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/storSimpleManagementClient.js",
   "types": "./lib/storSimpleManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/storSimple1200SeriesManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
