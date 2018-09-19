@@ -1150,383 +1150,6 @@ export interface TypeField {
 
 /**
  * @class
- * Initializes a new instance of the RunbookParameter class.
- * @constructor
- * Definition of the runbook parameter type.
- *
- * @member {string} [type] Gets or sets the type of the parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
- * @member {number} [position] Get or sets the position of the parameter.
- * @member {string} [defaultValue] Gets or sets the default value of parameter.
- */
-export interface RunbookParameter {
-  type?: string;
-  isMandatory?: boolean;
-  position?: number;
-  defaultValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookDraft class.
- * @constructor
- * @member {boolean} [inEdit] Gets or sets whether runbook is in edit mode.
- * @member {object} [draftContentLink] Gets or sets the draft runbook content
- * link.
- * @member {string} [draftContentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draftContentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [draftContentLink.contentHash.value] Gets or sets expected
- * hash value of the content.
- * @member {string} [draftContentLink.version] Gets or sets the version of the
- * content.
- * @member {date} [creationTime] Gets or sets the creation time of the runbook
- * draft.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * runbook draft.
- * @member {object} [parameters] Gets or sets the runbook draft parameters.
- * @member {array} [outputTypes] Gets or sets the runbook output types.
- */
-export interface RunbookDraft {
-  inEdit?: boolean;
-  draftContentLink?: ContentLink;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  parameters?: { [propertyName: string]: RunbookParameter };
-  outputTypes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Runbook class.
- * @constructor
- * Definition of the runbook type.
- *
- * @member {string} [runbookType] Gets or sets the type of the runbook.
- * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
- * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
- * @member {object} [publishContentLink] Gets or sets the published runbook
- * content link.
- * @member {string} [publishContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
- * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [publishContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [publishContentLink.version] Gets or sets the version of
- * the content.
- * @member {string} [state] Gets or sets the state of the runbook. Possible
- * values include: 'New', 'Edit', 'Published'
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {number} [logActivityTrace] Gets or sets the option to log activity
- * trace of the runbook.
- * @member {number} [jobCount] Gets or sets the job count of the runbook.
- * @member {object} [parameters] Gets or sets the runbook parameters.
- * @member {array} [outputTypes] Gets or sets the runbook output types.
- * @member {object} [draft] Gets or sets the draft runbook properties.
- * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
- * mode.
- * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
- * content link.
- * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
- * the content hash algorithm used to hash the content.
- * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [draft.draftContentLink.version] Gets or sets the version
- * of the content.
- * @member {date} [draft.creationTime] Gets or sets the creation time of the
- * runbook draft.
- * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
- * of the runbook draft.
- * @member {object} [draft.parameters] Gets or sets the runbook draft
- * parameters.
- * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the runbook. Possible values include: 'Succeeded'
- * @member {string} [lastModifiedBy] Gets or sets the last modified by.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface Runbook extends TrackedResource {
-  runbookType?: string;
-  publishContentLink?: ContentLink;
-  state?: string;
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  logActivityTrace?: number;
-  jobCount?: number;
-  parameters?: { [propertyName: string]: RunbookParameter };
-  outputTypes?: string[];
-  draft?: RunbookDraft;
-  provisioningState?: string;
-  lastModifiedBy?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update runbook operation.
- *
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {string} runbookType Gets or sets the type of the runbook. Possible
- * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
- * 'GraphPowerShellWorkflow', 'GraphPowerShell'
- * @member {object} [draft] Gets or sets the draft runbook properties.
- * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
- * mode.
- * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
- * content link.
- * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
- * the content hash algorithm used to hash the content.
- * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [draft.draftContentLink.version] Gets or sets the version
- * of the content.
- * @member {date} [draft.creationTime] Gets or sets the creation time of the
- * runbook draft.
- * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
- * of the runbook draft.
- * @member {object} [draft.parameters] Gets or sets the runbook draft
- * parameters.
- * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
- * @member {object} [publishContentLink] Gets or sets the published runbook
- * content link.
- * @member {string} [publishContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
- * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [publishContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [publishContentLink.version] Gets or sets the version of
- * the content.
- * @member {string} [description] Gets or sets the description of the runbook.
- * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
- * options of the runbook.
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface RunbookCreateOrUpdateParameters {
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  runbookType: string;
-  draft?: RunbookDraft;
-  publishContentLink?: ContentLink;
-  description?: string;
-  logActivityTrace?: number;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookUpdateParameters class.
- * @constructor
- * The parameters supplied to the update runbook operation.
- *
- * @member {string} [description] Gets or sets the description of the runbook.
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
- * options of the runbook.
- * @member {string} [name] Gets or sets the name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface RunbookUpdateParameters {
-  description?: string;
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  logActivityTrace?: number;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookDraftUndoEditResult class.
- * @constructor
- * The response model for the undoedit runbook operation.
- *
- * @member {string} [statusCode] Possible values include: 'Continue',
- * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
- * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
- * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
- * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
- * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
- * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
- * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
- * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
- * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
- * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
- * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
- * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
- * @member {string} [requestId]
- */
-export interface RunbookDraftUndoEditResult {
-  statusCode?: string;
-  requestId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestJobCreateParameters class.
- * @constructor
- * The parameters supplied to the create test job operation.
- *
- * @member {object} [parameters] Gets or sets the parameters of the test job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface TestJobCreateParameters {
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TestJob class.
- * @constructor
- * Definition of the test job.
- *
- * @member {date} [creationTime] Gets or sets the creation time of the test
- * job.
- * @member {string} [status] Gets or sets the status of the test job.
- * @member {string} [statusDetails] Gets or sets the status details of the test
- * job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {date} [startTime] Gets or sets the start time of the test job.
- * @member {date} [endTime] Gets or sets the end time of the test job.
- * @member {string} [exception] Gets or sets the exception of the test job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * test job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the test job.
- * @member {object} [parameters] Gets or sets the parameters of the test job.
- * @member {number} [logActivityTrace] The activity-level tracing options of
- * the runbook.
- */
-export interface TestJob {
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  runOn?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  logActivityTrace?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookCreateOrUpdateDraftProperties class.
- * @constructor
- * The parameters supplied to the create or update dratft runbook properties.
- *
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {string} runbookType Gets or sets the type of the runbook. Possible
- * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
- * 'GraphPowerShellWorkflow', 'GraphPowerShell'
- * @member {object} draft Gets or sets the draft runbook properties.
- * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
- * mode.
- * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
- * content link.
- * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
- * the content hash algorithm used to hash the content.
- * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [draft.draftContentLink.version] Gets or sets the version
- * of the content.
- * @member {date} [draft.creationTime] Gets or sets the creation time of the
- * runbook draft.
- * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
- * of the runbook draft.
- * @member {object} [draft.parameters] Gets or sets the runbook draft
- * parameters.
- * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
- * @member {string} [description] Gets or sets the description of the runbook.
- * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
- * options of the runbook.
- */
-export interface RunbookCreateOrUpdateDraftProperties {
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  runbookType: string;
-  draft: RunbookDraft;
-  description?: string;
-  logActivityTrace?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookCreateOrUpdateDraftParameters class.
- * @constructor
- * The parameters supplied to the create or update runbook operation.
- *
- * @member {string} runbookContent Content of the Runbook.
- */
-export interface RunbookCreateOrUpdateDraftParameters {
-  runbookContent: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStream class.
- * @constructor
- * Definition of the job stream.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobStreamId] Gets or sets the id of the job stream.
- * @member {date} [time] Gets or sets the creation time of the job.
- * @member {string} [streamType] Gets or sets the stream type. Possible values
- * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
- * @member {string} [streamText] Gets or sets the stream text.
- * @member {string} [summary] Gets or sets the summary.
- * @member {object} [value] Gets or sets the values of the job stream.
- */
-export interface JobStream {
-  id?: string;
-  jobStreamId?: string;
-  time?: Date;
-  streamType?: string;
-  streamText?: string;
-  summary?: string;
-  value?: { [propertyName: string]: any };
-}
-
-/**
- * @class
  * Initializes a new instance of the AdvancedScheduleMonthlyOccurrence class.
  * @constructor
  * The properties of the create advanced schedule monthly occurrence.
@@ -2578,6 +2201,31 @@ export interface SourceControlSyncJobStreamById {
 
 /**
  * @class
+ * Initializes a new instance of the JobStream class.
+ * @constructor
+ * Definition of the job stream.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobStreamId] Gets or sets the id of the job stream.
+ * @member {date} [time] Gets or sets the creation time of the job.
+ * @member {string} [streamType] Gets or sets the stream type. Possible values
+ * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
+ * @member {string} [streamText] Gets or sets the stream text.
+ * @member {string} [summary] Gets or sets the summary.
+ * @member {object} [value] Gets or sets the values of the job stream.
+ */
+export interface JobStream {
+  id?: string;
+  jobStreamId?: string;
+  time?: Date;
+  streamType?: string;
+  streamText?: string;
+  summary?: string;
+  value?: { [propertyName: string]: any };
+}
+
+/**
+ * @class
  * Initializes a new instance of the Job class.
  * @constructor
  * Definition of the job.
@@ -3154,6 +2802,358 @@ export interface NodeCounts {
   totalCount?: number;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the RunbookParameter class.
+ * @constructor
+ * Definition of the runbook parameter type.
+ *
+ * @member {string} [type] Gets or sets the type of the parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
+ * whether the parameter is madatory or not.
+ * @member {number} [position] Get or sets the position of the parameter.
+ * @member {string} [defaultValue] Gets or sets the default value of parameter.
+ */
+export interface RunbookParameter {
+  type?: string;
+  isMandatory?: boolean;
+  position?: number;
+  defaultValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookDraft class.
+ * @constructor
+ * @member {boolean} [inEdit] Gets or sets whether runbook is in edit mode.
+ * @member {object} [draftContentLink] Gets or sets the draft runbook content
+ * link.
+ * @member {string} [draftContentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draftContentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [draftContentLink.contentHash.value] Gets or sets expected
+ * hash value of the content.
+ * @member {string} [draftContentLink.version] Gets or sets the version of the
+ * content.
+ * @member {date} [creationTime] Gets or sets the creation time of the runbook
+ * draft.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * runbook draft.
+ * @member {object} [parameters] Gets or sets the runbook draft parameters.
+ * @member {array} [outputTypes] Gets or sets the runbook output types.
+ */
+export interface RunbookDraft {
+  inEdit?: boolean;
+  draftContentLink?: ContentLink;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  parameters?: { [propertyName: string]: RunbookParameter };
+  outputTypes?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Runbook class.
+ * @constructor
+ * Definition of the runbook type.
+ *
+ * @member {string} [runbookType] Gets or sets the type of the runbook.
+ * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
+ * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
+ * @member {object} [publishContentLink] Gets or sets the published runbook
+ * content link.
+ * @member {string} [publishContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [publishContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [publishContentLink.version] Gets or sets the version of
+ * the content.
+ * @member {string} [state] Gets or sets the state of the runbook. Possible
+ * values include: 'New', 'Edit', 'Published'
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {number} [logActivityTrace] Gets or sets the option to log activity
+ * trace of the runbook.
+ * @member {number} [jobCount] Gets or sets the job count of the runbook.
+ * @member {object} [parameters] Gets or sets the runbook parameters.
+ * @member {array} [outputTypes] Gets or sets the runbook output types.
+ * @member {object} [draft] Gets or sets the draft runbook properties.
+ * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
+ * mode.
+ * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
+ * content link.
+ * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
+ * the content hash algorithm used to hash the content.
+ * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [draft.draftContentLink.version] Gets or sets the version
+ * of the content.
+ * @member {date} [draft.creationTime] Gets or sets the creation time of the
+ * runbook draft.
+ * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
+ * of the runbook draft.
+ * @member {object} [draft.parameters] Gets or sets the runbook draft
+ * parameters.
+ * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the runbook. Possible values include: 'Succeeded'
+ * @member {string} [lastModifiedBy] Gets or sets the last modified by.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Runbook extends TrackedResource {
+  runbookType?: string;
+  publishContentLink?: ContentLink;
+  state?: string;
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  logActivityTrace?: number;
+  jobCount?: number;
+  parameters?: { [propertyName: string]: RunbookParameter };
+  outputTypes?: string[];
+  draft?: RunbookDraft;
+  provisioningState?: string;
+  lastModifiedBy?: string;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update runbook operation.
+ *
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {string} runbookType Gets or sets the type of the runbook. Possible
+ * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
+ * 'GraphPowerShellWorkflow', 'GraphPowerShell'
+ * @member {object} [draft] Gets or sets the draft runbook properties.
+ * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
+ * mode.
+ * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
+ * content link.
+ * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
+ * the content hash algorithm used to hash the content.
+ * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [draft.draftContentLink.version] Gets or sets the version
+ * of the content.
+ * @member {date} [draft.creationTime] Gets or sets the creation time of the
+ * runbook draft.
+ * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
+ * of the runbook draft.
+ * @member {object} [draft.parameters] Gets or sets the runbook draft
+ * parameters.
+ * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
+ * @member {object} [publishContentLink] Gets or sets the published runbook
+ * content link.
+ * @member {string} [publishContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [publishContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [publishContentLink.version] Gets or sets the version of
+ * the content.
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface RunbookCreateOrUpdateParameters {
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  runbookType: string;
+  draft?: RunbookDraft;
+  publishContentLink?: ContentLink;
+  description?: string;
+  logActivityTrace?: number;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update runbook operation.
+ *
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
+ * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface RunbookUpdateParameters {
+  description?: string;
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  logActivityTrace?: number;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookDraftUndoEditResult class.
+ * @constructor
+ * The response model for the undoedit runbook operation.
+ *
+ * @member {string} [statusCode] Possible values include: 'Continue',
+ * 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
+ * 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
+ * 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
+ * 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
+ * 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
+ * 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
+ * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
+ * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
+ * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
+ * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
+ * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
+ * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
+ * @member {string} [requestId]
+ */
+export interface RunbookDraftUndoEditResult {
+  statusCode?: string;
+  requestId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create test job operation.
+ *
+ * @member {object} [parameters] Gets or sets the parameters of the test job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ */
+export interface TestJobCreateParameters {
+  parameters?: { [propertyName: string]: string };
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TestJob class.
+ * @constructor
+ * Definition of the test job.
+ *
+ * @member {date} [creationTime] Gets or sets the creation time of the test
+ * job.
+ * @member {string} [status] Gets or sets the status of the test job.
+ * @member {string} [statusDetails] Gets or sets the status details of the test
+ * job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {date} [startTime] Gets or sets the start time of the test job.
+ * @member {date} [endTime] Gets or sets the end time of the test job.
+ * @member {string} [exception] Gets or sets the exception of the test job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * test job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the test job.
+ * @member {object} [parameters] Gets or sets the parameters of the test job.
+ * @member {number} [logActivityTrace] The activity-level tracing options of
+ * the runbook.
+ */
+export interface TestJob {
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  runOn?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  logActivityTrace?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookCreateOrUpdateDraftProperties class.
+ * @constructor
+ * The parameters supplied to the create or update dratft runbook properties.
+ *
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {string} runbookType Gets or sets the type of the runbook. Possible
+ * values include: 'Script', 'Graph', 'PowerShellWorkflow', 'PowerShell',
+ * 'GraphPowerShellWorkflow', 'GraphPowerShell'
+ * @member {object} draft Gets or sets the draft runbook properties.
+ * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
+ * mode.
+ * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
+ * content link.
+ * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
+ * the content hash algorithm used to hash the content.
+ * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [draft.draftContentLink.version] Gets or sets the version
+ * of the content.
+ * @member {date} [draft.creationTime] Gets or sets the creation time of the
+ * runbook draft.
+ * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
+ * of the runbook draft.
+ * @member {object} [draft.parameters] Gets or sets the runbook draft
+ * parameters.
+ * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
+ * @member {string} [description] Gets or sets the description of the runbook.
+ * @member {number} [logActivityTrace] Gets or sets the activity-level tracing
+ * options of the runbook.
+ */
+export interface RunbookCreateOrUpdateDraftProperties {
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  runbookType: string;
+  draft: RunbookDraft;
+  description?: string;
+  logActivityTrace?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookCreateOrUpdateDraftParameters class.
+ * @constructor
+ * The parameters supplied to the create or update runbook operation.
+ *
+ * @member {string} runbookContent Content of the Runbook.
+ */
+export interface RunbookCreateOrUpdateDraftParameters {
+  runbookContent: string;
+}
+
 
 /**
  * @class
@@ -3319,30 +3319,6 @@ export interface TypeFieldListResult extends Array<TypeField> {
 
 /**
  * @class
- * Initializes a new instance of the RunbookListResult class.
- * @constructor
- * The response model for the list runbook operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface RunbookListResult extends Array<Runbook> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStreamListResult class.
- * @constructor
- * The response model for the list job stream operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobStreamListResult extends Array<JobStream> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ScheduleListResult class.
  * @constructor
  * The response model for the list schedule operation.
@@ -3439,6 +3415,18 @@ export interface JobListResultV2 extends Array<JobCollectionItem> {
 
 /**
  * @class
+ * Initializes a new instance of the JobStreamListResult class.
+ * @constructor
+ * The response model for the list job stream operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface JobStreamListResult extends Array<JobStream> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscNodeListResult class.
  * @constructor
  * The response model for the list dsc nodes operation.
@@ -3485,5 +3473,17 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookListResult class.
+ * @constructor
+ * The response model for the list runbook operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface RunbookListResult extends Array<Runbook> {
   nextLink?: string;
 }

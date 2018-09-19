@@ -174,7 +174,7 @@ export interface ServerConnectionPolicy extends ProxyResource {
  * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
  * alerts that are disabled, or empty string to disable no alerts. Possible
  * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
- * Usage_Anomaly.
+ * Data_Exfiltration; Unsafe_Action.
  * @member {string} [emailAddresses] Specifies the semicolon-separated list of
  * e-mail addresses to which the alert is sent.
  * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
@@ -2869,20 +2869,6 @@ export interface ManagedDatabaseUpdate {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabel class.
- * @constructor
- * A sensitivity label.
- *
- * @member {string} [labelName] The label name.
- * @member {string} [informationType] The information type.
- */
-export interface SensitivityLabel extends ProxyResource {
-  labelName?: string;
-  informationType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutomaticTuningServerOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -2957,7 +2943,7 @@ export interface ServerDnsAliasAcquisition {
  * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
  * @member {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
- * Access_Anomaly
+ * Access_Anomaly, Data_Exfiltration, Unsafe_Action
  * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
  * which the alert is sent.
  * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
@@ -4703,18 +4689,6 @@ export interface LongTermRetentionBackupListResult extends Array<LongTermRetenti
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SensitivityLabelListResult class.
- * @constructor
- * A list of sensitivity labels.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
   readonly nextLink?: string;
 }
 
