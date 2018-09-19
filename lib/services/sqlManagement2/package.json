@@ -2,7 +2,7 @@
   "name": "azure-arm-sql",
   "author": "Microsoft Corporation",
   "description": "SqlManagementClient Library with typescript type definitions for node",
-  "version": "4.2.0",
+  "version": "5.0.1",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
