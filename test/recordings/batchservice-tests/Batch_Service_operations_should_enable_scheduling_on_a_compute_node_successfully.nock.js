@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/enablescheduling?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/enablescheduling?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5663bac7-692a-4697-9079-4ddae47faaf8',
+  'request-id': '42717acb-2c95-4ecc-a9c6-22c6bc4b4b6d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/enablescheduling',
-  date: 'Fri, 09 Mar 2018 22:59:17 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/enablescheduling',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/enablescheduling?api-version=2018-03-01.6.1')
+  .post('/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/enablescheduling?api-version=2018-08-01.7.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5663bac7-692a-4697-9079-4ddae47faaf8',
+  'request-id': '42717acb-2c95-4ecc-a9c6-22c6bc4b4b6d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-3840119875_2-20180309t224543z/enablescheduling',
-  date: 'Fri, 09 Mar 2018 22:59:17 GMT',
+  dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-14141481_2-20180821t200555z/enablescheduling',
+  date: 'Tue, 21 Aug 2018 20:23:10 GMT',
   connection: 'close' });
  return result; }]];

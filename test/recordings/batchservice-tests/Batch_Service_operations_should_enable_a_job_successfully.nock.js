@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/enable?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/enable?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:10 GMT',
-  etag: '0x8D5861235458AC4',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:01 GMT',
+  etag: '0x8D607A502D514A5',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2599bd2d-c5e3-4cd8-8cfc-6f162af95cf6',
+  'request-id': '2dc16cc0-fef2-4a87-afdf-a044b317fe8b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/enable',
-  date: 'Fri, 09 Mar 2018 23:05:10 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://lchency4.westcentralus.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/enable?api-version=2018-03-01.6.1')
+  .post('/jobs/HelloWorldJobNodeSDKTest/enable?api-version=2018-08-01.7.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 09 Mar 2018 23:05:10 GMT',
-  etag: '0x8D5861235458AC4',
+  'last-modified': 'Tue, 21 Aug 2018 20:31:01 GMT',
+  etag: '0x8D607A502D514A5',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2599bd2d-c5e3-4cd8-8cfc-6f162af95cf6',
+  'request-id': '2dc16cc0-fef2-4a87-afdf-a044b317fe8b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://lchency4.westcentralus.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/enable',
-  date: 'Fri, 09 Mar 2018 23:05:10 GMT',
+  date: 'Tue, 21 Aug 2018 20:31:01 GMT',
   connection: 'close' });
  return result; }]];
