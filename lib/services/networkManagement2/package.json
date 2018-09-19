@@ -2,7 +2,7 @@
   "name": "azure-arm-network",
   "author": "Microsoft Corporation",
   "description": "NetworkManagementClient Library with typescript type definitions for node",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"

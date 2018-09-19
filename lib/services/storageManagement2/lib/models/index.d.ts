@@ -182,13 +182,14 @@ export interface Restriction {
  * @member {string} name Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [tier] Gets the sku tier. This is based on the SKU name.
  * Possible values include: 'Standard', 'Premium'
  * @member {string} [resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'StorageV2', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+ * 'BlockBlobStorage'
  * @member {array} [locations] The set of locations that the SKU is available.
  * This will be supported and registered Azure Geo Regions (e.g. West US, East
  * US, Southeast Asia, etc.).
@@ -464,13 +465,14 @@ export interface Identity {
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
  * @member {string} [sku.resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [sku.kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'StorageV2', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+ * 'BlockBlobStorage'
  * @member {array} [sku.locations] The set of locations that the SKU is
  * available. This will be supported and registered Azure Geo Regions (e.g.
  * West US, East US, Southeast Asia, etc.).
@@ -480,7 +482,8 @@ export interface Identity {
  * @member {array} [sku.restrictions] The restrictions because of which SKU
  * cannot be used. This is empty if there are no restrictions.
  * @member {string} kind Required. Indicates the type of storage account.
- * Possible values include: 'Storage', 'StorageV2', 'BlobStorage'
+ * Possible values include: 'Storage', 'StorageV2', 'BlobStorage',
+ * 'FileStorage', 'BlockBlobStorage'
  * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
@@ -567,10 +570,12 @@ export interface Identity {
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
+ * @member {boolean} [enableAzureFilesAadIntegration] Enables Azure Files AAD
+ * Integration for SMB if sets to true.
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
- * storage service if sets to true. Default value: false .
+ * storage service if sets to true.
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
- * sets to true. Default value: false .
+ * sets to true.
  */
 export interface StorageAccountCreateParameters {
   sku: Sku;
@@ -582,6 +587,7 @@ export interface StorageAccountCreateParameters {
   encryption?: Encryption;
   networkRuleSet?: NetworkRuleSet;
   accessTier?: string;
+  enableAzureFilesAadIntegration?: boolean;
   enableHttpsTrafficOnly?: boolean;
   isHnsEnabled?: boolean;
 }
@@ -649,13 +655,14 @@ export interface TrackedResource extends Resource {
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
  * @member {string} [sku.resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [sku.kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'StorageV2', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+ * 'BlockBlobStorage'
  * @member {array} [sku.locations] The set of locations that the SKU is
  * available. This will be supported and registered Azure Geo Regions (e.g.
  * West US, East US, Southeast Asia, etc.).
@@ -665,7 +672,7 @@ export interface TrackedResource extends Resource {
  * @member {array} [sku.restrictions] The restrictions because of which SKU
  * cannot be used. This is empty if there are no restrictions.
  * @member {string} [kind] Gets the Kind. Possible values include: 'Storage',
- * 'StorageV2', 'BlobStorage'
+ * 'StorageV2', 'BlobStorage', 'FileStorage', 'BlockBlobStorage'
  * @member {object} [identity] The identity of the resource.
  * @member {string} [identity.principalId] The principal ID of resource
  * identity.
@@ -768,8 +775,10 @@ export interface TrackedResource extends Resource {
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
+ * @member {boolean} [enableAzureFilesAadIntegration] Enables Azure Files AAD
+ * Integration for SMB if sets to true.
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
- * storage service if sets to true. Default value: false .
+ * storage service if sets to true.
  * @member {object} [networkRuleSet] Network rule set
  * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
  * bypassed for Logging/Metrics/AzureServices. Possible values are any
@@ -783,7 +792,7 @@ export interface TrackedResource extends Resource {
  * of allow or deny when no other rules match. Possible values include:
  * 'Allow', 'Deny'
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
- * sets to true. Default value: false .
+ * sets to true.
  */
 export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
@@ -801,6 +810,7 @@ export interface StorageAccount extends TrackedResource {
   readonly secondaryEndpoints?: Endpoints;
   readonly encryption?: Encryption;
   readonly accessTier?: string;
+  enableAzureFilesAadIntegration?: boolean;
   enableHttpsTrafficOnly?: boolean;
   readonly networkRuleSet?: NetworkRuleSet;
   isHnsEnabled?: boolean;
@@ -857,18 +867,19 @@ export interface StorageAccountRegenerateKeyParameters {
  * properties.
  *
  * @member {object} [sku] Gets or sets the SKU name. Note that the SKU name
- * cannot be updated to Standard_ZRS or Premium_LRS, nor can accounts of those
- * sku names be updated to any other value.
+ * cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor can
+ * accounts of those sku names be updated to any other value.
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
  * creation; optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS', 'Standard_GRS',
- * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
+ * 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS'
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Standard', 'Premium'
  * @member {string} [sku.resourceType] The type of the resource, usually it is
  * 'storageAccounts'.
  * @member {string} [sku.kind] Indicates the type of storage account. Possible
- * values include: 'Storage', 'StorageV2', 'BlobStorage'
+ * values include: 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage',
+ * 'BlockBlobStorage'
  * @member {array} [sku.locations] The set of locations that the SKU is
  * available. This will be supported and registered Azure Geo Regions (e.g.
  * West US, East US, Southeast Asia, etc.).
@@ -945,8 +956,10 @@ export interface StorageAccountRegenerateKeyParameters {
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
+ * @member {boolean} [enableAzureFilesAadIntegration] Enables Azure Files AAD
+ * Integration for SMB if sets to true.
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
- * storage service if sets to true. Default value: false .
+ * storage service if sets to true.
  * @member {object} [networkRuleSet] Network rule set
  * @member {string} [networkRuleSet.bypass] Specifies whether traffic is
  * bypassed for Logging/Metrics/AzureServices. Possible values are any
@@ -961,7 +974,7 @@ export interface StorageAccountRegenerateKeyParameters {
  * 'Allow', 'Deny'
  * @member {string} [kind] Optional. Indicates the type of storage account.
  * Currently only StorageV2 value supported by server. Possible values include:
- * 'Storage', 'StorageV2', 'BlobStorage'
+ * 'Storage', 'StorageV2', 'BlobStorage', 'FileStorage', 'BlockBlobStorage'
  */
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
@@ -970,6 +983,7 @@ export interface StorageAccountUpdateParameters {
   customDomain?: CustomDomain;
   encryption?: Encryption;
   accessTier?: string;
+  enableAzureFilesAadIntegration?: boolean;
   enableHttpsTrafficOnly?: boolean;
   networkRuleSet?: NetworkRuleSet;
   kind?: string;
@@ -1140,39 +1154,6 @@ export interface ServiceSasParameters {
  */
 export interface ListServiceSasResponse {
   readonly serviceSasToken?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the StorageAccountManagementPolicies class.
- * @constructor
- * The Get Storage Account ManagementPolicies operation response.
- *
- * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
- * JSON format. See more details in:
- * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
- * @member {date} [lastModifiedTime] Returns the date and time the
- * ManagementPolicies was last modified.
- */
-export interface StorageAccountManagementPolicies extends Resource {
-  policy?: any;
-  readonly lastModifiedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagementPoliciesRulesSetParameter class.
- * @constructor
- * The Storage Account ManagementPolicies Rules, in JSON format. See more
- * details in:
- * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
- *
- * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
- * JSON format. See more details in:
- * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
- */
-export interface ManagementPoliciesRulesSetParameter {
-  policy?: any;
 }
 
 /**
@@ -1463,6 +1444,39 @@ export interface ListContainerItem extends AzureEntityResource {
  */
 export interface ListContainerItems {
   value?: ListContainerItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountManagementPolicies class.
+ * @constructor
+ * The Get Storage Account ManagementPolicies operation response.
+ *
+ * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
+ * JSON format. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ * @member {date} [lastModifiedTime] Returns the date and time the
+ * ManagementPolicies was last modified.
+ */
+export interface StorageAccountManagementPolicies extends Resource {
+  policy?: any;
+  readonly lastModifiedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementPoliciesRulesSetParameter class.
+ * @constructor
+ * The Storage Account ManagementPolicies Rules, in JSON format. See more
+ * details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ *
+ * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
+ * JSON format. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ */
+export interface ManagementPoliciesRulesSetParameter {
+  policy?: any;
 }
 
 

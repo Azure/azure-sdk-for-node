@@ -708,14 +708,14 @@ export interface ManagedClusterAddonProfile {
  *
  * @member {string} clientAppID The client AAD application ID.
  * @member {string} serverAppID The server AAD application ID.
- * @member {string} serverAppSecret The server AAD application secret.
+ * @member {string} [serverAppSecret] The server AAD application secret.
  * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
  * not specified, will use the tenant of the deployment subscription.
  */
 export interface ManagedClusterAADProfile {
   clientAppID: string;
   serverAppID: string;
-  serverAppSecret: string;
+  serverAppSecret?: string;
   tenantID?: string;
 }
 
