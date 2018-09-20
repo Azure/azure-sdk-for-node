@@ -4358,9 +4358,11 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * Allow to exclude some variable satisfy the condition for the WAF check
  *
  * @member {string} matchVariable The variable to be excluded.
- * @member {string} selectorMatchOperator The operation on selector.
- * @member {string} selector The selector to be operated on for the variable to
- * be excluded.
+ * @member {string} selectorMatchOperator When matchVariable is a collection,
+ * operate on the selector to specify which elements in the collection this
+ * exclusion applies to.
+ * @member {string} selector When matchVariable is a collection, operator used
+ * to specify which elements in the collection this exclusion applies to.
  */
 export interface ApplicationGatewayFirewallExclusion {
   matchVariable: string;
