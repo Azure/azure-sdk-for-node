@@ -133,8 +133,8 @@ export interface OpenShiftManagedClusterMasterPoolProfile {
  * @member {string} name Unique name of the pool profile in the context of the
  * subscription and resource group.
  * @member {number} count Number of agents (VMs) to host docker containers.
- * Allowed values must be in the range of 1 to 100 (inclusive). The default
- * value is 1. . Default value: 1 .
+ * Allowed values must be in the range of 1 to 5 (inclusive). The default value
+ * is 1. . Default value: 1 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
@@ -262,6 +262,21 @@ export interface OpenShiftManagedClusterServiceAADIdentityProvider {
  */
 export interface TagsObject {
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterListResult class.
+ * @constructor
+ * The response from the List OpenShift Managed Clusters operation.
+ *
+ * @member {array} [value] The list of openshift managed clusters.
+ * @member {string} [nextLink] The URL to get the next set of openshift managed
+ * cluster results.
+ */
+export interface OpenShiftManagedClusterListResult {
+  value?: OpenShiftManagedCluster[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -901,14 +916,14 @@ export interface ManagedClusterAddonProfile {
  *
  * @member {string} clientAppID The client AAD application ID.
  * @member {string} serverAppID The server AAD application ID.
- * @member {string} serverAppSecret The server AAD application secret.
+ * @member {string} [serverAppSecret] The server AAD application secret.
  * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
  * not specified, will use the tenant of the deployment subscription.
  */
 export interface ManagedClusterAADProfile {
   clientAppID: string;
   serverAppID: string;
-  serverAppSecret: string;
+  serverAppSecret?: string;
   tenantID?: string;
 }
 
@@ -1130,19 +1145,6 @@ export interface OrchestratorVersionProfileListResult {
   orchestrators: OrchestratorVersionProfile[];
 }
 
-
-/**
- * @class
- * Initializes a new instance of the OpenShiftManagedClusterListResult class.
- * @constructor
- * The response from the List OpenShift Managed Clusters operation.
- *
- * @member {string} [nextLink] The URL to get the next set of openshift managed
- * cluster results.
- */
-export interface OpenShiftManagedClusterListResult extends Array<OpenShiftManagedCluster> {
-  readonly nextLink?: string;
-}
 
 /**
  * @class

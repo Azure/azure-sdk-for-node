@@ -22,132 +22,6 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Gets a list of openshift managed clusters in the specified
-     * subscription.
-     *
-     * Gets a list of openshift managed clusters in the specified subscription. The
-     * operation returns properties of each OpenShift managed cluster.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
-
-    /**
-     * @summary Gets a list of openshift managed clusters in the specified
-     * subscription.
-     *
-     * Gets a list of openshift managed clusters in the specified subscription. The
-     * operation returns properties of each OpenShift managed cluster.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OpenShiftManagedClusterListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
-    list(callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-
-
-    /**
-     * @summary Lists of openshift managed clusters in the specified subscription
-     * and resource group.
-     *
-     * Lists of openshift managed clusters in the specified subscription and
-     * resource group. The operation returns properties of each openshift managed
-     * cluster.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
-
-    /**
-     * @summary Lists of openshift managed clusters in the specified subscription
-     * and resource group.
-     *
-     * Lists of openshift managed clusters in the specified subscription and
-     * resource group. The operation returns properties of each openshift managed
-     * cluster.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OpenShiftManagedClusterListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-
-
-    /**
      * @summary Gets a openshift managed cluster.
      *
      * Gets the details of the managed openshift cluster with a specified resource
@@ -403,82 +277,6 @@ export interface OpenShiftManagedClusters {
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
-
-
-    /**
-     * @summary Updates tags on a openshift managed cluster.
-     *
-     * Updates an openshift managed cluster with the specified tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the openshift managed cluster
-     * resource.
-     *
-     * @param {object} parameters Parameters supplied to the Update Managed Cluster
-     * Tags operation.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
-
-    /**
-     * @summary Updates tags on a openshift managed cluster.
-     *
-     * Updates an openshift managed cluster with the specified tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the openshift managed cluster
-     * resource.
-     *
-     * @param {object} parameters Parameters supplied to the Update Managed Cluster
-     * Tags operation.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OpenShiftManagedCluster} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
-    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
-    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
 
 
     /**
@@ -738,82 +536,6 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Updates tags on a openshift managed cluster.
-     *
-     * Updates an openshift managed cluster with the specified tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the openshift managed cluster
-     * resource.
-     *
-     * @param {object} parameters Parameters supplied to the Update Managed Cluster
-     * Tags operation.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
-
-    /**
-     * @summary Updates tags on a openshift managed cluster.
-     *
-     * Updates an openshift managed cluster with the specified tags.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the openshift managed cluster
-     * resource.
-     *
-     * @param {object} parameters Parameters supplied to the Update Managed Cluster
-     * Tags operation.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OpenShiftManagedCluster} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
-    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
-    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
-
-
-    /**
      * @summary Deletes an openshift managed cluster.
      *
      * Deletes the openshift managed cluster with a specified resource group and
@@ -877,140 +599,6 @@ export interface OpenShiftManagedClusters {
     beginDeleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Gets a list of openshift managed clusters in the specified
-     * subscription.
-     *
-     * Gets a list of openshift managed clusters in the specified subscription. The
-     * operation returns properties of each OpenShift managed cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
-
-    /**
-     * @summary Gets a list of openshift managed clusters in the specified
-     * subscription.
-     *
-     * Gets a list of openshift managed clusters in the specified subscription. The
-     * operation returns properties of each OpenShift managed cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OpenShiftManagedClusterListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-
-
-    /**
-     * @summary Lists of openshift managed clusters in the specified subscription
-     * and resource group.
-     *
-     * Lists of openshift managed clusters in the specified subscription and
-     * resource group. The operation returns properties of each openshift managed
-     * cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OpenShiftManagedClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedClusterListResult>>;
-
-    /**
-     * @summary Lists of openshift managed clusters in the specified subscription
-     * and resource group.
-     *
-     * Lists of openshift managed clusters in the specified subscription and
-     * resource group. The operation returns properties of each openshift managed
-     * cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OpenShiftManagedClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OpenShiftManagedClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OpenShiftManagedClusterListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedClusterListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedClusterListResult>): void;
 }
 
 /**
@@ -2952,7 +2540,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -3061,7 +2649,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -3324,7 +2912,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -3433,7 +3021,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
