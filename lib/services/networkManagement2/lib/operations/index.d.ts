@@ -249,6 +249,17 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
      *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -402,6 +413,17 @@ export interface ApplicationGateways {
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -1209,6 +1231,17 @@ export interface ApplicationGateways {
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
      *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
+     *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
@@ -1362,6 +1395,17 @@ export interface ApplicationGateways {
      * @param {number}
      * [parameters.webApplicationFirewallConfiguration.maxRequestBodySize] Maxium
      * request body size for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.maxRequestBodySizeInKb]
+     * Maxium request body size in Kb for WAF.
+     *
+     * @param {number}
+     * [parameters.webApplicationFirewallConfiguration.fileUploadLimitInMb] Maxium
+     * file upload size in Mb for WAF.
+     *
+     * @param {array} [parameters.webApplicationFirewallConfiguration.exclusions]
+     * The exclusion list.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
@@ -21799,7 +21843,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -21828,7 +21877,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22928,7 +22982,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22957,7 +23016,12 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
-     * @param {array} parameters.queries List of traffic queries.
+     * @param {string} [parameters.verbosityLevel] Verbosity level. Accepted values
+     * are 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal',
+     * 'Minimum', 'Full'
+     *
+     * @param {array} parameters.profiles List of network configuration diagnostic
+     * profiles.
      *
      * @param {object} [options] Optional Parameters.
      *

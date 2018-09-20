@@ -4353,6 +4353,25 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayFirewallExclusion class.
+ * @constructor
+ * Allow to exclude some variable satisfy the condition for the WAF check
+ *
+ * @member {string} matchVariable The variable to be excluded.
+ * @member {string} selectorMatchOperator When matchVariable is a collection,
+ * operate on the selector to specify which elements in the collection this
+ * exclusion applies to.
+ * @member {string} selector When matchVariable is a collection, operator used
+ * to specify which elements in the collection this exclusion applies to.
+ */
+export interface ApplicationGatewayFirewallExclusion {
+  matchVariable: string;
+  selectorMatchOperator: string;
+  selector: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayWebApplicationFirewallConfiguration class.
  * @constructor
  * Application gateway web application firewall configuration.
@@ -4368,6 +4387,11 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
  * Body.
  * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
+ * @member {number} [maxRequestBodySizeInKb] Maxium request body size in Kb for
+ * WAF.
+ * @member {number} [fileUploadLimitInMb] Maxium file upload size in Mb for
+ * WAF.
+ * @member {array} [exclusions] The exclusion list.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -4377,6 +4401,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
   requestBodyCheck?: boolean;
   maxRequestBodySize?: number;
+  maxRequestBodySizeInKb?: number;
+  fileUploadLimitInMb?: number;
+  exclusions?: ApplicationGatewayFirewallExclusion[];
 }
 
 /**
@@ -4464,6 +4491,13 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * Whether allow WAF to check request Body.
  * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
  * Maxium request body size for WAF.
+ * @member {number}
+ * [webApplicationFirewallConfiguration.maxRequestBodySizeInKb] Maxium request
+ * body size in Kb for WAF.
+ * @member {number} [webApplicationFirewallConfiguration.fileUploadLimitInMb]
+ * Maxium file upload size in Mb for WAF.
+ * @member {array} [webApplicationFirewallConfiguration.exclusions] The
+ * exclusion list.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
  * @member {boolean} [enableFips] Whether FIPS is enabled on the application
@@ -7776,7 +7810,7 @@ export interface ConnectionMonitorQueryResult {
 
 /**
  * @class
- * Initializes a new instance of the TrafficQuery class.
+ * Initializes a new instance of the NetworkConfigurationDiagnosticProfile class.
  * @constructor
  * Parameters to compare with network configuration.
  *
@@ -7791,7 +7825,7 @@ export interface ConnectionMonitorQueryResult {
  * @member {string} destinationPort Traffice destination port. Accepted values
  * are '*', port (for example, 3389) and port range (for example, 80-100).
  */
-export interface TrafficQuery {
+export interface NetworkConfigurationDiagnosticProfile {
   direction: string;
   protocol: string;
   source: string;
@@ -7808,11 +7842,15 @@ export interface TrafficQuery {
  * @member {string} targetResourceId The ID of the target resource to perform
  * network configuration diagnostic. Valid options are VM, NetworkInterface,
  * VMSS/NetworkInterface and Application Gateway.
- * @member {array} queries List of traffic queries.
+ * @member {string} [verbosityLevel] Verbosity level. Accepted values are
+ * 'Normal', 'Minimum', 'Full'. Possible values include: 'Normal', 'Minimum',
+ * 'Full'
+ * @member {array} profiles List of network configuration diagnostic profiles.
  */
 export interface NetworkConfigurationDiagnosticParameters {
   targetResourceId: string;
-  queries: TrafficQuery[];
+  verbosityLevel?: string;
+  profiles: NetworkConfigurationDiagnosticProfile[];
 }
 
 /**
@@ -7864,6 +7902,8 @@ export interface NetworkSecurityRulesEvaluationResult {
  * Results of network security group evaluation.
  *
  * @member {string} [networkSecurityGroupId] Network security group ID.
+ * @member {string} [appliedTo] Resource ID of nic or subnet to which network
+ * security group is applied.
  * @member {object} [matchedRule]
  * @member {string} [matchedRule.ruleName] Name of the matched network security
  * rule.
@@ -7874,6 +7914,7 @@ export interface NetworkSecurityRulesEvaluationResult {
  */
 export interface EvaluatedNetworkSecurityGroup {
   networkSecurityGroupId?: string;
+  appliedTo?: string;
   matchedRule?: MatchedRule;
   readonly rulesEvaluationResult?: NetworkSecurityRulesEvaluationResult[];
 }
@@ -7902,17 +7943,17 @@ export interface NetworkSecurityGroupResult {
  * Network configuration diagnostic result corresponded to provided traffic
  * query.
  *
- * @member {object} [trafficQuery]
- * @member {string} [trafficQuery.direction] The direction of the traffic.
- * Accepted values are 'Inbound' and 'Outbound'. Possible values include:
- * 'Inbound', 'Outbound'
- * @member {string} [trafficQuery.protocol] Protocol to be verified on.
- * Accepted values are '*', TCP, UDP.
- * @member {string} [trafficQuery.source] Traffic source. Accepted values are
- * '*', IP Address/CIDR, Service Tag.
- * @member {string} [trafficQuery.destination] Traffic destination. Accepted
- * values are: '*', IP Address/CIDR, Service Tag.
- * @member {string} [trafficQuery.destinationPort] Traffice destination port.
+ * @member {object} [profile]
+ * @member {string} [profile.direction] The direction of the traffic. Accepted
+ * values are 'Inbound' and 'Outbound'. Possible values include: 'Inbound',
+ * 'Outbound'
+ * @member {string} [profile.protocol] Protocol to be verified on. Accepted
+ * values are '*', TCP, UDP.
+ * @member {string} [profile.source] Traffic source. Accepted values are '*',
+ * IP Address/CIDR, Service Tag.
+ * @member {string} [profile.destination] Traffic destination. Accepted values
+ * are: '*', IP Address/CIDR, Service Tag.
+ * @member {string} [profile.destinationPort] Traffice destination port.
  * Accepted values are '*', port (for example, 3389) and port range (for
  * example, 80-100).
  * @member {object} [networkSecurityGroupResult]
@@ -7923,7 +7964,7 @@ export interface NetworkSecurityGroupResult {
  * List of results network security groups diagnostic.
  */
 export interface NetworkConfigurationDiagnosticResult {
-  trafficQuery?: TrafficQuery;
+  profile?: NetworkConfigurationDiagnosticProfile;
   networkSecurityGroupResult?: NetworkSecurityGroupResult;
 }
 
