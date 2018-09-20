@@ -21952,17 +21952,19 @@ export interface Galleries {
 
 
     /**
-     * Create or update a gallery.
+     * Create or update a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots, dashes, and periods
+     * allowed in the middle. The maximum length is 80 characters.
      *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
      *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -21984,17 +21986,19 @@ export interface Galleries {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
 
     /**
-     * Create or update a gallery.
+     * Create or update a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots, dashes, and periods
+     * allowed in the middle. The maximum length is 80 characters.
      *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
      *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22035,11 +22039,11 @@ export interface Galleries {
 
 
     /**
-     * Retrieves information about a gallery.
+     * Retrieves information about a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22055,11 +22059,11 @@ export interface Galleries {
     getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
 
     /**
-     * Retrieves information about a gallery.
+     * Retrieves information about a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22094,11 +22098,12 @@ export interface Galleries {
 
 
     /**
-     * Delete a gallery.
+     * Delete a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22114,11 +22119,12 @@ export interface Galleries {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete a gallery.
+     * Delete a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22258,17 +22264,19 @@ export interface Galleries {
 
 
     /**
-     * Create or update a gallery.
+     * Create or update a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots, dashes, and periods
+     * allowed in the middle. The maximum length is 80 characters.
      *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
      *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22290,17 +22298,19 @@ export interface Galleries {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
 
     /**
-     * Create or update a gallery.
+     * Create or update a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots, dashes, and periods
+     * allowed in the middle. The maximum length is 80 characters.
      *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
      *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
      *
      * @param {object} [gallery.identifier]
      *
@@ -22341,11 +22351,12 @@ export interface Galleries {
 
 
     /**
-     * Delete a gallery.
+     * Delete a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22361,11 +22372,12 @@ export interface Galleries {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete a gallery.
+     * Delete a Shared Image Gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22522,22 +22534,26 @@ export interface GalleryImages {
 
 
     /**
-     * Create or update a gallery image.
+     * Create or update a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
      *
      * @param {object} galleryImage Parameters supplied to the create or update
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
+     * Image Definition resource. This property is updateable.
      *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
      *
      * @param {string} [galleryImage.privacyStatementUri] The privacy statement
      * uri.
@@ -22545,24 +22561,27 @@ export interface GalleryImages {
      * @param {string} [galleryImage.releaseNoteUri] The release note uri.
      *
      * @param {string} galleryImage.osType This property allows you to specify the
-     * type of the OS that is included in the disk if creating a VM from user-image
-     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} galleryImage.osState The OS State. Possible values include:
-     * 'Generalized', 'Specialized'
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
      *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
      *
      * @param {object} galleryImage.identifier
      *
-     * @param {string} galleryImage.identifier.publisher The gallery image
-     * publisher name.
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
      *
-     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
      *
-     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
      *
      * @param {object} [galleryImage.recommended]
      *
@@ -22606,22 +22625,26 @@ export interface GalleryImages {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
 
     /**
-     * Create or update a gallery image.
+     * Create or update a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
      *
      * @param {object} galleryImage Parameters supplied to the create or update
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
+     * Image Definition resource. This property is updateable.
      *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
      *
      * @param {string} [galleryImage.privacyStatementUri] The privacy statement
      * uri.
@@ -22629,24 +22652,27 @@ export interface GalleryImages {
      * @param {string} [galleryImage.releaseNoteUri] The release note uri.
      *
      * @param {string} galleryImage.osType This property allows you to specify the
-     * type of the OS that is included in the disk if creating a VM from user-image
-     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} galleryImage.osState The OS State. Possible values include:
-     * 'Generalized', 'Specialized'
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
      *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
      *
      * @param {object} galleryImage.identifier
      *
-     * @param {string} galleryImage.identifier.publisher The gallery image
-     * publisher name.
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
      *
-     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
      *
-     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
      *
      * @param {object} [galleryImage.recommended]
      *
@@ -22709,13 +22735,15 @@ export interface GalleryImages {
 
 
     /**
-     * Retrieves information about a gallery image.
+     * Retrieves information about a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * the Image Definitions are to be retrieved.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be retrieved.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22731,13 +22759,15 @@ export interface GalleryImages {
     getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
 
     /**
-     * Retrieves information about a gallery image.
+     * Retrieves information about a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * the Image Definitions are to be retrieved.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be retrieved.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22776,9 +22806,11 @@ export interface GalleryImages {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22798,9 +22830,11 @@ export interface GalleryImages {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22834,11 +22868,12 @@ export interface GalleryImages {
 
 
     /**
-     * List gallery images under a gallery.
+     * List gallery Image Definitions in a gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * Image Definitions are to be listed.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22854,11 +22889,12 @@ export interface GalleryImages {
     listByGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
 
     /**
-     * List gallery images under a gallery.
+     * List gallery Image Definitions in a gallery.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * Image Definitions are to be listed.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -22893,22 +22929,26 @@ export interface GalleryImages {
 
 
     /**
-     * Create or update a gallery image.
+     * Create or update a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
      *
      * @param {object} galleryImage Parameters supplied to the create or update
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
+     * Image Definition resource. This property is updateable.
      *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
      *
      * @param {string} [galleryImage.privacyStatementUri] The privacy statement
      * uri.
@@ -22916,24 +22956,27 @@ export interface GalleryImages {
      * @param {string} [galleryImage.releaseNoteUri] The release note uri.
      *
      * @param {string} galleryImage.osType This property allows you to specify the
-     * type of the OS that is included in the disk if creating a VM from user-image
-     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} galleryImage.osState The OS State. Possible values include:
-     * 'Generalized', 'Specialized'
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
      *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
      *
      * @param {object} galleryImage.identifier
      *
-     * @param {string} galleryImage.identifier.publisher The gallery image
-     * publisher name.
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
      *
-     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
      *
-     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
      *
      * @param {object} [galleryImage.recommended]
      *
@@ -22977,22 +23020,26 @@ export interface GalleryImages {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
 
     /**
-     * Create or update a gallery image.
+     * Create or update a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
      *
      * @param {object} galleryImage Parameters supplied to the create or update
      * gallery image operation.
      *
      * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
+     * Image Definition resource. This property is updateable.
      *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
      *
      * @param {string} [galleryImage.privacyStatementUri] The privacy statement
      * uri.
@@ -23000,24 +23047,27 @@ export interface GalleryImages {
      * @param {string} [galleryImage.releaseNoteUri] The release note uri.
      *
      * @param {string} galleryImage.osType This property allows you to specify the
-     * type of the OS that is included in the disk if creating a VM from user-image
-     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} galleryImage.osState The OS State. Possible values include:
-     * 'Generalized', 'Specialized'
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
      *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
      *
      * @param {object} galleryImage.identifier
      *
-     * @param {string} galleryImage.identifier.publisher The gallery image
-     * publisher name.
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
      *
-     * @param {string} galleryImage.identifier.offer The gallery image offer name.
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
      *
-     * @param {string} galleryImage.identifier.sku The gallery image sku name.
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
      *
      * @param {object} [galleryImage.recommended]
      *
@@ -23084,9 +23134,11 @@ export interface GalleryImages {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23106,9 +23158,11 @@ export interface GalleryImages {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23142,7 +23196,7 @@ export interface GalleryImages {
 
 
     /**
-     * List gallery images under a gallery.
+     * List gallery Image Definitions in a gallery.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -23161,7 +23215,7 @@ export interface GalleryImages {
     listByGalleryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
 
     /**
-     * List gallery images under a gallery.
+     * List gallery Image Definitions in a gallery.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -23208,36 +23262,42 @@ export interface GalleryImageVersions {
 
 
     /**
-     * Create or update a gallery image version.
+     * Create or update a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version. Needs to follow semantic version name pattern: The allowed
-     * characters are digit and period. Digits must be within the range of a 32-bit
-     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
+     * update gallery Image Version operation.
      *
      * @param {object} galleryImageVersion.publishingProfile
      *
-     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
-     * the number of source blob copies in a region.
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
-     * target regions where the artifact is going to be published.
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -23264,36 +23324,42 @@ export interface GalleryImageVersions {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
 
     /**
-     * Create or update a gallery image version.
+     * Create or update a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version. Needs to follow semantic version name pattern: The allowed
-     * characters are digit and period. Digits must be within the range of a 32-bit
-     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
+     * update gallery Image Version operation.
      *
      * @param {object} galleryImageVersion.publishingProfile
      *
-     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
-     * the number of source blob copies in a region.
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
-     * target regions where the artifact is going to be published.
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -23339,16 +23405,18 @@ export interface GalleryImageVersions {
 
 
     /**
-     * Retrieves information about a gallery image version.
+     * Retrieves information about a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be retrieved.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23367,16 +23435,18 @@ export interface GalleryImageVersions {
     getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
 
     /**
-     * Retrieves information about a gallery image version.
+     * Retrieves information about a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be retrieved.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23414,16 +23484,18 @@ export interface GalleryImageVersions {
 
 
     /**
-     * Delete a gallery image version.
+     * Delete a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23439,16 +23511,18 @@ export interface GalleryImageVersions {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete a gallery image version.
+     * Delete a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23482,13 +23556,15 @@ export interface GalleryImageVersions {
 
 
     /**
-     * List gallery image versions under a gallery image.
+     * List gallery Image Versions in a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the Shared Image Gallery Image
+     * Definition from which the Image Versions are to be listed.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23504,13 +23580,15 @@ export interface GalleryImageVersions {
     listByGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
 
     /**
-     * List gallery image versions under a gallery image.
+     * List gallery Image Versions in a gallery Image Definition.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the Shared Image Gallery Image
+     * Definition from which the Image Versions are to be listed.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23546,36 +23624,42 @@ export interface GalleryImageVersions {
 
 
     /**
-     * Create or update a gallery image version.
+     * Create or update a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version. Needs to follow semantic version name pattern: The allowed
-     * characters are digit and period. Digits must be within the range of a 32-bit
-     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
+     * update gallery Image Version operation.
      *
      * @param {object} galleryImageVersion.publishingProfile
      *
-     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
-     * the number of source blob copies in a region.
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
-     * target regions where the artifact is going to be published.
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -23602,36 +23686,42 @@ export interface GalleryImageVersions {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
 
     /**
-     * Create or update a gallery image version.
+     * Create or update a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version. Needs to follow semantic version name pattern: The allowed
-     * characters are digit and period. Digits must be within the range of a 32-bit
-     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
+     * update gallery Image Version operation.
      *
      * @param {object} galleryImageVersion.publishingProfile
      *
-     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] This is
-     * the number of source blob copies in a region.
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
      *
      * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
      *
      * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
      *
      * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
-     * target regions where the artifact is going to be published.
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
      *
      * @param {object} galleryImageVersion.publishingProfile.source
      *
@@ -23677,16 +23767,18 @@ export interface GalleryImageVersions {
 
 
     /**
-     * Delete a gallery image version.
+     * Delete a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23702,16 +23794,18 @@ export interface GalleryImageVersions {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete a gallery image version.
+     * Delete a gallery Image Version.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} galleryName The name of the gallery.
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
      *
-     * @param {string} galleryImageName The name of the gallery image.
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
      *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23745,7 +23839,7 @@ export interface GalleryImageVersions {
 
 
     /**
-     * List gallery image versions under a gallery image.
+     * List gallery Image Versions in a gallery Image Definition.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -23764,7 +23858,7 @@ export interface GalleryImageVersions {
     listByGalleryImageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
 
     /**
-     * List gallery image versions under a gallery image.
+     * List gallery Image Versions in a gallery Image Definition.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

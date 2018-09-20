@@ -6188,7 +6188,8 @@ export interface SnapshotUpdate {
  * @constructor
  * Describes the gallery unique name.
  *
- * @member {string} [uniqueName] The unique name of the gallery
+ * @member {string} [uniqueName] The unique name of the Shared Image Gallery.
+ * This name is generated automatically by Azure.
  */
 export interface GalleryIdentifier {
   readonly uniqueName?: string;
@@ -6198,11 +6199,14 @@ export interface GalleryIdentifier {
  * @class
  * Initializes a new instance of the Gallery class.
  * @constructor
- * Specifies information about the gallery that you want to create or update.
+ * Specifies information about the Shared Image Gallery that you want to create
+ * or update.
  *
- * @member {string} [description] The description of this gallery resource.
+ * @member {string} [description] The description of this Shared Image Gallery
+ * resource. This property is updateable.
  * @member {object} [identifier]
- * @member {string} [identifier.uniqueName] The unique name of the gallery
+ * @member {string} [identifier.uniqueName] The unique name of the Shared Image
+ * Gallery. This name is generated automatically by Azure.
  * @member {string} [provisioningState] The current state of the gallery. The
  * provisioning state, which only appears in the response. Possible values
  * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
@@ -6218,11 +6222,12 @@ export interface Gallery extends Resource {
  * @class
  * Initializes a new instance of the GalleryImageIdentifier class.
  * @constructor
- * This is the gallery image identifier.
+ * This is the gallery Image Definition identifier.
  *
- * @member {string} publisher The gallery image publisher name.
- * @member {string} offer The gallery image offer name.
- * @member {string} sku The gallery image sku name.
+ * @member {string} publisher The name of the gallery Image Definition
+ * publisher.
+ * @member {string} offer The name of the gallery Image Definition offer.
+ * @member {string} sku The name of the gallery Image Definition SKU.
  */
 export interface GalleryImageIdentifier {
   publisher: string;
@@ -6248,7 +6253,8 @@ export interface ResourceRange {
  * @class
  * Initializes a new instance of the RecommendedMachineConfiguration class.
  * @constructor
- * Describes the recommended machine configuration.
+ * The properties describe the recommended machine configuration for this Image
+ * Definition. These properties are updateable.
  *
  * @member {object} [vCPUs]
  * @member {number} [vCPUs.min] The minimum number of the resource.
@@ -6278,8 +6284,8 @@ export interface Disallowed {
  * @class
  * Initializes a new instance of the ImagePurchasePlan class.
  * @constructor
- * Describes the gallery image purchase plan. This is used by marketplace
- * images.
+ * Describes the gallery Image Definition purchase plan. This is used by
+ * marketplace images.
  *
  * @member {string} [name] The plan ID.
  * @member {string} [publisher] The publisher ID.
@@ -6295,25 +6301,30 @@ export interface ImagePurchasePlan {
  * @class
  * Initializes a new instance of the GalleryImage class.
  * @constructor
- * Specifies information about the gallery image that you want to create or
- * update.
+ * Specifies information about the gallery Image Definition that you want to
+ * create or update.
  *
- * @member {string} [description] The description of this gallery image
- * resource.
- * @member {string} [eula] The Eula agreement for the gallery image.
+ * @member {string} [description] The description of this gallery Image
+ * Definition resource. This property is updateable.
+ * @member {string} [eula] The Eula agreement for the gallery Image Definition.
  * @member {string} [privacyStatementUri] The privacy statement uri.
  * @member {string} [releaseNoteUri] The release note uri.
  * @member {string} osType This property allows you to specify the type of the
- * OS that is included in the disk if creating a VM from user-image or a
- * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
- * **Linux**. Possible values include: 'Windows', 'Linux'
- * @member {string} osState The OS State. Possible values include:
- * 'Generalized', 'Specialized'
- * @member {date} [endOfLifeDate] The end of life of this gallery image.
+ * OS that is included in the disk when creating a VM from a managed image.
+ * <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**.
+ * Possible values include: 'Windows', 'Linux'
+ * @member {string} osState The allowed values for OS State are 'Generalized'.
+ * Possible values include: 'Generalized', 'Specialized'
+ * @member {date} [endOfLifeDate] The end of life date of the gallery Image
+ * Definition. This property can be used for decommissioning purposes. This
+ * property is updateable.
  * @member {object} identifier
- * @member {string} [identifier.publisher] The gallery image publisher name.
- * @member {string} [identifier.offer] The gallery image offer name.
- * @member {string} [identifier.sku] The gallery image sku name.
+ * @member {string} [identifier.publisher] The name of the gallery Image
+ * Definition publisher.
+ * @member {string} [identifier.offer] The name of the gallery Image Definition
+ * offer.
+ * @member {string} [identifier.sku] The name of the gallery Image Definition
+ * SKU.
  * @member {object} [recommended]
  * @member {object} [recommended.vCPUs]
  * @member {number} [recommended.vCPUs.min] The minimum number of the resource.
@@ -6329,10 +6340,10 @@ export interface ImagePurchasePlan {
  * @member {string} [purchasePlan.name] The plan ID.
  * @member {string} [purchasePlan.publisher] The publisher ID.
  * @member {string} [purchasePlan.product] The product ID.
- * @member {string} [provisioningState] The current state of the gallery image.
- * The provisioning state, which only appears in the response. Possible values
- * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
- * 'Migrating'
+ * @member {string} [provisioningState] The current state of the gallery Image
+ * Definition. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
  */
 export interface GalleryImage extends Resource {
   description?: string;
@@ -6355,8 +6366,8 @@ export interface GalleryImage extends Resource {
  * @constructor
  * Describes the basic gallery artifact publishing profile.
  *
- * @member {array} [targetRegions] The target regions where the artifact is
- * going to be published.
+ * @member {array} [targetRegions] The target regions where the Image Version
+ * is going to be replicated to. This property is updateable.
  * @member {object} source
  * @member {object} [source.managedImage]
  * @member {string} [source.managedImage.id] The managed artifact id.
@@ -6370,17 +6381,19 @@ export interface GalleryArtifactPublishingProfileBase {
  * @class
  * Initializes a new instance of the GalleryImageVersionPublishingProfile class.
  * @constructor
- * The publishing profile of a gallery image version.
+ * The publishing profile of a gallery Image Version.
  *
- * @member {number} [replicaCount] This is the number of source blob copies in
- * a region.
- * @member {boolean} [excludeFromLatest] The flag means that if it is set to
- * true, people deploying VMs with 'latest' as version will not use this
- * version.
- * @member {date} [publishedDate] The time when the gallery image version is
- * published.
- * @member {date} [endOfLifeDate] The end of life date of the gallery image
- * version.
+ * @member {number} [replicaCount] The number of replicas of the Image Version
+ * to be created per region. This property would take effect for a region when
+ * regionalReplicaCount is not specified. This property is updateable.
+ * @member {boolean} [excludeFromLatest] If set to true, Virtual Machines
+ * deployed from the latest version of the Image Definition won't use this
+ * Image Version.
+ * @member {date} [publishedDate] The timestamp for when the gallery Image
+ * Version is published.
+ * @member {date} [endOfLifeDate] The end of life date of the gallery Image
+ * Version. This property can be used for decommissioning purposes. This
+ * property is updateable.
  */
 export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
   replicaCount?: number;
@@ -6395,7 +6408,8 @@ export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPub
  * @constructor
  * This is the disk image base class.
  *
- * @member {number} [sizeInGB] It indicates the size of the VHD to create.
+ * @member {number} [sizeInGB] This property indicates the size of the VHD to
+ * be created.
  * @member {string} [hostCaching] The host caching of the disk. Valid values
  * are 'None', 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
  * 'ReadOnly', 'ReadWrite'
@@ -6421,9 +6435,10 @@ export interface GalleryOSDiskImage extends GalleryDiskImage {
  * @constructor
  * This is the data disk image.
  *
- * @member {number} [lun] Specifies the logical unit number of the data disk.
- * This value is used to identify data disks within the VM and therefore must
- * be unique for each data disk attached to a VM.
+ * @member {number} [lun] This property specifies the logical unit number of
+ * the data disk. This value is used to identify data disks within the Virtual
+ * Machine and therefore must be unique for each data disk attached to the
+ * Virtual Machine.
  */
 export interface GalleryDataDiskImage extends GalleryDiskImage {
   readonly lun?: number;
@@ -6433,7 +6448,7 @@ export interface GalleryDataDiskImage extends GalleryDiskImage {
  * @class
  * Initializes a new instance of the GalleryImageVersionStorageProfile class.
  * @constructor
- * This is the storage profile of a gallery image version.
+ * This is the storage profile of a gallery Image Version.
  *
  * @member {object} [osDiskImage]
  * @member {array} [dataDiskImages] A list of data disk images.
@@ -6449,8 +6464,8 @@ export interface GalleryImageVersionStorageProfile {
  * @constructor
  * This is the regional replication status.
  *
- * @member {string} [region] The region where the gallery image version is
- * published to.
+ * @member {string} [region] The region to which the gallery Image Version is
+ * being replicated to.
  * @member {string} [state] This is the regional replication state. Possible
  * values include: 'Unknown', 'Replicating', 'Completed', 'Failed'
  * @member {string} [details] The details of the replication status.
@@ -6467,10 +6482,10 @@ export interface RegionalReplicationStatus {
  * @class
  * Initializes a new instance of the ReplicationStatus class.
  * @constructor
- * This is the replication status of the gallery image version.
+ * This is the replication status of the gallery Image Version.
  *
  * @member {string} [aggregatedState] This is the aggregated replication status
- * based on the regional replication status. Possible values include:
+ * based on all the regional replication status flags. Possible values include:
  * 'Unknown', 'InProgress', 'Completed', 'Failed'
  * @member {array} [summary] This is a summary of replication status for each
  * region.
@@ -6484,21 +6499,24 @@ export interface ReplicationStatus {
  * @class
  * Initializes a new instance of the GalleryImageVersion class.
  * @constructor
- * Specifies information about the gallery image version that you want to
+ * Specifies information about the gallery Image Version that you want to
  * create or update.
  *
  * @member {object} publishingProfile
- * @member {number} [publishingProfile.replicaCount] This is the number of
- * source blob copies in a region.
- * @member {boolean} [publishingProfile.excludeFromLatest] The flag means that
- * if it is set to true, people deploying VMs with 'latest' as version will not
- * use this version.
- * @member {date} [publishingProfile.publishedDate] The time when the gallery
- * image version is published.
+ * @member {number} [publishingProfile.replicaCount] The number of replicas of
+ * the Image Version to be created per region. This property would take effect
+ * for a region when regionalReplicaCount is not specified. This property is
+ * updateable.
+ * @member {boolean} [publishingProfile.excludeFromLatest] If set to true,
+ * Virtual Machines deployed from the latest version of the Image Definition
+ * won't use this Image Version.
+ * @member {date} [publishingProfile.publishedDate] The timestamp for when the
+ * gallery Image Version is published.
  * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
- * gallery image version.
- * @member {string} [provisioningState] The current state of the gallery image
- * version. The provisioning state, which only appears in the response.
+ * gallery Image Version. This property can be used for decommissioning
+ * purposes. This property is updateable.
+ * @member {string} [provisioningState] The current state of the gallery Image
+ * Version. The provisioning state, which only appears in the response.
  * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
  * 'Deleting', 'Migrating'
  * @member {object} [storageProfile]
@@ -6506,8 +6524,8 @@ export interface ReplicationStatus {
  * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
  * @member {object} [replicationStatus]
  * @member {string} [replicationStatus.aggregatedState] This is the aggregated
- * replication status based on the regional replication status. Possible values
- * include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * replication status based on all the regional replication status flags.
+ * Possible values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
  * @member {array} [replicationStatus.summary] This is a summary of replication
  * status for each region.
  */
@@ -6525,8 +6543,8 @@ export interface GalleryImageVersion extends Resource {
  * Describes the target region information.
  *
  * @member {string} [name] The name of the region.
- * @member {number} [regionalReplicaCount] This is the number of source blob
- * copies in this specific region.
+ * @member {number} [regionalReplicaCount] The number of replicas of the Image
+ * Version to be created per region. This property is updateable.
  */
 export interface TargetRegion {
   name?: string;
@@ -6549,7 +6567,7 @@ export interface ManagedArtifact {
  * @class
  * Initializes a new instance of the GalleryArtifactSource class.
  * @constructor
- * The source of the gallery artifact.
+ * The source image from which the Image Version is going to be created.
  *
  * @member {object} managedImage
  * @member {string} [managedImage.id] The managed artifact id.
@@ -7036,8 +7054,9 @@ export interface GalleryList extends Array<Gallery> {
  * @constructor
  * The List Gallery Images operation response.
  *
- * @member {string} [nextLink] The uri to fetch the next page of gallery
- * images. Call ListNext() with this to fetch the next page of gallery images.
+ * @member {string} [nextLink] The uri to fetch the next page of Image
+ * Definitions in the Shared Image Gallery. Call ListNext() with this to fetch
+ * the next page of gallery Image Definitions.
  */
 export interface GalleryImageList extends Array<GalleryImage> {
   nextLink?: string;
@@ -7049,9 +7068,9 @@ export interface GalleryImageList extends Array<GalleryImage> {
  * @constructor
  * The List Gallery Image version operation response.
  *
- * @member {string} [nextLink] The uri to fetch the next page of gallery image
- * versions. Call ListNext() with this to fetch the next page of gallery image
- * versions.
+ * @member {string} [nextLink] The uri to fetch the next page of gallery Image
+ * Versions. Call ListNext() with this to fetch the next page of gallery Image
+ * Versions.
  */
 export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
   nextLink?: string;
