@@ -103,14 +103,18 @@ export interface AppPatch {
  * @constructor
  * Error details.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the particular error.
+ * @member {object} [error]
+ * @member {string} [error.code] Error code, intended to be consumed
+ * programmatically.
+ * @member {string} [error.message] Description of the error, intended for
+ * display in user interface.
+ * @member {string} [error.target] Target of the particular error, for example
+ * name of the property.
+ * @member {array} [error.details] A list of additional details about the
+ * error.
  */
 export interface ErrorDetails {
-  readonly code?: string;
-  readonly message?: string;
-  readonly target?: string;
+  error?: ErrorResponseBody;
 }
 
 /**
@@ -159,9 +163,12 @@ export interface Operation {
  *
  * @member {string} name The name of the IoT Central application instance to
  * check.
+ * @member {string} [type] The name of the IoT Central resource name to query.
+ * Default value: 'IoTApps' .
  */
 export interface OperationInputs {
   name: string;
+  type?: string;
 }
 
 /**
