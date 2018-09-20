@@ -4353,6 +4353,25 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayFirewallExclusion class.
+ * @constructor
+ * Allow to exclude some variable satisfy the condition for the WAF check
+ *
+ * @member {string} matchVariable The variable to be excluded.
+ * @member {string} selectorMatchOperator When matchVariable is a collection,
+ * operate on the selector to specify which elements in the collection this
+ * exclusion applies to.
+ * @member {string} selector When matchVariable is a collection, operator used
+ * to specify which elements in the collection this exclusion applies to.
+ */
+export interface ApplicationGatewayFirewallExclusion {
+  matchVariable: string;
+  selectorMatchOperator: string;
+  selector: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayWebApplicationFirewallConfiguration class.
  * @constructor
  * Application gateway web application firewall configuration.
@@ -4368,6 +4387,11 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
  * Body.
  * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
+ * @member {number} [maxRequestBodySizeInKb] Maxium request body size in Kb for
+ * WAF.
+ * @member {number} [fileUploadLimitInMb] Maxium file upload size in Mb for
+ * WAF.
+ * @member {array} [exclusions] The exclusion list.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -4377,6 +4401,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
   requestBodyCheck?: boolean;
   maxRequestBodySize?: number;
+  maxRequestBodySizeInKb?: number;
+  fileUploadLimitInMb?: number;
+  exclusions?: ApplicationGatewayFirewallExclusion[];
 }
 
 /**
@@ -4464,6 +4491,13 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * Whether allow WAF to check request Body.
  * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
  * Maxium request body size for WAF.
+ * @member {number}
+ * [webApplicationFirewallConfiguration.maxRequestBodySizeInKb] Maxium request
+ * body size in Kb for WAF.
+ * @member {number} [webApplicationFirewallConfiguration.fileUploadLimitInMb]
+ * Maxium file upload size in Mb for WAF.
+ * @member {array} [webApplicationFirewallConfiguration.exclusions] The
+ * exclusion list.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
  * @member {boolean} [enableFips] Whether FIPS is enabled on the application
