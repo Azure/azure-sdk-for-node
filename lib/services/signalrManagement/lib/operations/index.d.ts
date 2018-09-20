@@ -557,8 +557,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -620,8 +621,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -758,8 +760,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -815,8 +818,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -976,8 +980,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1039,8 +1044,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1177,8 +1183,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1234,8 +1241,9 @@ export interface SignalR {
      * typically a letter + number code, such as A0 or P3.  Required (if sku is
      * specified)
      *
-     * @param {string} [options.parameters.sku.tier] The tier of this particular
-     * SKU. Optional. Possible values include: 'Free', 'Basic', 'Premium'
+     * @param {string} [options.parameters.sku.tier] Optional tier of this
+     * particular SKU. `Basic` is deprecated, use `Standard` instead for Basic
+     * tier. Possible values include: 'Free', 'Basic', 'Standard', 'Premium'
      *
      * @param {string} [options.parameters.sku.size] Optional, string. When the
      * name field is the combination of tier and some other value, this would be
@@ -1399,4 +1407,125 @@ export interface SignalR {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRResourceList>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.SignalRResourceList>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRResourceList>): void;
+}
+
+/**
+ * @class
+ * Usages
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SignalRManagementClient.
+ */
+export interface Usages {
+
+
+    /**
+     * List usage quotas for Azure SignalR service by location.
+     *
+     * @param {string} location the location like "eastus"
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SignalRUsageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SignalRUsageList>>;
+
+    /**
+     * List usage quotas for Azure SignalR service by location.
+     *
+     * @param {string} location the location like "eastus"
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SignalRUsageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SignalRUsageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SignalRUsageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRUsageList>;
+    list(location: string, callback: ServiceCallback<models.SignalRUsageList>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRUsageList>): void;
+
+
+    /**
+     * List usage quotas for Azure SignalR service by location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SignalRUsageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SignalRUsageList>>;
+
+    /**
+     * List usage quotas for Azure SignalR service by location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SignalRUsageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SignalRUsageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SignalRUsageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SignalRUsageList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SignalRUsageList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SignalRUsageList>): void;
 }

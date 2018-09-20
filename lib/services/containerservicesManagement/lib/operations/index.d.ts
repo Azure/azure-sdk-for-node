@@ -1951,7 +1951,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2060,7 +2060,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2323,7 +2323,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2432,7 +2432,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
