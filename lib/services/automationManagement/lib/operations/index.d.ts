@@ -11393,11 +11393,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
 
     /**
      * Retrieve the content of runbook draft identified by runbook name.
@@ -11420,7 +11420,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {String} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11428,15 +11428,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<stream.Readable>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
