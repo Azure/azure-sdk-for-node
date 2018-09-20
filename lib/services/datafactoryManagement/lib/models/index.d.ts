@@ -758,6 +758,44 @@ export interface GitHubAccessTokenResponse {
 
 /**
  * @class
+ * Initializes a new instance of the DataPlaneReadOnlyTokenRequest class.
+ * @constructor
+ * Get Data Plane read only token request definition.
+ *
+ * @member {string} [startTime] Start time for the token. If not specified the
+ * current time will be used.
+ * @member {string} [expireTime] Expiration time for the token. Maximum
+ * duration for the token is eight hours and by default the token will expire
+ * in eight hours.
+ */
+export interface DataPlaneReadOnlyTokenRequest {
+  startTime?: string;
+  expireTime?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataPlaneReadOnlyTokenResponse class.
+ * @constructor
+ * Get Data Plane read only token response definition.
+ *
+ * @member {string} [startTime] Start time for the token. If not specified the
+ * current time will be used.
+ * @member {string} [expireTime] Expiration time for the token. Maximum
+ * duration for the token is eight hours and by default the token will expire
+ * in eight hours.
+ * @member {string} [accessToken] Data Plane read only access token.
+ * @member {string} [dataPlaneUrl] Data Plane service base URL.
+ */
+export interface DataPlaneReadOnlyTokenResponse {
+  startTime?: string;
+  expireTime?: string;
+  accessToken?: string;
+  dataPlaneUrl?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineReference class.
  * @constructor
  * Pipeline reference type.

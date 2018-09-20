@@ -749,6 +749,86 @@ export interface Factories {
 
 
     /**
+     * Get Data Plane read only token.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} dataPlaneReadOnlyTokenRequest Data Plane read only access
+     * token request definition.
+     *
+     * @param {string} [dataPlaneReadOnlyTokenRequest.startTime] Start time for the
+     * token. If not specified the current time will be used.
+     *
+     * @param {string} [dataPlaneReadOnlyTokenRequest.expireTime] Expiration time
+     * for the token. Maximum duration for the token is eight hours and by default
+     * the token will expire in eight hours.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataPlaneReadOnlyTokenResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getDataPlaneReadOnlyTokenWithHttpOperationResponse(resourceGroupName: string, factoryName: string, dataPlaneReadOnlyTokenRequest: models.DataPlaneReadOnlyTokenRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataPlaneReadOnlyTokenResponse>>;
+
+    /**
+     * Get Data Plane read only token.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} dataPlaneReadOnlyTokenRequest Data Plane read only access
+     * token request definition.
+     *
+     * @param {string} [dataPlaneReadOnlyTokenRequest.startTime] Start time for the
+     * token. If not specified the current time will be used.
+     *
+     * @param {string} [dataPlaneReadOnlyTokenRequest.expireTime] Expiration time
+     * for the token. Maximum duration for the token is eight hours and by default
+     * the token will expire in eight hours.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataPlaneReadOnlyTokenResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataPlaneReadOnlyTokenResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataPlaneReadOnlyTokenResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDataPlaneReadOnlyToken(resourceGroupName: string, factoryName: string, dataPlaneReadOnlyTokenRequest: models.DataPlaneReadOnlyTokenRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataPlaneReadOnlyTokenResponse>;
+    getDataPlaneReadOnlyToken(resourceGroupName: string, factoryName: string, dataPlaneReadOnlyTokenRequest: models.DataPlaneReadOnlyTokenRequest, callback: ServiceCallback<models.DataPlaneReadOnlyTokenResponse>): void;
+    getDataPlaneReadOnlyToken(resourceGroupName: string, factoryName: string, dataPlaneReadOnlyTokenRequest: models.DataPlaneReadOnlyTokenRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataPlaneReadOnlyTokenResponse>): void;
+
+
+    /**
      * Lists factories under the specified subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
