@@ -4853,6 +4853,8 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureInput] When set to true, Input from activity is
+ * considered as secure and will not be logged to monitoring.
  * @member {boolean} [secureOutput] When set to true, Output from activity is
  * considered as secure and will not be logged to monitoring.
  */
@@ -4860,6 +4862,7 @@ export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureInput?: boolean;
   secureOutput?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -4887,6 +4890,8 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureInput] When set to true, Input from activity
+ * is considered as secure and will not be logged to monitoring.
  * @member {boolean} [policy.secureOutput] When set to true, Output from
  * activity is considered as secure and will not be logged to monitoring.
  */
