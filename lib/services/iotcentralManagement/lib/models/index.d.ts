@@ -99,26 +99,6 @@ export interface AppPatch {
 
 /**
  * @class
- * Initializes a new instance of the ErrorDetails class.
- * @constructor
- * Error details.
- *
- * @member {object} [error]
- * @member {string} [error.code] Error code, intended to be consumed
- * programmatically.
- * @member {string} [error.message] Description of the error, intended for
- * display in user interface.
- * @member {string} [error.target] Target of the particular error, for example
- * name of the property.
- * @member {array} [error.details] A list of additional details about the
- * error.
- */
-export interface ErrorDetails {
-  error?: ErrorResponseBody;
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * The object that represents the operation.
