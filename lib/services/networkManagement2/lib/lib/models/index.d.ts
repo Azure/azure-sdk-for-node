@@ -818,7 +818,7 @@ export interface ManagedRuleSets {
 
 /**
  * @class
- * Initializes a new instance of the WebApplicationFirewallPolicy class.
+ * Initializes a new instance of the WebApplicationFirewallPolicy1 class.
  * @constructor
  * Defines web application firewall policy.
  *
@@ -835,14 +835,18 @@ export interface ManagedRuleSets {
  * @member {array} [managedRules.ruleSets] List of rules
  * @member {string} [provisioningState] Provisioning state of the
  * WebApplicationFirewallPolicy.
+ * @member {string} [resourceState] Resource status of the policy. Possible
+ * values include: 'Creating', 'Enabling', 'Enabled', 'Disabling', 'Disabled',
+ * 'Deleting'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
-export interface WebApplicationFirewallPolicy extends Resource {
+export interface WebApplicationFirewallPolicy1 extends Resource {
   policySettings?: PolicySettings;
   customRules?: CustomRules;
   managedRules?: ManagedRuleSets;
   readonly provisioningState?: string;
+  readonly resourceState?: string;
   etag?: string;
 }
 
@@ -973,6 +977,6 @@ export interface FrontendEndpointsListResult extends Array<FrontendEndpoint> {
  * @member {string} [nextLink] URL to get the next set of
  * WebApplicationFirewallPolicy objects if there are any.
  */
-export interface WebApplicationFirewallPolicyListResult extends Array<WebApplicationFirewallPolicy> {
+export interface WebApplicationFirewallPolicyListResult extends Array<WebApplicationFirewallPolicy1> {
   nextLink?: string;
 }

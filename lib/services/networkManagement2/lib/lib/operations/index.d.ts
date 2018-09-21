@@ -4368,11 +4368,11 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy1>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
+    getWithHttpOperationResponse(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy1>>;
 
     /**
      * Retrieve protection policy with specified name within a resource group.
@@ -4393,7 +4393,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
+     *                      @resolve {WebApplicationFirewallPolicy1} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4401,17 +4401,17 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebApplicationFirewallPolicy} for more
+     *                      {WebApplicationFirewallPolicy1} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy1} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
-    get(resourceGroupName: string, policyName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
-    get(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    get(resourceGroupName: string, policyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy1>;
+    get(resourceGroupName: string, policyName: string, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
+    get(resourceGroupName: string, policyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
 
 
     /**
@@ -4459,11 +4459,11 @@ export interface Policies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WebApplicationFirewallPolicy1>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebApplicationFirewallPolicy1>>;
 
     /**
      * Creates or update policy with specified ruleset name within a resource
@@ -4515,7 +4515,7 @@ export interface Policies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WebApplicationFirewallPolicy} - The deserialized result object.
+     *                      @resolve {WebApplicationFirewallPolicy1} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4523,17 +4523,17 @@ export interface Policies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WebApplicationFirewallPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebApplicationFirewallPolicy} for more
+     *                      {WebApplicationFirewallPolicy1} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebApplicationFirewallPolicy1} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy>;
-    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
-    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy>): void;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebApplicationFirewallPolicy1>;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
+    createOrUpdate(resourceGroupName: string, policyName: string, parameters: models.WebApplicationFirewallPolicy1, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebApplicationFirewallPolicy1>): void;
 
 
     /**
