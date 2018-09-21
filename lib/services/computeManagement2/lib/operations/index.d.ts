@@ -2246,19 +2246,19 @@ export interface UsageOperations {
 
 /**
  * @class
- * VirtualMachineSizes
+ * VirtualMachines
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
  */
-export interface VirtualMachineSizes {
+export interface VirtualMachines {
 
 
     /**
-     * This API is deprecated. Use [Resources
-     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+     * Gets all the virtual machines under the specified subscription for the
+     * specified location.
      *
-     * @param {string} location The location upon which virtual-machine-sizes is
-     * queried.
+     * @param {string} location The location for which virtual machines under the
+     * subscription are queried.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2267,18 +2267,18 @@ export interface VirtualMachineSizes {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+    listByLocationWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
 
     /**
-     * This API is deprecated. Use [Resources
-     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+     * Gets all the virtual machines under the specified subscription for the
+     * specified location.
      *
-     * @param {string} location The location upon which virtual-machine-sizes is
-     * queried.
+     * @param {string} location The location for which virtual machines under the
+     * subscription are queried.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2292,7 +2292,7 @@ export interface VirtualMachineSizes {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2300,1176 +2300,17 @@ export interface VirtualMachineSizes {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
-    list(location: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
-    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
-}
-
-/**
- * @class
- * Images
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface Images {
-
-
-    /**
-     * Create or update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Create Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
-
-    /**
-     * Create or update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Create Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Image} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Image} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Image} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
-    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, callback: ServiceCallback<models.Image>): void;
-    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
-
-
-    /**
-     * Update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Update Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
-
-    /**
-     * Update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Update Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Image} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Image} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Image} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
-    update(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, callback: ServiceCallback<models.Image>): void;
-    update(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
-
-
-    /**
-     * Deletes an Image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes an Image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
-
-    /**
-     * Gets an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Image} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Image} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Image} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, imageName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
-    get(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.Image>): void;
-    get(resourceGroupName: string, imageName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
-
-
-    /**
-     * Gets the list of images under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
-
-    /**
-     * Gets the list of images under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImageListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImageListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ImageListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
-
-
-    /**
-     * Gets the list of Images in the subscription. Use nextLink property in the
-     * response to get the next page of Images. Do this till nextLink is null to
-     * fetch all the Images.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
-
-    /**
-     * Gets the list of Images in the subscription. Use nextLink property in the
-     * response to get the next page of Images. Do this till nextLink is null to
-     * fetch all the Images.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImageListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImageListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
-    list(callback: ServiceCallback<models.ImageListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
-
-
-    /**
-     * Create or update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Create Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
-
-    /**
-     * Create or update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Create Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Image} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Image} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Image} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
-    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, callback: ServiceCallback<models.Image>): void;
-    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
-
-
-    /**
-     * Update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Update Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
-
-    /**
-     * Update an image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} parameters Parameters supplied to the Update Image
-     * operation.
-     *
-     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
-     * from which Image is created.
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} parameters.storageProfile.osDisk.osType This property allows
-     * you to specify the type of the OS that is included in the disk if creating a
-     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
-     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
-     * Possible values include: 'Generalized', 'Specialized'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
-     * managedDisk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
-     * Disk.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of empty data disks in gigabytes. This element can be used to overwrite
-     * the name of the disk in a virtual machine image. <br><br> This value cannot
-     * be larger than 1023 GB
-     *
-     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
-     * be used with OS Disk. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
-     * an image is zone resilient or not. Default is false. Zone resilient images
-     * can be created only in regions that provide Zone Redundant Storage (ZRS).
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Image} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Image} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Image} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
-    beginUpdate(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, callback: ServiceCallback<models.Image>): void;
-    beginUpdate(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
-
-
-    /**
-     * Deletes an Image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes an Image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} imageName The name of the image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets the list of images under a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
-
-    /**
-     * Gets the list of images under a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImageListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImageListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ImageListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
-
-
-    /**
-     * Gets the list of Images in the subscription. Use nextLink property in the
-     * response to get the next page of Images. Do this till nextLink is null to
-     * fetch all the Images.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
-
-    /**
-     * Gets the list of Images in the subscription. Use nextLink property in the
-     * response to get the next page of Images. Do this till nextLink is null to
-     * fetch all the Images.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImageListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImageListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ImageListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
-}
-
-/**
- * @class
- * VirtualMachines
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface VirtualMachines {
+    listByLocation(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
+    listByLocation(location: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listByLocation(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
 
 
     /**
@@ -8518,6 +7359,66 @@ export interface VirtualMachines {
 
 
     /**
+     * Gets all the virtual machines under the specified subscription for the
+     * specified location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByLocationNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Gets all the virtual machines under the specified subscription for the
+     * specified location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByLocationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
+    listByLocationNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listByLocationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
+
+    /**
      * Lists all of the virtual machines in the specified resource group. Use the
      * nextLink property in the response to get the next page of virtual machines.
      *
@@ -8635,6 +7536,1225 @@ export interface VirtualMachines {
     listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
     listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+}
+
+/**
+ * @class
+ * VirtualMachineSizes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface VirtualMachineSizes {
+
+
+    /**
+     * This API is deprecated. Use [Resources
+     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+     *
+     * @param {string} location The location upon which virtual-machine-sizes is
+     * queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+
+    /**
+     * This API is deprecated. Use [Resources
+     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+     *
+     * @param {string} location The location upon which virtual-machine-sizes is
+     * queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
+    list(location: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+}
+
+/**
+ * @class
+ * Images
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface Images {
+
+
+    /**
+     * Create or update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Create Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Create or update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Create Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
+    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, callback: ServiceCallback<models.Image>): void;
+    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
+
+    /**
+     * Update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Update Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Update Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
+    update(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, callback: ServiceCallback<models.Image>): void;
+    update(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
+
+    /**
+     * Deletes an Image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an Image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Gets an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, imageName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
+    get(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.Image>): void;
+    get(resourceGroupName: string, imageName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
+
+    /**
+     * Gets the list of images under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of images under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ImageListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+
+
+    /**
+     * Gets the list of Images in the subscription. Use nextLink property in the
+     * response to get the next page of Images. Do this till nextLink is null to
+     * fetch all the Images.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of Images in the subscription. Use nextLink property in the
+     * response to get the next page of Images. Do this till nextLink is null to
+     * fetch all the Images.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
+    list(callback: ServiceCallback<models.ImageListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+
+
+    /**
+     * Create or update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Create Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Create or update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Create Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
+    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, callback: ServiceCallback<models.Image>): void;
+    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
+
+    /**
+     * Update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Update Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Update Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType This property allows
+     * you to specify the type of the OS that is included in the disk if creating a
+     * VM from a custom image. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of empty data disks in gigabytes. This element can be used to overwrite
+     * the name of the disk in a virtual machine image. <br><br> This value cannot
+     * be larger than 1023 GB
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {boolean} [parameters.storageProfile.zoneResilient] Specifies whether
+     * an image is zone resilient or not. Default is false. Zone resilient images
+     * can be created only in regions that provide Zone Redundant Storage (ZRS).
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
+    beginUpdate(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, callback: ServiceCallback<models.Image>): void;
+    beginUpdate(resourceGroupName: string, imageName: string, parameters: models.ImageUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
+
+    /**
+     * Deletes an Image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an Image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the list of images under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of images under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ImageListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+
+
+    /**
+     * Gets the list of Images in the subscription. Use nextLink property in the
+     * response to get the next page of Images. Do this till nextLink is null to
+     * fetch all the Images.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of Images in the subscription. Use nextLink property in the
+     * response to get the next page of Images. Do this till nextLink is null to
+     * fetch all the Images.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ImageListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
 }
 
 /**
