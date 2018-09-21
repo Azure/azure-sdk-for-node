@@ -99,27 +99,6 @@ export interface AppPatch {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponseBody class.
- * @constructor
- * Details of error response.
- *
- * @member {string} [code] Error code, intended to be consumed
- * programmatically.
- * @member {string} [message] Description of the error, intended for display in
- * user interface.
- * @member {string} [target] Target of the particular error, for example name
- * of the property.
- * @member {array} [details] A list of additional details about the error.
- */
-export interface ErrorResponseBody {
-  readonly code?: string;
-  readonly message?: string;
-  readonly target?: string;
-  details?: ErrorResponseBody[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Error details.
@@ -182,30 +161,36 @@ export interface Operation {
  * @constructor
  * Input values.
  *
- * @member {string} name The name of the IoT Central application instance to
+ * @member {string} [name] The name of the IoT Central application instance to
  * check.
+ * @member {string} [subdomain] The subdomain of the IoT Central application
+ * instance to check.
  * @member {string} [type] The name of the IoT Central resource name to query.
  * Default value: 'IoTApps' .
  */
 export interface OperationInputs {
-  name: string;
+  name?: string;
+  subdomain?: string;
   type?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the AppNameAvailabilityInfo class.
+ * Initializes a new instance of the AppAvailabilityInfo class.
  * @constructor
- * The properties indicating whether a given IoT Central application name is
- * available.
+ * The properties indicating whether a given IoT Central application
+ * information is available.
  *
  * @member {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
+ * @member {string} [subdomain] The value which indicates whether the provided
+ * subdomain is available.
  * @member {string} [reason] The reason for unavailability.
  * @member {string} [message] The detailed reason message.
  */
-export interface AppNameAvailabilityInfo {
+export interface AppAvailabilityInfo {
   readonly nameAvailable?: boolean;
+  readonly subdomain?: string;
   readonly reason?: string;
   readonly message?: string;
 }
