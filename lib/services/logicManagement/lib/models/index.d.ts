@@ -7985,17 +7985,6 @@ export interface TrackingEventsDefinition {
 
 /**
  * @class
- * Initializes a new instance of the AccessKeyRegenerateActionDefinition class.
- * @constructor
- * @member {string} keyType Possible values include: 'NotSpecified', 'Primary',
- * 'Secondary'
- */
-export interface AccessKeyRegenerateActionDefinition {
-  keyType: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SetTriggerStateActionDefinition class.
  * @constructor
  * @member {object} source

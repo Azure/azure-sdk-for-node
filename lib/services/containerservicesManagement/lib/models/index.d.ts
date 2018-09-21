@@ -708,14 +708,14 @@ export interface ManagedClusterAddonProfile {
  *
  * @member {string} clientAppID The client AAD application ID.
  * @member {string} serverAppID The server AAD application ID.
- * @member {string} serverAppSecret The server AAD application secret.
+ * @member {string} [serverAppSecret] The server AAD application secret.
  * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
  * not specified, will use the tenant of the deployment subscription.
  */
 export interface ManagedClusterAADProfile {
   clientAppID: string;
   serverAppID: string;
-  serverAppSecret: string;
+  serverAppSecret?: string;
   tenantID?: string;
 }
 
@@ -732,7 +732,8 @@ export interface ManagedClusterAADProfile {
  * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
  * cluster.
  * @member {string} [fqdn] FDQN for the master pool.
- * @member {array} [agentPoolProfiles] Properties of the agent pool.
+ * @member {array} [agentPoolProfiles] Properties of the agent pool. Currently
+ * only one agent pool can exist.
  * @member {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.
  * @member {string} [linuxProfile.adminUsername] The administrator username to

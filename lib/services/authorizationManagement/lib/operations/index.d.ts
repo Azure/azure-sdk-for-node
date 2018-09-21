@@ -811,10 +811,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -855,10 +855,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -1023,10 +1023,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -1058,10 +1058,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
