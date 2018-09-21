@@ -21955,8 +21955,8 @@ export interface Galleries {
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} galleryName The name of the Shared Image Gallery. The
-     * allowed characters are alphabets and numbers with dots, dashes, and periods
-     * allowed in the middle. The maximum length is 80 characters.
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
      *
      * @param {object} gallery Parameters supplied to the create or update Shared
      * Image Gallery operation.
@@ -21989,8 +21989,8 @@ export interface Galleries {
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} galleryName The name of the Shared Image Gallery. The
-     * allowed characters are alphabets and numbers with dots, dashes, and periods
-     * allowed in the middle. The maximum length is 80 characters.
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
      *
      * @param {object} gallery Parameters supplied to the create or update Shared
      * Image Gallery operation.
@@ -22267,8 +22267,8 @@ export interface Galleries {
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} galleryName The name of the Shared Image Gallery. The
-     * allowed characters are alphabets and numbers with dots, dashes, and periods
-     * allowed in the middle. The maximum length is 80 characters.
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
      *
      * @param {object} gallery Parameters supplied to the create or update Shared
      * Image Gallery operation.
@@ -22301,8 +22301,8 @@ export interface Galleries {
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} galleryName The name of the Shared Image Gallery. The
-     * allowed characters are alphabets and numbers with dots, dashes, and periods
-     * allowed in the middle. The maximum length is 80 characters.
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
      *
      * @param {object} gallery Parameters supplied to the create or update Shared
      * Image Gallery operation.

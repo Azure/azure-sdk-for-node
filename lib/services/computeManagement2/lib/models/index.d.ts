@@ -6547,12 +6547,12 @@ export interface GalleryImageVersion extends Resource {
  * @constructor
  * Describes the target region information.
  *
- * @member {string} [name] The name of the region.
+ * @member {string} name The name of the region.
  * @member {number} [regionalReplicaCount] The number of replicas of the Image
  * Version to be created per region. This property is updateable.
  */
 export interface TargetRegion {
-  name?: string;
+  name: string;
   regionalReplicaCount?: number;
 }
 
