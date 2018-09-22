@@ -22,10 +22,10 @@ export interface ServiceTopologies {
 
 
     /**
-     * @summary Creates a new service topology.
+     * @summary Creates or updates a service topology.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new service topology or updates an existing service
+     * topology.
      *
      * @param {object} serviceTopologyInfo Source topology object defines the
      * resource.
@@ -54,13 +54,13 @@ export interface ServiceTopologies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceTopologyResource>>;
+    createOrUpdateWithHttpOperationResponse(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceTopologyResource>>;
 
     /**
-     * @summary Creates a new service topology.
+     * @summary Creates or updates a service topology.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new service topology or updates an existing service
+     * topology.
      *
      * @param {object} serviceTopologyInfo Source topology object defines the
      * resource.
@@ -106,9 +106,9 @@ export interface ServiceTopologies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceTopologyResource>;
-    create(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, callback: ServiceCallback<models.ServiceTopologyResource>): void;
-    create(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceTopologyResource>): void;
+    createOrUpdate(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceTopologyResource>;
+    createOrUpdate(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, callback: ServiceCallback<models.ServiceTopologyResource>): void;
+    createOrUpdate(serviceTopologyInfo: models.ServiceTopologyResource, resourceGroupName: string, serviceTopologyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceTopologyResource>): void;
 
 
     /**
@@ -245,8 +245,7 @@ export interface Services {
     /**
      * @summary Creates or updates a service in the topology.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new service or updates an existing service.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -279,13 +278,12 @@ export interface Services {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
 
     /**
      * @summary Creates or updates a service in the topology.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new service or updates an existing service.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -334,9 +332,9 @@ export interface Services {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
-    create(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, callback: ServiceCallback<models.ServiceResource>): void;
-    create(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
+    createOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
+    createOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, callback: ServiceCallback<models.ServiceResource>): void;
+    createOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
 
 
     /**
@@ -535,7 +533,7 @@ export interface ServiceUnits {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
 
     /**
      * @summary Creates or updates a service unit in the service within the
@@ -611,9 +609,9 @@ export interface ServiceUnits {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceUnitResource>;
-    create(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, callback: ServiceCallback<models.ServiceUnitResource>): void;
-    create(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceUnitResource>): void;
+    createOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceUnitResource>;
+    createOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, callback: ServiceCallback<models.ServiceUnitResource>): void;
+    createOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceUnitResource>): void;
 
 
     /**
@@ -811,7 +809,7 @@ export interface ServiceUnits {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
 
     /**
      * @summary Creates or updates a service unit in the service within the
@@ -887,9 +885,9 @@ export interface ServiceUnits {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceUnitResource>;
-    beginCreate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, callback: ServiceCallback<models.ServiceUnitResource>): void;
-    beginCreate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceUnitResource>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceUnitResource>;
+    beginCreateOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, callback: ServiceCallback<models.ServiceUnitResource>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceUnitResource>): void;
 }
 
 /**
@@ -902,10 +900,9 @@ export interface Steps {
 
 
     /**
-     * @summary Creates a new deployment step.
+     * @summary Creates or updates a deployment step.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new step or updates an existing step.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -935,13 +932,12 @@ export interface Steps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, stepName: string, options?: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StepResource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, stepName: string, options?: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StepResource>>;
 
     /**
-     * @summary Creates a new deployment step.
+     * @summary Creates or updates a deployment step.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new step or updates an existing step.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -987,9 +983,9 @@ export interface Steps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, stepName: string, options?: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }): Promise<models.StepResource>;
-    create(resourceGroupName: string, stepName: string, callback: ServiceCallback<models.StepResource>): void;
-    create(resourceGroupName: string, stepName: string, options: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StepResource>): void;
+    createOrUpdate(resourceGroupName: string, stepName: string, options?: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }): Promise<models.StepResource>;
+    createOrUpdate(resourceGroupName: string, stepName: string, callback: ServiceCallback<models.StepResource>): void;
+    createOrUpdate(resourceGroupName: string, stepName: string, options: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StepResource>): void;
 
 
     /**
@@ -1123,10 +1119,10 @@ export interface Rollouts {
 
 
     /**
-     * @summary Creates a new rollout.
+     * @summary Creates or updates a rollout.
      *
      * This is an asynchronous operation and can be polled to completion using the
-     * rollout identifier returned by this operation.
+     * location header returned by this operation.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1172,13 +1168,13 @@ export interface Rollouts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RolloutRequest>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RolloutRequest>>;
 
     /**
-     * @summary Creates a new rollout.
+     * @summary Creates or updates a rollout.
      *
      * This is an asynchronous operation and can be polled to completion using the
-     * rollout identifier returned by this operation.
+     * location header returned by this operation.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1240,9 +1236,9 @@ export interface Rollouts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.RolloutRequest>;
-    create(resourceGroupName: string, rolloutName: string, callback: ServiceCallback<models.RolloutRequest>): void;
-    create(resourceGroupName: string, rolloutName: string, options: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RolloutRequest>): void;
+    createOrUpdate(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.RolloutRequest>;
+    createOrUpdate(resourceGroupName: string, rolloutName: string, callback: ServiceCallback<models.RolloutRequest>): void;
+    createOrUpdate(resourceGroupName: string, rolloutName: string, options: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RolloutRequest>): void;
 
 
     /**
@@ -1519,10 +1515,10 @@ export interface Rollouts {
 
 
     /**
-     * @summary Creates a new rollout.
+     * @summary Creates or updates a rollout.
      *
      * This is an asynchronous operation and can be polled to completion using the
-     * rollout identifier returned by this operation.
+     * location header returned by this operation.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1568,13 +1564,13 @@ export interface Rollouts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RolloutRequest>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RolloutRequest>>;
 
     /**
-     * @summary Creates a new rollout.
+     * @summary Creates or updates a rollout.
      *
      * This is an asynchronous operation and can be polled to completion using the
-     * rollout identifier returned by this operation.
+     * location header returned by this operation.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1636,9 +1632,9 @@ export interface Rollouts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.RolloutRequest>;
-    beginCreate(resourceGroupName: string, rolloutName: string, callback: ServiceCallback<models.RolloutRequest>): void;
-    beginCreate(resourceGroupName: string, rolloutName: string, options: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RolloutRequest>): void;
+    beginCreateOrUpdate(resourceGroupName: string, rolloutName: string, options?: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }): Promise<models.RolloutRequest>;
+    beginCreateOrUpdate(resourceGroupName: string, rolloutName: string, callback: ServiceCallback<models.RolloutRequest>): void;
+    beginCreateOrUpdate(resourceGroupName: string, rolloutName: string, options: { rolloutRequest? : models.RolloutRequest, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RolloutRequest>): void;
 }
 
 /**
@@ -1651,10 +1647,10 @@ export interface ArtifactSources {
 
 
     /**
-     * @summary Creates a new Artifact source.
+     * @summary Creates or updates an Artifact source.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new artifact source or updates an existing artifact
+     * source.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1692,13 +1688,13 @@ export interface ArtifactSources {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, artifactSourceName: string, options?: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, artifactSourceName: string, options?: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
 
     /**
-     * @summary Creates a new Artifact source.
+     * @summary Creates or updates an Artifact source.
      *
-     * This is an asynchronous operation and can be polled to completion using the
-     * operation resource returned by this operation.
+     * Synchronously creates a new artifact source or updates an existing artifact
+     * source.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1752,9 +1748,9 @@ export interface ArtifactSources {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, artifactSourceName: string, options?: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
-    create(resourceGroupName: string, artifactSourceName: string, callback: ServiceCallback<models.ArtifactSource>): void;
-    create(resourceGroupName: string, artifactSourceName: string, options: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
+    createOrUpdate(resourceGroupName: string, artifactSourceName: string, options?: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }): Promise<models.ArtifactSource>;
+    createOrUpdate(resourceGroupName: string, artifactSourceName: string, callback: ServiceCallback<models.ArtifactSource>): void;
+    createOrUpdate(resourceGroupName: string, artifactSourceName: string, options: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ArtifactSource>): void;
 
 
     /**
