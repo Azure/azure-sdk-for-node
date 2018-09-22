@@ -18943,7 +18943,7 @@ export interface Disks {
      * @param {object} [disk.creationData.imageReference] Disk source information.
      *
      * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [disk.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -19054,7 +19054,7 @@ export interface Disks {
      * @param {object} [disk.creationData.imageReference] Disk source information.
      *
      * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [disk.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -19745,7 +19745,7 @@ export interface Disks {
      * @param {object} [disk.creationData.imageReference] Disk source information.
      *
      * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [disk.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -19856,7 +19856,7 @@ export interface Disks {
      * @param {object} [disk.creationData.imageReference] Disk source information.
      *
      * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [disk.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -20498,7 +20498,7 @@ export interface Snapshots {
      * information.
      *
      * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -20600,7 +20600,7 @@ export interface Snapshots {
      * information.
      *
      * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -21266,7 +21266,7 @@ export interface Snapshots {
      * information.
      *
      * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of
@@ -21368,7 +21368,7 @@ export interface Snapshots {
      * information.
      *
      * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
+     * containing either a Platform Image Repository or user image reference.
      *
      * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
      * created from an image's data disk, this is an index that indicates which of

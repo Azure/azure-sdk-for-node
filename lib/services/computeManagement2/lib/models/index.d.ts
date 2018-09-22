@@ -5758,7 +5758,7 @@ export interface DiskSku {
  * @constructor
  * The source image used for creating the disk.
  *
- * @member {string} id A relative uri containing either a Platform Imgage
+ * @member {string} id A relative uri containing either a Platform Image
  * Repository or user image reference.
  * @member {number} [lun] If the disk is created from an image's data disk,
  * this is an index that indicates which of the data disks in the image to use.
@@ -5783,7 +5783,7 @@ export interface ImageDiskReference {
  * import as a disk. Required only if the blob is in a different subscription
  * @member {object} [imageReference] Disk source information.
  * @member {string} [imageReference.id] A relative uri containing either a
- * Platform Imgage Repository or user image reference.
+ * Platform Image Repository or user image reference.
  * @member {number} [imageReference.lun] If the disk is created from an image's
  * data disk, this is an index that indicates which of the data disks in the
  * image to use. For OS disks, this field is null.
@@ -5905,7 +5905,7 @@ export interface EncryptionSettings {
  * subscription
  * @member {object} [creationData.imageReference] Disk source information.
  * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
+ * either a Platform Image Repository or user image reference.
  * @member {number} [creationData.imageReference.lun] If the disk is created
  * from an image's data disk, this is an index that indicates which of the data
  * disks in the image to use. For OS disks, this field is null.
@@ -6088,7 +6088,7 @@ export interface AccessUri {
  * subscription
  * @member {object} [creationData.imageReference] Disk source information.
  * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
+ * either a Platform Image Repository or user image reference.
  * @member {number} [creationData.imageReference.lun] If the disk is created
  * from an image's data disk, this is an index that indicates which of the data
  * disks in the image to use. For OS disks, this field is null.
