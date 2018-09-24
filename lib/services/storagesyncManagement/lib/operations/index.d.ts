@@ -209,13 +209,25 @@ export interface StorageSyncServices {
     /**
      * Create a new StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
      *
      * @param {object} parameters Storage Sync Service resource name.
+     *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -228,18 +240,30 @@ export interface StorageSyncServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
 
     /**
      * Create a new StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
      *
      * @param {object} parameters Storage Sync Service resource name.
+     *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -268,16 +292,16 @@ export interface StorageSyncServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
-    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, callback: ServiceCallback<models.StorageSyncService>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, callback: ServiceCallback<models.StorageSyncService>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
 
 
     /**
      * Get a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -298,8 +322,8 @@ export interface StorageSyncServices {
     /**
      * Get a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -339,8 +363,8 @@ export interface StorageSyncServices {
     /**
      * Patch a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -348,6 +372,12 @@ export interface StorageSyncServices {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.parameters] Storage Sync Service resource.
+     *
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the storage sync service.
+     *
+     * @param {object} [options.parameters.properties] The properties of the
+     * storage sync service.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -358,13 +388,13 @@ export interface StorageSyncServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncServiceUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
 
     /**
      * Patch a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -372,6 +402,12 @@ export interface StorageSyncServices {
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.parameters] Storage Sync Service resource.
+     *
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the storage sync service.
+     *
+     * @param {object} [options.parameters.properties] The properties of the
+     * storage sync service.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -398,16 +434,16 @@ export interface StorageSyncServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
+    update(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncServiceUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
     update(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.StorageSyncService>): void;
-    update(resourceGroupName: string, storageSyncServiceName: string, options: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
+    update(resourceGroupName: string, storageSyncServiceName: string, options: { parameters? : models.StorageSyncServiceUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
 
 
     /**
      * Delete a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -428,8 +464,8 @@ export interface StorageSyncServices {
     /**
      * Delete a given StorageSyncService.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -468,8 +504,8 @@ export interface StorageSyncServices {
     /**
      * Get a StorageSyncService list by Resource group name.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -487,8 +523,8 @@ export interface StorageSyncServices {
     /**
      * Get a StorageSyncService list by Resource group name.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -587,8 +623,8 @@ export interface SyncGroups {
     /**
      * Get a SyncGroup List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -609,8 +645,8 @@ export interface SyncGroups {
     /**
      * Get a SyncGroup List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -650,8 +686,8 @@ export interface SyncGroups {
     /**
      * Create a new SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -660,7 +696,20 @@ export interface SyncGroups {
      *
      * @param {object} parameters Sync Group Body
      *
-     * @param {string} [parameters.uniqueId] Unique Id
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
+     * @param {object} [parameters.properties] The parameters used to create the
+     * sync group
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -673,13 +722,13 @@ export interface SyncGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SyncGroup>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SyncGroup>>;
 
     /**
      * Create a new SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -688,7 +737,20 @@ export interface SyncGroups {
      *
      * @param {object} parameters Sync Group Body
      *
-     * @param {string} [parameters.uniqueId] Unique Id
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
+     * @param {object} [parameters.properties] The parameters used to create the
+     * sync group
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -717,16 +779,16 @@ export interface SyncGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroup>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, callback: ServiceCallback<models.SyncGroup>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroup>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroup>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, callback: ServiceCallback<models.SyncGroup>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroup>): void;
 
 
     /**
      * Get a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -749,8 +811,8 @@ export interface SyncGroups {
     /**
      * Get a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -792,8 +854,8 @@ export interface SyncGroups {
     /**
      * Delete a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -816,8 +878,8 @@ export interface SyncGroups {
     /**
      * Delete a given SyncGroup.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -867,8 +929,8 @@ export interface CloudEndpoints {
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -879,9 +941,17 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
      *
-     * @param {string} [parameters.storageAccount] Storage Account name.
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
@@ -891,17 +961,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -914,13 +973,13 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
 
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -931,9 +990,17 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
      *
-     * @param {string} [parameters.storageAccount] Storage Account name.
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
@@ -943,17 +1010,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -982,16 +1038,16 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, callback: ServiceCallback<models.CloudEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
 
 
     /**
      * Get a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1016,8 +1072,8 @@ export interface CloudEndpoints {
     /**
      * Get a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1061,8 +1117,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1087,8 +1143,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1131,8 +1187,8 @@ export interface CloudEndpoints {
     /**
      * Get a CloudEndpoint List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1155,8 +1211,8 @@ export interface CloudEndpoints {
     /**
      * Get a CloudEndpoint List.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1198,8 +1254,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1228,8 +1284,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1276,8 +1332,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1306,8 +1362,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1355,8 +1411,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1406,8 +1462,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1475,8 +1531,8 @@ export interface CloudEndpoints {
     /**
      * Restore Heartbeat a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1501,8 +1557,8 @@ export interface CloudEndpoints {
     /**
      * Restore Heartbeat a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1545,8 +1601,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1593,8 +1649,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1659,8 +1715,8 @@ export interface CloudEndpoints {
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1671,9 +1727,17 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
      *
-     * @param {string} [parameters.storageAccount] Storage Account name.
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
@@ -1683,17 +1747,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1706,13 +1759,13 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
 
     /**
      * Create a new CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1723,9 +1776,17 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
      *
-     * @param {string} [parameters.storageAccount] Storage Account name.
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
@@ -1735,17 +1796,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1774,16 +1824,16 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, callback: ServiceCallback<models.CloudEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
 
 
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1808,8 +1858,8 @@ export interface CloudEndpoints {
     /**
      * Delete a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1852,8 +1902,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1882,8 +1932,8 @@ export interface CloudEndpoints {
     /**
      * Pre Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1930,8 +1980,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -1960,8 +2010,8 @@ export interface CloudEndpoints {
     /**
      * Post Backup a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2009,8 +2059,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2060,8 +2110,8 @@ export interface CloudEndpoints {
     /**
      * Pre Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2129,8 +2179,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2177,8 +2227,8 @@ export interface CloudEndpoints {
     /**
      * Post Restore a given CloudEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2252,8 +2302,8 @@ export interface ServerEndpoints {
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2263,6 +2313,18 @@ export interface ServerEndpoints {
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
      * @param {object} parameters Body of Server Endpoint object.
+     *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
@@ -2276,15 +2338,6 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2296,13 +2349,13 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2312,6 +2365,18 @@ export interface ServerEndpoints {
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
      * @param {object} parameters Body of Server Endpoint object.
+     *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
@@ -2325,15 +2390,6 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2361,16 +2417,16 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, callback: ServiceCallback<models.ServerEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2384,28 +2440,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2416,13 +2458,13 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2436,28 +2478,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2484,16 +2512,16 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
     update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<models.ServerEndpoint>): void;
-    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
      * Get a ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2518,8 +2546,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2563,8 +2591,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2589,8 +2617,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2633,8 +2661,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2657,8 +2685,8 @@ export interface ServerEndpoints {
     /**
      * Get a ServerEndpoint list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2700,8 +2728,8 @@ export interface ServerEndpoints {
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2709,6 +2737,12 @@ export interface ServerEndpoints {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2721,13 +2755,13 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2735,6 +2769,12 @@ export interface ServerEndpoints {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2762,16 +2802,16 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, callback: ServiceCallback<void>): void;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2781,6 +2821,18 @@ export interface ServerEndpoints {
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
      * @param {object} parameters Body of Server Endpoint object.
+     *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
@@ -2793,15 +2845,6 @@ export interface ServerEndpoints {
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2814,13 +2857,13 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Create a new ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2830,6 +2873,18 @@ export interface ServerEndpoints {
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
      * @param {object} parameters Body of Server Endpoint object.
+     *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
@@ -2842,15 +2897,6 @@ export interface ServerEndpoints {
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2879,16 +2925,16 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2902,28 +2948,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2934,13 +2966,13 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Patch a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -2954,28 +2986,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.parameters.serverLocalPath] Server Local path.
+     * @param {object} [options.parameters.tags] The user-specified tags associated
+     * with the server endpoint.
      *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
-     *
-     * @param {string} [options.parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.parameters.provisioningState] ServerEndpoint
-     * Provisioning State
-     *
-     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
-     * lastWorkflowId
-     *
-     * @param {string} [options.parameters.lastOperationName] Resource Last
-     * Operation Name
-     *
-     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3002,16 +3020,16 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
     beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<models.ServerEndpoint>): void;
-    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpointUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3036,8 +3054,8 @@ export interface ServerEndpoints {
     /**
      * Delete a given ServerEndpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3080,8 +3098,8 @@ export interface ServerEndpoints {
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3089,6 +3107,12 @@ export interface ServerEndpoints {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3101,13 +3125,13 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3115,6 +3139,12 @@ export interface ServerEndpoints {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3142,9 +3172,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, callback: ServiceCallback<void>): void;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3159,8 +3189,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3181,8 +3211,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server list.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3222,8 +3252,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3246,8 +3276,8 @@ export interface RegisteredServers {
     /**
      * Get a given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3289,8 +3319,8 @@ export interface RegisteredServers {
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3299,19 +3329,25 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Registered Server object.
      *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
      * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3321,23 +3357,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3350,13 +3370,13 @@ export interface RegisteredServers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
 
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3365,19 +3385,25 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Registered Server object.
      *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
      * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3387,23 +3413,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3432,16 +3442,16 @@ export interface RegisteredServers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, callback: ServiceCallback<models.RegisteredServer>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
 
 
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3464,8 +3474,8 @@ export interface RegisteredServers {
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3506,8 +3516,8 @@ export interface RegisteredServers {
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3516,19 +3526,25 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Registered Server object.
      *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
      * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3538,23 +3554,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3567,13 +3567,13 @@ export interface RegisteredServers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
 
     /**
      * Add a new registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3582,19 +3582,25 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Registered Server object.
      *
+     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
      * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3604,23 +3610,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3649,16 +3639,16 @@ export interface RegisteredServers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, callback: ServiceCallback<models.RegisteredServer>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
 
 
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3681,8 +3671,8 @@ export interface RegisteredServers {
     /**
      * Delete the given registered server.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3732,8 +3722,8 @@ export interface Workflows {
     /**
      * Get Workflows resource
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3756,8 +3746,8 @@ export interface Workflows {
     /**
      * Get Workflows resource
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3799,8 +3789,8 @@ export interface Workflows {
     /**
      * Abort the given workflow.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
@@ -3823,8 +3813,8 @@ export interface Workflows {
     /**
      * Abort the given workflow.
      *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
