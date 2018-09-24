@@ -2118,9 +2118,6 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
-     * @param {array} [actionGroup.armRoleReceivers] The list of arm role receivers
-     * that are part of this action group.
-     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -2181,9 +2178,6 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
-     *
-     * @param {array} [actionGroup.armRoleReceivers] The list of arm role receivers
-     * that are part of this action group.
      *
      * @param {string} actionGroup.location Resource location
      *
@@ -4937,4 +4931,75 @@ export interface ScheduledQueryRules {
     listByResourceGroup(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResourceCollection>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
     listByResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
+}
+
+/**
+ * @class
+ * MetricNamespaces
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface MetricNamespaces {
+
+
+    /**
+     * Lists the metric namespaces for the resource.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.startTime] The ISO 8601 conform Date start time
+     * from which to query for metric namespaces.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricNamespaceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceUri: string, options?: { startTime? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricNamespaceCollection>>;
+
+    /**
+     * Lists the metric namespaces for the resource.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.startTime] The ISO 8601 conform Date start time
+     * from which to query for metric namespaces.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricNamespaceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricNamespaceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricNamespaceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceUri: string, options?: { startTime? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricNamespaceCollection>;
+    list(resourceUri: string, callback: ServiceCallback<models.MetricNamespaceCollection>): void;
+    list(resourceUri: string, options: { startTime? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricNamespaceCollection>): void;
 }

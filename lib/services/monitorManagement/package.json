@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/monitorManagementClient.js",
   "types": "./lib/monitorManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/monitorManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"

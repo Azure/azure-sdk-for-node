@@ -78,7 +78,8 @@ export interface ScaleCapacity {
  * hours and 5 minutes.
  * @member {string} timeAggregation time aggregation type. How the data that is
  * collected should be combined over time. The default value is Average.
- * Possible values include: 'Average', 'Minimum', 'Maximum', 'Total', 'Count'
+ * Possible values include: 'Average', 'Minimum', 'Maximum', 'Total', 'Count',
+ * 'Last'
  * @member {string} operator the operator that is used to compare the metric
  * data and the threshold. Possible values include: 'Equals', 'NotEquals',
  * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
@@ -147,7 +148,7 @@ export interface ScaleAction {
  * @member {string} [metricTrigger.timeAggregation] time aggregation type. How
  * the data that is collected should be combined over time. The default value
  * is Average. Possible values include: 'Average', 'Minimum', 'Maximum',
- * 'Total', 'Count'
+ * 'Total', 'Count', 'Last'
  * @member {string} [metricTrigger.operator] the operator that is used to
  * compare the metric data and the threshold. Possible values include:
  * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
@@ -1367,21 +1368,6 @@ export interface AzureFunctionReceiver {
 
 /**
  * @class
- * Initializes a new instance of the ArmRoleReceiver class.
- * @constructor
- * An arm role receiver.
- *
- * @member {string} name The name of the arm role receiver. Names must be
- * unique across all receivers within an action group.
- * @member {string} roleId The arm role id.
- */
-export interface ArmRoleReceiver {
-  name: string;
-  roleId: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1409,8 +1395,6 @@ export interface ArmRoleReceiver {
  * part of this action group.
  * @member {array} [azureFunctionReceivers] The list of azure function
  * receivers that are part of this action group.
- * @member {array} [armRoleReceivers] The list of arm role receivers that are
- * part of this action group.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1424,7 +1408,6 @@ export interface ActionGroupResource extends Resource {
   voiceReceivers?: VoiceReceiver[];
   logicAppReceivers?: LogicAppReceiver[];
   azureFunctionReceivers?: AzureFunctionReceiver[];
-  armRoleReceivers?: ArmRoleReceiver[];
 }
 
 /**
@@ -2437,6 +2420,38 @@ export interface AlertingAction extends Action {
   trigger: TriggerCondition;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MetricNamespaceName class.
+ * @constructor
+ * The fully qualified metric namespace name.
+ *
+ * @member {string} [metricNamespaceName] The metric namespace name.
+ */
+export interface MetricNamespaceName {
+  metricNamespaceName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricNamespace class.
+ * @constructor
+ * Metric namespace class specifies the metadata for a metric namespace.
+ *
+ * @member {string} [id] The ID of the metricNamespace.
+ * @member {string} [type] The type of the namespace.
+ * @member {string} [name] The name of the namespace.
+ * @member {object} [properties] Properties which include the fully qualified
+ * namespace name.
+ * @member {string} [properties.metricNamespaceName] The metric namespace name.
+ */
+export interface MetricNamespace {
+  id?: string;
+  type?: string;
+  name?: string;
+  properties?: MetricNamespaceName;
+}
+
 
 /**
  * @class
@@ -2558,4 +2573,14 @@ export interface MetricAlertResourceCollection extends Array<MetricAlertResource
  *
  */
 export interface LogSearchRuleResourceCollection extends Array<LogSearchRuleResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricNamespaceCollection class.
+ * @constructor
+ * Represents collection of metric namespaces.
+ *
+ */
+export interface MetricNamespaceCollection extends Array<MetricNamespace> {
 }
