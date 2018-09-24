@@ -1407,9 +1407,9 @@ export interface DiskInstanceView {
  * @member {date} [status.time] The time of the status.
  */
 export interface BootDiagnosticsInstanceView {
-  consoleScreenshotBlobUri?: string;
-  serialConsoleLogBlobUri?: string;
-  status?: InstanceViewStatus;
+  readonly consoleScreenshotBlobUri?: string;
+  readonly serialConsoleLogBlobUri?: string;
+  readonly status?: InstanceViewStatus;
 }
 
 /**
