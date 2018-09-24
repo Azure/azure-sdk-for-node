@@ -2583,6 +2583,14 @@ export interface VirtualMachines {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -3000,6 +3008,14 @@ export interface VirtualMachines {
      * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -3438,6 +3454,14 @@ export interface VirtualMachines {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -3853,6 +3877,14 @@ export interface VirtualMachines {
      * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -5285,6 +5317,14 @@ export interface VirtualMachines {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -5702,6 +5742,14 @@ export interface VirtualMachines {
      * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -6140,6 +6188,14 @@ export interface VirtualMachines {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -6555,6 +6611,14 @@ export interface VirtualMachines {
      * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -9046,6 +9110,16 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {number}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
      * Specifies the size of the operating system disk in gigabytes. This element
@@ -9495,6 +9569,16 @@ export interface VirtualMachineScaleSets {
      * described above. If you are using a marketplace image, you  also use the
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {number}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
@@ -11777,6 +11861,16 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {number}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
      * Specifies the size of the operating system disk in gigabytes. This element
@@ -12226,6 +12320,16 @@ export interface VirtualMachineScaleSets {
      * described above. If you are using a marketplace image, you  also use the
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {number}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
@@ -15433,6 +15537,14 @@ export interface VirtualMachineScaleSetVMs {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -15838,6 +15950,14 @@ export interface VirtualMachineScaleSetVMs {
      * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
@@ -17122,6 +17242,14 @@ export interface VirtualMachineScaleSetVMs {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -17527,6 +17655,14 @@ export interface VirtualMachineScaleSetVMs {
      * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>

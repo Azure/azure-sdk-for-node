@@ -706,6 +706,21 @@ export interface VirtualHardDisk {
 
 /**
  * @class
+ * Initializes a new instance of the DiffDiskSettings class.
+ * @constructor
+ * Describes the parameters of differencing disk settings that can be be
+ * specified for operating system disk. <br><br> NOTE: The differencing disk
+ * settings can only be specified for managed disk.
+ *
+ * @member {string} [option] Specifies the differencing disk settings for
+ * operating system disk. Possible values include: 'Local'
+ */
+export interface DiffDiskSettings {
+  option?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedDiskParameters class.
  * @constructor
  * The parameters of a managed disk.
@@ -766,6 +781,10 @@ export interface ManagedDiskParameters extends SubResource {
  * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * for the operating system disk used by the virtual machine.
+ * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * settings for operating system disk. Possible values include: 'Local'
  * @member {string} createOption Specifies how the virtual machine should be
  * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
  * is used when you are using a specialized disk to create the virtual
@@ -791,6 +810,7 @@ export interface OSDisk {
   image?: VirtualHardDisk;
   caching?: string;
   writeAcceleratorEnabled?: boolean;
+  diffDiskSettings?: DiffDiskSettings;
   createOption: string;
   diskSizeGB?: number;
   managedDisk?: ManagedDiskParameters;
@@ -913,6 +933,10 @@ export interface DataDisk {
  * 'ReadWrite'
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * Settings for the operating system disk used by the virtual machine.
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * disk settings for operating system disk. Possible values include: 'Local'
  * @member {string} [osDisk.createOption] Specifies how the virtual machine
  * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
  * This value is used when you are using a specialized disk to create the
@@ -1690,6 +1714,12 @@ export interface VirtualMachineInstanceView {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -2095,6 +2125,12 @@ export interface VirtualMachine extends Resource {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -2901,6 +2937,10 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * for the operating system disk used by the virtual machine scale set.
+ * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * settings for operating system disk. Possible values include: 'Local'
  * @member {number} [diskSizeGB] Specifies the size of the operating system
  * disk in gigabytes. This element can be used to overwrite the size of the
  * disk in a virtual machine image. <br><br> This value cannot be larger than
@@ -2925,6 +2965,7 @@ export interface VirtualMachineScaleSetOSDisk {
   caching?: string;
   writeAcceleratorEnabled?: boolean;
   createOption: string;
+  diffDiskSettings?: DiffDiskSettings;
   diskSizeGB?: number;
   osType?: string;
   image?: VirtualHardDisk;
@@ -3047,6 +3088,11 @@ export interface VirtualMachineScaleSetDataDisk {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * Settings for the operating system disk used by the virtual machine scale
+ * set.
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * disk settings for operating system disk. Possible values include: 'Local'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of the operating
  * system disk in gigabytes. This element can be used to overwrite the size of
  * the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -3625,6 +3671,12 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * you also use the imageReference element described above. If you are using a
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine scale set.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
  * the operating system disk in gigabytes. This element can be used to
  * overwrite the size of the disk in a virtual machine image. <br><br> This
@@ -4042,6 +4094,14 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * described above. If you are using a marketplace image, you  also use the
  * plan element previously described. Possible values include: 'FromImage',
  * 'Empty', 'Attach'
+ * @member {object}
+ * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine scale set.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+ * Specifies the differencing disk settings for operating system disk. Possible
+ * values include: 'Local'
  * @member {number} [virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
  * Specifies the size of the operating system disk in gigabytes. This element
  * can be used to overwrite the size of the disk in a virtual machine image.
@@ -5118,6 +5178,12 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
