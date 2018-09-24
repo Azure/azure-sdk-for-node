@@ -90,7 +90,7 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Creates or updates a openshift managed cluster.
+     * @summary Creates or updates an openshift managed cluster.
      *
      * Creates or updates a openshift managed cluster with the specified
      * configuration for agents and OpenShift version.
@@ -153,9 +153,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.identityProviders]
-     * OpenShiftManagedClusterAuthProfile defines all possible authentication
-     * profiles for the OpenShift cluster.
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
      *
      * @param {string} parameters.location Resource location
      *
@@ -175,7 +174,7 @@ export interface OpenShiftManagedClusters {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Creates or updates a openshift managed cluster.
+     * @summary Creates or updates an openshift managed cluster.
      *
      * Creates or updates a openshift managed cluster with the specified
      * configuration for agents and OpenShift version.
@@ -238,9 +237,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.identityProviders]
-     * OpenShiftManagedClusterAuthProfile defines all possible authentication
-     * profiles for the OpenShift cluster.
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
      *
      * @param {string} parameters.location Resource location
      *
@@ -277,6 +275,82 @@ export interface OpenShiftManagedClusters {
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
 
 
     /**
@@ -346,7 +420,7 @@ export interface OpenShiftManagedClusters {
 
 
     /**
-     * @summary Creates or updates a openshift managed cluster.
+     * @summary Creates or updates an openshift managed cluster.
      *
      * Creates or updates a openshift managed cluster with the specified
      * configuration for agents and OpenShift version.
@@ -409,9 +483,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.identityProviders]
-     * OpenShiftManagedClusterAuthProfile defines all possible authentication
-     * profiles for the OpenShift cluster.
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
      *
      * @param {string} parameters.location Resource location
      *
@@ -431,7 +504,7 @@ export interface OpenShiftManagedClusters {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
 
     /**
-     * @summary Creates or updates a openshift managed cluster.
+     * @summary Creates or updates an openshift managed cluster.
      *
      * Creates or updates a openshift managed cluster with the specified
      * configuration for agents and OpenShift version.
@@ -494,9 +567,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.authProfile] Configures OpenShift
      * authentication.
      *
-     * @param {array} [parameters.authProfile.identityProviders]
-     * OpenShiftManagedClusterAuthProfile defines all possible authentication
-     * profiles for the OpenShift cluster.
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
      *
      * @param {string} parameters.location Resource location
      *
@@ -533,6 +605,82 @@ export interface OpenShiftManagedClusters {
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
 
 
     /**

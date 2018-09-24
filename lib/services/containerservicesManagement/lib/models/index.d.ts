@@ -173,8 +173,10 @@ export interface OpenShiftManagedClusterIdentityProviders {
  * @class
  * Initializes a new instance of the OpenShiftManagedClusterAuthProfile class.
  * @constructor
- * @member {array} [identityProviders] OpenShiftManagedClusterAuthProfile
- * defines all possible authentication profiles for the OpenShift cluster.
+ * OpenShiftManagedClusterAuthProfile defines all possible authentication
+ * profiles for the OpenShift cluster.
+ *
+ * @member {array} [identityProviders] Type of authentication profile to use.
  */
 export interface OpenShiftManagedClusterAuthProfile {
   identityProviders?: OpenShiftManagedClusterIdentityProviders[];
@@ -217,9 +219,8 @@ export interface OpenShiftManagedClusterAuthProfile {
  * include: 'Linux', 'Windows'
  * @member {array} [agentPoolProfiles] Configuration of OpenShift cluster VMs.
  * @member {object} [authProfile] Configures OpenShift authentication.
- * @member {array} [authProfile.identityProviders]
- * OpenShiftManagedClusterAuthProfile defines all possible authentication
- * profiles for the OpenShift cluster.
+ * @member {array} [authProfile.identityProviders] Type of authentication
+ * profile to use.
  */
 export interface OpenShiftManagedCluster extends Resource {
   plan?: PurchasePlan;
