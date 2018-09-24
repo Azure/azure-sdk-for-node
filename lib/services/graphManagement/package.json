@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/graphRbacManagementClient.js",
   "types": "./lib/graphRbacManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/graphManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
