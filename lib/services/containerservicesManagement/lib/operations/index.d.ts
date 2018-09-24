@@ -131,8 +131,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfile.name Unique name of the master
-     * pool profile in the context of the subscription and resource group.
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
      *
      * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
@@ -215,8 +215,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfile.name Unique name of the master
-     * pool profile in the context of the subscription and resource group.
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
      *
      * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
@@ -461,8 +461,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfile.name Unique name of the master
-     * pool profile in the context of the subscription and resource group.
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
      *
      * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.
@@ -545,8 +545,8 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
      * master VMs.
      *
-     * @param {string} parameters.masterPoolProfile.name Unique name of the master
-     * pool profile in the context of the subscription and resource group.
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
      *
      * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
      * to host docker containers. The default value is 3.

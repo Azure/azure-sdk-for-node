@@ -103,8 +103,8 @@ export interface OpenShiftRouterProfile {
  * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift
  * master VMs.
  *
- * @member {string} name Unique name of the master pool profile in the context
- * of the subscription and resource group.
+ * @member {string} [name] Unique name of the master pool profile in the
+ * context of the subscription and resource group.
  * @member {number} count Number of masters (VMs) to host docker containers.
  * The default value is 3. Default value: 3 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
@@ -116,7 +116,7 @@ export interface OpenShiftRouterProfile {
  * 'Windows'. Default value: 'Linux' .
  */
 export interface OpenShiftManagedClusterMasterPoolProfile {
-  name: string;
+  name?: string;
   count: number;
   vmSize: string;
   vnetSubnetID?: string;
