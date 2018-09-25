@@ -1672,6 +1672,136 @@ export interface ManagedClusters {
 
 
     /**
+     * @summary Gets clusteradmin credential of a managed cluster.
+     *
+     * Gets clusteradmin credential of the managed cluster with a specified
+     * resource group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CredentialResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listClusterAdminCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
+
+    /**
+     * @summary Gets clusteradmin credential of a managed cluster.
+     *
+     * Gets clusteradmin credential of the managed cluster with a specified
+     * resource group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CredentialResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CredentialResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CredentialResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialResults>;
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.CredentialResults>): void;
+    listClusterAdminCredentials(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialResults>): void;
+
+
+    /**
+     * @summary Gets clusteruser credential of a managed cluster.
+     *
+     * Gets clusteruser credential of the managed cluster with a specified resource
+     * group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CredentialResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listClusterUserCredentialsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialResults>>;
+
+    /**
+     * @summary Gets clusteruser credential of a managed cluster.
+     *
+     * Gets clusteruser credential of the managed cluster with a specified resource
+     * group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CredentialResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CredentialResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CredentialResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialResults>;
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.CredentialResults>): void;
+    listClusterUserCredentials(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialResults>): void;
+
+
+    /**
      * @summary Gets a managed cluster.
      *
      * Gets the details of the managed cluster with a specified resource group and
@@ -1756,6 +1886,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -1772,27 +1903,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -1834,7 +1951,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -1878,6 +1995,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -1894,27 +2012,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -1956,7 +2060,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -1997,6 +2101,79 @@ export interface ManagedClusters {
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, callback: ServiceCallback<models.ManagedCluster>): void;
     createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ManagedCluster>): void;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
 
 
     /**
@@ -2081,6 +2258,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2097,27 +2275,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -2159,7 +2323,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2203,6 +2367,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2219,27 +2384,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -2281,7 +2432,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2322,6 +2473,79 @@ export interface ManagedClusters {
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, callback: ServiceCallback<models.ManagedCluster>): void;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
 
 
     /**

@@ -99,7 +99,10 @@ export interface AvailabilitySets {
      * @param {array} [parameters.virtualMachines] A list of references to all
      * virtual machines in the availability set.
      *
-     * @param {object} [parameters.sku] Sku of the availability set
+     * @param {object} [parameters.sku] Sku of the availability set, only name is
+     * required to be set. See AvailabilitySetSkuTypes for possible set of values.
+     * Use 'Aligned' for virtual machines with managed disks and 'Classic' for
+     * virtual machines with unmanaged disks. Default value is 'Classic'.
      *
      * @param {string} [parameters.sku.name] The sku name.
      *
@@ -144,7 +147,10 @@ export interface AvailabilitySets {
      * @param {array} [parameters.virtualMachines] A list of references to all
      * virtual machines in the availability set.
      *
-     * @param {object} [parameters.sku] Sku of the availability set
+     * @param {object} [parameters.sku] Sku of the availability set, only name is
+     * required to be set. See AvailabilitySetSkuTypes for possible set of values.
+     * Use 'Aligned' for virtual machines with managed disks and 'Classic' for
+     * virtual machines with unmanaged disks. Default value is 'Classic'.
      *
      * @param {string} [parameters.sku.name] The sku name.
      *
@@ -310,11 +316,11 @@ export interface AvailabilitySets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete an availability set.
@@ -335,7 +341,7 @@ export interface AvailabilitySets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -343,17 +349,15 @@ export interface AvailabilitySets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -413,6 +417,58 @@ export interface AvailabilitySets {
     get(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySet>;
     get(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.AvailabilitySet>): void;
     get(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
+
+
+    /**
+     * Lists all availability sets in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
+
+    /**
+     * Lists all availability sets in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilitySetListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
+    listBySubscription(callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
 
 
     /**
@@ -531,6 +587,122 @@ export interface AvailabilitySets {
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+
+
+    /**
+     * Lists all availability sets in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
+
+    /**
+     * Lists all availability sets in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilitySetListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+
+
+    /**
+     * Lists all availability sets in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
+
+    /**
+     * Lists all availability sets in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilitySetListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
 }
 
 /**
@@ -1060,11 +1232,11 @@ export interface VirtualMachineExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -1088,7 +1260,7 @@ export interface VirtualMachineExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1096,17 +1268,15 @@ export interface VirtualMachineExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1179,6 +1349,74 @@ export interface VirtualMachineExtensions {
     get(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtension>;
     get(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.VirtualMachineExtension>): void;
     get(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+
+
+    /**
+     * The operation to get all extensions of a Virtual Machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine containing the
+     * extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineExtensionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtensionsListResult>>;
+
+    /**
+     * The operation to get all extensions of a Virtual Machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine containing the
+     * extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineExtensionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineExtensionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineExtensionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtensionsListResult>;
+    list(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineExtensionsListResult>): void;
+    list(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionsListResult>): void;
 
 
     /**
@@ -1490,11 +1728,11 @@ export interface VirtualMachineExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -1518,7 +1756,7 @@ export interface VirtualMachineExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1526,5133 +1764,15 @@ export interface VirtualMachineExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-}
-
-/**
- * @class
- * VirtualMachines
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface VirtualMachines {
-
-
-    /**
-     * The operation to get all extensions of a Virtual Machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine containing the
-     * extension.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineExtensionsListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getExtensionsWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtensionsListResult>>;
-
-    /**
-     * The operation to get all extensions of a Virtual Machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine containing the
-     * extension.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineExtensionsListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineExtensionsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineExtensionsListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getExtensions(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtensionsListResult>;
-    getExtensions(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineExtensionsListResult>): void;
-    getExtensions(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionsListResult>): void;
-
-
-    /**
-     * Captures the VM by copying virtual hard disks of the VM and outputs a
-     * template that can be used to create similar VMs.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Capture Virtual
-     * Machine operation.
-     *
-     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
-     * prefix.
-     *
-     * @param {string} parameters.destinationContainerName The destination
-     * container name.
-     *
-     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
-     * destination virtual hard disk, in case of conflict.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineCaptureResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    captureWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineCaptureResult>>;
-
-    /**
-     * Captures the VM by copying virtual hard disks of the VM and outputs a
-     * template that can be used to create similar VMs.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Capture Virtual
-     * Machine operation.
-     *
-     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
-     * prefix.
-     *
-     * @param {string} parameters.destinationContainerName The destination
-     * container name.
-     *
-     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
-     * destination virtual hard disk, in case of conflict.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineCaptureResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineCaptureResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineCaptureResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineCaptureResult>;
-    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
-    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
-
-
-    /**
-     * The operation to create or update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Create Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
-
-    /**
-     * The operation to create or update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Create Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachine} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachine} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
-    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
-    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
-
-
-    /**
-     * The operation to update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Update Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
-
-    /**
-     * The operation to update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Update Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachine} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachine} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
-    update(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, callback: ServiceCallback<models.VirtualMachine>): void;
-    update(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
-
-
-    /**
-     * The operation to delete a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to delete a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Retrieves information about the model view or the instance view of a virtual
-     * machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation. Possible values include: 'instanceView'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
-
-    /**
-     * Retrieves information about the model view or the instance view of a virtual
-     * machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation. Possible values include: 'instanceView'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachine} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachine} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
-    get(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachine>): void;
-    get(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
-
-
-    /**
-     * Retrieves information about the run-time state of a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineInstanceView>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    instanceViewWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineInstanceView>>;
-
-    /**
-     * Retrieves information about the run-time state of a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineInstanceView} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineInstanceView} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineInstanceView} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    instanceView(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineInstanceView>;
-    instanceView(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineInstanceView>): void;
-    instanceView(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineInstanceView>): void;
-
-
-    /**
-     * Converts virtual machine disks from blob-based to managed disks. Virtual
-     * machine must be stop-deallocated before invoking this operation.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    convertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Converts virtual machine disks from blob-based to managed disks. Virtual
-     * machine must be stop-deallocated before invoking this operation.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    convertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    convertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    convertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Shuts down the virtual machine and releases the compute resources. You are
-     * not billed for the compute resources that this virtual machine uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Shuts down the virtual machine and releases the compute resources. You are
-     * not billed for the compute resources that this virtual machine uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Sets the state of the virtual machine to generalized.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    generalizeWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Sets the state of the virtual machine to generalized.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    generalize(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    generalize(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Lists all of the virtual machines in the specified resource group. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
-
-    /**
-     * Lists all of the virtual machines in the specified resource group. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
-
-
-    /**
-     * Lists all of the virtual machines in the specified subscription. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
-
-    /**
-     * Lists all of the virtual machines in the specified subscription. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
-    listAll(callback: ServiceCallback<models.VirtualMachineListResult>): void;
-    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
-
-
-    /**
-     * Lists all available virtual machine sizes to which the specified virtual
-     * machine can be resized.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAvailableSizesWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
-
-    /**
-     * Lists all available virtual machine sizes to which the specified virtual
-     * machine can be resized.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineSizeListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAvailableSizes(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
-    listAvailableSizes(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
-    listAvailableSizes(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
-
-
-    /**
-     * The operation to power off (stop) a virtual machine. The virtual machine can
-     * be restarted with the same provisioned resources. You are still charged for
-     * this virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    powerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to power off (stop) a virtual machine. The virtual machine can
-     * be restarted with the same provisioned resources. You are still charged for
-     * this virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    powerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to restart a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    restartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to restart a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    restart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to start a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    startWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to start a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    start(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    start(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to redeploy a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    redeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to redeploy a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    redeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to perform maintenance on a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to perform maintenance on a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    performMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    performMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    performMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Run command on the VM.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Run command operation.
-     *
-     * @param {string} parameters.commandId The run command id.
-     *
-     * @param {array} [parameters.script] Optional. The script to be executed.
-     * When this value is given, the given script will override the default script
-     * of the command.
-     *
-     * @param {array} [parameters.parameters] The run command parameters.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
-
-    /**
-     * Run command on the VM.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Run command operation.
-     *
-     * @param {string} parameters.commandId The run command id.
-     *
-     * @param {array} [parameters.script] Optional. The script to be executed.
-     * When this value is given, the given script will override the default script
-     * of the command.
-     *
-     * @param {array} [parameters.parameters] The run command parameters.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RunCommandResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunCommandResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
-
-
-    /**
-     * Captures the VM by copying virtual hard disks of the VM and outputs a
-     * template that can be used to create similar VMs.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Capture Virtual
-     * Machine operation.
-     *
-     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
-     * prefix.
-     *
-     * @param {string} parameters.destinationContainerName The destination
-     * container name.
-     *
-     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
-     * destination virtual hard disk, in case of conflict.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineCaptureResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCaptureWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineCaptureResult>>;
-
-    /**
-     * Captures the VM by copying virtual hard disks of the VM and outputs a
-     * template that can be used to create similar VMs.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Capture Virtual
-     * Machine operation.
-     *
-     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
-     * prefix.
-     *
-     * @param {string} parameters.destinationContainerName The destination
-     * container name.
-     *
-     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
-     * destination virtual hard disk, in case of conflict.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineCaptureResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineCaptureResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineCaptureResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineCaptureResult>;
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
-
-
-    /**
-     * The operation to create or update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Create Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
-
-    /**
-     * The operation to create or update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Create Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachine} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachine} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
-
-
-    /**
-     * The operation to update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Update Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
-
-    /**
-     * The operation to update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Update Virtual Machine
-     * operation.
-     *
-     * @param {object} [parameters.plan] Specifies information about the
-     * marketplace image used to create the virtual machine. This element is only
-     * used for marketplace images. Before you can use a marketplace image from an
-     * API, you must enable the image for programmatic use.  In the Azure portal,
-     * find the marketplace image that you want to use and then click **Want to
-     * deploy programmatically, Get Started ->**. Enter any required information
-     * and then click **Save**.
-     *
-     * @param {string} [parameters.plan.name] The plan ID.
-     *
-     * @param {string} [parameters.plan.publisher] The publisher ID.
-     *
-     * @param {string} [parameters.plan.product] Specifies the product of the image
-     * from the marketplace. This is the same value as Offer under the
-     * imageReference element.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
-     * for the virtual machine.
-     *
-     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
-     * the virtual machine. For more information about virtual machine sizes, see
-     * [Sizes for virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> The available VM sizes depend on region and availability set. For a
-     * list of available sizes use these APIs:  <br><br> [List all available
-     * virtual machine sizes in an availability
-     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
-     * <br><br> [List all available virtual machine sizes in a
-     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
-     * <br><br> [List all available virtual machine sizes for
-     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
-     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
-     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
-     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
-     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
-     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
-     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
-     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
-     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
-     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
-     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
-     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
-     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
-     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
-     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
-     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
-     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
-     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
-     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
-     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
-     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
-     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
-     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
-     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
-     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
-     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
-     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
-     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
-     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
-     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
-     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
-     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
-     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
-     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
-     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
-     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
-     * 'Standard_NV12', 'Standard_NV24'
-     *
-     * @param {object} [parameters.storageProfile] Specifies the storage settings
-     * for the virtual machine disks.
-     *
-     * @param {object} [parameters.storageProfile.imageReference] Specifies
-     * information about the image to use. You can specify information about
-     * platform images, marketplace images, or virtual machine images. This element
-     * is required when you want to use a platform image, marketplace image, or
-     * virtual machine image, but is not used in other creation operations.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.publisher] The
-     * image publisher.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
-     * the offer of the platform image or marketplace image used to create the
-     * virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.sku] The image
-     * SKU.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
-     * the version of the platform image or marketplace image used to create the
-     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
-     * latest version of an image available at deploy time. Even if you use
-     * 'latest', the VM image will not automatically update after deploy time even
-     * if a new version becomes available.
-     *
-     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
-     *
-     * @param {object} [parameters.storageProfile.osDisk] Specifies information
-     * about the operating system disk used by the virtual machine. <br><br> For
-     * more information about disks, see [About disks and VHDs for Azure virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {string} [parameters.storageProfile.osDisk.osType] This property
-     * allows you to specify the type of the OS that is included in the disk if
-     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
-     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
-     * 'Windows', 'Linux'
-     *
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
-     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
-     * api-version: 2015-06-15
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Specifies the location of the disk encryption key, which is a Key Vault
-     * Secret.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the secret.
-     *
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Specifies the location of the key encryption key in Key Vault.
-     *
-     * @param {string}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
-     * The URL referencing a key encryption key in Key Vault.
-     *
-     * @param {object}
-     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
-     * The relative URL of the Key Vault containing the key.
-     *
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
-     * whether disk encryption should be enabled on the virtual machine.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
-     * disk.
-     *
-     * @param {object} [parameters.storageProfile.osDisk.image] The source user
-     * image virtual hard disk. The virtual hard disk will be copied before being
-     * attached to the virtual machine. If SourceImage is provided, the destination
-     * virtual hard drive must not exist.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
-     * virtual hard disk's uri.
-     *
-     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
-     * caching requirements. <br><br> Possible values are: <br><br> **None**
-     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
-     * Standard storage. ReadOnly for Premium storage**. Possible values include:
-     * 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
-     * Specifies whether writeAccelerator should be enabled or disabled on the
-     * disk.
-     *
-     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
-     * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
-     *
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
-     * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
-     * value cannot be larger than 1023 GB
-     *
-     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
-     * disk parameters.
-     *
-     * @param {string}
-     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
-     *
-     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
-     * Id
-     *
-     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
-     * parameters that are used to add a data disk to a virtual machine. <br><br>
-     * For more information about disks, see [About disks and VHDs for Azure
-     * virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     *
-     * @param {object} [parameters.osProfile] Specifies the operating system
-     * settings for the virtual machine.
-     *
-     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
-     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
-     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
-     * naming conventions and restrictions see [Azure infrastructure services
-     * implementation
-     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
-     *
-     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
-     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
-     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
-     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
-     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
-     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
-     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
-     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
-     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
-     * access to the Linux VM, see [Using root privileges on Linux virtual machines
-     * in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
-     * For a list of built-in system users on Linux that should not be used in this
-     * field, see [Selecting User Names for Linux on
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
-     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
-     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
-     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
-     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
-     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
-     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
-     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
-     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
-     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
-     * Remote Desktop service or its login password in a Windows
-     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> For resetting root password, see [Manage users, SSH, and check or
-     * repair disks on Azure Linux VMs using the VMAccess
-     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
-     *
-     * @param {string} [parameters.osProfile.customData] Specifies a base-64
-     * encoded string of custom data. The base-64 encoded string is decoded to a
-     * binary array that is saved as a file on the Virtual Machine. The maximum
-     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
-     * your VM, see [Using cloud-init to customize a Linux VM during
-     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
-     * Windows operating system settings on the virtual machine.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
-     * whether virtual machine agent should be provisioned on the virtual machine.
-     * <br><br> When this property is not specified in the request body, default
-     * behavior is to set it to true.  This will ensure that VM Agent is installed
-     * on the VM so that extensions can be added to the VM later.
-     *
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
-     * whether virtual machine is enabled for automatic updates.
-     *
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
-     *
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Specifies additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file, which is used by Windows Setup.
-     *
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
-     * the Windows Remote Management listeners. This enables remote Windows
-     * PowerShell.
-     *
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * The list of Windows Remote Management listeners
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
-     * Linux operating system settings on the virtual machine. <br><br>For a list
-     * of supported Linux distributions, see [Linux on Azure-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-     * <br><br> For running non-endorsed distributions, see [Information for
-     * Non-Endorsed
-     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     *
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Specifies whether password authentication should be disabled.
-     *
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
-     * ssh key configuration for a Linux OS.
-     *
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
-     * list of SSH public keys used to authenticate with linux based VMs.
-     *
-     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
-     * that should be installed onto the virtual machine.
-     *
-     * @param {object} [parameters.networkProfile] Specifies the network interfaces
-     * of the virtual machine.
-     *
-     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
-     * list of resource Ids for the network interfaces associated with the virtual
-     * machine.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
-     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
-     *
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
-     * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
-     * screenshot of the VM from the hypervisor.
-     *
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Whether boot diagnostics should be enabled on the Virtual Machine.
-     *
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Uri of the storage account to use for placing the console output and
-     * screenshot.
-     *
-     * @param {object} [parameters.availabilitySet] Specifies information about the
-     * availability set that the virtual machine should be assigned to. Virtual
-     * machines specified in the same availability set are allocated to different
-     * nodes to maximize availability. For more information about availability
-     * sets, see [Manage the availability of virtual
-     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-     * <br><br> For more information on Azure planned maintainance, see [Planned
-     * maintenance for virtual machines in
-     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Currently, a VM can only be added to availability set at creation
-     * time. An existing VM cannot be added to an availability set.
-     *
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     *
-     * @param {string} [parameters.licenseType] Specifies that the image or disk
-     * that is being used was licensed on-premises. This element is only used for
-     * images that contain the Windows Server operating system. <br><br> Possible
-     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
-     * element is included in a request for an update, the value must match the
-     * initial value. This value cannot be updated. <br><br> For more information,
-     * see [Azure Hybrid Use Benefit for Windows
-     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-     * <br><br> Minimum api-version: 2015-06-15
-     *
-     * @param {object} [parameters.identity] The identity of the virtual machine,
-     * if configured.
-     *
-     * @param {string} [parameters.identity.type] The type of identity used for the
-     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
-     * implicitly created identity and a set of user assigned identities. The type
-     * 'None' will remove any identities from the virtual machine. Possible values
-     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
-     * 'None'
-     *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the Virtual Machine. The user identity references will be
-     * ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-     *
-     * @param {array} [parameters.zones] The virtual machine zones.
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachine} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachine} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
-    beginUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, callback: ServiceCallback<models.VirtualMachine>): void;
-    beginUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
-
-
-    /**
-     * The operation to delete a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to delete a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Converts virtual machine disks from blob-based to managed disks. Virtual
-     * machine must be stop-deallocated before invoking this operation.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginConvertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Converts virtual machine disks from blob-based to managed disks. Virtual
-     * machine must be stop-deallocated before invoking this operation.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Shuts down the virtual machine and releases the compute resources. You are
-     * not billed for the compute resources that this virtual machine uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Shuts down the virtual machine and releases the compute resources. You are
-     * not billed for the compute resources that this virtual machine uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to power off (stop) a virtual machine. The virtual machine can
-     * be restarted with the same provisioned resources. You are still charged for
-     * this virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to power off (stop) a virtual machine. The virtual machine can
-     * be restarted with the same provisioned resources. You are still charged for
-     * this virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPowerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to restart a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to restart a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRestart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRestart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to start a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to start a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginStart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to redeploy a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to redeploy a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRedeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * The operation to perform maintenance on a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * The operation to perform maintenance on a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPerformMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPerformMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPerformMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Run command on the VM.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Run command operation.
-     *
-     * @param {string} parameters.commandId The run command id.
-     *
-     * @param {array} [parameters.script] Optional. The script to be executed.
-     * When this value is given, the given script will override the default script
-     * of the command.
-     *
-     * @param {array} [parameters.parameters] The run command parameters.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
-
-    /**
-     * Run command on the VM.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmName The name of the virtual machine.
-     *
-     * @param {object} parameters Parameters supplied to the Run command operation.
-     *
-     * @param {string} parameters.commandId The run command id.
-     *
-     * @param {array} [parameters.script] Optional. The script to be executed.
-     * When this value is given, the given script will override the default script
-     * of the command.
-     *
-     * @param {array} [parameters.parameters] The run command parameters.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RunCommandResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunCommandResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
-
-
-    /**
-     * Lists all of the virtual machines in the specified resource group. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
-
-    /**
-     * Lists all of the virtual machines in the specified resource group. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
-
-
-    /**
-     * Lists all of the virtual machines in the specified subscription. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
-
-    /**
-     * Lists all of the virtual machines in the specified subscription. Use the
-     * nextLink property in the response to get the next page of virtual machines.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualMachineListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
-    listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -7134,7 +2254,8 @@ export interface VirtualMachineSizes {
 
 
     /**
-     * Lists all available virtual machine sizes for a subscription in a location.
+     * This API is deprecated. Use [Resources
+     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
      *
      * @param {string} location The location upon which virtual-machine-sizes is
      * queried.
@@ -7153,7 +2274,8 @@ export interface VirtualMachineSizes {
     listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
 
     /**
-     * Lists all available virtual machine sizes for a subscription in a location.
+     * This API is deprecated. Use [Resources
+     * Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
      *
      * @param {string} location The location upon which virtual-machine-sizes is
      * queried.
@@ -7252,9 +2374,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -7335,9 +2457,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -7437,9 +2559,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -7518,9 +2640,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -7580,11 +2702,11 @@ export interface Images {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an Image.
@@ -7605,7 +2727,7 @@ export interface Images {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7613,17 +2735,15 @@ export interface Images {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -7853,9 +2973,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -7936,9 +3056,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -8038,9 +3158,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -8119,9 +3239,9 @@ export interface Images {
      * be larger than 1023 GB
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. UltraSSD_LRS cannot
+     * be used with OS Disk. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -8181,11 +3301,11 @@ export interface Images {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an Image.
@@ -8206,7 +3326,7 @@ export interface Images {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8214,17 +3334,15 @@ export interface Images {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8347,6 +3465,5236 @@ export interface Images {
 
 /**
  * @class
+ * VirtualMachines
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface VirtualMachines {
+
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     *
+     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
+     * prefix.
+     *
+     * @param {string} parameters.destinationContainerName The destination
+     * container name.
+     *
+     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
+     * destination virtual hard disk, in case of conflict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineCaptureResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    captureWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineCaptureResult>>;
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     *
+     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
+     * prefix.
+     *
+     * @param {string} parameters.destinationContainerName The destination
+     * container name.
+     *
+     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
+     * destination virtual hard disk, in case of conflict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineCaptureResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineCaptureResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineCaptureResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineCaptureResult>;
+    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Create Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Create Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
+    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
+    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
+
+    /**
+     * The operation to update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Update Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * The operation to update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Update Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
+    update(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, callback: ServiceCallback<models.VirtualMachine>): void;
+    update(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves information about the model view or the instance view of a virtual
+     * machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'instanceView'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * Retrieves information about the model view or the instance view of a virtual
+     * machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'instanceView'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
+    get(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachine>): void;
+    get(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
+
+    /**
+     * Retrieves information about the run-time state of a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineInstanceView>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    instanceViewWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineInstanceView>>;
+
+    /**
+     * Retrieves information about the run-time state of a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineInstanceView} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineInstanceView} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineInstanceView} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    instanceView(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineInstanceView>;
+    instanceView(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineInstanceView>): void;
+    instanceView(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineInstanceView>): void;
+
+
+    /**
+     * Converts virtual machine disks from blob-based to managed disks. Virtual
+     * machine must be stop-deallocated before invoking this operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    convertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Converts virtual machine disks from blob-based to managed disks. Virtual
+     * machine must be stop-deallocated before invoking this operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    convertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    convertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    convertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Shuts down the virtual machine and releases the compute resources. You are
+     * not billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Shuts down the virtual machine and releases the compute resources. You are
+     * not billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Sets the state of the virtual machine to generalized.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    generalizeWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Sets the state of the virtual machine to generalized.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generalize(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    generalize(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all of the virtual machines in the specified resource group. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified resource group. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
+
+    /**
+     * Lists all of the virtual machines in the specified subscription. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified subscription. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
+    listAll(callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
+
+    /**
+     * Lists all available virtual machine sizes to which the specified virtual
+     * machine can be resized.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableSizesWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+
+    /**
+     * Lists all available virtual machine sizes to which the specified virtual
+     * machine can be resized.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableSizes(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
+    listAvailableSizes(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizes(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can
+     * be restarted with the same provisioned resources. You are still charged for
+     * this virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can
+     * be restarted with the same provisioned resources. You are still charged for
+     * this virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    powerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to restart a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to restart a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    redeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    performMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    performMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    performMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
+
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     *
+     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
+     * prefix.
+     *
+     * @param {string} parameters.destinationContainerName The destination
+     * container name.
+     *
+     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
+     * destination virtual hard disk, in case of conflict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineCaptureResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCaptureWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineCaptureResult>>;
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     *
+     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
+     * prefix.
+     *
+     * @param {string} parameters.destinationContainerName The destination
+     * container name.
+     *
+     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
+     * destination virtual hard disk, in case of conflict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineCaptureResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineCaptureResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineCaptureResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineCaptureResult>;
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Create Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Create Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
+
+    /**
+     * The operation to update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Update Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * The operation to update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Update Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] Specifies information about the
+     * marketplace image used to create the virtual machine. This element is only
+     * used for marketplace images. Before you can use a marketplace image from an
+     * API, you must enable the image for programmatic use.  In the Azure portal,
+     * find the marketplace image that you want to use and then click **Want to
+     * deploy programmatically, Get Started ->**. Enter any required information
+     * and then click **Save**.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] Specifies the hardware settings
+     * for the virtual machine.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] Specifies the size of
+     * the virtual machine. For more information about virtual machine sizes, see
+     * [Sizes for virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> The available VM sizes depend on region and availability set. For a
+     * list of available sizes use these APIs:  <br><br> [List all available
+     * virtual machine sizes in an availability
+     * set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+     * <br><br> [List all available virtual machine sizes in a
+     * region](https://docs.microsoft.com/rest/api/compute/virtualmachinesizes/list)
+     * <br><br> [List all available virtual machine sizes for
+     * resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes).
+     * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
+     * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
+     * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+     * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+     * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_B1s', 'Standard_B1ms',
+     * 'Standard_B2s', 'Standard_B2ms', 'Standard_B4ms', 'Standard_B8ms',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11',
+     * 'Standard_D12', 'Standard_D13', 'Standard_D14', 'Standard_D1_v2',
+     * 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2',
+     * 'Standard_D2_v3', 'Standard_D4_v3', 'Standard_D8_v3', 'Standard_D16_v3',
+     * 'Standard_D32_v3', 'Standard_D64_v3', 'Standard_D2s_v3', 'Standard_D4s_v3',
+     * 'Standard_D8s_v3', 'Standard_D16s_v3', 'Standard_D32s_v3',
+     * 'Standard_D64s_v3', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2', 'Standard_DS11_v2',
+     * 'Standard_DS12_v2', 'Standard_DS13_v2', 'Standard_DS14_v2',
+     * 'Standard_DS15_v2', 'Standard_DS13-4_v2', 'Standard_DS13-2_v2',
+     * 'Standard_DS14-8_v2', 'Standard_DS14-4_v2', 'Standard_E2_v3',
+     * 'Standard_E4_v3', 'Standard_E8_v3', 'Standard_E16_v3', 'Standard_E32_v3',
+     * 'Standard_E64_v3', 'Standard_E2s_v3', 'Standard_E4s_v3', 'Standard_E8s_v3',
+     * 'Standard_E16s_v3', 'Standard_E32s_v3', 'Standard_E64s_v3',
+     * 'Standard_E32-16_v3', 'Standard_E32-8s_v3', 'Standard_E64-32s_v3',
+     * 'Standard_E64-16s_v3', 'Standard_F1', 'Standard_F2', 'Standard_F4',
+     * 'Standard_F8', 'Standard_F16', 'Standard_F1s', 'Standard_F2s',
+     * 'Standard_F4s', 'Standard_F8s', 'Standard_F16s', 'Standard_F2s_v2',
+     * 'Standard_F4s_v2', 'Standard_F8s_v2', 'Standard_F16s_v2',
+     * 'Standard_F32s_v2', 'Standard_F64s_v2', 'Standard_F72s_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5',
+     * 'Standard_GS4-8', 'Standard_GS4-4', 'Standard_GS5-16', 'Standard_GS5-8',
+     * 'Standard_H8', 'Standard_H16', 'Standard_H8m', 'Standard_H16m',
+     * 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s', 'Standard_L8s',
+     * 'Standard_L16s', 'Standard_L32s', 'Standard_M64s', 'Standard_M64ms',
+     * 'Standard_M128s', 'Standard_M128ms', 'Standard_M64-32ms',
+     * 'Standard_M64-16ms', 'Standard_M128-64ms', 'Standard_M128-32ms',
+     * 'Standard_NC6', 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r',
+     * 'Standard_NC6s_v2', 'Standard_NC12s_v2', 'Standard_NC24s_v2',
+     * 'Standard_NC24rs_v2', 'Standard_NC6s_v3', 'Standard_NC12s_v3',
+     * 'Standard_NC24s_v3', 'Standard_NC24rs_v3', 'Standard_ND6s',
+     * 'Standard_ND12s', 'Standard_ND24s', 'Standard_ND24rs', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
+     *
+     * @param {object} [parameters.storageProfile] Specifies the storage settings
+     * for the virtual machine disks.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] Specifies
+     * information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element
+     * is required when you want to use a platform image, marketplace image, or
+     * virtual machine image, but is not used in other creation operations.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] Specifies
+     * the offer of the platform image or marketplace image used to create the
+     * virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] Specifies
+     * the version of the platform image or marketplace image used to create the
+     * virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the
+     * latest version of an image available at deploy time. Even if you use
+     * 'latest', the VM image will not automatically update after deploy time even
+     * if a new version becomes available.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] Specifies information
+     * about the operating system disk used by the virtual machine. <br><br> For
+     * more information about disks, see [About disks and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] This property
+     * allows you to specify the type of the OS that is included in the disk if
+     * creating a VM from user-image or a specialized VHD. <br><br> Possible values
+     * are: <br><br> **Windows** <br><br> **Linux**. Possible values include:
+     * 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings]
+     * Specifies the encryption settings for the OS Disk. <br><br> Minimum
+     * api-version: 2015-06-15
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Specifies the location of the disk encryption key, which is a Key Vault
+     * Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Specifies the location of the key encryption key in Key Vault.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key encryption key in Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before being
+     * attached to the virtual machine. If SourceImage is provided, the destination
+     * virtual hard drive must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] Specifies the
+     * virtual hard disk's uri.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] Specifies the
+     * caching requirements. <br><br> Possible values are: <br><br> **None**
+     * <br><br> **ReadOnly** <br><br> **ReadWrite** <br><br> Default: **None for
+     * Standard storage. ReadOnly for Premium storage**. Possible values include:
+     * 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {boolean} [parameters.storageProfile.osDisk.writeAcceleratorEnabled]
+     * Specifies whether writeAccelerator should be enabled or disabled on the
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
+     * the virtual machine should be created.<br><br> Possible values are:<br><br>
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
+     * size of an empty data disk in gigabytes. This element can be used to
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
+     * value cannot be larger than 1023 GB
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] Specifies the
+     * parameters that are used to add a data disk to a virtual machine. <br><br>
+     * For more information about disks, see [About disks and VHDs for Azure
+     * virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
+     *
+     * @param {object} [parameters.osProfile] Specifies the operating system
+     * settings for the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine. <br><br> **Max-length (Windows):** 15
+     * characters <br><br> **Max-length (Linux):** 64 characters. <br><br> For
+     * naming conventions and restrictions see [Azure infrastructure services
+     * implementation
+     * guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account. <br><br> **Windows-only restriction:** Cannot end
+     * in "." <br><br> **Disallowed values:** "administrator", "admin", "user",
+     * "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a",
+     * "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest",
+     * "john", "owner", "root", "server", "sql", "support", "support_388945a0",
+     * "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length
+     * (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters
+     * <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root
+     * access to the Linux VM, see [Using root privileges on Linux virtual machines
+     * in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li>
+     * For a list of built-in system users on Linux that should not be used in this
+     * field, see [Selecting User Names for Linux on
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account. <br><br> **Minimum-length (Windows):** 8
+     * characters <br><br> **Minimum-length (Linux):** 6 characters <br><br>
+     * **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72
+     * characters <br><br> **Complexity requirements:** 3 out of 4 conditions below
+     * need to be fulfilled <br> Has lower characters <br>Has upper characters <br>
+     * Has a digit <br> Has a special character (Regex match [\W_]) <br><br>
+     * **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123",
+     * "Pa$$word", "pass@word1", "Password!", "Password1", "Password22",
+     * "iloveyou!" <br><br> For resetting the password, see [How to reset the
+     * Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-reset-rdp?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#reset-root-password)
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes. <br><br> For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] Specifies
+     * Windows operating system settings on the virtual machine.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether virtual machine agent should be provisioned on the virtual machine.
+     * <br><br> When this property is not specified in the request body, default
+     * behavior is to set it to true.  This will ensure that VM Agent is installed
+     * on the VM so that extensions can be added to the VM later.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether virtual machine is enabled for automatic updates.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone]
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Specifies
+     * the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] Specifies the
+     * Linux operating system settings on the virtual machine. <br><br>For a list
+     * of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+     * <br><br> For running non-endorsed distributions, see [Information for
+     * Non-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Specifies the
+     * ssh key configuration for a Linux OS.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
+     * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
+     * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
+     *
+     * @param {object} [parameters.networkProfile] Specifies the network interfaces
+     * of the virtual machine.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Specifies the boot
+     * diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
+     * screenshot of the VM from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * Uri of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] Specifies information about the
+     * availability set that the virtual machine should be assigned to. Virtual
+     * machines specified in the same availability set are allocated to different
+     * nodes to maximize availability. For more information about availability
+     * sets, see [Manage the availability of virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     * <br><br> For more information on Azure planned maintainance, see [Planned
+     * maintenance for virtual machines in
+     * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Currently, a VM can only be added to availability set at creation
+     * time. An existing VM cannot be added to an availability set.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system. <br><br> Possible
+     * values are: <br><br> Windows_Client <br><br> Windows_Server <br><br> If this
+     * element is included in a request for an update, the value must match the
+     * initial value. This value cannot be updated. <br><br> For more information,
+     * see [Azure Hybrid Use Benefit for Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+     * <br><br> Minimum api-version: 2015-06-15
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. The type 'SystemAssigned, UserAssigned' includes both an
+     * implicitly created identity and a set of user assigned identities. The type
+     * 'None' will remove any identities from the virtual machine. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the Virtual Machine. The user identity
+     * dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
+     * @param {array} [parameters.zones] The virtual machine zones.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
+    beginUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, callback: ServiceCallback<models.VirtualMachine>): void;
+    beginUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Converts virtual machine disks from blob-based to managed disks. Virtual
+     * machine must be stop-deallocated before invoking this operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginConvertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Converts virtual machine disks from blob-based to managed disks. Virtual
+     * machine must be stop-deallocated before invoking this operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Shuts down the virtual machine and releases the compute resources. You are
+     * not billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Shuts down the virtual machine and releases the compute resources. You are
+     * not billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can
+     * be restarted with the same provisioned resources. You are still charged for
+     * this virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can
+     * be restarted with the same provisioned resources. You are still charged for
+     * this virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPowerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to restart a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to restart a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRedeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
+
+
+    /**
+     * Lists all of the virtual machines in the specified resource group. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified resource group. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
+
+    /**
+     * Lists all of the virtual machines in the specified subscription. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified subscription. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+}
+
+/**
+ * @class
  * VirtualMachineScaleSets
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
@@ -8436,9 +8784,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -8546,6 +8904,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets]
      * Specifies set of certificates that should be installed onto the virtual
      * machines in the scale set.
@@ -8617,6 +8982,22 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -8643,15 +9024,29 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * The flag that enables or disables a capability to have one or more managed
+     * data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -8679,9 +9074,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -8716,6 +9110,11 @@ export interface VirtualMachineScaleSets {
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in a low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
@@ -8738,10 +9137,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {array} [parameters.zones] The virtual machine scale set zones.
      *
@@ -8844,9 +9243,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -8954,6 +9363,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets]
      * Specifies set of certificates that should be installed onto the virtual
      * machines in the scale set.
@@ -9025,6 +9441,22 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -9051,15 +9483,29 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * The flag that enables or disables a capability to have one or more managed
+     * data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -9087,9 +9533,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -9124,6 +9569,11 @@ export interface VirtualMachineScaleSets {
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in a low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
@@ -9146,10 +9596,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {array} [parameters.zones] The virtual machine scale set zones.
      *
@@ -9267,9 +9717,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -9329,6 +9789,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] The List
      * of certificates for addition to the VM.
      *
@@ -9377,6 +9844,12 @@ export interface VirtualMachineScaleSets {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
@@ -9397,9 +9870,10 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -9417,9 +9891,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -9457,10 +9930,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -9554,9 +10027,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -9616,6 +10099,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] The List
      * of certificates for addition to the VM.
      *
@@ -9664,6 +10154,12 @@ export interface VirtualMachineScaleSets {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
@@ -9684,9 +10180,10 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -9704,9 +10201,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -9744,10 +10240,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -9798,11 +10294,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VM scale set.
@@ -9823,7 +10319,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9831,17 +10327,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -9925,11 +10419,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates specific virtual machines in a VM scale set. Shuts down the
@@ -9957,7 +10451,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9965,17 +10459,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -9994,11 +10486,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes virtual machines in a VM scale set.
@@ -10021,7 +10513,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10029,17 +10521,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10279,6 +10769,66 @@ export interface VirtualMachineScaleSets {
 
 
     /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListOSUpgradeHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOSUpgradeHistoryWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListOSUpgradeHistory>>;
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListOSUpgradeHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListOSUpgradeHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListOSUpgradeHistory}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListOSUpgradeHistory>;
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+
+
+    /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
      * resources are still attached and you are getting charged for the resources.
      * Instead, use deallocate to release resources and avoid charges.
@@ -10299,11 +10849,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
@@ -10331,7 +10881,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10339,17 +10889,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10371,11 +10919,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts one or more virtual machines in a VM scale set.
@@ -10401,7 +10949,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10409,17 +10957,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10441,11 +10987,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts one or more virtual machines in a VM scale set.
@@ -10471,7 +11017,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10479,17 +11025,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    start(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10511,11 +11055,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploy one or more virtual machines in a VM scale set.
@@ -10541,7 +11085,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10549,21 +11093,22 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    redeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Perform maintenance on one or more virtual machines in a VM scale set.
+     * Operation on instances which are not eligible for perform maintenance will
+     * be failed. Please refer to best practices for more details:
+     * https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -10581,14 +11126,17 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Perform maintenance on one or more virtual machines in a VM scale set.
+     * Operation on instances which are not eligible for perform maintenance will
+     * be failed. Please refer to best practices for more details:
+     * https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -10611,7 +11159,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10619,17 +11167,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10649,11 +11195,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    updateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Upgrades one or more virtual machines to the latest SKU set in the VM scale
@@ -10677,7 +11223,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10685,17 +11231,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10718,11 +11262,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
@@ -10749,7 +11293,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10757,17 +11301,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10790,11 +11332,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
@@ -10821,7 +11363,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10829,17 +11371,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10991,9 +11531,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -11101,6 +11651,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets]
      * Specifies set of certificates that should be installed onto the virtual
      * machines in the scale set.
@@ -11172,6 +11729,22 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -11198,15 +11771,29 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * The flag that enables or disables a capability to have one or more managed
+     * data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -11234,9 +11821,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -11271,6 +11857,11 @@ export interface VirtualMachineScaleSets {
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in a low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
@@ -11293,10 +11884,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {array} [parameters.zones] The virtual machine scale set zones.
      *
@@ -11399,9 +11990,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -11509,6 +12110,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets]
      * Specifies set of certificates that should be installed onto the virtual
      * machines in the scale set.
@@ -11580,6 +12188,22 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine scale set.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -11606,15 +12230,29 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
      * machines in the scale set. <br><br> For more information about disks, see
      * [About disks and VHDs for Azure virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.virtualMachineProfile.additionalCapabilities]
+     * Specifies additional capabilities enabled or disabled on the virtual machine
+     * in the scale set. For instance: whether the virtual machine has the
+     * capability to support attaching managed data disks with UltraSSD_LRS storage
+     * account type.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.additionalCapabilities.ultraSSDEnabled]
+     * The flag that enables or disables a capability to have one or more managed
+     * data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.virtualMachineProfile.networkProfile] Specifies
      * properties of the network interfaces of the virtual machines in the scale
@@ -11642,9 +12280,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -11679,6 +12316,11 @@ export interface VirtualMachineScaleSets {
      * priority for the virtual machines in the scale set. <br><br>Minimum
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
+     * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
+     * the eviction policy for virtual machines in a low priority scale set.
+     * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
+     * 'Deallocate', 'Delete'
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
@@ -11701,10 +12343,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {array} [parameters.zones] The virtual machine scale set zones.
      *
@@ -11822,9 +12464,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -11884,6 +12536,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] The List
      * of certificates for addition to the VM.
      *
@@ -11932,6 +12591,12 @@ export interface VirtualMachineScaleSets {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
@@ -11952,9 +12617,10 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -11972,9 +12638,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -12012,10 +12677,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -12109,9 +12774,19 @@ export interface VirtualMachineScaleSets {
      * batch and starting the next batch. The time duration should be specified in
      * ISO 8601 format. The default value is 0 seconds (PT0S).
      *
-     * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
-     * upgrades should automatically be applied to scale set instances in a rolling
-     * fashion when a newer version of the image becomes available.
+     * @param {object} [parameters.upgradePolicy.automaticOSUpgradePolicy]
+     * Configuration parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+     * Whether OS upgrades should automatically be applied to scale set instances
+     * in a rolling fashion when a newer version of the image becomes available.
+     * Default value is false.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback]
+     * Whether OS image rollback feature should be disabled. Default value is
+     * false.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -12171,6 +12846,13 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
      * The list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] The List
      * of certificates for addition to the VM.
      *
@@ -12219,6 +12901,12 @@ export interface VirtualMachineScaleSets {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
@@ -12239,9 +12927,10 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
-     * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+     * can only be used with data disks, it cannot be used with OS Disk. Possible
+     * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+     * 'UltraSSD_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -12259,9 +12948,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -12299,10 +12987,10 @@ export interface VirtualMachineScaleSets {
      * set. Possible values include: 'SystemAssigned', 'UserAssigned',
      * 'SystemAssigned, UserAssigned', 'None'
      *
-     * @param {array} [parameters.identity.identityIds] The list of user identities
-     * associated with the virtual machine scale set. The user identity references
-     * will be ARM resource ids in the form:
-     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the virtual machine scale set. The user
+     * identity dictionary key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -12353,11 +13041,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VM scale set.
@@ -12378,7 +13066,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12386,17 +13074,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12420,11 +13106,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates specific virtual machines in a VM scale set. Shuts down the
@@ -12452,7 +13138,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12460,17 +13146,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12489,11 +13173,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes virtual machines in a VM scale set.
@@ -12516,7 +13200,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12524,17 +13208,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12558,11 +13240,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
@@ -12590,7 +13272,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12598,17 +13280,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12630,11 +13310,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts one or more virtual machines in a VM scale set.
@@ -12660,7 +13340,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12668,17 +13348,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12700,11 +13378,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts one or more virtual machines in a VM scale set.
@@ -12730,7 +13408,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12738,17 +13416,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12770,11 +13446,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploy one or more virtual machines in a VM scale set.
@@ -12800,7 +13476,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12808,21 +13484,22 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Perform maintenance on one or more virtual machines in a VM scale set.
+     * Operation on instances which are not eligible for perform maintenance will
+     * be failed. Please refer to best practices for more details:
+     * https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -12840,14 +13517,17 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Perform maintenance on one or more virtual machines in a VM scale set.
+     * Operation on instances which are not eligible for perform maintenance will
+     * be failed. Please refer to best practices for more details:
+     * https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -12870,7 +13550,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12878,17 +13558,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12908,11 +13586,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginUpdateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Upgrades one or more virtual machines to the latest SKU set in the VM scale
@@ -12936,7 +13614,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12944,17 +13622,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12977,11 +13653,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
@@ -13008,7 +13684,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -13016,17 +13692,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -13049,11 +13723,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
@@ -13080,7 +13754,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -13088,17 +13762,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -13281,6 +13953,64 @@ export interface VirtualMachineScaleSets {
     listSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListSkusResult>;
     listSkusNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
     listSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListOSUpgradeHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOSUpgradeHistoryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListOSUpgradeHistory>>;
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListOSUpgradeHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListOSUpgradeHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListOSUpgradeHistory}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOSUpgradeHistoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListOSUpgradeHistory>;
+    getOSUpgradeHistoryNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+    getOSUpgradeHistoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
 }
 
 /**
@@ -13435,11 +14165,11 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -13463,7 +14193,7 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -13471,17 +14201,15 @@ export interface VirtualMachineScaleSetExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -13761,11 +14489,11 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -13789,7 +14517,7 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -13797,17 +14525,15 @@ export interface VirtualMachineScaleSetExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -13891,11 +14617,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    cancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Cancels the current virtual machine scale set rolling upgrade.
@@ -13916,7 +14642,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -13924,17 +14650,15 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    cancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    cancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    cancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    cancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -13953,11 +14677,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a rolling upgrade to move all virtual machine scale set instances to
@@ -13980,7 +14704,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -13988,17 +14712,77 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Starts a rolling upgrade to move all extensions for all virtual machine
+     * scale set instances to the latest available extension version. Instances
+     * which are already running the latest extension versions are not affected.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startExtensionUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Starts a rolling upgrade to move all extensions for all virtual machine
+     * scale set instances to the latest available extension version. Instances
+     * which are already running the latest extension versions are not affected.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    startExtensionUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    startExtensionUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    startExtensionUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14075,11 +14859,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginCancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Cancels the current virtual machine scale set rolling upgrade.
@@ -14100,7 +14884,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14108,17 +14892,15 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginCancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginCancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginCancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginCancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14137,11 +14919,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a rolling upgrade to move all virtual machine scale set instances to
@@ -14164,7 +14946,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14172,17 +14954,77 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Starts a rolling upgrade to move all extensions for all virtual machine
+     * scale set instances to the latest available extension version. Instances
+     * which are already running the latest extension versions are not affected.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartExtensionUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Starts a rolling upgrade to move all extensions for all virtual machine
+     * scale set instances to the latest available extension version. Instances
+     * which are already running the latest extension versions are not affected.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStartExtensionUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStartExtensionUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginStartExtensionUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -14211,11 +15053,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -14239,7 +15081,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14247,17 +15089,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14277,11 +15117,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Allows you to re-image all the disks ( including data disks ) in the a VM
@@ -14305,7 +15145,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14313,17 +15153,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14345,11 +15183,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates a specific virtual machine in a VM scale set. Shuts down the
@@ -14375,7 +15213,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14383,17 +15221,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14565,6 +15401,14 @@ export interface VirtualMachineScaleSetVMs {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -14577,7 +15421,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -14585,9 +15429,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -14597,6 +15441,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -14694,8 +15549,19 @@ export interface VirtualMachineScaleSetVMs {
      * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
      * list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
      * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
      *
      * @param {object} [parameters.networkProfile] Specifies the network interfaces
      * of the virtual machine.
@@ -14709,9 +15575,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -14949,6 +15814,14 @@ export interface VirtualMachineScaleSetVMs {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -14961,7 +15834,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -14969,9 +15842,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -14981,6 +15854,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -15078,8 +15962,19 @@ export interface VirtualMachineScaleSetVMs {
      * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
      * list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
      * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
      *
      * @param {object} [parameters.networkProfile] Specifies the network interfaces
      * of the virtual machine.
@@ -15093,9 +15988,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -15200,11 +16094,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual machine from a VM scale set.
@@ -15227,7 +16121,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15235,17 +16129,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15468,11 +16360,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) a virtual machine in a VM scale set. Note that resources
@@ -15497,7 +16389,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15505,17 +16397,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15534,11 +16424,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts a virtual machine in a VM scale set.
@@ -15561,7 +16451,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15569,17 +16459,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15598,11 +16486,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a virtual machine in a VM scale set.
@@ -15625,7 +16513,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15633,17 +16521,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15662,11 +16548,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploys a virtual machine in a VM scale set.
@@ -15689,7 +16575,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15697,17 +16583,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15726,11 +16610,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Performs maintenance on a virtual machine in a VM scale set.
@@ -15753,7 +16637,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15761,17 +16645,98 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Run command on a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    runCommandWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+
+    /**
+     * Run command on a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    runCommand(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    runCommand(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    runCommand(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
 
 
     /**
@@ -15791,11 +16756,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -15819,7 +16784,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15827,17 +16792,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15857,11 +16820,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Allows you to re-image all the disks ( including data disks ) in the a VM
@@ -15885,7 +16848,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15893,17 +16856,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15925,11 +16886,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates a specific virtual machine in a VM scale set. Shuts down the
@@ -15955,7 +16916,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15963,17 +16924,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16145,6 +17104,14 @@ export interface VirtualMachineScaleSetVMs {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -16157,7 +17124,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -16165,9 +17132,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -16177,6 +17144,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -16274,8 +17252,19 @@ export interface VirtualMachineScaleSetVMs {
      * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
      * list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
      * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
      *
      * @param {object} [parameters.networkProfile] Specifies the network interfaces
      * of the virtual machine.
@@ -16289,9 +17278,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -16529,6 +17517,14 @@ export interface VirtualMachineScaleSetVMs {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {object} [parameters.storageProfile.osDisk.diffDiskSettings]
+     * Specifies the differencing Disk Settings for the operating system disk used
+     * by the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.diffDiskSettings.option]
+     * Specifies the differencing disk settings for operating system disk. Possible
+     * values include: 'Local'
+     *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
      * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -16541,7 +17537,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
-     * overwrite the name of the disk in a virtual machine image. <br><br> This
+     * overwrite the size of the disk in a virtual machine image. <br><br> This
      * value cannot be larger than 1023 GB
      *
      * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
@@ -16549,9 +17545,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
-     * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
-     * 'Premium_LRS'
+     * the storage account type for the managed disk. NOTE: UltraSSD_LRS can only
+     * be used with data disks, it cannot be used with OS Disk. Possible values
+     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -16561,6 +17557,17 @@ export interface VirtualMachineScaleSetVMs {
      * For more information about disks, see [About disks and VHDs for Azure
      * virtual
      * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+     *
+     * @param {object} [parameters.additionalCapabilities] Specifies additional
+     * capabilities enabled or disabled on the virtual machine in the scale set.
+     * For instance: whether the virtual machine has the capability to support
+     * attaching managed data disks with UltraSSD_LRS storage account type.
+     *
+     * @param {boolean} [parameters.additionalCapabilities.ultraSSDEnabled] The
+     * flag that enables or disables a capability to have one or more managed data
+     * disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed
+     * disks with storage account type UltraSSD_LRS can be added to a virtual
+     * machine or virtual machine scale set only if this property is enabled.
      *
      * @param {object} [parameters.osProfile] Specifies the operating system
      * settings for the virtual machine.
@@ -16658,8 +17665,19 @@ export interface VirtualMachineScaleSetVMs {
      * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
      * list of SSH public keys used to authenticate with linux based VMs.
      *
+     * @param {boolean} [parameters.osProfile.linuxConfiguration.provisionVMAgent]
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. <br><br> When this property is not specified in the request body,
+     * default behavior is to set it to true.  This will ensure that VM Agent is
+     * installed on the VM so that extensions can be added to the VM later.
+     *
      * @param {array} [parameters.osProfile.secrets] Specifies set of certificates
      * that should be installed onto the virtual machine.
+     *
+     * @param {boolean} [parameters.osProfile.allowExtensionOperations] Specifies
+     * whether extension operations should be allowed on the virtual machine.
+     * <br><br>This may only be set to False when no extensions are present on the
+     * virtual machine.
      *
      * @param {object} [parameters.networkProfile] Specifies the network interfaces
      * of the virtual machine.
@@ -16673,9 +17691,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -16780,11 +17797,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual machine from a VM scale set.
@@ -16807,7 +17824,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16815,17 +17832,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16846,11 +17861,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) a virtual machine in a VM scale set. Note that resources
@@ -16875,7 +17890,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16883,17 +17898,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16912,11 +17925,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts a virtual machine in a VM scale set.
@@ -16939,7 +17952,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16947,17 +17960,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16976,11 +17987,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a virtual machine in a VM scale set.
@@ -17003,7 +18014,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17011,17 +18022,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17040,11 +18049,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploys a virtual machine in a VM scale set.
@@ -17067,7 +18076,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17075,17 +18084,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17104,11 +18111,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Performs maintenance on a virtual machine in a VM scale set.
@@ -17131,7 +18138,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17139,17 +18146,98 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Run command on a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+
+    /**
+     * Run command on a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRunCommand(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    beginRunCommand(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    beginRunCommand(resourceGroupName: string, vmScaleSetName: string, instanceId: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
 
 
     /**
@@ -17949,7 +19037,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18018,6 +19106,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -18052,7 +19148,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18121,6 +19217,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -18210,12 +19314,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18282,12 +19394,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18403,11 +19523,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a disk.
@@ -18431,7 +19551,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18439,17 +19559,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -18658,11 +19776,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a disk.
@@ -18686,7 +19804,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18694,17 +19812,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -18723,7 +19839,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18792,6 +19908,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -18826,7 +19950,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18895,6 +20019,14 @@ export interface Disks {
      *
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
+     *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
      *
      * @param {string} disk.location Resource location
      *
@@ -18984,12 +20116,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19056,12 +20196,20 @@ export interface Disks {
      * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
      * to a key or secret in KeyVault
      *
+     * @param {number} [disk.diskIOPSReadWrite] The number of IOPS allowed for this
+     * disk; only settable for UltraSSD disks. One operation can transfer between
+     * 4k and 256k bytes.
+     *
+     * @param {number} [disk.diskMBpsReadWrite] The bandwidth allowed for this
+     * disk; only settable for UltraSSD disks. MBps means millions of bytes per
+     * second - MB here uses the ISO notation, of powers of 10.
+     *
      * @param {object} [disk.tags] Resource tags
      *
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19112,11 +20260,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a disk.
@@ -19140,7 +20288,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19148,17 +20296,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19261,11 +20407,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a disk.
@@ -19289,7 +20435,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19297,17 +20443,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19713,7 +20857,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19785,7 +20929,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19901,11 +21045,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a snapshot.
@@ -19929,7 +21073,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19937,17 +21081,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -20156,11 +21298,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a snapshot.
@@ -20184,7 +21326,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20192,17 +21334,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -20485,7 +21625,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20557,7 +21697,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS'
+     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20608,11 +21748,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a snapshot.
@@ -20636,7 +21776,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20644,17 +21784,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -20757,11 +21895,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a snapshot.
@@ -20785,7 +21923,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20793,17 +21931,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -20918,6 +22054,1960 @@ export interface Snapshots {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+}
+
+/**
+ * @class
+ * Galleries
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface Galleries {
+
+
+    /**
+     * Create or update a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
+     *
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
+     *
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Create or update a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
+     *
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
+     *
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Retrieves information about a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Retrieves information about a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    get(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.Gallery>): void;
+    get(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Delete a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    list(callback: ServiceCallback<models.GalleryList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * Create or update a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
+     *
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
+     *
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Create or update a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery. The
+     * allowed characters are alphabets and numbers with dots and periods allowed
+     * in the middle. The maximum length is 80 characters.
+     *
+     * @param {object} gallery Parameters supplied to the create or update Shared
+     * Image Gallery operation.
+     *
+     * @param {string} [gallery.description] The description of this Shared Image
+     * Gallery resource. This property is updateable.
+     *
+     * @param {object} [gallery.identifier]
+     *
+     * @param {string} gallery.location Resource location
+     *
+     * @param {object} [gallery.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Delete a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a Shared Image Gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery to be
+     * deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+}
+
+/**
+ * @class
+ * GalleryImages
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryImages {
+
+
+    /**
+     * Create or update a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * Image Definition resource. This property is updateable.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
+     *
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
+     *
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Create or update a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * Image Definition resource. This property is updateable.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
+     *
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
+     *
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Retrieves information about a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * the Image Definitions are to be retrieved.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Retrieves information about a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * the Image Definitions are to be retrieved.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImage>): void;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery Image Definitions in a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * Image Definitions are to be listed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+
+    /**
+     * List gallery Image Definitions in a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery from which
+     * Image Definitions are to be listed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGallery(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listByGallery(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listByGallery(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
+
+
+    /**
+     * Create or update a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * Image Definition resource. This property is updateable.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
+     *
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
+     *
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Create or update a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be created.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be created or updated. The allowed characters are alphabets and numbers with
+     * dots, dashes, and periods allowed in the middle. The maximum length is 80
+     * characters.
+     *
+     * @param {object} galleryImage Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [galleryImage.description] The description of this gallery
+     * Image Definition resource. This property is updateable.
+     *
+     * @param {string} [galleryImage.eula] The Eula agreement for the gallery Image
+     * Definition.
+     *
+     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
+     * uri.
+     *
+     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
+     *
+     * @param {string} galleryImage.osType This property allows you to specify the
+     * type of the OS that is included in the disk when creating a VM from a
+     * managed image. <br><br> Possible values are: <br><br> **Windows** <br><br>
+     * **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} galleryImage.osState The allowed values for OS State are
+     * 'Generalized'. Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {date} [galleryImage.endOfLifeDate] The end of life date of the
+     * gallery Image Definition. This property can be used for decommissioning
+     * purposes. This property is updateable.
+     *
+     * @param {object} galleryImage.identifier
+     *
+     * @param {string} galleryImage.identifier.publisher The name of the gallery
+     * Image Definition publisher.
+     *
+     * @param {string} galleryImage.identifier.offer The name of the gallery Image
+     * Definition offer.
+     *
+     * @param {string} galleryImage.identifier.sku The name of the gallery Image
+     * Definition SKU.
+     *
+     * @param {object} [galleryImage.recommended]
+     *
+     * @param {object} [galleryImage.recommended.vCPUs]
+     *
+     * @param {object} [galleryImage.recommended.memory]
+     *
+     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [galleryImage.disallowed]
+     *
+     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [galleryImage.purchasePlan]
+     *
+     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [galleryImage.purchasePlan.product] The product ID.
+     *
+     * @param {string} galleryImage.location Resource location
+     *
+     * @param {object} [galleryImage.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition is to be deleted.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition to
+     * be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery Image Definitions in a gallery.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+
+    /**
+     * List gallery Image Definitions in a gallery.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGalleryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listByGalleryNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listByGalleryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
+}
+
+/**
+ * @class
+ * GalleryImageVersions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryImageVersions {
+
+
+    /**
+     * Create or update a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery Image Version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Create or update a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery Image Version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Retrieves information about a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'ReplicationStatus'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Retrieves information about a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'ReplicationStatus'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Delete a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery Image Versions in a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the Shared Image Gallery Image
+     * Definition from which the Image Versions are to be listed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+
+    /**
+     * List gallery Image Versions in a gallery Image Definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the Shared Image Gallery Image
+     * Definition from which the Image Versions are to be listed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+
+
+    /**
+     * Create or update a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery Image Version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Create or update a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version is to be created.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be created. Needs to follow semantic version name pattern: The
+     * allowed characters are digit and period. Digits must be within the range of
+     * a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+     *
+     * @param {object} galleryImageVersion Parameters supplied to the create or
+     * update gallery Image Version operation.
+     *
+     * @param {object} galleryImageVersion.publishingProfile
+     *
+     * @param {number} [galleryImageVersion.publishingProfile.replicaCount] The
+     * number of replicas of the Image Version to be created per region. This
+     * property would take effect for a region when regionalReplicaCount is not
+     * specified. This property is updateable.
+     *
+     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
+     * If set to true, Virtual Machines deployed from the latest version of the
+     * Image Definition won't use this Image Version.
+     *
+     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
+     * of life date of the gallery Image Version. This property can be used for
+     * decommissioning purposes. This property is updateable.
+     *
+     * @param {array} [galleryImageVersion.publishingProfile.targetRegions] The
+     * target regions where the Image Version is going to be replicated to. This
+     * property is updateable.
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source
+     *
+     * @param {object} galleryImageVersion.publishingProfile.source.managedImage
+     *
+     * @param {string} galleryImageVersion.publishingProfile.source.managedImage.id
+     * The managed artifact id.
+     *
+     * @param {string} galleryImageVersion.location Resource location
+     *
+     * @param {object} [galleryImageVersion.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Delete a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery Image Version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the Shared Image Gallery in which
+     * the Image Definition resides.
+     *
+     * @param {string} galleryImageName The name of the gallery Image Definition in
+     * which the Image Version resides.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery Image
+     * Version to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery Image Versions in a gallery Image Definition.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByGalleryImageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+
+    /**
+     * List gallery Image Versions in a gallery Image Definition.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByGalleryImageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listByGalleryImageNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listByGalleryImageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
 }
 
 /**
