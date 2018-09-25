@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/trafficManagerManagementClient.js",
   "types": "./lib/trafficManagerManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/trafficManagerManagement2",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
