@@ -7005,19 +7005,6 @@ export interface ListUsagesResult extends Array<Usage> {
 
 /**
  * @class
- * Initializes a new instance of the ImageListResult class.
- * @constructor
- * The List Image operation response.
- *
- * @member {string} [nextLink] The uri to fetch the next page of Images. Call
- * ListNext() with this to fetch the next page of Images.
- */
-export interface ImageListResult extends Array<Image> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the VirtualMachineListResult class.
  * @constructor
  * The List Virtual Machine operation response.
@@ -7026,6 +7013,19 @@ export interface ImageListResult extends Array<Image> {
  * ListNext() with this URI to fetch the next page of Virtual Machines.
  */
 export interface VirtualMachineListResult extends Array<VirtualMachine> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageListResult class.
+ * @constructor
+ * The List Image operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Images. Call
+ * ListNext() with this to fetch the next page of Images.
+ */
+export interface ImageListResult extends Array<Image> {
   nextLink?: string;
 }
 
