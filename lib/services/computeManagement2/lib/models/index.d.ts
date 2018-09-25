@@ -1314,9 +1314,8 @@ export interface NetworkProfile {
  * Initializes a new instance of the BootDiagnostics class.
  * @constructor
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  *
  * @member {boolean} [enabled] Whether boot diagnostics should be enabled on
@@ -1338,9 +1337,9 @@ export interface BootDiagnostics {
  *
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {boolean} [bootDiagnostics.enabled] Whether boot diagnostics should
  * be enabled on the Virtual Machine.
  * @member {string} [bootDiagnostics.storageUri] Uri of the storage account to
@@ -1419,10 +1418,22 @@ export interface DiskInstanceView {
  * @member {string} [consoleScreenshotBlobUri] The console screenshot blob URI.
  * @member {string} [serialConsoleLogBlobUri] The Linux serial console log blob
  * Uri.
+ * @member {object} [status] The boot diagnostics status information for the
+ * VM. <br><br> NOTE: It will be set only if there are errors encountered in
+ * enabling boot diagnostics.
+ * @member {string} [status.code] The status code.
+ * @member {string} [status.level] The level code. Possible values include:
+ * 'Info', 'Warning', 'Error'
+ * @member {string} [status.displayStatus] The short localizable label for the
+ * status.
+ * @member {string} [status.message] The detailed status message, including for
+ * alerts and error messages.
+ * @member {date} [status.time] The time of the status.
  */
 export interface BootDiagnosticsInstanceView {
-  consoleScreenshotBlobUri?: string;
-  serialConsoleLogBlobUri?: string;
+  readonly consoleScreenshotBlobUri?: string;
+  readonly serialConsoleLogBlobUri?: string;
+  readonly status?: InstanceViewStatus;
 }
 
 /**
@@ -1540,13 +1551,24 @@ export interface MaintenanceRedeployStatus {
  * @member {array} [extensions] The extensions information.
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
  * screenshot blob URI.
  * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
  * console log blob Uri.
+ * @member {object} [bootDiagnostics.status] The boot diagnostics status
+ * information for the VM. <br><br> NOTE: It will be set only if there are
+ * errors encountered in enabling boot diagnostics.
+ * @member {string} [bootDiagnostics.status.code] The status code.
+ * @member {string} [bootDiagnostics.status.level] The level code. Possible
+ * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [bootDiagnostics.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [bootDiagnostics.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [bootDiagnostics.status.time] The time of the status.
  * @member {array} [statuses] The resource status information.
  */
 export interface VirtualMachineInstanceView {
@@ -1845,9 +1867,8 @@ export interface VirtualMachineInstanceView {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -1916,14 +1937,25 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.extensions] The extensions information.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [licenseType] Specifies that the image or disk that is
  * being used was licensed on-premises. This element is only used for images
@@ -2256,9 +2288,8 @@ export interface VirtualMachine extends Resource {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -2327,14 +2358,25 @@ export interface VirtualMachine extends Resource {
  * @member {array} [instanceView.extensions] The extensions information.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [licenseType] Specifies that the image or disk that is
  * being used was licensed on-premises. This element is only used for images
@@ -3728,9 +3770,8 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -3860,9 +3901,8 @@ export interface VirtualMachineScaleSetVMProfile {
  * diagnostics profile.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -4159,9 +4199,8 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  * @member {boolean}
  * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
@@ -4409,9 +4448,8 @@ export interface VirtualMachineScaleSet extends Resource {
  * machine scale set diagnostics profile.
  * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  * @member {boolean}
  * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
@@ -4940,13 +4978,24 @@ export interface VirtualMachineHealthStatus {
  * @member {date} [vmHealth.status.time] The time of the status.
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
  * screenshot blob URI.
  * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
  * console log blob Uri.
+ * @member {object} [bootDiagnostics.status] The boot diagnostics status
+ * information for the VM. <br><br> NOTE: It will be set only if there are
+ * errors encountered in enabling boot diagnostics.
+ * @member {string} [bootDiagnostics.status.code] The status code.
+ * @member {string} [bootDiagnostics.status.level] The level code. Possible
+ * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [bootDiagnostics.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [bootDiagnostics.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [bootDiagnostics.status.time] The time of the status.
  * @member {array} [statuses] The resource status information.
  * @member {string} [placementGroupId] The placement group in which the VM is
  * running. If the VM is deallocated it will not have a placementGroupId.
@@ -5035,14 +5084,25 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @member {date} [instanceView.vmHealth.status.time] The time of the status.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [instanceView.placementGroupId] The placement group in
  * which the VM is running. If the VM is deallocated it will not have a
@@ -5311,9 +5371,8 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
