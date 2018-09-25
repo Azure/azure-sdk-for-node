@@ -18,29 +18,6 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the OperationValue class.
- * @constructor
- * Describes the properties of a Compute Operation value.
- *
- * @member {string} [origin] The origin of the compute operation.
- * @member {string} [name] The name of the compute operation.
- * @member {string} [operation] The display name of the compute operation.
- * @member {string} [resource] The display name of the resource the operation
- * applies to.
- * @member {string} [description] The description of the operation.
- * @member {string} [provider] The resource provider for the operation.
- */
-export interface OperationValue {
-  readonly origin?: string;
-  readonly name?: string;
-  readonly operation?: string;
-  readonly resource?: string;
-  readonly description?: string;
-  readonly provider?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -127,14 +104,13 @@ export interface OpenShiftManagedClusterMasterPoolProfile {
  * @class
  * Initializes a new instance of the OpenShiftManagedClusterAgentPoolProfile class.
  * @constructor
- * OpenShiftManagedClusterAgentPoolProfile represents configuration of
- * OpenShift cluster VMs.
+ * Defines the configuration of the OpenShift cluster VMs.
  *
  * @member {string} name Unique name of the pool profile in the context of the
  * subscription and resource group.
  * @member {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 5 (inclusive). The default value
- * is 1. . Default value: 1 .
+ * is 2. . Default value: 2 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
@@ -158,8 +134,8 @@ export interface OpenShiftManagedClusterAgentPoolProfile {
  * @class
  * Initializes a new instance of the OpenShiftManagedClusterIdentityProviders class.
  * @constructor
- * OpenShiftManagedClusterIdentityProvider is heavily cut down equivalent to
- * IdentityProvider in the upstream.
+ * Defines the configuration of the identity providers to be used in the
+ * OpenShift cluster.
  *
  * @member {string} [name] Name of the provider.
  * @member {object} [provider] Configuration of the provider.
@@ -173,8 +149,7 @@ export interface OpenShiftManagedClusterIdentityProviders {
  * @class
  * Initializes a new instance of the OpenShiftManagedClusterAuthProfile class.
  * @constructor
- * OpenShiftManagedClusterAuthProfile defines all possible authentication
- * profiles for the OpenShift cluster.
+ * Defines all possible authentication profiles for the OpenShift cluster.
  *
  * @member {array} [identityProviders] Type of authentication profile to use.
  */
@@ -263,21 +238,6 @@ export interface OpenShiftManagedClusterServiceAADIdentityProvider {
  */
 export interface TagsObject {
   tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the OpenShiftManagedClusterListResult class.
- * @constructor
- * The response from the List OpenShift Managed Clusters operation.
- *
- * @member {array} [value] The list of openshift managed clusters.
- * @member {string} [nextLink] The URL to get the next set of openshift managed
- * cluster results.
- */
-export interface OpenShiftManagedClusterListResult {
-  value?: OpenShiftManagedCluster[];
-  readonly nextLink?: string;
 }
 
 /**
@@ -760,6 +720,29 @@ export interface ContainerService extends Resource {
   windowsProfile?: ContainerServiceWindowsProfile;
   linuxProfile: ContainerServiceLinuxProfile;
   diagnosticsProfile?: ContainerServiceDiagnosticsProfile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationValue class.
+ * @constructor
+ * Describes the properties of a Compute Operation value.
+ *
+ * @member {string} [origin] The origin of the compute operation.
+ * @member {string} [name] The name of the compute operation.
+ * @member {string} [operation] The display name of the compute operation.
+ * @member {string} [resource] The display name of the resource the operation
+ * applies to.
+ * @member {string} [description] The description of the operation.
+ * @member {string} [provider] The resource provider for the operation.
+ */
+export interface OperationValue {
+  readonly origin?: string;
+  readonly name?: string;
+  readonly operation?: string;
+  readonly resource?: string;
+  readonly description?: string;
+  readonly provider?: string;
 }
 
 /**
