@@ -2755,9 +2755,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -3181,9 +3180,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -3626,9 +3624,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -4050,9 +4047,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -5489,9 +5485,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -5915,9 +5910,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -6360,9 +6354,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -6784,9 +6777,8 @@ export interface VirtualMachines {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -9202,9 +9194,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -9662,9 +9653,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -10021,9 +10011,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -10332,9 +10321,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -11953,9 +11941,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -12413,9 +12400,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -12772,9 +12758,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -13083,9 +13068,8 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean}
@@ -15711,9 +15695,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -16125,9 +16108,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -17416,9 +17398,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
@@ -17830,9 +17811,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
      * Diagnostics is a debugging feature which allows you to view Console Output
-     * and Screenshot to diagnose VM status. <br><br> For Linux Virtual Machines,
-     * you can easily view the output of your console log. <br><br> For both
-     * Windows and Linux virtual machines, Azure also enables you to see a
+     * and Screenshot to diagnose VM status. <br><br> You can easily view the
+     * output of your console log. <br><br> Azure also enables you to see a
      * screenshot of the VM from the hypervisor.
      *
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
