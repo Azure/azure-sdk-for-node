@@ -535,7 +535,6 @@ export interface DeploymentValidateResult {
  *
  * @member {string} [id] The ID of the deployment.
  * @member {string} [name] The name of the deployment.
- * @member {object} [type] The deployment extension object.
  * @member {string} [location] the location of the deployment.
  * @member {object} [properties] Deployment properties.
  * @member {string} [properties.provisioningState] The state of the
@@ -591,7 +590,6 @@ export interface DeploymentValidateResult {
 export interface DeploymentExtended extends BaseResource {
   readonly id?: string;
   readonly name?: string;
-  readonly type?: any;
   location?: string;
   properties?: DeploymentPropertiesExtended;
 }
@@ -754,7 +752,6 @@ export interface ResourceGroupProperties {
  *
  * @member {string} [id] The ID of the resource group.
  * @member {string} [name] The name of the resource group.
- * @member {object} [type] The resource group object.
  * @member {object} [properties]
  * @member {string} [properties.provisioningState] The provisioning state.
  * @member {string} location The location of the resource group. It cannot be
@@ -767,7 +764,6 @@ export interface ResourceGroupProperties {
 export interface ResourceGroup extends BaseResource {
   readonly id?: string;
   readonly name?: string;
-  readonly type?: any;
   properties?: ResourceGroupProperties;
   location: string;
   managedBy?: string;
@@ -873,7 +869,7 @@ export interface TagValue extends BaseResource {
  * @member {number} [count.value] Value of count.
  * @member {array} [values] The list of tag values.
  */
-export interface TagDetails extends BaseResource {
+export interface TagDetails {
   readonly id?: string;
   tagName?: string;
   count?: TagCount;
@@ -1034,11 +1030,13 @@ export interface ResourceGroupExportResult {
  * @member {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
  * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @member {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   provider?: string;
   resource?: string;
   operation?: string;
+  description?: string;
 }
 
 /**
@@ -1054,6 +1052,7 @@ export interface OperationDisplay {
  * performed: Profile, endpoint, etc.
  * @member {string} [display.operation] Operation type: Read, write, delete,
  * etc.
+ * @member {string} [display.description] Description of the operation.
  */
 export interface Operation {
   name?: string;

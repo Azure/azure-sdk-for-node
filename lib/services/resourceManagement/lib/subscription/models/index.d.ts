@@ -119,11 +119,13 @@ export interface TenantIdDescription {
  * @member {string} [resource] Resource on which the operation is performed:
  * Profile, endpoint, etc.
  * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @member {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   provider?: string;
   resource?: string;
   operation?: string;
+  description?: string;
 }
 
 /**
@@ -139,6 +141,7 @@ export interface OperationDisplay {
  * performed: Profile, endpoint, etc.
  * @member {string} [display.operation] Operation type: Read, write, delete,
  * etc.
+ * @member {string} [display.description] Description of the operation.
  */
 export interface Operation {
   name?: string;
