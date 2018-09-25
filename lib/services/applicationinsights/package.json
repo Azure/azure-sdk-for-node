@@ -2,7 +2,7 @@
   "name": "azure-arm-appinsights",
   "author": "Microsoft Corporation",
   "description": "ApplicationInsightsManagementClient Library with typescript type definitions for node",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
