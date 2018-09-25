@@ -130,7 +130,10 @@ export interface Resource extends BaseResource {
  * @member {array} [virtualMachines] A list of references to all virtual
  * machines in the availability set.
  * @member {array} [statuses] The resource status information.
- * @member {object} [sku] Sku of the availability set
+ * @member {object} [sku] Sku of the availability set, only name is required to
+ * be set. See AvailabilitySetSkuTypes for possible set of values. Use
+ * 'Aligned' for virtual machines with managed disks and 'Classic' for virtual
+ * machines with unmanaged disks. Default value is 'Classic'.
  * @member {string} [sku.name] The sku name.
  * @member {string} [sku.tier] Specifies the tier of virtual machines in a
  * scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br />
@@ -703,14 +706,29 @@ export interface VirtualHardDisk {
 
 /**
  * @class
+ * Initializes a new instance of the DiffDiskSettings class.
+ * @constructor
+ * Describes the parameters of differencing disk settings that can be be
+ * specified for operating system disk. <br><br> NOTE: The differencing disk
+ * settings can only be specified for managed disk.
+ *
+ * @member {string} [option] Specifies the differencing disk settings for
+ * operating system disk. Possible values include: 'Local'
+ */
+export interface DiffDiskSettings {
+  option?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedDiskParameters class.
  * @constructor
  * The parameters of a managed disk.
  *
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it
+ * cannot be used with OS Disk. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface ManagedDiskParameters extends SubResource {
   storageAccountType?: string;
@@ -763,6 +781,10 @@ export interface ManagedDiskParameters extends SubResource {
  * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * for the operating system disk used by the virtual machine.
+ * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * settings for operating system disk. Possible values include: 'Local'
  * @member {string} createOption Specifies how the virtual machine should be
  * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
  * is used when you are using a specialized disk to create the virtual
@@ -776,9 +798,9 @@ export interface ManagedDiskParameters extends SubResource {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. NOTE: UltraSSD_LRS can only be used with
+ * data disks, it cannot be used with OS Disk. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface OSDisk {
   osType?: string;
@@ -788,6 +810,7 @@ export interface OSDisk {
   image?: VirtualHardDisk;
   caching?: string;
   writeAcceleratorEnabled?: boolean;
+  diffDiskSettings?: DiffDiskSettings;
   createOption: string;
   diskSizeGB?: number;
   managedDisk?: ManagedDiskParameters;
@@ -829,9 +852,9 @@ export interface OSDisk {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. NOTE: UltraSSD_LRS can only be used with
+ * data disks, it cannot be used with OS Disk. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface DataDisk {
   lun: number;
@@ -910,6 +933,10 @@ export interface DataDisk {
  * 'ReadWrite'
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * Settings for the operating system disk used by the virtual machine.
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * disk settings for operating system disk. Possible values include: 'Local'
  * @member {string} [osDisk.createOption] Specifies how the virtual machine
  * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
  * This value is used when you are using a specialized disk to create the
@@ -924,9 +951,9 @@ export interface DataDisk {
  * 1023 GB
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. NOTE: UltraSSD_LRS can only be
+ * used with data disks, it cannot be used with OS Disk. Possible values
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add a
  * data disk to a virtual machine. <br><br> For more information about disks,
  * see [About disks and VHDs for Azure virtual
@@ -936,6 +963,23 @@ export interface StorageProfile {
   imageReference?: ImageReference;
   osDisk?: OSDisk;
   dataDisks?: DataDisk[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdditionalCapabilities class.
+ * @constructor
+ * Enables or disables a capability on the virtual machine or virtual machine
+ * scale set.
+ *
+ * @member {boolean} [ultraSSDEnabled] The flag that enables or disables a
+ * capability to have one or more managed data disks with UltraSSD_LRS storage
+ * account type on the VM or VMSS. Managed disks with storage account type
+ * UltraSSD_LRS can be added to a virtual machine or virtual machine scale set
+ * only if this property is enabled.
+ */
+export interface AdditionalCapabilities {
+  ultraSSDEnabled?: boolean;
 }
 
 /**
@@ -1270,9 +1314,8 @@ export interface NetworkProfile {
  * Initializes a new instance of the BootDiagnostics class.
  * @constructor
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  *
  * @member {boolean} [enabled] Whether boot diagnostics should be enabled on
@@ -1294,9 +1337,9 @@ export interface BootDiagnostics {
  *
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {boolean} [bootDiagnostics.enabled] Whether boot diagnostics should
  * be enabled on the Virtual Machine.
  * @member {string} [bootDiagnostics.storageUri] Uri of the storage account to
@@ -1375,10 +1418,22 @@ export interface DiskInstanceView {
  * @member {string} [consoleScreenshotBlobUri] The console screenshot blob URI.
  * @member {string} [serialConsoleLogBlobUri] The Linux serial console log blob
  * Uri.
+ * @member {object} [status] The boot diagnostics status information for the
+ * VM. <br><br> NOTE: It will be set only if there are errors encountered in
+ * enabling boot diagnostics.
+ * @member {string} [status.code] The status code.
+ * @member {string} [status.level] The level code. Possible values include:
+ * 'Info', 'Warning', 'Error'
+ * @member {string} [status.displayStatus] The short localizable label for the
+ * status.
+ * @member {string} [status.message] The detailed status message, including for
+ * alerts and error messages.
+ * @member {date} [status.time] The time of the status.
  */
 export interface BootDiagnosticsInstanceView {
-  consoleScreenshotBlobUri?: string;
-  serialConsoleLogBlobUri?: string;
+  readonly consoleScreenshotBlobUri?: string;
+  readonly serialConsoleLogBlobUri?: string;
+  readonly status?: InstanceViewStatus;
 }
 
 /**
@@ -1496,13 +1551,24 @@ export interface MaintenanceRedeployStatus {
  * @member {array} [extensions] The extensions information.
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
  * screenshot blob URI.
  * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
  * console log blob Uri.
+ * @member {object} [bootDiagnostics.status] The boot diagnostics status
+ * information for the VM. <br><br> NOTE: It will be set only if there are
+ * errors encountered in enabling boot diagnostics.
+ * @member {string} [bootDiagnostics.status.code] The status code.
+ * @member {string} [bootDiagnostics.status.level] The level code. Possible
+ * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [bootDiagnostics.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [bootDiagnostics.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [bootDiagnostics.status.time] The time of the status.
  * @member {array} [statuses] The resource status information.
  */
 export interface VirtualMachineInstanceView {
@@ -1670,6 +1736,12 @@ export interface VirtualMachineInstanceView {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -1686,13 +1758,21 @@ export interface VirtualMachineInstanceView {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] The flag that
+ * enables or disables a capability to have one or more managed data disks with
+ * UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with
+ * storage account type UltraSSD_LRS can be added to a virtual machine or
+ * virtual machine scale set only if this property is enabled.
  * @member {object} [osProfile] Specifies the operating system settings for the
  * virtual machine.
  * @member {string} [osProfile.computerName] Specifies the host OS name of the
@@ -1787,9 +1867,8 @@ export interface VirtualMachineInstanceView {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -1858,14 +1937,25 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.extensions] The extensions information.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [licenseType] Specifies that the image or disk that is
  * being used was licensed on-premises. This element is only used for images
@@ -1903,6 +1993,7 @@ export interface VirtualMachine extends Resource {
   plan?: Plan;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
@@ -2066,6 +2157,12 @@ export interface VirtualMachine extends Resource {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -2082,13 +2179,21 @@ export interface VirtualMachine extends Resource {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] The flag that
+ * enables or disables a capability to have one or more managed data disks with
+ * UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with
+ * storage account type UltraSSD_LRS can be added to a virtual machine or
+ * virtual machine scale set only if this property is enabled.
  * @member {object} [osProfile] Specifies the operating system settings for the
  * virtual machine.
  * @member {string} [osProfile.computerName] Specifies the host OS name of the
@@ -2183,9 +2288,8 @@ export interface VirtualMachine extends Resource {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -2254,14 +2358,25 @@ export interface VirtualMachine extends Resource {
  * @member {array} [instanceView.extensions] The extensions information.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [licenseType] Specifies that the image or disk that is
  * being used was licensed on-premises. This element is only used for images
@@ -2298,6 +2413,7 @@ export interface VirtualMachineUpdate extends UpdateResource {
   plan?: Plan;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
@@ -2312,15 +2428,19 @@ export interface VirtualMachineUpdate extends UpdateResource {
 
 /**
  * @class
- * Initializes a new instance of the AutoOSUpgradePolicy class.
+ * Initializes a new instance of the AutomaticOSUpgradePolicy class.
  * @constructor
  * The configuration parameters used for performing automatic OS upgrade.
  *
- * @member {boolean} [disableAutoRollback] Whether OS image rollback feature
- * should be disabled. Default value is false.
+ * @member {boolean} [enableAutomaticOSUpgrade] Whether OS upgrades should
+ * automatically be applied to scale set instances in a rolling fashion when a
+ * newer version of the image becomes available. Default value is false.
+ * @member {boolean} [disableAutomaticRollback] Whether OS image rollback
+ * feature should be disabled. Default value is false.
  */
-export interface AutoOSUpgradePolicy {
-  disableAutoRollback?: boolean;
+export interface AutomaticOSUpgradePolicy {
+  enableAutomaticOSUpgrade?: boolean;
+  disableAutomaticRollback?: boolean;
 }
 
 /**
@@ -2394,19 +2514,20 @@ export interface RollingUpgradePolicy {
  * time between completing the update for all virtual machines in one batch and
  * starting the next batch. The time duration should be specified in ISO 8601
  * format. The default value is 0 seconds (PT0S).
- * @member {boolean} [automaticOSUpgrade] Whether OS upgrades should
- * automatically be applied to scale set instances in a rolling fashion when a
- * newer version of the image becomes available.
- * @member {object} [autoOSUpgradePolicy] Configuration parameters used for
- * performing automatic OS Upgrade.
- * @member {boolean} [autoOSUpgradePolicy.disableAutoRollback] Whether OS image
- * rollback feature should be disabled. Default value is false.
+ * @member {object} [automaticOSUpgradePolicy] Configuration parameters used
+ * for performing automatic OS Upgrade.
+ * @member {boolean} [automaticOSUpgradePolicy.enableAutomaticOSUpgrade]
+ * Whether OS upgrades should automatically be applied to scale set instances
+ * in a rolling fashion when a newer version of the image becomes available.
+ * Default value is false.
+ * @member {boolean} [automaticOSUpgradePolicy.disableAutomaticRollback]
+ * Whether OS image rollback feature should be disabled. Default value is
+ * false.
  */
 export interface UpgradePolicy {
   mode?: string;
   rollingUpgradePolicy?: RollingUpgradePolicy;
-  automaticOSUpgrade?: boolean;
-  autoOSUpgradePolicy?: AutoOSUpgradePolicy;
+  automaticOSUpgradePolicy?: AutomaticOSUpgradePolicy;
 }
 
 /**
@@ -2434,9 +2555,8 @@ export interface UpgradePolicy {
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. UltraSSD_LRS cannot be used with OS Disk. Possible values
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface ImageOSDisk {
   osType: string;
@@ -2471,9 +2591,9 @@ export interface ImageOSDisk {
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it
+ * cannot be used with OS Disk. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface ImageDataDisk {
   lun: number;
@@ -2515,9 +2635,9 @@ export interface ImageDataDisk {
  * in gigabytes. This element can be used to overwrite the name of the disk in
  * a virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {string} [osDisk.storageAccountType] Specifies the storage account
- * type for the managed disk. Possible values are: Standard_LRS, Premium_LRS,
- * and StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * type for the managed disk. UltraSSD_LRS cannot be used with OS Disk.
+ * Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add a
  * data disk to a virtual machine. <br><br> For more information about disks,
  * see [About disks and VHDs for Azure virtual
@@ -2570,9 +2690,9 @@ export interface ImageStorageProfile {
  * name of the disk in a virtual machine image. <br><br> This value cannot be
  * larger than 1023 GB
  * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. UltraSSD_LRS cannot be used with
+ * OS Disk. Possible values include: 'Standard_LRS', 'Premium_LRS',
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2624,9 +2744,9 @@ export interface Image extends Resource {
  * name of the disk in a virtual machine image. <br><br> This value cannot be
  * larger than 1023 GB
  * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. UltraSSD_LRS cannot be used with
+ * OS Disk. Possible values include: 'Standard_LRS', 'Premium_LRS',
+ * 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2831,9 +2951,9 @@ export interface VirtualMachineScaleSetUpdateOSProfile {
  * Describes the parameters of a ScaleSet managed disk.
  *
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it
+ * cannot be used with OS Disk. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetManagedDiskParameters {
   storageAccountType?: string;
@@ -2859,6 +2979,10 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * for the operating system disk used by the virtual machine scale set.
+ * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * settings for operating system disk. Possible values include: 'Local'
  * @member {number} [diskSizeGB] Specifies the size of the operating system
  * disk in gigabytes. This element can be used to overwrite the size of the
  * disk in a virtual machine image. <br><br> This value cannot be larger than
@@ -2874,15 +2998,16 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * to store operating system disks for the scale set.
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. NOTE: UltraSSD_LRS can only be used with
+ * data disks, it cannot be used with OS Disk. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetOSDisk {
   name?: string;
   caching?: string;
   writeAcceleratorEnabled?: boolean;
   createOption: string;
+  diffDiskSettings?: DiffDiskSettings;
   diskSizeGB?: number;
   osType?: string;
   image?: VirtualHardDisk;
@@ -2914,9 +3039,9 @@ export interface VirtualMachineScaleSetOSDisk {
  * uris.
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. NOTE: UltraSSD_LRS can only be used with
+ * data disks, it cannot be used with OS Disk. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetUpdateOSDisk {
   caching?: string;
@@ -2950,9 +3075,9 @@ export interface VirtualMachineScaleSetUpdateOSDisk {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. NOTE: UltraSSD_LRS can only be used with
+ * data disks, it cannot be used with OS Disk. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  */
 export interface VirtualMachineScaleSetDataDisk {
   name?: string;
@@ -3005,6 +3130,11 @@ export interface VirtualMachineScaleSetDataDisk {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * Settings for the operating system disk used by the virtual machine scale
+ * set.
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * disk settings for operating system disk. Possible values include: 'Local'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of the operating
  * system disk in gigabytes. This element can be used to overwrite the size of
  * the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -3020,9 +3150,9 @@ export interface VirtualMachineScaleSetDataDisk {
  * used to store operating system disks for the scale set.
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. NOTE: UltraSSD_LRS can only be
+ * used with data disks, it cannot be used with OS Disk. Possible values
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add
  * data disks to the virtual machines in the scale set. <br><br> For more
  * information about disks, see [About disks and VHDs for Azure virtual
@@ -3070,9 +3200,9 @@ export interface VirtualMachineScaleSetStorageProfile {
  * container uris.
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. NOTE: UltraSSD_LRS can only be
+ * used with data disks, it cannot be used with OS Disk. Possible values
+ * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {array} [dataDisks] The data disks.
  */
 export interface VirtualMachineScaleSetUpdateStorageProfile {
@@ -3583,6 +3713,12 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * you also use the imageReference element described above. If you are using a
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine scale set.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
  * the operating system disk in gigabytes. This element can be used to
  * overwrite the size of the disk in a virtual machine image. <br><br> This
@@ -3601,14 +3737,24 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add data disks to the virtual machines in the scale set. <br><br>
  * For more information about disks, see [About disks and VHDs for Azure
  * virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine in the scale set. For instance:
+ * whether the virtual machine has the capability to support attaching managed
+ * data disks with UltraSSD_LRS storage account type.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] The flag that
+ * enables or disables a capability to have one or more managed data disks with
+ * UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with
+ * storage account type UltraSSD_LRS can be added to a virtual machine or
+ * virtual machine scale set only if this property is enabled.
  * @member {object} [networkProfile] Specifies properties of the network
  * interfaces of the virtual machines in the scale set.
  * @member {object} [networkProfile.healthProbe] A reference to a load balancer
@@ -3624,9 +3770,8 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -3655,6 +3800,7 @@ export interface VirtualMachineScaleSetExtensionProfile {
 export interface VirtualMachineScaleSetVMProfile {
   osProfile?: VirtualMachineScaleSetOSProfile;
   storageProfile?: VirtualMachineScaleSetStorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   networkProfile?: VirtualMachineScaleSetNetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
   extensionProfile?: VirtualMachineScaleSetExtensionProfile;
@@ -3742,9 +3888,10 @@ export interface VirtualMachineScaleSetVMProfile {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] The data disks.
  * @member {object} [networkProfile] The virtual machine scale set network
  * profile.
@@ -3754,9 +3901,8 @@ export interface VirtualMachineScaleSetVMProfile {
  * diagnostics profile.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -3839,14 +3985,16 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * between completing the update for all virtual machines in one batch and
  * starting the next batch. The time duration should be specified in ISO 8601
  * format. The default value is 0 seconds (PT0S).
- * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
- * should automatically be applied to scale set instances in a rolling fashion
- * when a newer version of the image becomes available.
- * @member {object} [upgradePolicy.autoOSUpgradePolicy] Configuration
+ * @member {object} [upgradePolicy.automaticOSUpgradePolicy] Configuration
  * parameters used for performing automatic OS Upgrade.
- * @member {boolean} [upgradePolicy.autoOSUpgradePolicy.disableAutoRollback]
- * Whether OS image rollback feature should be disabled. Default value is
- * false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade] Whether OS
+ * upgrades should automatically be applied to scale set instances in a rolling
+ * fashion when a newer version of the image becomes available. Default value
+ * is false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback] Whether OS
+ * image rollback feature should be disabled. Default value is false.
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  * @member {object} [virtualMachineProfile.osProfile] Specifies the operating
  * system settings for the virtual machines in the scale set.
@@ -3986,6 +4134,14 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * described above. If you are using a marketplace image, you  also use the
  * plan element previously described. Possible values include: 'FromImage',
  * 'Empty', 'Attach'
+ * @member {object}
+ * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine scale set.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+ * Specifies the differencing disk settings for operating system disk. Possible
+ * values include: 'Local'
  * @member {number} [virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
  * Specifies the size of the operating system disk in gigabytes. This element
  * can be used to overwrite the size of the disk in a virtual machine image.
@@ -4007,14 +4163,25 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * The managed disk parameters.
  * @member {string}
  * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [virtualMachineProfile.storageProfile.dataDisks] Specifies
  * the parameters that are used to add data disks to the virtual machines in
  * the scale set. <br><br> For more information about disks, see [About disks
  * and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [virtualMachineProfile.additionalCapabilities] Specifies
+ * additional capabilities enabled or disabled on the virtual machine in the
+ * scale set. For instance: whether the virtual machine has the capability to
+ * support attaching managed data disks with UltraSSD_LRS storage account type.
+ * @member {boolean}
+ * [virtualMachineProfile.additionalCapabilities.ultraSSDEnabled] The flag that
+ * enables or disables a capability to have one or more managed data disks with
+ * UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with
+ * storage account type UltraSSD_LRS can be added to a virtual machine or
+ * virtual machine scale set only if this property is enabled.
  * @member {object} [virtualMachineProfile.networkProfile] Specifies properties
  * of the network interfaces of the virtual machines in the scale set.
  * @member {object} [virtualMachineProfile.networkProfile.healthProbe] A
@@ -4032,9 +4199,8 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  * @member {boolean}
  * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
@@ -4167,14 +4333,16 @@ export interface VirtualMachineScaleSet extends Resource {
  * between completing the update for all virtual machines in one batch and
  * starting the next batch. The time duration should be specified in ISO 8601
  * format. The default value is 0 seconds (PT0S).
- * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
- * should automatically be applied to scale set instances in a rolling fashion
- * when a newer version of the image becomes available.
- * @member {object} [upgradePolicy.autoOSUpgradePolicy] Configuration
+ * @member {object} [upgradePolicy.automaticOSUpgradePolicy] Configuration
  * parameters used for performing automatic OS Upgrade.
- * @member {boolean} [upgradePolicy.autoOSUpgradePolicy.disableAutoRollback]
- * Whether OS image rollback feature should be disabled. Default value is
- * false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade] Whether OS
+ * upgrades should automatically be applied to scale set instances in a rolling
+ * fashion when a newer version of the image becomes available. Default value
+ * is false.
+ * @member {boolean}
+ * [upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback] Whether OS
+ * image rollback feature should be disabled. Default value is false.
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  * @member {object} [virtualMachineProfile.osProfile] The virtual machine scale
  * set OS profile.
@@ -4265,9 +4433,10 @@ export interface VirtualMachineScaleSet extends Resource {
  * The managed disk parameters.
  * @member {string}
  * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [virtualMachineProfile.storageProfile.dataDisks] The data
  * disks.
  * @member {object} [virtualMachineProfile.networkProfile] The virtual machine
@@ -4279,9 +4448,8 @@ export interface VirtualMachineScaleSet extends Resource {
  * machine scale set diagnostics profile.
  * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  * @member {boolean}
  * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
@@ -4810,13 +4978,24 @@ export interface VirtualMachineHealthStatus {
  * @member {date} [vmHealth.status.time] The time of the status.
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
  * screenshot blob URI.
  * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
  * console log blob Uri.
+ * @member {object} [bootDiagnostics.status] The boot diagnostics status
+ * information for the VM. <br><br> NOTE: It will be set only if there are
+ * errors encountered in enabling boot diagnostics.
+ * @member {string} [bootDiagnostics.status.code] The status code.
+ * @member {string} [bootDiagnostics.status.level] The level code. Possible
+ * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [bootDiagnostics.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [bootDiagnostics.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [bootDiagnostics.status.time] The time of the status.
  * @member {array} [statuses] The resource status information.
  * @member {string} [placementGroupId] The placement group in which the VM is
  * running. If the VM is deallocated it will not have a placementGroupId.
@@ -4905,14 +5084,25 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @member {date} [instanceView.vmHealth.status.time] The time of the status.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [instanceView.placementGroupId] The placement group in
  * which the VM is running. If the VM is deallocated it will not have a
@@ -5048,6 +5238,12 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -5064,13 +5260,23 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @member {object} [storageProfile.osDisk.managedDisk] The managed disk
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
- * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS
+ * can only be used with data disks, it cannot be used with OS Disk. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS',
+ * 'UltraSSD_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
  * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+ * @member {object} [additionalCapabilities] Specifies additional capabilities
+ * enabled or disabled on the virtual machine in the scale set. For instance:
+ * whether the virtual machine has the capability to support attaching managed
+ * data disks with UltraSSD_LRS storage account type.
+ * @member {boolean} [additionalCapabilities.ultraSSDEnabled] The flag that
+ * enables or disables a capability to have one or more managed data disks with
+ * UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with
+ * storage account type UltraSSD_LRS can be added to a virtual machine or
+ * virtual machine scale set only if this property is enabled.
  * @member {object} [osProfile] Specifies the operating system settings for the
  * virtual machine.
  * @member {string} [osProfile.computerName] Specifies the host OS name of the
@@ -5165,9 +5371,8 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -5220,6 +5425,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
   readonly instanceView?: VirtualMachineScaleSetVMInstanceView;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
+  additionalCapabilities?: AdditionalCapabilities;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
@@ -5659,10 +5865,11 @@ export interface ResourceSku {
  * @class
  * Initializes a new instance of the DiskSku class.
  * @constructor
- * The disks sku name. Can be Standard_LRS, Premium_LRS, or StandardSSD_LRS.
+ * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, or
+ * UltraSSD_LRS.
  *
  * @member {string} [name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {string} [tier] The sku tier. Default value: 'Standard' .
  */
 export interface DiskSku {
@@ -5806,7 +6013,7 @@ export interface EncryptionSettings {
  * has the disk attached.
  * @member {object} [sku]
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {string} [sku.tier] The sku tier.
  * @member {array} [zones] The Logical zone list for Disk.
  * @member {date} [timeCreated] The time when the disk was created.
@@ -5860,6 +6067,12 @@ export interface EncryptionSettings {
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
  * @member {string} [provisioningState] The disk provisioning state.
+ * @member {number} [diskIOPSReadWrite] The number of IOPS allowed for this
+ * disk; only settable for UltraSSD disks. One operation can transfer between
+ * 4k and 256k bytes.
+ * @member {number} [diskMBpsReadWrite] The bandwidth allowed for this disk;
+ * only settable for UltraSSD disks. MBps means millions of bytes per second -
+ * MB here uses the ISO notation, of powers of 10.
  */
 export interface Disk extends Resource {
   readonly managedBy?: string;
@@ -5871,6 +6084,8 @@ export interface Disk extends Resource {
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
   readonly provisioningState?: string;
+  diskIOPSReadWrite?: number;
+  diskMBpsReadWrite?: number;
 }
 
 /**
@@ -5909,16 +6124,24 @@ export interface Disk extends Resource {
  * Resource Id
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
+ * @member {number} [diskIOPSReadWrite] The number of IOPS allowed for this
+ * disk; only settable for UltraSSD disks. One operation can transfer between
+ * 4k and 256k bytes.
+ * @member {number} [diskMBpsReadWrite] The bandwidth allowed for this disk;
+ * only settable for UltraSSD disks. MBps means millions of bytes per second -
+ * MB here uses the ISO notation, of powers of 10.
  * @member {object} [tags] Resource tags
  * @member {object} [sku]
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'
  * @member {string} [sku.tier] The sku tier.
  */
 export interface DiskUpdate {
   osType?: string;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
+  diskIOPSReadWrite?: number;
+  diskMBpsReadWrite?: number;
   tags?: { [propertyName: string]: string };
   sku?: DiskSku;
 }
@@ -6087,6 +6310,400 @@ export interface SnapshotUpdate {
   encryptionSettings?: EncryptionSettings;
   tags?: { [propertyName: string]: string };
   sku?: SnapshotSku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryIdentifier class.
+ * @constructor
+ * Describes the gallery unique name.
+ *
+ * @member {string} [uniqueName] The unique name of the Shared Image Gallery.
+ * This name is generated automatically by Azure.
+ */
+export interface GalleryIdentifier {
+  readonly uniqueName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Gallery class.
+ * @constructor
+ * Specifies information about the Shared Image Gallery that you want to create
+ * or update.
+ *
+ * @member {string} [description] The description of this Shared Image Gallery
+ * resource. This property is updateable.
+ * @member {object} [identifier]
+ * @member {string} [identifier.uniqueName] The unique name of the Shared Image
+ * Gallery. This name is generated automatically by Azure.
+ * @member {string} [provisioningState] The current state of the gallery. The
+ * provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface Gallery extends Resource {
+  description?: string;
+  identifier?: GalleryIdentifier;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageIdentifier class.
+ * @constructor
+ * This is the gallery Image Definition identifier.
+ *
+ * @member {string} publisher The name of the gallery Image Definition
+ * publisher.
+ * @member {string} offer The name of the gallery Image Definition offer.
+ * @member {string} sku The name of the gallery Image Definition SKU.
+ */
+export interface GalleryImageIdentifier {
+  publisher: string;
+  offer: string;
+  sku: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRange class.
+ * @constructor
+ * Describes the resource range.
+ *
+ * @member {number} [min] The minimum number of the resource.
+ * @member {number} [max] The maximum number of the resource.
+ */
+export interface ResourceRange {
+  min?: number;
+  max?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedMachineConfiguration class.
+ * @constructor
+ * The properties describe the recommended machine configuration for this Image
+ * Definition. These properties are updateable.
+ *
+ * @member {object} [vCPUs]
+ * @member {number} [vCPUs.min] The minimum number of the resource.
+ * @member {number} [vCPUs.max] The maximum number of the resource.
+ * @member {object} [memory]
+ * @member {number} [memory.min] The minimum number of the resource.
+ * @member {number} [memory.max] The maximum number of the resource.
+ */
+export interface RecommendedMachineConfiguration {
+  vCPUs?: ResourceRange;
+  memory?: ResourceRange;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Disallowed class.
+ * @constructor
+ * Describes the disallowed disk types.
+ *
+ * @member {array} [diskTypes] A list of disk types.
+ */
+export interface Disallowed {
+  diskTypes?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImagePurchasePlan class.
+ * @constructor
+ * Describes the gallery Image Definition purchase plan. This is used by
+ * marketplace images.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [publisher] The publisher ID.
+ * @member {string} [product] The product ID.
+ */
+export interface ImagePurchasePlan {
+  name?: string;
+  publisher?: string;
+  product?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImage class.
+ * @constructor
+ * Specifies information about the gallery Image Definition that you want to
+ * create or update.
+ *
+ * @member {string} [description] The description of this gallery Image
+ * Definition resource. This property is updateable.
+ * @member {string} [eula] The Eula agreement for the gallery Image Definition.
+ * @member {string} [privacyStatementUri] The privacy statement uri.
+ * @member {string} [releaseNoteUri] The release note uri.
+ * @member {string} osType This property allows you to specify the type of the
+ * OS that is included in the disk when creating a VM from a managed image.
+ * <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**.
+ * Possible values include: 'Windows', 'Linux'
+ * @member {string} osState The allowed values for OS State are 'Generalized'.
+ * Possible values include: 'Generalized', 'Specialized'
+ * @member {date} [endOfLifeDate] The end of life date of the gallery Image
+ * Definition. This property can be used for decommissioning purposes. This
+ * property is updateable.
+ * @member {object} identifier
+ * @member {string} [identifier.publisher] The name of the gallery Image
+ * Definition publisher.
+ * @member {string} [identifier.offer] The name of the gallery Image Definition
+ * offer.
+ * @member {string} [identifier.sku] The name of the gallery Image Definition
+ * SKU.
+ * @member {object} [recommended]
+ * @member {object} [recommended.vCPUs]
+ * @member {number} [recommended.vCPUs.min] The minimum number of the resource.
+ * @member {number} [recommended.vCPUs.max] The maximum number of the resource.
+ * @member {object} [recommended.memory]
+ * @member {number} [recommended.memory.min] The minimum number of the
+ * resource.
+ * @member {number} [recommended.memory.max] The maximum number of the
+ * resource.
+ * @member {object} [disallowed]
+ * @member {array} [disallowed.diskTypes] A list of disk types.
+ * @member {object} [purchasePlan]
+ * @member {string} [purchasePlan.name] The plan ID.
+ * @member {string} [purchasePlan.publisher] The publisher ID.
+ * @member {string} [purchasePlan.product] The product ID.
+ * @member {string} [provisioningState] The current state of the gallery Image
+ * Definition. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
+ */
+export interface GalleryImage extends Resource {
+  description?: string;
+  eula?: string;
+  privacyStatementUri?: string;
+  releaseNoteUri?: string;
+  osType: string;
+  osState: string;
+  endOfLifeDate?: Date;
+  identifier: GalleryImageIdentifier;
+  recommended?: RecommendedMachineConfiguration;
+  disallowed?: Disallowed;
+  purchasePlan?: ImagePurchasePlan;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactPublishingProfileBase class.
+ * @constructor
+ * Describes the basic gallery artifact publishing profile.
+ *
+ * @member {array} [targetRegions] The target regions where the Image Version
+ * is going to be replicated to. This property is updateable.
+ * @member {object} source
+ * @member {object} [source.managedImage]
+ * @member {string} [source.managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactPublishingProfileBase {
+  targetRegions?: TargetRegion[];
+  source: GalleryArtifactSource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionPublishingProfile class.
+ * @constructor
+ * The publishing profile of a gallery Image Version.
+ *
+ * @member {number} [replicaCount] The number of replicas of the Image Version
+ * to be created per region. This property would take effect for a region when
+ * regionalReplicaCount is not specified. This property is updateable.
+ * @member {boolean} [excludeFromLatest] If set to true, Virtual Machines
+ * deployed from the latest version of the Image Definition won't use this
+ * Image Version.
+ * @member {date} [publishedDate] The timestamp for when the gallery Image
+ * Version is published.
+ * @member {date} [endOfLifeDate] The end of life date of the gallery Image
+ * Version. This property can be used for decommissioning purposes. This
+ * property is updateable.
+ */
+export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
+  replicaCount?: number;
+  excludeFromLatest?: boolean;
+  readonly publishedDate?: Date;
+  endOfLifeDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDiskImage class.
+ * @constructor
+ * This is the disk image base class.
+ *
+ * @member {number} [sizeInGB] This property indicates the size of the VHD to
+ * be created.
+ * @member {string} [hostCaching] The host caching of the disk. Valid values
+ * are 'None', 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ */
+export interface GalleryDiskImage {
+  readonly sizeInGB?: number;
+  readonly hostCaching?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryOSDiskImage class.
+ * @constructor
+ * This is the OS disk image.
+ *
+ */
+export interface GalleryOSDiskImage extends GalleryDiskImage {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDataDiskImage class.
+ * @constructor
+ * This is the data disk image.
+ *
+ * @member {number} [lun] This property specifies the logical unit number of
+ * the data disk. This value is used to identify data disks within the Virtual
+ * Machine and therefore must be unique for each data disk attached to the
+ * Virtual Machine.
+ */
+export interface GalleryDataDiskImage extends GalleryDiskImage {
+  readonly lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionStorageProfile class.
+ * @constructor
+ * This is the storage profile of a gallery Image Version.
+ *
+ * @member {object} [osDiskImage]
+ * @member {array} [dataDiskImages] A list of data disk images.
+ */
+export interface GalleryImageVersionStorageProfile {
+  readonly osDiskImage?: GalleryOSDiskImage;
+  readonly dataDiskImages?: GalleryDataDiskImage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegionalReplicationStatus class.
+ * @constructor
+ * This is the regional replication status.
+ *
+ * @member {string} [region] The region to which the gallery Image Version is
+ * being replicated to.
+ * @member {string} [state] This is the regional replication state. Possible
+ * values include: 'Unknown', 'Replicating', 'Completed', 'Failed'
+ * @member {string} [details] The details of the replication status.
+ * @member {number} [progress] It indicates progress of the replication job.
+ */
+export interface RegionalReplicationStatus {
+  readonly region?: string;
+  readonly state?: string;
+  readonly details?: string;
+  readonly progress?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationStatus class.
+ * @constructor
+ * This is the replication status of the gallery Image Version.
+ *
+ * @member {string} [aggregatedState] This is the aggregated replication status
+ * based on all the regional replication status flags. Possible values include:
+ * 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [summary] This is a summary of replication status for each
+ * region.
+ */
+export interface ReplicationStatus {
+  readonly aggregatedState?: string;
+  readonly summary?: RegionalReplicationStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersion class.
+ * @constructor
+ * Specifies information about the gallery Image Version that you want to
+ * create or update.
+ *
+ * @member {object} publishingProfile
+ * @member {number} [publishingProfile.replicaCount] The number of replicas of
+ * the Image Version to be created per region. This property would take effect
+ * for a region when regionalReplicaCount is not specified. This property is
+ * updateable.
+ * @member {boolean} [publishingProfile.excludeFromLatest] If set to true,
+ * Virtual Machines deployed from the latest version of the Image Definition
+ * won't use this Image Version.
+ * @member {date} [publishingProfile.publishedDate] The timestamp for when the
+ * gallery Image Version is published.
+ * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
+ * gallery Image Version. This property can be used for decommissioning
+ * purposes. This property is updateable.
+ * @member {string} [provisioningState] The current state of the gallery Image
+ * Version. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
+ * @member {object} [storageProfile]
+ * @member {object} [storageProfile.osDiskImage]
+ * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
+ * @member {object} [replicationStatus]
+ * @member {string} [replicationStatus.aggregatedState] This is the aggregated
+ * replication status based on all the regional replication status flags.
+ * Possible values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [replicationStatus.summary] This is a summary of replication
+ * status for each region.
+ */
+export interface GalleryImageVersion extends Resource {
+  publishingProfile: GalleryImageVersionPublishingProfile;
+  readonly provisioningState?: string;
+  readonly storageProfile?: GalleryImageVersionStorageProfile;
+  readonly replicationStatus?: ReplicationStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetRegion class.
+ * @constructor
+ * Describes the target region information.
+ *
+ * @member {string} name The name of the region.
+ * @member {number} [regionalReplicaCount] The number of replicas of the Image
+ * Version to be created per region. This property is updateable.
+ */
+export interface TargetRegion {
+  name: string;
+  regionalReplicaCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedArtifact class.
+ * @constructor
+ * The managed artifact.
+ *
+ * @member {string} id The managed artifact id.
+ */
+export interface ManagedArtifact {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactSource class.
+ * @constructor
+ * The source image from which the Image Version is going to be created.
+ *
+ * @member {object} managedImage
+ * @member {string} [managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactSource {
+  managedImage: ManagedArtifact;
 }
 
 /**
@@ -6545,6 +7162,47 @@ export interface DiskList extends Array<Disk> {
  * Call ListNext() with this to fetch the next page of snapshots.
  */
 export interface SnapshotList extends Array<Snapshot> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryList class.
+ * @constructor
+ * The List Galleries operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of galleries.
+ * Call ListNext() with this to fetch the next page of galleries.
+ */
+export interface GalleryList extends Array<Gallery> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageList class.
+ * @constructor
+ * The List Gallery Images operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Image
+ * Definitions in the Shared Image Gallery. Call ListNext() with this to fetch
+ * the next page of gallery Image Definitions.
+ */
+export interface GalleryImageList extends Array<GalleryImage> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionList class.
+ * @constructor
+ * The List Gallery Image version operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery Image
+ * Versions. Call ListNext() with this to fetch the next page of gallery Image
+ * Versions.
+ */
+export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
   nextLink?: string;
 }
 
