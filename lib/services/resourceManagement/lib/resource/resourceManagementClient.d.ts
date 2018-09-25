@@ -56,6 +56,7 @@ export default class ResourceManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   deployments: operations.Deployments;
   providers: operations.Providers;
   resources: operations.Resources;
