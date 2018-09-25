@@ -511,6 +511,11 @@ export interface Reservation {
      *
      * @param {array} [parameters.appliedScopes]
      *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'On', 'Off', 'NotSupported'
+     *
+     * @param {string} [parameters.name] Name of the Reservation
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -540,6 +545,11 @@ export interface Reservation {
      * 'Single', 'Shared'
      *
      * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'On', 'Off', 'NotSupported'
+     *
+     * @param {string} [parameters.name] Name of the Reservation
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -813,6 +823,11 @@ export interface Reservation {
      *
      * @param {array} [parameters.appliedScopes]
      *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'On', 'Off', 'NotSupported'
+     *
+     * @param {string} [parameters.name] Name of the Reservation
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -842,6 +857,11 @@ export interface Reservation {
      * 'Single', 'Shared'
      *
      * @param {array} [parameters.appliedScopes]
+     *
+     * @param {string} [parameters.instanceFlexibility] Possible values include:
+     * 'On', 'Off', 'NotSupported'
+     *
+     * @param {string} [parameters.name] Name of the Reservation
      *
      * @param {object} [options] Optional Parameters.
      *
