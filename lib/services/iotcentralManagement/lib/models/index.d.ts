@@ -184,9 +184,15 @@ export interface Operation {
  *
  * @member {string} [name] The name of the IoT Central application instance to
  * check.
+ * @member {string} [subdomain] The subdomain of the IoT Central application
+ * instance to check.
+ * @member {string} [type] The name of the IoT Central resource name to query.
+ * Default value: 'IoTApps' .
  */
 export interface OperationInputs {
   name?: string;
+  subdomain?: string;
+  type?: string;
 }
 
 /**
