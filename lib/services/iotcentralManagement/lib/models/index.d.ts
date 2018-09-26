@@ -178,19 +178,32 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the OperationInputs class.
+ * Initializes a new instance of the NameAvailabilityInputs class.
  * @constructor
  * Input values.
  *
  * @member {string} [name] The name of the IoT Central application instance to
  * check.
+ * @member {string} [type] The name of the IoT Central resource name to query.
+ * Default value: 'IoTApps' .
+ */
+export interface NameAvailabilityInputs {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubdomainAvailabilityInputs class.
+ * @constructor
+ * Input values.
+ *
  * @member {string} [subdomain] The subdomain of the IoT Central application
  * instance to check.
  * @member {string} [type] The name of the IoT Central resource name to query.
  * Default value: 'IoTApps' .
  */
-export interface OperationInputs {
-  name?: string;
+export interface SubdomainAvailabilityInputs {
   subdomain?: string;
   type?: string;
 }
