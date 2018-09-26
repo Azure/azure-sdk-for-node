@@ -183,7 +183,7 @@ export interface Operation {
  * Input values.
  *
  * @member {string} [name] The name of the IoT Central application instance to
- * check. Default value: 'abc' .
+ * check.
  */
 export interface OperationInputs {
   name?: string;
@@ -198,14 +198,13 @@ export interface OperationInputs {
  *
  * @member {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
- * @member {string} [reason] The reason for unavailability. Possible values
- * include: 'Invalid', 'AlreadyExists'
+ * @member {string} [reason] The reason for unavailability.
  * @member {string} [message] The detailed reason message.
  */
 export interface AppAvailabilityInfo {
   readonly nameAvailable?: boolean;
   readonly reason?: string;
-  message?: string;
+  readonly message?: string;
 }
 
 
