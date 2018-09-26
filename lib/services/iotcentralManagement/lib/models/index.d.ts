@@ -99,18 +99,43 @@ export interface AppPatch {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorResponseBody class.
+ * @constructor
+ * Details of error response.
+ *
+ * @member {string} [code] Error code, intended to be consumed
+ * programmatically.
+ * @member {string} [message] Description of the error, intended for display in
+ * user interface.
+ * @member {string} [target] Target of the particular error, for example name
+ * of the property.
+ * @member {array} [details] A list of additional details about the error.
+ */
+export interface ErrorResponseBody {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+  details?: ErrorResponseBody[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Error details.
  *
- * @member {string} [code] The error code.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the particular error.
+ * @member {object} [error]
+ * @member {string} [error.code] Error code, intended to be consumed
+ * programmatically.
+ * @member {string} [error.message] Description of the error, intended for
+ * display in user interface.
+ * @member {string} [error.target] Target of the particular error, for example
+ * name of the property.
+ * @member {array} [error.details] A list of additional details about the
+ * error.
  */
 export interface ErrorDetails {
-  readonly code?: string;
-  readonly message?: string;
-  readonly target?: string;
+  error?: ErrorResponseBody;
 }
 
 /**
