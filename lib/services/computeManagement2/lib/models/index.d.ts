@@ -706,6 +706,21 @@ export interface VirtualHardDisk {
 
 /**
  * @class
+ * Initializes a new instance of the DiffDiskSettings class.
+ * @constructor
+ * Describes the parameters of differencing disk settings that can be be
+ * specified for operating system disk. <br><br> NOTE: The differencing disk
+ * settings can only be specified for managed disk.
+ *
+ * @member {string} [option] Specifies the differencing disk settings for
+ * operating system disk. Possible values include: 'Local'
+ */
+export interface DiffDiskSettings {
+  option?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedDiskParameters class.
  * @constructor
  * The parameters of a managed disk.
@@ -766,6 +781,10 @@ export interface ManagedDiskParameters extends SubResource {
  * Premium storage**. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * for the operating system disk used by the virtual machine.
+ * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * settings for operating system disk. Possible values include: 'Local'
  * @member {string} createOption Specifies how the virtual machine should be
  * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
  * is used when you are using a specialized disk to create the virtual
@@ -791,6 +810,7 @@ export interface OSDisk {
   image?: VirtualHardDisk;
   caching?: string;
   writeAcceleratorEnabled?: boolean;
+  diffDiskSettings?: DiffDiskSettings;
   createOption: string;
   diskSizeGB?: number;
   managedDisk?: ManagedDiskParameters;
@@ -913,6 +933,10 @@ export interface DataDisk {
  * 'ReadWrite'
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * Settings for the operating system disk used by the virtual machine.
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * disk settings for operating system disk. Possible values include: 'Local'
  * @member {string} [osDisk.createOption] Specifies how the virtual machine
  * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
  * This value is used when you are using a specialized disk to create the
@@ -1290,9 +1314,8 @@ export interface NetworkProfile {
  * Initializes a new instance of the BootDiagnostics class.
  * @constructor
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  *
  * @member {boolean} [enabled] Whether boot diagnostics should be enabled on
@@ -1314,9 +1337,9 @@ export interface BootDiagnostics {
  *
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {boolean} [bootDiagnostics.enabled] Whether boot diagnostics should
  * be enabled on the Virtual Machine.
  * @member {string} [bootDiagnostics.storageUri] Uri of the storage account to
@@ -1395,10 +1418,22 @@ export interface DiskInstanceView {
  * @member {string} [consoleScreenshotBlobUri] The console screenshot blob URI.
  * @member {string} [serialConsoleLogBlobUri] The Linux serial console log blob
  * Uri.
+ * @member {object} [status] The boot diagnostics status information for the
+ * VM. <br><br> NOTE: It will be set only if there are errors encountered in
+ * enabling boot diagnostics.
+ * @member {string} [status.code] The status code.
+ * @member {string} [status.level] The level code. Possible values include:
+ * 'Info', 'Warning', 'Error'
+ * @member {string} [status.displayStatus] The short localizable label for the
+ * status.
+ * @member {string} [status.message] The detailed status message, including for
+ * alerts and error messages.
+ * @member {date} [status.time] The time of the status.
  */
 export interface BootDiagnosticsInstanceView {
-  consoleScreenshotBlobUri?: string;
-  serialConsoleLogBlobUri?: string;
+  readonly consoleScreenshotBlobUri?: string;
+  readonly serialConsoleLogBlobUri?: string;
+  readonly status?: InstanceViewStatus;
 }
 
 /**
@@ -1516,13 +1551,24 @@ export interface MaintenanceRedeployStatus {
  * @member {array} [extensions] The extensions information.
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
  * screenshot blob URI.
  * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
  * console log blob Uri.
+ * @member {object} [bootDiagnostics.status] The boot diagnostics status
+ * information for the VM. <br><br> NOTE: It will be set only if there are
+ * errors encountered in enabling boot diagnostics.
+ * @member {string} [bootDiagnostics.status.code] The status code.
+ * @member {string} [bootDiagnostics.status.level] The level code. Possible
+ * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [bootDiagnostics.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [bootDiagnostics.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [bootDiagnostics.status.time] The time of the status.
  * @member {array} [statuses] The resource status information.
  */
 export interface VirtualMachineInstanceView {
@@ -1690,6 +1736,12 @@ export interface VirtualMachineInstanceView {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -1815,9 +1867,8 @@ export interface VirtualMachineInstanceView {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -1886,14 +1937,25 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.extensions] The extensions information.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [licenseType] Specifies that the image or disk that is
  * being used was licensed on-premises. This element is only used for images
@@ -2095,6 +2157,12 @@ export interface VirtualMachine extends Resource {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -2220,9 +2288,8 @@ export interface VirtualMachine extends Resource {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -2291,14 +2358,25 @@ export interface VirtualMachine extends Resource {
  * @member {array} [instanceView.extensions] The extensions information.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [licenseType] Specifies that the image or disk that is
  * being used was licensed on-premises. This element is only used for images
@@ -2901,6 +2979,10 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [diffDiskSettings] Specifies the differencing Disk Settings
+ * for the operating system disk used by the virtual machine scale set.
+ * @member {string} [diffDiskSettings.option] Specifies the differencing disk
+ * settings for operating system disk. Possible values include: 'Local'
  * @member {number} [diskSizeGB] Specifies the size of the operating system
  * disk in gigabytes. This element can be used to overwrite the size of the
  * disk in a virtual machine image. <br><br> This value cannot be larger than
@@ -2925,6 +3007,7 @@ export interface VirtualMachineScaleSetOSDisk {
   caching?: string;
   writeAcceleratorEnabled?: boolean;
   createOption: string;
+  diffDiskSettings?: DiffDiskSettings;
   diskSizeGB?: number;
   osType?: string;
   image?: VirtualHardDisk;
@@ -3047,6 +3130,11 @@ export interface VirtualMachineScaleSetDataDisk {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [osDisk.diffDiskSettings] Specifies the differencing Disk
+ * Settings for the operating system disk used by the virtual machine scale
+ * set.
+ * @member {string} [osDisk.diffDiskSettings.option] Specifies the differencing
+ * disk settings for operating system disk. Possible values include: 'Local'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of the operating
  * system disk in gigabytes. This element can be used to overwrite the size of
  * the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -3625,6 +3713,12 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * you also use the imageReference element described above. If you are using a
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine scale set.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
  * the operating system disk in gigabytes. This element can be used to
  * overwrite the size of the disk in a virtual machine image. <br><br> This
@@ -3676,9 +3770,8 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -3808,9 +3901,8 @@ export interface VirtualMachineScaleSetVMProfile {
  * diagnostics profile.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -4042,6 +4134,14 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * described above. If you are using a marketplace image, you  also use the
  * plan element previously described. Possible values include: 'FromImage',
  * 'Empty', 'Attach'
+ * @member {object}
+ * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine scale set.
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.osDisk.diffDiskSettings.option]
+ * Specifies the differencing disk settings for operating system disk. Possible
+ * values include: 'Local'
  * @member {number} [virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
  * Specifies the size of the operating system disk in gigabytes. This element
  * can be used to overwrite the size of the disk in a virtual machine image.
@@ -4099,9 +4199,8 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  * @member {boolean}
  * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
@@ -4349,9 +4448,8 @@ export interface VirtualMachineScaleSet extends Resource {
  * machine scale set diagnostics profile.
  * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
  * Boot Diagnostics is a debugging feature which allows you to view Console
- * Output and Screenshot to diagnose VM status. <br><br> For Linux Virtual
- * Machines, you can easily view the output of your console log. <br><br> For
- * both Windows and Linux virtual machines, Azure also enables you to see a
+ * Output and Screenshot to diagnose VM status. <br><br> You can easily view
+ * the output of your console log. <br><br> Azure also enables you to see a
  * screenshot of the VM from the hypervisor.
  * @member {boolean}
  * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
@@ -4880,13 +4978,24 @@ export interface VirtualMachineHealthStatus {
  * @member {date} [vmHealth.status.time] The time of the status.
  * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
  * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * status. <br><br> You can easily view the output of your console log.
+ * <br><br> Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
  * screenshot blob URI.
  * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
  * console log blob Uri.
+ * @member {object} [bootDiagnostics.status] The boot diagnostics status
+ * information for the VM. <br><br> NOTE: It will be set only if there are
+ * errors encountered in enabling boot diagnostics.
+ * @member {string} [bootDiagnostics.status.code] The status code.
+ * @member {string} [bootDiagnostics.status.level] The level code. Possible
+ * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [bootDiagnostics.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [bootDiagnostics.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [bootDiagnostics.status.time] The time of the status.
  * @member {array} [statuses] The resource status information.
  * @member {string} [placementGroupId] The placement group in which the VM is
  * running. If the VM is deallocated it will not have a placementGroupId.
@@ -4975,14 +5084,25 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @member {date} [instanceView.vmHealth.status.time] The time of the status.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri] The
  * console screenshot blob URI.
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
+ * @member {object} [instanceView.bootDiagnostics.status] The boot diagnostics
+ * status information for the VM. <br><br> NOTE: It will be set only if there
+ * are errors encountered in enabling boot diagnostics.
+ * @member {string} [instanceView.bootDiagnostics.status.code] The status code.
+ * @member {string} [instanceView.bootDiagnostics.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.bootDiagnostics.status.displayStatus] The
+ * short localizable label for the status.
+ * @member {string} [instanceView.bootDiagnostics.status.message] The detailed
+ * status message, including for alerts and error messages.
+ * @member {date} [instanceView.bootDiagnostics.status.time] The time of the
+ * status.
  * @member {array} [instanceView.statuses] The resource status information.
  * @member {string} [instanceView.placementGroupId] The placement group in
  * which the VM is running. If the VM is deallocated it will not have a
@@ -5118,6 +5238,12 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {object} [storageProfile.osDisk.diffDiskSettings] Specifies the
+ * differencing Disk Settings for the operating system disk used by the virtual
+ * machine.
+ * @member {string} [storageProfile.osDisk.diffDiskSettings.option] Specifies
+ * the differencing disk settings for operating system disk. Possible values
+ * include: 'Local'
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
  * **Attach** \u2013 This value is used when you are using a specialized disk
@@ -5245,9 +5371,8 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * state. <br><br>Minimum api-version: 2015-06-15.
  * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
- * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
- * the output of your console log. <br><br> For both Windows and Linux virtual
- * machines, Azure also enables you to see a screenshot of the VM from the
+ * diagnose VM status. <br><br> You can easily view the output of your console
+ * log. <br><br> Azure also enables you to see a screenshot of the VM from the
  * hypervisor.
  * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
  * diagnostics should be enabled on the Virtual Machine.
@@ -5758,7 +5883,7 @@ export interface DiskSku {
  * @constructor
  * The source image used for creating the disk.
  *
- * @member {string} id A relative uri containing either a Platform Imgage
+ * @member {string} id A relative uri containing either a Platform Image
  * Repository or user image reference.
  * @member {number} [lun] If the disk is created from an image's data disk,
  * this is an index that indicates which of the data disks in the image to use.
@@ -5783,7 +5908,7 @@ export interface ImageDiskReference {
  * import as a disk. Required only if the blob is in a different subscription
  * @member {object} [imageReference] Disk source information.
  * @member {string} [imageReference.id] A relative uri containing either a
- * Platform Imgage Repository or user image reference.
+ * Platform Image Repository or user image reference.
  * @member {number} [imageReference.lun] If the disk is created from an image's
  * data disk, this is an index that indicates which of the data disks in the
  * image to use. For OS disks, this field is null.
@@ -5905,7 +6030,7 @@ export interface EncryptionSettings {
  * subscription
  * @member {object} [creationData.imageReference] Disk source information.
  * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
+ * either a Platform Image Repository or user image reference.
  * @member {number} [creationData.imageReference.lun] If the disk is created
  * from an image's data disk, this is an index that indicates which of the data
  * disks in the image to use. For OS disks, this field is null.
@@ -6088,7 +6213,7 @@ export interface AccessUri {
  * subscription
  * @member {object} [creationData.imageReference] Disk source information.
  * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
+ * either a Platform Image Repository or user image reference.
  * @member {number} [creationData.imageReference.lun] If the disk is created
  * from an image's data disk, this is an index that indicates which of the data
  * disks in the image to use. For OS disks, this field is null.
@@ -6880,19 +7005,6 @@ export interface ListUsagesResult extends Array<Usage> {
 
 /**
  * @class
- * Initializes a new instance of the ImageListResult class.
- * @constructor
- * The List Image operation response.
- *
- * @member {string} [nextLink] The uri to fetch the next page of Images. Call
- * ListNext() with this to fetch the next page of Images.
- */
-export interface ImageListResult extends Array<Image> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the VirtualMachineListResult class.
  * @constructor
  * The List Virtual Machine operation response.
@@ -6901,6 +7013,19 @@ export interface ImageListResult extends Array<Image> {
  * ListNext() with this URI to fetch the next page of Virtual Machines.
  */
 export interface VirtualMachineListResult extends Array<VirtualMachine> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageListResult class.
+ * @constructor
+ * The List Image operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Images. Call
+ * ListNext() with this to fetch the next page of Images.
+ */
+export interface ImageListResult extends Array<Image> {
   nextLink?: string;
 }
 
