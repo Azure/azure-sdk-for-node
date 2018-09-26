@@ -191,10 +191,10 @@ export interface OperationInputs {
 
 /**
  * @class
- * Initializes a new instance of the AppNameAvailabilityInfo class.
+ * Initializes a new instance of the AppAvailabilityInfo class.
  * @constructor
- * The properties indicating whether a given IoT Central application name is
- * available.
+ * The properties indicating whether a given IoT Central application
+ * information is available.
  *
  * @member {boolean} [nameAvailable] The value which indicates whether the
  * provided name is available.
@@ -202,7 +202,7 @@ export interface OperationInputs {
  * include: 'Invalid', 'AlreadyExists'
  * @member {string} [message] The detailed reason message.
  */
-export interface AppNameAvailabilityInfo {
+export interface AppAvailabilityInfo {
   readonly nameAvailable?: boolean;
   readonly reason?: string;
   message?: string;
