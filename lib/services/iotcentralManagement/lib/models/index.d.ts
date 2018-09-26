@@ -182,11 +182,11 @@ export interface Operation {
  * @constructor
  * Input values.
  *
- * @member {string} name The name of the IoT Central application instance to
- * check.
+ * @member {string} [name] The name of the IoT Central application instance to
+ * check. Default value: 'abc' .
  */
 export interface OperationInputs {
-  name: string;
+  name?: string;
 }
 
 /**

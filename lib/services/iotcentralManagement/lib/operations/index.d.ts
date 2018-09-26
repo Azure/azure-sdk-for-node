@@ -459,10 +459,10 @@ export interface Apps {
     /**
      * Check if an IoT Central application name is available.
      *
-     * @param {string} name The name of the IoT Central application instance to
-     * check.
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] The name of the IoT Central application
+     * instance to check.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -473,15 +473,15 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppAvailabilityInfo>>;
+    checkNameAvailabilityWithHttpOperationResponse(options?: { name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppAvailabilityInfo>>;
 
     /**
      * Check if an IoT Central application name is available.
      *
-     * @param {string} name The name of the IoT Central application instance to
-     * check.
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] The name of the IoT Central application
+     * instance to check.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -508,9 +508,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppAvailabilityInfo>;
-    checkNameAvailability(name: string, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
-    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+    checkNameAvailability(options?: { name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.AppAvailabilityInfo>;
+    checkNameAvailability(callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+    checkNameAvailability(options: { name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
 
 
     /**
