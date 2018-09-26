@@ -459,8 +459,15 @@ export interface Apps {
     /**
      * Check if an IoT Central application name is available.
      *
-     * @param {string} name The name of the IoT Central application instance to
-     * check.
+     * @param {object} nameAvailabilityInputs Set the name parameter in the
+     * NameAvailabilityInputs structure to the name of the IoT Central application
+     * to check.
+     *
+     * @param {string} [nameAvailabilityInputs.name] The name of the IoT Central
+     * application instance to check.
+     *
+     * @param {string} [nameAvailabilityInputs.type] The name of the IoT Central
+     * resource name to query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -469,17 +476,24 @@ export interface Apps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<AppNameAvailabilityInfo>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AppAvailabilityInfo>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppNameAvailabilityInfo>>;
+    checkNameAvailabilityWithHttpOperationResponse(nameAvailabilityInputs: models.NameAvailabilityInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppAvailabilityInfo>>;
 
     /**
      * Check if an IoT Central application name is available.
      *
-     * @param {string} name The name of the IoT Central application instance to
-     * check.
+     * @param {object} nameAvailabilityInputs Set the name parameter in the
+     * NameAvailabilityInputs structure to the name of the IoT Central application
+     * to check.
+     *
+     * @param {string} [nameAvailabilityInputs.name] The name of the IoT Central
+     * application instance to check.
+     *
+     * @param {string} [nameAvailabilityInputs.type] The name of the IoT Central
+     * resource name to query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -493,7 +507,7 @@ export interface Apps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {AppNameAvailabilityInfo} - The deserialized result object.
+     *                      @resolve {AppAvailabilityInfo} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -501,17 +515,87 @@ export interface Apps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {AppNameAvailabilityInfo} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AppNameAvailabilityInfo} for more
-     *                      information.
+     *                      {AppAvailabilityInfo} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AppAvailabilityInfo} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppNameAvailabilityInfo>;
-    checkNameAvailability(name: string, callback: ServiceCallback<models.AppNameAvailabilityInfo>): void;
-    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppNameAvailabilityInfo>): void;
+    checkNameAvailability(nameAvailabilityInputs: models.NameAvailabilityInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppAvailabilityInfo>;
+    checkNameAvailability(nameAvailabilityInputs: models.NameAvailabilityInputs, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+    checkNameAvailability(nameAvailabilityInputs: models.NameAvailabilityInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+
+
+    /**
+     * Check if an IoT Central application subdomain is available.
+     *
+     * @param {object} subdomainAvailabilityInputs Set the subdomain parameter in
+     * the SubdomainAvailabilityInputs structure to the subdomain of the IoT
+     * Central application to check.
+     *
+     * @param {string} [subdomainAvailabilityInputs.subdomain] The subdomain of the
+     * IoT Central application instance to check.
+     *
+     * @param {string} [subdomainAvailabilityInputs.type] The name of the IoT
+     * Central resource name to query.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AppAvailabilityInfo>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkSubdomainAvailabilityWithHttpOperationResponse(subdomainAvailabilityInputs: models.SubdomainAvailabilityInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppAvailabilityInfo>>;
+
+    /**
+     * Check if an IoT Central application subdomain is available.
+     *
+     * @param {object} subdomainAvailabilityInputs Set the subdomain parameter in
+     * the SubdomainAvailabilityInputs structure to the subdomain of the IoT
+     * Central application to check.
+     *
+     * @param {string} [subdomainAvailabilityInputs.subdomain] The subdomain of the
+     * IoT Central application instance to check.
+     *
+     * @param {string} [subdomainAvailabilityInputs.type] The name of the IoT
+     * Central resource name to query.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AppAvailabilityInfo} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AppAvailabilityInfo} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AppAvailabilityInfo} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkSubdomainAvailability(subdomainAvailabilityInputs: models.SubdomainAvailabilityInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppAvailabilityInfo>;
+    checkSubdomainAvailability(subdomainAvailabilityInputs: models.SubdomainAvailabilityInputs, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+    checkSubdomainAvailability(subdomainAvailabilityInputs: models.SubdomainAvailabilityInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
 
 
     /**
