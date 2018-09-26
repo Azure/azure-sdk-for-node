@@ -68,6 +68,7 @@ export default class ApiManagementClient extends AzureServiceClient {
   apiPolicy: operations.ApiPolicy;
   apiSchema: operations.ApiSchema;
   apiDiagnostic: operations.ApiDiagnostic;
+  apiDiagnosticLogger: operations.ApiDiagnosticLogger;
   apiIssue: operations.ApiIssue;
   apiIssueComment: operations.ApiIssueComment;
   apiIssueAttachment: operations.ApiIssueAttachment;
@@ -77,6 +78,7 @@ export default class ApiManagementClient extends AzureServiceClient {
   apiManagementOperations: operations.ApiManagementOperations;
   apiManagementService: operations.ApiManagementService;
   diagnostic: operations.Diagnostic;
+  diagnosticLogger: operations.DiagnosticLogger;
   emailTemplate: operations.EmailTemplate;
   group: operations.Group;
   groupUser: operations.GroupUser;
