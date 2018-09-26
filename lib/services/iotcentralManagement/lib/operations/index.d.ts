@@ -459,8 +459,18 @@ export interface Apps {
     /**
      * Check if an IoT Central application name is available.
      *
-     * @param {string} name The name of the IoT Central application instance to
+     * @param {object} operationInputs Set the name parameter in the
+     * OperationInputs structure to the name of the IoT Central application to
      * check.
+     *
+     * @param {string} [operationInputs.name] The name of the IoT Central
+     * application instance to check.
+     *
+     * @param {string} [operationInputs.subdomain] The subdomain of the IoT Central
+     * application instance to check.
+     *
+     * @param {string} [operationInputs.type] The name of the IoT Central resource
+     * name to query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -473,13 +483,23 @@ export interface Apps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppAvailabilityInfo>>;
+    checkNameAvailabilityWithHttpOperationResponse(operationInputs: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AppAvailabilityInfo>>;
 
     /**
      * Check if an IoT Central application name is available.
      *
-     * @param {string} name The name of the IoT Central application instance to
+     * @param {object} operationInputs Set the name parameter in the
+     * OperationInputs structure to the name of the IoT Central application to
      * check.
+     *
+     * @param {string} [operationInputs.name] The name of the IoT Central
+     * application instance to check.
+     *
+     * @param {string} [operationInputs.subdomain] The subdomain of the IoT Central
+     * application instance to check.
+     *
+     * @param {string} [operationInputs.type] The name of the IoT Central resource
+     * name to query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -508,9 +528,9 @@ export interface Apps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppAvailabilityInfo>;
-    checkNameAvailability(name: string, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
-    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+    checkNameAvailability(operationInputs: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AppAvailabilityInfo>;
+    checkNameAvailability(operationInputs: models.OperationInputs, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
+    checkNameAvailability(operationInputs: models.OperationInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AppAvailabilityInfo>): void;
 
 
     /**
