@@ -531,8 +531,8 @@ export interface Apps {
      * Check if an IoT Central application subdomain is available.
      *
      * @param {object} subdomainAvailabilityInputs Set the subdomain parameter in
-     * the SubdomainAvailabilityInputs model to the subdomain of the IoT Central
-     * application to check.
+     * the SubdomainAvailabilityInputs structure to the subdomain of the IoT
+     * Central application to check.
      *
      * @param {string} [subdomainAvailabilityInputs.subdomain] The subdomain of the
      * IoT Central application instance to check.
@@ -557,8 +557,8 @@ export interface Apps {
      * Check if an IoT Central application subdomain is available.
      *
      * @param {object} subdomainAvailabilityInputs Set the subdomain parameter in
-     * the SubdomainAvailabilityInputs model to the subdomain of the IoT Central
-     * application to check.
+     * the SubdomainAvailabilityInputs structure to the subdomain of the IoT
+     * Central application to check.
      *
      * @param {string} [subdomainAvailabilityInputs.subdomain] The subdomain of the
      * IoT Central application instance to check.
