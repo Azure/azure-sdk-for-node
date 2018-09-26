@@ -5616,6 +5616,23 @@ export interface LogAnalyticsOperationResult {
 
 /**
  * @class
+ * Initializes a new instance of the InGuestSoftwareItem class.
+ * @constructor
+ * Describes a InGuest software item.
+ *
+ * @member {string} [inGuestSoftwareItemName] Specifies the name of the
+ * software.
+ * @member {string} [version] Specifies the version of the software.
+ * @member {string} [publisher] Specifies the publisher of the software.
+ */
+export interface InGuestSoftwareItem extends Resource {
+  inGuestSoftwareItemName?: string;
+  version?: string;
+  publisher?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RunCommandInputParameter class.
  * @constructor
  * Describes the properties of a run command parameter.
@@ -7013,6 +7030,20 @@ export interface ListUsagesResult extends Array<Usage> {
  * ListNext() with this URI to fetch the next page of Virtual Machines.
  */
 export interface VirtualMachineListResult extends Array<VirtualMachine> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InGuestSoftwareItemsListResult class.
+ * @constructor
+ * The List of Software items operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of InGuest
+ * software items on the VM. Call ListNext() with this to fetch the next page
+ * of items.
+ */
+export interface InGuestSoftwareItemsListResult extends Array<InGuestSoftwareItem> {
   nextLink?: string;
 }
 

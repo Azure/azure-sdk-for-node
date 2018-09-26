@@ -4965,6 +4965,135 @@ export interface VirtualMachines {
 
 
     /**
+     * Lists all of the In-Guest software items of virtual machines in the
+     * specified subscription. Use the nextLink property in the response to get the
+     * next page of items.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InGuestSoftwareItemsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listInGuestSoftwareItemsWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InGuestSoftwareItemsListResult>>;
+
+    /**
+     * Lists all of the In-Guest software items of virtual machines in the
+     * specified subscription. Use the nextLink property in the response to get the
+     * next page of items.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InGuestSoftwareItemsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InGuestSoftwareItemsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InGuestSoftwareItemsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listInGuestSoftwareItems(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InGuestSoftwareItemsListResult>;
+    listInGuestSoftwareItems(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.InGuestSoftwareItemsListResult>): void;
+    listInGuestSoftwareItems(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InGuestSoftwareItemsListResult>): void;
+
+
+    /**
+     * Get the In-Guest software item of the virtual machine in the specified
+     * subscription
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {string} itemId Identifier of the In-Guest resource type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InGuestSoftwareItem>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getInGuestSoftwareItemWithHttpOperationResponse(resourceGroupName: string, vmName: string, itemId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InGuestSoftwareItem>>;
+
+    /**
+     * Get the In-Guest software item of the virtual machine in the specified
+     * subscription
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {string} itemId Identifier of the In-Guest resource type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InGuestSoftwareItem} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InGuestSoftwareItem} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InGuestSoftwareItem} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getInGuestSoftwareItem(resourceGroupName: string, vmName: string, itemId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InGuestSoftwareItem>;
+    getInGuestSoftwareItem(resourceGroupName: string, vmName: string, itemId: string, callback: ServiceCallback<models.InGuestSoftwareItem>): void;
+    getInGuestSoftwareItem(resourceGroupName: string, vmName: string, itemId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InGuestSoftwareItem>): void;
+
+
+    /**
      * Run command on the VM.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -7592,6 +7721,68 @@ export interface VirtualMachines {
     listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
     listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
+
+    /**
+     * Lists all of the In-Guest software items of virtual machines in the
+     * specified subscription. Use the nextLink property in the response to get the
+     * next page of items.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InGuestSoftwareItemsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listInGuestSoftwareItemsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InGuestSoftwareItemsListResult>>;
+
+    /**
+     * Lists all of the In-Guest software items of virtual machines in the
+     * specified subscription. Use the nextLink property in the response to get the
+     * next page of items.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InGuestSoftwareItemsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InGuestSoftwareItemsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InGuestSoftwareItemsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listInGuestSoftwareItemsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InGuestSoftwareItemsListResult>;
+    listInGuestSoftwareItemsNext(nextPageLink: string, callback: ServiceCallback<models.InGuestSoftwareItemsListResult>): void;
+    listInGuestSoftwareItemsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InGuestSoftwareItemsListResult>): void;
 }
 
 /**
