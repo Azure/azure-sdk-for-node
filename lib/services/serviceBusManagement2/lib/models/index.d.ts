@@ -863,12 +863,16 @@ export interface ArmDisasterRecovery extends Resource {
  * which has no entities, will be used for migration
  * @member {string} postMigrationName Name to access Standard Namespace after
  * migration
+ * @member {string} [migrationState] State in which Standard to Premium
+ * Migration is, possible values : Unknown, Reverting, Completing, Initiating,
+ * Syncing, Active
  */
 export interface MigrationConfigProperties extends Resource {
   readonly provisioningState?: string;
   readonly pendingReplicationOperationsCount?: number;
   targetNamespace: string;
   postMigrationName: string;
+  readonly migrationState?: string;
 }
 
 
