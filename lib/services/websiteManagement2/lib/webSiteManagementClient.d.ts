@@ -618,7 +618,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic', 'Isolated', 'PremiumV2'
+   * 'Dynamic', 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
@@ -646,7 +646,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic', 'Isolated', 'PremiumV2'
+   * 'Dynamic', 'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
