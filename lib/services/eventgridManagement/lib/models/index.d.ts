@@ -18,124 +18,6 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the InputSchemaMapping class.
- * @constructor
- * By default, Event Grid expects events to be in the Event Grid event schema.
- * Specifying an input schema mapping enables publishing to Event Grid using a
- * custom input schema. Currently, the only supported type of
- * InputSchemaMapping is 'JsonInputSchemaMapping'.
- *
- * @member {string} inputSchemaMappingType Polymorphic Discriminator
- */
-export interface InputSchemaMapping {
-  inputSchemaMappingType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * Definition of a Resource
- *
- * @member {string} [id] Fully qualified identifier of the resource
- * @member {string} [name] Name of the resource
- * @member {string} [type] Type of the resource
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * Definition of a Tracked Resource
- *
- * @member {string} location Location of the resource
- * @member {object} [tags] Tags of the resource
- */
-export interface TrackedResource extends Resource {
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Domain class.
- * @constructor
- * EventGrid Domain
- *
- * @member {string} [provisioningState] Provisioning state of the domain.
- * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
- * 'Canceled', 'Failed'
- * @member {string} [endpoint] Endpoint for the domain.
- * @member {string} [inputSchema] This determines the format that Event Grid
- * should expect for incoming events published to the domain. Possible values
- * include: 'EventGridSchema', 'CustomEventSchema', 'CloudEventV01Schema'
- * @member {object} [inputSchemaMapping] Information about the
- * InputSchemaMapping which specified the info about mapping event payload.
- * @member {string} [inputSchemaMapping.inputSchemaMappingType] Polymorphic
- * Discriminator
- */
-export interface Domain extends TrackedResource {
-  readonly provisioningState?: string;
-  readonly endpoint?: string;
-  inputSchema?: string;
-  inputSchemaMapping?: InputSchemaMapping;
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainUpdateParameters class.
- * @constructor
- * Properties of the Domain update
- *
- * @member {object} [tags] Tags of the domains resource
- */
-export interface DomainUpdateParameters {
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainSharedAccessKeys class.
- * @constructor
- * Shared access keys of the Domain
- *
- * @member {string} [key1] Shared access key1 for the domain.
- * @member {string} [key2] Shared access key2 for the domain.
- */
-export interface DomainSharedAccessKeys {
-  key1?: string;
-  key2?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainRegenerateKeyRequest class.
- * @constructor
- * Domain regenerate share access key request
- *
- * @member {string} keyName Key name to regenerate key1 or key2
- */
-export interface DomainRegenerateKeyRequest {
-  keyName: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainTopic class.
- * @constructor
- * Domain Topic
- *
- */
-export interface DomainTopic extends Resource {
-}
-
-/**
- * @class
  * Initializes a new instance of the EventSubscriptionDestination class.
  * @constructor
  * Information about the destination for an event subscription
@@ -144,22 +26,6 @@ export interface DomainTopic extends Resource {
  */
 export interface EventSubscriptionDestination {
   endpointType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AdvancedFilter class.
- * @constructor
- * Represents an advanced filter that can be used to filter events based on
- * various event envelope/data fields.
- *
- * @member {string} [key] The filter key. Represents an event property with
- * upto two levels of nesting.
- * @member {string} operatorType Polymorphic Discriminator
- */
-export interface AdvancedFilter {
-  key?: string;
-  operatorType: string;
 }
 
 /**
@@ -182,14 +48,12 @@ export interface AdvancedFilter {
  * @member {boolean} [isSubjectCaseSensitive] Specifies if the
  * SubjectBeginsWith and SubjectEndsWith properties of the filter
  * should be compared in a case sensitive manner. Default value: false .
- * @member {array} [advancedFilters] A list of advanced filters.
  */
 export interface EventSubscriptionFilter {
   subjectBeginsWith?: string;
   subjectEndsWith?: string;
   includedEventTypes?: string[];
   isSubjectCaseSensitive?: boolean;
-  advancedFilters?: AdvancedFilter[];
 }
 
 /**
@@ -226,14 +90,18 @@ export interface DeadLetterDestination {
 
 /**
  * @class
- * Initializes a new instance of the NumberInAdvancedFilter class.
+ * Initializes a new instance of the Resource class.
  * @constructor
- * NumberIn filter
+ * Definition of a Resource
  *
- * @member {array} [values] The set of filter values
+ * @member {string} [id] Fully qualified identifier of the resource
+ * @member {string} [name] Name of the resource
+ * @member {string} [type] Type of the resource
  */
-export interface NumberInAdvancedFilter extends AdvancedFilter {
-  values?: number[];
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
 }
 
 /**
@@ -250,138 +118,6 @@ export interface NumberInAdvancedFilter extends AdvancedFilter {
 export interface StorageBlobDeadLetterDestination extends DeadLetterDestination {
   resourceId?: string;
   blobContainerName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NumberNotInAdvancedFilter class.
- * @constructor
- * NumberNotIn Filter
- *
- * @member {array} [values] The set of filter values
- */
-export interface NumberNotInAdvancedFilter extends AdvancedFilter {
-  values?: number[];
-}
-
-/**
- * @class
- * Initializes a new instance of the NumberLessThanAdvancedFilter class.
- * @constructor
- * NumberLessThan Filter
- *
- * @member {number} [value] The filter value
- */
-export interface NumberLessThanAdvancedFilter extends AdvancedFilter {
-  value?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the NumberGreaterThanAdvancedFilter class.
- * @constructor
- * NumberGreaterThan Filter
- *
- * @member {number} [value] The filter value
- */
-export interface NumberGreaterThanAdvancedFilter extends AdvancedFilter {
-  value?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the NumberLessThanOrEqualsAdvancedFilter class.
- * @constructor
- * NumberLessThanOrEquals Filter
- *
- * @member {number} [value] The filter value
- */
-export interface NumberLessThanOrEqualsAdvancedFilter extends AdvancedFilter {
-  value?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the NumberGreaterThanOrEqualsAdvancedFilter class.
- * @constructor
- * NumberGreaterThanOrEquals Filter
- *
- * @member {number} [value] The filter value
- */
-export interface NumberGreaterThanOrEqualsAdvancedFilter extends AdvancedFilter {
-  value?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the BoolEqualsAdvancedFilter class.
- * @constructor
- * BoolEquals Filter
- *
- * @member {boolean} [value] The filter value
- */
-export interface BoolEqualsAdvancedFilter extends AdvancedFilter {
-  value?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the StringInAdvancedFilter class.
- * @constructor
- * StringIn Filter
- *
- * @member {array} [values] The set of filter values
- */
-export interface StringInAdvancedFilter extends AdvancedFilter {
-  values?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StringNotInAdvancedFilter class.
- * @constructor
- * StringNotIn Filter
- *
- * @member {array} [values] The set of filter values
- */
-export interface StringNotInAdvancedFilter extends AdvancedFilter {
-  values?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StringBeginsWithAdvancedFilter class.
- * @constructor
- * StringBeginsWith Filter
- *
- * @member {array} [values] The set of filter values
- */
-export interface StringBeginsWithAdvancedFilter extends AdvancedFilter {
-  values?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StringEndsWithAdvancedFilter class.
- * @constructor
- * StringEndsWith Filter
- *
- * @member {array} [values] The set of filter values
- */
-export interface StringEndsWithAdvancedFilter extends AdvancedFilter {
-  values?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the StringContainsAdvancedFilter class.
- * @constructor
- * StringContains Filter
- *
- * @member {array} [values] The set of filter values
- */
-export interface StringContainsAdvancedFilter extends AdvancedFilter {
-  values?: string[];
 }
 
 /**
@@ -472,13 +208,11 @@ export interface HybridConnectionEventSubscriptionDestination extends EventSubsc
  * @member {boolean} [filter.isSubjectCaseSensitive] Specifies if the
  * SubjectBeginsWith and SubjectEndsWith properties of the filter
  * should be compared in a case sensitive manner.
- * @member {array} [filter.advancedFilters] A list of advanced filters.
  * @member {array} [labels] List of user defined labels.
- * @member {date} [expirationTimeUtc] Expiration time of the event
- * subscription.
  * @member {string} [eventDeliverySchema] The event delivery schema for the
  * event subscription. Possible values include: 'EventGridSchema',
- * 'CloudEventV01Schema', 'CustomInputSchema'
+ * 'InputEventSchema', 'CloudEventV01Schema'. Default value: 'InputEventSchema'
+ * .
  * @member {object} [retryPolicy] The retry policy for events. This can be used
  * to configure maximum number of delivery attempts and time to live for
  * events.
@@ -497,7 +231,6 @@ export interface EventSubscription extends Resource {
   destination?: EventSubscriptionDestination;
   filter?: EventSubscriptionFilter;
   labels?: string[];
-  expirationTimeUtc?: Date;
   eventDeliverySchema?: string;
   retryPolicy?: RetryPolicy;
   deadLetterDestination?: DeadLetterDestination;
@@ -528,13 +261,10 @@ export interface EventSubscription extends Resource {
  * @member {boolean} [filter.isSubjectCaseSensitive] Specifies if the
  * SubjectBeginsWith and SubjectEndsWith properties of the filter
  * should be compared in a case sensitive manner.
- * @member {array} [filter.advancedFilters] A list of advanced filters.
  * @member {array} [labels] List of user defined labels.
- * @member {date} [expirationTimeUtc] Information about the expiration time for
- * the event subscription.
  * @member {string} [eventDeliverySchema] The event delivery schema for the
  * event subscription. Possible values include: 'EventGridSchema',
- * 'CloudEventV01Schema', 'CustomInputSchema'
+ * 'InputEventSchema', 'CloudEventV01Schema'
  * @member {object} [retryPolicy] The retry policy for events. This can be used
  * to configure maximum number of delivery attempts and time to live for
  * events.
@@ -551,7 +281,6 @@ export interface EventSubscriptionUpdateParameters {
   destination?: EventSubscriptionDestination;
   filter?: EventSubscriptionFilter;
   labels?: string[];
-  expirationTimeUtc?: Date;
   eventDeliverySchema?: string;
   retryPolicy?: RetryPolicy;
   deadLetterDestination?: DeadLetterDestination;
@@ -608,6 +337,21 @@ export interface Operation {
   display?: OperationInfo;
   origin?: string;
   properties?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InputSchemaMapping class.
+ * @constructor
+ * By default, Event Grid expects events to be in the Event Grid event schema.
+ * Specifying an input schema mapping enables publishing to Event Grid using a
+ * custom input schema. Currently, the only supported type of
+ * InputSchemaMapping is 'JsonInputSchemaMapping'.
+ *
+ * @member {string} inputSchemaMappingType Polymorphic Discriminator
+ */
+export interface InputSchemaMapping {
+  inputSchemaMappingType: string;
 }
 
 /**
@@ -696,6 +440,20 @@ export interface JsonInputSchemaMapping extends InputSchemaMapping {
   eventType?: JsonFieldWithDefault;
   subject?: JsonFieldWithDefault;
   dataVersion?: JsonFieldWithDefault;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * Definition of a Tracked Resource
+ *
+ * @member {string} location Location of the resource
+ * @member {object} [tags] Tags of the resource
+ */
+export interface TrackedResource extends Resource {
+  location: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -806,26 +564,6 @@ export interface TopicTypeInfo extends Resource {
   supportedLocations?: string[];
 }
 
-
-/**
- * @class
- * Initializes a new instance of the DomainsListResult class.
- * @constructor
- * Result of the List Domains operation
- *
- */
-export interface DomainsListResult extends Array<Domain> {
-}
-
-/**
- * @class
- * Initializes a new instance of the DomainTopicsListResult class.
- * @constructor
- * Result of the List Domain Topics operation
- *
- */
-export interface DomainTopicsListResult extends Array<DomainTopic> {
-}
 
 /**
  * @class
