@@ -5,7 +5,7 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/azure-sdk-for-node"
   },
-  "version": "2.5.7",
+  "version": "2.5.8",
   "description": "Client Runtime for Node.js Azure client libraries generated using AutoRest",
   "tags": [
     "node",
@@ -29,7 +29,8 @@
     "async": "2.6.0",
     "moment": "^2.22.2",
     "ms-rest": "^2.3.2",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
