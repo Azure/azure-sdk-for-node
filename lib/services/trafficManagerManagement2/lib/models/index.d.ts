@@ -130,8 +130,8 @@ export interface TrafficFlow {
  */
 export interface Resource extends BaseResource {
   id?: string;
-  readonly name?: string;
-  readonly type?: string;
+  name?: string;
+  type?: string;
 }
 
 /**
