@@ -82,7 +82,6 @@ export interface AzureFileshareProtectedItemExtendedInfo {
  * @member {string} [createMode] Create mode to indicate recovery of existing
  * soft deleted data source or creation of new data source. Possible values
  * include: 'Invalid', 'Default', 'Recover'
- * @member {string} [vaultId] ID of the vault which protects this item
  * @member {string} protectedItemType Polymorphic Discriminator
  */
 export interface ProtectedItem {
@@ -94,7 +93,6 @@ export interface ProtectedItem {
   lastRecoveryPoint?: Date;
   backupSetName?: string;
   createMode?: string;
-  vaultId?: string;
   protectedItemType: string;
 }
 
@@ -1288,7 +1286,6 @@ export interface BackupStatusRequest {
  * @member {string} [protectionStatus] Specifies whether the container is
  * registered or not. Possible values include: 'Invalid', 'NotProtected',
  * 'Protecting', 'Protected', 'ProtectionFailed'
- * @member {string} [vaultId] Specifies the arm resource id of the vault
  * @member {string} [fabricName] Specifies the fabric name - Azure or AD.
  * Possible values include: 'Invalid', 'Azure'
  * @member {string} [containerName] Specifies the product specific container
@@ -1303,7 +1300,6 @@ export interface BackupStatusRequest {
  */
 export interface BackupStatusResponse {
   protectionStatus?: string;
-  vaultId?: string;
   fabricName?: string;
   containerName?: string;
   protectedItemName?: string;
@@ -2283,14 +2279,12 @@ export interface OperationResultInfoBaseResource extends OperationWorkerResponse
  * 'Client', 'GenericDataSource', 'SQLDataBase', 'AzureFileShare',
  * 'SAPHanaDatabase'
  * @member {string} [resourceId] ARM Virtual Machine Id
- * @member {string} [vaultId] ARM id of the Recovery Services Vault
  * @member {string} [properties] Configuration of VM if any needs to be
  * validated like OS type etc
  */
 export interface PreValidateEnableBackupRequest {
   resourceType?: string;
   resourceId?: string;
-  vaultId?: string;
   properties?: string;
 }
 
@@ -2384,8 +2378,6 @@ export interface ProtectedItemQueryObject {
  * @member {string} [properties.createMode] Create mode to indicate recovery of
  * existing soft deleted data source or creation of new data source. Possible
  * values include: 'Invalid', 'Default', 'Recover'
- * @member {string} [properties.vaultId] ID of the vault which protects this
- * item
  * @member {string} [properties.protectedItemType] Polymorphic Discriminator
  */
 export interface ProtectedItemResource extends Resource {

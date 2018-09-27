@@ -40,8 +40,6 @@ export interface ProtectionIntentOperations {
      *
      * @param {string} [parameters.resourceId] ARM Virtual Machine Id
      *
-     * @param {string} [parameters.vaultId] ARM id of the Recovery Services Vault
-     *
      * @param {string} [parameters.properties] Configuration of VM if any needs to
      * be validated like OS type etc
      *
@@ -76,8 +74,6 @@ export interface ProtectionIntentOperations {
      * 'AzureFileShare', 'SAPHanaDatabase'
      *
      * @param {string} [parameters.resourceId] ARM Virtual Machine Id
-     *
-     * @param {string} [parameters.vaultId] ARM id of the Recovery Services Vault
      *
      * @param {string} [parameters.properties] Configuration of VM if any needs to
      * be validated like OS type etc
@@ -2943,9 +2939,6 @@ export interface ProtectedItems {
      * recovery of existing soft deleted data source or creation of new data
      * source. Possible values include: 'Invalid', 'Default', 'Recover'
      *
-     * @param {string} [parameters.properties.vaultId] ID of the vault which
-     * protects this item
-     *
      * @param {string} parameters.properties.protectedItemType Polymorphic
      * Discriminator
      *
@@ -2962,11 +2955,11 @@ export interface ProtectedItems {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ProtectedItemResource>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createOrUpdateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectedItemResource>>;
 
     /**
      * Enables backup of an item or to modifies the backup policy information of an
@@ -3020,9 +3013,6 @@ export interface ProtectedItems {
      * recovery of existing soft deleted data source or creation of new data
      * source. Possible values include: 'Invalid', 'Default', 'Recover'
      *
-     * @param {string} [parameters.properties.vaultId] ID of the vault which
-     * protects this item
-     *
      * @param {string} parameters.properties.protectedItemType Polymorphic
      * Discriminator
      *
@@ -3044,7 +3034,7 @@ export interface ProtectedItems {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {ProtectedItemResource} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3052,15 +3042,16 @@ export interface ProtectedItems {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {ProtectedItemResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProtectedItemResource} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    createOrUpdate(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, callback: ServiceCallback<void>): void;
-    createOrUpdate(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createOrUpdate(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectedItemResource>;
+    createOrUpdate(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, callback: ServiceCallback<models.ProtectedItemResource>): void;
+    createOrUpdate(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, protectedItemName: string, parameters: models.ProtectedItemResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectedItemResource>): void;
 
 
     /**
