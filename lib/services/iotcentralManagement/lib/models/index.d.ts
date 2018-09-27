@@ -176,13 +176,13 @@ export interface Operation {
  * @constructor
  * Input values.
  *
- * @member {string} name The name of the IoT Central application instance to
+ * @member {string} [name] The name of the IoT Central application instance to
  * check.
  * @member {string} [type] The type of the IoT Central resource to query.
  * Default value: 'IoTApps' .
  */
 export interface NameAvailabilityInputs {
-  name: string;
+  name?: string;
   type?: string;
 }
 
@@ -192,13 +192,13 @@ export interface NameAvailabilityInputs {
  * @constructor
  * Input values.
  *
- * @member {string} subdomain The subdomain of the IoT Central application
+ * @member {string} [subdomain] The subdomain of the IoT Central application
  * instance to check.
  * @member {string} [type] The type of the IoT Central resource to query.
  * Default value: 'IoTApps' .
  */
 export interface SubdomainAvailabilityInputs {
-  subdomain: string;
+  subdomain?: string;
   type?: string;
 }
 
