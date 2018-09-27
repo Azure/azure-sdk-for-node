@@ -811,10 +811,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -850,10 +850,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -1013,10 +1013,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -1043,10 +1043,10 @@ export interface RoleAssignments {
      *
      * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * @param {string} parameters.roleDefinitionId The role definition ID used in
      * the role assignment.
      *
-     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
@@ -1897,4 +1897,713 @@ export interface RoleDefinitions {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleDefinitionListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.RoleDefinitionListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleDefinitionListResult>): void;
+}
+
+/**
+ * @class
+ * DenyAssignments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AuthorizationManagementClient.
+ */
+export interface DenyAssignments {
+
+
+    /**
+     * Gets deny assignments for a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource.
+     *
+     * @param {string} resourceName The name of the resource to get deny
+     * assignments for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets deny assignments for a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource.
+     *
+     * @param {string} resourceName The name of the resource to get deny
+     * assignments for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Gets deny assignments for a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets deny assignments for a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceGroup(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listForResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Gets all deny assignments for the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets all deny assignments for the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    list(callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Get the specified deny assignment.
+     *
+     * @param {string} scope The scope of the deny assignment.
+     *
+     * @param {string} denyAssignmentId The ID of the deny assignment to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(scope: string, denyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignment>>;
+
+    /**
+     * Get the specified deny assignment.
+     *
+     * @param {string} scope The scope of the deny assignment.
+     *
+     * @param {string} denyAssignmentId The ID of the deny assignment to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignment} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(scope: string, denyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignment>;
+    get(scope: string, denyAssignmentId: string, callback: ServiceCallback<models.DenyAssignment>): void;
+    get(scope: string, denyAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignment>): void;
+
+
+    /**
+     * Gets a deny assignment by ID.
+     *
+     * @param {string} denyAssignmentId The fully qualified deny assignment ID. For
+     * example, use the format,
+     * /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}
+     * for subscription level deny assignments, or
+     * /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for
+     * tenant level deny assignments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByIdWithHttpOperationResponse(denyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignment>>;
+
+    /**
+     * Gets a deny assignment by ID.
+     *
+     * @param {string} denyAssignmentId The fully qualified deny assignment ID. For
+     * example, use the format,
+     * /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}
+     * for subscription level deny assignments, or
+     * /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for
+     * tenant level deny assignments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignment} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getById(denyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignment>;
+    getById(denyAssignmentId: string, callback: ServiceCallback<models.DenyAssignment>): void;
+    getById(denyAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignment>): void;
+
+
+    /**
+     * Gets deny assignments for a scope.
+     *
+     * @param {string} scope The scope of the deny assignments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForScopeWithHttpOperationResponse(scope: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets deny assignments for a scope.
+     *
+     * @param {string} scope The scope of the deny assignments.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all deny assignments at or above the scope. Use
+     * $filter=denyAssignmentName eq '{name}' to search deny assignments by name at
+     * specified scope. Use $filter=principalId eq '{id}' to return all deny
+     * assignments at, above and below the scope for the specified principal. Use
+     * $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at,
+     * above and below the scope for the specified principal. This filter is
+     * different from the principalId filter as it returns not only those deny
+     * assignments that contain the specified principal is the Principals list but
+     * also those deny assignments that contain the specified principal is the
+     * ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is
+     * used, only the deny assignment name and description properties are returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForScope(scope: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listForScope(scope: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listForScope(scope: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Gets deny assignments for a resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets deny assignments for a resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Gets deny assignments for a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets deny assignments for a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Gets all deny assignments for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets all deny assignments for the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+
+
+    /**
+     * Gets deny assignments for a scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DenyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForScopeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DenyAssignmentListResult>>;
+
+    /**
+     * Gets deny assignments for a scope.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DenyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DenyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DenyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForScopeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DenyAssignmentListResult>;
+    listForScopeNext(nextPageLink: string, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
+    listForScopeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DenyAssignmentListResult>): void;
 }
