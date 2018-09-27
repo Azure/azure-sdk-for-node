@@ -75,11 +75,6 @@ export default class AutomationClient extends AzureServiceClient {
   moduleOperations: operations.ModuleOperations;
   objectDataTypes: operations.ObjectDataTypes;
   fields: operations.Fields;
-  python2Package: operations.Python2Package;
-  runbookDraftOperations: operations.RunbookDraftOperations;
-  runbookOperations: operations.RunbookOperations;
-  testJobStreams: operations.TestJobStreams;
-  testJobOperations: operations.TestJobOperations;
   scheduleOperations: operations.ScheduleOperations;
   variableOperations: operations.VariableOperations;
   webhookOperations: operations.WebhookOperations;
@@ -99,6 +94,11 @@ export default class AutomationClient extends AzureServiceClient {
   dscCompilationJobStream: operations.DscCompilationJobStream;
   dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
   nodeCountInformation: operations.NodeCountInformation;
+  runbookDraftOperations: operations.RunbookDraftOperations;
+  runbookOperations: operations.RunbookOperations;
+  testJobStreams: operations.TestJobStreams;
+  testJobOperations: operations.TestJobOperations;
+  python2Package: operations.Python2Package;
 }
 
 export { AutomationClient, models as AutomationModels };
