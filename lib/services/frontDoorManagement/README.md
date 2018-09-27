@@ -1,5 +1,5 @@
 ---
-uid: azure-arm-frontdoor
+uid: azure-arm-frontDoor
 summary: *content
 
 ---
@@ -13,7 +13,7 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 ## How to Install
 
 ```bash
-npm install azure-arm-frontdoor
+npm install azure-arm-frontDoor
 ```
 
 ## How to use
@@ -22,7 +22,7 @@ npm install azure-arm-frontdoor
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
-const FrontDoorManagementClient = require("azure-arm-frontdoor");
+const FrontDoorManagementClient = require("azure-arm-frontDoor");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new FrontDoorManagementClient(creds, subscriptionId);
