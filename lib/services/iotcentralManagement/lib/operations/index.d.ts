@@ -463,7 +463,7 @@ export interface Apps {
      * NameAvailabilityInputs structure to the name of the IoT Central application
      * to check.
      *
-     * @param {string} [nameAvailabilityInputs.name] The name of the IoT Central
+     * @param {string} nameAvailabilityInputs.name The name of the IoT Central
      * application instance to check.
      *
      * @param {string} [nameAvailabilityInputs.type] The type of the IoT Central
@@ -489,7 +489,7 @@ export interface Apps {
      * NameAvailabilityInputs structure to the name of the IoT Central application
      * to check.
      *
-     * @param {string} [nameAvailabilityInputs.name] The name of the IoT Central
+     * @param {string} nameAvailabilityInputs.name The name of the IoT Central
      * application instance to check.
      *
      * @param {string} [nameAvailabilityInputs.type] The type of the IoT Central
@@ -534,7 +534,7 @@ export interface Apps {
      * the SubdomainAvailabilityInputs structure to the subdomain of the IoT
      * Central application to check.
      *
-     * @param {string} [subdomainAvailabilityInputs.subdomain] The subdomain of the
+     * @param {string} subdomainAvailabilityInputs.subdomain The subdomain of the
      * IoT Central application instance to check.
      *
      * @param {string} [subdomainAvailabilityInputs.type] The type of the IoT
@@ -560,7 +560,7 @@ export interface Apps {
      * the SubdomainAvailabilityInputs structure to the subdomain of the IoT
      * Central application to check.
      *
-     * @param {string} [subdomainAvailabilityInputs.subdomain] The subdomain of the
+     * @param {string} subdomainAvailabilityInputs.subdomain The subdomain of the
      * IoT Central application instance to check.
      *
      * @param {string} [subdomainAvailabilityInputs.type] The type of the IoT
