@@ -20,7 +20,7 @@ const should = require('should');
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 
 const SuiteBase = require('../../framework/suite-base');
-const ComputerVisionAPIClient = require('../../../lib/services/computerVision/lib/computerVisionAPIClient');
+const ComputerVisionAPIClient = require('../../../lib/services/computerVision/lib/computerVisionClient');
 const fs = require('fs');
 
 let requiredEnvironment = [
@@ -57,7 +57,7 @@ describe('Computer Vision', () => {
   describe('Analyze image.', () => {
     it('should detect words, "I Love You"', (done) => {
       let fileStream = fs.createReadStream('test/services/cognitiveServicesVision/i_love_you.JPG');
-      client.recognizeTextInStreamWithHttpOperationResponse(fileStream).then((response) => {
+      client.recognizeTextInStreamWithHttpOperationResponse(fileStream, "Printed").then((response) => {
         let url = response.response.headers["operation-location"];
         let pollUrl = () => {
           setTimeout(() => {
