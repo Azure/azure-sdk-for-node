@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * FrontDoors
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface FrontDoors {
 
@@ -774,7 +774,7 @@ export interface FrontDoors {
  * @class
  * RoutingRules
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface RoutingRules {
 
@@ -1452,7 +1452,7 @@ export interface RoutingRules {
  * @class
  * HealthProbeSettings
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface HealthProbeSettings {
 
@@ -2015,7 +2015,7 @@ export interface HealthProbeSettings {
  * @class
  * LoadBalancingSettings
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface LoadBalancingSettings {
 
@@ -2586,7 +2586,7 @@ export interface LoadBalancingSettings {
  * @class
  * BackendPools
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface BackendPools {
 
@@ -3152,7 +3152,7 @@ export interface BackendPools {
  * @class
  * FrontendEndpoints
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface FrontendEndpoints {
 
@@ -4128,7 +4128,7 @@ export interface FrontendEndpoints {
  * @class
  * Endpoints
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface Endpoints {
 
@@ -4293,7 +4293,7 @@ export interface Endpoints {
  * @class
  * Policies
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the FrontdoorManagementClient.
+ * instance of the FrontDoorManagementClient.
  */
 export interface Policies {
 
