@@ -3154,6 +3154,41 @@ export interface RunbookCreateOrUpdateDraftParameters {
   runbookContent: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the PythonPackageCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update module operation.
+ *
+ * @member {object} contentLink Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface PythonPackageCreateParameters {
+  contentLink: ContentLink;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PythonPackageUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update module operation.
+ *
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface PythonPackageUpdateParameters {
+  tags?: { [propertyName: string]: string };
+}
+
 
 /**
  * @class
