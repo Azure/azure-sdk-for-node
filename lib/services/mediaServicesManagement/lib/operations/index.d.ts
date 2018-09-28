@@ -15,6 +15,534 @@ import * as models from '../models';
 
 /**
  * @class
+ * AccountFilters
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMediaServices.
+ */
+export interface AccountFilters {
+
+
+    /**
+     * @summary List Account Filters
+     *
+     * List Account Filters in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountFilterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountFilterCollection>>;
+
+    /**
+     * @summary List Account Filters
+     *
+     * List Account Filters in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountFilterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountFilterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountFilterCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilterCollection>;
+    list(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.AccountFilterCollection>): void;
+    list(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilterCollection>): void;
+
+
+    /**
+     * @summary Get an Account Filter.
+     *
+     * Get the details of an Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountFilter>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountFilter>>;
+
+    /**
+     * @summary Get an Account Filter.
+     *
+     * Get the details of an Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountFilter} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountFilter} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountFilter} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilter>;
+    get(resourceGroupName: string, accountName: string, filterName: string, callback: ServiceCallback<models.AccountFilter>): void;
+    get(resourceGroupName: string, accountName: string, filterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilter>): void;
+
+
+    /**
+     * @summary Create or update an Account Filter
+     *
+     * Creates or updates an Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountFilter>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountFilter>>;
+
+    /**
+     * @summary Create or update an Account Filter
+     *
+     * Creates or updates an Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountFilter} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountFilter} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountFilter} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilter>;
+    createOrUpdate(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, callback: ServiceCallback<models.AccountFilter>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilter>): void;
+
+
+    /**
+     * @summary Delete an Account Filter.
+     *
+     * Deletes an Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete an Account Filter.
+     *
+     * Deletes an Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, filterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, filterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Update an Account Filter
+     *
+     * Updates an existing Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountFilter>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountFilter>>;
+
+    /**
+     * @summary Update an Account Filter
+     *
+     * Updates an existing Account Filter in the Media Services account.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} filterName The Account Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountFilter} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountFilter} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountFilter} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilter>;
+    update(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, callback: ServiceCallback<models.AccountFilter>): void;
+    update(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilter>): void;
+
+
+    /**
+     * @summary List Account Filters
+     *
+     * List Account Filters in the Media Services account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountFilterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountFilterCollection>>;
+
+    /**
+     * @summary List Account Filters
+     *
+     * List Account Filters in the Media Services account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountFilterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountFilterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountFilterCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilterCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AccountFilterCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilterCollection>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AzureMediaServices.
@@ -832,7 +1360,7 @@ export interface Locations {
      *
      * Checks whether the Media Service resource name is available.
      *
-     * @param {string} locationName
+     * @param {string} locationName The name of the location
      *
      * @param {object} parameters The request parameters
      *
@@ -859,7 +1387,7 @@ export interface Locations {
      *
      * Checks whether the Media Service resource name is available.
      *
-     * @param {string} locationName
+     * @param {string} locationName The name of the location
      *
      * @param {object} parameters The request parameters
      *
@@ -1423,11 +1951,11 @@ export interface Assets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<AssetStorageEncryptionKey>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<StorageEncryptedAssetDecryptionData>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getEncryptionKeyWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssetStorageEncryptionKey>>;
+    getEncryptionKeyWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageEncryptedAssetDecryptionData>>;
 
     /**
      * @summary Gets the Asset storage key
@@ -1454,7 +1982,7 @@ export interface Assets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {AssetStorageEncryptionKey} - The deserialized result object.
+     *                      @resolve {StorageEncryptedAssetDecryptionData} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1462,17 +1990,87 @@ export interface Assets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {AssetStorageEncryptionKey} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AssetStorageEncryptionKey} for more
+     *                      {StorageEncryptedAssetDecryptionData} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageEncryptedAssetDecryptionData} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEncryptionKey(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageEncryptedAssetDecryptionData>;
+    getEncryptionKey(resourceGroupName: string, accountName: string, assetName: string, callback: ServiceCallback<models.StorageEncryptedAssetDecryptionData>): void;
+    getEncryptionKey(resourceGroupName: string, accountName: string, assetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageEncryptedAssetDecryptionData>): void;
+
+
+    /**
+     * @summary List Streaming Locators
+     *
+     * Lists Streaming Locators which are associated with this asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListStreamingLocatorsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listStreamingLocatorsWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListStreamingLocatorsResponse>>;
+
+    /**
+     * @summary List Streaming Locators
+     *
+     * Lists Streaming Locators which are associated with this asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListStreamingLocatorsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListStreamingLocatorsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListStreamingLocatorsResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getEncryptionKey(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetStorageEncryptionKey>;
-    getEncryptionKey(resourceGroupName: string, accountName: string, assetName: string, callback: ServiceCallback<models.AssetStorageEncryptionKey>): void;
-    getEncryptionKey(resourceGroupName: string, accountName: string, assetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetStorageEncryptionKey>): void;
+    listStreamingLocators(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListStreamingLocatorsResponse>;
+    listStreamingLocators(resourceGroupName: string, accountName: string, assetName: string, callback: ServiceCallback<models.ListStreamingLocatorsResponse>): void;
+    listStreamingLocators(resourceGroupName: string, accountName: string, assetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStreamingLocatorsResponse>): void;
 
 
     /**
@@ -1536,6 +2134,552 @@ export interface Assets {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetCollection>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.AssetCollection>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetCollection>): void;
+}
+
+/**
+ * @class
+ * AssetFilters
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMediaServices.
+ */
+export interface AssetFilters {
+
+
+    /**
+     * @summary List Asset Filters
+     *
+     * List Asset Filters associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssetFilterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssetFilterCollection>>;
+
+    /**
+     * @summary List Asset Filters
+     *
+     * List Asset Filters associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssetFilterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssetFilterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssetFilterCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, accountName: string, assetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetFilterCollection>;
+    list(resourceGroupName: string, accountName: string, assetName: string, callback: ServiceCallback<models.AssetFilterCollection>): void;
+    list(resourceGroupName: string, accountName: string, assetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetFilterCollection>): void;
+
+
+    /**
+     * @summary Get an Asset Filter.
+     *
+     * Get the details of an Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssetFilter>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssetFilter>>;
+
+    /**
+     * @summary Get an Asset Filter.
+     *
+     * Get the details of an Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssetFilter} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssetFilter} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssetFilter} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, assetName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetFilter>;
+    get(resourceGroupName: string, accountName: string, assetName: string, filterName: string, callback: ServiceCallback<models.AssetFilter>): void;
+    get(resourceGroupName: string, accountName: string, assetName: string, filterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetFilter>): void;
+
+
+    /**
+     * @summary Create or update an Asset Filter
+     *
+     * Creates or updates an Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssetFilter>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssetFilter>>;
+
+    /**
+     * @summary Create or update an Asset Filter
+     *
+     * Creates or updates an Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssetFilter} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssetFilter} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssetFilter} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetFilter>;
+    createOrUpdate(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, callback: ServiceCallback<models.AssetFilter>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetFilter>): void;
+
+
+    /**
+     * @summary Delete an Asset Filter.
+     *
+     * Deletes an Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Delete an Asset Filter.
+     *
+     * Deletes an Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, assetName: string, filterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, assetName: string, filterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, assetName: string, filterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Update an Asset Filter
+     *
+     * Updates an existing Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssetFilter>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssetFilter>>;
+
+    /**
+     * @summary Update an Asset Filter
+     *
+     * Updates an existing Asset Filter associated with the specified Asset.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} assetName The Asset name.
+     *
+     * @param {string} filterName The Asset Filter name
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {object} [parameters.presentationTimeRange] The presentation time
+     * range.
+     *
+     * @param {number} parameters.presentationTimeRange.startTimestamp The absolute
+     * start time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.endTimestamp The absolute
+     * end time boundary.
+     *
+     * @param {number} parameters.presentationTimeRange.presentationWindowDuration
+     * The relative to end sliding window.
+     *
+     * @param {number} parameters.presentationTimeRange.liveBackoffDuration The
+     * relative to end right edge.
+     *
+     * @param {number} parameters.presentationTimeRange.timescale The time scale of
+     * time stamps.
+     *
+     * @param {boolean} parameters.presentationTimeRange.forceEndTimestamp The
+     * indicator of forcing exsiting of end time stamp.
+     *
+     * @param {object} [parameters.firstQuality] The first quality.
+     *
+     * @param {number} parameters.firstQuality.bitrate The first quality bitrate.
+     *
+     * @param {array} [parameters.tracks] The tracks selection conditions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssetFilter} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssetFilter} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssetFilter} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetFilter>;
+    update(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, callback: ServiceCallback<models.AssetFilter>): void;
+    update(resourceGroupName: string, accountName: string, assetName: string, filterName: string, parameters: models.AssetFilter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetFilter>): void;
+
+
+    /**
+     * @summary List Asset Filters
+     *
+     * List Asset Filters associated with the specified Asset.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssetFilterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssetFilterCollection>>;
+
+    /**
+     * @summary List Asset Filters
+     *
+     * List Asset Filters associated with the specified Asset.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssetFilterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssetFilterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssetFilterCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssetFilterCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AssetFilterCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssetFilterCollection>): void;
 }
 
 /**
@@ -2716,13 +3860,6 @@ export interface Jobs {
      *
      * @param {object} parameters.input The inputs for the Job.
      *
-     * @param {string} [parameters.input.label] A label that is assigned to a
-     * JobInput, that is used to satisfy a reference used in the Transform. For
-     * example, a Transform can be authored so as to take an image file with the
-     * label 'xyz' and apply it as an overlay onto the input video before it is
-     * encoded. When submitting a Job, exactly one of the JobInputs should be the
-     * image file, and it should have the label 'xyz'.
-     *
      * @param {string} parameters.input.odatatype Polymorphic Discriminator
      *
      * @param {array} parameters.outputs The outputs for the Job.
@@ -2733,7 +3870,7 @@ export interface Jobs {
      * 'High'
      *
      * @param {object} [parameters.correlationData] Customer provided correlation
-     * data that will be returned in Job completed events.
+     * data that will be returned in Job and JobOutput state events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2769,13 +3906,6 @@ export interface Jobs {
      *
      * @param {object} parameters.input The inputs for the Job.
      *
-     * @param {string} [parameters.input.label] A label that is assigned to a
-     * JobInput, that is used to satisfy a reference used in the Transform. For
-     * example, a Transform can be authored so as to take an image file with the
-     * label 'xyz' and apply it as an overlay onto the input video before it is
-     * encoded. When submitting a Job, exactly one of the JobInputs should be the
-     * image file, and it should have the label 'xyz'.
-     *
      * @param {string} parameters.input.odatatype Polymorphic Discriminator
      *
      * @param {array} parameters.outputs The outputs for the Job.
@@ -2786,7 +3916,7 @@ export interface Jobs {
      * 'High'
      *
      * @param {object} [parameters.correlationData] Customer provided correlation
-     * data that will be returned in Job completed events.
+     * data that will be returned in Job and JobOutput state events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2890,6 +4020,117 @@ export interface Jobs {
     deleteMethod(resourceGroupName: string, accountName: string, transformName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, accountName: string, transformName: string, jobName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, accountName: string, transformName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Update Job
+     *
+     * Updates a Job.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} transformName The Transform name.
+     *
+     * @param {string} jobName The Job name.
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {string} [parameters.description] Optional customer supplied
+     * description of the Job.
+     *
+     * @param {object} parameters.input The inputs for the Job.
+     *
+     * @param {string} parameters.input.odatatype Polymorphic Discriminator
+     *
+     * @param {array} parameters.outputs The outputs for the Job.
+     *
+     * @param {string} [parameters.priority] Priority with which the job should be
+     * processed. Higher priority jobs are processed before lower priority jobs. If
+     * not set, the default is normal. Possible values include: 'Low', 'Normal',
+     * 'High'
+     *
+     * @param {object} [parameters.correlationData] Customer provided correlation
+     * data that will be returned in Job and JobOutput state events.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, transformName: string, jobName: string, parameters: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+
+    /**
+     * @summary Update Job
+     *
+     * Updates a Job.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * Azure subscription.
+     *
+     * @param {string} accountName The Media Services account name.
+     *
+     * @param {string} transformName The Transform name.
+     *
+     * @param {string} jobName The Job name.
+     *
+     * @param {object} parameters The request parameters
+     *
+     * @param {string} [parameters.description] Optional customer supplied
+     * description of the Job.
+     *
+     * @param {object} parameters.input The inputs for the Job.
+     *
+     * @param {string} parameters.input.odatatype Polymorphic Discriminator
+     *
+     * @param {array} parameters.outputs The outputs for the Job.
+     *
+     * @param {string} [parameters.priority] Priority with which the job should be
+     * processed. Higher priority jobs are processed before lower priority jobs. If
+     * not set, the default is normal. Possible values include: 'Low', 'Normal',
+     * 'High'
+     *
+     * @param {object} [parameters.correlationData] Customer provided correlation
+     * data that will be returned in Job and JobOutput state events.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Job} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Job} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Job} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, transformName: string, jobName: string, parameters: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    update(resourceGroupName: string, accountName: string, transformName: string, jobName: string, parameters: models.Job, callback: ServiceCallback<models.Job>): void;
+    update(resourceGroupName: string, accountName: string, transformName: string, jobName: string, parameters: models.Job, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
@@ -3814,33 +5055,30 @@ export interface StreamingLocators {
      *
      * @param {string} parameters.assetName Asset Name
      *
-     * @param {date} [parameters.startTime] StartTime of Streaming Locator
+     * @param {date} [parameters.startTime] The start time of the Streaming
+     * Locator.
      *
-     * @param {date} [parameters.endTime] EndTime of Streaming Locator
+     * @param {date} [parameters.endTime] The end time of the Streaming Locator.
      *
-     * @param {uuid} [parameters.streamingLocatorId] StreamingLocatorId of
-     * Streaming Locator
+     * @param {uuid} [parameters.streamingLocatorId] The StreamingLocatorId of the
+     * Streaming Locator.
      *
-     * @param {string} parameters.streamingPolicyName Streaming policy name used by
-     * this streaming locator. Either specify the name of streaming policy you
-     * created or use one of the predefined streaming polices. The predefined
-     * streaming policies available are: 'Predefined_DownloadOnly',
+     * @param {string} parameters.streamingPolicyName Name of the Streaming Policy
+     * used by this Streaming Locator. Either specify the name of Streaming Policy
+     * you created or use one of the predefined Streaming Policies. The predefined
+     * Streaming Policies available are: 'Predefined_DownloadOnly',
      * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
-     * 'Predefined_ClearKey', 'Predefined_SecureStreaming' and
-     * 'Predefined_SecureStreamingWithFairPlay'
+     * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
+     * 'Predefined_MultiDrmStreaming'
      *
-     * @param {string} [parameters.defaultContentKeyPolicyName] Default
-     * ContentKeyPolicy used by this Streaming Locator
+     * @param {string} [parameters.defaultContentKeyPolicyName] Name of the default
+     * ContentKeyPolicy used by this Streaming Locator.
      *
-     * @param {array} [parameters.contentKeys] ContentKeys used by this Streaming
-     * Locator
+     * @param {array} [parameters.contentKeys] The ContentKeys used by this
+     * Streaming Locator.
      *
-     * @param {string} [parameters.alternativeMediaId] An Alternative Media
-     * Identifier associated with the StreamingLocator.  This identifier can be
-     * used to distinguish different StreamingLocators for the same Asset for
-     * authorization purposes in the CustomLicenseAcquisitionUrlTemplate or the
-     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
-     * StreamingPolicyName field.
+     * @param {string} [parameters.alternativeMediaId] Alternative Media ID of this
+     * Streaming Locator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3871,33 +5109,30 @@ export interface StreamingLocators {
      *
      * @param {string} parameters.assetName Asset Name
      *
-     * @param {date} [parameters.startTime] StartTime of Streaming Locator
+     * @param {date} [parameters.startTime] The start time of the Streaming
+     * Locator.
      *
-     * @param {date} [parameters.endTime] EndTime of Streaming Locator
+     * @param {date} [parameters.endTime] The end time of the Streaming Locator.
      *
-     * @param {uuid} [parameters.streamingLocatorId] StreamingLocatorId of
-     * Streaming Locator
+     * @param {uuid} [parameters.streamingLocatorId] The StreamingLocatorId of the
+     * Streaming Locator.
      *
-     * @param {string} parameters.streamingPolicyName Streaming policy name used by
-     * this streaming locator. Either specify the name of streaming policy you
-     * created or use one of the predefined streaming polices. The predefined
-     * streaming policies available are: 'Predefined_DownloadOnly',
+     * @param {string} parameters.streamingPolicyName Name of the Streaming Policy
+     * used by this Streaming Locator. Either specify the name of Streaming Policy
+     * you created or use one of the predefined Streaming Policies. The predefined
+     * Streaming Policies available are: 'Predefined_DownloadOnly',
      * 'Predefined_ClearStreamingOnly', 'Predefined_DownloadAndClearStreaming',
-     * 'Predefined_ClearKey', 'Predefined_SecureStreaming' and
-     * 'Predefined_SecureStreamingWithFairPlay'
+     * 'Predefined_ClearKey', 'Predefined_MultiDrmCencStreaming' and
+     * 'Predefined_MultiDrmStreaming'
      *
-     * @param {string} [parameters.defaultContentKeyPolicyName] Default
-     * ContentKeyPolicy used by this Streaming Locator
+     * @param {string} [parameters.defaultContentKeyPolicyName] Name of the default
+     * ContentKeyPolicy used by this Streaming Locator.
      *
-     * @param {array} [parameters.contentKeys] ContentKeys used by this Streaming
-     * Locator
+     * @param {array} [parameters.contentKeys] The ContentKeys used by this
+     * Streaming Locator.
      *
-     * @param {string} [parameters.alternativeMediaId] An Alternative Media
-     * Identifier associated with the StreamingLocator.  This identifier can be
-     * used to distinguish different StreamingLocators for the same Asset for
-     * authorization purposes in the CustomLicenseAcquisitionUrlTemplate or the
-     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
-     * StreamingPolicyName field.
+     * @param {string} [parameters.alternativeMediaId] Alternative Media ID of this
+     * Streaming Locator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4362,12 +5597,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -4385,25 +5629,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -4414,9 +5664,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -4424,8 +5677,8 @@ export interface LiveEvents {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4457,12 +5710,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -4480,25 +5742,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -4509,9 +5777,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -4519,8 +5790,8 @@ export interface LiveEvents {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4569,12 +5840,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -4592,25 +5872,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -4621,9 +5907,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -4659,12 +5948,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -4682,25 +5980,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -4711,9 +6015,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -5052,12 +6359,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -5075,25 +6391,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -5104,9 +6426,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -5114,8 +6439,8 @@ export interface LiveEvents {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5147,12 +6472,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -5170,25 +6504,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -5199,9 +6539,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -5209,8 +6552,8 @@ export interface LiveEvents {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5259,12 +6602,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -5282,25 +6634,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -5311,9 +6669,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -5349,12 +6710,21 @@ export interface LiveEvents {
      * @param {object} parameters.input The Live Event input.
      *
      * @param {string} parameters.input.streamingProtocol The streaming protocol
-     * for the Live Event. Possible values include: 'FragmentedMP4', 'RTMP'
+     * for the Live Event.  This is specified at creation time and cannot be
+     * updated. Possible values include: 'FragmentedMP4', 'RTMP'
+     *
+     * @param {object} [parameters.input.accessControl] The access control for
+     * LiveEvent Input.
+     *
+     * @param {object} [parameters.input.accessControl.ip] The IP access control
+     * properties.
      *
      * @param {string} [parameters.input.keyFrameIntervalDuration] ISO 8601
      * timespan duration of the key frame interval duration.
      *
-     * @param {string} [parameters.input.accessToken] The access token.
+     * @param {string} [parameters.input.accessToken] A unique identifier for a
+     * stream.  This can be specified at creation time but cannot be updated.  If
+     * omitted, the service will generate a unique value.
      *
      * @param {array} [parameters.input.endpoints] The input endpoints for the Live
      * Event.
@@ -5372,25 +6742,31 @@ export interface LiveEvents {
      * @param {array} [parameters.preview.accessControl.ip.allow] The IP allow
      * list.
      *
-     * @param {string} [parameters.preview.previewLocator] The preview locator
-     * Guid.
+     * @param {string} [parameters.preview.previewLocator] The identifier of the
+     * preview locator in Guid format.  Specifying this at creation time allows the
+     * caller to know the preview locator url before the event is created.  If
+     * omitted, the service will generate a random identifier.  This value cannot
+     * be updated once the live event is created.
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
-     * streaming policy used for LiveEvent preview
+     * streaming policy used for the LiveEvent preview.  This value is specified at
+     * creation time and cannot be updated.
      *
      * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
-     * Identifier associated with the preview url.  This identifier can be used to
-     * distinguish the preview of different live events for authorization purposes
-     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * Identifier associated with the StreamingLocator created for the preview.
+     * This value is specified at creation time and cannot be updated.  The
+     * identifier can be used in the CustomLicenseAcquisitionUrlTemplate or the
      * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
      * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
-     * Live Event. Possible values include: 'None', 'Basic'
+     * Live Event.  This value is specified at creation time and cannot be updated.
+     * Possible values include: 'None', 'Basic'
      *
      * @param {string} [parameters.encoding.presetName] The encoding preset name.
+     * This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.crossSiteAccessPolicies] The Live Event access
      * policies.
@@ -5401,9 +6777,12 @@ export interface LiveEvents {
      * @param {string} [parameters.crossSiteAccessPolicies.crossDomainPolicy] The
      * content of crossdomain.xml used by Silverlight.
      *
-     * @param {boolean} [parameters.vanityUrl] The Live Event vanity URL flag.
+     * @param {boolean} [parameters.vanityUrl] Specifies whether to use a vanity
+     * url with the Live Event.  This value is specified at creation time and
+     * cannot be updated.
      *
-     * @param {array} [parameters.streamOptions] The stream options.
+     * @param {array} [parameters.streamOptions] The options to use for the
+     * LiveEvent.  This value is specified at creation time and cannot be updated.
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -5959,7 +7338,8 @@ export interface LiveOutputs {
      * duration of the archive window length. This is duration that customer want
      * to retain the recorded content.
      *
-     * @param {string} [parameters.manifestName] The manifest file name.
+     * @param {string} [parameters.manifestName] The manifest file name.  If not
+     * provided, the service will generate one automatically.
      *
      * @param {object} [parameters.hls] The HLS configuration.
      *
@@ -6005,7 +7385,8 @@ export interface LiveOutputs {
      * duration of the archive window length. This is duration that customer want
      * to retain the recorded content.
      *
-     * @param {string} [parameters.manifestName] The manifest file name.
+     * @param {string} [parameters.manifestName] The manifest file name.  If not
+     * provided, the service will generate one automatically.
      *
      * @param {object} [parameters.hls] The HLS configuration.
      *
@@ -6142,7 +7523,8 @@ export interface LiveOutputs {
      * duration of the archive window length. This is duration that customer want
      * to retain the recorded content.
      *
-     * @param {string} [parameters.manifestName] The manifest file name.
+     * @param {string} [parameters.manifestName] The manifest file name.  If not
+     * provided, the service will generate one automatically.
      *
      * @param {object} [parameters.hls] The HLS configuration.
      *
@@ -6188,7 +7570,8 @@ export interface LiveOutputs {
      * duration of the archive window length. This is duration that customer want
      * to retain the recorded content.
      *
-     * @param {string} [parameters.manifestName] The manifest file name.
+     * @param {string} [parameters.manifestName] The manifest file name.  If not
+     * provided, the service will generate one automatically.
      *
      * @param {object} [parameters.hls] The HLS configuration.
      *
@@ -6522,9 +7905,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -6567,8 +7953,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6597,9 +7983,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -6642,8 +8031,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6691,9 +8080,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -6763,9 +8155,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -7056,8 +8451,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} parameters StreamingEndpoint scale parameters
      *
-     * @param {number} [parameters.scaleUnit] ScaleUnit The scale unit number of
-     * the StreamingEndpoint.
+     * @param {number} [parameters.scaleUnit] The scale unit number of the
+     * StreamingEndpoint.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7086,8 +8481,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} parameters StreamingEndpoint scale parameters
      *
-     * @param {number} [parameters.scaleUnit] ScaleUnit The scale unit number of
-     * the StreamingEndpoint.
+     * @param {number} [parameters.scaleUnit] The scale unit number of the
+     * StreamingEndpoint.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7136,9 +8531,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -7181,8 +8579,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7211,9 +8609,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -7256,8 +8657,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.autoStart] The flag indicates if auto start the
-     * Live Event.
+     * @param {boolean} [options.autoStart] The flag indicates if the resource
+     * should be automatically started on creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7305,9 +8706,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -7377,9 +8781,12 @@ export interface StreamingEndpoints {
      *
      * @param {string} [parameters.description] The StreamingEndpoint description.
      *
-     * @param {number} [parameters.scaleUnits] The number of scale units.
+     * @param {number} parameters.scaleUnits The number of scale units.  Use the
+     * Scale operation to adjust this value.
      *
-     * @param {string} [parameters.availabilitySetName] AvailabilitySet name
+     * @param {string} [parameters.availabilitySetName] The name of the
+     * AvailabilitySet used with this StreamingEndpoint for high availability
+     * streaming.  This value can only be set at creation time.
      *
      * @param {object} [parameters.accessControl] The access control definition of
      * the StreamingEndpoint.
@@ -7670,8 +9077,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} parameters StreamingEndpoint scale parameters
      *
-     * @param {number} [parameters.scaleUnit] ScaleUnit The scale unit number of
-     * the StreamingEndpoint.
+     * @param {number} [parameters.scaleUnit] The scale unit number of the
+     * StreamingEndpoint.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7700,8 +9107,8 @@ export interface StreamingEndpoints {
      *
      * @param {object} parameters StreamingEndpoint scale parameters
      *
-     * @param {number} [parameters.scaleUnit] ScaleUnit The scale unit number of
-     * the StreamingEndpoint.
+     * @param {number} [parameters.scaleUnit] The scale unit number of the
+     * StreamingEndpoint.
      *
      * @param {object} [options] Optional Parameters.
      *

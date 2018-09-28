@@ -1333,6 +1333,25 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the ScriptAction class.
+ * @constructor
+ * Custom script action to run on HDI ondemand cluster once it's up.
+ *
+ * @member {string} name The user provided name of the script action.
+ * @member {string} uri The URI for the script action.
+ * @member {object} roles The node types on which the script action should be
+ * executed.
+ * @member {string} [parameters] The parameters for the script action.
+ */
+export interface ScriptAction {
+  name: string;
+  uri: string;
+  roles: any;
+  parameters?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the HDInsightOnDemandLinkedService class.
  * @constructor
  * HDInsight ondemand linked service.
@@ -1413,6 +1432,9 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * HDInsight cluster.
  * @member {object} [zookeeperNodeSize] Specifies the size of the Zoo Keeper
  * node for the HDInsight cluster.
+ * @member {array} [scriptActions] Custom script actions to run on HDI ondemand
+ * cluster once it's up. Please refer to
+ * https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
  */
 export interface HDInsightOnDemandLinkedService extends LinkedService {
   clusterSize: any;
@@ -1445,6 +1467,7 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
   headNodeSize?: any;
   dataNodeSize?: any;
   zookeeperNodeSize?: any;
+  scriptActions?: ScriptAction[];
 }
 
 /**
@@ -4853,6 +4876,8 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureInput] When set to true, Input from activity is
+ * considered as secure and will not be logged to monitoring.
  * @member {boolean} [secureOutput] When set to true, Output from activity is
  * considered as secure and will not be logged to monitoring.
  */
@@ -4860,6 +4885,7 @@ export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureInput?: boolean;
   secureOutput?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -4887,6 +4913,8 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureInput] When set to true, Input from activity
+ * is considered as secure and will not be logged to monitoring.
  * @member {boolean} [policy.secureOutput] When set to true, Output from
  * activity is considered as secure and will not be logged to monitoring.
  */
