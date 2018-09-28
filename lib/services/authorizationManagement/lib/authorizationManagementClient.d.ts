@@ -59,6 +59,7 @@ export default class AuthorizationManagementClient extends AzureServiceClient {
   permissions: operations.Permissions;
   roleAssignments: operations.RoleAssignments;
   roleDefinitions: operations.RoleDefinitions;
+  denyAssignments: operations.DenyAssignments;
 }
 
 export { AuthorizationManagementClient, models as AuthorizationManagementModels };

@@ -13,9 +13,9 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-export default class FrontdoorManagementClient extends AzureServiceClient {
+export default class FrontDoorManagementClient extends AzureServiceClient {
   /**
-   * Initializes a new instance of the FrontdoorManagementClient class.
+   * Initializes a new instance of the FrontDoorManagementClient class.
    * @constructor
    *
    * @class
@@ -208,4 +208,4 @@ export default class FrontdoorManagementClient extends AzureServiceClient {
   checkFrontDoorNameAvailabilityWithSubscription(checkFrontDoorNameAvailabilityInput: models.CheckNameAvailabilityInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
 }
 
-export { FrontdoorManagementClient, models as FrontdoorManagementModels };
+export { FrontDoorManagementClient, models as FrontDoorManagementModels };

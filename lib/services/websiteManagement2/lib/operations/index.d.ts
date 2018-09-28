@@ -56415,6 +56415,9 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
+     * @param {number} [appServicePlan.maximumElasticWorkerCount] Maximum number of
+     * total workers allowed for this ElasticScaleEnabled App Service Plan
+     *
      * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
      * Service Plan owns spot instances.
      *
@@ -56518,6 +56521,9 @@ export interface AppServicePlans {
      * assigned to this App Service plan can be scaled independently.
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
+     *
+     * @param {number} [appServicePlan.maximumElasticWorkerCount] Maximum number of
+     * total workers allowed for this ElasticScaleEnabled App Service Plan
      *
      * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
      * Service Plan owns spot instances.
@@ -56706,6 +56712,9 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
+     * @param {number} [appServicePlan.maximumElasticWorkerCount] Maximum number of
+     * total workers allowed for this ElasticScaleEnabled App Service Plan
+     *
      * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
      * Service Plan owns spot instances.
      *
@@ -56771,6 +56780,9 @@ export interface AppServicePlans {
      * assigned to this App Service plan can be scaled independently.
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
+     *
+     * @param {number} [appServicePlan.maximumElasticWorkerCount] Maximum number of
+     * total workers allowed for this ElasticScaleEnabled App Service Plan
      *
      * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
      * Service Plan owns spot instances.
@@ -58612,6 +58624,9 @@ export interface AppServicePlans {
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
      *
+     * @param {number} [appServicePlan.maximumElasticWorkerCount] Maximum number of
+     * total workers allowed for this ElasticScaleEnabled App Service Plan
+     *
      * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
      * Service Plan owns spot instances.
      *
@@ -58715,6 +58730,9 @@ export interface AppServicePlans {
      * assigned to this App Service plan can be scaled independently.
      * If <code>false</code>, apps assigned to this App Service plan will scale to
      * all instances of the plan.
+     *
+     * @param {number} [appServicePlan.maximumElasticWorkerCount] Maximum number of
+     * total workers allowed for this ElasticScaleEnabled App Service Plan
      *
      * @param {boolean} [appServicePlan.isSpot] If <code>true</code>, this App
      * Service Plan owns spot instances.
