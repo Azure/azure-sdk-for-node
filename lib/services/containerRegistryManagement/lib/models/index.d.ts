@@ -295,6 +295,23 @@ export interface Registry extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the RegistryIdentity class.
+ * @constructor
+ * Identity of the container registry.
+ *
+ * @member {string} [identityType] The type of identity used for registry.
+ * @member {string} [identityPrincipalId] The principal ID of registry
+ * identity.
+ * @member {string} [tenantId] The tenant ID of registry.
+ */
+export interface RegistryIdentity {
+  identityType?: string;
+  identityPrincipalId?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RegistryUpdateParameters class.
  * @constructor
  * The parameters for updating a container registry.
