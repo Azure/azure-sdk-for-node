@@ -47,8 +47,6 @@ export default class StorageManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -61,6 +59,7 @@ export default class StorageManagementClient extends AzureServiceClient {
   storageAccounts: operations.StorageAccounts;
   usages: operations.Usages;
   blobContainers: operations.BlobContainers;
+  managementPolicies: operations.ManagementPolicies;
 }
 
 export { StorageManagementClient, models as StorageManagementModels };

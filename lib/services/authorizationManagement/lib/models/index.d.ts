@@ -200,23 +200,118 @@ export interface RoleAssignment {
  * @constructor
  * Role assignment create parameters.
  *
- * @member {string} [roleDefinitionId] The role definition ID used in the role
+ * @member {string} roleDefinitionId The role definition ID used in the role
  * assignment.
- * @member {string} [principalId] The principal ID assigned to the role. This
+ * @member {string} principalId The principal ID assigned to the role. This
  * maps to the ID inside the Active Directory. It can point to a user, service
  * principal, or security group.
- * @member {string} [principalType] The principal type of the assigned
- * principal ID. Possible values include: 'User', 'Group', 'ServicePrincipal',
- * 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup', 'Application', 'MSI',
- * 'DirectoryObjectOrGroup', 'Everyone'
  * @member {boolean} [canDelegate] The delgation flag used for creating a role
  * assignment
  */
 export interface RoleAssignmentCreateParameters {
-  roleDefinitionId?: string;
-  principalId?: string;
-  principalType?: string;
+  roleDefinitionId: string;
+  principalId: string;
   canDelegate?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DenyAssignmentFilter class.
+ * @constructor
+ * Deny Assignments filter
+ *
+ * @member {string} [denyAssignmentName] Return deny assignment with specified
+ * name.
+ * @member {string} [principalId] Return all deny assignments where the
+ * specified principal is listed in the principals list of deny assignments.
+ * @member {string} [gdprExportPrincipalId] Return all deny assignments where
+ * the specified principal is listed either in the principals list or exclude
+ * principals list of deny assignments.
+ */
+export interface DenyAssignmentFilter {
+  denyAssignmentName?: string;
+  principalId?: string;
+  gdprExportPrincipalId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DenyAssignmentPermission class.
+ * @constructor
+ * Deny assignment permissions.
+ *
+ * @member {array} [actions] Actions to which the deny assignment does not
+ * grant access.
+ * @member {array} [notActions] Actions to exclude from that the deny
+ * assignment does not grant access.
+ * @member {array} [dataActions] Data actions to which the deny assignment does
+ * not grant access.
+ * @member {array} [notDataActions] Data actions to exclude from that the deny
+ * assignment does not grant access.
+ */
+export interface DenyAssignmentPermission {
+  actions?: string[];
+  notActions?: string[];
+  dataActions?: string[];
+  notDataActions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Principal class.
+ * @constructor
+ * Deny assignment principal.
+ *
+ * @member {string} [id] Object ID of the Azure AD principal (user, group, or
+ * service principal) to which the deny assignment applies. An empty guid
+ * '00000000-0000-0000-0000-000000000000' as principal id and principal type as
+ * 'Everyone' represents all users, groups and service principals.
+ * @member {string} [type] Type of object represented by principal id (user,
+ * group, or service principal). An empty guid
+ * '00000000-0000-0000-0000-000000000000' as principal id and principal type as
+ * 'Everyone' represents all users, groups and service principals.
+ */
+export interface Principal {
+  readonly id?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DenyAssignment class.
+ * @constructor
+ * Deny Assignment
+ *
+ * @member {string} [id] The deny assignment ID.
+ * @member {string} [name] The deny assignment name.
+ * @member {string} [type] The deny assignment type.
+ * @member {string} [denyAssignmentName] The display name of the deny
+ * assignment.
+ * @member {string} [description] The description of the deny assignment.
+ * @member {array} [permissions] An array of permissions that are denied by the
+ * deny assignment.
+ * @member {string} [scope] The deny assignment scope.
+ * @member {boolean} [doNotApplyToChildScopes] Determines if the deny
+ * assignment applies to child scopes. Default value is false.
+ * @member {array} [principals] Array of principals to which the deny
+ * assignment applies.
+ * @member {array} [excludePrincipals] Array of principals to which the deny
+ * assignment does not apply.
+ * @member {boolean} [isSystemProtected] Specifies whether this deny assignment
+ * was created by Azure and cannot be edited or deleted.
+ */
+export interface DenyAssignment {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  denyAssignmentName?: string;
+  description?: string;
+  permissions?: DenyAssignmentPermission[];
+  scope?: string;
+  doNotApplyToChildScopes?: boolean;
+  principals?: Principal[];
+  excludePrincipals?: Principal[];
+  isSystemProtected?: boolean;
 }
 
 
@@ -282,5 +377,18 @@ export interface RoleAssignmentListResult extends Array<RoleAssignment> {
  * results.
  */
 export interface RoleDefinitionListResult extends Array<RoleDefinition> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DenyAssignmentListResult class.
+ * @constructor
+ * Deny assignment list operation result.
+ *
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface DenyAssignmentListResult extends Array<DenyAssignment> {
   nextLink?: string;
 }
