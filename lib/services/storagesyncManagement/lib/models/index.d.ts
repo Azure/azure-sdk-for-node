@@ -145,6 +145,17 @@ export interface StorageSyncService extends TrackedResource {
 
 /**
  * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
  * Initializes a new instance of the SyncGroup class.
  * @constructor
  * Sync Group object.
@@ -152,7 +163,7 @@ export interface StorageSyncService extends TrackedResource {
  * @member {string} [uniqueId] Unique Id
  * @member {string} [syncGroupStatus] Sync group status
  */
-export interface SyncGroup extends Resource {
+export interface SyncGroup extends ProxyResource {
   uniqueId?: string;
   readonly syncGroupStatus?: string;
 }
@@ -173,7 +184,7 @@ export interface SyncGroup extends Resource {
  * @member {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
  * @member {string} [lastOperationName] Resource Last Operation Name
  */
-export interface CloudEndpoint extends Resource {
+export interface CloudEndpoint extends ProxyResource {
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -205,20 +216,8 @@ export interface RecallActionParameters {
  * @constructor
  * The parameters used when creating a storage sync service.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  */
-export interface StorageSyncServiceCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface StorageSyncServiceCreateParameters extends TrackedResource {
 }
 
 /**
@@ -229,7 +228,7 @@ export interface StorageSyncServiceCreateParameters {
  *
  * @member {object} [properties] The parameters used to create the sync group
  */
-export interface SyncGroupCreateParameters {
+export interface SyncGroupCreateParameters extends ProxyResource {
   properties?: any;
 }
 
@@ -243,7 +242,7 @@ export interface SyncGroupCreateParameters {
  * @member {string} [storageAccountShareName] Storage Account Share name
  * @member {string} [storageAccountTenantId] Storage Account Tenant Id
  */
-export interface CloudEndpointCreateParameters {
+export interface CloudEndpointCreateParameters extends ProxyResource {
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -264,7 +263,7 @@ export interface CloudEndpointCreateParameters {
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [serverResourceId] Server Resource Id.
  */
-export interface ServerEndpointCreateParameters {
+export interface ServerEndpointCreateParameters extends ProxyResource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
@@ -289,7 +288,7 @@ export interface TriggerRolloverRequest {
  * @class
  * Initializes a new instance of the RegisteredServerCreateParameters class.
  * @constructor
- * The parameters used when creating a storage sync service.
+ * The parameters used when creating a registered server.
  *
  * @member {string} [serverCertificate] Registered Server Certificate
  * @member {string} [agentVersion] Registered Server Agent Version
@@ -301,7 +300,7 @@ export interface TriggerRolloverRequest {
  * @member {string} [serverId] Registered Server serverId
  * @member {string} [friendlyName] Friendly Name
  */
-export interface RegisteredServerCreateParameters {
+export interface RegisteredServerCreateParameters extends ProxyResource {
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
@@ -350,7 +349,7 @@ export interface ServerEndpointUpdateParameters {
  * @member {string} [lastOperationName] Resource Last Operation Name
  * @member {object} [syncStatus] Sync Health Status
  */
-export interface ServerEndpoint extends Resource {
+export interface ServerEndpoint extends ProxyResource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
@@ -390,7 +389,7 @@ export interface ServerEndpoint extends Resource {
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [managementEndpointUri] Management Endpoint Uri
  */
-export interface RegisteredServer extends Resource {
+export interface RegisteredServer extends ProxyResource {
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
@@ -439,7 +438,7 @@ export interface ResourcesMoveInfo {
  * @member {string} [steps] workflow steps
  * @member {string} [lastOperationId] workflow last operation identifier.
  */
-export interface Workflow extends Resource {
+export interface Workflow extends ProxyResource {
   lastStepName?: string;
   status?: string;
   operation?: string;
@@ -661,17 +660,6 @@ export interface WorkflowArray {
 export interface StorageSyncServiceUpdateParameters {
   tags?: { [propertyName: string]: string };
   properties?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
- *
- */
-export interface ProxyResource extends Resource {
 }
 
 /**
