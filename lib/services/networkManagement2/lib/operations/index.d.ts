@@ -278,7 +278,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -446,7 +446,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -1266,7 +1266,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -1434,7 +1434,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes

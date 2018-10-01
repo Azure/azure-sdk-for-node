@@ -4072,7 +4072,7 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * Customer error of an application gateway.
  *
  * @member {string} [statusCode] Status code of the application gateway
- * customer error. Possible values include: '403', '502'
+ * customer error. Possible values include: 'HttpStatus403', 'HttpStatus502'
  * @member {string} [customErrorPageUrl] Error page URL of the application
  * gateway customer error.
  */
@@ -4103,7 +4103,7 @@ export interface ApplicationGatewayCustomError {
  * is https. Enables SNI for multi-hosting.
  * @member {string} [provisioningState] Provisioning state of the HTTP listener
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [customErrorConfiguration] Custom error configurations of
+ * @member {array} [customErrorConfigurations] Custom error configurations of
  * the HTTP listener.
  * @member {string} [name] Name of the HTTP listener that is unique within an
  * Application Gateway.
@@ -4119,7 +4119,7 @@ export interface ApplicationGatewayHttpListener extends SubResource {
   sslCertificate?: SubResource;
   requireServerNameIndication?: boolean;
   provisioningState?: string;
-  customErrorConfiguration?: ApplicationGatewayCustomError[];
+  customErrorConfigurations?: ApplicationGatewayCustomError[];
   name?: string;
   etag?: string;
   type?: string;
@@ -4528,7 +4528,7 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
  * gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [customErrorConfiguration] Custom error configurations of
+ * @member {array} [customErrorConfigurations] Custom error configurations of
  * the application gateway resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
@@ -4558,7 +4558,7 @@ export interface ApplicationGateway extends Resource {
   autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
-  customErrorConfiguration?: ApplicationGatewayCustomError[];
+  customErrorConfigurations?: ApplicationGatewayCustomError[];
   etag?: string;
   zones?: string[];
 }
