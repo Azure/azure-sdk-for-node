@@ -227,21 +227,9 @@ export interface StorageSyncServiceCreateParameters {
  * @constructor
  * The parameters used when creating a sync group.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {object} [properties] The parameters used to create the sync group
  */
 export interface SyncGroupCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
   properties?: any;
 }
 
@@ -251,23 +239,11 @@ export interface SyncGroupCreateParameters {
  * @constructor
  * The parameters used when creating a storage sync service.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {string} [storageAccountResourceId] Storage Account Resource Id
  * @member {string} [storageAccountShareName] Storage Account Share name
  * @member {string} [storageAccountTenantId] Storage Account Tenant Id
  */
 export interface CloudEndpointCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -279,32 +255,34 @@ export interface CloudEndpointCreateParameters {
  * @constructor
  * The parameters used when creating a storage sync service.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {string} [serverLocalPath] Server Local path.
  * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [serverResourceId] Server Resource Id.
  */
 export interface ServerEndpointCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
   friendlyName?: string;
   serverResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerRolloverRequest class.
+ * @constructor
+ * Trigger Rollover Request.
+ *
+ * @member {string} [certificateData] Certificate Data
+ */
+export interface TriggerRolloverRequest {
+  certificateData?: string;
 }
 
 /**
@@ -313,16 +291,6 @@ export interface ServerEndpointCreateParameters {
  * @constructor
  * The parameters used when creating a storage sync service.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {string} [serverCertificate] Registered Server Certificate
  * @member {string} [agentVersion] Registered Server Agent Version
  * @member {string} [serverOSVersion] Registered Server OS Version
@@ -334,8 +302,6 @@ export interface ServerEndpointCreateParameters {
  * @member {string} [friendlyName] Friendly Name
  */
 export interface RegisteredServerCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
@@ -353,17 +319,16 @@ export interface RegisteredServerCreateParameters {
  * @constructor
  * Parameters for updating an Server Endpoint.
  *
- * @member {object} [tags] The user-specified tags associated with the server
- * endpoint.
  * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  */
 export interface ServerEndpointUpdateParameters {
-  tags?: { [propertyName: string]: string };
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
 }
 
 /**
@@ -377,6 +342,7 @@ export interface ServerEndpointUpdateParameters {
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [serverResourceId] Server Resource Id.
  * @member {string} [provisioningState] ServerEndpoint Provisioning State
@@ -388,6 +354,7 @@ export interface ServerEndpoint extends Resource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
   friendlyName?: string;
   serverResourceId?: string;
   provisioningState?: string;
