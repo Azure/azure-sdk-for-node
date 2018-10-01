@@ -422,6 +422,19 @@ export interface DataDiskImage {
 
 /**
  * @class
+ * Initializes a new instance of the AutomaticOSUpgradeProperties class.
+ * @constructor
+ * Describes automatic OS upgrade properties on the image.
+ *
+ * @member {boolean} automaticOSUpgradeSupported Specifies whether automatic OS
+ * upgrade is supported on the image.
+ */
+export interface AutomaticOSUpgradeProperties {
+  automaticOSUpgradeSupported: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineImage class.
  * @constructor
  * Describes a Virtual Machine Image.
@@ -436,11 +449,15 @@ export interface DataDiskImage {
  * @member {string} [osDiskImage.operatingSystem] The operating system of the
  * osDiskImage. Possible values include: 'Windows', 'Linux'
  * @member {array} [dataDiskImages]
+ * @member {object} [automaticOSUpgradeProperties]
+ * @member {boolean} [automaticOSUpgradeProperties.automaticOSUpgradeSupported]
+ * Specifies whether automatic OS upgrade is supported on the image.
  */
 export interface VirtualMachineImage extends VirtualMachineImageResource {
   plan?: PurchasePlan;
   osDiskImage?: OSDiskImage;
   dataDiskImages?: DataDiskImage[];
+  automaticOSUpgradeProperties?: AutomaticOSUpgradeProperties;
 }
 
 /**
