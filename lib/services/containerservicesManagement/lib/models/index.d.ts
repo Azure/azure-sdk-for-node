@@ -75,6 +75,21 @@ export interface OpenShiftRouterProfile {
 
 /**
  * @class
+ * Initializes a new instance of the NetworkProfile class.
+ * @constructor
+ * Represents the OpenShift networking configuration
+ *
+ * @member {string} [vnetCIDR] CIDR for the OpenShift Vnet. Default value:
+ * '10.0.0.0/8' .
+ * @member {string} [peerVnetID] CIDR of the Vnet to peer.
+ */
+export interface NetworkProfile {
+  vnetCIDR?: string;
+  peerVnetID?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OpenShiftManagedClusterMasterPoolProfile class.
  * @constructor
  * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift
@@ -86,8 +101,7 @@ export interface OpenShiftRouterProfile {
  * The default value is 3. Default value: 3 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
- * identifier.
+ * @member {string} [subnetCIDR] Subnet CIDR for the peering.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
@@ -96,7 +110,7 @@ export interface OpenShiftManagedClusterMasterPoolProfile {
   name?: string;
   count: number;
   vmSize: string;
-  vnetSubnetID?: string;
+  subnetCIDR?: string;
   osType?: string;
 }
 
@@ -113,8 +127,8 @@ export interface OpenShiftManagedClusterMasterPoolProfile {
  * is 2. . Default value: 2 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
  * 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
- * identifier.
+ * @member {string} [subnetCIDR] Subnet CIDR for the peering. Default value:
+ * '10.0.0.0/24' .
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
@@ -125,7 +139,7 @@ export interface OpenShiftManagedClusterAgentPoolProfile {
   name: string;
   count: number;
   vmSize: string;
-  vnetSubnetID?: string;
+  subnetCIDR?: string;
   osType?: string;
   role?: string;
 }
@@ -179,6 +193,9 @@ export interface OpenShiftManagedClusterAuthProfile {
  * API server.
  * @member {string} [fqdn] User-specified FQDN for OpenShift API server
  * loadbalancer internal hostname.
+ * @member {object} [networkProfile] Configuration for OpenShift networking.
+ * @member {string} [networkProfile.vnetCIDR] CIDR for the OpenShift Vnet.
+ * @member {string} [networkProfile.peerVnetID] CIDR of the Vnet to peer.
  * @member {array} [routerProfiles] Configuration for OpenShift router(s).
  * @member {object} [masterPoolProfile] Configuration for OpenShift master VMs.
  * @member {string} [masterPoolProfile.name] Unique name of the master pool
@@ -187,8 +204,7 @@ export interface OpenShiftManagedClusterAuthProfile {
  * docker containers. The default value is 3.
  * @member {string} [masterPoolProfile.vmSize] Size of agent VMs. Possible
  * values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
- * @member {string} [masterPoolProfile.vnetSubnetID] VNet SubnetID specifies
- * the vnet's subnet identifier.
+ * @member {string} [masterPoolProfile.subnetCIDR] Subnet CIDR for the peering.
  * @member {string} [masterPoolProfile.osType] OsType to be used to specify os
  * type. Choose from Linux and Windows. Default to Linux. Possible values
  * include: 'Linux', 'Windows'
@@ -203,6 +219,7 @@ export interface OpenShiftManagedCluster extends Resource {
   openShiftVersion: string;
   publicHostname?: string;
   fqdn?: string;
+  networkProfile?: NetworkProfile;
   routerProfiles?: OpenShiftRouterProfile[];
   masterPoolProfile?: OpenShiftManagedClusterMasterPoolProfile;
   agentPoolProfiles?: OpenShiftManagedClusterAgentPoolProfile[];
