@@ -30,8 +30,9 @@ export interface ServiceTopologies {
      * @param {object} serviceTopologyInfo Source topology object defines the
      * resource.
      *
-     * @param {string} [serviceTopologyInfo.artifactSourceId] The artifact source
-     * that contains the artifacts that can be referenced in the service units.
+     * @param {string} [serviceTopologyInfo.artifactSourceId] The resource Id of
+     * the artifact source that contains the artifacts that can be referenced in
+     * the service units.
      *
      * @param {object} [serviceTopologyInfo.tags] Resource tags.
      *
@@ -65,8 +66,9 @@ export interface ServiceTopologies {
      * @param {object} serviceTopologyInfo Source topology object defines the
      * resource.
      *
-     * @param {string} [serviceTopologyInfo.artifactSourceId] The artifact source
-     * that contains the artifacts that can be referenced in the service units.
+     * @param {string} [serviceTopologyInfo.artifactSourceId] The resource Id of
+     * the artifact source that contains the artifacts that can be referenced in
+     * the service units.
      *
      * @param {object} [serviceTopologyInfo.tags] Resource tags.
      *
@@ -112,7 +114,7 @@ export interface ServiceTopologies {
 
 
     /**
-     * @summary Gets a topology resource.
+     * @summary Gets the service topology.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -133,7 +135,7 @@ export interface ServiceTopologies {
     getWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceTopologyResource>>;
 
     /**
-     * @summary Gets a topology resource.
+     * @summary Gets the service topology.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -174,7 +176,7 @@ export interface ServiceTopologies {
 
 
     /**
-     * @summary Deletes a topology resource.
+     * @summary Deletes the service topology.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -195,7 +197,7 @@ export interface ServiceTopologies {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes a topology resource.
+     * @summary Deletes the service topology.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -243,7 +245,7 @@ export interface Services {
 
 
     /**
-     * @summary Creates or updates a service in the topology.
+     * @summary Creates or updates a service in the service topology.
      *
      * Synchronously creates a new service or updates an existing service.
      *
@@ -254,13 +256,13 @@ export interface Services {
      *
      * @param {string} serviceName The name of the service resource.
      *
-     * @param {object} serviceInfo The topoogy group resource object
+     * @param {object} serviceInfo The service object
      *
      * @param {string} serviceInfo.targetLocation The Azure location to which the
-     * resources in the service belong to.
+     * resources in the service belong to or should be deployed to.
      *
      * @param {string} serviceInfo.targetSubscriptionId The subscription to which
-     * the resources in the service belong to.
+     * the resources in the service belong to or should be deployed to.
      *
      * @param {object} [serviceInfo.tags] Resource tags.
      *
@@ -281,7 +283,7 @@ export interface Services {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceInfo: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
 
     /**
-     * @summary Creates or updates a service in the topology.
+     * @summary Creates or updates a service in the service topology.
      *
      * Synchronously creates a new service or updates an existing service.
      *
@@ -292,13 +294,13 @@ export interface Services {
      *
      * @param {string} serviceName The name of the service resource.
      *
-     * @param {object} serviceInfo The topoogy group resource object
+     * @param {object} serviceInfo The service object
      *
      * @param {string} serviceInfo.targetLocation The Azure location to which the
-     * resources in the service belong to.
+     * resources in the service belong to or should be deployed to.
      *
      * @param {string} serviceInfo.targetSubscriptionId The subscription to which
-     * the resources in the service belong to.
+     * the resources in the service belong to or should be deployed to.
      *
      * @param {object} [serviceInfo.tags] Resource tags.
      *
@@ -338,7 +340,7 @@ export interface Services {
 
 
     /**
-     * @summary Gets a service resource.
+     * @summary Gets the service.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -361,7 +363,7 @@ export interface Services {
     getWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
 
     /**
-     * @summary Gets a service resource.
+     * @summary Gets the service.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -403,7 +405,7 @@ export interface Services {
 
 
     /**
-     * @summary Deletes a service resource.
+     * @summary Deletes the service.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -426,7 +428,7 @@ export interface Services {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes a service resource.
+     * @summary Deletes the service.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -476,8 +478,8 @@ export interface ServiceUnits {
 
 
     /**
-     * @summary Creates or updates a service unit in the service within the
-     * referenced topology resource.
+     * @summary Creates or updates a service unit under the service in the service
+     * topology.
      *
      * This is an asynchronous operation and can be polled to completion using the
      * operation resource returned by this operation.
@@ -494,7 +496,8 @@ export interface ServiceUnits {
      * @param {object} serviceUnitInfo The service unit resource object.
      *
      * @param {string} serviceUnitInfo.targetResourceGroup The Azure Resource Group
-     * to which the resources in the service unit belong to.
+     * to which the resources in the service unit belong to or should be deployed
+     * to.
      *
      * @param {string} serviceUnitInfo.deploymentMode Describes the type of ARM
      * deployment to be performed on the resource. Possible values include:
@@ -536,8 +539,8 @@ export interface ServiceUnits {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
 
     /**
-     * @summary Creates or updates a service unit in the service within the
-     * referenced topology resource.
+     * @summary Creates or updates a service unit under the service in the service
+     * topology.
      *
      * This is an asynchronous operation and can be polled to completion using the
      * operation resource returned by this operation.
@@ -554,7 +557,8 @@ export interface ServiceUnits {
      * @param {object} serviceUnitInfo The service unit resource object.
      *
      * @param {string} serviceUnitInfo.targetResourceGroup The Azure Resource Group
-     * to which the resources in the service unit belong to.
+     * to which the resources in the service unit belong to or should be deployed
+     * to.
      *
      * @param {string} serviceUnitInfo.deploymentMode Describes the type of ARM
      * deployment to be performed on the resource. Possible values include:
@@ -615,7 +619,7 @@ export interface ServiceUnits {
 
 
     /**
-     * @summary Gets a service unit resource.
+     * @summary Gets the service unit.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -640,7 +644,7 @@ export interface ServiceUnits {
     getWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
 
     /**
-     * @summary Gets a service unit resource.
+     * @summary Gets the service unit.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -684,7 +688,7 @@ export interface ServiceUnits {
 
 
     /**
-     * @summary Deletes a service unit resource.
+     * @summary Deletes the service unit.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -709,7 +713,7 @@ export interface ServiceUnits {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes a service unit resource.
+     * @summary Deletes the service unit.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -752,8 +756,8 @@ export interface ServiceUnits {
 
 
     /**
-     * @summary Creates or updates a service unit in the service within the
-     * referenced topology resource.
+     * @summary Creates or updates a service unit under the service in the service
+     * topology.
      *
      * This is an asynchronous operation and can be polled to completion using the
      * operation resource returned by this operation.
@@ -770,7 +774,8 @@ export interface ServiceUnits {
      * @param {object} serviceUnitInfo The service unit resource object.
      *
      * @param {string} serviceUnitInfo.targetResourceGroup The Azure Resource Group
-     * to which the resources in the service unit belong to.
+     * to which the resources in the service unit belong to or should be deployed
+     * to.
      *
      * @param {string} serviceUnitInfo.deploymentMode Describes the type of ARM
      * deployment to be performed on the resource. Possible values include:
@@ -812,8 +817,8 @@ export interface ServiceUnits {
     beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceTopologyName: string, serviceName: string, serviceUnitName: string, serviceUnitInfo: models.ServiceUnitResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceUnitResource>>;
 
     /**
-     * @summary Creates or updates a service unit in the service within the
-     * referenced topology resource.
+     * @summary Creates or updates a service unit under the service in the service
+     * topology.
      *
      * This is an asynchronous operation and can be polled to completion using the
      * operation resource returned by this operation.
@@ -830,7 +835,8 @@ export interface ServiceUnits {
      * @param {object} serviceUnitInfo The service unit resource object.
      *
      * @param {string} serviceUnitInfo.targetResourceGroup The Azure Resource Group
-     * to which the resources in the service unit belong to.
+     * to which the resources in the service unit belong to or should be deployed
+     * to.
      *
      * @param {string} serviceUnitInfo.deploymentMode Describes the type of ARM
      * deployment to be performed on the resource. Possible values include:
@@ -900,7 +906,7 @@ export interface Steps {
 
 
     /**
-     * @summary Creates or updates a deployment step.
+     * @summary Creates or updates a rollout step with the given step properties.
      *
      * Synchronously creates a new step or updates an existing step.
      *
@@ -911,9 +917,10 @@ export interface Steps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.stepInfo] The resource object.
+     * @param {object} [options.stepInfo] The step object.
      *
-     * @param {object} options.stepInfo.properties The properties for the resource.
+     * @param {object} options.stepInfo.properties The properties that define the
+     * step.
      *
      * @param {string} options.stepInfo.properties.stepType Polymorphic
      * Discriminator
@@ -935,7 +942,7 @@ export interface Steps {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, stepName: string, options?: { stepInfo? : models.StepResource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StepResource>>;
 
     /**
-     * @summary Creates or updates a deployment step.
+     * @summary Creates or updates a rollout step with the given step properties.
      *
      * Synchronously creates a new step or updates an existing step.
      *
@@ -946,9 +953,10 @@ export interface Steps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.stepInfo] The resource object.
+     * @param {object} [options.stepInfo] The step object.
      *
-     * @param {object} options.stepInfo.properties The properties for the resource.
+     * @param {object} options.stepInfo.properties The properties that define the
+     * step.
      *
      * @param {string} options.stepInfo.properties.stepType Polymorphic
      * Discriminator
@@ -989,7 +997,7 @@ export interface Steps {
 
 
     /**
-     * @summary Gets a topology resource.
+     * @summary Gets the step.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1010,7 +1018,7 @@ export interface Steps {
     getWithHttpOperationResponse(resourceGroupName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StepResource>>;
 
     /**
-     * @summary Gets a topology resource.
+     * @summary Gets the step.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1050,7 +1058,7 @@ export interface Steps {
 
 
     /**
-     * @summary Deletes a deployment step.
+     * @summary Deletes the step.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1071,7 +1079,7 @@ export interface Steps {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes a deployment step.
+     * @summary Deletes the step.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1145,14 +1153,14 @@ export interface Rollouts {
      * being deployed.
      *
      * @param {string} [options.rolloutRequest.artifactSourceId] The reference to
-     * the ARM resource Id where the payload is located.
+     * the artifact source resource Id where the payload is located.
      *
-     * @param {string} options.rolloutRequest.targetServiceTopologyId The reference
-     * to the resource Id of the service topology from which services are chosen to
-     * be deployed.
+     * @param {string} options.rolloutRequest.targetServiceTopologyId The resource
+     * Id of the service topology from which service units are being referenced in
+     * step groups to be deployed.
      *
-     * @param {array} options.rolloutRequest.stepGroups The list of steps that
-     * define the orchestration.
+     * @param {array} options.rolloutRequest.stepGroups The list of step groups
+     * that define the orchestration.
      *
      * @param {object} [options.rolloutRequest.tags] Resource tags.
      *
@@ -1197,14 +1205,14 @@ export interface Rollouts {
      * being deployed.
      *
      * @param {string} [options.rolloutRequest.artifactSourceId] The reference to
-     * the ARM resource Id where the payload is located.
+     * the artifact source resource Id where the payload is located.
      *
-     * @param {string} options.rolloutRequest.targetServiceTopologyId The reference
-     * to the resource Id of the service topology from which services are chosen to
-     * be deployed.
+     * @param {string} options.rolloutRequest.targetServiceTopologyId The resource
+     * Id of the service topology from which service units are being referenced in
+     * step groups to be deployed.
      *
-     * @param {array} options.rolloutRequest.stepGroups The list of steps that
-     * define the orchestration.
+     * @param {array} options.rolloutRequest.stepGroups The list of step groups
+     * that define the orchestration.
      *
      * @param {object} [options.rolloutRequest.tags] Resource tags.
      *
@@ -1242,7 +1250,7 @@ export interface Rollouts {
 
 
     /**
-     * @summary Gets detailed information of an ongoing or completed rollout.
+     * @summary Gets detailed information of a rollout.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1267,7 +1275,7 @@ export interface Rollouts {
     getWithHttpOperationResponse(resourceGroupName: string, rolloutName: string, options?: { retryAttempt? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Rollout>>;
 
     /**
-     * @summary Gets detailed information of an ongoing or completed rollout.
+     * @summary Gets detailed information of a rollout.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1313,7 +1321,7 @@ export interface Rollouts {
     /**
      * @summary Deletes a rollout resource.
      *
-     * A rollout can only be deleted if it is in a terminal state.
+     * Only rollouts in terminal state can be deleted.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1336,7 +1344,7 @@ export interface Rollouts {
     /**
      * @summary Deletes a rollout resource.
      *
-     * A rollout can only be deleted if it is in a terminal state.
+     * Only rollouts in terminal state can be deleted.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1377,7 +1385,7 @@ export interface Rollouts {
     /**
      * @summary Stops a running rollout.
      *
-     * A rollout can be canceled only if it is in running state.
+     * Only running rollouts can be canceled.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1400,7 +1408,7 @@ export interface Rollouts {
     /**
      * @summary Stops a running rollout.
      *
-     * A rollout can be canceled only if it is in running state.
+     * Only running rollouts can be canceled.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1442,7 +1450,7 @@ export interface Rollouts {
     /**
      * @summary Restarts a failed rollout and optionally skips all succeeded steps.
      *
-     * A rollout can be restarted only if is in a terminal state and failed.
+     * Only failed rollouts can be restarted.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1470,7 +1478,7 @@ export interface Rollouts {
     /**
      * @summary Restarts a failed rollout and optionally skips all succeeded steps.
      *
-     * A rollout can be restarted only if is in a terminal state and failed.
+     * Only failed rollouts can be restarted.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1541,14 +1549,14 @@ export interface Rollouts {
      * being deployed.
      *
      * @param {string} [options.rolloutRequest.artifactSourceId] The reference to
-     * the ARM resource Id where the payload is located.
+     * the artifact source resource Id where the payload is located.
      *
-     * @param {string} options.rolloutRequest.targetServiceTopologyId The reference
-     * to the resource Id of the service topology from which services are chosen to
-     * be deployed.
+     * @param {string} options.rolloutRequest.targetServiceTopologyId The resource
+     * Id of the service topology from which service units are being referenced in
+     * step groups to be deployed.
      *
-     * @param {array} options.rolloutRequest.stepGroups The list of steps that
-     * define the orchestration.
+     * @param {array} options.rolloutRequest.stepGroups The list of step groups
+     * that define the orchestration.
      *
      * @param {object} [options.rolloutRequest.tags] Resource tags.
      *
@@ -1593,14 +1601,14 @@ export interface Rollouts {
      * being deployed.
      *
      * @param {string} [options.rolloutRequest.artifactSourceId] The reference to
-     * the ARM resource Id where the payload is located.
+     * the artifact source resource Id where the payload is located.
      *
-     * @param {string} options.rolloutRequest.targetServiceTopologyId The reference
-     * to the resource Id of the service topology from which services are chosen to
-     * be deployed.
+     * @param {string} options.rolloutRequest.targetServiceTopologyId The resource
+     * Id of the service topology from which service units are being referenced in
+     * step groups to be deployed.
      *
-     * @param {array} options.rolloutRequest.stepGroups The list of steps that
-     * define the orchestration.
+     * @param {array} options.rolloutRequest.stepGroups The list of step groups
+     * that define the orchestration.
      *
      * @param {object} [options.rolloutRequest.tags] Resource tags.
      *
@@ -1647,7 +1655,7 @@ export interface ArtifactSources {
 
 
     /**
-     * @summary Creates or updates an Artifact source.
+     * @summary Creates or updates an artifact source.
      *
      * Synchronously creates a new artifact source or updates an existing artifact
      * source.
@@ -1665,8 +1673,14 @@ export interface ArtifactSources {
      * @param {string} options.artifactSourceInfo.sourceType The type of artifact
      * source used.
      *
-     * @param {string} [options.artifactSourceInfo.artifactRoot] The root folder
-     * under which all artifacts for all environments are expected to be organized.
+     * @param {string} [options.artifactSourceInfo.artifactRoot] The path from the
+     * location that the 'authentication' property [say, a SAS URI to the blob
+     * container] refers to, to the location of the artifacts. This can be used to
+     * differentiate different versions of the artifacts. Or, different types of
+     * artifacts like binaries or templates. The location referenced by the
+     * authentication property concatenated with this optional artifactRoot path
+     * forms the artifact source location where the artifacts are expected to be
+     * found.
      *
      * @param {object} options.artifactSourceInfo.authentication The authentication
      * method to use to access the artifact source.
@@ -1691,7 +1705,7 @@ export interface ArtifactSources {
     createOrUpdateWithHttpOperationResponse(resourceGroupName: string, artifactSourceName: string, options?: { artifactSourceInfo? : models.ArtifactSource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
 
     /**
-     * @summary Creates or updates an Artifact source.
+     * @summary Creates or updates an artifact source.
      *
      * Synchronously creates a new artifact source or updates an existing artifact
      * source.
@@ -1709,8 +1723,14 @@ export interface ArtifactSources {
      * @param {string} options.artifactSourceInfo.sourceType The type of artifact
      * source used.
      *
-     * @param {string} [options.artifactSourceInfo.artifactRoot] The root folder
-     * under which all artifacts for all environments are expected to be organized.
+     * @param {string} [options.artifactSourceInfo.artifactRoot] The path from the
+     * location that the 'authentication' property [say, a SAS URI to the blob
+     * container] refers to, to the location of the artifacts. This can be used to
+     * differentiate different versions of the artifacts. Or, different types of
+     * artifacts like binaries or templates. The location referenced by the
+     * authentication property concatenated with this optional artifactRoot path
+     * forms the artifact source location where the artifacts are expected to be
+     * found.
      *
      * @param {object} options.artifactSourceInfo.authentication The authentication
      * method to use to access the artifact source.
@@ -1754,7 +1774,7 @@ export interface ArtifactSources {
 
 
     /**
-     * @summary Gets an artifact resource.
+     * @summary Gets an artifact source.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1775,7 +1795,7 @@ export interface ArtifactSources {
     getWithHttpOperationResponse(resourceGroupName: string, artifactSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ArtifactSource>>;
 
     /**
-     * @summary Gets an artifact resource.
+     * @summary Gets an artifact source.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1815,7 +1835,7 @@ export interface ArtifactSources {
 
 
     /**
-     * @summary Deletes an artifact source resource.
+     * @summary Deletes an artifact source.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -1836,7 +1856,7 @@ export interface ArtifactSources {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, artifactSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes an artifact source resource.
+     * @summary Deletes an artifact source.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
