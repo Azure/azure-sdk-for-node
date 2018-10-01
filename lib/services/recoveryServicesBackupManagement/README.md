@@ -18,7 +18,7 @@ npm install azure-arm-recoveryservicesbackup
 
 ## How to use
 
-### Authentication, client creation and list backupJobs as an example.
+### Authentication, client creation and get protectionIntent as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -28,9 +28,9 @@ msRestAzure.interactiveLogin().then((creds) => {
     const client = new RecoveryServicesBackupClient(creds, subscriptionId);
     const vaultName = "testvaultName";
     const resourceGroupName = "testresourceGroupName";
-    const filter = "testfilter";
-    const skipToken = "testskipToken";
-    return client.backupJobs.list(vaultName, resourceGroupName, filter, skipToken).then((result) => {
+    const fabricName = "testfabricName";
+    const intentObjectName = "testintentObjectName";
+    return client.protectionIntent.get(vaultName, resourceGroupName, fabricName, intentObjectName).then((result) => {
       console.log("The result is:");
       console.log(result);
     });
