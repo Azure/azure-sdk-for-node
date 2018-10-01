@@ -39,7 +39,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -92,7 +101,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1176,7 +1194,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1229,7 +1256,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
