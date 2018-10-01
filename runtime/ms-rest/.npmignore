@@ -40,3 +40,7 @@ xunit.xml
 
 # Typings #
 typings/
+
+# test #
+test/
+tests/

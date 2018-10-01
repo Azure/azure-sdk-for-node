@@ -56,10 +56,12 @@ export default class AzureMediaServices extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  accountFilters: operations.AccountFilters;
   operations: operations.Operations;
   mediaservices: operations.Mediaservices;
   locations: operations.Locations;
   assets: operations.Assets;
+  assetFilters: operations.AssetFilters;
   contentKeyPolicies: operations.ContentKeyPolicies;
   transforms: operations.Transforms;
   jobs: operations.Jobs;
