@@ -128,10 +128,10 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
-     * @param {string} [parameters.networkProfile.vnetCIDR] CIDR for the OpenShift
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
      * Vnet.
      *
-     * @param {string} [parameters.networkProfile.peerVnetID] CIDR of the Vnet to
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
@@ -149,7 +149,7 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfile.subnetCIDR] Subnet CIDR for
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
      *
      * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
@@ -221,10 +221,10 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
-     * @param {string} [parameters.networkProfile.vnetCIDR] CIDR for the OpenShift
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
      * Vnet.
      *
-     * @param {string} [parameters.networkProfile.peerVnetID] CIDR of the Vnet to
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
@@ -242,7 +242,7 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfile.subnetCIDR] Subnet CIDR for
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
      *
      * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
@@ -476,10 +476,10 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
-     * @param {string} [parameters.networkProfile.vnetCIDR] CIDR for the OpenShift
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
      * Vnet.
      *
-     * @param {string} [parameters.networkProfile.peerVnetID] CIDR of the Vnet to
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
@@ -497,7 +497,7 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfile.subnetCIDR] Subnet CIDR for
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
      *
      * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
@@ -569,10 +569,10 @@ export interface OpenShiftManagedClusters {
      * @param {object} [parameters.networkProfile] Configuration for OpenShift
      * networking.
      *
-     * @param {string} [parameters.networkProfile.vnetCIDR] CIDR for the OpenShift
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
      * Vnet.
      *
-     * @param {string} [parameters.networkProfile.peerVnetID] CIDR of the Vnet to
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
      * peer.
      *
      * @param {array} [parameters.routerProfiles] Configuration for OpenShift
@@ -590,7 +590,7 @@ export interface OpenShiftManagedClusters {
      * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
      * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
      *
-     * @param {string} [parameters.masterPoolProfile.subnetCIDR] Subnet CIDR for
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
      * the peering.
      *
      * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
