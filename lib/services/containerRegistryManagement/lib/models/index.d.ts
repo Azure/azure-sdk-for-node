@@ -1031,15 +1031,16 @@ export interface ProxyResource extends BaseResource {
  * 'Error', 'Timeout'
  * @member {date} [lastUpdatedTime] The last updated time for the run.
  * @member {string} [runType] The type of run. Possible values include:
- * 'QuickBuild', 'AutoBuild'
+ * 'QuickBuild', 'QuickRun', 'AutoBuild', 'AutoRun'
  * @member {date} [createTime] The time the run was scheduled.
  * @member {date} [startTime] The time the run started.
  * @member {date} [finishTime] The time the run finished.
  * @member {array} [outputImages] The list of all images that were generated
- * from the run. This is applicable if the run is of type Build.
+ * from the run. This is applicable if the run generates base image
+ * dependencies.
  * @member {string} [task] The task against which run was scheduled.
  * @member {object} [imageUpdateTrigger] The image update trigger that caused
- * the run. This is applicable if the task is of build type.
+ * the run. This is applicable if the task has base image trigger configured.
  * @member {string} [imageUpdateTrigger.id] The unique ID of the trigger.
  * @member {date} [imageUpdateTrigger.timestamp] The timestamp when the image
  * update happened.
@@ -1116,7 +1117,7 @@ export interface SourceUploadDefinition {
  *
  * @member {string} [runId] The unique identifier for the run.
  * @member {string} [runType] The type of run. Possible values include:
- * 'QuickBuild', 'AutoBuild'
+ * 'QuickBuild', 'QuickRun', 'AutoBuild', 'AutoRun'
  * @member {string} [status] The current status of the run. Possible values
  * include: 'Queued', 'Started', 'Running', 'Succeeded', 'Failed', 'Canceled',
  * 'Error', 'Timeout'
@@ -1197,10 +1198,13 @@ export interface BaseImageDependency {
  *
  * @member {array} [baseImageDependencies] List of base image dependencies for
  * a step.
+ * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * context for the task step.
  * @member {string} type Polymorphic Discriminator
  */
 export interface TaskStepProperties {
   readonly baseImageDependencies?: BaseImageDependency[];
+  contextPath?: string;
   type: string;
 }
 
@@ -1289,8 +1293,8 @@ export interface SourceProperties {
  * Time in seconds that the token remains valid
  * @member {array} sourceTriggerEvents The source event corresponding to the
  * trigger.
- * @member {string} [status] The current status of build trigger. Possible
- * values include: 'Disabled', 'Enabled'
+ * @member {string} [status] The current status of trigger. Possible values
+ * include: 'Disabled', 'Enabled'
  * @member {string} name The name of the trigger.
  */
 export interface SourceTrigger {
@@ -1308,8 +1312,8 @@ export interface SourceTrigger {
  *
  * @member {string} baseImageTriggerType The type of the auto trigger for base
  * image dependency updates. Possible values include: 'All', 'Runtime'
- * @member {string} [status] The current status of build trigger. Possible
- * values include: 'Disabled', 'Enabled'
+ * @member {string} [status] The current status of trigger. Possible values
+ * include: 'Disabled', 'Enabled'
  * @member {string} name The name of the trigger.
  */
 export interface BaseImageTrigger {
@@ -1322,7 +1326,7 @@ export interface BaseImageTrigger {
  * @class
  * Initializes a new instance of the TriggerProperties class.
  * @constructor
- * The properties of a build trigger.
+ * The properties of a trigger.
  *
  * @member {array} [sourceTriggers] The collection of triggers based on source
  * code repository.
@@ -1331,8 +1335,8 @@ export interface BaseImageTrigger {
  * @member {string} [baseImageTrigger.baseImageTriggerType] The type of the
  * auto trigger for base image dependency updates. Possible values include:
  * 'All', 'Runtime'
- * @member {string} [baseImageTrigger.status] The current status of build
- * trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [baseImageTrigger.status] The current status of trigger.
+ * Possible values include: 'Disabled', 'Enabled'
  * @member {string} [baseImageTrigger.name] The name of the trigger.
  */
 export interface TriggerProperties {
@@ -1369,6 +1373,8 @@ export interface TriggerProperties {
  * @member {object} step The properties of a task step.
  * @member {array} [step.baseImageDependencies] List of base image dependencies
  * for a step.
+ * @member {string} [step.contextPath] The URL(absolute or relative) of the
+ * source context for the task step.
  * @member {string} [step.type] Polymorphic Discriminator
  * @member {object} [trigger] The properties that describe all triggers for the
  * task.
@@ -1380,7 +1386,7 @@ export interface TriggerProperties {
  * the auto trigger for base image dependency updates. Possible values include:
  * 'All', 'Runtime'
  * @member {string} [trigger.baseImageTrigger.status] The current status of
- * build trigger. Possible values include: 'Disabled', 'Enabled'
+ * trigger. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
  */
 export interface Task extends Resource {
@@ -1419,9 +1425,12 @@ export interface PlatformUpdateParameters {
  * @constructor
  * Base properties for updating any task step.
  *
+ * @member {string} [contextPath] The URL(absolute or relative) of the source
+ * context for the task step.
  * @member {string} type Polymorphic Discriminator
  */
 export interface TaskStepUpdateParameters {
+  contextPath?: string;
   type: string;
 }
 
@@ -1510,8 +1519,8 @@ export interface SourceUpdateParameters {
  * Time in seconds that the token remains valid
  * @member {array} [sourceTriggerEvents] The source event corresponding to the
  * trigger.
- * @member {string} [status] The current status of build trigger. Possible
- * values include: 'Disabled', 'Enabled'
+ * @member {string} [status] The current status of trigger. Possible values
+ * include: 'Disabled', 'Enabled'
  * @member {string} name The name of the trigger.
  */
 export interface SourceTriggerUpdateParameters {
@@ -1529,8 +1538,8 @@ export interface SourceTriggerUpdateParameters {
  *
  * @member {string} [baseImageTriggerType] The type of the auto trigger for
  * base image dependency updates. Possible values include: 'All', 'Runtime'
- * @member {string} [status] The current status of build trigger. Possible
- * values include: 'Disabled', 'Enabled'
+ * @member {string} [status] The current status of trigger. Possible values
+ * include: 'Disabled', 'Enabled'
  * @member {string} name The name of the trigger.
  */
 export interface BaseImageTriggerUpdateParameters {
@@ -1543,7 +1552,7 @@ export interface BaseImageTriggerUpdateParameters {
  * @class
  * Initializes a new instance of the TriggerUpdateParameters class.
  * @constructor
- * The properties for updating build triggers.
+ * The properties for updating triggers.
  *
  * @member {array} [sourceTriggers] The collection of triggers based on source
  * code repository.
@@ -1552,8 +1561,8 @@ export interface BaseImageTriggerUpdateParameters {
  * @member {string} [baseImageTrigger.baseImageTriggerType] The type of the
  * auto trigger for base image dependency updates. Possible values include:
  * 'All', 'Runtime'
- * @member {string} [baseImageTrigger.status] The current status of build
- * trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [baseImageTrigger.status] The current status of trigger.
+ * Possible values include: 'Disabled', 'Enabled'
  * @member {string} [baseImageTrigger.name] The name of the trigger.
  */
 export interface TriggerUpdateParameters {
@@ -1583,6 +1592,8 @@ export interface TriggerUpdateParameters {
  * number of cores required for the run.
  * @member {number} [timeout] Run timeout in seconds.
  * @member {object} [step] The properties for updating a task step.
+ * @member {string} [step.contextPath] The URL(absolute or relative) of the
+ * source context for the task step.
  * @member {string} [step.type] Polymorphic Discriminator
  * @member {object} [trigger] The properties for updating trigger properties.
  * @member {array} [trigger.sourceTriggers] The collection of triggers based on
@@ -1593,7 +1604,7 @@ export interface TriggerUpdateParameters {
  * the auto trigger for base image dependency updates. Possible values include:
  * 'All', 'Runtime'
  * @member {string} [trigger.baseImageTrigger.status] The current status of
- * build trigger. Possible values include: 'Disabled', 'Enabled'
+ * trigger. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
  * @member {object} [tags] The ARM resource tags.
  */
@@ -1642,24 +1653,23 @@ export interface Argument {
  * location.
  * @member {array} [argumentsProperty] The collection of override arguments to
  * be used when executing the run.
- * @member {string} sourceLocation The URL(absolute or relative) of the source
- * that needs to be built. For Docker build, it can be an URL to a tar or
- * github repoistory as supported by Docker.
- * If it is relative URL, the relative path should be obtained from calling
- * getSourceUploadUrl API.
- * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
- * @member {object} platform The platform properties against which the build
- * will happen.
+ * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @member {object} platform The platform properties against which the run has
+ * to happen.
  * @member {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
  * @member {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
  * @member {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the build
+ * @member {object} [agentConfiguration] The machine configuration of the run
  * agent.
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
+ * @member {string} [sourceLocation] The URL(absolute or relative) of the
+ * source context. It can be an URL to a tar or git repoistory.
+ * If it is relative URL, the relative path should be obtained from calling
+ * listBuildSourceUploadUrl API.
  */
 export interface DockerBuildRequest extends RunRequest {
   imageNames?: string[];
@@ -1667,10 +1677,10 @@ export interface DockerBuildRequest extends RunRequest {
   noCache?: boolean;
   dockerFilePath: string;
   argumentsProperty?: Argument[];
-  sourceLocation: string;
   timeout?: number;
   platform: PlatformProperties;
   agentConfiguration?: AgentProperties;
+  sourceLocation?: string;
 }
 
 /**
@@ -1702,33 +1712,32 @@ export interface SetValue {
  * to the source.
  * @member {array} [values] The collection of overridable values that can be
  * passed when running a task.
- * @member {string} sourceLocation The URL(absolute or relative) of the source
- * that needs to be built. For Docker build, it can be an URL to a tar or
- * github repoistory as supported by Docker.
- * If it is relative URL, the relative path should be obtained from calling
- * getSourceUploadUrl API.
- * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
- * @member {object} platform The platform properties against which the build
- * will happen.
+ * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @member {object} platform The platform properties against which the run has
+ * to happen.
  * @member {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
  * @member {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
  * @member {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the build
+ * @member {object} [agentConfiguration] The machine configuration of the run
  * agent.
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
+ * @member {string} [sourceLocation] The URL(absolute or relative) of the
+ * source context. It can be an URL to a tar or git repoistory.
+ * If it is relative URL, the relative path should be obtained from calling
+ * listBuildSourceUploadUrl API.
  */
 export interface FileTaskRunRequest extends RunRequest {
   taskFilePath: string;
   valuesFilePath?: string;
   values?: SetValue[];
-  sourceLocation: string;
   timeout?: number;
   platform: PlatformProperties;
   agentConfiguration?: AgentProperties;
+  sourceLocation?: string;
 }
 
 /**
@@ -1759,19 +1768,23 @@ export interface TaskRunRequest extends RunRequest {
  * parameters/values file content.
  * @member {array} [values] The collection of overridable values that can be
  * passed when running a task.
- * @member {number} [timeout] Build timeout in seconds. Default value: 3600 .
- * @member {object} platform The platform properties against which the build
- * will happen.
+ * @member {number} [timeout] Run timeout in seconds. Default value: 3600 .
+ * @member {object} platform The platform properties against which the run has
+ * to happen.
  * @member {string} [platform.os] The operating system type required for the
  * run. Possible values include: 'Windows', 'Linux'
  * @member {string} [platform.architecture] The OS architecture. Possible
  * values include: 'amd64', 'x86', 'arm'
  * @member {string} [platform.variant] Variant of the CPU. Possible values
  * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the build
+ * @member {object} [agentConfiguration] The machine configuration of the run
  * agent.
  * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
  * number of cores required for the run.
+ * @member {string} [sourceLocation] The URL(absolute or relative) of the
+ * source context. It can be an URL to a tar or git repoistory.
+ * If it is relative URL, the relative path should be obtained from calling
+ * listBuildSourceUploadUrl API.
  */
 export interface EncodedTaskRunRequest extends RunRequest {
   encodedTaskContent: string;
@@ -1780,6 +1793,7 @@ export interface EncodedTaskRunRequest extends RunRequest {
   timeout?: number;
   platform: PlatformProperties;
   agentConfiguration?: AgentProperties;
+  sourceLocation?: string;
 }
 
 /**
@@ -1799,10 +1813,6 @@ export interface EncodedTaskRunRequest extends RunRequest {
  * context.
  * @member {array} [argumentsProperty] The collection of override arguments to
  * be used when executing this build step.
- * @member {string} [contextPath] The URL(absolute or relative) of the source
- * context for the build task.
- * If it is relative, the context will be relative to the source repository URL
- * of the build task.
  */
 export interface DockerBuildStep extends TaskStepProperties {
   imageNames?: string[];
@@ -1810,7 +1820,6 @@ export interface DockerBuildStep extends TaskStepProperties {
   noCache?: boolean;
   dockerFilePath: string;
   argumentsProperty?: Argument[];
-  contextPath?: string;
 }
 
 /**
@@ -1825,16 +1834,11 @@ export interface DockerBuildStep extends TaskStepProperties {
  * relative to the source context.
  * @member {array} [values] The collection of overridable values that can be
  * passed when running a task.
- * @member {string} [contextPath] The URL(absolute or relative) of the source
- * context for the build task.
- * If it is relative, the context will be relative to the source repository URL
- * of the build task.
  */
 export interface FileTaskStep extends TaskStepProperties {
   taskFilePath: string;
   valuesFilePath?: string;
   values?: SetValue[];
-  contextPath?: string;
 }
 
 /**
@@ -1872,10 +1876,6 @@ export interface EncodedTaskStep extends TaskStepProperties {
  * source context.
  * @member {array} [argumentsProperty] The collection of override arguments to
  * be used when executing this build step.
- * @member {string} [contextPath] The URL(absolute or relative) of the source
- * context for the build task.
- * If it is relative, the context will be relative to the source repository URL
- * of the build task.
  */
 export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameters {
   imageNames?: string[];
@@ -1883,7 +1883,6 @@ export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameter
   noCache?: boolean;
   dockerFilePath?: string;
   argumentsProperty?: Argument[];
-  contextPath?: string;
 }
 
 /**
@@ -1898,16 +1897,11 @@ export interface DockerBuildStepUpdateParameters extends TaskStepUpdateParameter
  * to the source context.
  * @member {array} [values] The collection of overridable values that can be
  * passed when running a task.
- * @member {string} [contextPath] The URL(absolute or relative) of the source
- * context for the build task.
- * If it is relative, the context will be relative to the source repository URL
- * of the build task.
  */
 export interface FileTaskStepUpdateParameters extends TaskStepUpdateParameters {
   taskFilePath?: string;
   valuesFilePath?: string;
   values?: SetValue[];
-  contextPath?: string;
 }
 
 /**

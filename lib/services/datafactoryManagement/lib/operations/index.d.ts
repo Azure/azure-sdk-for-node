@@ -3350,6 +3350,9 @@ export interface Pipelines {
      * @param {object} [pipelineParameter.parameters] List of parameters for
      * pipeline.
      *
+     * @param {object} [pipelineParameter.variables] List of variables for
+     * pipeline.
+     *
      * @param {number} [pipelineParameter.concurrency] The max number of concurrent
      * runs for the pipeline.
      *
@@ -3397,6 +3400,9 @@ export interface Pipelines {
      * pipeline.
      *
      * @param {object} [pipelineParameter.parameters] List of parameters for
+     * pipeline.
+     *
+     * @param {object} [pipelineParameter.variables] List of variables for
      * pipeline.
      *
      * @param {number} [pipelineParameter.concurrency] The max number of concurrent
