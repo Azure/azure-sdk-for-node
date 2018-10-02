@@ -651,18 +651,6 @@ export interface PostBackupResponse {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowArray class.
- * @constructor
- * Array of Workflow
- *
- * @member {array} [value] Collection of workflow items.
- */
-export interface WorkflowArray {
-  value?: Workflow[];
-}
-
-/**
- * @class
  * Initializes a new instance of the StorageSyncServiceUpdateParameters class.
  * @constructor
  * Parameters for updating an Storage sync service.
@@ -751,4 +739,14 @@ export interface ServerEndpointArray extends Array<ServerEndpoint> {
  *
  */
 export interface RegisteredServerArray extends Array<RegisteredServer> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkflowArray class.
+ * @constructor
+ * Array of Workflow
+ *
+ */
+export interface WorkflowArray extends Array<Workflow> {
 }

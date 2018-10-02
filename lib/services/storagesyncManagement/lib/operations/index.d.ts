@@ -3716,6 +3716,69 @@ export interface Workflows {
 
 
     /**
+     * Get a Workflow List
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowArray>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByStorageSyncServiceWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowArray>>;
+
+    /**
+     * Get a Workflow List
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowArray} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowArray} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowArray} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowArray>;
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.WorkflowArray>): void;
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowArray>): void;
+
+
+    /**
      * Get Workflows resource
      *
      * @param {string} resourceGroupName The name of the resource group. The name
