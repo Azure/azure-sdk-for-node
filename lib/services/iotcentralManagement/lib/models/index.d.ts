@@ -121,15 +121,16 @@ export interface ErrorResponseBody {
  * @constructor
  * Error details.
  *
- * @member {object} [error]
- * @member {string} [error.code] The error code.
- * @member {string} [error.message] The error message.
- * @member {string} [error.target] The target of the particular error.
- * @member {array} [error.details] A list of additional details about the
- * error.
+ * @member {string} [code] The error code.
+ * @member {string} [message] The error message.
+ * @member {string} [target] The target of the particular error.
+ * @member {array} [details] A list of additional details about the error.
  */
 export interface ErrorDetails {
-  error?: ErrorResponseBody;
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+  details?: ErrorResponseBody[];
 }
 
 /**
