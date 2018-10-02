@@ -75,6 +75,84 @@ export interface LdapsSettings {
 
 /**
  * @class
+ * Initializes a new instance of the HealthMonitor class.
+ * @constructor
+ * Health Monitor Description
+ *
+ * @member {string} [id] Health Monitor Id
+ * @member {string} [name] Health Monitor Name
+ * @member {string} [details] Health Monitor Details
+ */
+export interface HealthMonitor {
+  readonly id?: string;
+  readonly name?: string;
+  readonly details?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HealthAlert class.
+ * @constructor
+ * Health Alert Description
+ *
+ * @member {string} [id] Health Alert Id
+ * @member {string} [name] Health Alert Name
+ * @member {string} [issue] Health Alert Issue
+ * @member {string} [severity] Health Alert Severity
+ * @member {date} [raised] Health Alert Raised DateTime
+ * @member {date} [lastDetected] Health Alert Last Detected DateTime
+ * @member {string} [resolutionUri] Health Alert TSG Link
+ */
+export interface HealthAlert {
+  readonly id?: string;
+  readonly name?: string;
+  readonly issue?: string;
+  readonly severity?: string;
+  readonly raised?: Date;
+  readonly lastDetected?: Date;
+  readonly resolutionUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NotificationSettings class.
+ * @constructor
+ * Settings for notification
+ *
+ * @member {string} [notifyGlobalAdmins] Should global admins be notified.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [notifyDcAdmins] Should domain controller admins be
+ * notified. Possible values include: 'Enabled', 'Disabled'
+ * @member {array} [additionalRecipients] The list of additional recipients
+ */
+export interface NotificationSettings {
+  notifyGlobalAdmins?: string;
+  notifyDcAdmins?: string;
+  additionalRecipients?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DomainSecuritySettings class.
+ * @constructor
+ * Domain Security Settings
+ *
+ * @member {string} [ntlmV1] A flag to determine whether or not NtlmV1 is
+ * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [tlsV1] A flag to determine whether or not TlsV1 is enabled
+ * or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [syncNtlmPasswords] A flag to determine whether or not
+ * SyncNtlmPasswords is enabled or disabled. Possible values include:
+ * 'Enabled', 'Disabled'
+ */
+export interface DomainSecuritySettings {
+  ntlmV1?: string;
+  tlsV1?: string;
+  syncNtlmPasswords?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DomainServiceProperties class.
  * @constructor
  * Properties of the Domain Service.
@@ -106,6 +184,29 @@ export interface LdapsSettings {
  * values include: 'Enabled', 'Disabled'
  * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
  * address.
+ * @member {date} [healthLastEvaluated] Last domain evaluation run DateTime
+ * @member {array} [healthMonitors] List of Domain Health Monitors
+ * @member {array} [healthAlerts] List of Domain Health Alerts
+ * @member {object} [notificationSettings] Notification Settings
+ * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
+ * admins be notified. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [notificationSettings.notifyDcAdmins] Should domain
+ * controller admins be notified. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {array} [notificationSettings.additionalRecipients] The list of
+ * additional recipients
+ * @member {object} [domainSecuritySettings] DomainSecurity Settings
+ * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
+ * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
+ * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
+ * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [filteredSync] Enabled or Disabled flag to turn on
+ * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
  * @member {array} [domainControllerIpAddress] List of Domain Controller IP
  * Address
  * @member {string} [serviceStatus] Status of Domain Service instance
@@ -118,6 +219,12 @@ export interface DomainServiceProperties {
   readonly vnetSiteId?: string;
   subnetId?: string;
   ldapsSettings?: LdapsSettings;
+  readonly healthLastEvaluated?: Date;
+  readonly healthMonitors?: HealthMonitor[];
+  readonly healthAlerts?: HealthAlert[];
+  notificationSettings?: NotificationSettings;
+  domainSecuritySettings?: DomainSecuritySettings;
+  filteredSync?: string;
   readonly domainControllerIpAddress?: string[];
   readonly serviceStatus?: string;
   readonly provisioningState?: string;
@@ -156,6 +263,29 @@ export interface DomainServiceProperties {
  * values include: 'Enabled', 'Disabled'
  * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
  * address.
+ * @member {date} [healthLastEvaluated] Last domain evaluation run DateTime
+ * @member {array} [healthMonitors] List of Domain Health Monitors
+ * @member {array} [healthAlerts] List of Domain Health Alerts
+ * @member {object} [notificationSettings] Notification Settings
+ * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
+ * admins be notified. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [notificationSettings.notifyDcAdmins] Should domain
+ * controller admins be notified. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {array} [notificationSettings.additionalRecipients] The list of
+ * additional recipients
+ * @member {object} [domainSecuritySettings] DomainSecurity Settings
+ * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
+ * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
+ * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
+ * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [filteredSync] Enabled or Disabled flag to turn on
+ * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
  * @member {array} [domainControllerIpAddress] List of Domain Controller IP
  * Address
  * @member {string} [serviceStatus] Status of Domain Service instance
@@ -168,6 +298,12 @@ export interface DomainService extends Resource {
   readonly vnetSiteId?: string;
   subnetId?: string;
   ldapsSettings?: LdapsSettings;
+  readonly healthLastEvaluated?: Date;
+  readonly healthMonitors?: HealthMonitor[];
+  readonly healthAlerts?: HealthAlert[];
+  notificationSettings?: NotificationSettings;
+  domainSecuritySettings?: DomainSecuritySettings;
+  filteredSync?: string;
   readonly domainControllerIpAddress?: string[];
   readonly serviceStatus?: string;
   readonly provisioningState?: string;
@@ -199,9 +335,32 @@ export interface DomainService extends Resource {
  * values include: 'Enabled', 'Disabled'
  * @member {string} [ldapsSettings.externalAccessIpAddress] External access ip
  * address.
+ * @member {object} [notificationSettings] Notification Settings
+ * @member {string} [notificationSettings.notifyGlobalAdmins] Should global
+ * admins be notified. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [notificationSettings.notifyDcAdmins] Should domain
+ * controller admins be notified. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {array} [notificationSettings.additionalRecipients] The list of
+ * additional recipients
+ * @member {object} [domainSecuritySettings] DomainSecurity Settings
+ * @member {string} [domainSecuritySettings.ntlmV1] A flag to determine whether
+ * or not NtlmV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.tlsV1] A flag to determine whether
+ * or not TlsV1 is enabled or disabled. Possible values include: 'Enabled',
+ * 'Disabled'
+ * @member {string} [domainSecuritySettings.syncNtlmPasswords] A flag to
+ * determine whether or not SyncNtlmPasswords is enabled or disabled. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [filteredSync] Enabled or Disabled flag to turn on
+ * Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
  */
 export interface DomainServicePatchProperties {
   ldapsSettings?: LdapsSettings;
+  notificationSettings?: NotificationSettings;
+  domainSecuritySettings?: DomainSecuritySettings;
+  filteredSync?: string;
 }
 
 /**
@@ -245,18 +404,16 @@ export interface OperationEntity {
   origin?: string;
 }
 
+
 /**
  * @class
  * Initializes a new instance of the OperationEntityListResult class.
  * @constructor
  * The list of domain service operation response.
  *
- * @member {array} [value] The list of operations.
  */
-export interface OperationEntityListResult {
-  value?: OperationEntity[];
+export interface OperationEntityListResult extends Array<OperationEntity> {
 }
-
 
 /**
  * @class

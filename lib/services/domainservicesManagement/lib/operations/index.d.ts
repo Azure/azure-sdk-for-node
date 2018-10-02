@@ -247,6 +247,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -300,6 +329,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -502,6 +560,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -547,6 +634,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -621,6 +737,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -674,6 +819,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -807,6 +981,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -852,6 +1055,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
