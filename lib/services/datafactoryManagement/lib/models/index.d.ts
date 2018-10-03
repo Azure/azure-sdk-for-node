@@ -7789,8 +7789,9 @@ export interface TriggerListResponse extends Array<TriggerResource> {
  * @constructor
  * A list of rerun triggers.
  *
- * @member {string} [continuationToken] The continuation token for getting the
- * next page of results, if any remaining results exist, null otherwise.
+ * @member {string} [nextLink] The continuation token for getting the next page
+ * of results, if any remaining results exist, null otherwise.
  */
 export interface RerunTriggerListResponse extends Array<RerunTriggerResource> {
+  nextLink?: string;
 }
