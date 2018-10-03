@@ -250,7 +250,7 @@ export interface SyncGroupCreateParameters extends ProxyResource {
  * @class
  * Initializes a new instance of the CloudEndpointCreateParameters class.
  * @constructor
- * The parameters used when creating a storage sync service.
+ * The parameters used when creating a cloud endpoint.
  *
  * @member {string} [storageAccountResourceId] Storage Account Resource Id
  * @member {string} [storageAccountShareName] Storage Account Share name
@@ -266,7 +266,7 @@ export interface CloudEndpointCreateParameters extends ProxyResource {
  * @class
  * Initializes a new instance of the ServerEndpointCreateParameters class.
  * @constructor
- * The parameters used when creating a storage sync service.
+ * The parameters used when creating a server endpoint.
  *
  * @member {string} [serverLocalPath] Server Local path.
  * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
