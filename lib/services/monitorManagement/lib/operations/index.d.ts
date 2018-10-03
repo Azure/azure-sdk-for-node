@@ -4525,7 +4525,8 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
-     * @param {string} parameters.source.query Log search query.
+     * @param {string} [parameters.source.query] Log search query. Required for
+     * action type - AlertingAction
      *
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
@@ -4536,8 +4537,8 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
-     * rule.
+     * @param {object} [parameters.schedule] Schedule (Frequnecy, Time Window) for
+     * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
      * minutes) at which rule condition should be evaluated.
@@ -4587,7 +4588,8 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
-     * @param {string} parameters.source.query Log search query.
+     * @param {string} [parameters.source.query] Log search query. Required for
+     * action type - AlertingAction
      *
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
@@ -4598,8 +4600,8 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
-     * rule.
+     * @param {object} [parameters.schedule] Schedule (Frequnecy, Time Window) for
+     * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
      * minutes) at which rule condition should be evaluated.

@@ -2258,7 +2258,8 @@ export interface MetricAlertMultipleResourceMultipleMetricCriteria extends Metri
  * @constructor
  * Specifies the log search query.
  *
- * @member {string} query Log search query.
+ * @member {string} [query] Log search query. Required for action type -
+ * AlertingAction
  * @member {array} [authorizedResources] List of  Resource referred into query
  * @member {string} dataSourceId The resource uri over which log search query
  * is to be run.
@@ -2266,7 +2267,7 @@ export interface MetricAlertMultipleResourceMultipleMetricCriteria extends Metri
  * include: 'ResultCount'
  */
 export interface Source {
-  query: string;
+  query?: string;
   authorizedResources?: string[];
   dataSourceId: string;
   queryType?: string;
@@ -2316,14 +2317,16 @@ export interface Action {
  * scheduledquery rule. Possible values include: 'Succeeded', 'Deploying',
  * 'Canceled', 'Failed'
  * @member {object} source Data Source against which rule will Query Data
- * @member {string} [source.query] Log search query.
+ * @member {string} [source.query] Log search query. Required for action type -
+ * AlertingAction
  * @member {array} [source.authorizedResources] List of  Resource referred into
  * query
  * @member {string} [source.dataSourceId] The resource uri over which log
  * search query is to be run.
  * @member {string} [source.queryType] Set value to 'ResultCount'. Possible
  * values include: 'ResultCount'
- * @member {object} schedule Schedule (Frequnecy, Time Window) for rule.
+ * @member {object} [schedule] Schedule (Frequnecy, Time Window) for rule.
+ * Required for action type - AlertingAction
  * @member {number} [schedule.frequencyInMinutes] frequency (in minutes) at
  * which rule condition should be evaluated.
  * @member {number} [schedule.timeWindowInMinutes] Time window for which data
@@ -2338,7 +2341,7 @@ export interface LogSearchRuleResource extends Resource {
   readonly lastUpdatedTime?: Date;
   readonly provisioningState?: string;
   source: Source;
-  schedule: Schedule;
+  schedule?: Schedule;
   action: Action;
 }
 
@@ -2466,6 +2469,48 @@ export interface AlertingAction extends Action {
   aznsAction: AzNsActionGroup;
   throttlingInMin?: number;
   trigger: TriggerCondition;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Dimension class.
+ * @constructor
+ * Specifies the criteria for converting log to metric.
+ *
+ * @member {string} name Name of the dimension
+ * @member {array} values List of dimension values
+ */
+export interface Dimension {
+  name: string;
+  values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Criteria class.
+ * @constructor
+ * Specifies the criteria for converting log to metric.
+ *
+ * @member {string} metricName Name of the metric
+ * @member {array} [dimensions] List of Dimensions for creating metric
+ */
+export interface Criteria {
+  metricName: string;
+  dimensions?: Dimension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogToMetricAction class.
+ * @constructor
+ * Specifiy action need to be taken when rule type is converting log to metric
+ *
+ * @member {object} criteria Severity of the alert
+ * @member {string} [criteria.metricName] Name of the metric
+ * @member {array} [criteria.dimensions] List of Dimensions for creating metric
+ */
+export interface LogToMetricAction extends Action {
+  criteria: Criteria;
 }
 
 /**
