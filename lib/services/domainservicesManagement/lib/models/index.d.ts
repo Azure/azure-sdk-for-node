@@ -404,18 +404,19 @@ export interface OperationEntity {
   origin?: string;
 }
 
+
 /**
  * @class
  * Initializes a new instance of the OperationEntityListResult class.
  * @constructor
  * The list of domain service operation response.
  *
- * @member {array} [value] The list of operations.
+ * @member {string} [nextLink] The continuation token for the next page of
+ * results.
  */
-export interface OperationEntityListResult {
-  value?: OperationEntity[];
+export interface OperationEntityListResult extends Array<OperationEntity> {
+  readonly nextLink?: string;
 }
-
 
 /**
  * @class
@@ -423,6 +424,9 @@ export interface OperationEntityListResult {
  * @constructor
  * The response from the List Domain Services operation.
  *
+ * @member {string} [nextLink] The continuation token for the next page of
+ * results.
  */
 export interface DomainServiceListResult extends Array<DomainService> {
+  readonly nextLink?: string;
 }
