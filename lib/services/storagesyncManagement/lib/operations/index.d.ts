@@ -3386,7 +3386,7 @@ export interface RegisteredServers {
 
 
     /**
-     * Recall a serverendpoint.
+     * Triggers Server certificate rollover.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -3414,7 +3414,7 @@ export interface RegisteredServers {
     triggerRolloverWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Recall a serverendpoint.
+     * Triggers Server certificate rollover.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -3633,7 +3633,7 @@ export interface RegisteredServers {
 
 
     /**
-     * Recall a serverendpoint.
+     * Triggers Server certificate rollover.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -3661,7 +3661,7 @@ export interface RegisteredServers {
     beginTriggerRolloverWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Recall a serverendpoint.
+     * Triggers Server certificate rollover.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
