@@ -404,16 +404,18 @@ export interface OperationEntity {
   origin?: string;
 }
 
-
 /**
  * @class
  * Initializes a new instance of the OperationEntityListResult class.
  * @constructor
  * The list of domain service operation response.
  *
+ * @member {array} [value] The list of operations.
  */
-export interface OperationEntityListResult extends Array<OperationEntity> {
+export interface OperationEntityListResult {
+  value?: OperationEntity[];
 }
+
 
 /**
  * @class
