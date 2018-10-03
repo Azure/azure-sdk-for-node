@@ -1087,17 +1087,14 @@ export interface TriggerRunsQueryResponse {
  * @class
  * Initializes a new instance of the RerunTumblingWindowTriggerActionParameters class.
  * @constructor
- * Rerun?tumbling?window?trigger?Parameters.
+ * Rerun tumbling window trigger Parameters.
  *
- * @member {date} startTime
- * The?start?time?for?the?time?period?for?which?restatement?is?initiated.
- * Only?UTC?time?is?currently?supported.
- * @member {date} endTime
- * The?end?time?for?the?time?period?for?which?restatement?is?initiated.
- * Only?UTC?time?is?currently?supported.
- * @member {number} maxConcurrency
- * The?max?number?of?parallel?time?windows?(ready?for?execution)?for?which
- * a?rerun?is?triggered.
+ * @member {date} startTime The start time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {date} endTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
  */
 export interface RerunTumblingWindowTriggerActionParameters {
   startTime: Date;
@@ -1109,17 +1106,16 @@ export interface RerunTumblingWindowTriggerActionParameters {
  * @class
  * Initializes a new instance of the RerunTumblingWindowTrigger class.
  * @constructor
- * Trigger?that?schedules?pipeline?reruns?for?all?fixed?time?interval?windows?from?a?requested?start?time?to?requested?end?time.
+ * Trigger that schedules pipeline reruns for all fixed time interval windows
+ * from a requested start time to requested end time.
  *
  * @member {object} [parentTrigger] The parent trigger reference.
- * @member {date} requestedStartTime
- * The?start?time?for?the?time?period?for?which?restatement?is?initiated.
- * Only?UTC?time?is?currently?supported.
- * @member {date} requestedEndTime
- * The?end?time?for?the?time?period?for?which?restatement?is?initiated.
- * Only?UTC?time?is?currently?supported.
- * @member {number} maxConcurrency
- * The?max?number?of?parallel?time?windows?(ready?for?execution)?for?which?a?rerun?is?triggered.
+ * @member {date} requestedStartTime The start time for the time period for
+ * which restatement is initiated. Only UTC time is currently supported.
+ * @member {date} requestedEndTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
  */
 export interface RerunTumblingWindowTrigger extends Trigger {
   parentTrigger?: any;
@@ -1136,14 +1132,14 @@ export interface RerunTumblingWindowTrigger extends Trigger {
  *
  * @member {object} properties Properties of the rerun trigger.
  * @member {object} [properties.parentTrigger] The parent trigger reference.
- * @member {date} [properties.requestedStartTime]
- * The?start?time?for?the?time?period?for?which?restatement?is?initiated.
- * Only?UTC?time?is?currently?supported.
- * @member {date} [properties.requestedEndTime]
- * The?end?time?for?the?time?period?for?which?restatement?is?initiated.
- * Only?UTC?time?is?currently?supported.
- * @member {number} [properties.maxConcurrency]
- * The?max?number?of?parallel?time?windows?(ready?for?execution)?for?which?a?rerun?is?triggered.
+ * @member {date} [properties.requestedStartTime] The start time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {date} [properties.requestedEndTime] The end time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {number} [properties.maxConcurrency] The max number of parallel time
+ * windows (ready for execution) for which a rerun is triggered.
  */
 export interface RerunTriggerResource extends SubResource {
   properties: RerunTumblingWindowTrigger;
@@ -7793,5 +7789,5 @@ export interface TriggerListResponse extends Array<TriggerResource> {
  * of results, if any remaining results exist, null otherwise.
  */
 export interface RerunTriggerListResponse extends Array<RerunTriggerResource> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }

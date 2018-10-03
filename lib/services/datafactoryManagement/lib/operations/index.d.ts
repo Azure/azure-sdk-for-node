@@ -4656,7 +4656,7 @@ export interface RerunTriggers {
 
 
     /**
-     * Creates?a?rerun?trigger.
+     * Creates a rerun trigger.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4666,20 +4666,20 @@ export interface RerunTriggers {
      *
      * @param {string} rerunTriggerName The rerun trigger name.
      *
-     * @param {object} rerunTumblingWindowTriggerActionParameters
-     * Rerun?tumbling?window?trigger?action?parameters.
+     * @param {object} rerunTumblingWindowTriggerActionParameters Rerun tumbling
+     * window trigger action parameters.
      *
-     * @param {date} rerunTumblingWindowTriggerActionParameters.startTime
-     * The?start?time?for?the?time?period?for?which?restatement?is?initiated.
-     * Only?UTC?time?is?currently?supported.
+     * @param {date} rerunTumblingWindowTriggerActionParameters.startTime The start
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
      *
-     * @param {date} rerunTumblingWindowTriggerActionParameters.endTime
-     * The?end?time?for?the?time?period?for?which?restatement?is?initiated.
-     * Only?UTC?time?is?currently?supported.
+     * @param {date} rerunTumblingWindowTriggerActionParameters.endTime The end
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
      *
      * @param {number} rerunTumblingWindowTriggerActionParameters.maxConcurrency
-     * The?max?number?of?parallel?time?windows?(ready?for?execution)?for?which
-     * a?rerun?is?triggered.
+     * The max number of parallel time windows (ready for execution) for which a
+     * rerun is triggered.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4695,7 +4695,7 @@ export interface RerunTriggers {
     createWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, rerunTumblingWindowTriggerActionParameters: models.RerunTumblingWindowTriggerActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerResource>>;
 
     /**
-     * Creates?a?rerun?trigger.
+     * Creates a rerun trigger.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4705,20 +4705,20 @@ export interface RerunTriggers {
      *
      * @param {string} rerunTriggerName The rerun trigger name.
      *
-     * @param {object} rerunTumblingWindowTriggerActionParameters
-     * Rerun?tumbling?window?trigger?action?parameters.
+     * @param {object} rerunTumblingWindowTriggerActionParameters Rerun tumbling
+     * window trigger action parameters.
      *
-     * @param {date} rerunTumblingWindowTriggerActionParameters.startTime
-     * The?start?time?for?the?time?period?for?which?restatement?is?initiated.
-     * Only?UTC?time?is?currently?supported.
+     * @param {date} rerunTumblingWindowTriggerActionParameters.startTime The start
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
      *
-     * @param {date} rerunTumblingWindowTriggerActionParameters.endTime
-     * The?end?time?for?the?time?period?for?which?restatement?is?initiated.
-     * Only?UTC?time?is?currently?supported.
+     * @param {date} rerunTumblingWindowTriggerActionParameters.endTime The end
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
      *
      * @param {number} rerunTumblingWindowTriggerActionParameters.maxConcurrency
-     * The?max?number?of?parallel?time?windows?(ready?for?execution)?for?which
-     * a?rerun?is?triggered.
+     * The max number of parallel time windows (ready for execution) for which a
+     * rerun is triggered.
      *
      * @param {object} [options] Optional Parameters.
      *
