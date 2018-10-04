@@ -289,6 +289,17 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
+     * @param {object} [registry.identity] The Identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal id of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant id associated with
+     * the registry.
+     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -331,6 +342,17 @@ export interface Registries {
      * @param {string} registry.sku.name The SKU name of the container registry.
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
+     *
+     * @param {object} [registry.identity] The Identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal id of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant id associated with
+     * the registry.
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -459,6 +481,18 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
+     * @param {object} [registryUpdateParameters.identity] The Identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal id of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant id
+     * associated with the registry.
+     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -503,6 +537,18 @@ export interface Registries {
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [registryUpdateParameters.identity] The Identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal id of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant id
+     * associated with the registry.
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
@@ -1298,6 +1344,17 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
+     * @param {object} [registry.identity] The Identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal id of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant id associated with
+     * the registry.
+     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -1340,6 +1397,17 @@ export interface Registries {
      * @param {string} registry.sku.name The SKU name of the container registry.
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
+     *
+     * @param {object} [registry.identity] The Identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal id of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant id associated with
+     * the registry.
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -1468,6 +1536,18 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
+     * @param {object} [registryUpdateParameters.identity] The Identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal id of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant id
+     * associated with the registry.
+     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -1512,6 +1592,18 @@ export interface Registries {
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [registryUpdateParameters.identity] The Identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal id of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant id
+     * associated with the registry.
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
