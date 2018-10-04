@@ -216,6 +216,9 @@ export interface DatabaseAccounts {
      * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
      * Network ACL rules configured for the Cosmos DB account.
      *
+     * @param {boolean} [createUpdateParameters.enableMultipleWriteLocations]
+     * Enables the account to write in multiple locations
+     *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
      *
@@ -294,6 +297,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
      * Network ACL rules configured for the Cosmos DB account.
+     *
+     * @param {boolean} [createUpdateParameters.enableMultipleWriteLocations]
+     * Enables the account to write in multiple locations
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1432,6 +1438,9 @@ export interface DatabaseAccounts {
      * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
      * Network ACL rules configured for the Cosmos DB account.
      *
+     * @param {boolean} [createUpdateParameters.enableMultipleWriteLocations]
+     * Enables the account to write in multiple locations
+     *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
      *
@@ -1510,6 +1519,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
      * Network ACL rules configured for the Cosmos DB account.
+     *
+     * @param {boolean} [createUpdateParameters.enableMultipleWriteLocations]
+     * Enables the account to write in multiple locations
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
