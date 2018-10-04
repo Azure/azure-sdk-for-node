@@ -187,6 +187,8 @@ export interface Resource extends BaseResource {
  * ordered by their failover priorities.
  * @member {array} [virtualNetworkRules] List of Virtual Network ACL rules
  * configured for the Cosmos DB account.
+ * @member {boolean} [enableMultipleWriteLocations] Enables the account to
+ * write in multiple locations
  */
 export interface DatabaseAccount extends Resource {
   kind?: string;
@@ -202,6 +204,7 @@ export interface DatabaseAccount extends Resource {
   readonly readLocations?: Location[];
   readonly failoverPolicies?: FailoverPolicy[];
   virtualNetworkRules?: VirtualNetworkRule[];
+  enableMultipleWriteLocations?: boolean;
 }
 
 /**
@@ -284,6 +287,8 @@ export interface RegionForOnlineOffline {
  * account
  * @member {array} [virtualNetworkRules] List of Virtual Network ACL rules
  * configured for the Cosmos DB account.
+ * @member {boolean} [enableMultipleWriteLocations] Enables the account to
+ * write in multiple locations
  */
 export interface DatabaseAccountCreateUpdateParameters extends Resource {
   kind?: string;
@@ -294,6 +299,7 @@ export interface DatabaseAccountCreateUpdateParameters extends Resource {
   enableAutomaticFailover?: boolean;
   capabilities?: Capability[];
   virtualNetworkRules?: VirtualNetworkRule[];
+  enableMultipleWriteLocations?: boolean;
 }
 
 /**
