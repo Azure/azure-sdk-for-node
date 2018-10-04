@@ -145,6 +145,17 @@ export interface StorageSyncService extends TrackedResource {
 
 /**
  * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
  * Initializes a new instance of the SyncGroup class.
  * @constructor
  * Sync Group object.
@@ -152,7 +163,7 @@ export interface StorageSyncService extends TrackedResource {
  * @member {string} [uniqueId] Unique Id
  * @member {string} [syncGroupStatus] Sync group status
  */
-export interface SyncGroup extends Resource {
+export interface SyncGroup extends ProxyResource {
   uniqueId?: string;
   readonly syncGroupStatus?: string;
 }
@@ -173,7 +184,7 @@ export interface SyncGroup extends Resource {
  * @member {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
  * @member {string} [lastOperationName] Resource Last Operation Name
  */
-export interface CloudEndpoint extends Resource {
+export interface CloudEndpoint extends ProxyResource {
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -205,7 +216,7 @@ export interface RecallActionParameters {
  * @constructor
  * The parameters used when creating a storage sync service.
  *
- * @member {string} [location] Required. Gets or sets the location of the
+ * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
  * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
  * cannot be changed once it is created, but if an identical geo region is
@@ -215,10 +226,12 @@ export interface RecallActionParameters {
  * (across resource groups). A maximum of 15 tags can be provided for a
  * resource. Each tag must have a key with a length no greater than 128
  * characters and a value with a length no greater than 256 characters.
+ * @member {object} [properties]
  */
 export interface StorageSyncServiceCreateParameters {
-  location?: string;
+  location: string;
   tags?: { [propertyName: string]: string };
+  properties?: any;
 }
 
 /**
@@ -227,21 +240,9 @@ export interface StorageSyncServiceCreateParameters {
  * @constructor
  * The parameters used when creating a sync group.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {object} [properties] The parameters used to create the sync group
  */
-export interface SyncGroupCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface SyncGroupCreateParameters extends ProxyResource {
   properties?: any;
 }
 
@@ -249,25 +250,13 @@ export interface SyncGroupCreateParameters {
  * @class
  * Initializes a new instance of the CloudEndpointCreateParameters class.
  * @constructor
- * The parameters used when creating a storage sync service.
+ * The parameters used when creating a cloud endpoint.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {string} [storageAccountResourceId] Storage Account Resource Id
  * @member {string} [storageAccountShareName] Storage Account Share name
  * @member {string} [storageAccountTenantId] Storage Account Tenant Id
  */
-export interface CloudEndpointCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface CloudEndpointCreateParameters extends ProxyResource {
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -277,52 +266,44 @@ export interface CloudEndpointCreateParameters {
  * @class
  * Initializes a new instance of the ServerEndpointCreateParameters class.
  * @constructor
- * The parameters used when creating a storage sync service.
+ * The parameters used when creating a server endpoint.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {string} [serverLocalPath] Server Local path.
  * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [serverResourceId] Server Resource Id.
  */
-export interface ServerEndpointCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface ServerEndpointCreateParameters extends ProxyResource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
   friendlyName?: string;
   serverResourceId?: string;
 }
 
 /**
  * @class
+ * Initializes a new instance of the TriggerRolloverRequest class.
+ * @constructor
+ * Trigger Rollover Request.
+ *
+ * @member {string} [certificateData] Certificate Data
+ */
+export interface TriggerRolloverRequest {
+  certificateData?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RegisteredServerCreateParameters class.
  * @constructor
- * The parameters used when creating a storage sync service.
+ * The parameters used when creating a registered server.
  *
- * @member {string} [location] Required. Gets or sets the location of the
- * resource. This will be one of the supported and registered Azure Geo Regions
- * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
- * cannot be changed once it is created, but if an identical geo region is
- * specified on update, the request will succeed.
- * @member {object} [tags] Gets or sets a list of key value pairs that describe
- * the resource. These tags can be used for viewing and grouping this resource
- * (across resource groups). A maximum of 15 tags can be provided for a
- * resource. Each tag must have a key with a length no greater than 128
- * characters and a value with a length no greater than 256 characters.
  * @member {string} [serverCertificate] Registered Server Certificate
  * @member {string} [agentVersion] Registered Server Agent Version
  * @member {string} [serverOSVersion] Registered Server OS Version
@@ -333,9 +314,7 @@ export interface ServerEndpointCreateParameters {
  * @member {string} [serverId] Registered Server serverId
  * @member {string} [friendlyName] Friendly Name
  */
-export interface RegisteredServerCreateParameters {
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface RegisteredServerCreateParameters extends ProxyResource {
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
@@ -353,17 +332,16 @@ export interface RegisteredServerCreateParameters {
  * @constructor
  * Parameters for updating an Server Endpoint.
  *
- * @member {object} [tags] The user-specified tags associated with the server
- * endpoint.
  * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  */
 export interface ServerEndpointUpdateParameters {
-  tags?: { [propertyName: string]: string };
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
 }
 
 /**
@@ -377,6 +355,7 @@ export interface ServerEndpointUpdateParameters {
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [serverResourceId] Server Resource Id.
  * @member {string} [provisioningState] ServerEndpoint Provisioning State
@@ -384,10 +363,11 @@ export interface ServerEndpointUpdateParameters {
  * @member {string} [lastOperationName] Resource Last Operation Name
  * @member {object} [syncStatus] Sync Health Status
  */
-export interface ServerEndpoint extends Resource {
+export interface ServerEndpoint extends ProxyResource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
   friendlyName?: string;
   serverResourceId?: string;
   provisioningState?: string;
@@ -423,7 +403,7 @@ export interface ServerEndpoint extends Resource {
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [managementEndpointUri] Management Endpoint Uri
  */
-export interface RegisteredServer extends Resource {
+export interface RegisteredServer extends ProxyResource {
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
@@ -472,7 +452,7 @@ export interface ResourcesMoveInfo {
  * @member {string} [steps] workflow steps
  * @member {string} [lastOperationId] workflow last operation identifier.
  */
-export interface Workflow extends Resource {
+export interface Workflow extends ProxyResource {
   lastStepName?: string;
   status?: string;
   operation?: string;
@@ -671,18 +651,6 @@ export interface PostBackupResponse {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowArray class.
- * @constructor
- * Array of Workflow
- *
- * @member {array} [value] Collection of workflow items.
- */
-export interface WorkflowArray {
-  value?: Workflow[];
-}
-
-/**
- * @class
  * Initializes a new instance of the StorageSyncServiceUpdateParameters class.
  * @constructor
  * Parameters for updating an Storage sync service.
@@ -694,17 +662,6 @@ export interface WorkflowArray {
 export interface StorageSyncServiceUpdateParameters {
   tags?: { [propertyName: string]: string };
   properties?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
- *
- */
-export interface ProxyResource extends Resource {
 }
 
 /**
@@ -782,4 +739,14 @@ export interface ServerEndpointArray extends Array<ServerEndpoint> {
  *
  */
 export interface RegisteredServerArray extends Array<RegisteredServer> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkflowArray class.
+ * @constructor
+ * Array of Workflow
+ *
+ */
+export interface WorkflowArray extends Array<Workflow> {
 }
