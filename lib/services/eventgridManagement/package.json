@@ -2,7 +2,7 @@
   "name": "azure-arm-eventgrid",
   "author": "Microsoft Corporation",
   "description": "EventGridManagementClient Library with typescript type definitions for node",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"

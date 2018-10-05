@@ -177,7 +177,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -250,7 +250,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -346,7 +346,7 @@ export interface Appliances {
      *
      * @param {string} options.parameters.plan.version The plan's version.
      *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
+     * @param {string} [options.parameters.kind] The kind of the appliance. Allowed
      * values are MarketPlace and ServiceCatalog.
      *
      * @param {string} [options.parameters.managedBy] ID of the resource that
@@ -421,7 +421,7 @@ export interface Appliances {
      *
      * @param {string} options.parameters.plan.version The plan's version.
      *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
+     * @param {string} [options.parameters.kind] The kind of the appliance. Allowed
      * values are MarketPlace and ServiceCatalog.
      *
      * @param {string} [options.parameters.managedBy] ID of the resource that
@@ -740,7 +740,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -813,7 +813,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -909,7 +909,7 @@ export interface Appliances {
      *
      * @param {string} options.parameters.plan.version The plan's version.
      *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
+     * @param {string} [options.parameters.kind] The kind of the appliance. Allowed
      * values are MarketPlace and ServiceCatalog.
      *
      * @param {string} [options.parameters.managedBy] ID of the resource that
@@ -984,7 +984,7 @@ export interface Appliances {
      *
      * @param {string} options.parameters.plan.version The plan's version.
      *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
+     * @param {string} [options.parameters.kind] The kind of the appliance. Allowed
      * values are MarketPlace and ServiceCatalog.
      *
      * @param {string} [options.parameters.managedBy] ID of the resource that
@@ -1134,7 +1134,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -1207,7 +1207,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -1359,7 +1359,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
@@ -1432,7 +1432,7 @@ export interface Appliances {
      *
      * @param {string} parameters.plan.version The plan's version.
      *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
+     * @param {string} [parameters.kind] The kind of the appliance. Allowed values
      * are MarketPlace and ServiceCatalog.
      *
      * @param {string} [parameters.managedBy] ID of the resource that manages this
