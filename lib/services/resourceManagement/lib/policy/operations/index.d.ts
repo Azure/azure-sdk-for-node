@@ -366,6 +366,8 @@ export interface PolicyAssignments {
      * @param {string} resourceGroupName The name of the resource group that
      * contains policy assignments.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation. Valid
@@ -381,7 +383,7 @@ export interface PolicyAssignments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
+    listForResourceGroupWithHttpOperationResponse(resourceGroupName: string, subscriptionId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
      * @summary Retrieves all policy assignments that apply to a resource group.
@@ -403,6 +405,8 @@ export interface PolicyAssignments {
      * @param {string} resourceGroupName The name of the resource group that
      * contains policy assignments.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation. Valid
@@ -435,9 +439,9 @@ export interface PolicyAssignments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForResourceGroup(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
-    listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    listForResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroup(resourceGroupName: string, subscriptionId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listForResourceGroup(resourceGroupName: string, subscriptionId: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroup(resourceGroupName: string, subscriptionId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
@@ -486,6 +490,8 @@ export interface PolicyAssignments {
      *
      * @param {string} resourceName The name of the resource.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation. Valid
@@ -501,7 +507,7 @@ export interface PolicyAssignments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForResourceWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
+    listForResourceWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, subscriptionId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
      * @summary Retrieves all policy assignments that apply to a resource.
@@ -549,6 +555,8 @@ export interface PolicyAssignments {
      *
      * @param {string} resourceName The name of the resource.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation. Valid
@@ -581,9 +589,9 @@ export interface PolicyAssignments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, subscriptionId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, subscriptionId: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, subscriptionId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
@@ -602,6 +610,8 @@ export interface PolicyAssignments {
      * $filter=policyDefinitionId eq '{value}' is provided, the returned list
      * includes only policy assignments that apply to the subscription and assign
      * the policy definition whose id is {value}.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -618,7 +628,7 @@ export interface PolicyAssignments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
+    listWithHttpOperationResponse(subscriptionId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
      * @summary Retrieves all policy assignments that apply to a subscription.
@@ -636,6 +646,8 @@ export interface PolicyAssignments {
      * $filter=policyDefinitionId eq '{value}' is provided, the returned list
      * includes only policy assignments that apply to the subscription and assign
      * the policy definition whose id is {value}.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -669,9 +681,9 @@ export interface PolicyAssignments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
-    list(callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    list(subscriptionId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    list(subscriptionId: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    list(subscriptionId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
@@ -1325,6 +1337,8 @@ export interface PolicyDefinitions {
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1336,7 +1350,7 @@ export interface PolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(policyDefinitionName: string, parameters: models.PolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+    createOrUpdateWithHttpOperationResponse(policyDefinitionName: string, parameters: models.PolicyDefinition, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
 
     /**
      * @summary Creates or updates a policy definition in a subscription.
@@ -1369,6 +1383,8 @@ export interface PolicyDefinitions {
      * @param {object} [parameters.parameters] Required if a parameter is used in
      * policy rule.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1396,9 +1412,9 @@ export interface PolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
-    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, callback: ServiceCallback<models.PolicyDefinition>): void;
-    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, subscriptionId: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
 
 
     /**
@@ -1409,6 +1425,8 @@ export interface PolicyDefinitions {
      *
      * @param {string} policyDefinitionName The name of the policy definition to
      * delete.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1421,7 +1439,7 @@ export interface PolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(policyDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes a policy definition in a subscription.
@@ -1431,6 +1449,8 @@ export interface PolicyDefinitions {
      *
      * @param {string} policyDefinitionName The name of the policy definition to
      * delete.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1458,9 +1478,9 @@ export interface PolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(policyDefinitionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(policyDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(policyDefinitionName: string, subscriptionId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(policyDefinitionName: string, subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1471,6 +1491,8 @@ export interface PolicyDefinitions {
      *
      * @param {string} policyDefinitionName The name of the policy definition to
      * get.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1483,7 +1505,7 @@ export interface PolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+    getWithHttpOperationResponse(policyDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
 
     /**
      * @summary Retrieves a policy definition in a subscription.
@@ -1493,6 +1515,8 @@ export interface PolicyDefinitions {
      *
      * @param {string} policyDefinitionName The name of the policy definition to
      * get.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1521,9 +1545,9 @@ export interface PolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
-    get(policyDefinitionName: string, callback: ServiceCallback<models.PolicyDefinition>): void;
-    get(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+    get(policyDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    get(policyDefinitionName: string, subscriptionId: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    get(policyDefinitionName: string, subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
 
 
     /**
@@ -1837,6 +1861,8 @@ export interface PolicyDefinitions {
      * This operation retrieves a list of all the policy definitions in a given
      * subscription.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1848,13 +1874,15 @@ export interface PolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+    listWithHttpOperationResponse(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
 
     /**
      * @summary Retrieves policy definitions in a subscription
      *
      * This operation retrieves a list of all the policy definitions in a given
      * subscription.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1884,9 +1912,9 @@ export interface PolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
-    list(callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    list(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    list(subscriptionId: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    list(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 
 
     /**
@@ -2235,6 +2263,8 @@ export interface PolicySetDefinitions {
      * @param {array} parameters.policyDefinitions An array of policy definition
      * references.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2246,7 +2276,7 @@ export interface PolicySetDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+    createOrUpdateWithHttpOperationResponse(policySetDefinitionName: string, parameters: models.PolicySetDefinition, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
 
     /**
      * @summary Creates or updates a policy set definition.
@@ -2277,6 +2307,8 @@ export interface PolicySetDefinitions {
      * @param {array} parameters.policyDefinitions An array of policy definition
      * references.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2304,9 +2336,9 @@ export interface PolicySetDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
-    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, callback: ServiceCallback<models.PolicySetDefinition>): void;
-    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, subscriptionId: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
 
 
     /**
@@ -2317,6 +2349,8 @@ export interface PolicySetDefinitions {
      *
      * @param {string} policySetDefinitionName The name of the policy set
      * definition to delete.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2329,7 +2363,7 @@ export interface PolicySetDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(policySetDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes a policy set definition.
@@ -2339,6 +2373,8 @@ export interface PolicySetDefinitions {
      *
      * @param {string} policySetDefinitionName The name of the policy set
      * definition to delete.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2366,9 +2402,9 @@ export interface PolicySetDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(policySetDefinitionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(policySetDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(policySetDefinitionName: string, subscriptionId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(policySetDefinitionName: string, subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2379,6 +2415,8 @@ export interface PolicySetDefinitions {
      *
      * @param {string} policySetDefinitionName The name of the policy set
      * definition to get.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2391,7 +2429,7 @@ export interface PolicySetDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+    getWithHttpOperationResponse(policySetDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
 
     /**
      * @summary Retrieves a policy set definition.
@@ -2401,6 +2439,8 @@ export interface PolicySetDefinitions {
      *
      * @param {string} policySetDefinitionName The name of the policy set
      * definition to get.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2429,9 +2469,9 @@ export interface PolicySetDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
-    get(policySetDefinitionName: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
-    get(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    get(policySetDefinitionName: string, subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    get(policySetDefinitionName: string, subscriptionId: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    get(policySetDefinitionName: string, subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
 
 
     /**
@@ -2503,6 +2543,8 @@ export interface PolicySetDefinitions {
      * This operation retrieves a list of all the policy set definitions in the
      * given subscription.
      *
+     * @param {string} subscriptionId The ID of the target subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2514,13 +2556,15 @@ export interface PolicySetDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+    listWithHttpOperationResponse(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
 
     /**
      * @summary Retrieves the policy set definitions for a subscription.
      *
      * This operation retrieves a list of all the policy set definitions in the
      * given subscription.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2550,9 +2594,9 @@ export interface PolicySetDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
-    list(callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    list(subscriptionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    list(subscriptionId: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    list(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
 
 
     /**
