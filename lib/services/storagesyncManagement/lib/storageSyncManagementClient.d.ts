@@ -21,7 +21,7 @@ export default class StorageSyncManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - The ID of the target subscription.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -45,9 +45,9 @@ export default class StorageSyncManagementClient extends AzureServiceClient {
 
   credentials: ServiceClientCredentials;
 
-  subscriptionId: string;
-
   apiVersion: string;
+
+  subscriptionId: string;
 
   acceptLanguage: string;
 
