@@ -623,54 +623,6 @@ export interface ScalarFunctionProperties extends FunctionProperties {
 
 /**
  * @class
- * Initializes a new instance of the FunctionRetrieveDefaultDefinitionParameters class.
- * @constructor
- * Parameters used to specify the type of function to retrieve the default
- * definition for.
- *
- * @member {string} bindingType Polymorphic Discriminator
- */
-export interface FunctionRetrieveDefaultDefinitionParameters {
-  bindingType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JavaScriptFunctionRetrieveDefaultDefinitionParameters class.
- * @constructor
- * The parameters needed to retrieve the default function definition for a
- * JavaScript function.
- *
- * @member {string} [script] The JavaScript code containing a single function
- * definition. For example: 'function (x, y) { return x + y; }'.
- * @member {string} [udfType] The function type. Possible values include:
- * 'Scalar'
- */
-export interface JavaScriptFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
-  script?: string;
-  udfType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters class.
- * @constructor
- * The parameters needed to retrieve the default function definition for an
- * Azure Machine Learning web service function.
- *
- * @member {string} [executeEndpoint] The Request-Response execute endpoint of
- * the Azure Machine Learning web service. Find out more here:
- * https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
- * @member {string} [udfType] The function type. Possible values include:
- * 'Scalar'
- */
-export interface AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
-  executeEndpoint?: string;
-  udfType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AvroSerialization class.
  * @constructor
  * Describes how data from an input is serialized or how data is serialized
@@ -1361,6 +1313,54 @@ export interface ErrorResponse {
 export interface ResourceTestStatus {
   readonly status?: string;
   readonly error?: ErrorResponse;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FunctionRetrieveDefaultDefinitionParameters class.
+ * @constructor
+ * Parameters used to specify the type of function to retrieve the default
+ * definition for.
+ *
+ * @member {string} bindingType Polymorphic Discriminator
+ */
+export interface FunctionRetrieveDefaultDefinitionParameters {
+  bindingType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters class.
+ * @constructor
+ * The parameters needed to retrieve the default function definition for an
+ * Azure Machine Learning web service function.
+ *
+ * @member {string} [executeEndpoint] The Request-Response execute endpoint of
+ * the Azure Machine Learning web service. Find out more here:
+ * https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+ * @member {string} [udfType] The function type. Possible values include:
+ * 'Scalar'
+ */
+export interface AzureMachineLearningWebServiceFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
+  executeEndpoint?: string;
+  udfType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JavaScriptFunctionRetrieveDefaultDefinitionParameters class.
+ * @constructor
+ * The parameters needed to retrieve the default function definition for a
+ * JavaScript function.
+ *
+ * @member {string} [script] The JavaScript code containing a single function
+ * definition. For example: 'function (x, y) { return x + y; }'.
+ * @member {string} [udfType] The function type. Possible values include:
+ * 'Scalar'
+ */
+export interface JavaScriptFunctionRetrieveDefaultDefinitionParameters extends FunctionRetrieveDefaultDefinitionParameters {
+  script?: string;
+  udfType?: string;
 }
 
 /**
