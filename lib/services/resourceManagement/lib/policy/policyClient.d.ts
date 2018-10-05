@@ -21,8 +21,6 @@ export default class PolicyClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - The ID of the target subscription.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,11 +39,9 @@ export default class PolicyClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
-
-  subscriptionId: string;
 
   apiVersion: string;
 
