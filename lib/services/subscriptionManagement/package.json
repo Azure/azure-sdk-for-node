@@ -1,39 +1,25 @@
 {
-  "name": "azure-asm-subscription",
+  "name": "azure-arm-subscription",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Block, Glenn <gblock@microsoft.com>",
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Dejardin, Louis <loudej@microsoft.com>",
-    "Georgiev, Yavor <yavorg@microsoft.com>",
-    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
-  ],
+  "description": "SubscriptionClient Library with typescript type definitions for node",
   "version": "0.10.2",
-  "description": "Microsoft Azure Subscription Management Client Library for node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
   "keywords": [
     "node",
     "azure"
   ],
-  "main": "./lib/subscription.js",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "azure-common": "^0.9.13"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "license": "MIT",
+  "main": "./lib/subscriptionClient.js",
+  "types": "./lib/subscriptionClient.d.ts",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/subscriptionManagement",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }

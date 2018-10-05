@@ -1,43 +1,40 @@
-# Microsoft Azure SDK for Node.js - Subscription Management
+---
+uid: azure-arm-subscription
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure subscription. Right now it supports:
-- **API version: 2013-08-01**
+---
+# Microsoft Azure SDK for Node.js - SubscriptionClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
 
 ## Features
 
-- Manage subscription
 
 ## How to Install
 
 ```bash
-npm install azure-asm-subscription
+npm install azure-arm-subscription
 ```
 
-## How to Use
+## How to use
 
-### Authentication
-
-This library support management certificate authentication. To authenticate the library for the REST API calls, you need to
-* Have a management certificate set up in your Microsoft Azure subscription. You can do this by
-  * Either uploading a certificate in the [Microsoft Azure management portal](https://manage.windowsazure.com).
-  * Or use the [Microsoft Azure Xplat-CLI](https://github.com/Azure/azure-xplat-cli).
-* Obtain the .pem file of your certificate. If you used [Microsoft Azure Xplat-CLI](https://github.com/Azure/azure-xplat-cli) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor and **certvalue** and **keyvalue**.
-
-### Create the SubscriptionClient
+### Authentication, client creation and list operations as an example.
 
 ```javascript
-var subscriptionManagement = require('azure-asm-subscription');
-
-var subscriptionClient = subscriptionManagement.createSubscriptionClient({
-  subscriptionId: '<your subscription id>',
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
+const msRestAzure = require("ms-rest-azure");
+const SubscriptionClient = require("azure-arm-subscription");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new SubscriptionClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
 });
-```
-
-### Manage Subscription
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
