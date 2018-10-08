@@ -18,11 +18,32 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ImportSourceCredentials class.
+ * @constructor
+ * @member {string} [username] The username to authenticate with the source
+ * registry.
+ * @member {string} password The password used to authenticate with the source
+ * registry.
+ */
+export interface ImportSourceCredentials {
+  username?: string;
+  password: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImportSource class.
  * @constructor
  * @member {string} [resourceId] The resource identifier of the source Azure
  * Container Registry.
- * @member {string} [registryUri] The address of the source registry.
+ * @member {string} [registryUri] The address of the source registry (e.g.
+ * 'mcr.microsoft.com').
+ * @member {object} [credentials] Credentials used when importing from a
+ * registry uri.
+ * @member {string} [credentials.username] The username to authenticate with
+ * the source registry.
+ * @member {string} [credentials.password] The password used to authenticate
+ * with the source registry.
  * @member {string} sourceImage Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
@@ -33,6 +54,7 @@ export { CloudError } from 'ms-rest-azure';
 export interface ImportSource {
   resourceId?: string;
   registryUri?: string;
+  credentials?: ImportSourceCredentials;
   sourceImage: string;
 }
 
@@ -43,7 +65,14 @@ export interface ImportSource {
  * @member {object} source The source of the image.
  * @member {string} [source.resourceId] The resource identifier of the source
  * Azure Container Registry.
- * @member {string} [source.registryUri] The address of the source registry.
+ * @member {string} [source.registryUri] The address of the source registry
+ * (e.g. 'mcr.microsoft.com').
+ * @member {object} [source.credentials] Credentials used when importing from a
+ * registry uri.
+ * @member {string} [source.credentials.username] The username to authenticate
+ * with the source registry.
+ * @member {string} [source.credentials.password] The password used to
+ * authenticate with the source registry.
  * @member {string} [source.sourceImage] Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
@@ -203,11 +232,11 @@ export interface Sku {
  * @class
  * Initializes a new instance of the RegistryIdentity class.
  * @constructor
- * The Identity of the container registry.
+ * The identity of the container registry.
  *
  * @member {string} [type] The type of identity used for the registry.
- * @member {string} [principalId] The principal id of registry identity.
- * @member {string} [tenantId] The tenant id associated with the registry.
+ * @member {string} [principalId] The principal ID of registry identity.
+ * @member {string} [tenantId] The tenant ID associated with the registry.
  */
 export interface RegistryIdentity {
   type?: string;
@@ -279,11 +308,11 @@ export interface Resource extends BaseResource {
  * 'Standard', 'Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
  * values include: 'Classic', 'Basic', 'Standard', 'Premium'
- * @member {object} [identity] The Identity of the container registry.
+ * @member {object} [identity] The identity of the container registry.
  * @member {string} [identity.type] The type of identity used for the registry.
- * @member {string} [identity.principalId] The principal id of registry
+ * @member {string} [identity.principalId] The principal ID of registry
  * identity.
- * @member {string} [identity.tenantId] The tenant id associated with the
+ * @member {string} [identity.tenantId] The tenant ID associated with the
  * registry.
  * @member {string} [loginServer] The URL that can be used to log into the
  * container registry.
@@ -329,11 +358,11 @@ export interface Registry extends Resource {
  * 'Standard', 'Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
  * values include: 'Classic', 'Basic', 'Standard', 'Premium'
- * @member {object} [identity] The Identity of the container registry.
+ * @member {object} [identity] The identity of the container registry.
  * @member {string} [identity.type] The type of identity used for the registry.
- * @member {string} [identity.principalId] The principal id of registry
+ * @member {string} [identity.principalId] The principal ID of registry
  * identity.
- * @member {string} [identity.tenantId] The tenant id associated with the
+ * @member {string} [identity.tenantId] The tenant ID associated with the
  * registry.
  * @member {boolean} [adminUserEnabled] The value that indicates whether the
  * admin user is enabled.
