@@ -71,6 +71,9 @@ export default class NetworkManagementClient extends AzureServiceClient {
   expressRouteCrossConnectionPeerings: operations.ExpressRouteCrossConnectionPeerings;
   expressRouteGateways: operations.ExpressRouteGateways;
   expressRouteConnections: operations.ExpressRouteConnections;
+  expressRoutePortsLocations: operations.ExpressRoutePortsLocations;
+  expressRoutePorts: operations.ExpressRoutePorts;
+  expressRouteLinks: operations.ExpressRouteLinks;
   interfaceEndpoints: operations.InterfaceEndpoints;
   loadBalancers: operations.LoadBalancers;
   loadBalancerBackendAddressPools: operations.LoadBalancerBackendAddressPools;

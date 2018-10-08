@@ -278,7 +278,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -446,7 +446,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -1266,7 +1266,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -1434,7 +1434,7 @@ export interface ApplicationGateways {
      * application gateway resource. Possible values are: 'Updating', 'Deleting',
      * and 'Failed'.
      *
-     * @param {array} [parameters.customErrorConfiguration] Custom error
+     * @param {array} [parameters.customErrorConfigurations] Custom error
      * configurations of the application gateway resource.
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
@@ -6326,6 +6326,15 @@ export interface ExpressRouteCircuits {
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
      *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
+     *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
      * 'Failed'.
@@ -6406,6 +6415,15 @@ export interface ExpressRouteCircuits {
      *
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
+     *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
      *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
@@ -7077,6 +7095,15 @@ export interface ExpressRouteCircuits {
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
      *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
+     *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
      * 'Failed'.
@@ -7157,6 +7184,15 @@ export interface ExpressRouteCircuits {
      *
      * @param {number} [parameters.serviceProviderProperties.bandwidthInMbps] The
      * BandwidthInMbps.
+     *
+     * @param {object} [parameters.expressRoutePort] The reference to the
+     * ExpressRoutePort resource when the circuit is provisioned on an
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.expressRoutePort.id] Resource ID.
+     *
+     * @param {number} [parameters.bandwidthInGbps] The bandwidth of the circuit
+     * when the circuit is provisioned on an ExpressRoutePort resource.
      *
      * @param {string} [parameters.provisioningState] Gets the provisioning state
      * of the public IP resource. Possible values are: 'Updating', 'Deleting', and
@@ -10737,6 +10773,1163 @@ export interface ExpressRouteConnections {
     beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, expressRouteGatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ExpressRoutePortsLocations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRoutePortsLocations {
+
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortsLocationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortsLocationListResult>>;
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortsLocationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortsLocationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortsLocationListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortsLocationListResult>;
+    list(callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+
+
+    /**
+     * Retrieves a single ExpressRoutePort peering location, including the list of
+     * available bandwidths available at said peering location.
+     *
+     * @param {string} locationName Name of the requested ExpressRoutePort peering
+     * location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortsLocation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortsLocation>>;
+
+    /**
+     * Retrieves a single ExpressRoutePort peering location, including the list of
+     * available bandwidths available at said peering location.
+     *
+     * @param {string} locationName Name of the requested ExpressRoutePort peering
+     * location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortsLocation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortsLocation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortsLocation} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortsLocation>;
+    get(locationName: string, callback: ServiceCallback<models.ExpressRoutePortsLocation>): void;
+    get(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortsLocation>): void;
+
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortsLocationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortsLocationListResult>>;
+
+    /**
+     * Retrieves all ExpressRoutePort peering locations. Does not return available
+     * bandwidths for each location. Available bandwidths can only be obtained when
+     * retriving a specific peering location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortsLocationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortsLocationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortsLocationListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortsLocationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortsLocationListResult>): void;
+}
+
+/**
+ * @class
+ * ExpressRoutePorts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRoutePorts {
+
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieves the requested ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of ExpressRoutePort.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Retrieves the requested ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of ExpressRoutePort.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    get(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    get(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    createOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    createOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    updateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    updateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    list(callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Creates or updates the specified ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the create
+     * ExpressRoutePort operation.
+     *
+     * @param {string} [parameters.peeringLocation] The name of the peering
+     * location that the ExpressRoutePort is mapped to physically.
+     *
+     * @param {number} [parameters.bandwidthInGbps] Bandwidth of procured ports in
+     * Gbps
+     *
+     * @param {string} [parameters.encapsulation] Encapsulation method on physical
+     * ports. Possible values include: 'Dot1Q', 'QinQ'
+     *
+     * @param {array} [parameters.links] ExpressRouteLink Sub-Resources The set of
+     * physical links of the ExpressRoutePort resource
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * ExpressRoutePort resource.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    beginCreateOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    beginCreateOrUpdate(resourceGroupName: string, expressRoutePortName: string, parameters: models.ExpressRoutePort, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePort>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePort>>;
+
+    /**
+     * Update ExpressRoutePort tags
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to update ExpressRoutePort
+     * resource tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePort} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePort} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePort} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePort>;
+    beginUpdateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ExpressRoutePort>): void;
+    beginUpdateTags(resourceGroupName: string, expressRoutePortName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePort>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRoutePortListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRoutePortListResult>>;
+
+    /**
+     * List all the ExpressRoutePort resources in the specified subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRoutePortListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRoutePortListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRoutePortListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRoutePortListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRoutePortListResult>): void;
+}
+
+/**
+ * @class
+ * ExpressRouteLinks
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface ExpressRouteLinks {
+
+
+    /**
+     * Retrieves the specified ExpressRouteLink resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {string} linkName The name of the ExpressRouteLink resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteLink>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, linkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteLink>>;
+
+    /**
+     * Retrieves the specified ExpressRouteLink resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {string} linkName The name of the ExpressRouteLink resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteLink} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteLink} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteLink} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, expressRoutePortName: string, linkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteLink>;
+    get(resourceGroupName: string, expressRoutePortName: string, linkName: string, callback: ServiceCallback<models.ExpressRouteLink>): void;
+    get(resourceGroupName: string, expressRoutePortName: string, linkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteLink>): void;
+
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteLinkListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteLinkListResult>>;
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} expressRoutePortName The name of the ExpressRoutePort
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteLinkListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteLinkListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteLinkListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, expressRoutePortName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteLinkListResult>;
+    list(resourceGroupName: string, expressRoutePortName: string, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+    list(resourceGroupName: string, expressRoutePortName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressRouteLinkListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteLinkListResult>>;
+
+    /**
+     * Retrieve the ExpressRouteLink sub-resources of the specified
+     * ExpressRoutePort resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressRouteLinkListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressRouteLinkListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressRouteLinkListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressRouteLinkListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteLinkListResult>): void;
 }
 
 /**
