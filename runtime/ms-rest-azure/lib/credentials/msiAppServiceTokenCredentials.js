@@ -10,7 +10,6 @@
 
 const msrest = require('ms-rest');
 const request = require('request');
-const Constants = msrest.Constants;
 
 const MSITokenCredentials = require('./msiTokenCredentials');
 
