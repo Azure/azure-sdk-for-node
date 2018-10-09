@@ -793,6 +793,8 @@ export interface TrackedResource extends Resource {
  * 'Allow', 'Deny'
  * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
  * sets to true.
+ * @member {boolean} [failoverInProgress] If the failover is in progress, the
+ * value will be true, otherwise, it will be null.
  */
 export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
@@ -814,6 +816,7 @@ export interface StorageAccount extends TrackedResource {
   enableHttpsTrafficOnly?: boolean;
   readonly networkRuleSet?: NetworkRuleSet;
   isHnsEnabled?: boolean;
+  readonly failoverInProgress?: boolean;
 }
 
 /**
@@ -1154,6 +1157,31 @@ export interface ServiceSasParameters {
  */
 export interface ListServiceSasResponse {
   readonly serviceSasToken?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetLastSyncTimeResult class.
+ * @constructor
+ * The response from the get last synctime operation.
+ *
+ * @member {string} [status] The status of the secondary location of the
+ * Storage Account. Live: Indicates that the secondary location is active and
+ * operational; Bootstrap: Indicates initial synchronization from the primary
+ * location to the secondary location is in progress, this typically occurs
+ * when replication is first enabled; Unavailable: Indicates that the secondary
+ * location is temporarily unavailable. Possible values include: 'Live',
+ * 'Bootstrap', 'Unavailable'
+ * @member {date} [lastSyncTime] All primary writes preceding this value are
+ * guaranteed to be replicated to secondary. Primary writes after this point in
+ * time may or may not be replicated. It is the minimum last sync time of the
+ * account’s Blob/Table/Queue/File endpoints. The value may be account’s
+ * creation time if LastSyncTime is not available. This can happen if the
+ * replication status is bootstrap or unavailable.
+ */
+export interface GetLastSyncTimeResult {
+  readonly status?: string;
+  readonly lastSyncTime?: Date;
 }
 
 /**
