@@ -14,6 +14,127 @@ import * as models from '../models';
 
 /**
  * @class
+ * Locations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageImportExportManagementClient.
+ */
+export interface Locations {
+
+
+    /**
+     * Returns a list of locations to which you can ship the disks associated with
+     * an import or export job. A location is a Microsoft data center region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LocationsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LocationsResponse>>;
+
+    /**
+     * Returns a list of locations to which you can ship the disks associated with
+     * an import or export job. A location is a Microsoft data center region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LocationsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LocationsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LocationsResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocationsResponse>;
+    list(callback: ServiceCallback<models.LocationsResponse>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationsResponse>): void;
+
+
+    /**
+     * Returns the details about a location to which you can ship the disks
+     * associated with an import or export job. A location is an Azure region.
+     *
+     * @param {string} locationName The name of the location. For example, West US
+     * or westus.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Location>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Location>>;
+
+    /**
+     * Returns the details about a location to which you can ship the disks
+     * associated with an import or export job. A location is an Azure region.
+     *
+     * @param {string} locationName The name of the location. For example, West US
+     * or westus.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Location} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Location} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Location} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Location>;
+    get(locationName: string, callback: ServiceCallback<models.Location>): void;
+    get(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Location>): void;
+}
+
+/**
+ * @class
  * Jobs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the StorageImportExportManagementClient.
@@ -22,7 +143,7 @@ export interface Jobs {
 
 
     /**
-     * Gets all the active and completed import/export jobs in a subscription.
+     * Returns all active and completed jobs in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30,27 +151,21 @@ export interface Jobs {
      * at most should be returned. The value cannot exceed 100.
      *
      * @param {string} [options.filter] Can be used to restrict the results to
-     * certain conditions. The following possible values can be used with $filter:
-     * 1) $filter=type eq '{type}'; 2) $filter=trackingnumber eq
-     * '{trackingnumber}'; 3) $filter=state eq '{state}'; 4) Logical and
-     * combination of the above, for example: $filter=type eq 'Import' and state eq
-     * 'Transferring'. Valid values for type are Import and Export. Valid values
-     * for state are Creating, Shipping, Received, Transferring, Packaging, Closed,
-     * and Completed.
+     * certain conditions.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ListJobsResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+    listBySubscriptionWithHttpOperationResponse(options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListJobsResponse>>;
 
     /**
-     * Gets all the active and completed import/export jobs in a subscription.
+     * Returns all active and completed jobs in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -58,13 +173,7 @@ export interface Jobs {
      * at most should be returned. The value cannot exceed 100.
      *
      * @param {string} [options.filter] Can be used to restrict the results to
-     * certain conditions. The following possible values can be used with $filter:
-     * 1) $filter=type eq '{type}'; 2) $filter=trackingnumber eq
-     * '{trackingnumber}'; 3) $filter=state eq '{state}'; 4) Logical and
-     * combination of the above, for example: $filter=type eq 'Import' and state eq
-     * 'Transferring'. Valid values for type are Import and Export. Valid values
-     * for state are Creating, Shipping, Received, Transferring, Packaging, Closed,
-     * and Completed.
+     * certain conditions.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -76,7 +185,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {JobListResult} - The deserialized result object.
+     *                      @resolve {ListJobsResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -84,20 +193,20 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobListResult} for more information.
+     *                      {ListJobsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListJobsResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
-    list(callback: ServiceCallback<models.JobListResult>): void;
-    list(options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+    listBySubscription(options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListJobsResponse>;
+    listBySubscription(callback: ServiceCallback<models.ListJobsResponse>): void;
+    listBySubscription(options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListJobsResponse>): void;
 
 
     /**
-     * Returns all active and completed import/export jobs in a resource group.
+     * Returns all active and completed jobs in a resource group.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
@@ -108,27 +217,21 @@ export interface Jobs {
      * at most should be returned. The value cannot exceed 100.
      *
      * @param {string} [options.filter] Can be used to restrict the results to
-     * certain conditions. The following possible values can be used with $filter:
-     * 1) $filter=type eq '{type}'; 2) $filter=trackingnumber eq
-     * '{trackingnumber}'; 3) $filter=state eq '{state}'; 4) Logical and
-     * combination of the above, for example: $filter=type eq 'Import' and state eq
-     * 'Transferring'. Valid values for type are Import and Export. Valid values
-     * for state are Creating, Shipping, Received, Transferring, Packaging, Closed,
-     * and Completed.
+     * certain conditions.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ListJobsResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListJobsResponse>>;
 
     /**
-     * Returns all active and completed import/export jobs in a resource group.
+     * Returns all active and completed jobs in a resource group.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
@@ -139,13 +242,7 @@ export interface Jobs {
      * at most should be returned. The value cannot exceed 100.
      *
      * @param {string} [options.filter] Can be used to restrict the results to
-     * certain conditions. The following possible values can be used with $filter:
-     * 1) $filter=type eq '{type}'; 2) $filter=trackingnumber eq
-     * '{trackingnumber}'; 3) $filter=state eq '{state}'; 4) Logical and
-     * combination of the above, for example: $filter=type eq 'Import' and state eq
-     * 'Transferring'. Valid values for type are Import and Export. Valid values
-     * for state are Creating, Shipping, Received, Transferring, Packaging, Closed,
-     * and Completed.
+     * certain conditions.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -157,7 +254,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {JobListResult} - The deserialized result object.
+     *                      @resolve {ListJobsResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -165,25 +262,25 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobListResult} for more information.
+     *                      {ListJobsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListJobsResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.JobListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ListJobsResponse>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ListJobsResponse>): void;
+    listByResourceGroup(resourceGroupName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListJobsResponse>): void;
 
 
     /**
-     * Gets information about an existing import/export job.
+     * Gets information about an existing job.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
-     *
-     * @param {string} jobName The name of the import/export job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -192,19 +289,19 @@ export interface Jobs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<JobResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    getWithHttpOperationResponse(jobName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobResponse>>;
 
     /**
-     * Gets information about an existing import/export job.
+     * Gets information about an existing job.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
-     *
-     * @param {string} jobName The name of the import/export job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -218,7 +315,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Job} - The deserialized result object.
+     *                      @resolve {JobResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -226,101 +323,103 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Job} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Job} for more information.
+     *                      {JobResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    get(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
-    get(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    get(jobName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobResponse>;
+    get(jobName: string, resourceGroupName: string, callback: ServiceCallback<models.JobResponse>): void;
+    get(jobName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
 
 
     /**
-     * Updates specific properties of the import/export job. You can call this
-     * operation to notify the Import/Export service that the hard drives
-     * comprising the import or export job have been shipped to the Microsoft data
-     * center. It can also be used to cancel an existing job.
+     * Updates specific properties of a job. You can call this operation to notify
+     * the Import/Export service that the hard drives comprising the import or
+     * export job have been shipped to the Microsoft data center. It can also be
+     * used to cancel an existing job.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
      *
-     * @param {string} jobName The name of the import/export job.
+     * @param {object} body The parameters to update in the job
      *
-     * @param {object} jobProperties Import/export job properties that need to be
-     * updated.
+     * @param {object} [body.tags] Specifies the tags that will be assigned to the
+     * job
      *
-     * @param {object} [jobProperties.tags]
+     * @param {boolean} [body.cancelRequested] If specified, the value must be
+     * true. The service will attempt to cancel the job.
      *
-     * @param {boolean} [jobProperties.cancelRequested] If specified, the value
-     * must be true. The service will attempt to cancel the job.
+     * @param {string} [body.state] If specified, the value must be Shipping, which
+     * tells the Import/Export service that the package for the job has been
+     * shipped. The ReturnAddress and DeliveryPackage properties must have been set
+     * either in this request or in a previous request, otherwise the request will
+     * fail.
      *
-     * @param {string} [jobProperties.state] If specified, the value must be
-     * Shipping, which tells the Import/Export service that the package for the job
-     * has been shipped. The ReturnAddress and DeliveryPackage properties must have
-     * been set either in this request or in a previous request, otherwise the
-     * request will fail. Possible values include: 'Shipping'
-     *
-     * @param {object} [jobProperties.returnAddress] Specifies the return address
+     * @param {object} [body.returnAddress] Specifies the return address
      * information for the job.
      *
-     * @param {string} jobProperties.returnAddress.recipientName The name of the
-     * recipient who will receive the hard drives when they are returned.
+     * @param {string} body.returnAddress.recipientName The name of the recipient
+     * who will receive the hard drives when they are returned.
      *
-     * @param {string} jobProperties.returnAddress.streetAddress1 The first line of
-     * the street address to use when returning the drives.
+     * @param {string} body.returnAddress.streetAddress1 The first line of the
+     * street address to use when returning the drives.
      *
-     * @param {string} [jobProperties.returnAddress.streetAddress2] The second line
-     * of the street address to use when returning the drives.
+     * @param {string} [body.returnAddress.streetAddress2] The second line of the
+     * street address to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.city The city name to use when
+     * @param {string} body.returnAddress.city The city name to use when returning
+     * the drives.
+     *
+     * @param {string} [body.returnAddress.stateOrProvince] The state or province
+     * to use when returning the drives.
+     *
+     * @param {string} body.returnAddress.postalCode The postal code to use when
      * returning the drives.
      *
-     * @param {string} [jobProperties.returnAddress.stateOrProvince] The state or
-     * province to use when returning the drives.
-     *
-     * @param {string} jobProperties.returnAddress.postalCode The postal code to
+     * @param {string} body.returnAddress.countryOrRegion The country or region to
      * use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.countryOrRegion The country or
-     * region to use when returning the drives.
+     * @param {string} body.returnAddress.phone Phone number of the recipient of
+     * the returned drives.
      *
-     * @param {string} jobProperties.returnAddress.phone Phone number of the
-     * recipient of the returned drives.
+     * @param {string} body.returnAddress.email Email address of the recipient of
+     * the returned drives.
      *
-     * @param {string} jobProperties.returnAddress.email Email address of the
-     * recipient of the returned drives.
+     * @param {object} [body.returnShipping] Specifies the return carrier and
+     * customer's account with the carrier.
      *
-     * @param {object} [jobProperties.returnShipping] Specifies the return carrier
-     * and customer's account with the carrier.
+     * @param {string} body.returnShipping.carrierName The carrier's name.
      *
-     * @param {string} jobProperties.returnShipping.carrierName The carrier's name.
+     * @param {string} body.returnShipping.carrierAccountNumber The customer's
+     * account number with the carrier.
      *
-     * @param {string} jobProperties.returnShipping.carrierAccountNumber The
-     * customer's account number with the carrier.
+     * @param {object} [body.deliveryPackage] Contains information about the
+     * package being shipped by the customer to the Microsoft data center.
      *
-     * @param {object} [jobProperties.deliveryPackage] Contains information about
-     * the package being shipped by the customer to the Microsoft data center.
+     * @param {string} body.deliveryPackage.carrierName The name of the carrier
+     * that is used to ship the import or export drives.
      *
-     * @param {string} jobProperties.deliveryPackage.carrierName The name of the
-     * carrier that is used to ship the import or export drives.
+     * @param {string} body.deliveryPackage.trackingNumber The tracking number of
+     * the package.
      *
-     * @param {string} jobProperties.deliveryPackage.trackingNumber The tracking
-     * number of the package.
+     * @param {number} body.deliveryPackage.driveCount The number of drives
+     * included in the package.
      *
-     * @param {number} jobProperties.deliveryPackage.driveCount The number of
-     * drives included in the package.
+     * @param {string} body.deliveryPackage.shipDate The date when the package is
+     * shipped.
      *
-     * @param {string} jobProperties.deliveryPackage.shipDate The date the package
-     * is shipped.
+     * @param {string} [body.logLevel] Indicates whether error logging or verbose
+     * logging is enabled.
      *
-     * @param {string} [jobProperties.logLevel] Indicates whether error logging or
-     * verbose logging is enabled.
+     * @param {boolean} [body.backupDriveManifest] Indicates whether the manifest
+     * files on the drives should be copied to block blobs.
      *
-     * @param {boolean} [jobProperties.backupDriveManifest] Indicates whether the
-     * manifest files on the drives should be copied to block blobs.
+     * @param {array} [body.driveList] List of drives that comprise the job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -329,95 +428,97 @@ export interface Jobs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<JobResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    updateWithHttpOperationResponse(jobName: string, resourceGroupName: string, body: models.UpdateJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobResponse>>;
 
     /**
-     * Updates specific properties of the import/export job. You can call this
-     * operation to notify the Import/Export service that the hard drives
-     * comprising the import or export job have been shipped to the Microsoft data
-     * center. It can also be used to cancel an existing job.
+     * Updates specific properties of a job. You can call this operation to notify
+     * the Import/Export service that the hard drives comprising the import or
+     * export job have been shipped to the Microsoft data center. It can also be
+     * used to cancel an existing job.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
      *
-     * @param {string} jobName The name of the import/export job.
+     * @param {object} body The parameters to update in the job
      *
-     * @param {object} jobProperties Import/export job properties that need to be
-     * updated.
+     * @param {object} [body.tags] Specifies the tags that will be assigned to the
+     * job
      *
-     * @param {object} [jobProperties.tags]
+     * @param {boolean} [body.cancelRequested] If specified, the value must be
+     * true. The service will attempt to cancel the job.
      *
-     * @param {boolean} [jobProperties.cancelRequested] If specified, the value
-     * must be true. The service will attempt to cancel the job.
+     * @param {string} [body.state] If specified, the value must be Shipping, which
+     * tells the Import/Export service that the package for the job has been
+     * shipped. The ReturnAddress and DeliveryPackage properties must have been set
+     * either in this request or in a previous request, otherwise the request will
+     * fail.
      *
-     * @param {string} [jobProperties.state] If specified, the value must be
-     * Shipping, which tells the Import/Export service that the package for the job
-     * has been shipped. The ReturnAddress and DeliveryPackage properties must have
-     * been set either in this request or in a previous request, otherwise the
-     * request will fail. Possible values include: 'Shipping'
-     *
-     * @param {object} [jobProperties.returnAddress] Specifies the return address
+     * @param {object} [body.returnAddress] Specifies the return address
      * information for the job.
      *
-     * @param {string} jobProperties.returnAddress.recipientName The name of the
-     * recipient who will receive the hard drives when they are returned.
+     * @param {string} body.returnAddress.recipientName The name of the recipient
+     * who will receive the hard drives when they are returned.
      *
-     * @param {string} jobProperties.returnAddress.streetAddress1 The first line of
-     * the street address to use when returning the drives.
+     * @param {string} body.returnAddress.streetAddress1 The first line of the
+     * street address to use when returning the drives.
      *
-     * @param {string} [jobProperties.returnAddress.streetAddress2] The second line
-     * of the street address to use when returning the drives.
+     * @param {string} [body.returnAddress.streetAddress2] The second line of the
+     * street address to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.city The city name to use when
+     * @param {string} body.returnAddress.city The city name to use when returning
+     * the drives.
+     *
+     * @param {string} [body.returnAddress.stateOrProvince] The state or province
+     * to use when returning the drives.
+     *
+     * @param {string} body.returnAddress.postalCode The postal code to use when
      * returning the drives.
      *
-     * @param {string} [jobProperties.returnAddress.stateOrProvince] The state or
-     * province to use when returning the drives.
-     *
-     * @param {string} jobProperties.returnAddress.postalCode The postal code to
+     * @param {string} body.returnAddress.countryOrRegion The country or region to
      * use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.countryOrRegion The country or
-     * region to use when returning the drives.
+     * @param {string} body.returnAddress.phone Phone number of the recipient of
+     * the returned drives.
      *
-     * @param {string} jobProperties.returnAddress.phone Phone number of the
-     * recipient of the returned drives.
+     * @param {string} body.returnAddress.email Email address of the recipient of
+     * the returned drives.
      *
-     * @param {string} jobProperties.returnAddress.email Email address of the
-     * recipient of the returned drives.
+     * @param {object} [body.returnShipping] Specifies the return carrier and
+     * customer's account with the carrier.
      *
-     * @param {object} [jobProperties.returnShipping] Specifies the return carrier
-     * and customer's account with the carrier.
+     * @param {string} body.returnShipping.carrierName The carrier's name.
      *
-     * @param {string} jobProperties.returnShipping.carrierName The carrier's name.
+     * @param {string} body.returnShipping.carrierAccountNumber The customer's
+     * account number with the carrier.
      *
-     * @param {string} jobProperties.returnShipping.carrierAccountNumber The
-     * customer's account number with the carrier.
+     * @param {object} [body.deliveryPackage] Contains information about the
+     * package being shipped by the customer to the Microsoft data center.
      *
-     * @param {object} [jobProperties.deliveryPackage] Contains information about
-     * the package being shipped by the customer to the Microsoft data center.
+     * @param {string} body.deliveryPackage.carrierName The name of the carrier
+     * that is used to ship the import or export drives.
      *
-     * @param {string} jobProperties.deliveryPackage.carrierName The name of the
-     * carrier that is used to ship the import or export drives.
+     * @param {string} body.deliveryPackage.trackingNumber The tracking number of
+     * the package.
      *
-     * @param {string} jobProperties.deliveryPackage.trackingNumber The tracking
-     * number of the package.
+     * @param {number} body.deliveryPackage.driveCount The number of drives
+     * included in the package.
      *
-     * @param {number} jobProperties.deliveryPackage.driveCount The number of
-     * drives included in the package.
+     * @param {string} body.deliveryPackage.shipDate The date when the package is
+     * shipped.
      *
-     * @param {string} jobProperties.deliveryPackage.shipDate The date the package
-     * is shipped.
+     * @param {string} [body.logLevel] Indicates whether error logging or verbose
+     * logging is enabled.
      *
-     * @param {string} [jobProperties.logLevel] Indicates whether error logging or
-     * verbose logging is enabled.
+     * @param {boolean} [body.backupDriveManifest] Indicates whether the manifest
+     * files on the drives should be copied to block blobs.
      *
-     * @param {boolean} [jobProperties.backupDriveManifest] Indicates whether the
-     * manifest files on the drives should be copied to block blobs.
+     * @param {array} [body.driveList] List of drives that comprise the job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -431,7 +532,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Job} - The deserialized result object.
+     *                      @resolve {JobResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -439,262 +540,350 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Job} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Job} for more information.
+     *                      {JobResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    update(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, callback: ServiceCallback<models.Job>): void;
-    update(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    update(jobName: string, resourceGroupName: string, body: models.UpdateJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobResponse>;
+    update(jobName: string, resourceGroupName: string, body: models.UpdateJobParameters, callback: ServiceCallback<models.JobResponse>): void;
+    update(jobName: string, resourceGroupName: string, body: models.UpdateJobParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
 
 
     /**
-     * Creates a new import/export job or updates an existing import/export job in
-     * the specified subscription.
+     * Creates a new job or updates an existing job in the specified subscription.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
      *
-     * @param {string} jobName The name of the import/export job.
+     * @param {object} body The parameters used for creating the job
      *
-     * @param {object} jobProperties Properties of the import/export job that need
-     * to be specified during creation.
+     * @param {string} [body.location] Specifies the supported Azure location where
+     * the job should be created
      *
-     * @param {string} jobProperties.storageAccountId The resource identifier of
-     * the storage account where data will be imported to or exported from.
+     * @param {object} [body.tags] Specifies the tags that will be assigned to the
+     * job.
      *
-     * @param {string} [jobProperties.containerSas] The container shared access
-     * signature (SAS) to be used to import or export data to or from the storage
-     * account.
+     * @param {object} [body.properties] Specifies the job properties
      *
-     * @param {string} jobProperties.jobType The type of job: Import or Export.
-     * Possible values include: 'Import', 'Export'
+     * @param {string} [body.properties.storageAccountId] The resource identifier
+     * of the storage account where data will be imported to or exported from.
      *
-     * @param {object} jobProperties.returnAddress Specifies the return address
+     * @param {string} [body.properties.jobType] The type of job
+     *
+     * @param {object} [body.properties.returnAddress] Specifies the return address
      * information for the job.
      *
-     * @param {string} jobProperties.returnAddress.recipientName The name of the
+     * @param {string} body.properties.returnAddress.recipientName The name of the
      * recipient who will receive the hard drives when they are returned.
      *
-     * @param {string} jobProperties.returnAddress.streetAddress1 The first line of
-     * the street address to use when returning the drives.
-     *
-     * @param {string} [jobProperties.returnAddress.streetAddress2] The second line
+     * @param {string} body.properties.returnAddress.streetAddress1 The first line
      * of the street address to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.city The city name to use when
+     * @param {string} [body.properties.returnAddress.streetAddress2] The second
+     * line of the street address to use when returning the drives.
+     *
+     * @param {string} body.properties.returnAddress.city The city name to use when
      * returning the drives.
      *
-     * @param {string} [jobProperties.returnAddress.stateOrProvince] The state or
+     * @param {string} [body.properties.returnAddress.stateOrProvince] The state or
      * province to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.postalCode The postal code to
+     * @param {string} body.properties.returnAddress.postalCode The postal code to
      * use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.countryOrRegion The country or
+     * @param {string} body.properties.returnAddress.countryOrRegion The country or
      * region to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.phone Phone number of the
+     * @param {string} body.properties.returnAddress.phone Phone number of the
      * recipient of the returned drives.
      *
-     * @param {string} jobProperties.returnAddress.email Email address of the
+     * @param {string} body.properties.returnAddress.email Email address of the
      * recipient of the returned drives.
      *
-     * @param {object} jobProperties.returnShipping Specifies the return carrier
-     * and customer's account with the carrier.
+     * @param {object} [body.properties.returnShipping] Specifies the return
+     * carrier and customer's account with the carrier.
      *
-     * @param {string} jobProperties.returnShipping.carrierName The carrier's name.
+     * @param {string} body.properties.returnShipping.carrierName The carrier's
+     * name.
      *
-     * @param {string} jobProperties.returnShipping.carrierAccountNumber The
+     * @param {string} body.properties.returnShipping.carrierAccountNumber The
      * customer's account number with the carrier.
      *
-     * @param {object} [jobProperties.deliveryPackage] Contains information about
+     * @param {object} [body.properties.shippingInformation] Contains information
+     * about the Microsoft datacenter to which the drives should be shipped.
+     *
+     * @param {string} body.properties.shippingInformation.recipientName The name
+     * of the recipient who will receive the hard drives when they are returned.
+     *
+     * @param {string} body.properties.shippingInformation.streetAddress1 The first
+     * line of the street address to use when returning the drives.
+     *
+     * @param {string} [body.properties.shippingInformation.streetAddress2] The
+     * second line of the street address to use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.city The city name to
+     * use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.stateOrProvince The
+     * state or province to use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.postalCode The postal
+     * code to use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.countryOrRegion The
+     * country or region to use when returning the drives.
+     *
+     * @param {string} [body.properties.shippingInformation.phone] Phone number of
+     * the recipient of the returned drives.
+     *
+     * @param {object} [body.properties.deliveryPackage] Contains information about
      * the package being shipped by the customer to the Microsoft data center.
      *
-     * @param {string} jobProperties.deliveryPackage.carrierName The name of the
+     * @param {object} [body.properties.returnPackage] Contains information about
+     * the package being shipped from the Microsoft data center to the customer to
+     * return the drives. The format is the same as the deliveryPackage property
+     * above. This property is not included if the drives have not yet been
+     * returned.
+     *
+     * @param {string} body.properties.returnPackage.carrierName The name of the
      * carrier that is used to ship the import or export drives.
      *
-     * @param {string} jobProperties.deliveryPackage.trackingNumber The tracking
+     * @param {string} body.properties.returnPackage.trackingNumber The tracking
      * number of the package.
      *
-     * @param {number} jobProperties.deliveryPackage.driveCount The number of
+     * @param {number} body.properties.returnPackage.driveCount The number of
      * drives included in the package.
      *
-     * @param {string} jobProperties.deliveryPackage.shipDate The date the package
-     * is shipped.
+     * @param {string} body.properties.returnPackage.shipDate The date when the
+     * package is shipped.
      *
-     * @param {string} jobProperties.diagnosticsPath The virtual blob directory to
-     * which the copy logs and backups of drive manifest files (if enabled) will be
-     * stored.
+     * @param {string} [body.properties.diagnosticsPath] The virtual blob directory
+     * to which the copy logs and backups of drive manifest files (if enabled) will
+     * be stored.
      *
-     * @param {string} [jobProperties.logLevel] Default value is Error. Indicates
-     * whether error logging or verbose logging will be enabled. Possible values
-     * include: 'Error', 'Verbose'
+     * @param {string} [body.properties.logLevel] Default value is Error. Indicates
+     * whether error logging or verbose logging will be enabled.
      *
-     * @param {boolean} [jobProperties.backupDriveManifest] Default value is false.
-     * Indicates whether the manifest files on the drives should be copied to block
-     * blobs.
+     * @param {boolean} [body.properties.backupDriveManifest] Default value is
+     * false. Indicates whether the manifest files on the drives should be copied
+     * to block blobs.
      *
-     * @param {boolean} [jobProperties.cancelRequested] Indicates whether a request
-     * has been submitted to cancel the job.
+     * @param {string} [body.properties.state] Current state of the job.
      *
-     * @param {array} [jobProperties.driveList] List of up to ten drives that
+     * @param {boolean} [body.properties.cancelRequested] Indicates whether a
+     * request has been submitted to cancel the job.
+     *
+     * @param {number} [body.properties.percentComplete] Overall percentage
+     * completed for the job.
+     *
+     * @param {string} [body.properties.incompleteBlobListUri] A blob path that
+     * points to a block blob containing a list of blob names that were not
+     * exported due to insufficient drive space. If all blobs were exported
+     * successfully, then this element is not included in the response.
+     *
+     * @param {array} [body.properties.driveList] List of up to ten drives that
      * comprise the job. The drive list is a required element for an import job; it
      * is not specified for export jobs.
      *
-     * @param {object} [jobProperties.exportProperty] A property containing
+     * @param {object} [body.properties.exportProperty] A property containing
      * information about the blobs to be exported for an export job. This property
      * is included for export jobs only.
      *
-     * @param {array} [jobProperties.exportProperty.blobPath] A collection of
+     * @param {array} [body.properties.exportProperty.blobPath] A collection of
      * blob-path strings.
      *
-     * @param {array} [jobProperties.exportProperty.blobPathPrefix] A collection of
-     * blob-prefix strings.
+     * @param {array} [body.properties.exportProperty.blobPathPrefix] A collection
+     * of blob-prefix strings.
      *
-     * @param {string} [jobProperties.exportProperty.blobListblobPath] The relative
-     * URI to the block blob that contains the list of blob paths or blob path
-     * prefixes as defined above, beginning with the container name. If the blob is
-     * in the root container, the URI must begin with $root.
+     * @param {string} [body.properties.exportProperty.blobListblobPath] The
+     * relative URI to the block blob that contains the list of blob paths or blob
+     * path prefixes as defined above, beginning with the container name. If the
+     * blob is in root container, the URI must begin with $root.
      *
-     * @param {string} jobProperties.location Specifies the Azure location where
-     * the job is created.
-     *
-     * @param {object} [jobProperties.tags] Specifies the tags that are assigned to
-     * the job.
+     * @param {string} [body.properties.provisioningState] Specifies the
+     * provisioning state of the job.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientTenantId] The tenant ID of the client making
+     * the request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<JobResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, jobName: string, jobProperties: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    createWithHttpOperationResponse(jobName: string, resourceGroupName: string, body: models.PutJobParameters, options?: { clientTenantId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobResponse>>;
 
     /**
-     * Creates a new import/export job or updates an existing import/export job in
-     * the specified subscription.
+     * Creates a new job or updates an existing job in the specified subscription.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
      *
-     * @param {string} jobName The name of the import/export job.
+     * @param {object} body The parameters used for creating the job
      *
-     * @param {object} jobProperties Properties of the import/export job that need
-     * to be specified during creation.
+     * @param {string} [body.location] Specifies the supported Azure location where
+     * the job should be created
      *
-     * @param {string} jobProperties.storageAccountId The resource identifier of
-     * the storage account where data will be imported to or exported from.
+     * @param {object} [body.tags] Specifies the tags that will be assigned to the
+     * job.
      *
-     * @param {string} [jobProperties.containerSas] The container shared access
-     * signature (SAS) to be used to import or export data to or from the storage
-     * account.
+     * @param {object} [body.properties] Specifies the job properties
      *
-     * @param {string} jobProperties.jobType The type of job: Import or Export.
-     * Possible values include: 'Import', 'Export'
+     * @param {string} [body.properties.storageAccountId] The resource identifier
+     * of the storage account where data will be imported to or exported from.
      *
-     * @param {object} jobProperties.returnAddress Specifies the return address
+     * @param {string} [body.properties.jobType] The type of job
+     *
+     * @param {object} [body.properties.returnAddress] Specifies the return address
      * information for the job.
      *
-     * @param {string} jobProperties.returnAddress.recipientName The name of the
+     * @param {string} body.properties.returnAddress.recipientName The name of the
      * recipient who will receive the hard drives when they are returned.
      *
-     * @param {string} jobProperties.returnAddress.streetAddress1 The first line of
-     * the street address to use when returning the drives.
-     *
-     * @param {string} [jobProperties.returnAddress.streetAddress2] The second line
+     * @param {string} body.properties.returnAddress.streetAddress1 The first line
      * of the street address to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.city The city name to use when
+     * @param {string} [body.properties.returnAddress.streetAddress2] The second
+     * line of the street address to use when returning the drives.
+     *
+     * @param {string} body.properties.returnAddress.city The city name to use when
      * returning the drives.
      *
-     * @param {string} [jobProperties.returnAddress.stateOrProvince] The state or
+     * @param {string} [body.properties.returnAddress.stateOrProvince] The state or
      * province to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.postalCode The postal code to
+     * @param {string} body.properties.returnAddress.postalCode The postal code to
      * use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.countryOrRegion The country or
+     * @param {string} body.properties.returnAddress.countryOrRegion The country or
      * region to use when returning the drives.
      *
-     * @param {string} jobProperties.returnAddress.phone Phone number of the
+     * @param {string} body.properties.returnAddress.phone Phone number of the
      * recipient of the returned drives.
      *
-     * @param {string} jobProperties.returnAddress.email Email address of the
+     * @param {string} body.properties.returnAddress.email Email address of the
      * recipient of the returned drives.
      *
-     * @param {object} jobProperties.returnShipping Specifies the return carrier
-     * and customer's account with the carrier.
+     * @param {object} [body.properties.returnShipping] Specifies the return
+     * carrier and customer's account with the carrier.
      *
-     * @param {string} jobProperties.returnShipping.carrierName The carrier's name.
+     * @param {string} body.properties.returnShipping.carrierName The carrier's
+     * name.
      *
-     * @param {string} jobProperties.returnShipping.carrierAccountNumber The
+     * @param {string} body.properties.returnShipping.carrierAccountNumber The
      * customer's account number with the carrier.
      *
-     * @param {object} [jobProperties.deliveryPackage] Contains information about
+     * @param {object} [body.properties.shippingInformation] Contains information
+     * about the Microsoft datacenter to which the drives should be shipped.
+     *
+     * @param {string} body.properties.shippingInformation.recipientName The name
+     * of the recipient who will receive the hard drives when they are returned.
+     *
+     * @param {string} body.properties.shippingInformation.streetAddress1 The first
+     * line of the street address to use when returning the drives.
+     *
+     * @param {string} [body.properties.shippingInformation.streetAddress2] The
+     * second line of the street address to use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.city The city name to
+     * use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.stateOrProvince The
+     * state or province to use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.postalCode The postal
+     * code to use when returning the drives.
+     *
+     * @param {string} body.properties.shippingInformation.countryOrRegion The
+     * country or region to use when returning the drives.
+     *
+     * @param {string} [body.properties.shippingInformation.phone] Phone number of
+     * the recipient of the returned drives.
+     *
+     * @param {object} [body.properties.deliveryPackage] Contains information about
      * the package being shipped by the customer to the Microsoft data center.
      *
-     * @param {string} jobProperties.deliveryPackage.carrierName The name of the
+     * @param {object} [body.properties.returnPackage] Contains information about
+     * the package being shipped from the Microsoft data center to the customer to
+     * return the drives. The format is the same as the deliveryPackage property
+     * above. This property is not included if the drives have not yet been
+     * returned.
+     *
+     * @param {string} body.properties.returnPackage.carrierName The name of the
      * carrier that is used to ship the import or export drives.
      *
-     * @param {string} jobProperties.deliveryPackage.trackingNumber The tracking
+     * @param {string} body.properties.returnPackage.trackingNumber The tracking
      * number of the package.
      *
-     * @param {number} jobProperties.deliveryPackage.driveCount The number of
+     * @param {number} body.properties.returnPackage.driveCount The number of
      * drives included in the package.
      *
-     * @param {string} jobProperties.deliveryPackage.shipDate The date the package
-     * is shipped.
+     * @param {string} body.properties.returnPackage.shipDate The date when the
+     * package is shipped.
      *
-     * @param {string} jobProperties.diagnosticsPath The virtual blob directory to
-     * which the copy logs and backups of drive manifest files (if enabled) will be
-     * stored.
+     * @param {string} [body.properties.diagnosticsPath] The virtual blob directory
+     * to which the copy logs and backups of drive manifest files (if enabled) will
+     * be stored.
      *
-     * @param {string} [jobProperties.logLevel] Default value is Error. Indicates
-     * whether error logging or verbose logging will be enabled. Possible values
-     * include: 'Error', 'Verbose'
+     * @param {string} [body.properties.logLevel] Default value is Error. Indicates
+     * whether error logging or verbose logging will be enabled.
      *
-     * @param {boolean} [jobProperties.backupDriveManifest] Default value is false.
-     * Indicates whether the manifest files on the drives should be copied to block
-     * blobs.
+     * @param {boolean} [body.properties.backupDriveManifest] Default value is
+     * false. Indicates whether the manifest files on the drives should be copied
+     * to block blobs.
      *
-     * @param {boolean} [jobProperties.cancelRequested] Indicates whether a request
-     * has been submitted to cancel the job.
+     * @param {string} [body.properties.state] Current state of the job.
      *
-     * @param {array} [jobProperties.driveList] List of up to ten drives that
+     * @param {boolean} [body.properties.cancelRequested] Indicates whether a
+     * request has been submitted to cancel the job.
+     *
+     * @param {number} [body.properties.percentComplete] Overall percentage
+     * completed for the job.
+     *
+     * @param {string} [body.properties.incompleteBlobListUri] A blob path that
+     * points to a block blob containing a list of blob names that were not
+     * exported due to insufficient drive space. If all blobs were exported
+     * successfully, then this element is not included in the response.
+     *
+     * @param {array} [body.properties.driveList] List of up to ten drives that
      * comprise the job. The drive list is a required element for an import job; it
      * is not specified for export jobs.
      *
-     * @param {object} [jobProperties.exportProperty] A property containing
+     * @param {object} [body.properties.exportProperty] A property containing
      * information about the blobs to be exported for an export job. This property
      * is included for export jobs only.
      *
-     * @param {array} [jobProperties.exportProperty.blobPath] A collection of
+     * @param {array} [body.properties.exportProperty.blobPath] A collection of
      * blob-path strings.
      *
-     * @param {array} [jobProperties.exportProperty.blobPathPrefix] A collection of
-     * blob-prefix strings.
+     * @param {array} [body.properties.exportProperty.blobPathPrefix] A collection
+     * of blob-prefix strings.
      *
-     * @param {string} [jobProperties.exportProperty.blobListblobPath] The relative
-     * URI to the block blob that contains the list of blob paths or blob path
-     * prefixes as defined above, beginning with the container name. If the blob is
-     * in the root container, the URI must begin with $root.
+     * @param {string} [body.properties.exportProperty.blobListblobPath] The
+     * relative URI to the block blob that contains the list of blob paths or blob
+     * path prefixes as defined above, beginning with the container name. If the
+     * blob is in root container, the URI must begin with $root.
      *
-     * @param {string} jobProperties.location Specifies the Azure location where
-     * the job is created.
-     *
-     * @param {object} [jobProperties.tags] Specifies the tags that are assigned to
-     * the job.
+     * @param {string} [body.properties.provisioningState] Specifies the
+     * provisioning state of the job.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.clientTenantId] The tenant ID of the client making
+     * the request.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -706,7 +895,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Job} - The deserialized result object.
+     *                      @resolve {JobResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -714,26 +903,26 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Job} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Job} for more information.
+     *                      {JobResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, jobName: string, jobProperties: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    createOrUpdate(resourceGroupName: string, jobName: string, jobProperties: models.Job, callback: ServiceCallback<models.Job>): void;
-    createOrUpdate(resourceGroupName: string, jobName: string, jobProperties: models.Job, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    create(jobName: string, resourceGroupName: string, body: models.PutJobParameters, options?: { clientTenantId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobResponse>;
+    create(jobName: string, resourceGroupName: string, body: models.PutJobParameters, callback: ServiceCallback<models.JobResponse>): void;
+    create(jobName: string, resourceGroupName: string, body: models.PutJobParameters, options: { clientTenantId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
 
 
     /**
-     * Deletes an existing import/export job. Only import/export jobs in the
-     * Creating or Completed states can be deleted.
+     * Deletes an existing job. Only jobs in the Creating or Completed states can
+     * be deleted.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
-     *
-     * @param {string} jobName The name of the import/export job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -746,16 +935,16 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(jobName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes an existing import/export job. Only import/export jobs in the
-     * Creating or Completed states can be deleted.
+     * Deletes an existing job. Only jobs in the Creating or Completed states can
+     * be deleted.
+     *
+     * @param {string} jobName The name of the import/export job.
      *
      * @param {string} resourceGroupName The resource group name uniquely
      * identifies the resource group within the user subscription.
-     *
-     * @param {string} jobName The name of the import/export job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -783,28 +972,16 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, jobName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(jobName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(jobName: string, resourceGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(jobName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Moves the specified import/export jobs from the resource group to a target
-     * resource group. The target resource group may be in a different
-     * subscription.
+     * Returns all active and completed jobs in a subscription.
      *
-     * @param {string} resourceGroupName The resource group name uniquely
-     * identifies the resource group within the user subscription.
-     *
-     * @param {object} moveJobsParameters Parameters to be provided to move a job
-     * from one resource group to another.
-     *
-     * @param {string} moveJobsParameters.targetResourceGroup Specifies the target
-     * resource group ID to move the jobs to.
-     *
-     * @param {array} moveJobsParameters.resources Specifies the list of jobs to
-     * move to the target resource group. The jobs must be from the current
-     * resource group from the request URL.
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -813,29 +990,17 @@ export interface Jobs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ListJobsResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    moveWithHttpOperationResponse(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListJobsResponse>>;
 
     /**
-     * Moves the specified import/export jobs from the resource group to a target
-     * resource group. The target resource group may be in a different
-     * subscription.
+     * Returns all active and completed jobs in a subscription.
      *
-     * @param {string} resourceGroupName The resource group name uniquely
-     * identifies the resource group within the user subscription.
-     *
-     * @param {object} moveJobsParameters Parameters to be provided to move a job
-     * from one resource group to another.
-     *
-     * @param {string} moveJobsParameters.targetResourceGroup Specifies the target
-     * resource group ID to move the jobs to.
-     *
-     * @param {array} moveJobsParameters.resources Specifies the list of jobs to
-     * move to the target resource group. The jobs must be from the current
-     * resource group from the request URL.
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -849,7 +1014,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {ListJobsResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -857,24 +1022,23 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {ListJobsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListJobsResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    move(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    move(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, callback: ServiceCallback<void>): void;
-    move(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListJobsResponse>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ListJobsResponse>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListJobsResponse>): void;
 
 
     /**
-     * Lists the BitLocker keys for all drives in the specified import/export job.
+     * Returns all active and completed jobs in a resource group.
      *
-     * @param {string} resourceGroupName The resource group name uniquely
-     * identifies the resource group within the user subscription.
-     *
-     * @param {string} jobName The name of the import/export job.
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -883,19 +1047,17 @@ export interface Jobs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BitLockerKeysListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ListJobsResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBitLockerKeysWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BitLockerKeysListResult>>;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListJobsResponse>>;
 
     /**
-     * Lists the BitLocker keys for all drives in the specified import/export job.
+     * Returns all active and completed jobs in a resource group.
      *
-     * @param {string} resourceGroupName The resource group name uniquely
-     * identifies the resource group within the user subscription.
-     *
-     * @param {string} jobName The name of the import/export job.
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -909,7 +1071,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BitLockerKeysListResult} - The deserialized result object.
+     *                      @resolve {ListJobsResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -917,24 +1079,101 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BitLockerKeysListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BitLockerKeysListResult} for more
+     *                      {ListJobsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListJobsResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListJobsResponse>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ListJobsResponse>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListJobsResponse>): void;
+}
+
+/**
+ * @class
+ * BitLockerKeys
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageImportExportManagementClient.
+ */
+export interface BitLockerKeys {
+
+
+    /**
+     * Returns the BitLocker Keys for all drives in the specified job.
+     *
+     * @param {string} jobName The name of the import/export job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GetBitLockerKeysResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(jobName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GetBitLockerKeysResponse>>;
+
+    /**
+     * Returns the BitLocker Keys for all drives in the specified job.
+     *
+     * @param {string} jobName The name of the import/export job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GetBitLockerKeysResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GetBitLockerKeysResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GetBitLockerKeysResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBitLockerKeys(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BitLockerKeysListResult>;
-    listBitLockerKeys(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.BitLockerKeysListResult>): void;
-    listBitLockerKeys(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BitLockerKeysListResult>): void;
+    list(jobName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GetBitLockerKeysResponse>;
+    list(jobName: string, resourceGroupName: string, callback: ServiceCallback<models.GetBitLockerKeysResponse>): void;
+    list(jobName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetBitLockerKeysResponse>): void;
+}
+
+/**
+ * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageImportExportManagementClient.
+ */
+export interface Operations {
 
 
     /**
-     * Gets all the active and completed import/export jobs in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * Returns the list of operations supported by the import/export resource
+     * provider.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -943,17 +1182,15 @@ export interface Jobs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ListOperationsResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListOperationsResponse>>;
 
     /**
-     * Gets all the active and completed import/export jobs in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * Returns the list of operations supported by the import/export resource
+     * provider.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -967,7 +1204,7 @@ export interface Jobs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {JobListResult} - The deserialized result object.
+     *                      @resolve {ListOperationsResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -975,71 +1212,15 @@ export interface Jobs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobListResult} for more information.
+     *                      {ListOperationsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListOperationsResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.JobListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
-
-
-    /**
-     * Returns all active and completed import/export jobs in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
-
-    /**
-     * Returns all active and completed import/export jobs in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.JobListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListOperationsResponse>;
+    list(callback: ServiceCallback<models.ListOperationsResponse>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListOperationsResponse>): void;
 }
