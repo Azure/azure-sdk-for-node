@@ -634,11 +634,14 @@ export interface ApplicationInsightsComponent extends ComponentsResource {
  * @member {object} [value] the value for the operator to function over. This
  * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
  * of values.
+ * @member {string} [key] When filtering over custom dimensions, this key will
+ * be used as the name of the custom dimension.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
   operator?: string;
   value?: any;
+  key?: string;
 }
 
 /**
