@@ -1,8 +1,14 @@
-# Microsoft Azure SDK for Node.js - SchedulerManagement
+---
+uid: azure-arm-scheduler
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Scheduler.
-## API-Version: 2016-04-01
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - SchedulerManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -10,28 +16,24 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-scheduler
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing zones as an example
+### Authentication, client creation and listBySubscription jobCollections as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const SchedulerManagement = require("azure-arm-scheduler");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new SchedulerManagement(credentials, 'your-subscription-id');
-   return client.zones.list();
- }).then((zones) => {
-  console.log('List of zones:');
-  console.dir(zones, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const SchedulerManagementClient = require("azure-arm-scheduler");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new SchedulerManagementClient(creds, subscriptionId);
+    return client.jobCollections.listBySubscription().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
