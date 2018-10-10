@@ -25,11 +25,30 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [id] ID of the resource.
  * @member {string} [name] Name of the resource.
  * @member {string} [type] Type of Resource.
- * @member {object} [tags] Custom tags for the resource.
  * @member {string} [etag] The entity tag used for optimistic concurency when
  * modifying the resource.
  */
 export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * Base resource object.
+ *
+ * @member {string} [id] ID of the resource.
+ * @member {string} [name] Name of the resource.
+ * @member {string} [type] Type of Resource.
+ * @member {object} [tags] Custom tags for the resource.
+ * @member {string} [etag] The entity tag used for optimistic concurency when
+ * modifying the resource.
+ */
+export interface TrackedResource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -88,6 +107,40 @@ export interface Operation {
   name?: string;
   display?: Display;
   origin?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorDetails class.
+ * @constructor
+ * The details of the error.
+ *
+ * @member {string} [code] Error code.
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
+ * @member {string} [target] The target of the particular error.
+ */
+export interface ErrorDetails {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error response indicates that the service is not able to process the
+ * incoming request. The reason is provided in the error message.
+ *
+ * @member {object} [error] The details of the error.
+ * @member {string} [error.code] Error code.
+ * @member {string} [error.message] Error message indicating why the operation
+ * failed.
+ * @member {string} [error.target] The target of the particular error.
+ */
+export interface ErrorResponse {
+  error?: ErrorDetails;
 }
 
 /**
@@ -323,7 +376,7 @@ export interface Product extends Resource {
  * @member {string} [billingModel] Specifies the billing mode for the Azure
  * Stack registration.
  */
-export interface Registration extends Resource {
+export interface Registration extends TrackedResource {
   objectId?: string;
   cloudId?: string;
   billingModel?: string;
@@ -349,9 +402,12 @@ export interface ActivationKeyResult {
  *
  * @member {string} registrationToken The token identifying registered Azure
  * Stack
+ * @member {string} [location] Location of the resource. Possible values
+ * include: 'global'
  */
-export interface RegistrationParameter extends Resource {
+export interface RegistrationParameter {
   registrationToken: string;
+  location?: string;
 }
 
 /**
