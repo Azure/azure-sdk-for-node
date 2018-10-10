@@ -3961,7 +3961,7 @@ export interface OAuth2 {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
+    grantWithHttpOperationResponse(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
 
     /**
      * Grants OAuth2 permissions for the relevant resource Ids of an app.
@@ -4016,7 +4016,7 @@ export interface OAuth2 {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
-    post(callback: ServiceCallback<models.Permissions>): void;
-    post(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
+    grant(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    grant(callback: ServiceCallback<models.Permissions>): void;
+    grant(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
 }
