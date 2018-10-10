@@ -34,11 +34,11 @@ export default class SqlManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -106,7 +106,6 @@ export default class SqlManagementClient extends AzureServiceClient {
   longTermRetentionBackups: operations.LongTermRetentionBackups;
   backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
   managedDatabases: operations.ManagedDatabases;
-  sensitivityLabels: operations.SensitivityLabels;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
   serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
@@ -115,10 +114,15 @@ export default class SqlManagementClient extends AzureServiceClient {
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
   databaseVulnerabilityAssessmentScans: operations.DatabaseVulnerabilityAssessmentScans;
+  managedDatabaseVulnerabilityAssessmentRuleBaselines: operations.ManagedDatabaseVulnerabilityAssessmentRuleBaselines;
+  managedDatabaseVulnerabilityAssessmentScans: operations.ManagedDatabaseVulnerabilityAssessmentScans;
+  managedDatabaseVulnerabilityAssessments: operations.ManagedDatabaseVulnerabilityAssessments;
   instanceFailoverGroups: operations.InstanceFailoverGroups;
   backupShortTermRetentionPolicies: operations.BackupShortTermRetentionPolicies;
   tdeCertificates: operations.TdeCertificates;
   managedInstanceTdeCertificates: operations.ManagedInstanceTdeCertificates;
+  managedInstanceKeys: operations.ManagedInstanceKeys;
+  managedInstanceEncryptionProtectors: operations.ManagedInstanceEncryptionProtectors;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
