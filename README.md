@@ -195,5 +195,3 @@ get your code included into the project.
 1. Commit your changes (`git commit -am 'Add some feature'`)
 2. Push to the branch (`git push origin my-new-feature`)
 3. Create new Pull Request
-
-
