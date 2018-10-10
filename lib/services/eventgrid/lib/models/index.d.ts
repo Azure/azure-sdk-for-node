@@ -1061,21 +1061,21 @@ export interface MediaJobStateChangeEventData {
 
 /**
  * @class
- * Initializes a new instance of the JobErrorDetail class.
+ * Initializes a new instance of the MediaJobErrorDetail class.
  * @constructor
  * Details of JobOutput errors.
  *
  * @member {string} [code] Code describing the error detail.
  * @member {string} [message] A human-readable representation of the error.
  */
-export interface JobErrorDetail {
+export interface MediaJobErrorDetail {
   readonly code?: string;
   readonly message?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobError class.
+ * Initializes a new instance of the MediaJobError class.
  * @constructor
  * Details of JobOutput errors.
  *
@@ -1093,17 +1093,17 @@ export interface JobErrorDetail {
  * @member {array} [details] An array of details about specific errors that led
  * to this reported error.
  */
-export interface JobError {
+export interface MediaJobError {
   readonly code?: string;
   readonly message?: string;
   readonly category?: string;
   readonly retry?: string;
-  readonly details?: JobErrorDetail[];
+  readonly details?: MediaJobErrorDetail[];
 }
 
 /**
  * @class
- * Initializes a new instance of the JobOutput class.
+ * Initializes a new instance of the MediaJobOutput class.
  * @constructor
  * The event data for a Job output.
  *
@@ -1129,8 +1129,8 @@ export interface JobError {
  * 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
  * 'Scheduled'
  */
-export interface JobOutput {
-  error?: JobError;
+export interface MediaJobOutput {
+  error?: MediaJobError;
   label?: string;
   progress: number;
   state: string;
@@ -1138,13 +1138,13 @@ export interface JobOutput {
 
 /**
  * @class
- * Initializes a new instance of the JobOutputAsset class.
+ * Initializes a new instance of the MediaJobOutputAsset class.
  * @constructor
  * The event data for a Job output asset.
  *
  * @member {string} [assetName] Gets the Job output asset name.
  */
-export interface JobOutputAsset extends JobOutput {
+export interface MediaJobOutputAsset extends MediaJobOutput {
   assetName?: string;
 }
 
@@ -1184,7 +1184,7 @@ export interface JobOutputAsset extends JobOutput {
  */
 export interface MediaJobOutputStateChangeEventData {
   readonly previousState?: string;
-  output?: JobOutput;
+  output?: MediaJobOutput;
   jobCorrelationData?: { [propertyName: string]: string };
 }
 
@@ -1227,7 +1227,7 @@ export interface MediaJobCancelingEventData extends MediaJobStateChangeEventData
  * @member {array} [outputs] Gets the Job outputs.
  */
 export interface MediaJobFinishedEventData extends MediaJobStateChangeEventData {
-  outputs?: JobOutput[];
+  outputs?: MediaJobOutput[];
 }
 
 /**
@@ -1239,7 +1239,7 @@ export interface MediaJobFinishedEventData extends MediaJobStateChangeEventData 
  * @member {array} [outputs] Gets the Job outputs.
  */
 export interface MediaJobCanceledEventData extends MediaJobStateChangeEventData {
-  outputs?: JobOutput[];
+  outputs?: MediaJobOutput[];
 }
 
 /**
@@ -1251,7 +1251,7 @@ export interface MediaJobCanceledEventData extends MediaJobStateChangeEventData 
  * @member {array} [outputs] Gets the Job outputs.
  */
 export interface MediaJobErroredEventData extends MediaJobStateChangeEventData {
-  outputs?: JobOutput[];
+  outputs?: MediaJobOutput[];
 }
 
 /**
