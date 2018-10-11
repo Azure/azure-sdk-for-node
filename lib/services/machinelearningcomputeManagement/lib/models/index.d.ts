@@ -132,7 +132,7 @@ export interface ServicePrincipalProperties {
  * @constructor
  * Kubernetes cluster specific properties
  *
- * @member {object} servicePrincipal The Azure Service Principal used by
+ * @member {object} [servicePrincipal] The Azure Service Principal used by
  * Kubernetes
  * @member {string} [servicePrincipal.clientId] The service principal client ID
  * @member {string} [servicePrincipal.secret] The service principal secret.
@@ -140,7 +140,7 @@ export interface ServicePrincipalProperties {
  * please call listKeys.
  */
 export interface KubernetesClusterProperties {
-  servicePrincipal: ServicePrincipalProperties;
+  servicePrincipal?: ServicePrincipalProperties;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface SystemService {
  * @member {string} [clusterFqdn] The FQDN of the cluster.
  * @member {string} orchestratorType Type of orchestrator. It cannot be changed
  * once the cluster is created. Possible values include: 'Kubernetes', 'None'
- * @member {object} orchestratorProperties Orchestrator specific properties
+ * @member {object} [orchestratorProperties] Orchestrator specific properties
  * @member {object} [orchestratorProperties.servicePrincipal] The Azure Service
  * Principal used by Kubernetes
  * @member {string} [orchestratorProperties.servicePrincipal.clientId] The
@@ -204,7 +204,7 @@ export interface SystemService {
 export interface AcsClusterProperties {
   readonly clusterFqdn?: string;
   orchestratorType: string;
-  orchestratorProperties: KubernetesClusterProperties;
+  orchestratorProperties?: KubernetesClusterProperties;
   systemServices?: SystemService[];
   masterCount?: number;
   agentCount?: number;
@@ -233,11 +233,10 @@ export interface AppInsightsProperties {
  * @member {string} [status] SSL status. Allowed values are Enabled and
  * Disabled. Possible values include: 'Enabled', 'Disabled'. Default value:
  * 'Enabled' .
- * @member {string} [cert] The SSL cert data in PEM format encoded as base64
- * string
- * @member {string} [key] The SSL key data in PEM format encoded as base64
- * string. This is not returned in response of GET/PUT on the resource. To see
- * this please call listKeys API.
+ * @member {string} [cert] The SSL cert data in PEM format.
+ * @member {string} [key] The SSL key data in PEM format. This is not returned
+ * in response of GET/PUT on the resource. To see this please call listKeys
+ * API.
  * @member {string} [cname] The CName of the certificate.
  */
 export interface SslConfiguration {
@@ -296,17 +295,14 @@ export interface AutoScaleConfiguration {
  * @constructor
  * Global configuration for services in the cluster.
  *
- * @member {object} [additionalProperties] Unmatched properties from the
- * message are deserialized this collection
  * @member {string} [etag] The configuartion ETag for updates.
  * @member {object} [ssl] The SSL configuration properties
  * @member {string} [ssl.status] SSL status. Allowed values are Enabled and
  * Disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [ssl.cert] The SSL cert data in PEM format encoded as
- * base64 string
- * @member {string} [ssl.key] The SSL key data in PEM format encoded as base64
- * string. This is not returned in response of GET/PUT on the resource. To see
- * this please call listKeys API.
+ * @member {string} [ssl.cert] The SSL cert data in PEM format.
+ * @member {string} [ssl.key] The SSL key data in PEM format. This is not
+ * returned in response of GET/PUT on the resource. To see this please call
+ * listKeys API.
  * @member {string} [ssl.cname] The CName of the certificate.
  * @member {object} [serviceAuth] Optional global authorization keys for all
  * user services deployed in cluster. These are used if the service does not
@@ -330,11 +326,15 @@ export interface AutoScaleConfiguration {
  * seconds.
  */
 export interface GlobalServiceConfiguration {
-  additionalProperties?: { [propertyName: string]: any };
   etag?: string;
   ssl?: SslConfiguration;
   serviceAuth?: ServiceAuthConfiguration;
   autoScale?: AutoScaleConfiguration;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -408,8 +408,6 @@ export interface GlobalServiceConfiguration {
  * Insights.
  * @member {object} [globalServiceConfiguration] Contains global configuration
  * for the web services in the cluster.
- * @member {object} [globalServiceConfiguration.additionalProperties] Unmatched
- * properties from the message are deserialized this collection
  * @member {string} [globalServiceConfiguration.etag] The configuartion ETag
  * for updates.
  * @member {object} [globalServiceConfiguration.ssl] The SSL configuration
@@ -418,10 +416,10 @@ export interface GlobalServiceConfiguration {
  * values are Enabled and Disabled. Possible values include: 'Enabled',
  * 'Disabled'
  * @member {string} [globalServiceConfiguration.ssl.cert] The SSL cert data in
- * PEM format encoded as base64 string
+ * PEM format.
  * @member {string} [globalServiceConfiguration.ssl.key] The SSL key data in
- * PEM format encoded as base64 string. This is not returned in response of
- * GET/PUT on the resource. To see this please call listKeys API.
+ * PEM format. This is not returned in response of GET/PUT on the resource. To
+ * see this please call listKeys API.
  * @member {string} [globalServiceConfiguration.ssl.cname] The CName of the
  * certificate.
  * @member {object} [globalServiceConfiguration.serviceAuth] Optional global
@@ -603,11 +601,10 @@ export interface AppInsightsCredentials {
  * @member {object} [sslConfiguration] The SSL configuration for the services.
  * @member {string} [sslConfiguration.status] SSL status. Allowed values are
  * Enabled and Disabled. Possible values include: 'Enabled', 'Disabled'
- * @member {string} [sslConfiguration.cert] The SSL cert data in PEM format
- * encoded as base64 string
- * @member {string} [sslConfiguration.key] The SSL key data in PEM format
- * encoded as base64 string. This is not returned in response of GET/PUT on the
- * resource. To see this please call listKeys API.
+ * @member {string} [sslConfiguration.cert] The SSL cert data in PEM format.
+ * @member {string} [sslConfiguration.key] The SSL key data in PEM format. This
+ * is not returned in response of GET/PUT on the resource. To see this please
+ * call listKeys API.
  * @member {string} [sslConfiguration.cname] The CName of the certificate.
  */
 export interface OperationalizationClusterCredentials {
