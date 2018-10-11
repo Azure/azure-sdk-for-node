@@ -14,11 +14,210 @@ import * as models from '../models';
 
 /**
  * @class
+ * Location
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMigrate.
+ */
+export interface Location {
+
+
+    /**
+     * Checks whether the project name is available in the specified region.
+     *
+     * @param {string} locationName The desired region for the name check.
+     *
+     * @param {object} parameters Properties needed to check the availability of a
+     * name.
+     *
+     * @param {string} parameters.name The name to check for availability
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CheckNameAvailabilityResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkNameAvailabilityWithHttpOperationResponse(locationName: string, parameters: models.CheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+
+    /**
+     * Checks whether the project name is available in the specified region.
+     *
+     * @param {string} locationName The desired region for the name check.
+     *
+     * @param {object} parameters Properties needed to check the availability of a
+     * name.
+     *
+     * @param {string} parameters.name The name to check for availability
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CheckNameAvailabilityResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CheckNameAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CheckNameAvailabilityResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkNameAvailability(locationName: string, parameters: models.CheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+    checkNameAvailability(locationName: string, parameters: models.CheckNameAvailabilityParameters, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(locationName: string, parameters: models.CheckNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+}
+
+/**
+ * @class
+ * AssessmentOptions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AzureMigrate.
+ */
+export interface AssessmentOptions {
+
+
+    /**
+     * @summary Get the assessment options.
+     *
+     * Get the available options for the properties of an assessment.
+     *
+     * @param {string} locationName Azure region in which the project is created.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssessmentOptionsResultList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssessmentOptionsResultList>>;
+
+    /**
+     * @summary Get the assessment options.
+     *
+     * Get the available options for the properties of an assessment.
+     *
+     * @param {string} locationName Azure region in which the project is created.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssessmentOptionsResultList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssessmentOptionsResultList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssessmentOptionsResultList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssessmentOptionsResultList>;
+    get(locationName: string, callback: ServiceCallback<models.AssessmentOptionsResultList>): void;
+    get(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssessmentOptionsResultList>): void;
+}
+
+/**
+ * @class
  * Projects
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AzureMigrate.
  */
 export interface Projects {
+
+
+    /**
+     * @summary Get all projects.
+     *
+     * Get all the projects in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProjectResultList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectResultList>>;
+
+    /**
+     * @summary Get all projects.
+     *
+     * Get all the projects in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProjectResultList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProjectResultList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProjectResultList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectResultList>;
+    listBySubscription(callback: ServiceCallback<models.ProjectResultList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectResultList>): void;
 
 
     /**
@@ -40,7 +239,7 @@ export interface Projects {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectResultList>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectResultList>>;
 
     /**
      * @summary Get all projects.
@@ -77,9 +276,9 @@ export interface Projects {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectResultList>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.ProjectResultList>): void;
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectResultList>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectResultList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProjectResultList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectResultList>): void;
 
 
     /**

@@ -7,16 +7,19 @@
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/azureMigrate.js",
   "types": "./lib/azureMigrate.d.ts",
-  "homepage": "http://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/migrateManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }

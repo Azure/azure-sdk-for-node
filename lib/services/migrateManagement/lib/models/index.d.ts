@@ -658,6 +658,73 @@ export interface DownloadUrl {
   readonly expirationTime?: Date;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the VmFamily class.
+ * @constructor
+ * VM family name, the list of targeted azure locations and the category of the
+ * family.
+ *
+ * @member {string} [familyName] Name of the VM family.
+ * @member {array} [targetLocations] List of Azure regions.
+ * @member {array} [category] Category of the VM family.
+ */
+export interface VmFamily {
+  readonly familyName?: string;
+  readonly targetLocations?: string[];
+  readonly category?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AssessmentOptionsResultList class.
+ * @constructor
+ * List of assessment options.
+ *
+ * @member {array} [vmFamilies] Dictionary of VM families grouped by vm family
+ * name describing the targeted azure locations of VM family and the category
+ * of the family.
+ * @member {array} [reservedInstanceVmFamilies] List of supported VM Families.
+ */
+export interface AssessmentOptionsResultList {
+  readonly vmFamilies?: VmFamily[];
+  readonly reservedInstanceVmFamilies?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityParameters class.
+ * @constructor
+ * Parameters for a check name availability request.
+ *
+ * @member {string} name The name to check for availability
+ */
+export interface CheckNameAvailabilityParameters {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * The CheckNameAvailability operation response.
+ *
+ * @member {boolean} [nameAvailable] Gets a boolean value that indicates
+ * whether the name is available for you to use. If true, the name is
+ * available. If false, the name has already been taken or invalid and cannot
+ * be used.
+ * @member {string} [reason] Gets the reason that a project name could not be
+ * used. The Reason element is only returned if NameAvailable is false.
+ * Possible values include: 'Available', 'Invalid', 'AlreadyExists'
+ * @member {string} [message] Gets an error message explaining the Reason value
+ * in more detail.
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
+}
+
 
 /**
  * @class

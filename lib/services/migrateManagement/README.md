@@ -1,3 +1,8 @@
+---
+uid: azure-arm-migrate
+summary: *content
+
+---
 # Microsoft Azure SDK for Node.js - AzureMigrate
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
@@ -13,7 +18,7 @@ npm install azure-arm-migrate
 
 ## How to use
 
-### Authentication, client creation and list projects as an example.
+### Authentication, client creation and get assessmentOptions as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -21,13 +26,13 @@ const AzureMigrate = require("azure-arm-migrate");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new AzureMigrate(creds, subscriptionId);
-    const resourceGroupName = "testresourceGroupName";
-    return client.projects.list(resourceGroupName).then((result) => {
+    const locationName = "testlocationName";
+    return client.assessmentOptions.get(locationName).then((result) => {
       console.log("The result is:");
       console.log(result);
     });
 }).catch((err) => {
-  console.log('An error ocurred:');
+  console.log('An error occurred:');
   console.dir(err, {depth: null, colors: true});
 });
 
