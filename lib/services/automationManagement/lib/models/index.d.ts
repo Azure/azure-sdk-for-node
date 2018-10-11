@@ -1572,6 +1572,53 @@ export interface LinuxProperties {
 
 /**
  * @class
+ * Initializes a new instance of the TagSettingsProperties class.
+ * @constructor
+ * Tag filter Information of the VM.
+ *
+ * @member {object} [tags] dictionary of tags with its list of value
+ * @member {string} [filterOperator] Possible values include: 'All', 'Any'
+ */
+export interface TagSettingsProperties {
+  tags?: { [propertyName: string]: string[] };
+  filterOperator?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureQueryProperties class.
+ * @constructor
+ * Azure query specific to the group of machines for update configuration.
+ *
+ * @member {array} [scope] List of Subscription or Resource group arm Id.
+ * @member {array} [location] list of locations for the VM filter .
+ * @member {object} [tagSettings] tag filter information of the Vm.
+ * @member {object} [tagSettings.tags] dictionary of tags with its list of
+ * value
+ * @member {string} [tagSettings.filterOperator] Possible values include:
+ * 'All', 'Any'
+ */
+export interface AzureQueryProperties {
+  scope?: string[];
+  location?: string[];
+  tagSettings?: TagSettingsProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetProperties class.
+ * @constructor
+ * Group specific of update configuration.
+ *
+ * @member {array} [azureQueries] List of Azure queries in software update
+ * configuration.
+ */
+export interface TargetProperties {
+  azureQueries?: AzureQueryProperties[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the UpdateConfiguration class.
  * @constructor
  * Update specifc properties of the software update configuration.
@@ -1607,6 +1654,10 @@ export interface LinuxProperties {
  * virtual machines targeted by the software update configuration.
  * @member {array} [nonAzureComputerNames] List of names of non-azure machines
  * targeted by the software update configuration.
+ * @member {object} [targets] group informations that will be patched during
+ * run time.
+ * @member {array} [targets.azureQueries] List of Azure queries in software
+ * update configuration.
  */
 export interface UpdateConfiguration {
   operatingSystem: string;
@@ -1615,6 +1666,7 @@ export interface UpdateConfiguration {
   duration?: moment.Duration;
   azureVirtualMachines?: string[];
   nonAzureComputerNames?: string[];
+  targets?: TargetProperties;
 }
 
 /**
@@ -1662,6 +1714,10 @@ export interface UpdateConfiguration {
  * configuration.
  * @member {array} [updateConfiguration.nonAzureComputerNames] List of names of
  * non-azure machines targeted by the software update configuration.
+ * @member {object} [updateConfiguration.targets] group informations that will
+ * be patched during run time.
+ * @member {array} [updateConfiguration.targets.azureQueries] List of Azure
+ * queries in software update configuration.
  * @member {object} scheduleInfo Schedule information for the Software update
  * configuration
  * @member {date} [scheduleInfo.startTime] Gets or sets the start time of the

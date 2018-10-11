@@ -6805,6 +6805,12 @@ export interface SoftwareUpdateConfigurations {
      * of names of non-azure machines targeted by the software update
      * configuration.
      *
+     * @param {object} [parameters.updateConfiguration.targets] group informations
+     * that will be patched during run time.
+     *
+     * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
+     * Azure queries in software update configuration.
+     *
      * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
      *
@@ -6947,6 +6953,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.nonAzureComputerNames] List
      * of names of non-azure machines targeted by the software update
      * configuration.
+     *
+     * @param {object} [parameters.updateConfiguration.targets] group informations
+     * that will be patched during run time.
+     *
+     * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
+     * Azure queries in software update configuration.
      *
      * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
