@@ -731,6 +731,66 @@ export interface Applications {
 
 
     /**
+     * Remove a member from owners.
+     *
+     * @param {string} applicationObjectId The object ID of the application from
+     * which to remove the owner.
+     *
+     * @param {string} ownerObjectId Owner object id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    removeOwnerWithHttpOperationResponse(applicationObjectId: string, ownerObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Remove a member from owners.
+     *
+     * @param {string} applicationObjectId The object ID of the application from
+     * which to remove the owner.
+     *
+     * @param {string} ownerObjectId Owner object id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeOwner(applicationObjectId: string, ownerObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    removeOwner(applicationObjectId: string, ownerObjectId: string, callback: ServiceCallback<void>): void;
+    removeOwner(applicationObjectId: string, ownerObjectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Get the keyCredentials associated with an application.
      *
      * @param {string} applicationObjectId Application object ID.
@@ -2009,6 +2069,66 @@ export interface Groups {
     addOwner(objectId: string, parameters: models.AddOwnerParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     addOwner(objectId: string, parameters: models.AddOwnerParameters, callback: ServiceCallback<void>): void;
     addOwner(objectId: string, parameters: models.AddOwnerParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Remove a member from owners.
+     *
+     * @param {string} objectId The object ID of the group from which to remove the
+     * owner.
+     *
+     * @param {string} ownerObjectId Owner object id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    removeOwnerWithHttpOperationResponse(objectId: string, ownerObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Remove a member from owners.
+     *
+     * @param {string} objectId The object ID of the group from which to remove the
+     * owner.
+     *
+     * @param {string} ownerObjectId Owner object id
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeOwner(objectId: string, ownerObjectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    removeOwner(objectId: string, ownerObjectId: string, callback: ServiceCallback<void>): void;
+    removeOwner(objectId: string, ownerObjectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
