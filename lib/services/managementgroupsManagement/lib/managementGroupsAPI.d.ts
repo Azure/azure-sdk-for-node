@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -32,11 +32,11 @@ export default class ManagementGroupsAPI extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
@@ -55,6 +55,183 @@ export default class ManagementGroupsAPI extends AzureServiceClient {
   managementGroups: operations.ManagementGroups;
   managementGroupSubscriptions: operations.ManagementGroupSubscriptions;
   operations: operations.Operations;
+  entities: operations.Entities;
+
+
+  /**
+   * Checks if the specified management group name is valid and unique
+   *
+   * @param {object} checkNameAvailabilityRequest Management group name
+   * availability check parameters.
+   *
+   * @param {string} [checkNameAvailabilityRequest.name] the name to check for
+   * availability
+   *
+   * @param {string} [checkNameAvailabilityRequest.type] fully qualified resource
+   * type which includes provider namespace. Possible values include:
+   * '/providers/Microsoft.Management/managementGroups'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<CheckNameAvailabilityResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  checkNameAvailabilityWithHttpOperationResponse(checkNameAvailabilityRequest: models.CheckNameAvailabilityRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+
+  /**
+   * Checks if the specified management group name is valid and unique
+   *
+   * @param {object} checkNameAvailabilityRequest Management group name
+   * availability check parameters.
+   *
+   * @param {string} [checkNameAvailabilityRequest.name] the name to check for
+   * availability
+   *
+   * @param {string} [checkNameAvailabilityRequest.type] fully qualified resource
+   * type which includes provider namespace. Possible values include:
+   * '/providers/Microsoft.Management/managementGroups'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {CheckNameAvailabilityResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {CheckNameAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link CheckNameAvailabilityResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  checkNameAvailability(checkNameAvailabilityRequest: models.CheckNameAvailabilityRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+  checkNameAvailability(checkNameAvailabilityRequest: models.CheckNameAvailabilityRequest, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+  checkNameAvailability(checkNameAvailabilityRequest: models.CheckNameAvailabilityRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+
+
+  /**
+   * Starts backfilling subscriptions for the Tenant.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<TenantBackfillStatusResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startTenantBackfillWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TenantBackfillStatusResult>>;
+
+  /**
+   * Starts backfilling subscriptions for the Tenant.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {TenantBackfillStatusResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {TenantBackfillStatusResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TenantBackfillStatusResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startTenantBackfill(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TenantBackfillStatusResult>;
+  startTenantBackfill(callback: ServiceCallback<models.TenantBackfillStatusResult>): void;
+  startTenantBackfill(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TenantBackfillStatusResult>): void;
+
+
+  /**
+   * Gets tenant backfill status
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<TenantBackfillStatusResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  tenantBackfillStatusWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TenantBackfillStatusResult>>;
+
+  /**
+   * Gets tenant backfill status
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {TenantBackfillStatusResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {TenantBackfillStatusResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TenantBackfillStatusResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  tenantBackfillStatus(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TenantBackfillStatusResult>;
+  tenantBackfillStatus(callback: ServiceCallback<models.TenantBackfillStatusResult>): void;
+  tenantBackfillStatus(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TenantBackfillStatusResult>): void;
 }
 
 export { ManagementGroupsAPI, models as ManagementGroupsAPIModels };

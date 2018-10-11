@@ -24,18 +24,16 @@ export interface ManagementGroups {
     /**
      * List management groups for the authenticated user.
      *
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.cacheControl] Indicates that the request shouldn't
      * utilize any caches.
      *
      * @param {string} [options.skiptoken] Page continuation token is only used if
-     * a previous operation returned a partial result.
-     * If a previous response contains a nextLink element, the value of the
-     * nextLink element will include a token parameter that specifies a starting
-     * point to use for subsequent calls.
-     *
+     * a previous operation returned a partial result. If a previous response
+     * contains a nextLink element, the value of the nextLink element will include
+     * a token parameter that specifies a starting point to use for subsequent
+     * calls.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -51,18 +49,16 @@ export interface ManagementGroups {
     /**
      * List management groups for the authenticated user.
      *
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.cacheControl] Indicates that the request shouldn't
      * utilize any caches.
      *
      * @param {string} [options.skiptoken] Page continuation token is only used if
-     * a previous operation returned a partial result.
-     * If a previous response contains a nextLink element, the value of the
-     * nextLink element will include a token parameter that specifies a starting
-     * point to use for subsequent calls.
-     *
+     * a previous operation returned a partial result. If a previous response
+     * contains a nextLink element, the value of the nextLink element will include
+     * a token parameter that specifies a starting point to use for subsequent
+     * calls.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -98,7 +94,6 @@ export interface ManagementGroups {
     /**
      * Get the details of the management group.
      *
-     *
      * @param {string} groupId Management Group ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -109,7 +104,12 @@ export interface ManagementGroups {
      *
      * @param {boolean} [options.recurse] The $recurse=true query string parameter
      * allows clients to request inclusion of entire hierarchy in the response
-     * payload.
+     * payload. Note that  $expand=children must be passed up if $recurse is set to
+     * true.
+     *
+     * @param {string} [options.filter] A filter which allows the exclusion of
+     * subscriptions from results (i.e. '$filter=children.childType ne
+     * Subscription')
      *
      * @param {string} [options.cacheControl] Indicates that the request shouldn't
      * utilize any caches.
@@ -123,12 +123,11 @@ export interface ManagementGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(groupId: string, options?: { expand? : string, recurse? : boolean, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroup>>;
+    getWithHttpOperationResponse(groupId: string, options?: { expand? : string, recurse? : boolean, filter? : string, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroup>>;
 
     /**
      * Get the details of the management group.
      *
-     *
      * @param {string} groupId Management Group ID.
      *
      * @param {object} [options] Optional Parameters.
@@ -139,7 +138,12 @@ export interface ManagementGroups {
      *
      * @param {boolean} [options.recurse] The $recurse=true query string parameter
      * allows clients to request inclusion of entire hierarchy in the response
-     * payload.
+     * payload. Note that  $expand=children must be passed up if $recurse is set to
+     * true.
+     *
+     * @param {string} [options.filter] A filter which allows the exclusion of
+     * subscriptions from results (i.e. '$filter=children.childType ne
+     * Subscription')
      *
      * @param {string} [options.cacheControl] Indicates that the request shouldn't
      * utilize any caches.
@@ -169,28 +173,123 @@ export interface ManagementGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(groupId: string, options?: { expand? : string, recurse? : boolean, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroup>;
+    get(groupId: string, options?: { expand? : string, recurse? : boolean, filter? : string, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroup>;
     get(groupId: string, callback: ServiceCallback<models.ManagementGroup>): void;
-    get(groupId: string, options: { expand? : string, recurse? : boolean, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroup>): void;
+    get(groupId: string, options: { expand? : string, recurse? : boolean, filter? : string, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroup>): void;
 
 
     /**
-     * Create or update a management group.
-     * If a management group is already created and a subsequent create request is
-     * issued with different properties, the management group properties will be
-     * updated.
-     *
+     * Create or update a management group. If a management group is already
+     * created and a subsequent create request is issued with different properties,
+     * the management group properties will be updated.
      *
      * @param {string} groupId Management Group ID.
      *
      * @param {object} createManagementGroupRequest Management group creation
      * parameters.
      *
-     * @param {string} [createManagementGroupRequest.displayName] The friendly name
-     * of the management group.
+     * @param {string} [createManagementGroupRequest.name] The name of the
+     * management group. For example, 00000000-0000-0000-0000-000000000000
      *
-     * @param {string} [createManagementGroupRequest.parentId] (Optional) The fully
+     * @param {string} [createManagementGroupRequest.displayName] The friendly name
+     * of the management group. If no value is passed then this  field will be set
+     * to the groupId.
+     *
+     * @param {object} [createManagementGroupRequest.details] Details
+     *
+     * @param {object} [createManagementGroupRequest.details.parent] Parent
+     *
+     * @param {string} [createManagementGroupRequest.details.parent.id] The fully
      * qualified ID for the parent management group.  For example,
+     * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Create or update a management group. If a management group is already
+     * created and a subsequent create request is issued with different properties,
+     * the management group properties will be updated.
+     *
+     * @param {string} groupId Management Group ID.
+     *
+     * @param {object} createManagementGroupRequest Management group creation
+     * parameters.
+     *
+     * @param {string} [createManagementGroupRequest.name] The name of the
+     * management group. For example, 00000000-0000-0000-0000-000000000000
+     *
+     * @param {string} [createManagementGroupRequest.displayName] The friendly name
+     * of the management group. If no value is passed then this  field will be set
+     * to the groupId.
+     *
+     * @param {object} [createManagementGroupRequest.details] Details
+     *
+     * @param {object} [createManagementGroupRequest.details.parent] Parent
+     *
+     * @param {string} [createManagementGroupRequest.details.parent.id] The fully
+     * qualified ID for the parent management group.  For example,
+     * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    createOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, callback: ServiceCallback<any>): void;
+    createOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Update a management group.
+     *
+     * @param {string} groupId Management Group ID.
+     *
+     * @param {object} patchGroupRequest Management group patch parameters.
+     *
+     * @param {string} [patchGroupRequest.displayName] The friendly name of the
+     * management group.
+     *
+     * @param {string} [patchGroupRequest.parentId] (Optional) The fully qualified
+     * ID for the parent management group.  For example,
      * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
      *
      * @param {object} [options] Optional Parameters.
@@ -207,25 +306,20 @@ export interface ManagementGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroup>>;
+    updateWithHttpOperationResponse(groupId: string, patchGroupRequest: models.PatchManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroup>>;
 
     /**
-     * Create or update a management group.
-     * If a management group is already created and a subsequent create request is
-     * issued with different properties, the management group properties will be
-     * updated.
-     *
+     * Update a management group.
      *
      * @param {string} groupId Management Group ID.
      *
-     * @param {object} createManagementGroupRequest Management group creation
-     * parameters.
+     * @param {object} patchGroupRequest Management group patch parameters.
      *
-     * @param {string} [createManagementGroupRequest.displayName] The friendly name
-     * of the management group.
+     * @param {string} [patchGroupRequest.displayName] The friendly name of the
+     * management group.
      *
-     * @param {string} [createManagementGroupRequest.parentId] (Optional) The fully
-     * qualified ID for the parent management group.  For example,
+     * @param {string} [patchGroupRequest.parentId] (Optional) The fully qualified
+     * ID for the parent management group.  For example,
      * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
      *
      * @param {object} [options] Optional Parameters.
@@ -258,98 +352,14 @@ export interface ManagementGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroup>;
-    createOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, callback: ServiceCallback<models.ManagementGroup>): void;
-    createOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroup>): void;
+    update(groupId: string, patchGroupRequest: models.PatchManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroup>;
+    update(groupId: string, patchGroupRequest: models.PatchManagementGroupRequest, callback: ServiceCallback<models.ManagementGroup>): void;
+    update(groupId: string, patchGroupRequest: models.PatchManagementGroupRequest, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroup>): void;
 
 
     /**
-     * Update a management group.
-     *
-     *
-     * @param {string} groupId Management Group ID.
-     *
-     * @param {object} createManagementGroupRequest Management group creation
-     * parameters.
-     *
-     * @param {string} [createManagementGroupRequest.displayName] The friendly name
-     * of the management group.
-     *
-     * @param {string} [createManagementGroupRequest.parentId] (Optional) The fully
-     * qualified ID for the parent management group.  For example,
-     * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.cacheControl] Indicates that the request shouldn't
-     * utilize any caches.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ManagementGroup>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroup>>;
-
-    /**
-     * Update a management group.
-     *
-     *
-     * @param {string} groupId Management Group ID.
-     *
-     * @param {object} createManagementGroupRequest Management group creation
-     * parameters.
-     *
-     * @param {string} [createManagementGroupRequest.displayName] The friendly name
-     * of the management group.
-     *
-     * @param {string} [createManagementGroupRequest.parentId] (Optional) The fully
-     * qualified ID for the parent management group.  For example,
-     * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.cacheControl] Indicates that the request shouldn't
-     * utilize any caches.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ManagementGroup} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ManagementGroup} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ManagementGroup} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroup>;
-    update(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, callback: ServiceCallback<models.ManagementGroup>): void;
-    update(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroup>): void;
-
-
-    /**
-     * Delete management group.
-     * If a management group contains child resources, the request will fail.
-     *
+     * Delete management group. If a management group contains child resources, the
+     * request will fail.
      *
      * @param {string} groupId Management Group ID.
      *
@@ -363,16 +373,15 @@ export interface ManagementGroups {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationResults>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(groupId: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(groupId: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationResults>>;
 
     /**
-     * Delete management group.
-     * If a management group contains child resources, the request will fail.
-     *
+     * Delete management group. If a management group contains child resources, the
+     * request will fail.
      *
      * @param {string} groupId Management Group ID.
      *
@@ -391,7 +400,7 @@ export interface ManagementGroups {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationResults} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -399,20 +408,183 @@ export interface ManagementGroups {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationResults} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(groupId: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(groupId: string, callback: ServiceCallback<void>): void;
-    deleteMethod(groupId: string, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(groupId: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationResults>;
+    deleteMethod(groupId: string, callback: ServiceCallback<models.OperationResults>): void;
+    deleteMethod(groupId: string, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationResults>): void;
+
+
+    /**
+     * Create or update a management group. If a management group is already
+     * created and a subsequent create request is issued with different properties,
+     * the management group properties will be updated.
+     *
+     * @param {string} groupId Management Group ID.
+     *
+     * @param {object} createManagementGroupRequest Management group creation
+     * parameters.
+     *
+     * @param {string} [createManagementGroupRequest.name] The name of the
+     * management group. For example, 00000000-0000-0000-0000-000000000000
+     *
+     * @param {string} [createManagementGroupRequest.displayName] The friendly name
+     * of the management group. If no value is passed then this  field will be set
+     * to the groupId.
+     *
+     * @param {object} [createManagementGroupRequest.details] Details
+     *
+     * @param {object} [createManagementGroupRequest.details.parent] Parent
+     *
+     * @param {string} [createManagementGroupRequest.details.parent.id] The fully
+     * qualified ID for the parent management group.  For example,
+     * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Create or update a management group. If a management group is already
+     * created and a subsequent create request is issued with different properties,
+     * the management group properties will be updated.
+     *
+     * @param {string} groupId Management Group ID.
+     *
+     * @param {object} createManagementGroupRequest Management group creation
+     * parameters.
+     *
+     * @param {string} [createManagementGroupRequest.name] The name of the
+     * management group. For example, 00000000-0000-0000-0000-000000000000
+     *
+     * @param {string} [createManagementGroupRequest.displayName] The friendly name
+     * of the management group. If no value is passed then this  field will be set
+     * to the groupId.
+     *
+     * @param {object} [createManagementGroupRequest.details] Details
+     *
+     * @param {object} [createManagementGroupRequest.details.parent] Parent
+     *
+     * @param {string} [createManagementGroupRequest.details.parent.id] The fully
+     * qualified ID for the parent management group.  For example,
+     * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    beginCreateOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, callback: ServiceCallback<any>): void;
+    beginCreateOrUpdate(groupId: string, createManagementGroupRequest: models.CreateManagementGroupRequest, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Delete management group. If a management group contains child resources, the
+     * request will fail.
+     *
+     * @param {string} groupId Management Group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationResults>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(groupId: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationResults>>;
+
+    /**
+     * Delete management group. If a management group contains child resources, the
+     * request will fail.
+     *
+     * @param {string} groupId Management Group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationResults} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationResults} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationResults} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(groupId: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationResults>;
+    beginDeleteMethod(groupId: string, callback: ServiceCallback<models.OperationResults>): void;
+    beginDeleteMethod(groupId: string, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationResults>): void;
 
 
     /**
      * List management groups for the authenticated user.
-     *
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -435,7 +607,6 @@ export interface ManagementGroups {
 
     /**
      * List management groups for the authenticated user.
-     *
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -488,7 +659,6 @@ export interface ManagementGroupSubscriptions {
     /**
      * Associates existing subscription with the management group.
      *
-     *
      * @param {string} groupId Management Group ID.
      *
      * @param {string} subscriptionId Subscription ID.
@@ -511,7 +681,6 @@ export interface ManagementGroupSubscriptions {
 
     /**
      * Associates existing subscription with the management group.
-     *
      *
      * @param {string} groupId Management Group ID.
      *
@@ -554,7 +723,6 @@ export interface ManagementGroupSubscriptions {
     /**
      * De-associates subscription from the management group.
      *
-     *
      * @param {string} groupId Management Group ID.
      *
      * @param {string} subscriptionId Subscription ID.
@@ -577,7 +745,6 @@ export interface ManagementGroupSubscriptions {
 
     /**
      * De-associates subscription from the management group.
-     *
      *
      * @param {string} groupId Management Group ID.
      *
@@ -732,4 +899,229 @@ export interface Operations {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
+ * Entities
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ManagementGroupsAPI.
+ */
+export interface Entities {
+
+
+    /**
+     * List all entities (Management Groups, Subscriptions, etc.) for the
+     * authenticated user.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.skiptoken] Page continuation token is only used if
+     * a previous operation returned a partial result. If a previous response
+     * contains a nextLink element, the value of the nextLink element will include
+     * a token parameter that specifies a starting point to use for subsequent
+     * calls.
+     *
+     * @param {number} [options.skip] Number of entities to skip over when
+     * retrieving results. Passing this in will override $skipToken.
+     *
+     * @param {number} [options.top] Number of elements to return when retrieving
+     * results. Passing this in will override $skipToken.
+     *
+     * @param {string} [options.select] This parameter specifies the fields to
+     * include in the response. Can include any combination of
+     * Name,DisplayName,Type,ParentDisplayNameChain,ParentChain, e.g.
+     * '$select=Name,DisplayName,Type,ParentDisplayNameChain,ParentNameChain'. When
+     * specified the $select parameter can override select in $skipToken.
+     *
+     * @param {string} [options.search] The $search parameter is used in
+     * conjunction with the $filter parameter to return three different outputs
+     * depending on the parameter passed in. With $search=AllowedParents the API
+     * will return the entity info of all groups that the requested entity will be
+     * able to reparent to as determined by the user's permissions. With
+     * $search=AllowedChildren the API will return the entity info of all entities
+     * that can be added as children of the requested entity. With
+     * $search=ParentAndFirstLevelChildren the API will return the parent and
+     * first level of children that the user has either direct access to or
+     * indirect access via one of their descendants. Possible values include:
+     * 'AllowedParents', 'AllowedChildren', 'ParentAndFirstLevelChildren',
+     * 'ParentOnly', 'ChildrenOnly'
+     *
+     * @param {string} [options.filter] The filter parameter allows you to filter
+     * on the the name or display name fields. You can check for equality on the
+     * name field (e.g. name eq '{entityName}')  and you can check for substrings
+     * on either the name or display name fields(e.g. contains(name,
+     * '{substringToSearch}'), contains(displayName, '{substringToSearch')). Note
+     * that the '{entityName}' and '{substringToSearch}' fields are checked case
+     * insensitively.
+     *
+     * @param {string} [options.view] The view parameter allows clients to filter
+     * the type of data that is returned by the getEntities call. Possible values
+     * include: 'FullHierarchy', 'GroupsOnly', 'SubscriptionsOnly', 'Audit'
+     *
+     * @param {string} [options.groupName] A filter which allows the get entities
+     * call to focus on a particular group (i.e. "$filter=name eq 'groupName'")
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EntityListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { skiptoken? : string, skip? : number, top? : number, select? : string, search? : string, filter? : string, view? : string, groupName? : string, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityListResult>>;
+
+    /**
+     * List all entities (Management Groups, Subscriptions, etc.) for the
+     * authenticated user.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.skiptoken] Page continuation token is only used if
+     * a previous operation returned a partial result. If a previous response
+     * contains a nextLink element, the value of the nextLink element will include
+     * a token parameter that specifies a starting point to use for subsequent
+     * calls.
+     *
+     * @param {number} [options.skip] Number of entities to skip over when
+     * retrieving results. Passing this in will override $skipToken.
+     *
+     * @param {number} [options.top] Number of elements to return when retrieving
+     * results. Passing this in will override $skipToken.
+     *
+     * @param {string} [options.select] This parameter specifies the fields to
+     * include in the response. Can include any combination of
+     * Name,DisplayName,Type,ParentDisplayNameChain,ParentChain, e.g.
+     * '$select=Name,DisplayName,Type,ParentDisplayNameChain,ParentNameChain'. When
+     * specified the $select parameter can override select in $skipToken.
+     *
+     * @param {string} [options.search] The $search parameter is used in
+     * conjunction with the $filter parameter to return three different outputs
+     * depending on the parameter passed in. With $search=AllowedParents the API
+     * will return the entity info of all groups that the requested entity will be
+     * able to reparent to as determined by the user's permissions. With
+     * $search=AllowedChildren the API will return the entity info of all entities
+     * that can be added as children of the requested entity. With
+     * $search=ParentAndFirstLevelChildren the API will return the parent and
+     * first level of children that the user has either direct access to or
+     * indirect access via one of their descendants. Possible values include:
+     * 'AllowedParents', 'AllowedChildren', 'ParentAndFirstLevelChildren',
+     * 'ParentOnly', 'ChildrenOnly'
+     *
+     * @param {string} [options.filter] The filter parameter allows you to filter
+     * on the the name or display name fields. You can check for equality on the
+     * name field (e.g. name eq '{entityName}')  and you can check for substrings
+     * on either the name or display name fields(e.g. contains(name,
+     * '{substringToSearch}'), contains(displayName, '{substringToSearch')). Note
+     * that the '{entityName}' and '{substringToSearch}' fields are checked case
+     * insensitively.
+     *
+     * @param {string} [options.view] The view parameter allows clients to filter
+     * the type of data that is returned by the getEntities call. Possible values
+     * include: 'FullHierarchy', 'GroupsOnly', 'SubscriptionsOnly', 'Audit'
+     *
+     * @param {string} [options.groupName] A filter which allows the get entities
+     * call to focus on a particular group (i.e. "$filter=name eq 'groupName'")
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EntityListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EntityListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EntityListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { skiptoken? : string, skip? : number, top? : number, select? : string, search? : string, filter? : string, view? : string, groupName? : string, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityListResult>;
+    list(callback: ServiceCallback<models.EntityListResult>): void;
+    list(options: { skiptoken? : string, skip? : number, top? : number, select? : string, search? : string, filter? : string, view? : string, groupName? : string, cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityListResult>): void;
+
+
+    /**
+     * List all entities (Management Groups, Subscriptions, etc.) for the
+     * authenticated user.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EntityListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EntityListResult>>;
+
+    /**
+     * List all entities (Management Groups, Subscriptions, etc.) for the
+     * authenticated user.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.cacheControl] Indicates that the request shouldn't
+     * utilize any caches.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EntityListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EntityListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EntityListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EntityListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EntityListResult>): void;
+    listNext(nextPageLink: string, options: { cacheControl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EntityListResult>): void;
 }

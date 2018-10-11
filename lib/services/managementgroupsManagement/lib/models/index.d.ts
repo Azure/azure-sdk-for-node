@@ -24,10 +24,13 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [code] One of a server-defined set of error codes.
  * @member {string} [message] A human-readable representation of the error.
+ * @member {string} [details] A human-readable representation of the error's
+ * details.
  */
 export interface ErrorDetails {
   code?: string;
   message?: string;
+  details?: string;
 }
 
 /**
@@ -40,6 +43,8 @@ export interface ErrorDetails {
  * @member {string} [error.code] One of a server-defined set of error codes.
  * @member {string} [error.message] A human-readable representation of the
  * error.
+ * @member {string} [error.details] A human-readable representation of the
+ * error's details.
  */
 export interface ErrorResponse {
   error?: ErrorDetails;
@@ -47,7 +52,7 @@ export interface ErrorResponse {
 
 /**
  * @class
- * Initializes a new instance of the OperationDisplay class.
+ * Initializes a new instance of the OperationDisplayProperties class.
  * @constructor
  * The object that represents the operation.
  *
@@ -57,7 +62,7 @@ export interface ErrorResponse {
  * @member {string} [operation] The operation that can be performed.
  * @member {string} [description] Operation description.
  */
-export interface OperationDisplay {
+export interface OperationDisplayProperties {
   readonly provider?: string;
   readonly resource?: string;
   readonly operation?: string;
@@ -71,7 +76,7 @@ export interface OperationDisplay {
  * Operation supported by the Microsoft.Management resource provider.
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The object that represents the operation.
+ * @member {object} [display] Display.
  * @member {string} [display.provider] The name of the provider.
  * @member {string} [display.resource] The resource on which the operation is
  * performed.
@@ -80,7 +85,50 @@ export interface OperationDisplay {
  */
 export interface Operation {
   readonly name?: string;
-  display?: OperationDisplay;
+  display?: OperationDisplayProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * Describes the result of the request to check management group name
+ * availability.
+ *
+ * @member {boolean} [nameAvailable] Required. True indicates name is valid and
+ * available. False indicates the name is invalid, unavailable, or both.
+ * @member {string} [reason] Required if nameAvailable == false. Invalid
+ * indicates the name provided does not match the resource provider's naming
+ * requirements (incorrect length, unsupported characters, etc.) AlreadyExists
+ * indicates that the name is already in use and is therefore unavailable.
+ * Possible values include: 'Invalid', 'AlreadyExists'
+ * @member {string} [message] Required if nameAvailable == false. Localized. If
+ * reason == invalid, provide the user with the reason why the given name is
+ * invalid, and provide the resource naming requirements so that the user can
+ * select a valid name. If reason == AlreadyExists, explain that is already in
+ * use, and direct them to select a different name.
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TenantBackfillStatusResult class.
+ * @constructor
+ * The tenant backfill status
+ *
+ * @member {string} [tenantId] The AAD Tenant ID associated with the management
+ * group. For example, 00000000-0000-0000-0000-000000000000
+ * @member {string} [status] The status of the Tenant Backfill. Possible values
+ * include: 'NotStarted', 'NotStartedButGroupsExist', 'Started', 'Failed',
+ * 'Cancelled', 'Completed'
+ */
+export interface TenantBackfillStatusResult {
+  readonly tenantId?: string;
+  readonly status?: string;
 }
 
 /**
@@ -114,14 +162,16 @@ export interface ManagementGroupInfo {
  * @constructor
  * (Optional) The ID of the parent management group.
  *
- * @member {string} [parentId] The fully qualified ID for the parent management
+ * @member {string} [id] The fully qualified ID for the parent management
  * group.  For example,
  * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [name] The name of the parent management group
  * @member {string} [displayName] The friendly name of the parent management
  * group.
  */
 export interface ParentGroupInfo {
-  parentId?: string;
+  id?: string;
+  name?: string;
   displayName?: string;
 }
 
@@ -137,9 +187,10 @@ export interface ParentGroupInfo {
  * @member {string} [updatedBy] The identity of the principal or process that
  * updated the object.
  * @member {object} [parent] Parent.
- * @member {string} [parent.parentId] The fully qualified ID for the parent
+ * @member {string} [parent.id] The fully qualified ID for the parent
  * management group.  For example,
  * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [parent.name] The name of the parent management group
  * @member {string} [parent.displayName] The friendly name of the parent
  * management group.
  */
@@ -156,18 +207,25 @@ export interface ManagementGroupDetails {
  * @constructor
  * The child information of a management group.
  *
- * @member {string} [childType] The type of child resource. Possible values
- * include: 'ManagementGroup', 'Subscription'
- * @member {string} [childId] The fully qualified ID for the child resource
+ * @member {string} [type] The type of child resource. The fully qualified
+ * resource type which includes provider namespace (e.g.
+ * /providers/Microsoft.Management/managementGroups). Possible values include:
+ * '/providers/Microsoft.Management/managementGroups', '/subscriptions'
+ * @member {string} [id] The fully qualified ID for the child resource
  * (management group or subscription).  For example,
  * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [name] The name of the child entity.
  * @member {string} [displayName] The friendly name of the child resource.
+ * @member {array} [roles] The roles definitions associated with the management
+ * group.
  * @member {array} [children] The list of children.
  */
 export interface ManagementGroupChildInfo {
-  childType?: string;
-  childId?: string;
+  type?: string;
+  id?: string;
+  name?: string;
   displayName?: string;
+  roles?: string[];
   children?: ManagementGroupChildInfo[];
 }
 
@@ -187,6 +245,8 @@ export interface ManagementGroupChildInfo {
  * @member {string} [tenantId] The AAD Tenant ID associated with the management
  * group. For example, 00000000-0000-0000-0000-000000000000
  * @member {string} [displayName] The friendly name of the management group.
+ * @member {array} [roles] The role definitions associated with the management
+ * group.
  * @member {object} [details] Details.
  * @member {number} [details.version] The version number of the object.
  * @member {date} [details.updatedTime] The date and time when this object was
@@ -194,9 +254,11 @@ export interface ManagementGroupChildInfo {
  * @member {string} [details.updatedBy] The identity of the principal or
  * process that updated the object.
  * @member {object} [details.parent]
- * @member {string} [details.parent.parentId] The fully qualified ID for the
- * parent management group.  For example,
+ * @member {string} [details.parent.id] The fully qualified ID for the parent
+ * management group.  For example,
  * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [details.parent.name] The name of the parent management
+ * group
  * @member {string} [details.parent.displayName] The friendly name of the
  * parent management group.
  * @member {array} [children] The list of children.
@@ -207,8 +269,213 @@ export interface ManagementGroup extends BaseResource {
   readonly name?: string;
   tenantId?: string;
   displayName?: string;
+  roles?: string[];
   details?: ManagementGroupDetails;
   children?: ManagementGroupChildInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationResults class.
+ * @constructor
+ * The results of an asynchronous operation.
+ *
+ * @member {string} [id] The fully qualified ID for the management group.  For
+ * example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [type] The type of the resource.  For example,
+ * /providers/Microsoft.Management/managementGroups
+ * @member {string} [name] The name of the management group. For example,
+ * 00000000-0000-0000-0000-000000000000
+ * @member {string} [provisioningState] Provisioning State. Possible values
+ * include: 'Updating'
+ */
+export interface OperationResults {
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntityParentGroupInfo class.
+ * @constructor
+ * (Optional) The ID of the parent management group.
+ *
+ * @member {string} [id] The fully qualified ID for the parent management
+ * group.  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ */
+export interface EntityParentGroupInfo {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntityInfo class.
+ * @constructor
+ * The entity.
+ *
+ * @member {string} [id] The fully qualified ID for the entity.  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [type] The type of the resource. For example,
+ * /providers/Microsoft.Management/managementGroups
+ * @member {string} [name] The name of the entity. For example,
+ * 00000000-0000-0000-0000-000000000000
+ * @member {string} [tenantId] The AAD Tenant ID associated with the entity.
+ * For example, 00000000-0000-0000-0000-000000000000
+ * @member {string} [displayName] The friendly name of the management group.
+ * @member {object} [parent] Parent.
+ * @member {string} [parent.id] The fully qualified ID for the parent
+ * management group.  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [permissions] Permissions. Possible values include:
+ * 'noaccess', 'view', 'edit', 'delete'
+ * @member {string} [inheritedPermissions] Inherited Permissions. Possible
+ * values include: 'noaccess', 'view', 'edit', 'delete'
+ * @member {number} [numberOfDescendants] Number of Descendants.
+ * @member {number} [numberOfChildren] Number of Children. Number of children
+ * is the number of Groups and Subscriptions that are exactly one level
+ * underneath the current Group.
+ * @member {number} [numberOfChildGroups] Number of Child Groups. Number of
+ * child groups is the number of Groups that are exactly one level underneath
+ * the current Group.
+ * @member {array} [parentDisplayNameChain] The parent display name chain from
+ * the root group to the immediate parent
+ * @member {array} [parentNameChain] The parent name chain from the root group
+ * to the immediate parent
+ */
+export interface EntityInfo {
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+  tenantId?: string;
+  displayName?: string;
+  parent?: EntityParentGroupInfo;
+  permissions?: string;
+  inheritedPermissions?: string;
+  numberOfDescendants?: number;
+  numberOfChildren?: number;
+  numberOfChildGroups?: number;
+  parentDisplayNameChain?: string[];
+  parentNameChain?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntityHierarchyItem class.
+ * @constructor
+ * The management group details for the hierarchy view.
+ *
+ * @member {string} [id] The fully qualified ID for the management group.  For
+ * example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [type] The type of the resource.  For example,
+ * /providers/Microsoft.Management/managementGroups
+ * @member {string} [name] The name of the management group. For example,
+ * 00000000-0000-0000-0000-000000000000
+ * @member {string} [displayName] The friendly name of the management group.
+ * @member {string} [permissions] Permissions. Possible values include:
+ * 'noaccess', 'view', 'edit', 'delete'
+ * @member {array} [children] The list of children.
+ */
+export interface EntityHierarchyItem extends BaseResource {
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+  displayName?: string;
+  permissions?: string;
+  children?: EntityHierarchyItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PatchManagementGroupRequest class.
+ * @constructor
+ * Management group patch parameters.
+ *
+ * @member {string} [displayName] The friendly name of the management group.
+ * @member {string} [parentId] (Optional) The fully qualified ID for the parent
+ * management group.  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ */
+export interface PatchManagementGroupRequest {
+  displayName?: string;
+  parentId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateParentGroupInfo class.
+ * @constructor
+ * (Optional) The ID of the parent management group used during creation.
+ *
+ * @member {string} [id] The fully qualified ID for the parent management
+ * group.  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [name] The name of the parent management group
+ * @member {string} [displayName] The friendly name of the parent management
+ * group.
+ */
+export interface CreateParentGroupInfo {
+  id?: string;
+  readonly name?: string;
+  readonly displayName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateManagementGroupDetails class.
+ * @constructor
+ * The details of a management group used during creation.
+ *
+ * @member {number} [version] The version number of the object.
+ * @member {date} [updatedTime] The date and time when this object was last
+ * updated.
+ * @member {string} [updatedBy] The identity of the principal or process that
+ * updated the object.
+ * @member {object} [parent] Parent.
+ * @member {string} [parent.id] The fully qualified ID for the parent
+ * management group.  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [parent.name] The name of the parent management group
+ * @member {string} [parent.displayName] The friendly name of the parent
+ * management group.
+ */
+export interface CreateManagementGroupDetails {
+  readonly version?: number;
+  readonly updatedTime?: Date;
+  readonly updatedBy?: string;
+  parent?: CreateParentGroupInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateManagementGroupChildInfo class.
+ * @constructor
+ * The child information of a management group used during creation.
+ *
+ * @member {string} [type] The type of child resource. The fully qualified
+ * resource type which includes provider namespace (e.g.
+ * /providers/Microsoft.Management/managementGroups). Possible values include:
+ * '/providers/Microsoft.Management/managementGroups', '/subscriptions'
+ * @member {string} [id] The fully qualified ID for the child resource
+ * (management group or subscription).  For example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [name] The name of the child entity.
+ * @member {string} [displayName] The friendly name of the child resource.
+ * @member {array} [roles] The roles definitions associated with the management
+ * group.
+ * @member {array} [children] The list of children.
+ */
+export interface CreateManagementGroupChildInfo {
+  readonly type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly displayName?: string;
+  readonly roles?: string[];
+  readonly children?: CreateManagementGroupChildInfo[];
 }
 
 /**
@@ -217,14 +484,60 @@ export interface ManagementGroup extends BaseResource {
  * @constructor
  * Management group creation parameters.
  *
- * @member {string} [displayName] The friendly name of the management group.
- * @member {string} [parentId] (Optional) The fully qualified ID for the parent
+ * @member {string} [id] The fully qualified ID for the management group.  For
+ * example,
+ * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [type] The type of the resource.  For example,
+ * /providers/Microsoft.Management/managementGroups
+ * @member {string} [name] The name of the management group. For example,
+ * 00000000-0000-0000-0000-000000000000
+ * @member {string} [tenantId] The AAD Tenant ID associated with the management
+ * group. For example, 00000000-0000-0000-0000-000000000000
+ * @member {string} [displayName] The friendly name of the management group. If
+ * no value is passed then this  field will be set to the groupId.
+ * @member {array} [roles] The roles definitions associated with the management
+ * group.
+ * @member {object} [details] Details.
+ * @member {number} [details.version] The version number of the object.
+ * @member {date} [details.updatedTime] The date and time when this object was
+ * last updated.
+ * @member {string} [details.updatedBy] The identity of the principal or
+ * process that updated the object.
+ * @member {object} [details.parent]
+ * @member {string} [details.parent.id] The fully qualified ID for the parent
  * management group.  For example,
  * /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+ * @member {string} [details.parent.name] The name of the parent management
+ * group
+ * @member {string} [details.parent.displayName] The friendly name of the
+ * parent management group.
+ * @member {array} [children] The list of children.
  */
-export interface CreateManagementGroupRequest {
+export interface CreateManagementGroupRequest extends BaseResource {
+  readonly id?: string;
+  readonly type?: string;
+  name?: string;
+  readonly tenantId?: string;
   displayName?: string;
-  parentId?: string;
+  readonly roles?: string[];
+  details?: CreateManagementGroupDetails;
+  readonly children?: CreateManagementGroupChildInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityRequest class.
+ * @constructor
+ * Management group name availability check parameters.
+ *
+ * @member {string} [name] the name to check for availability
+ * @member {string} [type] fully qualified resource type which includes
+ * provider namespace. Possible values include:
+ * '/providers/Microsoft.Management/managementGroups'
+ */
+export interface CheckNameAvailabilityRequest {
+  name?: string;
+  type?: string;
 }
 
 
@@ -251,5 +564,19 @@ export interface ManagementGroupListResult extends Array<ManagementGroupInfo> {
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntityListResult class.
+ * @constructor
+ * Describes the result of the request to view entities.
+ *
+ * @member {number} [count] Total count of records that match the filter
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface EntityListResult extends Array<EntityInfo> {
   readonly nextLink?: string;
 }
