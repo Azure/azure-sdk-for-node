@@ -18,6 +18,331 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the PolicyDetails class.
+ * @constructor
+ * The policy details.
+ *
+ * @member {string} [policyDefinitionId] The ID of the policy definition.
+ * @member {string} [policyAssignmentId] The ID of the policy assignment.
+ * @member {string} [policyAssignmentDisplayName] The display name of the
+ * policy assignment.
+ * @member {string} [policyAssignmentScope] The scope of the policy assignment.
+ * @member {string} [policySetDefinitionId] The ID of the policy set
+ * definition.
+ * @member {string} [policyDefinitionReferenceId] The policy definition
+ * reference ID within the policy set definition.
+ */
+export interface PolicyDetails {
+  readonly policyDefinitionId?: string;
+  readonly policyAssignmentId?: string;
+  readonly policyAssignmentDisplayName?: string;
+  readonly policyAssignmentScope?: string;
+  readonly policySetDefinitionId?: string;
+  readonly policyDefinitionReferenceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResourceModificationDetails class.
+ * @constructor
+ * The details of the policy triggered deployment that created or modified the
+ * tracked resource.
+ *
+ * @member {object} [policyDetails] The details of the policy that created or
+ * modified the tracked resource.
+ * @member {string} [policyDetails.policyDefinitionId] The ID of the policy
+ * definition.
+ * @member {string} [policyDetails.policyAssignmentId] The ID of the policy
+ * assignment.
+ * @member {string} [policyDetails.policyAssignmentDisplayName] The display
+ * name of the policy assignment.
+ * @member {string} [policyDetails.policyAssignmentScope] The scope of the
+ * policy assignment.
+ * @member {string} [policyDetails.policySetDefinitionId] The ID of the policy
+ * set definition.
+ * @member {string} [policyDetails.policyDefinitionReferenceId] The policy
+ * definition reference ID within the policy set definition.
+ * @member {string} [deploymentId] The ID of the deployment that created or
+ * modified the tracked resource.
+ * @member {date} [deploymentTime] Timestamp of the deployment that created or
+ * modified the tracked resource.
+ */
+export interface TrackedResourceModificationDetails {
+  readonly policyDetails?: PolicyDetails;
+  readonly deploymentId?: string;
+  readonly deploymentTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyTrackedResource class.
+ * @constructor
+ * Policy tracked resource record.
+ *
+ * @member {string} [trackedResourceId] The ID of the policy tracked resource.
+ * @member {object} [policyDetails] The details of the policy that require the
+ * tracked resource.
+ * @member {string} [policyDetails.policyDefinitionId] The ID of the policy
+ * definition.
+ * @member {string} [policyDetails.policyAssignmentId] The ID of the policy
+ * assignment.
+ * @member {string} [policyDetails.policyAssignmentDisplayName] The display
+ * name of the policy assignment.
+ * @member {string} [policyDetails.policyAssignmentScope] The scope of the
+ * policy assignment.
+ * @member {string} [policyDetails.policySetDefinitionId] The ID of the policy
+ * set definition.
+ * @member {string} [policyDetails.policyDefinitionReferenceId] The policy
+ * definition reference ID within the policy set definition.
+ * @member {object} [createdBy] The details of the policy triggered deployment
+ * that created the tracked resource.
+ * @member {object} [createdBy.policyDetails] The details of the policy that
+ * created or modified the tracked resource.
+ * @member {string} [createdBy.policyDetails.policyDefinitionId] The ID of the
+ * policy definition.
+ * @member {string} [createdBy.policyDetails.policyAssignmentId] The ID of the
+ * policy assignment.
+ * @member {string} [createdBy.policyDetails.policyAssignmentDisplayName] The
+ * display name of the policy assignment.
+ * @member {string} [createdBy.policyDetails.policyAssignmentScope] The scope
+ * of the policy assignment.
+ * @member {string} [createdBy.policyDetails.policySetDefinitionId] The ID of
+ * the policy set definition.
+ * @member {string} [createdBy.policyDetails.policyDefinitionReferenceId] The
+ * policy definition reference ID within the policy set definition.
+ * @member {string} [createdBy.deploymentId] The ID of the deployment that
+ * created or modified the tracked resource.
+ * @member {date} [createdBy.deploymentTime] Timestamp of the deployment that
+ * created or modified the tracked resource.
+ * @member {object} [lastModifiedBy] The details of the policy triggered
+ * deployment that modified the tracked resource.
+ * @member {object} [lastModifiedBy.policyDetails] The details of the policy
+ * that created or modified the tracked resource.
+ * @member {string} [lastModifiedBy.policyDetails.policyDefinitionId] The ID of
+ * the policy definition.
+ * @member {string} [lastModifiedBy.policyDetails.policyAssignmentId] The ID of
+ * the policy assignment.
+ * @member {string} [lastModifiedBy.policyDetails.policyAssignmentDisplayName]
+ * The display name of the policy assignment.
+ * @member {string} [lastModifiedBy.policyDetails.policyAssignmentScope] The
+ * scope of the policy assignment.
+ * @member {string} [lastModifiedBy.policyDetails.policySetDefinitionId] The ID
+ * of the policy set definition.
+ * @member {string} [lastModifiedBy.policyDetails.policyDefinitionReferenceId]
+ * The policy definition reference ID within the policy set definition.
+ * @member {string} [lastModifiedBy.deploymentId] The ID of the deployment that
+ * created or modified the tracked resource.
+ * @member {date} [lastModifiedBy.deploymentTime] Timestamp of the deployment
+ * that created or modified the tracked resource.
+ * @member {date} [lastUpdateUtc] Timestamp of the last update to the tracked
+ * resource.
+ */
+export interface PolicyTrackedResource {
+  readonly trackedResourceId?: string;
+  readonly policyDetails?: PolicyDetails;
+  readonly createdBy?: TrackedResourceModificationDetails;
+  readonly lastModifiedBy?: TrackedResourceModificationDetails;
+  readonly lastUpdateUtc?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryFailureError class.
+ * @constructor
+ * Error definition.
+ *
+ * @member {string} [code] Service specific error code which serves as the
+ * substatus for the HTTP error code.
+ * @member {string} [message] Description of the error.
+ */
+export interface QueryFailureError {
+  readonly code?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryFailure class.
+ * @constructor
+ * Error response.
+ *
+ * @member {object} [error] Error definition.
+ * @member {string} [error.code] Service specific error code which serves as
+ * the substatus for the HTTP error code.
+ * @member {string} [error.message] Description of the error.
+ */
+export interface QueryFailure {
+  error?: QueryFailureError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationFilters class.
+ * @constructor
+ * The filters that will be applied to determine which resources to remediate.
+ *
+ * @member {array} [locations] The resource locations that will be remediated.
+ */
+export interface RemediationFilters {
+  locations?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationDeploymentSummary class.
+ * @constructor
+ * The deployment status summary for all deplyoments created by the
+ * remediation.
+ *
+ * @member {number} [totalDeployments] The number of deployments required by
+ * the remediation.
+ * @member {number} [successfulDeployments] The number of deployments required
+ * by the remediation that have succeeded.
+ * @member {number} [failedDeployments] The number of deployments required by
+ * the remediation that have failed.
+ */
+export interface RemediationDeploymentSummary {
+  totalDeployments?: number;
+  successfulDeployments?: number;
+  failedDeployments?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Remediation class.
+ * @constructor
+ * The remediation definition.
+ *
+ * @member {string} [policyAssignmentId] The resource ID of the policy
+ * assignment that should be remediated.
+ * @member {string} [policyDefinitionReferenceId] The policy definition
+ * reference ID of the individual definition that should be remediated.
+ * Required when the policy assignment being remediated assigns a policy set
+ * definition.
+ * @member {string} [provisioningState] The status of the remediation.
+ * @member {date} [createdOn] The time at which the remediation was created.
+ * @member {date} [lastUpdatedOn] The time at which the remediation was last
+ * updated.
+ * @member {object} [filters] The filters that will be applied to determine
+ * which resources to remediate.
+ * @member {array} [filters.locations] The resource locations that will be
+ * remediated.
+ * @member {object} [deploymentStatus] The deployment status summary for all
+ * deplyoments created by the remediation.
+ * @member {number} [deploymentStatus.totalDeployments] The number of
+ * deployments required by the remediation.
+ * @member {number} [deploymentStatus.successfulDeployments] The number of
+ * deployments required by the remediation that have succeeded.
+ * @member {number} [deploymentStatus.failedDeployments] The number of
+ * deployments required by the remediation that have failed.
+ * @member {string} [id] The ID of the remediation.
+ * @member {string} [type] The type of the remediation.
+ * @member {string} [name] The name of the remediation.
+ */
+export interface Remediation extends BaseResource {
+  policyAssignmentId?: string;
+  policyDefinitionReferenceId?: string;
+  readonly provisioningState?: string;
+  readonly createdOn?: Date;
+  readonly lastUpdatedOn?: Date;
+  filters?: RemediationFilters;
+  deploymentStatus?: RemediationDeploymentSummary;
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TypedErrorInfo class.
+ * @constructor
+ * Scenario specific error details.
+ *
+ * @member {string} [type] The type of included error details.
+ * @member {object} [info] The scenario specific error details.
+ */
+export interface TypedErrorInfo {
+  readonly type?: string;
+  readonly info?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorDefinition class.
+ * @constructor
+ * Error definition.
+ *
+ * @member {string} [code] Service specific error code which serves as the
+ * substatus for the HTTP error code.
+ * @member {string} [message] Description of the error.
+ * @member {string} [target] The target of the error.
+ * @member {array} [details] Internal error details.
+ * @member {array} [additionalInfo] Additional scenario specific error details.
+ */
+export interface ErrorDefinition {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+  readonly details?: ErrorDefinition[];
+  readonly additionalInfo?: TypedErrorInfo[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationDeployment class.
+ * @constructor
+ * Details of a single deployment created by the remediation.
+ *
+ * @member {string} [remediatedResourceId] Resource ID of the resource that is
+ * being remediated by the deployment.
+ * @member {string} [deploymentId] Resource ID of the template deployment that
+ * will remediate the resource.
+ * @member {string} [status] Status of the remediation deployment.
+ * @member {string} [resourceLocation] Location of the resource that is being
+ * remediated.
+ * @member {object} [error] Error encountered while remediated the resource.
+ * @member {string} [error.code] Service specific error code which serves as
+ * the substatus for the HTTP error code.
+ * @member {string} [error.message] Description of the error.
+ * @member {string} [error.target] The target of the error.
+ * @member {array} [error.details] Internal error details.
+ * @member {array} [error.additionalInfo] Additional scenario specific error
+ * details.
+ * @member {date} [createdOn] The time at which the remediation was created.
+ * @member {date} [lastUpdatedOn] The time at which the remediation deployment
+ * was last updated.
+ */
+export interface RemediationDeployment {
+  readonly remediatedResourceId?: string;
+  readonly deploymentId?: string;
+  readonly status?: string;
+  readonly resourceLocation?: string;
+  readonly error?: ErrorDefinition;
+  readonly createdOn?: Date;
+  readonly lastUpdatedOn?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error response.
+ *
+ * @member {object} [error] The error details.
+ * @member {string} [error.code] Service specific error code which serves as
+ * the substatus for the HTTP error code.
+ * @member {string} [error.message] Description of the error.
+ * @member {string} [error.target] The target of the error.
+ * @member {array} [error.details] Internal error details.
+ * @member {array} [error.additionalInfo] Additional scenario specific error
+ * details.
+ */
+export interface ErrorResponse {
+  error?: ErrorDefinition;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PolicyEvent class.
  * @constructor
  * Policy event record.
@@ -120,36 +445,6 @@ export interface PolicyEventsQueryResults {
   odatacontext?: string;
   odatacount?: number;
   value?: PolicyEvent[];
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryFailureError class.
- * @constructor
- * Error definition.
- *
- * @member {string} [code] Service specific error code which serves as the
- * substatus for the HTTP error code.
- * @member {string} [message] Description of the error.
- */
-export interface QueryFailureError {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryFailure class.
- * @constructor
- * Error response.
- *
- * @member {object} [error] Error definition.
- * @member {string} [error.code] Service specific error code which serves as
- * the substatus for the HTTP error code.
- * @member {string} [error.message] Description of the error.
- */
-export interface QueryFailure {
-  error?: QueryFailureError;
 }
 
 /**
@@ -278,6 +573,8 @@ export interface SummaryResults {
  * Policy definition summary.
  *
  * @member {string} [policyDefinitionId] Policy definition ID.
+ * @member {string} [policyDefinitionReferenceId] Policy definition reference
+ * ID.
  * @member {string} [effect] Policy effect, i.e. policy definition action.
  * @member {object} [results] Non-compliance summary for the policy definition.
  * @member {string} [results.queryResultsUri] HTTP POST URI for queryResults
@@ -290,6 +587,7 @@ export interface SummaryResults {
  */
 export interface PolicyDefinitionSummary {
   policyDefinitionId?: string;
+  policyDefinitionReferenceId?: string;
   effect?: string;
   results?: SummaryResults;
 }
@@ -426,6 +724,7 @@ export interface OperationsListResults {
  * Additional parameters for a set of operations.
  *
  * @member {number} [top] Maximum number of records to return.
+ * @member {string} [filter] OData filter expression.
  * @member {string} [orderBy] Ordering expression using OData notation. One or
  * more comma-separated column names with an optional "desc" (the default) or
  * "asc", e.g. "$orderby=PolicyAssignmentId, ResourceId asc".
@@ -437,16 +736,51 @@ export interface OperationsListResults {
  * 1-day).
  * @member {date} [to] ISO 8601 formatted timestamp specifying the end time of
  * the interval to query. When not specified, the service uses request time.
- * @member {string} [filter] OData filter expression.
  * @member {string} [apply] OData apply expression for aggregations.
  */
 export interface QueryOptions {
   top?: number;
+  filter?: string;
   orderBy?: string;
   select?: string;
   from?: Date;
   to?: Date;
-  filter?: string;
   apply?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyTrackedResourcesQueryResults class.
+ * @constructor
+ * Query results.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface PolicyTrackedResourcesQueryResults extends Array<PolicyTrackedResource> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationDeploymentsListResult class.
+ * @constructor
+ * List of deployments for a remediation.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface RemediationDeploymentsListResult extends Array<RemediationDeployment> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemediationListResult class.
+ * @constructor
+ * List of remediations.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface RemediationListResult extends Array<Remediation> {
+  readonly nextLink?: string;
+}
