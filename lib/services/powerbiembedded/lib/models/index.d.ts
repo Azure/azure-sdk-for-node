@@ -96,12 +96,12 @@ export interface Workspace {
  * @constructor
  * @member {string} [provider] The localized friendly form of the resource
  * provider name. This form is also expected to include the publisher/company
- * responsible. Use Title Casing. Begin with “Microsoft” for 1st party
+ * responsible. Use Title Casing. Begin with "Microsoft" for 1st party
  * services.
  * @member {string} [resource] The localized friendly form of the resource type
  * related to this action/operation. This form should match the public
  * documentation for the resource provider. Use Title Casing. For examples,
- * refer to the “name” section.
+ * refer to the "name" section.
  * @member {string} [operation] The localized friendly name for the operation
  * as shown to the user. This name should be concise (to fit in drop downs),
  * but clear (self-documenting). Use Title Casing and include the
@@ -131,12 +131,12 @@ export interface Display {
  * @member {object} [display]
  * @member {string} [display.provider] The localized friendly form of the
  * resource provider name. This form is also expected to include the
- * publisher/company responsible. Use Title Casing. Begin with “Microsoft” for
+ * publisher/company responsible. Use Title Casing. Begin with "Microsoft" for
  * 1st party services.
  * @member {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation. This form should match the
  * public documentation for the resource provider. Use Title Casing. For
- * examples, refer to the “name” section.
+ * examples, refer to the "name" section.
  * @member {string} [display.operation] The localized friendly name for the
  * operation as shown to the user. This name should be concise (to fit in drop
  * downs), but clear (self-documenting). Use Title Casing and include the
