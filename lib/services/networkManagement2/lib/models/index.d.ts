@@ -5339,8 +5339,9 @@ export interface Ipv6ExpressRouteCircuitPeeringConfig {
  * Contains SKU in an ExpressRouteCircuit.
  *
  * @member {string} [name] The name of the SKU.
- * @member {string} [tier] The tier of the SKU. Possible values are 'Standard'
- * and 'Premium'. Possible values include: 'Standard', 'Premium'
+ * @member {string} [tier] The tier of the SKU. Possible values are 'Basic',
+ * 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium',
+ * 'Basic'
  * @member {string} [family] The family of the SKU. Possible values are:
  * 'UnlimitedData' and 'MeteredData'. Possible values include: 'UnlimitedData',
  * 'MeteredData'
@@ -5376,7 +5377,8 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * @member {object} [sku] The SKU.
  * @member {string} [sku.name] The name of the SKU.
  * @member {string} [sku.tier] The tier of the SKU. Possible values are
- * 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+ * 'Basic', 'Standard' and 'Premium'. Possible values include: 'Standard',
+ * 'Premium', 'Basic'
  * @member {string} [sku.family] The family of the SKU. Possible values are:
  * 'UnlimitedData' and 'MeteredData'. Possible values include: 'UnlimitedData',
  * 'MeteredData'

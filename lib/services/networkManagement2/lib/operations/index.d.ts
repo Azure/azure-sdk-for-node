@@ -6232,7 +6232,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Basic', 'Standard' and 'Premium'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -6313,7 +6314,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Basic', 'Standard' and 'Premium'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -6983,7 +6985,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Basic', 'Standard' and 'Premium'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
@@ -7064,7 +7067,8 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.name] The name of the SKU.
      *
      * @param {string} [parameters.sku.tier] The tier of the SKU. Possible values
-     * are 'Standard' and 'Premium'. Possible values include: 'Standard', 'Premium'
+     * are 'Basic', 'Standard' and 'Premium'. Possible values include: 'Standard',
+     * 'Premium', 'Basic'
      *
      * @param {string} [parameters.sku.family] The family of the SKU. Possible
      * values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
