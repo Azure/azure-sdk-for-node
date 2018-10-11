@@ -18,217 +18,6 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * ARM Resource.
- *
- * @member {string} [id] Resource Id represents the complete path to the
- * resource.
- * @member {string} [name] Resource name associated with the resource.
- * @member {string} [type] Resource type represents the complete path of the
- * form Namespace/ResourceType/ResourceType/...
- * @member {string} [eTag] Optional ETag.
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  eTag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupStorageConfig class.
- * @constructor
- * The backup storage config.
- *
- * @member {string} [storageModelType] Storage model type. Possible values
- * include: 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageType] Storage type. Possible values include:
- * 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageTypeState] Locked or Unlocked. Once a machine is
- * registered against a resource, the storageTypeState is always Locked.
- * Possible values include: 'Invalid', 'Locked', 'Unlocked'
- */
-export interface BackupStorageConfig extends Resource {
-  storageModelType?: string;
-  storageType?: string;
-  storageTypeState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupVaultConfig class.
- * @constructor
- * Backup vault config details.
- *
- * @member {string} [storageType] Storage type. Possible values include:
- * 'Invalid', 'GeoRedundant', 'LocallyRedundant'
- * @member {string} [storageTypeState] Locked or Unlocked. Once a machine is
- * registered against a resource, the storageTypeState is always Locked.
- * Possible values include: 'Invalid', 'Locked', 'Unlocked'
- * @member {string} [enhancedSecurityState] Enabled or Disabled. Possible
- * values include: 'Invalid', 'Enabled', 'Disabled'
- */
-export interface BackupVaultConfig extends Resource {
-  storageType?: string;
-  storageTypeState?: string;
-  enhancedSecurityState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VaultExtendedInfoResource class.
- * @constructor
- * Vault extended information.
- *
- * @member {string} [integrityKey] Integrity key.
- * @member {string} [encryptionKey] Encryption key.
- * @member {string} [encryptionKeyThumbprint] Encryption key thumbprint.
- * @member {string} [algorithm] Algorithm.
- */
-export interface VaultExtendedInfoResource extends Resource {
-  integrityKey?: string;
-  encryptionKey?: string;
-  encryptionKeyThumbprint?: string;
-  algorithm?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * Identifies the unique system identifier for each Azure resource.
- *
- * @member {string} name The Sku name. Possible values include: 'Standard',
- * 'RS0'
- */
-export interface Sku {
-  name: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UpgradeDetails class.
- * @constructor
- * Details for upgrading vault.
- *
- * @member {string} [operationId] ID of the vault upgrade operation.
- * @member {date} [startTimeUtc] UTC time at which the upgrade operation has
- * started.
- * @member {date} [lastUpdatedTimeUtc] UTC time at which the upgrade operation
- * status was last updated.
- * @member {date} [endTimeUtc] UTC time at which the upgrade operation has
- * ended.
- * @member {string} [status] Status of the vault upgrade operation. Possible
- * values include: 'Unknown', 'InProgress', 'Upgraded', 'Failed'
- * @member {string} [message] Message to the user containing information about
- * the upgrade operation.
- * @member {string} [triggerType] The way the vault upgradation was triggered.
- * Possible values include: 'UserTriggered', 'ForcedUpgrade'
- * @member {string} [upgradedResourceId] Resource ID of the upgraded vault.
- * @member {string} [previousResourceId] Resource ID of the vault before the
- * upgrade.
- */
-export interface UpgradeDetails {
-  readonly operationId?: string;
-  readonly startTimeUtc?: Date;
-  readonly lastUpdatedTimeUtc?: Date;
-  readonly endTimeUtc?: Date;
-  readonly status?: string;
-  readonly message?: string;
-  readonly triggerType?: string;
-  readonly upgradedResourceId?: string;
-  readonly previousResourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VaultProperties class.
- * @constructor
- * Properties of the vault.
- *
- * @member {string} [provisioningState] Provisioning State.
- * @member {object} [upgradeDetails]
- * @member {string} [upgradeDetails.operationId] ID of the vault upgrade
- * operation.
- * @member {date} [upgradeDetails.startTimeUtc] UTC time at which the upgrade
- * operation has started.
- * @member {date} [upgradeDetails.lastUpdatedTimeUtc] UTC time at which the
- * upgrade operation status was last updated.
- * @member {date} [upgradeDetails.endTimeUtc] UTC time at which the upgrade
- * operation has ended.
- * @member {string} [upgradeDetails.status] Status of the vault upgrade
- * operation. Possible values include: 'Unknown', 'InProgress', 'Upgraded',
- * 'Failed'
- * @member {string} [upgradeDetails.message] Message to the user containing
- * information about the upgrade operation.
- * @member {string} [upgradeDetails.triggerType] The way the vault upgradation
- * was triggered. Possible values include: 'UserTriggered', 'ForcedUpgrade'
- * @member {string} [upgradeDetails.upgradedResourceId] Resource ID of the
- * upgraded vault.
- * @member {string} [upgradeDetails.previousResourceId] Resource ID of the
- * vault before the upgrade.
- */
-export interface VaultProperties {
-  readonly provisioningState?: string;
-  upgradeDetails?: UpgradeDetails;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * Tracked resource with location.
- *
- * @member {string} location Resource location.
- * @member {object} [tags] Resource tags.
- */
-export interface TrackedResource extends Resource {
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Vault class.
- * @constructor
- * Resource information, as returned by the resource provider.
- *
- * @member {object} [properties]
- * @member {string} [properties.provisioningState] Provisioning State.
- * @member {object} [properties.upgradeDetails]
- * @member {string} [properties.upgradeDetails.operationId] ID of the vault
- * upgrade operation.
- * @member {date} [properties.upgradeDetails.startTimeUtc] UTC time at which
- * the upgrade operation has started.
- * @member {date} [properties.upgradeDetails.lastUpdatedTimeUtc] UTC time at
- * which the upgrade operation status was last updated.
- * @member {date} [properties.upgradeDetails.endTimeUtc] UTC time at which the
- * upgrade operation has ended.
- * @member {string} [properties.upgradeDetails.status] Status of the vault
- * upgrade operation. Possible values include: 'Unknown', 'InProgress',
- * 'Upgraded', 'Failed'
- * @member {string} [properties.upgradeDetails.message] Message to the user
- * containing information about the upgrade operation.
- * @member {string} [properties.upgradeDetails.triggerType] The way the vault
- * upgradation was triggered. Possible values include: 'UserTriggered',
- * 'ForcedUpgrade'
- * @member {string} [properties.upgradeDetails.upgradedResourceId] Resource ID
- * of the upgraded vault.
- * @member {string} [properties.upgradeDetails.previousResourceId] Resource ID
- * of the vault before the upgrade.
- * @member {object} [sku]
- * @member {string} [sku.name] The Sku name. Possible values include:
- * 'Standard', 'RS0'
- */
-export interface Vault extends TrackedResource {
-  properties?: VaultProperties;
-  sku?: Sku;
-}
-
-/**
- * @class
  * Initializes a new instance of the RawCertificateData class.
  * @constructor
  * Raw certificate data.
@@ -335,9 +124,11 @@ export interface ResourceCertificateAndAcsDetails extends ResourceCertificateDet
  * Certificate corresponding to a vault that can be used by clients to register
  * themselves with the vault.
  *
- * @member {string} [name]
- * @member {string} [type]
- * @member {string} [id]
+ * @member {string} [name] Resource name associated with the resource.
+ * @member {string} [type] Resource type represents the complete path of the
+ * form Namespace/ResourceType/ResourceType/...
+ * @member {string} [id] Resource Id represents the complete path to the
+ * resource.
  * @member {object} [properties]
  * @member {buffer} [properties.certificate] The base64 encoded certificate raw
  * data string.
@@ -350,10 +141,10 @@ export interface ResourceCertificateAndAcsDetails extends ResourceCertificateDet
  * @member {date} [properties.validTo] Certificate Validity End Date time.
  * @member {string} [properties.authType] Polymorphic Discriminator
  */
-export interface VaultCertificateResponse {
-  name?: string;
-  type?: string;
-  id?: string;
+export interface VaultCertificateResponse extends BaseResource {
+  readonly name?: string;
+  readonly type?: string;
+  readonly id?: string;
   properties?: ResourceCertificateDetails;
 }
 
@@ -449,10 +240,11 @@ export interface ReplicationUsage {
  * Localized display information of an operation.
  *
  * @member {string} [provider] Name of the provider for display purposes
- * @member {string} [resource] Name of the resource type for display purposes
- * @member {string} [operation] Name of the operation for display purposes
- * @member {string} [description] Description of the operation for display
- * purposes
+ * @member {string} [resource] ResourceType for which this Operation can be
+ * performed.
+ * @member {string} [operation] Operations Name itself.
+ * @member {string} [description] Description of the operation having details
+ * of what operation is about.
  */
 export interface ClientDiscoveryDisplay {
   provider?: string;
@@ -511,20 +303,19 @@ export interface ClientDiscoveryForProperties {
  * @constructor
  * Available operation details.
  *
- * @member {string} [name] Name of the operation
+ * @member {string} [name] Name of the Operation.
  * @member {object} [display] Contains the localized display information for
  * this particular operation
  * @member {string} [display.provider] Name of the provider for display
  * purposes
- * @member {string} [display.resource] Name of the resource type for display
- * purposes
- * @member {string} [display.operation] Name of the operation for display
- * purposes
- * @member {string} [display.description] Description of the operation for
- * display purposes
+ * @member {string} [display.resource] ResourceType for which this Operation
+ * can be performed.
+ * @member {string} [display.operation] Operations Name itself.
+ * @member {string} [display.description] Description of the operation having
+ * details of what operation is about.
  * @member {string} [origin] The intended executor of the operation;governs the
  * display of the operation in the RBAC UX and the audit logs UX
- * @member {object} [properties] Properties
+ * @member {object} [properties] ShoeBox properties for the given operation.
  * @member {object} [properties.serviceSpecification] Operation properties.
  * @member {array} [properties.serviceSpecification.logSpecifications] List of
  * log specifications of this operation.
@@ -534,6 +325,229 @@ export interface ClientDiscoveryValueForSingleApi {
   display?: ClientDiscoveryDisplay;
   origin?: string;
   properties?: ClientDiscoveryForProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * ARM Resource.
+ *
+ * @member {string} [id] Resource Id represents the complete path to the
+ * resource.
+ * @member {string} [name] Resource name associated with the resource.
+ * @member {string} [type] Resource type represents the complete path of the
+ * form Namespace/ResourceType/ResourceType/...
+ * @member {string} [eTag] Optional ETag.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  eTag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * Identifies the unique system identifier for each Azure resource.
+ *
+ * @member {string} name The Sku name. Possible values include: 'Standard',
+ * 'RS0'
+ */
+export interface Sku {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * Tracked resource with location.
+ *
+ * @member {string} location Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface TrackedResource extends Resource {
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PatchTrackedResource class.
+ * @constructor
+ * Tracked resource with location.
+ *
+ * @member {string} [location] Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface PatchTrackedResource extends Resource {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpgradeDetails class.
+ * @constructor
+ * Details for upgrading vault.
+ *
+ * @member {string} [operationId] ID of the vault upgrade operation.
+ * @member {date} [startTimeUtc] UTC time at which the upgrade operation has
+ * started.
+ * @member {date} [lastUpdatedTimeUtc] UTC time at which the upgrade operation
+ * status was last updated.
+ * @member {date} [endTimeUtc] UTC time at which the upgrade operation has
+ * ended.
+ * @member {string} [status] Status of the vault upgrade operation. Possible
+ * values include: 'Unknown', 'InProgress', 'Upgraded', 'Failed'
+ * @member {string} [message] Message to the user containing information about
+ * the upgrade operation.
+ * @member {string} [triggerType] The way the vault upgradation was triggered.
+ * Possible values include: 'UserTriggered', 'ForcedUpgrade'
+ * @member {string} [upgradedResourceId] Resource ID of the upgraded vault.
+ * @member {string} [previousResourceId] Resource ID of the vault before the
+ * upgrade.
+ */
+export interface UpgradeDetails {
+  readonly operationId?: string;
+  readonly startTimeUtc?: Date;
+  readonly lastUpdatedTimeUtc?: Date;
+  readonly endTimeUtc?: Date;
+  readonly status?: string;
+  readonly message?: string;
+  readonly triggerType?: string;
+  readonly upgradedResourceId?: string;
+  readonly previousResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultProperties class.
+ * @constructor
+ * Properties of the vault.
+ *
+ * @member {string} [provisioningState] Provisioning State.
+ * @member {object} [upgradeDetails]
+ * @member {string} [upgradeDetails.operationId] ID of the vault upgrade
+ * operation.
+ * @member {date} [upgradeDetails.startTimeUtc] UTC time at which the upgrade
+ * operation has started.
+ * @member {date} [upgradeDetails.lastUpdatedTimeUtc] UTC time at which the
+ * upgrade operation status was last updated.
+ * @member {date} [upgradeDetails.endTimeUtc] UTC time at which the upgrade
+ * operation has ended.
+ * @member {string} [upgradeDetails.status] Status of the vault upgrade
+ * operation. Possible values include: 'Unknown', 'InProgress', 'Upgraded',
+ * 'Failed'
+ * @member {string} [upgradeDetails.message] Message to the user containing
+ * information about the upgrade operation.
+ * @member {string} [upgradeDetails.triggerType] The way the vault upgradation
+ * was triggered. Possible values include: 'UserTriggered', 'ForcedUpgrade'
+ * @member {string} [upgradeDetails.upgradedResourceId] Resource ID of the
+ * upgraded vault.
+ * @member {string} [upgradeDetails.previousResourceId] Resource ID of the
+ * vault before the upgrade.
+ */
+export interface VaultProperties {
+  readonly provisioningState?: string;
+  upgradeDetails?: UpgradeDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Vault class.
+ * @constructor
+ * Resource information, as returned by the resource provider.
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.provisioningState] Provisioning State.
+ * @member {object} [properties.upgradeDetails]
+ * @member {string} [properties.upgradeDetails.operationId] ID of the vault
+ * upgrade operation.
+ * @member {date} [properties.upgradeDetails.startTimeUtc] UTC time at which
+ * the upgrade operation has started.
+ * @member {date} [properties.upgradeDetails.lastUpdatedTimeUtc] UTC time at
+ * which the upgrade operation status was last updated.
+ * @member {date} [properties.upgradeDetails.endTimeUtc] UTC time at which the
+ * upgrade operation has ended.
+ * @member {string} [properties.upgradeDetails.status] Status of the vault
+ * upgrade operation. Possible values include: 'Unknown', 'InProgress',
+ * 'Upgraded', 'Failed'
+ * @member {string} [properties.upgradeDetails.message] Message to the user
+ * containing information about the upgrade operation.
+ * @member {string} [properties.upgradeDetails.triggerType] The way the vault
+ * upgradation was triggered. Possible values include: 'UserTriggered',
+ * 'ForcedUpgrade'
+ * @member {string} [properties.upgradeDetails.upgradedResourceId] Resource ID
+ * of the upgraded vault.
+ * @member {string} [properties.upgradeDetails.previousResourceId] Resource ID
+ * of the vault before the upgrade.
+ * @member {object} [sku]
+ * @member {string} [sku.name] The Sku name. Possible values include:
+ * 'Standard', 'RS0'
+ */
+export interface Vault extends TrackedResource {
+  properties?: VaultProperties;
+  sku?: Sku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PatchVault class.
+ * @constructor
+ * Patch Resource information, as returned by the resource provider.
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.provisioningState] Provisioning State.
+ * @member {object} [properties.upgradeDetails]
+ * @member {string} [properties.upgradeDetails.operationId] ID of the vault
+ * upgrade operation.
+ * @member {date} [properties.upgradeDetails.startTimeUtc] UTC time at which
+ * the upgrade operation has started.
+ * @member {date} [properties.upgradeDetails.lastUpdatedTimeUtc] UTC time at
+ * which the upgrade operation status was last updated.
+ * @member {date} [properties.upgradeDetails.endTimeUtc] UTC time at which the
+ * upgrade operation has ended.
+ * @member {string} [properties.upgradeDetails.status] Status of the vault
+ * upgrade operation. Possible values include: 'Unknown', 'InProgress',
+ * 'Upgraded', 'Failed'
+ * @member {string} [properties.upgradeDetails.message] Message to the user
+ * containing information about the upgrade operation.
+ * @member {string} [properties.upgradeDetails.triggerType] The way the vault
+ * upgradation was triggered. Possible values include: 'UserTriggered',
+ * 'ForcedUpgrade'
+ * @member {string} [properties.upgradeDetails.upgradedResourceId] Resource ID
+ * of the upgraded vault.
+ * @member {string} [properties.upgradeDetails.previousResourceId] Resource ID
+ * of the vault before the upgrade.
+ * @member {object} [sku]
+ * @member {string} [sku.name] The Sku name. Possible values include:
+ * 'Standard', 'RS0'
+ */
+export interface PatchVault extends PatchTrackedResource {
+  properties?: VaultProperties;
+  sku?: Sku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultExtendedInfoResource class.
+ * @constructor
+ * Vault extended information.
+ *
+ * @member {string} [integrityKey] Integrity key.
+ * @member {string} [encryptionKey] Encryption key.
+ * @member {string} [encryptionKeyThumbprint] Encryption key thumbprint.
+ * @member {string} [algorithm] Algorithm for Vault ExtendedInfo
+ */
+export interface VaultExtendedInfoResource extends Resource {
+  integrityKey?: string;
+  encryptionKey?: string;
+  encryptionKeyThumbprint?: string;
+  algorithm?: string;
 }
 
 /**
@@ -604,7 +618,7 @@ export interface VaultList extends Array<Vault> {
  * @constructor
  * Operations List response which contains list of available APIs.
  *
- * @member {string} [nextLink] NextLink of the Response.
+ * @member {string} [nextLink] Link to the next chunk of the response
  */
 export interface ClientDiscoveryResponse extends Array<ClientDiscoveryValueForSingleApi> {
   nextLink?: string;
