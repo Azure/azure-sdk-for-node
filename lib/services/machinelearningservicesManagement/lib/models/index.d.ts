@@ -96,6 +96,9 @@ export interface Resource extends BaseResource {
  * name in mutable
  * @member {date} [creationTime] The creation time of the machine learning
  * workspace in ISO8601 format.
+ * @member {string} [batchaiWorkspace] ARM id of the Batch AI workspace
+ * associated with this workspace. This cannot be changed once the workspace
+ * has been created
  * @member {string} [keyVault] ARM id of the key vault associated with this
  * workspace. This cannot be changed once the workspace has been created
  * @member {string} [applicationInsights] ARM id of the application insights
@@ -119,6 +122,7 @@ export interface Workspace extends Resource {
   description?: string;
   friendlyName?: string;
   readonly creationTime?: Date;
+  batchaiWorkspace?: string;
   keyVault?: string;
   applicationInsights?: string;
   containerRegistry?: string;
@@ -257,6 +261,7 @@ export interface MachineLearningServiceError {
  * @constructor
  * Machine Learning compute object.
  *
+ * @member {string} [computeLocation] Location for the underlying compute
  * @member {string} [provisioningState] The provision state of the cluster.
  * Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
  * Possible values include: 'Unknown', 'Updating', 'Creating', 'Deleting',
@@ -271,6 +276,7 @@ export interface MachineLearningServiceError {
  * @member {string} computeType Polymorphic Discriminator
  */
 export interface Compute {
+  computeLocation?: string;
   readonly provisioningState?: string;
   description?: string;
   readonly createdOn?: Date;
@@ -287,6 +293,8 @@ export interface Compute {
  * Machine Learning compute object wrapped into ARM resource envelope.
  *
  * @member {object} [properties] Compute properties
+ * @member {string} [properties.computeLocation] Location for the underlying
+ * compute
  * @member {string} [properties.provisioningState] The provision state of the
  * cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and
  * Failed. Possible values include: 'Unknown', 'Updating', 'Creating',
@@ -467,6 +475,8 @@ export interface VirtualMachineSshCredentials {
  * Initializes a new instance of the VirtualMachineProperties class.
  * @constructor
  * @member {string} [virtualMachineSize] Virtual Machine size
+ * @member {number} [sshPort] Port open for ssh connections.
+ * @member {string} [address] Public IP address of the virtual machine.
  * @member {object} [administratorAccount] Admin credentials for virtual
  * machine
  * @member {string} [administratorAccount.username] Username of admin account
@@ -476,6 +486,8 @@ export interface VirtualMachineSshCredentials {
  */
 export interface VirtualMachineProperties {
   virtualMachineSize?: string;
+  sshPort?: number;
+  address?: string;
   administratorAccount?: VirtualMachineSshCredentials;
 }
 
@@ -487,6 +499,9 @@ export interface VirtualMachineProperties {
  *
  * @member {object} [properties]
  * @member {string} [properties.virtualMachineSize] Virtual Machine size
+ * @member {number} [properties.sshPort] Port open for ssh connections.
+ * @member {string} [properties.address] Public IP address of the virtual
+ * machine.
  * @member {object} [properties.administratorAccount] Admin credentials for
  * virtual machine
  * @member {string} [properties.administratorAccount.username] Username of
@@ -500,6 +515,53 @@ export interface VirtualMachineProperties {
  */
 export interface VirtualMachine extends Compute {
   properties?: VirtualMachineProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HDInsightProperties class.
+ * @constructor
+ * @member {number} [sshPort] Port open for ssh connections on the master node
+ * of the cluster.
+ * @member {string} [address] Public IP address of the master node of the
+ * cluster.
+ * @member {object} [administratorAccount] Admin credentials for master node of
+ * the cluster
+ * @member {string} [administratorAccount.username] Username of admin account
+ * @member {string} [administratorAccount.password] Password of admin account
+ * @member {string} [administratorAccount.publicKeyData] Public key data
+ * @member {string} [administratorAccount.privateKeyData] Private key data
+ */
+export interface HDInsightProperties {
+  sshPort?: number;
+  address?: string;
+  administratorAccount?: VirtualMachineSshCredentials;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HDInsight class.
+ * @constructor
+ * A HDInsight compute.
+ *
+ * @member {object} [properties]
+ * @member {number} [properties.sshPort] Port open for ssh connections on the
+ * master node of the cluster.
+ * @member {string} [properties.address] Public IP address of the master node
+ * of the cluster.
+ * @member {object} [properties.administratorAccount] Admin credentials for
+ * master node of the cluster
+ * @member {string} [properties.administratorAccount.username] Username of
+ * admin account
+ * @member {string} [properties.administratorAccount.password] Password of
+ * admin account
+ * @member {string} [properties.administratorAccount.publicKeyData] Public key
+ * data
+ * @member {string} [properties.administratorAccount.privateKeyData] Private
+ * key data
+ */
+export interface HDInsight extends Compute {
+  properties?: HDInsightProperties;
 }
 
 /**
