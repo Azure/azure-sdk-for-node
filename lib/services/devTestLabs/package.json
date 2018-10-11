@@ -4,19 +4,22 @@
   "description": "DevTestLabsClient Library with typescript type definitions for node",
   "version": "2.1.1",
   "dependencies": {
-    "ms-rest": "^2.3.2",
+    "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/devTestLabsClient.js",
   "types": "./lib/devTestLabsClient.d.ts",
-  "homepage": "http://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/devTestLabs",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }
