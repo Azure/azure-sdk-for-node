@@ -19,7 +19,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {string} apiKey -
    *
-   * @param {string} [baseUri] - The base URI of the service.
+   * @param {string} endpoint - Supported Cognitive Services endpoints
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,9 +31,11 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(apiKey: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(apiKey: string, endpoint: string, options?: ServiceClientOptions);
 
   apiKey: string;
+
+  endpoint: string;
 
 
   /**
@@ -139,6 +141,403 @@ export default class TrainingAPIClient extends ServiceClient {
   getDomain(domainId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Domain>;
   getDomain(domainId: string, callback: ServiceCallback<models.Domain>): void;
   getDomain(domainId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
+
+
+  /**
+   * @summary Gets the number of images tagged with the provided {tagIds}
+   *
+   * The filtering is on an and/or relationship. For example, if the provided tag
+   * ids are for the "Dog" and
+   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   *
+   * @param {array} [options.tagIds] A list of tags ids to filter the images to
+   * count. Defaults to all tags when null.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getTaggedImageCountWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+
+  /**
+   * @summary Gets the number of images tagged with the provided {tagIds}
+   *
+   * The filtering is on an and/or relationship. For example, if the provided tag
+   * ids are for the "Dog" and
+   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   *
+   * @param {array} [options.tagIds] A list of tags ids to filter the images to
+   * count. Defaults to all tags when null.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Number} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Number} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getTaggedImageCount(projectId: string, options?: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<number>;
+  getTaggedImageCount(projectId: string, callback: ServiceCallback<number>): void;
+  getTaggedImageCount(projectId: string, options: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+
+
+  /**
+   * @summary Gets the number of untagged images
+   *
+   * This API returns the images which have no tags for a given project and
+   * optionally an iteration. If no iteration is specified the
+   * current workspace is used.
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getUntaggedImageCountWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+
+  /**
+   * @summary Gets the number of untagged images
+   *
+   * This API returns the images which have no tags for a given project and
+   * optionally an iteration. If no iteration is specified the
+   * current workspace is used.
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Number} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Number} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getUntaggedImageCount(projectId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<number>;
+  getUntaggedImageCount(projectId: string, callback: ServiceCallback<number>): void;
+  getUntaggedImageCount(projectId: string, options: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+
+
+  /**
+   * @summary Associate a set of images with a set of tags
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} batch Batch of image tags. Limited to 128 tags per batch
+   *
+   * @param {array} [batch.tags]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImageTagCreateSummary>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createImageTagsWithHttpOperationResponse(projectId: string, batch: models.ImageTagCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageTagCreateSummary>>;
+
+  /**
+   * @summary Associate a set of images with a set of tags
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} batch Batch of image tags. Limited to 128 tags per batch
+   *
+   * @param {array} [batch.tags]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImageTagCreateSummary} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImageTagCreateSummary} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImageTagCreateSummary} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createImageTags(projectId: string, batch: models.ImageTagCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageTagCreateSummary>;
+  createImageTags(projectId: string, batch: models.ImageTagCreateBatch, callback: ServiceCallback<models.ImageTagCreateSummary>): void;
+  createImageTags(projectId: string, batch: models.ImageTagCreateBatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageTagCreateSummary>): void;
+
+
+  /**
+   * @summary Remove a set of tags from a set of images
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {array} imageIds Image ids. Limited to 64 images
+   *
+   * @param {array} tagIds Tags to be deleted from the specified images. Limted
+   * to 20 tags
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteImageTagsWithHttpOperationResponse(projectId: string, imageIds: string[], tagIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Remove a set of tags from a set of images
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {array} imageIds Image ids. Limited to 64 images
+   *
+   * @param {array} tagIds Tags to be deleted from the specified images. Limted
+   * to 20 tags
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteImageTags(projectId: string, imageIds: string[], tagIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteImageTags(projectId: string, imageIds: string[], tagIds: string[], callback: ServiceCallback<void>): void;
+  deleteImageTags(projectId: string, imageIds: string[], tagIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Create a set of image regions
+   *
+   * This API accepts a batch of image regions, and optionally tags, to update
+   * existing images with region information.
+   * There is a limit of 64 entries in the batch.
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} batch Batch of image regions which include a tag and
+   * bounding box. Limited to 64
+   *
+   * @param {array} [batch.regions]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ImageRegionCreateSummary>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  createImageRegionsWithHttpOperationResponse(projectId: string, batch: models.ImageRegionCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageRegionCreateSummary>>;
+
+  /**
+   * @summary Create a set of image regions
+   *
+   * This API accepts a batch of image regions, and optionally tags, to update
+   * existing images with region information.
+   * There is a limit of 64 entries in the batch.
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {object} batch Batch of image regions which include a tag and
+   * bounding box. Limited to 64
+   *
+   * @param {array} [batch.regions]
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ImageRegionCreateSummary} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ImageRegionCreateSummary} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ImageRegionCreateSummary} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createImageRegions(projectId: string, batch: models.ImageRegionCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageRegionCreateSummary>;
+  createImageRegions(projectId: string, batch: models.ImageRegionCreateBatch, callback: ServiceCallback<models.ImageRegionCreateSummary>): void;
+  createImageRegions(projectId: string, batch: models.ImageRegionCreateBatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageRegionCreateSummary>): void;
+
+
+  /**
+   * @summary Delete a set of image regions
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {array} regionIds Regions to delete. Limited to 64
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteImageRegionsWithHttpOperationResponse(projectId: string, regionIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Delete a set of image regions
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {array} regionIds Regions to delete. Limited to 64
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteImageRegions(projectId: string, regionIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  deleteImageRegions(projectId: string, regionIds: string[], callback: ServiceCallback<void>): void;
+  deleteImageRegions(projectId: string, regionIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -323,144 +722,6 @@ export default class TrainingAPIClient extends ServiceClient {
   getUntaggedImages(projectId: string, options?: { iterationId? : string, orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Image[]>;
   getUntaggedImages(projectId: string, callback: ServiceCallback<models.Image[]>): void;
   getUntaggedImages(projectId: string, options: { iterationId? : string, orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image[]>): void;
-
-
-  /**
-   * @summary Gets the number of images tagged with the provided {tagIds}
-   *
-   * The filtering is on an and/or relationship. For example, if the provided tag
-   * ids are for the "Dog" and
-   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
-   *
-   * @param {array} [options.tagIds] A list of tags ids to filter the images to
-   * count. Defaults to all tags when null.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getTaggedImageCountWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
-
-  /**
-   * @summary Gets the number of images tagged with the provided {tagIds}
-   *
-   * The filtering is on an and/or relationship. For example, if the provided tag
-   * ids are for the "Dog" and
-   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
-   *
-   * @param {array} [options.tagIds] A list of tags ids to filter the images to
-   * count. Defaults to all tags when null.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Number} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Number} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getTaggedImageCount(projectId: string, options?: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-  getTaggedImageCount(projectId: string, callback: ServiceCallback<number>): void;
-  getTaggedImageCount(projectId: string, options: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
-
-
-  /**
-   * @summary Gets the number of untagged images
-   *
-   * This API returns the images which have no tags for a given project and
-   * optionally an iteration. If no iteration is specified the
-   * current workspace is used.
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getUntaggedImageCountWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
-
-  /**
-   * @summary Gets the number of untagged images
-   *
-   * This API returns the images which have no tags for a given project and
-   * optionally an iteration. If no iteration is specified the
-   * current workspace is used.
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Number} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Number} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getUntaggedImageCount(projectId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-  getUntaggedImageCount(projectId: string, callback: ServiceCallback<number>): void;
-  getUntaggedImageCount(projectId: string, options: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
 
 
   /**
@@ -894,265 +1155,6 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Associate a set of images with a set of tags
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} batch Batch of image tags. Limited to 128 tags per batch
-   *
-   * @param {array} [batch.tags]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ImageTagCreateSummary>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  createImageTagsWithHttpOperationResponse(projectId: string, batch: models.ImageTagCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageTagCreateSummary>>;
-
-  /**
-   * @summary Associate a set of images with a set of tags
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} batch Batch of image tags. Limited to 128 tags per batch
-   *
-   * @param {array} [batch.tags]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ImageTagCreateSummary} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ImageTagCreateSummary} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ImageTagCreateSummary} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  createImageTags(projectId: string, batch: models.ImageTagCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageTagCreateSummary>;
-  createImageTags(projectId: string, batch: models.ImageTagCreateBatch, callback: ServiceCallback<models.ImageTagCreateSummary>): void;
-  createImageTags(projectId: string, batch: models.ImageTagCreateBatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageTagCreateSummary>): void;
-
-
-  /**
-   * @summary Remove a set of tags from a set of images
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {array} imageIds Image ids. Limited to 64 images
-   *
-   * @param {array} tagIds Tags to be deleted from the specified images. Limted
-   * to 20 tags
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  deleteImageTagsWithHttpOperationResponse(projectId: string, imageIds: string[], tagIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-  /**
-   * @summary Remove a set of tags from a set of images
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {array} imageIds Image ids. Limited to 64 images
-   *
-   * @param {array} tagIds Tags to be deleted from the specified images. Limted
-   * to 20 tags
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {null} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {null} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  deleteImageTags(projectId: string, imageIds: string[], tagIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  deleteImageTags(projectId: string, imageIds: string[], tagIds: string[], callback: ServiceCallback<void>): void;
-  deleteImageTags(projectId: string, imageIds: string[], tagIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-  /**
-   * @summary Create a set of image regions
-   *
-   * This API accepts a batch of image regions, and optionally tags, to update
-   * existing images with region information.
-   * There is a limit of 64 entries in the batch.
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} batch Batch of image regions which include a tag and
-   * bounding box. Limited to 64
-   *
-   * @param {array} [batch.regions]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ImageRegionCreateSummary>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  createImageRegionsWithHttpOperationResponse(projectId: string, batch: models.ImageRegionCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageRegionCreateSummary>>;
-
-  /**
-   * @summary Create a set of image regions
-   *
-   * This API accepts a batch of image regions, and optionally tags, to update
-   * existing images with region information.
-   * There is a limit of 64 entries in the batch.
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} batch Batch of image regions which include a tag and
-   * bounding box. Limited to 64
-   *
-   * @param {array} [batch.regions]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ImageRegionCreateSummary} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ImageRegionCreateSummary} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ImageRegionCreateSummary} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  createImageRegions(projectId: string, batch: models.ImageRegionCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageRegionCreateSummary>;
-  createImageRegions(projectId: string, batch: models.ImageRegionCreateBatch, callback: ServiceCallback<models.ImageRegionCreateSummary>): void;
-  createImageRegions(projectId: string, batch: models.ImageRegionCreateBatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageRegionCreateSummary>): void;
-
-
-  /**
-   * @summary Delete a set of image regions
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {array} regionIds Regions to delete. Limited to 64
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  deleteImageRegionsWithHttpOperationResponse(projectId: string, regionIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-  /**
-   * @summary Delete a set of image regions
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {array} regionIds Regions to delete. Limited to 64
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {null} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {null} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  deleteImageRegions(projectId: string, regionIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  deleteImageRegions(projectId: string, regionIds: string[], callback: ServiceCallback<void>): void;
-  deleteImageRegions(projectId: string, regionIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-  /**
    * @summary Get region proposals for an image. Returns empty array if no
    * proposals are found.
    *
@@ -1277,105 +1279,6 @@ export default class TrainingAPIClient extends ServiceClient {
   deletePrediction(projectId: string, ids: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   deletePrediction(projectId: string, ids: string[], callback: ServiceCallback<void>): void;
   deletePrediction(projectId: string, ids: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-  /**
-   * @summary Get images that were sent to your prediction endpoint
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} query Parameters used to query the predictions. Limited to
-   * combining 2 tags
-   *
-   * @param {string} [query.session]
-   *
-   * @param {string} [query.continuation]
-   *
-   * @param {number} [query.maxCount]
-   *
-   * @param {string} [query.orderBy] Possible values include: 'Newest', 'Oldest',
-   * 'Suggested'
-   *
-   * @param {array} [query.tags]
-   *
-   * @param {uuid} [query.iterationId]
-   *
-   * @param {date} [query.startTime]
-   *
-   * @param {date} [query.endTime]
-   *
-   * @param {string} [query.application]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<PredictionQueryResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  queryPredictionsWithHttpOperationResponse(projectId: string, query: models.PredictionQueryToken, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionQueryResult>>;
-
-  /**
-   * @summary Get images that were sent to your prediction endpoint
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {object} query Parameters used to query the predictions. Limited to
-   * combining 2 tags
-   *
-   * @param {string} [query.session]
-   *
-   * @param {string} [query.continuation]
-   *
-   * @param {number} [query.maxCount]
-   *
-   * @param {string} [query.orderBy] Possible values include: 'Newest', 'Oldest',
-   * 'Suggested'
-   *
-   * @param {array} [query.tags]
-   *
-   * @param {uuid} [query.iterationId]
-   *
-   * @param {date} [query.startTime]
-   *
-   * @param {date} [query.endTime]
-   *
-   * @param {string} [query.application]
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {PredictionQueryResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {PredictionQueryResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link PredictionQueryResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  queryPredictions(projectId: string, query: models.PredictionQueryToken, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionQueryResult>;
-  queryPredictions(projectId: string, query: models.PredictionQueryToken, callback: ServiceCallback<models.PredictionQueryResult>): void;
-  queryPredictions(projectId: string, query: models.PredictionQueryToken, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionQueryResult>): void;
 
 
   /**
@@ -1519,9 +1422,31 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Queues project for training
+   * @summary Get images that were sent to your prediction endpoint
    *
    * @param {uuid} projectId The project id
+   *
+   * @param {object} query Parameters used to query the predictions. Limited to
+   * combining 2 tags
+   *
+   * @param {string} [query.session]
+   *
+   * @param {string} [query.continuation]
+   *
+   * @param {number} [query.maxCount]
+   *
+   * @param {string} [query.orderBy] Possible values include: 'Newest', 'Oldest',
+   * 'Suggested'
+   *
+   * @param {array} [query.tags]
+   *
+   * @param {uuid} [query.iterationId]
+   *
+   * @param {date} [query.startTime]
+   *
+   * @param {date} [query.endTime]
+   *
+   * @param {string} [query.application]
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1530,16 +1455,38 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<Iteration>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<PredictionQueryResult>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  trainProjectWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
+  queryPredictionsWithHttpOperationResponse(projectId: string, query: models.PredictionQueryToken, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionQueryResult>>;
 
   /**
-   * @summary Queues project for training
+   * @summary Get images that were sent to your prediction endpoint
    *
    * @param {uuid} projectId The project id
+   *
+   * @param {object} query Parameters used to query the predictions. Limited to
+   * combining 2 tags
+   *
+   * @param {string} [query.session]
+   *
+   * @param {string} [query.continuation]
+   *
+   * @param {number} [query.maxCount]
+   *
+   * @param {string} [query.orderBy] Possible values include: 'Newest', 'Oldest',
+   * 'Suggested'
+   *
+   * @param {array} [query.tags]
+   *
+   * @param {uuid} [query.iterationId]
+   *
+   * @param {date} [query.startTime]
+   *
+   * @param {date} [query.endTime]
+   *
+   * @param {string} [query.application]
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1553,7 +1500,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {Iteration} - The deserialized result object.
+   *                      @resolve {PredictionQueryResult} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -1561,16 +1508,261 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {Iteration} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link Iteration} for more information.
+   *                      {PredictionQueryResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link PredictionQueryResult} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  trainProject(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Iteration>;
-  trainProject(projectId: string, callback: ServiceCallback<models.Iteration>): void;
-  trainProject(projectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Iteration>): void;
+  queryPredictions(projectId: string, query: models.PredictionQueryToken, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PredictionQueryResult>;
+  queryPredictions(projectId: string, query: models.PredictionQueryToken, callback: ServiceCallback<models.PredictionQueryResult>): void;
+  queryPredictions(projectId: string, query: models.PredictionQueryToken, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PredictionQueryResult>): void;
+
+
+  /**
+   * @summary Get detailed performance information about an iteration
+   *
+   * @param {uuid} projectId The id of the project the iteration belongs to
+   *
+   * @param {uuid} iterationId The id of the iteration to get
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.threshold] The threshold used to determine true
+   * predictions
+   *
+   * @param {number} [options.overlapThreshold] If applicable, the bounding box
+   * overlap threshold used to determine true predictions
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<IterationPerformance>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getIterationPerformanceWithHttpOperationResponse(projectId: string, iterationId: string, options?: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IterationPerformance>>;
+
+  /**
+   * @summary Get detailed performance information about an iteration
+   *
+   * @param {uuid} projectId The id of the project the iteration belongs to
+   *
+   * @param {uuid} iterationId The id of the iteration to get
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.threshold] The threshold used to determine true
+   * predictions
+   *
+   * @param {number} [options.overlapThreshold] If applicable, the bounding box
+   * overlap threshold used to determine true predictions
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {IterationPerformance} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {IterationPerformance} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link IterationPerformance} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getIterationPerformance(projectId: string, iterationId: string, options?: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IterationPerformance>;
+  getIterationPerformance(projectId: string, iterationId: string, callback: ServiceCallback<models.IterationPerformance>): void;
+  getIterationPerformance(projectId: string, iterationId: string, options: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IterationPerformance>): void;
+
+
+  /**
+   * @summary Get image with its prediction for a given project iteration
+   *
+   * This API supports batching and range selection. By default it will only
+   * return first 50 images matching images.
+   * Use the {take} and {skip} parameters to control how many images to return in
+   * a given batch.
+   * The filtering is on an and/or relationship. For example, if the provided tag
+   * ids are for the "Dog" and
+   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {array} [options.tagIds] A list of tags ids to filter the images.
+   * Defaults to all tagged images when null. Limited to 20
+   *
+   * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
+   * values include: 'Newest', 'Oldest'
+   *
+   * @param {number} [options.take] Maximum number of images to return. Defaults
+   * to 50, limited to 256
+   *
+   * @param {number} [options.skip] Number of images to skip before beginning the
+   * image batch. Defaults to 0
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getImagePerformancesWithHttpOperationResponse(projectId: string, iterationId: string, options?: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePerformance[]>>;
+
+  /**
+   * @summary Get image with its prediction for a given project iteration
+   *
+   * This API supports batching and range selection. By default it will only
+   * return first 50 images matching images.
+   * Use the {take} and {skip} parameters to control how many images to return in
+   * a given batch.
+   * The filtering is on an and/or relationship. For example, if the provided tag
+   * ids are for the "Dog" and
+   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {array} [options.tagIds] A list of tags ids to filter the images.
+   * Defaults to all tagged images when null. Limited to 20
+   *
+   * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
+   * values include: 'Newest', 'Oldest'
+   *
+   * @param {number} [options.take] Maximum number of images to return. Defaults
+   * to 50, limited to 256
+   *
+   * @param {number} [options.skip] Number of images to skip before beginning the
+   * image batch. Defaults to 0
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Array} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Array} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getImagePerformances(projectId: string, iterationId: string, options?: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePerformance[]>;
+  getImagePerformances(projectId: string, iterationId: string, callback: ServiceCallback<models.ImagePerformance[]>): void;
+  getImagePerformances(projectId: string, iterationId: string, options: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePerformance[]>): void;
+
+
+  /**
+   * @summary Gets the number of images tagged with the provided {tagIds} that
+   * have prediction results from
+   * training for the provided iteration {iterationId}
+   *
+   * The filtering is on an and/or relationship. For example, if the provided tag
+   * ids are for the "Dog" and
+   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {array} [options.tagIds] A list of tags ids to filter the images to
+   * count. Defaults to all tags when null.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getImagePerformanceCountWithHttpOperationResponse(projectId: string, iterationId: string, options?: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
+
+  /**
+   * @summary Gets the number of images tagged with the provided {tagIds} that
+   * have prediction results from
+   * training for the provided iteration {iterationId}
+   *
+   * The filtering is on an and/or relationship. For example, if the provided tag
+   * ids are for the "Dog" and
+   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
+   *
+   * @param {uuid} projectId The project id
+   *
+   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {array} [options.tagIds] A list of tags ids to filter the images to
+   * count. Defaults to all tags when null.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {Number} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {Number} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getImagePerformanceCount(projectId: string, iterationId: string, options?: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<number>;
+  getImagePerformanceCount(projectId: string, iterationId: string, callback: ServiceCallback<number>): void;
+  getImagePerformanceCount(projectId: string, iterationId: string, options: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
 
 
   /**
@@ -2137,45 +2329,29 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get detailed performance information about an iteration
+   * @summary Queues project for training
    *
-   * @param {uuid} projectId The id of the project the iteration belongs to
-   *
-   * @param {uuid} iterationId The id of the iteration to get
+   * @param {uuid} projectId The project id
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {number} [options.threshold] The threshold used to determine true
-   * predictions
-   *
-   * @param {number} [options.overlapThreshold] If applicable, the bounding box
-   * overlap threshold used to determine true predictions
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<IterationPerformance>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<Iteration>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getIterationPerformanceWithHttpOperationResponse(projectId: string, iterationId: string, options?: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IterationPerformance>>;
+  trainProjectWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
 
   /**
-   * @summary Get detailed performance information about an iteration
+   * @summary Queues project for training
    *
-   * @param {uuid} projectId The id of the project the iteration belongs to
-   *
-   * @param {uuid} iterationId The id of the iteration to get
+   * @param {uuid} projectId The project id
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {number} [options.threshold] The threshold used to determine true
-   * predictions
-   *
-   * @param {number} [options.overlapThreshold] If applicable, the bounding box
-   * overlap threshold used to determine true predictions
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2187,7 +2363,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {IterationPerformance} - The deserialized result object.
+   *                      @resolve {Iteration} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -2195,190 +2371,16 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {IterationPerformance} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link IterationPerformance} for more information.
+   *                      {Iteration} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link Iteration} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getIterationPerformance(projectId: string, iterationId: string, options?: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IterationPerformance>;
-  getIterationPerformance(projectId: string, iterationId: string, callback: ServiceCallback<models.IterationPerformance>): void;
-  getIterationPerformance(projectId: string, iterationId: string, options: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IterationPerformance>): void;
-
-
-  /**
-   * @summary Get image with its prediction for a given project iteration
-   *
-   * This API supports batching and range selection. By default it will only
-   * return first 50 images matching images.
-   * Use the {take} and {skip} parameters to control how many images to return in
-   * a given batch.
-   * The filtering is on an and/or relationship. For example, if the provided tag
-   * ids are for the "Dog" and
-   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {array} [options.tagIds] A list of tags ids to filter the images.
-   * Defaults to all tagged images when null. Limited to 20
-   *
-   * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
-   * values include: 'Newest', 'Oldest'
-   *
-   * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
-   *
-   * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getImagePerformancesWithHttpOperationResponse(projectId: string, iterationId: string, options?: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePerformance[]>>;
-
-  /**
-   * @summary Get image with its prediction for a given project iteration
-   *
-   * This API supports batching and range selection. By default it will only
-   * return first 50 images matching images.
-   * Use the {take} and {skip} parameters to control how many images to return in
-   * a given batch.
-   * The filtering is on an and/or relationship. For example, if the provided tag
-   * ids are for the "Dog" and
-   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {array} [options.tagIds] A list of tags ids to filter the images.
-   * Defaults to all tagged images when null. Limited to 20
-   *
-   * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
-   * values include: 'Newest', 'Oldest'
-   *
-   * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
-   *
-   * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Array} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Array} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getImagePerformances(projectId: string, iterationId: string, options?: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImagePerformance[]>;
-  getImagePerformances(projectId: string, iterationId: string, callback: ServiceCallback<models.ImagePerformance[]>): void;
-  getImagePerformances(projectId: string, iterationId: string, options: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImagePerformance[]>): void;
-
-
-  /**
-   * @summary Gets the number of images tagged with the provided {tagIds} that
-   * have prediction results from
-   * training for the provided iteration {iterationId}
-   *
-   * The filtering is on an and/or relationship. For example, if the provided tag
-   * ids are for the "Dog" and
-   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {array} [options.tagIds] A list of tags ids to filter the images to
-   * count. Defaults to all tags when null.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Number>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getImagePerformanceCountWithHttpOperationResponse(projectId: string, iterationId: string, options?: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
-
-  /**
-   * @summary Gets the number of images tagged with the provided {tagIds} that
-   * have prediction results from
-   * training for the provided iteration {iterationId}
-   *
-   * The filtering is on an and/or relationship. For example, if the provided tag
-   * ids are for the "Dog" and
-   * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
-   *
-   * @param {uuid} projectId The project id
-   *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {array} [options.tagIds] A list of tags ids to filter the images to
-   * count. Defaults to all tags when null.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Number} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Number} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getImagePerformanceCount(projectId: string, iterationId: string, options?: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<number>;
-  getImagePerformanceCount(projectId: string, iterationId: string, callback: ServiceCallback<number>): void;
-  getImagePerformanceCount(projectId: string, iterationId: string, options: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<number>): void;
+  trainProject(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Iteration>;
+  trainProject(projectId: string, callback: ServiceCallback<models.Iteration>): void;
+  trainProject(projectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Iteration>): void;
 
 
   /**
@@ -2452,7 +2454,8 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.flavor] The flavor of the target platform (Windows,
-   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows'
+   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows', 'ONNX10',
+   * 'ONNX12'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2478,7 +2481,8 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.flavor] The flavor of the target platform (Windows,
-   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows'
+   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows', 'ONNX10',
+   * 'ONNX12'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2647,6 +2651,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {string} [updatedTag.description] Gets or sets the description of the
    * tag
    *
+   * @param {string} [updatedTag.type] Gets or sets the type of the tag. Possible
+   * values include: 'Regular', 'Negative'
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2673,6 +2680,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {string} [updatedTag.description] Gets or sets the description of the
    * tag
+   *
+   * @param {string} [updatedTag.type] Gets or sets the type of the tag. Possible
+   * values include: 'Regular', 'Negative'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2775,6 +2785,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {string} [options.description] Optional description for the tag
    *
+   * @param {string} [options.type] Optional type for the tag. Possible values
+   * include: 'Regular', 'Negative'
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -2784,7 +2797,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  createTagWithHttpOperationResponse(projectId: string, name: string, options?: { description? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tag>>;
+  createTagWithHttpOperationResponse(projectId: string, name: string, options?: { description? : string, type? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tag>>;
 
   /**
    * @summary Create a tag for the project
@@ -2796,6 +2809,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.description] Optional description for the tag
+   *
+   * @param {string} [options.type] Optional type for the tag. Possible values
+   * include: 'Regular', 'Negative'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2822,9 +2838,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createTag(projectId: string, name: string, options?: { description? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Tag>;
+  createTag(projectId: string, name: string, options?: { description? : string, type? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Tag>;
   createTag(projectId: string, name: string, callback: ServiceCallback<models.Tag>): void;
-  createTag(projectId: string, name: string, options: { description? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Tag>): void;
+  createTag(projectId: string, name: string, options: { description? : string, type? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Tag>): void;
 }
 
 export { TrainingAPIClient, models as TrainingAPIModels };
