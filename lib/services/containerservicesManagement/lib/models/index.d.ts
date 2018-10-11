@@ -232,15 +232,12 @@ export interface OpenShiftManagedCluster extends Resource {
  * @constructor
  * AADIdentityProvider defines Identity provider for MS AAD.
  *
- * @member {string} [kind] The kind of the provider. Possible values include:
- * 'AADIdentityProvider'
  * @member {string} [clientId] The clientId password associated with the
  * provider.
  * @member {string} [secret] The secret password associated with the provider.
  * @member {string} [tenantId] The tenantId associated with the provider.
  */
 export interface OpenShiftManagedClusterServiceAADIdentityProvider {
-  kind?: string;
   clientId?: string;
   secret?: string;
   tenantId?: string;
