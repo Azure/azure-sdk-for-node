@@ -66,6 +66,7 @@ export default class DataFactoryManagementClient extends AzureServiceClient {
   pipelineRuns: operations.PipelineRuns;
   activityRuns: operations.ActivityRuns;
   triggers: operations.Triggers;
+  rerunTriggers: operations.RerunTriggers;
   triggerRuns: operations.TriggerRuns;
 }
 

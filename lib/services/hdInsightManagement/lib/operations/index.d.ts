@@ -85,6 +85,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -171,6 +178,13 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
+     *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
      *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
@@ -710,6 +724,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -796,6 +817,13 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
+     *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
      *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
