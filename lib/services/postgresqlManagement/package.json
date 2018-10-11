@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/postgreSQLManagementClient.js",
   "types": "./lib/postgreSQLManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/postgresqlManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/postgresqlManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
