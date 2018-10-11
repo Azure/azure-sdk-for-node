@@ -18,33 +18,217 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The resource model definition.
+ *
+ * @member {string} [id] The resource identifer.
+ * @member {string} [name] The resource name.
+ * @member {string} [type] The resource type.
+ * @member {string} [location] The resource location.
+ * @member {object} [tags] The resource tags.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly location?: string;
+  readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
- * The Sub Resource model definition.
+ * The resource model definition for a nested resource.
  *
- * @member {string} [id] Resource Id
- * @member {string} name Resource name
- * @member {string} [type] Resource type
+ * @member {string} [id] The resource identifier.
+ * @member {string} [name] The resource name.
+ * @member {string} [type] The resource type.
  */
-export interface SubResource {
+export interface SubResource extends BaseResource {
   readonly id?: string;
-  name: string;
+  readonly name?: string;
   readonly type?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the StorageAccountInfo class.
+ * Initializes a new instance of the DataLakeStoreAccountInformation class.
+ * @constructor
+ * Data Lake Store account information.
+ *
+ * @member {string} [suffix] The optional suffix for the Data Lake Store
+ * account.
+ */
+export interface DataLakeStoreAccountInformation extends SubResource {
+  readonly suffix?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountInformation class.
  * @constructor
  * Azure Storage account information.
  *
- * @member {string} accessKey the access key associated with this Azure Storage
- * account that will be used to connect to it.
- * @member {string} [suffix] the optional suffix for the storage account.
+ * @member {string} [suffix] The optional suffix for the storage account.
  */
-export interface StorageAccountInfo extends SubResource {
-  accessKey: string;
-  suffix?: string;
+export interface StorageAccountInformation extends SubResource {
+  readonly suffix?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputePolicy class.
+ * @constructor
+ * Data Lake Analytics compute policy information.
+ *
+ * @member {uuid} [objectId] The AAD object identifier for the entity to create
+ * a policy for.
+ * @member {string} [objectType] The type of AAD object the object identifier
+ * refers to. Possible values include: 'User', 'Group', 'ServicePrincipal'
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum degree of
+ * parallelism per job this user can use to submit jobs.
+ * @member {number} [minPriorityPerJob] The minimum priority per job this user
+ * can use to submit jobs.
+ */
+export interface ComputePolicy extends SubResource {
+  readonly objectId?: string;
+  readonly objectType?: string;
+  readonly maxDegreeOfParallelismPerJob?: number;
+  readonly minPriorityPerJob?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FirewallRule class.
+ * @constructor
+ * Data Lake Analytics firewall rule information.
+ *
+ * @member {string} [startIpAddress] The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @member {string} [endIpAddress] The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ */
+export interface FirewallRule extends SubResource {
+  readonly startIpAddress?: string;
+  readonly endIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalyticsAccount class.
+ * @constructor
+ * A Data Lake Analytics account object, containing all information associated
+ * with the named Data Lake Analytics account.
+ *
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Analytics account.
+ * @member {string} [provisioningState] The provisioning status of the Data
+ * Lake Analytics account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @member {string} [state] The state of the Data Lake Analytics account.
+ * Possible values include: 'Active', 'Suspended'
+ * @member {date} [creationTime] The account creation time.
+ * @member {date} [lastModifiedTime] The account last modified time.
+ * @member {string} [endpoint] The full CName endpoint for this account.
+ * @member {string} [defaultDataLakeStoreAccount] The default Data Lake Store
+ * account associated with this account.
+ * @member {array} [dataLakeStoreAccounts] The list of Data Lake Store accounts
+ * associated with this account.
+ * @member {array} [storageAccounts] The list of Azure Blob Storage accounts
+ * associated with this account.
+ * @member {array} [computePolicies] The list of compute policies associated
+ * with this account.
+ * @member {array} [firewallRules] The list of firewall rules associated with
+ * this account.
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this account. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @member {string} [newTier] The commitment tier for the next month. Possible
+ * values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ * @member {string} [currentTier] The commitment tier in use for the current
+ * month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ * @member {number} [maxJobCount] The maximum supported jobs running under the
+ * account at the same time. Default value: 3 .
+ * @member {number} [systemMaxJobCount] The system defined maximum supported
+ * jobs running under the account at the same time, which restricts the maximum
+ * number of running jobs the user can set for the account.
+ * @member {number} [maxDegreeOfParallelism] The maximum supported degree of
+ * parallelism for this account. Default value: 30 .
+ * @member {number} [systemMaxDegreeOfParallelism] The system defined maximum
+ * supported degree of parallelism for this account, which restricts the
+ * maximum value of parallelism the user can set for the account.
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum supported degree
+ * of parallelism per job for this account.
+ * @member {number} [minPriorityPerJob] The minimum supported priority per job
+ * for this account.
+ * @member {number} [queryStoreRetention] The number of days that job metadata
+ * is retained. Default value: 30 .
+ */
+export interface DataLakeAnalyticsAccount extends Resource {
+  readonly accountId?: string;
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
+  readonly defaultDataLakeStoreAccount?: string;
+  readonly dataLakeStoreAccounts?: DataLakeStoreAccountInformation[];
+  readonly storageAccounts?: StorageAccountInformation[];
+  readonly computePolicies?: ComputePolicy[];
+  readonly firewallRules?: FirewallRule[];
+  readonly firewallState?: string;
+  readonly firewallAllowAzureIps?: string;
+  readonly newTier?: string;
+  readonly currentTier?: string;
+  readonly maxJobCount?: number;
+  readonly systemMaxJobCount?: number;
+  readonly maxDegreeOfParallelism?: number;
+  readonly systemMaxDegreeOfParallelism?: number;
+  readonly maxDegreeOfParallelismPerJob?: number;
+  readonly minPriorityPerJob?: number;
+  readonly queryStoreRetention?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalyticsAccountBasic class.
+ * @constructor
+ * A Data Lake Analytics account object, containing all information associated
+ * with the named Data Lake Analytics account.
+ *
+ * @member {uuid} [accountId] The unique identifier associated with this Data
+ * Lake Analytics account.
+ * @member {string} [provisioningState] The provisioning status of the Data
+ * Lake Analytics account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted', 'Undeleting', 'Canceled'
+ * @member {string} [state] The state of the Data Lake Analytics account.
+ * Possible values include: 'Active', 'Suspended'
+ * @member {date} [creationTime] The account creation time.
+ * @member {date} [lastModifiedTime] The account last modified time.
+ * @member {string} [endpoint] The full CName endpoint for this account.
+ */
+export interface DataLakeAnalyticsAccountBasic extends Resource {
+  readonly accountId?: string;
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
 }
 
 /**
@@ -53,86 +237,166 @@ export interface StorageAccountInfo extends SubResource {
  * @constructor
  * Azure Storage blob container information.
  *
- * @member {string} [id] the unique identifier of the blob container.
- * @member {string} [name] the name of the blob container.
- * @member {string} [type] the type of the blob container.
- * @member {date} [lastModifiedTime] the last modified time of the blob
+ * @member {date} [lastModifiedTime] The last modified time of the blob
  * container.
  */
-export interface StorageContainer {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
+export interface StorageContainer extends SubResource {
   readonly lastModifiedTime?: Date;
 }
 
 /**
  * @class
- * Initializes a new instance of the SasTokenInfo class.
+ * Initializes a new instance of the SasTokenInformation class.
  * @constructor
  * SAS token information.
  *
- * @member {string} [accessToken] the access token for the associated Azure
+ * @member {string} [accessToken] The access token for the associated Azure
  * Storage Container.
  */
-export interface SasTokenInfo {
+export interface SasTokenInformation {
   readonly accessToken?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreAccountInfo class.
+ * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * Data Lake Store account information.
+ * The display information for a particular operation.
  *
- * @member {string} [suffix] the optional suffix for the Data Lake Store
+ * @member {string} [provider] The resource provider of the operation.
+ * @member {string} [resource] The resource type of the operation.
+ * @member {string} [operation] A friendly name of the operation.
+ * @member {string} [description] A friendly description of the operation.
+ */
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+  readonly description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * An available operation for Data Lake Analytics.
+ *
+ * @member {string} [name] The name of the operation.
+ * @member {object} [display] The display information for the operation.
+ * @member {string} [display.provider] The resource provider of the operation.
+ * @member {string} [display.resource] The resource type of the operation.
+ * @member {string} [display.operation] A friendly name of the operation.
+ * @member {string} [display.description] A friendly description of the
+ * operation.
+ * @member {string} [origin] The intended executor of the operation. Possible
+ * values include: 'user', 'system', 'user,system'
+ */
+export interface Operation {
+  readonly name?: string;
+  readonly display?: OperationDisplay;
+  readonly origin?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * The list of available operations for Data Lake Analytics.
+ *
+ * @member {array} [value] The results of the list operation.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface OperationListResult {
+  readonly value?: Operation[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CapabilityInformation class.
+ * @constructor
+ * Subscription-level properties and limits for Data Lake Analytics.
+ *
+ * @member {uuid} [subscriptionId] The subscription credentials that uniquely
+ * identifies the subscription.
+ * @member {string} [state] The subscription state. Possible values include:
+ * 'Registered', 'Suspended', 'Deleted', 'Unregistered', 'Warned'
+ * @member {number} [maxAccountCount] The maximum supported number of accounts
+ * under this subscription.
+ * @member {number} [accountCount] The current number of accounts under this
+ * subscription.
+ * @member {boolean} [migrationState] The Boolean value of true or false to
+ * indicate the maintenance state.
+ */
+export interface CapabilityInformation {
+  readonly subscriptionId?: string;
+  readonly state?: string;
+  readonly maxAccountCount?: number;
+  readonly accountCount?: number;
+  readonly migrationState?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NameAvailabilityInformation class.
+ * @constructor
+ * Data Lake Analytics account name availability result information.
+ *
+ * @member {boolean} [nameAvailable] The Boolean value of true or false to
+ * indicate whether the Data Lake Analytics account name is available or not.
+ * @member {string} [reason] The reason why the Data Lake Analytics account
+ * name is not available, if nameAvailable is false.
+ * @member {string} [message] The message describing why the Data Lake
+ * Analytics account name is not available, if nameAvailable is false.
+ */
+export interface NameAvailabilityInformation {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AddDataLakeStoreWithAccountParameters class.
+ * @constructor
+ * The parameters used to add a new Data Lake Store account while creating a
+ * new Data Lake Analytics account.
+ *
+ * @member {string} name The unique name of the Data Lake Store account to add.
+ * @member {string} [suffix] The optional suffix for the Data Lake Store
  * account.
  */
-export interface DataLakeStoreAccountInfo extends SubResource {
+export interface AddDataLakeStoreWithAccountParameters {
+  name: string;
   suffix?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the OptionalSubResource class.
+ * Initializes a new instance of the AddStorageAccountWithAccountParameters class.
  * @constructor
- * The Resource model definition for a nested resource with no required
- * properties.
+ * The parameters used to add a new Azure Storage account while creating a new
+ * Data Lake Analytics account.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
+ * @member {string} name The unique name of the Azure Storage account to add.
+ * @member {string} accessKey The access key associated with this Azure Storage
+ * account that will be used to connect to it.
+ * @member {string} [suffix] The optional suffix for the storage account.
  */
-export interface OptionalSubResource {
-  readonly id?: string;
-  name?: string;
-  readonly type?: string;
+export interface AddStorageAccountWithAccountParameters {
+  name: string;
+  accessKey: string;
+  suffix?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the FirewallRule class.
+ * Initializes a new instance of the CreateComputePolicyWithAccountParameters class.
  * @constructor
- * Data Lake Analytics firewall rule information
+ * The parameters used to create a new compute policy while creating a new Data
+ * Lake Analytics account.
  *
- * @member {string} startIpAddress the start IP address for the firewall rule.
- * This can be either ipv4 or ipv6. Start and End should be in the same
- * protocol.
- * @member {string} endIpAddress the end IP address for the firewall rule. This
- * can be either ipv4 or ipv6. Start and End should be in the same protocol.
- */
-export interface FirewallRule extends OptionalSubResource {
-  startIpAddress: string;
-  endIpAddress: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ComputePolicyAccountCreateParameters class.
- * @constructor
- * The parameters used to create a new compute policy.
- *
- * @member {string} name The unique name of the policy to create
+ * @member {string} name The unique name of the compute policy to create.
  * @member {uuid} objectId The AAD object identifier for the entity to create a
  * policy for.
  * @member {string} objectType The type of AAD object the object identifier
@@ -144,7 +408,7 @@ export interface FirewallRule extends OptionalSubResource {
  * can use to submit jobs. This property, the max degree of parallelism per job
  * property, or both must be passed.
  */
-export interface ComputePolicyAccountCreateParameters {
+export interface CreateComputePolicyWithAccountParameters {
   name: string;
   objectId: string;
   objectType: string;
@@ -154,35 +418,229 @@ export interface ComputePolicyAccountCreateParameters {
 
 /**
  * @class
- * Initializes a new instance of the ComputePolicy class.
+ * Initializes a new instance of the CreateFirewallRuleWithAccountParameters class.
  * @constructor
- * The parameters used to create a new compute policy.
+ * The parameters used to create a new firewall rule while creating a new Data
+ * Lake Analytics account.
  *
- * @member {string} [name] The name of the compute policy
+ * @member {string} name The unique name of the firewall rule to create.
+ * @member {string} startIpAddress The start IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @member {string} endIpAddress The end IP address for the firewall rule. This
+ * can be either ipv4 or ipv6. Start and End should be in the same protocol.
+ */
+export interface CreateFirewallRuleWithAccountParameters {
+  name: string;
+  startIpAddress: string;
+  endIpAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateDataLakeAnalyticsAccountParameters class.
+ * @constructor
+ * The parameters to use for creating a Data Lake Analytics account.
+ *
+ * @member {string} location The resource location.
+ * @member {object} [tags] The resource tags.
+ * @member {string} defaultDataLakeStoreAccount The default Data Lake Store
+ * account associated with this account.
+ * @member {array} dataLakeStoreAccounts The list of Data Lake Store accounts
+ * associated with this account.
+ * @member {array} [storageAccounts] The list of Azure Blob Storage accounts
+ * associated with this account.
+ * @member {array} [computePolicies] The list of compute policies associated
+ * with this account.
+ * @member {array} [firewallRules] The list of firewall rules associated with
+ * this account.
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this account. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @member {string} [newTier] The commitment tier for the next month. Possible
+ * values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ * @member {number} [maxJobCount] The maximum supported jobs running under the
+ * account at the same time. Default value: 3 .
+ * @member {number} [maxDegreeOfParallelism] The maximum supported degree of
+ * parallelism for this account. Default value: 30 .
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum supported degree
+ * of parallelism per job for this account.
+ * @member {number} [minPriorityPerJob] The minimum supported priority per job
+ * for this account.
+ * @member {number} [queryStoreRetention] The number of days that job metadata
+ * is retained. Default value: 30 .
+ */
+export interface CreateDataLakeAnalyticsAccountParameters {
+  location: string;
+  tags?: { [propertyName: string]: string };
+  defaultDataLakeStoreAccount: string;
+  dataLakeStoreAccounts: AddDataLakeStoreWithAccountParameters[];
+  storageAccounts?: AddStorageAccountWithAccountParameters[];
+  computePolicies?: CreateComputePolicyWithAccountParameters[];
+  firewallRules?: CreateFirewallRuleWithAccountParameters[];
+  firewallState?: string;
+  firewallAllowAzureIps?: string;
+  newTier?: string;
+  maxJobCount?: number;
+  maxDegreeOfParallelism?: number;
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+  queryStoreRetention?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateDataLakeStoreWithAccountParameters class.
+ * @constructor
+ * The parameters used to update a Data Lake Store account while updating a
+ * Data Lake Analytics account.
+ *
+ * @member {string} name The unique name of the Data Lake Store account to
+ * update.
+ * @member {string} [suffix] The optional suffix for the Data Lake Store
+ * account.
+ */
+export interface UpdateDataLakeStoreWithAccountParameters {
+  name: string;
+  suffix?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateStorageAccountWithAccountParameters class.
+ * @constructor
+ * The parameters used to update an Azure Storage account while updating a Data
+ * Lake Analytics account.
+ *
+ * @member {string} name The unique name of the Azure Storage account to
+ * update.
+ * @member {string} [accessKey] The updated access key associated with this
+ * Azure Storage account that will be used to connect to it.
+ * @member {string} [suffix] The optional suffix for the storage account.
+ */
+export interface UpdateStorageAccountWithAccountParameters {
+  name: string;
+  accessKey?: string;
+  suffix?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateComputePolicyWithAccountParameters class.
+ * @constructor
+ * The parameters used to update a compute policy while updating a Data Lake
+ * Analytics account.
+ *
+ * @member {string} name The unique name of the compute policy to update.
  * @member {uuid} [objectId] The AAD object identifier for the entity to create
  * a policy for.
  * @member {string} [objectType] The type of AAD object the object identifier
  * refers to. Possible values include: 'User', 'Group', 'ServicePrincipal'
  * @member {number} [maxDegreeOfParallelismPerJob] The maximum degree of
- * parallelism per job this user can use to submit jobs.
+ * parallelism per job this user can use to submit jobs. This property, the min
+ * priority per job property, or both must be passed.
  * @member {number} [minPriorityPerJob] The minimum priority per job this user
- * can use to submit jobs.
+ * can use to submit jobs. This property, the max degree of parallelism per job
+ * property, or both must be passed.
  */
-export interface ComputePolicy {
-  readonly name?: string;
-  readonly objectId?: string;
-  readonly objectType?: string;
+export interface UpdateComputePolicyWithAccountParameters {
+  name: string;
+  objectId?: string;
+  objectType?: string;
   maxDegreeOfParallelismPerJob?: number;
   minPriorityPerJob?: number;
 }
 
 /**
  * @class
+ * Initializes a new instance of the UpdateFirewallRuleWithAccountParameters class.
+ * @constructor
+ * The parameters used to update a firewall rule while updating a Data Lake
+ * Analytics account.
+ *
+ * @member {string} name The unique name of the firewall rule to update.
+ * @member {string} [startIpAddress] The start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @member {string} [endIpAddress] The end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ */
+export interface UpdateFirewallRuleWithAccountParameters {
+  name: string;
+  startIpAddress?: string;
+  endIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateDataLakeAnalyticsAccountParameters class.
+ * @constructor
+ * The parameters that can be used to update an existing Data Lake Analytics
+ * account.
+ *
+ * @member {object} [tags] The resource tags.
+ * @member {array} [dataLakeStoreAccounts] The list of Data Lake Store accounts
+ * associated with this account.
+ * @member {array} [storageAccounts] The list of Azure Blob storage accounts
+ * associated with this account.
+ * @member {array} [computePolicies] The list of compute policies associated
+ * with this account.
+ * @member {array} [firewallRules] The list of firewall rules associated with
+ * this account.
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this account. Disabling the firewall does not remove existing
+ * rules, they will just be ignored until the firewall is re-enabled. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ * @member {string} [newTier] The commitment tier to use for next month.
+ * Possible values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ * @member {number} [maxJobCount] The maximum supported jobs running under the
+ * account at the same time.
+ * @member {number} [maxDegreeOfParallelism] The maximum supported degree of
+ * parallelism for this account.
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum supported degree
+ * of parallelism per job for this account.
+ * @member {number} [minPriorityPerJob] The minimum supported priority per job
+ * for this account.
+ * @member {number} [queryStoreRetention] The number of days that job metadata
+ * is retained.
+ */
+export interface UpdateDataLakeAnalyticsAccountParameters {
+  tags?: { [propertyName: string]: string };
+  dataLakeStoreAccounts?: UpdateDataLakeStoreWithAccountParameters[];
+  storageAccounts?: UpdateStorageAccountWithAccountParameters[];
+  computePolicies?: UpdateComputePolicyWithAccountParameters[];
+  firewallRules?: UpdateFirewallRuleWithAccountParameters[];
+  firewallState?: string;
+  firewallAllowAzureIps?: string;
+  newTier?: string;
+  maxJobCount?: number;
+  maxDegreeOfParallelism?: number;
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+  queryStoreRetention?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AddDataLakeStoreParameters class.
  * @constructor
- * Additional Data Lake Store parameters.
+ * The parameters used to add a new Data Lake Store account.
  *
- * @member {string} [suffix] the optional suffix for the Data Lake Store
+ * @member {string} [suffix] The optional suffix for the Data Lake Store
  * account.
  */
 export interface AddDataLakeStoreParameters {
@@ -193,12 +651,11 @@ export interface AddDataLakeStoreParameters {
  * @class
  * Initializes a new instance of the AddStorageAccountParameters class.
  * @constructor
- * Storage account parameters for a storage account being added to a Data Lake
- * Analytics account.
+ * The parameters used to add a new Azure Storage account.
  *
- * @member {string} accessKey the access key associated with this Azure Storage
+ * @member {string} accessKey The access key associated with this Azure Storage
  * account that will be used to connect to it.
- * @member {string} [suffix] the optional suffix for the storage account.
+ * @member {string} [suffix] The optional suffix for the storage account.
  */
 export interface AddStorageAccountParameters {
   accessKey: string;
@@ -209,12 +666,11 @@ export interface AddStorageAccountParameters {
  * @class
  * Initializes a new instance of the UpdateStorageAccountParameters class.
  * @constructor
- * Storage account parameters for a storage account being updated in a Data
- * Lake Analytics account.
+ * The parameters used to update an Azure Storage account.
  *
- * @member {string} [accessKey] the updated access key associated with this
+ * @member {string} [accessKey] The updated access key associated with this
  * Azure Storage account that will be used to connect to it.
- * @member {string} [suffix] the optional suffix for the storage account.
+ * @member {string} [suffix] The optional suffix for the storage account.
  */
 export interface UpdateStorageAccountParameters {
   accessKey?: string;
@@ -223,7 +679,7 @@ export interface UpdateStorageAccountParameters {
 
 /**
  * @class
- * Initializes a new instance of the ComputePolicyCreateOrUpdateParameters class.
+ * Initializes a new instance of the CreateOrUpdateComputePolicyParameters class.
  * @constructor
  * The parameters used to create a new compute policy.
  *
@@ -238,7 +694,7 @@ export interface UpdateStorageAccountParameters {
  * can use to submit jobs. This property, the max degree of parallelism per job
  * property, or both must be passed.
  */
-export interface ComputePolicyCreateOrUpdateParameters {
+export interface CreateOrUpdateComputePolicyParameters {
   objectId: string;
   objectType: string;
   maxDegreeOfParallelismPerJob?: number;
@@ -247,226 +703,55 @@ export interface ComputePolicyCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountUpdateParameters class.
+ * Initializes a new instance of the UpdateComputePolicyParameters class.
  * @constructor
- * The parameters that can be used to update an existing Data Lake Analytics
- * account.
+ * The parameters used to update a compute policy.
  *
- * @member {object} [tags] Resource tags
- * @member {number} [maxDegreeOfParallelism] the maximum supported degree of
- * parallelism for this account.
- * @member {number} [queryStoreRetention] the number of days that job metadata
- * is retained.
- * @member {number} [maxJobCount] the maximum supported jobs running under the
- * account at the same time.
- * @member {string} [newTier] the commitment tier to use for next month.
- * Possible values include: 'Consumption', 'Commitment_100AUHours',
- * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
- * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
- * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
- * @member {string} [firewallState] The current state of the IP address
- * firewall for this Data Lake Analytics account. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {string} [firewallAllowAzureIps] The current state of allowing or
- * disallowing IPs originating within Azure through the firewall. If the
- * firewall is disabled, this is not enforced. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {array} [firewallRules] The list of firewall rules associated with
- * this Data Lake Analytics account.
- * @member {number} [maxDegreeOfParallelismPerJob] the maximum supported degree
- * of parallelism per job for this account.
- * @member {number} [minPriorityPerJob] the minimum supported priority per job
- * for this account.
- * @member {array} [computePolicies] the list of existing compute policies to
- * update in this account.
+ * @member {uuid} [objectId] The AAD object identifier for the entity to create
+ * a policy for.
+ * @member {string} [objectType] The type of AAD object the object identifier
+ * refers to. Possible values include: 'User', 'Group', 'ServicePrincipal'
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum degree of
+ * parallelism per job this user can use to submit jobs. This property, the min
+ * priority per job property, or both must be passed.
+ * @member {number} [minPriorityPerJob] The minimum priority per job this user
+ * can use to submit jobs. This property, the max degree of parallelism per job
+ * property, or both must be passed.
  */
-export interface DataLakeAnalyticsAccountUpdateParameters {
-  tags?: { [propertyName: string]: string };
-  maxDegreeOfParallelism?: number;
-  queryStoreRetention?: number;
-  maxJobCount?: number;
-  newTier?: string;
-  firewallState?: string;
-  firewallAllowAzureIps?: string;
-  firewallRules?: FirewallRule[];
+export interface UpdateComputePolicyParameters {
+  objectId?: string;
+  objectType?: string;
   maxDegreeOfParallelismPerJob?: number;
   minPriorityPerJob?: number;
-  computePolicies?: ComputePolicy[];
 }
 
 /**
  * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountPropertiesBasic class.
+ * Initializes a new instance of the CreateOrUpdateFirewallRuleParameters class.
  * @constructor
- * The basic account specific properties that are associated with an underlying
- * Data Lake Analytics account.
+ * The parameters used to create a new firewall rule.
  *
- * @member {string} [provisioningState] the provisioning status of the Data
- * Lake Analytics account. Possible values include: 'Failed', 'Creating',
- * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
- * 'Deleted', 'Undeleting', 'Canceled'
- * @member {string} [state] the state of the Data Lake Analytics account.
- * Possible values include: 'Active', 'Suspended'
- * @member {date} [creationTime] the account creation time.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the full CName endpoint for this account.
- * @member {uuid} [accountId] The unique identifier associated with this Data
- * Lake Analytics account.
+ * @member {string} startIpAddress The start IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ * @member {string} endIpAddress The end IP address for the firewall rule. This
+ * can be either ipv4 or ipv6. Start and End should be in the same protocol.
  */
-export interface DataLakeAnalyticsAccountPropertiesBasic {
-  readonly provisioningState?: string;
-  readonly state?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
-  readonly accountId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountBasic class.
- * @constructor
- * A Data Lake Analytics account object, containing all information associated
- * with the named Data Lake Analytics account.
- *
- * @member {string} [provisioningState] the provisioning status of the Data
- * Lake Analytics account. Possible values include: 'Failed', 'Creating',
- * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
- * 'Deleted', 'Undeleting', 'Canceled'
- * @member {string} [state] the state of the Data Lake Analytics account.
- * Possible values include: 'Active', 'Suspended'
- * @member {date} [creationTime] the account creation time.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the full CName endpoint for this account.
- * @member {uuid} [accountId] The unique identifier associated with this Data
- * Lake Analytics account.
- */
-export interface DataLakeAnalyticsAccountBasic extends Resource {
-  readonly provisioningState?: string;
-  readonly state?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
-  readonly accountId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccount class.
- * @constructor
- * A Data Lake Analytics account object, containing all information associated
- * with the named Data Lake Analytics account.
- *
- * @member {string} [provisioningState] the provisioning status of the Data
- * Lake Analytics account. Possible values include: 'Failed', 'Creating',
- * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
- * 'Deleted', 'Undeleting', 'Canceled'
- * @member {string} [state] the state of the Data Lake Analytics account.
- * Possible values include: 'Active', 'Suspended'
- * @member {date} [creationTime] the account creation time.
- * @member {date} [lastModifiedTime] the account last modified time.
- * @member {string} [endpoint] the full CName endpoint for this account.
- * @member {uuid} [accountId] The unique identifier associated with this Data
- * Lake Analytics account.
- * @member {string} defaultDataLakeStoreAccount the default data lake storage
- * account associated with this Data Lake Analytics account.
- * @member {number} [maxDegreeOfParallelism] the maximum supported degree of
- * parallelism for this account. Default value: 30 .
- * @member {number} [queryStoreRetention] the number of days that job metadata
- * is retained. Default value: 30 .
- * @member {number} [maxJobCount] the maximum supported jobs running under the
- * account at the same time. Default value: 3 .
- * @member {number} [systemMaxDegreeOfParallelism] the system defined maximum
- * supported degree of parallelism for this account, which restricts the
- * maximum value of parallelism the user can set for the account..
- * @member {number} [systemMaxJobCount] the system defined maximum supported
- * jobs running under the account at the same time, which restricts the maximum
- * number of running jobs the user can set for the account.
- * @member {array} dataLakeStoreAccounts the list of Data Lake storage accounts
- * associated with this account.
- * @member {array} [storageAccounts] the list of Azure Blob storage accounts
- * associated with this account.
- * @member {string} [newTier] the commitment tier for the next month. Possible
- * values include: 'Consumption', 'Commitment_100AUHours',
- * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
- * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
- * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
- * @member {string} [currentTier] the commitment tier in use for the current
- * month. Possible values include: 'Consumption', 'Commitment_100AUHours',
- * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
- * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
- * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
- * @member {string} [firewallState] The current state of the IP address
- * firewall for this Data Lake Analytics account. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {string} [firewallAllowAzureIps] The current state of allowing or
- * disallowing IPs originating within Azure through the firewall. If the
- * firewall is disabled, this is not enforced. Possible values include:
- * 'Enabled', 'Disabled'
- * @member {array} [firewallRules] The list of firewall rules associated with
- * this Data Lake Analytics account.
- * @member {number} [maxDegreeOfParallelismPerJob] the maximum supported degree
- * of parallelism per job for this account.
- * @member {number} [minPriorityPerJob] the minimum supported priority per job
- * for this account.
- * @member {array} [computePolicies] the list of compute policies to create in
- * this account.
- */
-export interface DataLakeAnalyticsAccount extends Resource {
-  readonly provisioningState?: string;
-  readonly state?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly endpoint?: string;
-  readonly accountId?: string;
-  defaultDataLakeStoreAccount: string;
-  maxDegreeOfParallelism?: number;
-  queryStoreRetention?: number;
-  maxJobCount?: number;
-  readonly systemMaxDegreeOfParallelism?: number;
-  readonly systemMaxJobCount?: number;
-  dataLakeStoreAccounts: DataLakeStoreAccountInfo[];
-  storageAccounts?: StorageAccountInfo[];
-  newTier?: string;
-  readonly currentTier?: string;
-  firewallState?: string;
-  firewallAllowAzureIps?: string;
-  firewallRules?: FirewallRule[];
-  maxDegreeOfParallelismPerJob?: number;
-  minPriorityPerJob?: number;
-  computePolicies?: ComputePolicyAccountCreateParameters[];
+export interface CreateOrUpdateFirewallRuleParameters {
+  startIpAddress: string;
+  endIpAddress: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the UpdateFirewallRuleParameters class.
  * @constructor
- * Data Lake Analytics firewall rule update parameters
+ * The parameters used to update a firewall rule.
  *
- * @member {string} [startIpAddress] the start IP address for the firewall
+ * @member {string} [startIpAddress] The start IP address for the firewall
  * rule. This can be either ipv4 or ipv6. Start and End should be in the same
  * protocol.
- * @member {string} [endIpAddress] the end IP address for the firewall rule.
+ * @member {string} [endIpAddress] The end IP address for the firewall rule.
  * This can be either ipv4 or ipv6. Start and End should be in the same
  * protocol.
  */
@@ -475,6 +760,81 @@ export interface UpdateFirewallRuleParameters {
   endIpAddress?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityParameters class.
+ * @constructor
+ * Data Lake Analytics account name availability check parameters.
+ *
+ * @member {string} name The Data Lake Analytics name to check availability
+ * for.
+ */
+export interface CheckNameAvailabilityParameters {
+  name: string;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalyticsAccountListResult class.
+ * @constructor
+ * Data Lake Analytics account list information.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface DataLakeAnalyticsAccountListResult extends Array<DataLakeAnalyticsAccountBasic> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreAccountInformationListResult class.
+ * @constructor
+ * Data Lake Store account list information.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface DataLakeStoreAccountInformationListResult extends Array<DataLakeStoreAccountInformation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountInformationListResult class.
+ * @constructor
+ * Azure Storage account list information.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface StorageAccountInformationListResult extends Array<StorageAccountInformation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageContainerListResult class.
+ * @constructor
+ * The list of blob containers associated with the storage account attached to
+ * the Data Lake Analytics account.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface StorageContainerListResult extends Array<StorageContainer> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasTokenInformationListResult class.
+ * @constructor
+ * The SAS response that contains the storage account, container and associated
+ * SAS token for connection use.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface SasTokenInformationListResult extends Array<SasTokenInformation> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class
@@ -482,7 +842,7 @@ export interface UpdateFirewallRuleParameters {
  * @constructor
  * The list of compute policies in the account.
  *
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
 export interface ComputePolicyListResult extends Array<ComputePolicy> {
   readonly nextLink?: string;
@@ -490,74 +850,12 @@ export interface ComputePolicyListResult extends Array<ComputePolicy> {
 
 /**
  * @class
- * Initializes a new instance of the DataLakeAnalyticsFirewallRuleListResult class.
+ * Initializes a new instance of the FirewallRuleListResult class.
  * @constructor
  * Data Lake Analytics firewall rule list information.
  *
- * @member {string} [nextLink] the link (url) to the next page of results.
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface DataLakeAnalyticsFirewallRuleListResult extends Array<FirewallRule> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListStorageContainersResult class.
- * @constructor
- * The list of blob containers associated with the storage account attached to
- * the Data Lake Analytics account.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ListStorageContainersResult extends Array<StorageContainer> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ListSasTokensResult class.
- * @constructor
- * The SAS response that contains the storage account, container and associated
- * SAS token for connection use.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface ListSasTokensResult extends Array<SasTokenInfo> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListStorageAccountsResult class.
- * @constructor
- * Azure Storage Account list information.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListStorageAccountsResult extends Array<StorageAccountInfo> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListDataLakeStoreResult class.
- * @constructor
- * Data Lake Account list information.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListDataLakeStoreResult extends Array<DataLakeStoreAccountInfo> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DataLakeAnalyticsAccountListResult class.
- * @constructor
- * DataLakeAnalytics Account list information.
- *
- * @member {string} [nextLink] the link (url) to the next page of results.
- */
-export interface DataLakeAnalyticsAccountListResult extends Array<DataLakeAnalyticsAccountBasic> {
+export interface FirewallRuleListResult extends Array<FirewallRule> {
   readonly nextLink?: string;
 }
