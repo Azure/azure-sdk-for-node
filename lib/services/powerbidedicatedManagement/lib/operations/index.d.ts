@@ -725,6 +725,78 @@ export interface Capacities {
 
 
     /**
+     * Check the name availability in the target location.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {object} capacityParameters The name of the capacity.
+     *
+     * @param {string} [capacityParameters.name] Name for checking availability.
+     *
+     * @param {string} [capacityParameters.type] The resource type of powerbi
+     * dedicated.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CheckCapacityNameAvailabilityResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkNameAvailabilityWithHttpOperationResponse(location: string, capacityParameters: models.CheckCapacityNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckCapacityNameAvailabilityResult>>;
+
+    /**
+     * Check the name availability in the target location.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {object} capacityParameters The name of the capacity.
+     *
+     * @param {string} [capacityParameters.name] Name for checking availability.
+     *
+     * @param {string} [capacityParameters.type] The resource type of powerbi
+     * dedicated.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CheckCapacityNameAvailabilityResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CheckCapacityNameAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CheckCapacityNameAvailabilityResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkNameAvailability(location: string, capacityParameters: models.CheckCapacityNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckCapacityNameAvailabilityResult>;
+    checkNameAvailability(location: string, capacityParameters: models.CheckCapacityNameAvailabilityParameters, callback: ServiceCallback<models.CheckCapacityNameAvailabilityResult>): void;
+    checkNameAvailability(location: string, capacityParameters: models.CheckCapacityNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckCapacityNameAvailabilityResult>): void;
+
+
+    /**
      * Provisions the specified Dedicated capacity based on the configuration
      * specified in the request.
      *

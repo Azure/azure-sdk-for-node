@@ -213,6 +213,39 @@ export interface ErrorResponse {
   message?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the CheckCapacityNameAvailabilityParameters class.
+ * @constructor
+ * Details of capacity name request body.
+ *
+ * @member {string} [name] Name for checking availability.
+ * @member {string} [type] The resource type of powerbi dedicated. Default
+ * value: 'Microsoft.PowerBIDedicated/capacities' .
+ */
+export interface CheckCapacityNameAvailabilityParameters {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckCapacityNameAvailabilityResult class.
+ * @constructor
+ * The checking result of capacity name availibility.
+ *
+ * @member {boolean} [nameAvailable] Indicator of availablity of the capacity
+ * name.
+ * @member {string} [reason] The reason of unavailability.
+ * @member {string} [message] The detailed message of the request
+ * unavailability.
+ */
+export interface CheckCapacityNameAvailabilityResult {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
+
 
 /**
  * @class
