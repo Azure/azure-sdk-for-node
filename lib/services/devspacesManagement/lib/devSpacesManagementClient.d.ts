@@ -56,6 +56,7 @@ export default class DevSpacesManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  containerHostMappings: operations.ContainerHostMappings;
   controllers: operations.Controllers;
   operations: operations.Operations;
 }

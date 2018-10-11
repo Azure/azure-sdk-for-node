@@ -18,6 +18,23 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the ContainerHostMapping class.
+ * @constructor
+ * Container host mapping object specifying the Container host resource ID and
+ * its associated Controller resource.
+ *
+ * @member {string} [containerHostResourceId] ARM ID of the Container Host
+ * resource
+ * @member {string} [mappedControllerResourceId] ARM ID of the mapped
+ * Controller resource
+ */
+export interface ContainerHostMapping {
+  containerHostResourceId?: string;
+  readonly mappedControllerResourceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Sku class.
  * @constructor
  * Model representing SKU for Azure Dev Spaces Controller.
@@ -65,7 +82,7 @@ export interface TrackedResource extends Resource {
  * @constructor
  * @member {string} [provisioningState] Provisioning state of the Azure Dev
  * Spaces Controller. Possible values include: 'Succeeded', 'Failed',
- * 'Canceled', 'Updating', 'Creating', 'Deleting'
+ * 'Canceled', 'Updating', 'Creating', 'Deleting', 'Deleted'
  * @member {string} hostSuffix DNS suffix for public endpoints running in the
  * Azure Dev Spaces Controller.
  * @member {string} [dataPlaneFqdn] DNS name for accessing DataPlane services
@@ -102,6 +119,9 @@ export interface ControllerUpdateParameters {
  * @class
  * Initializes a new instance of the OrchestratorSpecificConnectionDetails class.
  * @constructor
+ * Base class for types that supply values used to connect to container
+ * orchestrators
+ *
  * @member {string} instanceType Polymorphic Discriminator
  */
 export interface OrchestratorSpecificConnectionDetails {
@@ -179,6 +199,8 @@ export interface ResourceProviderOperationDefinition {
  * @class
  * Initializes a new instance of the KubernetesConnectionDetails class.
  * @constructor
+ * Contains information used to connect to a Kubernetes cluster
+ *
  * @member {string} [kubeConfig] Gets the kubeconfig for the cluster.
  */
 export interface KubernetesConnectionDetails extends OrchestratorSpecificConnectionDetails {

@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/devSpacesManagementClient.js",
   "types": "./lib/devSpacesManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/devspacesManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/devspacesManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
