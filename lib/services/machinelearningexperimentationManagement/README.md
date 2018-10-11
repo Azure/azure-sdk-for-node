@@ -1,3 +1,8 @@
+---
+uid: azure-arm-machinelearningexperimentation
+summary: *content
+
+---
 # Microsoft Azure SDK for Node.js - MLTeamAccountManagementClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
@@ -26,7 +31,7 @@ msRestAzure.interactiveLogin().then((creds) => {
       console.log(result);
     });
 }).catch((err) => {
-  console.log('An error ocurred:');
+  console.log('An error occurred:');
   console.dir(err, {depth: null, colors: true});
 });
 
