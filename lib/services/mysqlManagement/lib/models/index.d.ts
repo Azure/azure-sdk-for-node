@@ -137,6 +137,18 @@ export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate
 
 /**
  * @class
+ * Initializes a new instance of the ServerPropertiesForReplica class.
+ * @constructor
+ * The properties to create a new replica.
+ *
+ * @member {string} sourceServerId The master server id to create replica from.
+ */
+export interface ServerPropertiesForReplica extends ServerPropertiesForCreate {
+  sourceServerId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Sku class.
  * @constructor
  * Billing information related properties of a server.
@@ -195,6 +207,10 @@ export interface Sku {
  * not for server backup. Possible values include: 'Enabled', 'Disabled'
  * @member {number} [storageProfile.storageMB] Max storage allowed for a
  * server.
+ * @member {string} [replicationRole] The replication role of the server.
+ * @member {string} [masterServerId] The master server id of a relica server.
+ * @member {number} [replicaCapacity] The maximum number of replicas that a
+ * master server can have.
  */
 export interface Server extends TrackedResource {
   sku?: Sku;
@@ -205,6 +221,9 @@ export interface Server extends TrackedResource {
   fullyQualifiedDomainName?: string;
   earliestRestoreDate?: Date;
   storageProfile?: StorageProfile;
+  replicationRole?: string;
+  masterServerId?: string;
+  replicaCapacity?: number;
 }
 
 /**
@@ -277,6 +296,7 @@ export interface ServerForCreate {
  * '5.6', '5.7'
  * @member {string} [sslEnforcement] Enable ssl enforcement or not when connect
  * to server. Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [replicationRole] The replication role of the server.
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs.
  */
@@ -286,6 +306,7 @@ export interface ServerUpdateParameters {
   administratorLoginPassword?: string;
   version?: string;
   sslEnforcement?: string;
+  replicationRole?: string;
   tags?: { [propertyName: string]: string };
 }
 
