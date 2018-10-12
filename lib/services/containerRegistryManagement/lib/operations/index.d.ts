@@ -39,7 +39,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -92,7 +101,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -289,6 +307,17 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
+     * @param {object} [registry.identity] The identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal ID of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant ID associated with
+     * the registry.
+     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -331,6 +360,17 @@ export interface Registries {
      * @param {string} registry.sku.name The SKU name of the container registry.
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
+     *
+     * @param {object} [registry.identity] The identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal ID of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant ID associated with
+     * the registry.
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -459,6 +499,18 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
+     * @param {object} [registryUpdateParameters.identity] The identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal ID of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
+     * associated with the registry.
+     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -503,6 +555,18 @@ export interface Registries {
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [registryUpdateParameters.identity] The identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal ID of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
+     * associated with the registry.
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
@@ -1176,7 +1240,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1229,7 +1302,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1298,6 +1380,17 @@ export interface Registries {
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
      *
+     * @param {object} [registry.identity] The identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal ID of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant ID associated with
+     * the registry.
+     *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
      *
@@ -1340,6 +1433,17 @@ export interface Registries {
      * @param {string} registry.sku.name The SKU name of the container registry.
      * Required for registry creation. Possible values include: 'Classic', 'Basic',
      * 'Standard', 'Premium'
+     *
+     * @param {object} [registry.identity] The identity of the container registry.
+     *
+     * @param {string} [registry.identity.type] The type of identity used for the
+     * registry.
+     *
+     * @param {string} [registry.identity.principalId] The principal ID of registry
+     * identity.
+     *
+     * @param {string} [registry.identity.tenantId] The tenant ID associated with
+     * the registry.
      *
      * @param {boolean} [registry.adminUserEnabled] The value that indicates
      * whether the admin user is enabled.
@@ -1468,6 +1572,18 @@ export interface Registries {
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
      *
+     * @param {object} [registryUpdateParameters.identity] The identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal ID of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
+     * associated with the registry.
+     *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
      *
@@ -1512,6 +1628,18 @@ export interface Registries {
      * @param {string} registryUpdateParameters.sku.name The SKU name of the
      * container registry. Required for registry creation. Possible values include:
      * 'Classic', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [registryUpdateParameters.identity] The identity of the
+     * container registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.type] The type of
+     * identity used for the registry.
+     *
+     * @param {string} [registryUpdateParameters.identity.principalId] The
+     * principal ID of registry identity.
+     *
+     * @param {string} [registryUpdateParameters.identity.tenantId] The tenant ID
+     * associated with the registry.
      *
      * @param {boolean} [registryUpdateParameters.adminUserEnabled] The value that
      * indicates whether the admin user is enabled.
@@ -4354,6 +4482,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4371,8 +4502,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4432,6 +4562,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4449,8 +4582,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4594,6 +4726,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4611,8 +4746,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4670,6 +4804,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4687,8 +4824,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4829,6 +4965,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4846,8 +4985,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4907,6 +5045,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4924,8 +5065,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -5069,6 +5209,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5086,8 +5229,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -5145,6 +5287,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5162,8 +5307,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.

@@ -4047,6 +4047,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4101,6 +4109,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
@@ -4178,6 +4194,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4230,6 +4254,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
