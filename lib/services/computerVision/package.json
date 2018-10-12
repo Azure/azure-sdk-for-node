@@ -13,7 +13,7 @@
   "license": "MIT",
   "main": "./lib/computerVisionClient.js",
   "types": "./lib/computerVisionClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/computerVision",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"

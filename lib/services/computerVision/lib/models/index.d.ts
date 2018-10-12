@@ -13,6 +13,56 @@ import * as moment from "moment";
 
 /**
  * @class
+ * Initializes a new instance of the Word class.
+ * @constructor
+ * @member {array} [boundingBox]
+ * @member {string} [text]
+ */
+export interface Word {
+  boundingBox?: number[];
+  text?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Line class.
+ * @constructor
+ * @member {array} [boundingBox]
+ * @member {string} [text]
+ * @member {array} [words]
+ */
+export interface Line {
+  boundingBox?: number[];
+  text?: string;
+  words?: Word[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecognitionResult class.
+ * @constructor
+ * @member {array} [lines]
+ */
+export interface RecognitionResult {
+  lines?: Line[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TextOperationResult class.
+ * @constructor
+ * @member {string} [status] Status of the text operation. Possible values
+ * include: 'Not Started', 'Running', 'Failed', 'Succeeded'
+ * @member {object} [recognitionResult]
+ * @member {array} [recognitionResult.lines]
+ */
+export interface TextOperationResult {
+  status?: string;
+  recognitionResult?: RecognitionResult;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FaceRectangle class.
  * @constructor
  * An object describing face rectangle.
@@ -546,54 +596,4 @@ export interface ComputerVisionError {
  */
 export interface ImageUrl {
   url: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Word class.
- * @constructor
- * @member {array} [boundingBox]
- * @member {string} [text]
- */
-export interface Word {
-  boundingBox?: number[];
-  text?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Line class.
- * @constructor
- * @member {array} [boundingBox]
- * @member {string} [text]
- * @member {array} [words]
- */
-export interface Line {
-  boundingBox?: number[];
-  text?: string;
-  words?: Word[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RecognitionResult class.
- * @constructor
- * @member {array} [lines]
- */
-export interface RecognitionResult {
-  lines?: Line[];
-}
-
-/**
- * @class
- * Initializes a new instance of the TextOperationResult class.
- * @constructor
- * @member {string} [status] Status of the text operation. Possible values
- * include: 'Not Started', 'Running', 'Failed', 'Succeeded'
- * @member {object} [recognitionResult]
- * @member {array} [recognitionResult.lines]
- */
-export interface TextOperationResult {
-  status?: string;
-  recognitionResult?: RecognitionResult;
 }
