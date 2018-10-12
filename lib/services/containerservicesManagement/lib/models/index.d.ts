@@ -146,17 +146,30 @@ export interface OpenShiftManagedClusterAgentPoolProfile {
 
 /**
  * @class
- * Initializes a new instance of the OpenShiftManagedClusterIdentityProviders class.
+ * Initializes a new instance of the OpenShiftManagedClusterBaseIdentityProvider class.
+ * @constructor
+ * Structure for any Identity provider.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface OpenShiftManagedClusterBaseIdentityProvider {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterIdentityProvider class.
  * @constructor
  * Defines the configuration of the identity providers to be used in the
  * OpenShift cluster.
  *
  * @member {string} [name] Name of the provider.
  * @member {object} [provider] Configuration of the provider.
+ * @member {string} [provider.kind] Polymorphic Discriminator
  */
-export interface OpenShiftManagedClusterIdentityProviders {
+export interface OpenShiftManagedClusterIdentityProvider {
   name?: string;
-  provider?: any;
+  provider?: OpenShiftManagedClusterBaseIdentityProvider;
 }
 
 /**
@@ -168,7 +181,7 @@ export interface OpenShiftManagedClusterIdentityProviders {
  * @member {array} [identityProviders] Type of authentication profile to use.
  */
 export interface OpenShiftManagedClusterAuthProfile {
-  identityProviders?: OpenShiftManagedClusterIdentityProviders[];
+  identityProviders?: OpenShiftManagedClusterIdentityProvider[];
 }
 
 /**
@@ -228,16 +241,16 @@ export interface OpenShiftManagedCluster extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the OpenShiftManagedClusterServiceAADIdentityProvider class.
+ * Initializes a new instance of the OpenShiftManagedClusterAADIdentityProvider class.
  * @constructor
- * AADIdentityProvider defines Identity provider for MS AAD.
+ * Defines the Identity provider for MS AAD.
  *
  * @member {string} [clientId] The clientId password associated with the
  * provider.
  * @member {string} [secret] The secret password associated with the provider.
  * @member {string} [tenantId] The tenantId associated with the provider.
  */
-export interface OpenShiftManagedClusterServiceAADIdentityProvider {
+export interface OpenShiftManagedClusterAADIdentityProvider extends OpenShiftManagedClusterBaseIdentityProvider {
   clientId?: string;
   secret?: string;
   tenantId?: string;
