@@ -647,6 +647,31 @@ export interface HybridConnection extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedSite class.
+ * @constructor
+ * A deleted app.
+ *
+ * @member {number} [deletedSiteId] Numeric id for the deleted site
+ * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
+ * @member {string} [subscription] Subscription containing the deleted site
+ * @member {string} [resourceGroup] ResourceGroup that contained the deleted
+ * site
+ * @member {string} [deletedSiteName] Name of the deleted site
+ * @member {string} [slot] Slot of the deleted site
+ * @member {string} [deletedSiteKind] Kind of site that was deleted
+ */
+export interface DeletedSite extends ProxyOnlyResource {
+  readonly deletedSiteId?: number;
+  readonly deletedTimestamp?: string;
+  readonly subscription?: string;
+  readonly resourceGroup?: string;
+  readonly deletedSiteName?: string;
+  readonly slot?: string;
+  readonly deletedSiteKind?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedServiceIdentity class.
  * @constructor
  * Managed service identity.
@@ -1112,6 +1137,32 @@ export interface ConnStringInfo {
 
 /**
  * @class
+ * Initializes a new instance of the AzureStorageInfoValue class.
+ * @constructor
+ * Azure Files or Blob Storage access information value for dictionary storage.
+ *
+ * @member {string} [type] Type of storage. Possible values include:
+ * 'AzureFiles', 'AzureBlob'
+ * @member {string} [accountName] Name of the storage account.
+ * @member {string} [shareName] Name of the file share (container name, for
+ * Blob storage).
+ * @member {string} [accessKey] Access key for the storage account.
+ * @member {string} [mountPath] Path to mount the storage within the site's
+ * runtime environment.
+ * @member {string} [state] State of the storage account. Possible values
+ * include: 'Ok', 'InvalidCredentials', 'InvalidShare'
+ */
+export interface AzureStorageInfoValue {
+  type?: string;
+  accountName?: string;
+  shareName?: string;
+  accessKey?: string;
+  mountPath?: string;
+  readonly state?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NameValuePair class.
  * @constructor
  * Name value pair.
@@ -1153,6 +1204,8 @@ export interface NameValuePair {
  * detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [publishingUsername] Publishing user name.
  * @member {array} [appSettings] Application settings.
+ * @member {object} [azureStorageAccounts] User-provided Azure storage
+ * accounts.
  * @member {array} [connectionStrings] Connection strings.
  * @member {object} [machineKey] Site MachineKey.
  * @member {string} [machineKey.validation] MachineKey validation.
@@ -1281,6 +1334,7 @@ export interface SiteConfig {
   detailedErrorLoggingEnabled?: boolean;
   publishingUsername?: string;
   appSettings?: NameValuePair[];
+  azureStorageAccounts?: { [propertyName: string]: AzureStorageInfoValue };
   connectionStrings?: ConnStringInfo[];
   readonly machineKey?: SiteMachineKey;
   handlerMappings?: HandlerMapping[];
@@ -1369,7 +1423,9 @@ export interface HostNameSslState {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
+ * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
+ * .
+ * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -1398,6 +1454,8 @@ export interface HostNameSslState {
  * if detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [siteConfig.publishingUsername] Publishing user name.
  * @member {array} [siteConfig.appSettings] Application settings.
+ * @member {object} [siteConfig.azureStorageAccounts] User-provided Azure
+ * storage accounts.
  * @member {array} [siteConfig.connectionStrings] Connection strings.
  * @member {object} [siteConfig.machineKey] Site MachineKey.
  * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
@@ -1626,6 +1684,7 @@ export interface Site extends Resource {
   serverFarmId?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -1752,6 +1811,8 @@ export interface SkuDescription {
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
+ * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
+ * allowed for this ElasticScaleEnabled App Service Plan
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
  * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
@@ -1763,7 +1824,9 @@ export interface SkuDescription {
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
@@ -1800,6 +1863,7 @@ export interface AppServicePlan extends Resource {
   readonly maximumNumberOfWorkers?: number;
   readonly geoRegion?: string;
   perSiteScaling?: boolean;
+  maximumElasticWorkerCount?: number;
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
@@ -1807,6 +1871,7 @@ export interface AppServicePlan extends Resource {
   readonly resourceGroup?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
@@ -3002,29 +3067,6 @@ export interface CsmUsageQuota {
 
 /**
  * @class
- * Initializes a new instance of the DeletedSite class.
- * @constructor
- * A deleted app.
- *
- * @member {number} [deletedSiteId] Numeric id for the deleted site
- * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
- * @member {string} [subscription] Subscription containing the deleted site
- * @member {string} [resourceGroup] ResourceGroup that contained the deleted
- * site
- * @member {string} [deletedSiteName] Name of the deleted site
- * @member {string} [slot] Slot of the deleted site
- */
-export interface DeletedSite {
-  readonly deletedSiteId?: number;
-  readonly deletedTimestamp?: string;
-  readonly subscription?: string;
-  readonly resourceGroup?: string;
-  readonly deletedSiteName?: string;
-  readonly slot?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorEntity class.
  * @constructor
  * Body of the error response returned from the API.
@@ -4186,6 +4228,18 @@ export interface AzureBlobStorageHttpLogsConfig {
 
 /**
  * @class
+ * Initializes a new instance of the AzureStoragePropertyDictionaryResource class.
+ * @constructor
+ * AzureStorageInfo dictionary resource.
+ *
+ * @member {object} [properties] Azure storage accounts.
+ */
+export interface AzureStoragePropertyDictionaryResource extends ProxyOnlyResource {
+  properties?: { [propertyName: string]: AzureStorageInfoValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabaseBackupSetting class.
  * @constructor
  * Database backup settings.
@@ -4292,6 +4346,7 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
+ * @member {string} [backupName] Name of the backup.
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
  * @member {string} storageAccountUrl SAS URL to the container.
@@ -4316,6 +4371,7 @@ export interface BackupSchedule {
  * @member {array} [databases] Databases included in the backup.
  */
 export interface BackupRequest extends ProxyOnlyResource {
+  backupName?: string;
   enabled?: boolean;
   storageAccountUrl: string;
   backupSchedule?: BackupSchedule;
@@ -4392,9 +4448,12 @@ export interface ContinuousWebJob extends ProxyOnlyResource {
  * FileZilla3
  * WebDeploy -- default
  * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+ * @member {boolean} [includeDisasterRecoveryEndpoints] Include the
+ * DisasterRecover endpoint if true
  */
 export interface CsmPublishingProfileOptions {
   format?: string;
+  includeDisasterRecoveryEndpoints?: boolean;
 }
 
 /**
@@ -4836,6 +4895,24 @@ export interface NetworkFeatures extends ProxyOnlyResource {
   readonly virtualNetworkConnection?: VnetInfo;
   readonly hybridConnections?: RelayServiceConnectionEntity[];
   readonly hybridConnectionsV2?: HybridConnection[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkTrace class.
+ * @constructor
+ * Network trace
+ *
+ * @member {string} [path] Local file path for the captured network trace file.
+ * @member {string} [status] Current status of the network trace operation,
+ * same as Operation.Status (InProgress/Succeeded/Failed).
+ * @member {string} [message] Detailed message of a network trace operation,
+ * e.g. error message in case of failure.
+ */
+export interface NetworkTrace {
+  path?: string;
+  status?: string;
+  message?: string;
 }
 
 /**
@@ -5423,6 +5500,8 @@ export interface SiteCloneability {
  * detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [publishingUsername] Publishing user name.
  * @member {array} [appSettings] Application settings.
+ * @member {object} [azureStorageAccounts] User-provided Azure storage
+ * accounts.
  * @member {array} [connectionStrings] Connection strings.
  * @member {object} [machineKey] Site MachineKey.
  * @member {string} [machineKey.validation] MachineKey validation.
@@ -5551,6 +5630,7 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   detailedErrorLoggingEnabled?: boolean;
   publishingUsername?: string;
   appSettings?: NameValuePair[];
+  azureStorageAccounts?: { [propertyName: string]: AzureStorageInfoValue };
   connectionStrings?: ConnStringInfo[];
   readonly machineKey?: SiteMachineKey;
   handlerMappings?: HandlerMapping[];
@@ -5757,7 +5837,9 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
+ * @member {boolean} [isXenon] Obsolete: Hyper-V sandbox. Default value: false
+ * .
+ * @member {boolean} [hyperV] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -5786,6 +5868,8 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * if detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [siteConfig.publishingUsername] Publishing user name.
  * @member {array} [siteConfig.appSettings] Application settings.
+ * @member {object} [siteConfig.azureStorageAccounts] User-provided Azure
+ * storage accounts.
  * @member {array} [siteConfig.connectionStrings] Connection strings.
  * @member {object} [siteConfig.machineKey] Site MachineKey.
  * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
@@ -6006,6 +6090,7 @@ export interface SitePatchResource extends ProxyOnlyResource {
   serverFarmId?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -6080,10 +6165,13 @@ export interface SiteSourceControl extends ProxyOnlyResource {
  *
  * @member {array} [connectionStringNames] List of connection string names.
  * @member {array} [appSettingNames] List of application settings names.
+ * @member {array} [azureStorageConfigNames] List of external Azure storage
+ * account identifiers.
  */
 export interface SlotConfigNamesResource extends ProxyOnlyResource {
   connectionStringNames?: string[];
   appSettingNames?: string[];
+  azureStorageConfigNames?: string[];
 }
 
 /**
@@ -6821,6 +6909,8 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
+ * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
+ * allowed for this ElasticScaleEnabled App Service Plan
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
  * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
@@ -6832,7 +6922,9 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
- * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * @member {boolean} [isXenon] Obsolete: If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [hyperV] If Hyper-V container app service plan
  * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
@@ -6849,6 +6941,7 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly maximumNumberOfWorkers?: number;
   readonly geoRegion?: string;
   perSiteScaling?: boolean;
+  maximumElasticWorkerCount?: number;
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
@@ -6856,6 +6949,7 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly resourceGroup?: string;
   reserved?: boolean;
   isXenon?: boolean;
+  hyperV?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
@@ -6874,6 +6968,22 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
 export interface HybridConnectionLimits extends ProxyOnlyResource {
   readonly current?: number;
   readonly maximum?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadata class.
+ * @constructor
+ * Used for getting ResourceHealthCheck settings.
+ *
+ * @member {string} [category] The category that the resource matches in the
+ * RHC Policy File
+ * @member {boolean} [signalAvailability] Is there a health signal for the
+ * resource
+ */
+export interface ResourceHealthMetadata extends ProxyOnlyResource {
+  category?: string;
+  signalAvailability?: boolean;
 }
 
 
@@ -7500,5 +7610,17 @@ export interface ResourceCollection extends Array<string> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface HybridConnectionCollection extends Array<HybridConnection> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadataCollection class.
+ * @constructor
+ * Collection of resource health metadata.
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface ResourceHealthMetadataCollection extends Array<ResourceHealthMetadata> {
   readonly nextLink?: string;
 }

@@ -437,6 +437,46 @@ export interface Volume {
 
 /**
  * @class
+ * Initializes a new instance of the ContainerGroupIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface ContainerGroupIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupIdentity class.
+ * @constructor
+ * Identity for the container group.
+ *
+ * @member {string} [principalId] The principal id of the container group
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [tenantId] The tenant id associated with the container
+ * group. This property will only be provided for a system assigned identity.
+ * @member {string} [type] The type of identity used for the container group.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. The type 'None' will remove
+ * any identities from the container group. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the container group. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+ */
+export interface ContainerGroupIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+  userAssignedIdentities?: { [propertyName: string]: ContainerGroupIdentityUserAssignedIdentitiesValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImageRegistryCredential class.
  * @constructor
  * Image registry credential.
@@ -474,12 +514,15 @@ export interface Port {
  * IP address for the container group.
  *
  * @member {array} ports The list of ports exposed on the container group.
+ * @member {string} type Specifies if the IP is exposed to the public internet
+ * or private VNET. Possible values include: 'Public', 'Private'
  * @member {string} [ip] The IP exposed to the public internet.
  * @member {string} [dnsNameLabel] The Dns name label for the IP.
  * @member {string} [fqdn] The FQDN for the IP.
  */
 export interface IpAddress {
   ports: Port[];
+  type: string;
   ip?: string;
   dnsNameLabel?: string;
   readonly fqdn?: string;
@@ -508,10 +551,15 @@ export interface ContainerGroupPropertiesInstanceView {
  *
  * @member {string} workspaceId The workspace id for log analytics
  * @member {string} workspaceKey The workspace key for log analytics
+ * @member {string} [logType] The log type to be used. Possible values include:
+ * 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [metadata] Metadata for log analytics.
  */
 export interface LogAnalytics {
   workspaceId: string;
   workspaceKey: string;
+  logType?: string;
+  metadata?: { [propertyName: string]: string };
 }
 
 /**
@@ -525,9 +573,24 @@ export interface LogAnalytics {
  * analytics
  * @member {string} [logAnalytics.workspaceKey] The workspace key for log
  * analytics
+ * @member {string} [logAnalytics.logType] The log type to be used. Possible
+ * values include: 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [logAnalytics.metadata] Metadata for log analytics.
  */
 export interface ContainerGroupDiagnostics {
   logAnalytics?: LogAnalytics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerGroupNetworkProfile class.
+ * @constructor
+ * Container group network profile information.
+ *
+ * @member {string} id The identifier for a network profile.
+ */
+export interface ContainerGroupNetworkProfile {
+  id: string;
 }
 
 /**
@@ -556,6 +619,23 @@ export interface Resource extends BaseResource {
  * @constructor
  * A container group.
  *
+ * @member {object} [identity] The identity of the container group, if
+ * configured.
+ * @member {string} [identity.principalId] The principal id of the container
+ * group identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * container group. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.type] The type of identity used for the container
+ * group. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+ * created identity and a set of user assigned identities. The type 'None' will
+ * remove any identities from the container group. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the container group. The user identity dictionary
+ * key references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  * @member {string} [provisioningState] The provisioning state of the container
  * group. This only appears in the response.
  * @member {array} containers The containers within the container group.
@@ -570,6 +650,9 @@ export interface Resource extends BaseResource {
  * @member {object} [ipAddress] The IP address type of the container group.
  * @member {array} [ipAddress.ports] The list of ports exposed on the container
  * group.
+ * @member {string} [ipAddress.type] Specifies if the IP is exposed to the
+ * public internet or private VNET. Possible values include: 'Public',
+ * 'Private'
  * @member {string} [ipAddress.ip] The IP exposed to the public internet.
  * @member {string} [ipAddress.dnsNameLabel] The Dns name label for the IP.
  * @member {string} [ipAddress.fqdn] The FQDN for the IP.
@@ -590,8 +673,16 @@ export interface Resource extends BaseResource {
  * log analytics
  * @member {string} [diagnostics.logAnalytics.workspaceKey] The workspace key
  * for log analytics
+ * @member {string} [diagnostics.logAnalytics.logType] The log type to be used.
+ * Possible values include: 'ContainerInsights', 'ContainerInstanceLogs'
+ * @member {object} [diagnostics.logAnalytics.metadata] Metadata for log
+ * analytics.
+ * @member {object} [networkProfile] The network profile information for a
+ * container group.
+ * @member {string} [networkProfile.id] The identifier for a network profile.
  */
 export interface ContainerGroup extends Resource {
+  identity?: ContainerGroupIdentity;
   readonly provisioningState?: string;
   containers: Container[];
   imageRegistryCredentials?: ImageRegistryCredential[];
@@ -601,6 +692,7 @@ export interface ContainerGroup extends Resource {
   volumes?: Volume[];
   readonly instanceView?: ContainerGroupPropertiesInstanceView;
   diagnostics?: ContainerGroupDiagnostics;
+  networkProfile?: ContainerGroupNetworkProfile;
 }
 
 /**

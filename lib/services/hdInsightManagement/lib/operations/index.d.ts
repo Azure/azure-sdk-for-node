@@ -85,6 +85,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -94,6 +101,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -172,6 +193,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -181,6 +209,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -710,6 +752,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -719,6 +768,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -797,6 +860,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -806,6 +876,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1295,30 +1379,37 @@ export interface Applications {
      *
      * @param {object} parameters The application create request.
      *
-     * @param {object} [parameters.computeProfile] The list of roles in the
-     * cluster.
+     * @param {string} [parameters.etag] The ETag for the application
      *
-     * @param {array} [parameters.computeProfile.roles] The list of roles in the
-     * cluster.
+     * @param {object} [parameters.tags] The tags for the application.
      *
-     * @param {array} [parameters.installScriptActions] The list of install script
-     * actions.
+     * @param {object} [parameters.properties] The properties of the application.
      *
-     * @param {array} [parameters.uninstallScriptActions] The list of uninstall
-     * script actions.
+     * @param {object} [parameters.properties.computeProfile] The list of roles in
+     * the cluster.
      *
-     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
-     * endpoints.
+     * @param {array} [parameters.properties.computeProfile.roles] The list of
+     * roles in the cluster.
      *
-     * @param {array} [parameters.sshEndpoints] The list of application SSH
-     * endpoints.
+     * @param {array} [parameters.properties.installScriptActions] The list of
+     * install script actions.
      *
-     * @param {string} [parameters.applicationType] The application type.
+     * @param {array} [parameters.properties.uninstallScriptActions] The list of
+     * uninstall script actions.
      *
-     * @param {array} [parameters.errors] The list of errors.
+     * @param {array} [parameters.properties.httpsEndpoints] The list of
+     * application HTTPS endpoints.
      *
-     * @param {string} [parameters.additionalProperties] The additional properties
-     * for application.
+     * @param {array} [parameters.properties.sshEndpoints] The list of application
+     * SSH endpoints.
+     *
+     * @param {string} [parameters.properties.applicationType] The application
+     * type.
+     *
+     * @param {array} [parameters.properties.errors] The list of errors.
+     *
+     * @param {string} [parameters.properties.additionalProperties] The additional
+     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1331,7 +1422,7 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Creates applications for the HDInsight cluster.
@@ -1344,30 +1435,37 @@ export interface Applications {
      *
      * @param {object} parameters The application create request.
      *
-     * @param {object} [parameters.computeProfile] The list of roles in the
-     * cluster.
+     * @param {string} [parameters.etag] The ETag for the application
      *
-     * @param {array} [parameters.computeProfile.roles] The list of roles in the
-     * cluster.
+     * @param {object} [parameters.tags] The tags for the application.
      *
-     * @param {array} [parameters.installScriptActions] The list of install script
-     * actions.
+     * @param {object} [parameters.properties] The properties of the application.
      *
-     * @param {array} [parameters.uninstallScriptActions] The list of uninstall
-     * script actions.
+     * @param {object} [parameters.properties.computeProfile] The list of roles in
+     * the cluster.
      *
-     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
-     * endpoints.
+     * @param {array} [parameters.properties.computeProfile.roles] The list of
+     * roles in the cluster.
      *
-     * @param {array} [parameters.sshEndpoints] The list of application SSH
-     * endpoints.
+     * @param {array} [parameters.properties.installScriptActions] The list of
+     * install script actions.
      *
-     * @param {string} [parameters.applicationType] The application type.
+     * @param {array} [parameters.properties.uninstallScriptActions] The list of
+     * uninstall script actions.
      *
-     * @param {array} [parameters.errors] The list of errors.
+     * @param {array} [parameters.properties.httpsEndpoints] The list of
+     * application HTTPS endpoints.
      *
-     * @param {string} [parameters.additionalProperties] The additional properties
-     * for application.
+     * @param {array} [parameters.properties.sshEndpoints] The list of application
+     * SSH endpoints.
+     *
+     * @param {string} [parameters.properties.applicationType] The application
+     * type.
+     *
+     * @param {array} [parameters.properties.errors] The list of errors.
+     *
+     * @param {string} [parameters.properties.additionalProperties] The additional
+     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1396,9 +1494,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, callback: ServiceCallback<models.Application>): void;
-    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -1474,30 +1572,37 @@ export interface Applications {
      *
      * @param {object} parameters The application create request.
      *
-     * @param {object} [parameters.computeProfile] The list of roles in the
-     * cluster.
+     * @param {string} [parameters.etag] The ETag for the application
      *
-     * @param {array} [parameters.computeProfile.roles] The list of roles in the
-     * cluster.
+     * @param {object} [parameters.tags] The tags for the application.
      *
-     * @param {array} [parameters.installScriptActions] The list of install script
-     * actions.
+     * @param {object} [parameters.properties] The properties of the application.
      *
-     * @param {array} [parameters.uninstallScriptActions] The list of uninstall
-     * script actions.
+     * @param {object} [parameters.properties.computeProfile] The list of roles in
+     * the cluster.
      *
-     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
-     * endpoints.
+     * @param {array} [parameters.properties.computeProfile.roles] The list of
+     * roles in the cluster.
      *
-     * @param {array} [parameters.sshEndpoints] The list of application SSH
-     * endpoints.
+     * @param {array} [parameters.properties.installScriptActions] The list of
+     * install script actions.
      *
-     * @param {string} [parameters.applicationType] The application type.
+     * @param {array} [parameters.properties.uninstallScriptActions] The list of
+     * uninstall script actions.
      *
-     * @param {array} [parameters.errors] The list of errors.
+     * @param {array} [parameters.properties.httpsEndpoints] The list of
+     * application HTTPS endpoints.
      *
-     * @param {string} [parameters.additionalProperties] The additional properties
-     * for application.
+     * @param {array} [parameters.properties.sshEndpoints] The list of application
+     * SSH endpoints.
+     *
+     * @param {string} [parameters.properties.applicationType] The application
+     * type.
+     *
+     * @param {array} [parameters.properties.errors] The list of errors.
+     *
+     * @param {string} [parameters.properties.additionalProperties] The additional
+     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1510,7 +1615,7 @@ export interface Applications {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Creates applications for the HDInsight cluster.
@@ -1523,30 +1628,37 @@ export interface Applications {
      *
      * @param {object} parameters The application create request.
      *
-     * @param {object} [parameters.computeProfile] The list of roles in the
-     * cluster.
+     * @param {string} [parameters.etag] The ETag for the application
      *
-     * @param {array} [parameters.computeProfile.roles] The list of roles in the
-     * cluster.
+     * @param {object} [parameters.tags] The tags for the application.
      *
-     * @param {array} [parameters.installScriptActions] The list of install script
-     * actions.
+     * @param {object} [parameters.properties] The properties of the application.
      *
-     * @param {array} [parameters.uninstallScriptActions] The list of uninstall
-     * script actions.
+     * @param {object} [parameters.properties.computeProfile] The list of roles in
+     * the cluster.
      *
-     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
-     * endpoints.
+     * @param {array} [parameters.properties.computeProfile.roles] The list of
+     * roles in the cluster.
      *
-     * @param {array} [parameters.sshEndpoints] The list of application SSH
-     * endpoints.
+     * @param {array} [parameters.properties.installScriptActions] The list of
+     * install script actions.
      *
-     * @param {string} [parameters.applicationType] The application type.
+     * @param {array} [parameters.properties.uninstallScriptActions] The list of
+     * uninstall script actions.
      *
-     * @param {array} [parameters.errors] The list of errors.
+     * @param {array} [parameters.properties.httpsEndpoints] The list of
+     * application HTTPS endpoints.
      *
-     * @param {string} [parameters.additionalProperties] The additional properties
-     * for application.
+     * @param {array} [parameters.properties.sshEndpoints] The list of application
+     * SSH endpoints.
+     *
+     * @param {string} [parameters.properties.applicationType] The application
+     * type.
+     *
+     * @param {array} [parameters.properties.errors] The list of errors.
+     *
+     * @param {string} [parameters.properties.additionalProperties] The additional
+     * properties for application.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1575,9 +1687,9 @@ export interface Applications {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
-    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, callback: ServiceCallback<models.Application>): void;
-    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, callback: ServiceCallback<models.Application>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.Application, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**

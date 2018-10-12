@@ -355,6 +355,27 @@ export interface LinkedIntegrationRuntimeRequest {
 
 /**
  * @class
+ * Initializes a new instance of the CreateLinkedIntegrationRuntimeRequest class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The ID of the subscription that the linked
+ * integration runtime belongs to.
+ * @member {string} [dataFactoryName] The name of the data factory that the
+ * linked integration runtime belongs to.
+ * @member {string} [dataFactoryLocation] The location of the data factory that
+ * the linked integration runtime belongs to.
+ */
+export interface CreateLinkedIntegrationRuntimeRequest {
+  name?: string;
+  subscriptionId?: string;
+  dataFactoryName?: string;
+  dataFactoryLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ParameterSpecification class.
  * @constructor
  * Definition of a single parameter for an entity.
@@ -423,6 +444,19 @@ export interface LinkedServiceResource extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the DatasetFolder class.
+ * @constructor
+ * The folder that this Dataset is in. If not specified, Dataset will appear at
+ * the root level.
+ *
+ * @member {string} [name] The name of the folder that this Dataset is in.
+ */
+export interface DatasetFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Dataset class.
  * @constructor
  * The Azure Data Factory nested object which identifies data within different
@@ -439,6 +473,10 @@ export interface LinkedServiceResource extends SubResource {
  * @member {object} [parameters] Parameters for dataset.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Dataset.
+ * @member {object} [folder] The folder that this Dataset is in. If not
+ * specified, Dataset will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Dataset is
+ * in.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Dataset {
@@ -447,6 +485,7 @@ export interface Dataset {
   linkedServiceName: LinkedServiceReference;
   parameters?: { [propertyName: string]: ParameterSpecification };
   annotations?: any[];
+  folder?: DatasetFolder;
   type: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -474,6 +513,10 @@ export interface Dataset {
  * @member {object} [properties.parameters] Parameters for dataset.
  * @member {array} [properties.annotations] List of tags that can be used for
  * describing the Dataset.
+ * @member {object} [properties.folder] The folder that this Dataset is in. If
+ * not specified, Dataset will appear at the root level.
+ * @member {string} [properties.folder.name] The name of the folder that this
+ * Dataset is in.
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface DatasetResource extends SubResource {
@@ -541,6 +584,34 @@ export interface Activity {
 
 /**
  * @class
+ * Initializes a new instance of the VariableSpecification class.
+ * @constructor
+ * Definition of a single variable for a Pipeline.
+ *
+ * @member {string} type Variable type. Possible values include: 'String',
+ * 'Bool', 'Array'
+ * @member {object} [defaultValue] Default value of variable.
+ */
+export interface VariableSpecification {
+  type: string;
+  defaultValue?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PipelineFolder class.
+ * @constructor
+ * The folder that this Pipeline is in. If not specified, Pipeline will appear
+ * at the root level.
+ *
+ * @member {string} [name] The name of the folder that this Pipeline is in.
+ */
+export interface PipelineFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineResource class.
  * @constructor
  * Pipeline resource type.
@@ -548,17 +619,24 @@ export interface Activity {
  * @member {string} [description] The description of the pipeline.
  * @member {array} [activities] List of activities in pipeline.
  * @member {object} [parameters] List of parameters for pipeline.
+ * @member {object} [variables] List of variables for pipeline.
  * @member {number} [concurrency] The max number of concurrent runs for the
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Pipeline.
+ * @member {object} [folder] The folder that this Pipeline is in. If not
+ * specified, Pipeline will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Pipeline is
+ * in.
  */
 export interface PipelineResource extends SubResource {
   description?: string;
   activities?: Activity[];
   parameters?: { [propertyName: string]: ParameterSpecification };
+  variables?: { [propertyName: string]: VariableSpecification };
   concurrency?: number;
   annotations?: any[];
+  folder?: PipelineFolder;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -665,6 +743,34 @@ export interface FactoryGitHubConfiguration extends FactoryRepoConfiguration {
 export interface FactoryRepoUpdate {
   factoryResourceId?: string;
   repoConfiguration?: FactoryRepoConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenRequest class.
+ * @constructor
+ * Get GitHub access token request definition.
+ *
+ * @member {string} gitHubAccessCode GitHub access code.
+ * @member {string} [gitHubClientId] GitHub application client ID.
+ * @member {string} gitHubAccessTokenBaseUrl GitHub access token base URL.
+ */
+export interface GitHubAccessTokenRequest {
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubAccessTokenBaseUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GitHubAccessTokenResponse class.
+ * @constructor
+ * Get GitHub access token response definition.
+ *
+ * @member {string} [gitHubAccessToken] GitHub access token.
+ */
+export interface GitHubAccessTokenResponse {
+  gitHubAccessToken?: string;
 }
 
 /**
@@ -979,6 +1085,68 @@ export interface TriggerRunsQueryResponse {
 
 /**
  * @class
+ * Initializes a new instance of the RerunTumblingWindowTriggerActionParameters class.
+ * @constructor
+ * Rerun tumbling window trigger Parameters.
+ *
+ * @member {date} startTime The start time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {date} endTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTumblingWindowTriggerActionParameters {
+  startTime: Date;
+  endTime: Date;
+  maxConcurrency: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline reruns for all fixed time interval windows
+ * from a requested start time to requested end time.
+ *
+ * @member {object} [parentTrigger] The parent trigger reference.
+ * @member {date} requestedStartTime The start time for the time period for
+ * which restatement is initiated. Only UTC time is currently supported.
+ * @member {date} requestedEndTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTumblingWindowTrigger extends Trigger {
+  parentTrigger?: any;
+  requestedStartTime: Date;
+  requestedEndTime: Date;
+  maxConcurrency: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTriggerResource class.
+ * @constructor
+ * RerunTrigger resource type.
+ *
+ * @member {object} properties Properties of the rerun trigger.
+ * @member {object} [properties.parentTrigger] The parent trigger reference.
+ * @member {date} [properties.requestedStartTime] The start time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {date} [properties.requestedEndTime] The end time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {number} [properties.maxConcurrency] The max number of parallel time
+ * windows (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTriggerResource extends SubResource {
+  properties: RerunTumblingWindowTrigger;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Metadata associated with the operation.
@@ -1123,6 +1291,305 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the DependencyReference class.
+ * @constructor
+ * Referenced dependency.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface DependencyReference {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
+ * @constructor
+ * Self referenced tumbling window trigger dependency.
+ *
+ * @member {string} offset Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
+  offset: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerReference class.
+ * @constructor
+ * Trigger reference type.
+ *
+ * @member {string} referenceName Reference trigger name.
+ */
+export interface TriggerReference {
+  referenceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerDependencyReference class.
+ * @constructor
+ * Trigger referenced dependency.
+ *
+ * @member {object} referenceTrigger Referenced trigger.
+ * @member {string} [referenceTrigger.referenceName] Reference trigger name.
+ */
+export interface TriggerDependencyReference extends DependencyReference {
+  referenceTrigger: TriggerReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
+ * @constructor
+ * Referenced tumbling window trigger dependency.
+ *
+ * @member {string} [offset] Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
+  offset?: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RetryPolicy class.
+ * @constructor
+ * Execution policy for an activity.
+ *
+ * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
+ * Type: integer (or Expression with resultType integer), minimum: 0.
+ * @member {number} [intervalInSeconds] Interval between retries in seconds.
+ * Default is 30.
+ */
+export interface RetryPolicy {
+  count?: any;
+  intervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline runs for all fixed time interval windows
+ * from a start time without gaps and also supports backfill scenarios (when
+ * start time is in the past).
+ *
+ * @member {object} pipelineProperty Pipeline for which runs are created when
+ * an event is fired for trigger window that is ready.
+ * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
+ * @member {string} [pipelineProperty.pipelineReference.referenceName]
+ * Reference pipeline name.
+ * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
+ * @member {object} [pipelineProperty.parameters] Pipeline parameters.
+ * @member {string} frequency The frequency of the time windows. Possible
+ * values include: 'Minute', 'Hour'
+ * @member {number} interval The interval of the time windows. The minimum
+ * interval allowed is 15 Minutes.
+ * @member {date} startTime The start time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {date} [endTime] The end time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {object} [delay] Specifies how long the trigger waits past due time
+ * before triggering new run. It doesn't alter window start and end time. The
+ * default is 0. Type: string (or Expression with resultType string), pattern:
+ * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a new run is triggered.
+ * @member {object} [retryPolicy] Retry policy that will be applied for failed
+ * pipeline runs.
+ * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
+ * Default is 0. Type: integer (or Expression with resultType integer),
+ * minimum: 0.
+ * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
+ * seconds. Default is 30.
+ * @member {array} [dependsOn] Triggers that this trigger depends on. Only
+ * tumbling window triggers are supported.
+ */
+export interface TumblingWindowTrigger extends Trigger {
+  pipelineProperty: TriggerPipelineReference;
+  frequency: string;
+  interval: number;
+  startTime: Date;
+  endTime?: Date;
+  delay?: any;
+  maxConcurrency: number;
+  retryPolicy?: RetryPolicy;
+  dependsOn?: DependencyReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MultiplePipelineTrigger class.
+ * @constructor
+ * Base class for all triggers that support one to many model for trigger to
+ * pipeline.
+ *
+ * @member {array} [pipelines] Pipelines that need to be started.
+ */
+export interface MultiplePipelineTrigger extends Trigger {
+  pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobEventsTrigger class.
+ * @constructor
+ * Trigger that runs everytime a Blob event occurs.
+ *
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ */
+export interface BlobEventsTrigger extends MultiplePipelineTrigger {
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
+  events: string[];
+  scope: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobTrigger class.
+ * @constructor
+ * Trigger that runs everytime the selected Blob container changes.
+ *
+ * @member {string} folderPath The path of the container/folder that will
+ * trigger the pipeline.
+ * @member {number} maxConcurrency The max number of parallel files to handle
+ * when it is triggered.
+ * @member {object} linkedService The Azure Storage linked service reference.
+ * @member {string} [linkedService.referenceName] Reference LinkedService name.
+ * @member {object} [linkedService.parameters] Arguments for LinkedService.
+ */
+export interface BlobTrigger extends MultiplePipelineTrigger {
+  folderPath: string;
+  maxConcurrency: number;
+  linkedService: LinkedServiceReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrenceScheduleOccurrence class.
+ * @constructor
+ * The recurrence schedule occurence.
+ *
+ * @member {string} [day] The day of the week. Possible values include:
+ * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+ * @member {number} [occurrence] The occurrence.
+ */
+export interface RecurrenceScheduleOccurrence {
+  day?: string;
+  occurrence?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrenceSchedule class.
+ * @constructor
+ * The recurrence schedule.
+ *
+ * @member {array} [minutes] The minutes.
+ * @member {array} [hours] The hours.
+ * @member {array} [weekDays] The days of the week.
+ * @member {array} [monthDays] The month days.
+ * @member {array} [monthlyOccurrences] The monthly occurrences.
+ */
+export interface RecurrenceSchedule {
+  minutes?: number[];
+  hours?: number[];
+  weekDays?: string[];
+  monthDays?: number[];
+  monthlyOccurrences?: RecurrenceScheduleOccurrence[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleTriggerRecurrence class.
+ * @constructor
+ * The workflow trigger recurrence.
+ *
+ * @member {string} [frequency] The frequency. Possible values include:
+ * 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {number} [interval] The interval.
+ * @member {date} [startTime] The start time.
+ * @member {date} [endTime] The end time.
+ * @member {string} [timeZone] The time zone.
+ * @member {object} [schedule] The recurrence schedule.
+ * @member {array} [schedule.minutes] The minutes.
+ * @member {array} [schedule.hours] The hours.
+ * @member {array} [schedule.weekDays] The days of the week.
+ * @member {array} [schedule.monthDays] The month days.
+ * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
+ */
+export interface ScheduleTriggerRecurrence {
+  frequency?: string;
+  interval?: number;
+  startTime?: Date;
+  endTime?: Date;
+  timeZone?: string;
+  schedule?: RecurrenceSchedule;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleTrigger class.
+ * @constructor
+ * Trigger that creates pipeline runs periodically, on schedule.
+ *
+ * @member {object} recurrence Recurrence schedule configuration.
+ * @member {string} [recurrence.frequency] The frequency. Possible values
+ * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {number} [recurrence.interval] The interval.
+ * @member {date} [recurrence.startTime] The start time.
+ * @member {date} [recurrence.endTime] The end time.
+ * @member {string} [recurrence.timeZone] The time zone.
+ * @member {object} [recurrence.schedule] The recurrence schedule.
+ * @member {array} [recurrence.schedule.minutes] The minutes.
+ * @member {array} [recurrence.schedule.hours] The hours.
+ * @member {array} [recurrence.schedule.weekDays] The days of the week.
+ * @member {array} [recurrence.schedule.monthDays] The month days.
+ * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
+ * occurrences.
+ */
+export interface ScheduleTrigger extends MultiplePipelineTrigger {
+  recurrence: ScheduleTriggerRecurrence;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResponsysLinkedService class.
  * @constructor
  * Responsys linked service.
@@ -1180,8 +1647,10 @@ export interface ResponsysLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} [newClusterNodeType] The node types of new cluster. Type:
  * string (or Expression with resultType string).
- * @member {object} [newClusterSparkConf] a set of optional, user-specified
+ * @member {object} [newClusterSparkConf] A set of optional, user-specified
  * Spark configuration key-value pairs.
+ * @member {object} [newClusterSparkEnvVars] A set of optional, user-specified
+ * Spark environment variables key-value pairs.
  * @member {object} [newClusterCustomTags] Additional tags for cluster
  * resources.
  * @member {object} [encryptedCredential] The encrypted credential used for
@@ -1196,6 +1665,7 @@ export interface AzureDatabricksLinkedService extends LinkedService {
   newClusterNumOfWorker?: any;
   newClusterNodeType?: any;
   newClusterSparkConf?: { [propertyName: string]: any };
+  newClusterSparkEnvVars?: { [propertyName: string]: any };
   newClusterCustomTags?: { [propertyName: string]: any };
   encryptedCredential?: any;
 }
@@ -1237,6 +1707,25 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
   resourceGroupName?: any;
   dataLakeAnalyticsUri?: any;
   encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScriptAction class.
+ * @constructor
+ * Custom script action to run on HDI ondemand cluster once it's up.
+ *
+ * @member {string} name The user provided name of the script action.
+ * @member {string} uri The URI for the script action.
+ * @member {object} roles The node types on which the script action should be
+ * executed.
+ * @member {string} [parameters] The parameters for the script action.
+ */
+export interface ScriptAction {
+  name: string;
+  uri: string;
+  roles: any;
+  parameters?: string;
 }
 
 /**
@@ -1321,6 +1810,9 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * HDInsight cluster.
  * @member {object} [zookeeperNodeSize] Specifies the size of the Zoo Keeper
  * node for the HDInsight cluster.
+ * @member {array} [scriptActions] Custom script actions to run on HDI ondemand
+ * cluster once it's up. Please refer to
+ * https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
  */
 export interface HDInsightOnDemandLinkedService extends LinkedService {
   clusterSize: any;
@@ -1353,6 +1845,7 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
   headNodeSize?: any;
   dataNodeSize?: any;
   zookeeperNodeSize?: any;
+  scriptActions?: ScriptAction[];
 }
 
 /**
@@ -4451,233 +4944,6 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
- * Initializes a new instance of the RetryPolicy class.
- * @constructor
- * Execution policy for an activity.
- *
- * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
- * Type: integer (or Expression with resultType integer), minimum: 0.
- * @member {number} [intervalInSeconds] Interval between retries in seconds.
- * Default is 30.
- */
-export interface RetryPolicy {
-  count?: any;
-  intervalInSeconds?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the TumblingWindowTrigger class.
- * @constructor
- * Trigger that schedules pipeline runs for all fixed time interval windows
- * from a start time without gaps and also supports backfill scenarios (when
- * start time is in the past).
- *
- * @member {object} pipelineProperty Pipeline for which runs are created when
- * an event is fired for trigger window that is ready.
- * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
- * @member {string} [pipelineProperty.pipelineReference.referenceName]
- * Reference pipeline name.
- * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
- * @member {object} [pipelineProperty.parameters] Pipeline parameters.
- * @member {string} frequency The frequency of the time windows. Possible
- * values include: 'Minute', 'Hour'
- * @member {number} interval The interval of the time windows. The minimum
- * interval allowed is 15 Minutes.
- * @member {date} startTime The start time for the time period for the trigger
- * during which events are fired for windows that are ready. Only UTC time is
- * currently supported.
- * @member {date} [endTime] The end time for the time period for the trigger
- * during which events are fired for windows that are ready. Only UTC time is
- * currently supported.
- * @member {object} [delay] Specifies how long the trigger waits past due time
- * before triggering new run. It doesn't alter window start and end time. The
- * default is 0. Type: string (or Expression with resultType string), pattern:
- * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
- * @member {number} maxConcurrency The max number of parallel time windows
- * (ready for execution) for which a new run is triggered.
- * @member {object} [retryPolicy] Retry policy that will be applied for failed
- * pipeline runs.
- * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
- * Default is 0. Type: integer (or Expression with resultType integer),
- * minimum: 0.
- * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
- * seconds. Default is 30.
- */
-export interface TumblingWindowTrigger extends Trigger {
-  pipelineProperty: TriggerPipelineReference;
-  frequency: string;
-  interval: number;
-  startTime: Date;
-  endTime?: Date;
-  delay?: any;
-  maxConcurrency: number;
-  retryPolicy?: RetryPolicy;
-}
-
-/**
- * @class
- * Initializes a new instance of the MultiplePipelineTrigger class.
- * @constructor
- * Base class for all triggers that support one to many model for trigger to
- * pipeline.
- *
- * @member {array} [pipelines] Pipelines that need to be started.
- */
-export interface MultiplePipelineTrigger extends Trigger {
-  pipelines?: TriggerPipelineReference[];
-}
-
-/**
- * @class
- * Initializes a new instance of the BlobEventsTrigger class.
- * @constructor
- * Trigger that runs everytime a Blob event occurs.
- *
- * @member {string} [blobPathBeginsWith] The blob path must begin with the
- * pattern provided for trigger to fire. For example,
- * '/records/blobs/december/' will only fire the trigger for blobs in the
- * december folder under the records container. At least one of these must be
- * provided: blobPathBeginsWith, blobPathEndsWith.
- * @member {string} [blobPathEndsWith] The blob path must end with the pattern
- * provided for trigger to fire. For example, 'december/boxes.csv' will only
- * fire the trigger for blobs named boxes in a december folder. At least one of
- * these must be provided: blobPathBeginsWith, blobPathEndsWith.
- * @member {array} events The type of events that cause this trigger to fire.
- * @member {string} scope The ARM resource ID of the Storage Account.
- */
-export interface BlobEventsTrigger extends MultiplePipelineTrigger {
-  blobPathBeginsWith?: string;
-  blobPathEndsWith?: string;
-  events: string[];
-  scope: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BlobTrigger class.
- * @constructor
- * Trigger that runs everytime the selected Blob container changes.
- *
- * @member {string} folderPath The path of the container/folder that will
- * trigger the pipeline.
- * @member {number} maxConcurrency The max number of parallel files to handle
- * when it is triggered.
- * @member {object} linkedService The Azure Storage linked service reference.
- * @member {string} [linkedService.referenceName] Reference LinkedService name.
- * @member {object} [linkedService.parameters] Arguments for LinkedService.
- */
-export interface BlobTrigger extends MultiplePipelineTrigger {
-  folderPath: string;
-  maxConcurrency: number;
-  linkedService: LinkedServiceReference;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecurrenceScheduleOccurrence class.
- * @constructor
- * The recurrence schedule occurence.
- *
- * @member {string} [day] The day of the week. Possible values include:
- * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
- * @member {number} [occurrence] The occurrence.
- */
-export interface RecurrenceScheduleOccurrence {
-  day?: string;
-  occurrence?: number;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecurrenceSchedule class.
- * @constructor
- * The recurrence schedule.
- *
- * @member {array} [minutes] The minutes.
- * @member {array} [hours] The hours.
- * @member {array} [weekDays] The days of the week.
- * @member {array} [monthDays] The month days.
- * @member {array} [monthlyOccurrences] The monthly occurrences.
- */
-export interface RecurrenceSchedule {
-  minutes?: number[];
-  hours?: number[];
-  weekDays?: string[];
-  monthDays?: number[];
-  monthlyOccurrences?: RecurrenceScheduleOccurrence[];
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleTriggerRecurrence class.
- * @constructor
- * The workflow trigger recurrence.
- *
- * @member {string} [frequency] The frequency. Possible values include:
- * 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [interval] The interval.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {string} [timeZone] The time zone.
- * @member {object} [schedule] The recurrence schedule.
- * @member {array} [schedule.minutes] The minutes.
- * @member {array} [schedule.hours] The hours.
- * @member {array} [schedule.weekDays] The days of the week.
- * @member {array} [schedule.monthDays] The month days.
- * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
- */
-export interface ScheduleTriggerRecurrence {
-  frequency?: string;
-  interval?: number;
-  startTime?: Date;
-  endTime?: Date;
-  timeZone?: string;
-  schedule?: RecurrenceSchedule;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleTrigger class.
- * @constructor
- * Trigger that creates pipeline runs periodically, on schedule.
- *
- * @member {object} recurrence Recurrence schedule configuration.
- * @member {string} [recurrence.frequency] The frequency. Possible values
- * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [recurrence.interval] The interval.
- * @member {date} [recurrence.startTime] The start time.
- * @member {date} [recurrence.endTime] The end time.
- * @member {string} [recurrence.timeZone] The time zone.
- * @member {object} [recurrence.schedule] The recurrence schedule.
- * @member {array} [recurrence.schedule.minutes] The minutes.
- * @member {array} [recurrence.schedule.hours] The hours.
- * @member {array} [recurrence.schedule.weekDays] The days of the week.
- * @member {array} [recurrence.schedule.monthDays] The month days.
- * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
- * occurrences.
- */
-export interface ScheduleTrigger extends MultiplePipelineTrigger {
-  recurrence: ScheduleTriggerRecurrence;
-}
-
-/**
- * @class
  * Initializes a new instance of the ActivityPolicy class.
  * @constructor
  * Execution policy for an activity.
@@ -4689,6 +4955,8 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureInput] When set to true, Input from activity is
+ * considered as secure and will not be logged to monitoring.
  * @member {boolean} [secureOutput] When set to true, Output from activity is
  * considered as secure and will not be logged to monitoring.
  */
@@ -4696,6 +4964,7 @@ export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureInput?: boolean;
   secureOutput?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -4723,6 +4992,8 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureInput] When set to true, Input from activity
+ * is considered as secure and will not be logged to monitoring.
  * @member {boolean} [policy.secureOutput] When set to true, Output from
  * activity is considered as secure and will not be logged to monitoring.
  */
@@ -6633,6 +6904,38 @@ export interface ControlActivity extends Activity {
 
 /**
  * @class
+ * Initializes a new instance of the AppendVariableActivity class.
+ * @constructor
+ * Append value for a Variable of type Array.
+ *
+ * @member {string} [variableName] Name of the variable whose value needs to be
+ * appended to.
+ * @member {object} [value] Value to be appended. Could be a static value or
+ * Expression
+ */
+export interface AppendVariableActivity extends ControlActivity {
+  variableName?: string;
+  value?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SetVariableActivity class.
+ * @constructor
+ * Set value for a Variable.
+ *
+ * @member {string} [variableName] Name of the variable whose value needs to be
+ * set.
+ * @member {object} [value] Value to be set. Could be a static value or
+ * Expression
+ */
+export interface SetVariableActivity extends ControlActivity {
+  variableName?: string;
+  value?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FilterActivity class.
  * @constructor
  * Filter and return results from input array based on the conditions.
@@ -6800,7 +7103,7 @@ export interface LinkedIntegrationRuntime {
  * @member {date} [lastStartTime] The time the node last started up.
  * @member {date} [lastStopTime] The integration runtime node last stop time.
  * @member {string} [lastUpdateResult] The result of the last integration
- * runtime node update. Possible values include: 'Succeed', 'Fail'
+ * runtime node update. Possible values include: 'None', 'Succeed', 'Fail'
  * @member {date} [lastStartUpdateTime] The last time for the integration
  * runtime node update start.
  * @member {date} [lastEndUpdateTime] The last time for the integration runtime
@@ -6870,6 +7173,8 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [pushedVersion] The version that the integration runtime is
  * going to update to.
  * @member {string} [latestVersion] The latest version on download center.
+ * @member {date} [autoUpdateETA] The estimated time when the self-hosted
+ * integration runtime will be updated.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6887,6 +7192,7 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   links?: LinkedIntegrationRuntime[];
   readonly pushedVersion?: string;
   readonly latestVersion?: string;
+  readonly autoUpdateETA?: Date;
 }
 
 /**
@@ -7471,4 +7777,17 @@ export interface PipelineListResponse extends Array<PipelineResource> {
  */
 export interface TriggerListResponse extends Array<TriggerResource> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTriggerListResponse class.
+ * @constructor
+ * A list of rerun triggers.
+ *
+ * @member {string} [nextLink] The continuation token for getting the next page
+ * of results, if any remaining results exist, null otherwise.
+ */
+export interface RerunTriggerListResponse extends Array<RerunTriggerResource> {
+  readonly nextLink?: string;
 }

@@ -106,6 +106,22 @@ export interface DebugSetting {
 
 /**
  * @class
+ * Initializes a new instance of the OnErrorDeployment class.
+ * @constructor
+ * Deployment on error behavior.
+ *
+ * @member {string} [type] The deployment on error behavior type. Possible
+ * values are LastSuccessful and SpecificDeployment. Possible values include:
+ * 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [deploymentName] The deployment to be used on error case.
+ */
+export interface OnErrorDeployment {
+  type?: string;
+  deploymentName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DeploymentProperties class.
  * @constructor
  * Deployment properties.
@@ -148,6 +164,12 @@ export interface DebugSetting {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
+ * @member {object} [onErrorDeployment] The deployment on error behavior.
+ * @member {string} [onErrorDeployment.type] The deployment on error behavior
+ * type. Possible values are LastSuccessful and SpecificDeployment. Possible
+ * values include: 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [onErrorDeployment.deploymentName] The deployment to be
+ * used on error case.
  */
 export interface DeploymentProperties {
   template?: any;
@@ -156,6 +178,7 @@ export interface DeploymentProperties {
   parametersLink?: ParametersLink;
   mode: string;
   debugSetting?: DebugSetting;
+  onErrorDeployment?: OnErrorDeployment;
 }
 
 /**
@@ -164,6 +187,7 @@ export interface DeploymentProperties {
  * @constructor
  * Deployment operation parameters.
  *
+ * @member {string} [location] The location to store the deployment data.
  * @member {object} properties The deployment properties.
  * @member {object} [properties.template] The template content. You use this
  * element when you want to pass the template syntax directly in the request
@@ -207,8 +231,16 @@ export interface DeploymentProperties {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
+ * @member {object} [properties.onErrorDeployment] The deployment on error
+ * behavior.
+ * @member {string} [properties.onErrorDeployment.type] The deployment on error
+ * behavior type. Possible values are LastSuccessful and SpecificDeployment.
+ * Possible values include: 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [properties.onErrorDeployment.deploymentName] The
+ * deployment to be used on error case.
  */
 export interface Deployment {
+  location?: string;
   properties: DeploymentProperties;
 }
 
@@ -346,6 +378,25 @@ export interface Dependency {
 
 /**
  * @class
+ * Initializes a new instance of the OnErrorDeploymentExtended class.
+ * @constructor
+ * Deployment on error behavior with additional details.
+ *
+ * @member {string} [provisioningState] The state of the provisioning for the
+ * on error deployment.
+ * @member {string} [type] The deployment on error behavior type. Possible
+ * values are LastSuccessful and SpecificDeployment. Possible values include:
+ * 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [deploymentName] The deployment to be used on error case.
+ */
+export interface OnErrorDeploymentExtended {
+  readonly provisioningState?: string;
+  type?: string;
+  deploymentName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DeploymentPropertiesExtended class.
  * @constructor
  * Deployment properties with additional details.
@@ -382,6 +433,14 @@ export interface Dependency {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
+ * @member {object} [onErrorDeployment] The deployment on error behavior.
+ * @member {string} [onErrorDeployment.provisioningState] The state of the
+ * provisioning for the on error deployment.
+ * @member {string} [onErrorDeployment.type] The deployment on error behavior
+ * type. Possible values are LastSuccessful and SpecificDeployment. Possible
+ * values include: 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [onErrorDeployment.deploymentName] The deployment to be
+ * used on error case.
  */
 export interface DeploymentPropertiesExtended {
   readonly provisioningState?: string;
@@ -396,6 +455,7 @@ export interface DeploymentPropertiesExtended {
   parametersLink?: ParametersLink;
   mode?: string;
   debugSetting?: DebugSetting;
+  onErrorDeployment?: OnErrorDeploymentExtended;
 }
 
 /**
@@ -452,6 +512,15 @@ export interface DeploymentPropertiesExtended {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
+ * @member {object} [properties.onErrorDeployment] The deployment on error
+ * behavior.
+ * @member {string} [properties.onErrorDeployment.provisioningState] The state
+ * of the provisioning for the on error deployment.
+ * @member {string} [properties.onErrorDeployment.type] The deployment on error
+ * behavior type. Possible values are LastSuccessful and SpecificDeployment.
+ * Possible values include: 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [properties.onErrorDeployment.deploymentName] The
+ * deployment to be used on error case.
  */
 export interface DeploymentValidateResult {
   error?: ResourceManagementErrorWithDetails;
@@ -465,7 +534,8 @@ export interface DeploymentValidateResult {
  * Deployment information.
  *
  * @member {string} [id] The ID of the deployment.
- * @member {string} name The name of the deployment.
+ * @member {string} [name] The name of the deployment.
+ * @member {string} [location] the location of the deployment.
  * @member {object} [properties] Deployment properties.
  * @member {string} [properties.provisioningState] The state of the
  * provisioning.
@@ -507,10 +577,20 @@ export interface DeploymentValidateResult {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
+ * @member {object} [properties.onErrorDeployment] The deployment on error
+ * behavior.
+ * @member {string} [properties.onErrorDeployment.provisioningState] The state
+ * of the provisioning for the on error deployment.
+ * @member {string} [properties.onErrorDeployment.type] The deployment on error
+ * behavior type. Possible values are LastSuccessful and SpecificDeployment.
+ * Possible values include: 'LastSuccessful', 'SpecificDeployment'
+ * @member {string} [properties.onErrorDeployment.deploymentName] The
+ * deployment to be used on error case.
  */
-export interface DeploymentExtended {
-  id?: string;
-  name: string;
+export interface DeploymentExtended extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  location?: string;
   properties?: DeploymentPropertiesExtended;
 }
 
@@ -558,6 +638,18 @@ export interface Sku {
 
 /**
  * @class
+ * Initializes a new instance of the IdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface IdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Identity class.
  * @constructor
  * Identity for the resource.
@@ -565,19 +657,24 @@ export interface Sku {
  * @member {string} [principalId] The principal ID of resource identity.
  * @member {string} [tenantId] The tenant ID of resource.
  * @member {string} [type] The identity type. Possible values include:
- * 'SystemAssigned'
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the resource. The user identity dictionary key references
+ * will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface Identity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
+  userAssignedIdentities?: { [propertyName: string]: IdentityUserAssignedIdentitiesValue };
 }
 
 /**
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * Resource.
+ * Specified resource.
  *
  * @member {string} [id] Resource ID
  * @member {string} [name] Resource name
@@ -620,7 +717,11 @@ export interface Resource extends BaseResource {
  * identity.
  * @member {string} [identity.tenantId] The tenant ID of resource.
  * @member {string} [identity.type] The identity type. Possible values include:
- * 'SystemAssigned'
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the resource. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface GenericResource extends Resource {
   plan?: Plan;
@@ -660,9 +761,9 @@ export interface ResourceGroupProperties {
  * resource group.
  * @member {object} [tags] The tags attached to the resource group.
  */
-export interface ResourceGroup {
+export interface ResourceGroup extends BaseResource {
   readonly id?: string;
-  name?: string;
+  readonly name?: string;
   properties?: ResourceGroupProperties;
   location: string;
   managedBy?: string;
@@ -747,8 +848,8 @@ export interface TagCount {
  * @member {string} [count.type] Type of count.
  * @member {number} [count.value] Value of count.
  */
-export interface TagValue {
-  id?: string;
+export interface TagValue extends BaseResource {
+  readonly id?: string;
   tagValue?: string;
   count?: TagCount;
 }
@@ -769,7 +870,7 @@ export interface TagValue {
  * @member {array} [values] The list of tag values.
  */
 export interface TagDetails {
-  id?: string;
+  readonly id?: string;
   tagName?: string;
   count?: TagCount;
   values?: TagValue[];
@@ -876,7 +977,7 @@ export interface DeploymentOperation {
  * @member {string} [publisher] Operation description.
  * @member {string} [provider] Operation provider.
  * @member {string} [resource] Operation resource.
- * @member {string} [operation] Operation.
+ * @member {string} [operation] Resource provider operation.
  * @member {string} [description] Operation description.
  */
 export interface ResourceProviderOperationDisplayProperties {
@@ -919,6 +1020,59 @@ export interface ResourceGroupExportResult {
   error?: ResourceManagementErrorWithDetails;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft.Resources
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Profile, endpoint, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @member {string} [description] Description of the operation.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Microsoft.Resources operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Microsoft.Resources
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Profile, endpoint, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ * @member {string} [display.description] Description of the operation.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Microsoft.Resources operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
 
 /**
  * @class

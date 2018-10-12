@@ -54,6 +54,10 @@ export interface ClusterDefinition {
  * @member {string} [domainUserPassword] The domain admin password.
  * @member {array} [clusterUsersGroupDNs] Optional. The Distinguished Names for
  * cluster user groups
+ * @member {string} [aaddsResourceId] The resource ID of the user's Azure
+ * Active Directory Domain Service.
+ * @member {string} [msiResourceId] User assigned identity that has permissions
+ * to read and create cluster-related artifacts in the user's AADDS.
  */
 export interface SecurityProfile {
   directoryType?: string;
@@ -63,6 +67,8 @@ export interface SecurityProfile {
   domainUsername?: string;
   domainUserPassword?: string;
   clusterUsersGroupDNs?: string[];
+  aaddsResourceId?: string;
+  msiResourceId?: string;
 }
 
 /**
@@ -305,6 +311,11 @@ export interface StorageProfile {
  * password.
  * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
  * Distinguished Names for cluster user groups
+ * @member {string} [securityProfile.aaddsResourceId] The resource ID of the
+ * user's Azure Active Directory Domain Service.
+ * @member {string} [securityProfile.msiResourceId] User assigned identity that
+ * has permissions to read and create cluster-related artifacts in the user's
+ * AADDS.
  * @member {object} [computeProfile] The compute profile.
  * @member {array} [computeProfile.roles] The list of roles in the cluster.
  * @member {object} [storageProfile] The storage profile.
@@ -319,6 +330,44 @@ export interface ClusterCreateProperties {
   securityProfile?: SecurityProfile;
   computeProfile?: ComputeProfile;
   storageProfile?: StorageProfile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterIdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface ClusterIdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterIdentity class.
+ * @constructor
+ * Identity for the cluster.
+ *
+ * @member {string} [principalId] The principal id of cluster identity. This
+ * property will only be provided for a system assigned identity.
+ * @member {string} [tenantId] The tenant id associated with the cluster. This
+ * property will only be provided for a system assigned identity.
+ * @member {string} [type] The type of identity used for the cluster. The type
+ * 'SystemAssigned, UserAssigned' includes both an implicitly created identity
+ * and a set of user assigned identities. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the cluster. The user identity dictionary key references
+ * will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+ */
+export interface ClusterIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+  userAssignedIdentities?: { [propertyName: string]: ClusterIdentityUserAssignedIdentitiesValue };
 }
 
 /**
@@ -359,17 +408,37 @@ export interface ClusterCreateProperties {
  * admin password.
  * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
  * The Distinguished Names for cluster user groups
+ * @member {string} [properties.securityProfile.aaddsResourceId] The resource
+ * ID of the user's Azure Active Directory Domain Service.
+ * @member {string} [properties.securityProfile.msiResourceId] User assigned
+ * identity that has permissions to read and create cluster-related artifacts
+ * in the user's AADDS.
  * @member {object} [properties.computeProfile] The compute profile.
  * @member {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
  * @member {object} [properties.storageProfile] The storage profile.
  * @member {array} [properties.storageProfile.storageaccounts] The list of
  * storage accounts in the cluster.
+ * @member {object} [identity] The identity of the cluster, if configured.
+ * @member {string} [identity.principalId] The principal id of cluster
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * cluster. This property will only be provided for a system assigned identity.
+ * @member {string} [identity.type] The type of identity used for the cluster.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the cluster. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface ClusterCreateParametersExtended {
   location?: string;
   tags?: { [propertyName: string]: string };
   properties?: ClusterCreateProperties;
+  identity?: ClusterIdentity;
 }
 
 /**
@@ -461,6 +530,11 @@ export interface ConnectivityEndpoint {
  * password.
  * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
  * Distinguished Names for cluster user groups
+ * @member {string} [securityProfile.aaddsResourceId] The resource ID of the
+ * user's Azure Active Directory Domain Service.
+ * @member {string} [securityProfile.msiResourceId] User assigned identity that
+ * has permissions to read and create cluster-related artifacts in the user's
+ * AADDS.
  * @member {object} [computeProfile] The compute profile.
  * @member {array} [computeProfile.roles] The list of roles in the cluster.
  * @member {string} [provisioningState] The provisioning state, which only
@@ -555,6 +629,11 @@ export interface TrackedResource extends Resource {
  * admin password.
  * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
  * The Distinguished Names for cluster user groups
+ * @member {string} [properties.securityProfile.aaddsResourceId] The resource
+ * ID of the user's Azure Active Directory Domain Service.
+ * @member {string} [properties.securityProfile.msiResourceId] User assigned
+ * identity that has permissions to read and create cluster-related artifacts
+ * in the user's AADDS.
  * @member {object} [properties.computeProfile] The compute profile.
  * @member {array} [properties.computeProfile.roles] The list of roles in the
  * cluster.
@@ -570,10 +649,25 @@ export interface TrackedResource extends Resource {
  * @member {array} [properties.errors] The list of errors.
  * @member {array} [properties.connectivityEndpoints] The list of connectivity
  * endpoints.
+ * @member {object} [identity] The identity of the cluster, if configured.
+ * @member {string} [identity.principalId] The principal id of cluster
+ * identity. This property will only be provided for a system assigned
+ * identity.
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * cluster. This property will only be provided for a system assigned identity.
+ * @member {string} [identity.type] The type of identity used for the cluster.
+ * The type 'SystemAssigned, UserAssigned' includes both an implicitly created
+ * identity and a set of user assigned identities. Possible values include:
+ * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the cluster. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface Cluster extends TrackedResource {
   etag?: string;
   properties?: ClusterGetProperties;
+  identity?: ClusterIdentity;
 }
 
 /**

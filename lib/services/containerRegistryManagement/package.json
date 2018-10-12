@@ -2,7 +2,7 @@
   "name": "azure-arm-containerregistry",
   "author": "Microsoft Corporation",
   "description": "ContainerRegistryManagementClient Library with typescript type definitions for node",
-  "version": "2.4.1",
+  "version": "3.2.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/containerRegistryManagementClient.js",
   "types": "./lib/containerRegistryManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/containerRegistryManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/containerRegistryManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
