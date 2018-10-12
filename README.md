@@ -170,7 +170,11 @@ This project is licensed under MIT and Apache-2.0.
 
 ## Contribute
 
-* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Open Source Guidelines](https://opensource.microsoft.com/resources).
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Open Source Guidelines](https://opensource.microsoft.com/resources).
 
 ### Getting Started Developing
 
