@@ -681,7 +681,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -708,7 +708,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1713,7 +1713,7 @@ export interface HybridConnections {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1742,7 +1742,7 @@ export interface HybridConnections {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2565,7 +2565,7 @@ export interface WCFRelays {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2594,7 +2594,7 @@ export interface WCFRelays {
      *
      * @param {object} parameters The authorization rule parameters.
      *
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {array} parameters.rights The rights associated with the rule.
      *
      * @param {object} [options] Optional Parameters.
      *

@@ -189,10 +189,10 @@ export interface RelayUpdateParameters extends ResourceNamespacePatch {
  * @constructor
  * Description of a namespace authorization rule.
  *
- * @member {array} [rights] The rights associated with the rule.
+ * @member {array} rights The rights associated with the rule.
  */
 export interface AuthorizationRule extends Resource {
-  rights?: string[];
+  rights: string[];
 }
 
 /**

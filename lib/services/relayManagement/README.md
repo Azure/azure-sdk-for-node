@@ -1,7 +1,14 @@
-# Microsoft Azure SDK for Node.js - RelayManagement
+---
+uid: azure-arm-relay
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Relay.
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - RelayManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -9,28 +16,24 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-relay
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing namespaces as an example
+### Authentication, client creation and list operations as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const RelayManagement = require("azure-arm-relay");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new RelayManagement(credentials, 'your-subscription-id');
-   return client.namespaces.list();
- }).then((namespaces) => {
-  console.log('List of namespaces:');
-  console.dir(namespaces, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const RelayManagementClient = require("azure-arm-relay");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new RelayManagementClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
