@@ -1574,7 +1574,7 @@ export interface LinuxProperties {
  * @class
  * Initializes a new instance of the TagSettingsProperties class.
  * @constructor
- * Tag filter Information of the VM.
+ * Tag filter information of the VM.
  *
  * @member {object} [tags] dictionary of tags with its list of value
  * @member {string} [filterOperator] Possible values include: 'All', 'Any'
@@ -1590,7 +1590,7 @@ export interface TagSettingsProperties {
  * @constructor
  * Azure query specific to the group of machines for update configuration.
  *
- * @member {array} [scope] List of Subscription or Resource group arm Id.
+ * @member {array} [scope] List of Subscription or Resource Group ARM Id.
  * @member {array} [location] list of locations for the VM filter .
  * @member {object} [tagSettings] tag filter information of the Vm.
  * @member {object} [tagSettings.tags] dictionary of tags with its list of
