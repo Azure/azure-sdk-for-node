@@ -711,9 +711,9 @@ export interface Forecast extends Resource {
  * @member {string} [currency] The ISO currency in which the meter is charged,
  * for example, USD.
  * @member {array} [children] Children of a management group
- * @member {array} [includedSubscriptions] List of subscriptionGuids included
+ * @member {array} [includedSubscriptions] List of subscription Guids included
  * in the calculation of aggregated cost
- * @member {array} [excludedSubscriptions] List of subscriptionGuids excluded
+ * @member {array} [excludedSubscriptions] List of subscription Guids excluded
  * from the calculation of aggregated cost
  */
 export interface ManagementGroupAggregatedCostResult extends Resource {
