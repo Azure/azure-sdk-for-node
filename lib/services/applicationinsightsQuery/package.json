@@ -1,0 +1,37 @@
+{
+  "name": "",
+  "author": "Microsoft Corporation",
+  "description": "ApplicationInsightsDataClient Library with typescript type definitions for node.js and browser.",
+  "version": "",
+  "dependencies": {
+    "ms-rest-azure-js": "~0.12.123"
+  },
+  "keywords": [
+    "node",
+    "azure",
+    "typescript",
+    "browser",
+    "isomorphic"
+  ],
+  "license": "MIT",
+  "main": "./dist/lib/applicationInsightsDataClient.js",
+  "types": "./typings/lib/applicationInsightsDataClient.d.ts",
+  "devDependencies": {
+    "ts-loader": "^4.4.2",
+    "tslib": "^1.9.3",
+    "typescript": "^2.9.2",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "homepage": "https://github.com/azure/azure-sdk-for-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azure/azure-sdk-for-js/issues"
+  },
+  "scripts": {
+    "build": "tsc && webpack"
+  }
+}
