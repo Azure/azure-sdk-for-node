@@ -1592,7 +1592,7 @@ export interface TagSettingsProperties {
  * Azure query for the update configuration.
  *
  * @member {array} [scope] List of Subscription or Resource Group ARM Ids.
- * @member {array} [location] List of locations for the VM.
+ * @member {array} [location] List of locations to scope the query to.
  * @member {object} [tagSettings] Tag settings for the VM.
  * @member {object} [tagSettings.tags] Dictionary of tags with its list of
  * values.
