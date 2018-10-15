@@ -157,10 +157,42 @@ export interface RequiredResourceAccess {
 
 /**
  * @class
+ * Initializes a new instance of the AppRole class.
+ * @constructor
+ * @member {string} [id] Unique role identifier inside the appRoles collection.
+ * @member {array} [allowedMemberTypes] Specifies whether this app role
+ * definition can be assigned to users and groups by setting to 'User', or to
+ * other applications (that are accessing this application in daemon service
+ * scenarios) by setting to 'Application', or to both.
+ * @member {string} [description] Permission help text that appears in the
+ * admin app assignment and consent experiences.
+ * @member {string} [displayName] Display name for the permission that appears
+ * in the admin consent and app assignment experiences.
+ * @member {boolean} [isEnabled] When creating or updating a role definition,
+ * this must be set to true (which is the default). To delete a role, this must
+ * first be set to false. At that point, in a subsequent call, this role may be
+ * removed.
+ * @member {string} [value] Specifies the value of the roles claim that the
+ * application should expect in the authentication and access tokens.
+ */
+export interface AppRole {
+  id?: string;
+  allowedMemberTypes?: string[];
+  description?: string;
+  displayName?: string;
+  isEnabled?: boolean;
+  value?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationCreateParameters class.
  * @constructor
  * Request parameters for creating a new application.
  *
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
  * @member {boolean} availableToOtherTenants Whether the application is
  * available to other tenants.
  * @member {string} displayName The display name of the application.
@@ -178,6 +210,7 @@ export interface RequiredResourceAccess {
  * pre-configuration of required resource access drives the consent experience.
  */
 export interface ApplicationCreateParameters {
+  appRoles?: AppRole[];
   availableToOtherTenants: boolean;
   displayName: string;
   homepage?: string;
@@ -200,6 +233,9 @@ export interface ApplicationCreateParameters {
  * @constructor
  * Request parameters for updating an existing application.
  *
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
  * @member {boolean} [availableToOtherTenants] Whether the application is
  * available to other tenants
  * @member {string} [displayName] The display name of the application.
@@ -217,6 +253,7 @@ export interface ApplicationCreateParameters {
  * pre-configuration of required resource access drives the consent experience.
  */
 export interface ApplicationUpdateParameters {
+  appRoles?: AppRole[];
   availableToOtherTenants?: boolean;
   displayName?: string;
   homepage?: string;
@@ -240,6 +277,9 @@ export interface ApplicationUpdateParameters {
  * Active Directory application information.
  *
  * @member {string} [appId] The application ID.
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
  * @member {array} [appPermissions] The application permissions.
  * @member {boolean} [availableToOtherTenants] Whether the application is be
  * available to other tenants.
@@ -252,6 +292,7 @@ export interface ApplicationUpdateParameters {
  */
 export interface Application extends DirectoryObject {
   appId?: string;
+  appRoles?: AppRole[];
   appPermissions?: string[];
   availableToOtherTenants?: boolean;
   displayName?: string;
@@ -263,7 +304,7 @@ export interface Application extends DirectoryObject {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationAddOwnerParameters class.
+ * Initializes a new instance of the AddOwnerParameters class.
  * @constructor
  * Request parameters for adding a owner to an application.
  *
@@ -273,7 +314,7 @@ export interface Application extends DirectoryObject {
  * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the owner (user,
  * application, servicePrincipal, group) to be added.
  */
-export interface ApplicationAddOwnerParameters {
+export interface AddOwnerParameters {
   url: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -304,63 +345,6 @@ export interface KeyCredentialsUpdateParameters {
  */
 export interface PasswordCredentialsUpdateParameters {
   value: PasswordCredential[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AADObject class.
- * @constructor
- * The properties of an Active Directory object.
- *
- * @member {string} [objectId] The ID of the object.
- * @member {string} [objectType] The type of AAD object.
- * @member {string} [displayName] The display name of the object.
- * @member {string} [userPrincipalName] The principal name of the object.
- * @member {string} [mail] The primary email address of the object.
- * @member {boolean} [mailEnabled] Whether the AAD object is mail-enabled.
- * @member {string} [mailNickname] The mail alias for the user.
- * @member {boolean} [securityEnabled] Whether the AAD object is
- * security-enabled.
- * @member {string} [signInName] The sign-in name of the object.
- * @member {array} [servicePrincipalNames] A collection of service principal
- * names associated with the object.
- * @member {string} [userType] The user type of the object.
- * @member {string} [usageLocation] A two letter country code (ISO standard
- * 3166). Required for users that will be assigned licenses due to legal
- * requirement to check for availability of services in countries. Examples
- * include: "US", "JP", and "GB".
- * @member {string} [appId] The application ID.
- * @member {array} [appPermissions] The application permissions.
- * @member {boolean} [availableToOtherTenants] Whether the application is be
- * available to other tenants.
- * @member {array} [identifierUris] A collection of URIs for the application.
- * @member {array} [replyUrls] A collection of reply URLs for the application.
- * @member {string} [homepage] The home page of the application.
- */
-export interface AADObject {
-  objectId?: string;
-  objectType?: string;
-  displayName?: string;
-  userPrincipalName?: string;
-  mail?: string;
-  mailEnabled?: boolean;
-  readonly mailNickname?: string;
-  securityEnabled?: boolean;
-  signInName?: string;
-  servicePrincipalNames?: string[];
-  userType?: string;
-  readonly usageLocation?: string;
-  readonly appId?: string;
-  readonly appPermissions?: string[];
-  readonly availableToOtherTenants?: boolean;
-  readonly identifierUris?: string[];
-  readonly replyUrls?: string[];
-  readonly homepage?: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
 }
 
 /**
@@ -410,11 +394,17 @@ export interface GroupCreateParameters {
  * Active Directory group information.
  *
  * @member {string} [displayName] The display name of the group.
+ * @member {boolean} [mailEnabled] Whether the group is mail-enabled. Must be
+ * false. This is because only pure security groups can be created using the
+ * Graph API.
+ * @member {string} [mailNickname] The mail alias for the group.
  * @member {boolean} [securityEnabled] Whether the group is security-enable.
  * @member {string} [mail] The primary email address of the group.
  */
 export interface ADGroup extends DirectoryObject {
   displayName?: string;
+  mailEnabled?: boolean;
+  mailNickname?: string;
   securityEnabled?: boolean;
   mail?: string;
 }
@@ -483,17 +473,89 @@ export interface CheckGroupMembershipResult {
  * @constructor
  * Request parameters for creating a new service principal.
  *
+ * @member {boolean} [accountEnabled] Whether the account is enabled
  * @member {string} appId application Id
- * @member {boolean} accountEnabled Whether the account is enabled
+ * @member {boolean} [appRoleAssignmentRequired] Specifies whether an
+ * AppRoleAssignment to a user or group is required before Azure AD will issue
+ * a user or access token to the application.
+ * @member {string} [displayName] The display name for the service principal.
+ * @member {string} [errorUrl]
+ * @member {string} [homepage] The URL to the homepage of the associated
+ * application.
  * @member {array} [keyCredentials] A collection of KeyCredential objects.
  * @member {array} [passwordCredentials] A collection of PasswordCredential
  * objects
+ * @member {string} [publisherName] The display name of the tenant in which the
+ * associated application is specified.
+ * @member {array} [replyUrls] A collection of reply URLs for the service
+ * principal.
+ * @member {string} [samlMetadataUrl]
+ * @member {array} [servicePrincipalNames] A collection of service principal
+ * names.
+ * @member {array} [tags]
  */
 export interface ServicePrincipalCreateParameters {
+  accountEnabled?: boolean;
   appId: string;
-  accountEnabled: boolean;
+  appRoleAssignmentRequired?: boolean;
+  displayName?: string;
+  errorUrl?: string;
+  homepage?: string;
   keyCredentials?: KeyCredential[];
   passwordCredentials?: PasswordCredential[];
+  publisherName?: string;
+  replyUrls?: string[];
+  samlMetadataUrl?: string;
+  servicePrincipalNames?: string[];
+  tags?: string[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServicePrincipalUpdateParameters class.
+ * @constructor
+ * Request parameters for creating a new service principal.
+ *
+ * @member {boolean} [accountEnabled] Whether the account is enabled
+ * @member {string} [appId] application Id
+ * @member {boolean} [appRoleAssignmentRequired] Specifies whether an
+ * AppRoleAssignment to a user or group is required before Azure AD will issue
+ * a user or access token to the application.
+ * @member {string} [displayName] The display name for the service principal.
+ * @member {string} [errorUrl]
+ * @member {string} [homepage] The URL to the homepage of the associated
+ * application.
+ * @member {array} [keyCredentials] A collection of KeyCredential objects.
+ * @member {array} [passwordCredentials] A collection of PasswordCredential
+ * objects
+ * @member {string} [publisherName] The display name of the tenant in which the
+ * associated application is specified.
+ * @member {array} [replyUrls] A collection of reply URLs for the service
+ * principal.
+ * @member {string} [samlMetadataUrl]
+ * @member {array} [servicePrincipalNames] A collection of service principal
+ * names.
+ * @member {array} [tags]
+ */
+export interface ServicePrincipalUpdateParameters {
+  accountEnabled?: boolean;
+  appId?: string;
+  appRoleAssignmentRequired?: boolean;
+  displayName?: string;
+  errorUrl?: string;
+  homepage?: string;
+  keyCredentials?: KeyCredential[];
+  passwordCredentials?: PasswordCredential[];
+  publisherName?: string;
+  replyUrls?: string[];
+  samlMetadataUrl?: string;
+  servicePrincipalNames?: string[];
+  tags?: string[];
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -509,12 +571,16 @@ export interface ServicePrincipalCreateParameters {
  *
  * @member {string} [displayName] The display name of the service principal.
  * @member {string} [appId] The application ID.
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare. These roles can be assigned to users, groups or
+ * service principals.
  * @member {array} [servicePrincipalNames] A collection of service principal
  * names.
  */
 export interface ServicePrincipal extends DirectoryObject {
   displayName?: string;
   appId?: string;
+  appRoles?: AppRole[];
   servicePrincipalNames?: string[];
 }
 
@@ -710,13 +776,13 @@ export interface UserGetMemberGroupsParameters {
  *
  * @member {array} [objectIds] The requested object IDs.
  * @member {array} [types] The requested object types.
- * @member {boolean} includeDirectoryObjectReferences If true, also searches
+ * @member {boolean} [includeDirectoryObjectReferences] If true, also searches
  * for object IDs in the partner tenant.
  */
 export interface GetObjectsParameters {
   objectIds?: string[];
   types?: string[];
-  includeDirectoryObjectReferences: boolean;
+  includeDirectoryObjectReferences?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -778,13 +844,13 @@ export interface Permissions {
 
 /**
  * @class
- * Initializes a new instance of the GetObjectsResult class.
+ * Initializes a new instance of the DirectoryObjectListResult class.
  * @constructor
- * The response to an Active Directory object inquiry API request.
+ * DirectoryObject list operation result.
  *
  * @member {string} [odatanextLink] The URL to get the next set of results.
  */
-export interface GetObjectsResult extends Array<AADObject> {
+export interface DirectoryObjectListResult extends Array<DirectoryObject> {
   odatanextLink?: string;
 }
 
@@ -798,16 +864,6 @@ export interface GetObjectsResult extends Array<AADObject> {
  */
 export interface ApplicationListResult extends Array<Application> {
   odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DirectoryObjectListResult class.
- * @constructor
- * DirectoryObject list operation result.
- *
- */
-export interface DirectoryObjectListResult extends Array<DirectoryObject> {
 }
 
 /**

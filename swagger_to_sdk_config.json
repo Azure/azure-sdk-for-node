@@ -5,7 +5,7 @@
       "nodejs": "",
       "license-header": "MICROSOFT_MIT_NO_VERSION",
       "sdkrel:node-sdks-folder": ".",
-      "use": "@microsoft.azure/autorest.nodejs@2.1.103"
+      "use": "@microsoft.azure/autorest.nodejs@2.1.107"
     },
     "advanced_options": {
       "clone_dir": "./azure-sdk-for-node"
