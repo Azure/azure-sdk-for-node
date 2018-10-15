@@ -4072,7 +4072,7 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * Customer error of an application gateway.
  *
  * @member {string} [statusCode] Status code of the application gateway
- * customer error. Possible values include: '403', '502'
+ * customer error. Possible values include: 'HttpStatus403', 'HttpStatus502'
  * @member {string} [customErrorPageUrl] Error page URL of the application
  * gateway customer error.
  */
@@ -4103,7 +4103,7 @@ export interface ApplicationGatewayCustomError {
  * is https. Enables SNI for multi-hosting.
  * @member {string} [provisioningState] Provisioning state of the HTTP listener
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [customErrorConfiguration] Custom error configurations of
+ * @member {array} [customErrorConfigurations] Custom error configurations of
  * the HTTP listener.
  * @member {string} [name] Name of the HTTP listener that is unique within an
  * Application Gateway.
@@ -4119,7 +4119,7 @@ export interface ApplicationGatewayHttpListener extends SubResource {
   sslCertificate?: SubResource;
   requireServerNameIndication?: boolean;
   provisioningState?: string;
-  customErrorConfiguration?: ApplicationGatewayCustomError[];
+  customErrorConfigurations?: ApplicationGatewayCustomError[];
   name?: string;
   etag?: string;
   type?: string;
@@ -4528,7 +4528,7 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
  * gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {array} [customErrorConfiguration] Custom error configurations of
+ * @member {array} [customErrorConfigurations] Custom error configurations of
  * the application gateway resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
@@ -4558,7 +4558,7 @@ export interface ApplicationGateway extends Resource {
   autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
-  customErrorConfiguration?: ApplicationGatewayCustomError[];
+  customErrorConfigurations?: ApplicationGatewayCustomError[];
   etag?: string;
   zones?: string[];
 }
@@ -5455,6 +5455,13 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * location.
  * @member {number} [serviceProviderProperties.bandwidthInMbps] The
  * BandwidthInMbps.
+ * @member {object} [expressRoutePort] The reference to the ExpressRoutePort
+ * resource when the circuit is provisioned on an ExpressRoutePort resource.
+ * @member {string} [expressRoutePort.id] Resource ID.
+ * @member {number} [bandwidthInGbps] The bandwidth of the circuit when the
+ * circuit is provisioned on an ExpressRoutePort resource.
+ * @member {number} [stag] The identifier of the circuit traffic. Outer tag for
+ * QinQ encapsulation.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -5474,6 +5481,9 @@ export interface ExpressRouteCircuit extends Resource {
   serviceKey?: string;
   serviceProviderNotes?: string;
   serviceProviderProperties?: ExpressRouteCircuitServiceProviderProperties;
+  expressRoutePort?: SubResource;
+  bandwidthInGbps?: number;
+  readonly stag?: number;
   provisioningState?: string;
   gatewayManagerEtag?: string;
   allowGlobalReach?: boolean;
@@ -5950,6 +5960,130 @@ export interface ExpressRouteGatewayList {
  */
 export interface ExpressRouteConnectionList {
   value?: ExpressRouteConnection[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortsLocationBandwidths class.
+ * @constructor
+ * @summary ExpressRoutePorts Location Bandwidths
+ *
+ * Real-time inventory of available ExpressRoute port bandwidths.
+ *
+ * @member {string} [offerName] Bandwidth descriptive name
+ * @member {number} [valueInGbps] Bandwidth value in Gbps
+ */
+export interface ExpressRoutePortsLocationBandwidths {
+  readonly offerName?: string;
+  readonly valueInGbps?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortsLocation class.
+ * @constructor
+ * @summary ExpressRoutePorts Peering Location
+ *
+ * Definition of the ExpressRoutePorts peering location resource.
+ *
+ * @member {string} [address] Address of peering location.
+ * @member {string} [contact] Contact details of peering locations.
+ * @member {array} [availableBandwidths] The inventory of available
+ * ExpressRoutePort bandwidths.
+ * @member {string} [provisioningState] The provisioning state of the
+ * ExpressRoutePortLocation resource. Possible values are: 'Succeeded',
+ * 'Updating', 'Deleting', and 'Failed'.
+ */
+export interface ExpressRoutePortsLocation extends Resource {
+  readonly address?: string;
+  readonly contact?: string;
+  availableBandwidths?: ExpressRoutePortsLocationBandwidths[];
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteLink class.
+ * @constructor
+ * @summary ExpressRouteLink
+ *
+ * ExpressRouteLink child resource definition.
+ *
+ * @member {string} [routerName] Name of Azure router associated with physical
+ * port.
+ * @member {string} [interfaceName] Name of Azure router interface.
+ * @member {string} [patchPanelId] Mapping between physical port to patch panel
+ * port.
+ * @member {string} [rackId] Mapping of physical patch panel to rack.
+ * @member {string} [connectorType] Physical fiber port type. Possible values
+ * include: 'LC', 'SC'
+ * @member {string} [adminState] Administrative state of the physical port.
+ * Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [provisioningState] The provisioning state of the
+ * ExpressRouteLink resource. Possible values are: 'Succeeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [name] Name of child port resource that is unique among
+ * child port resources of the parent.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteLink extends SubResource {
+  readonly routerName?: string;
+  readonly interfaceName?: string;
+  readonly patchPanelId?: string;
+  readonly rackId?: string;
+  readonly connectorType?: string;
+  adminState?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePort class.
+ * @constructor
+ * @summary ExpressRoute Port
+ *
+ * ExpressRoutePort resource definition.
+ *
+ * @member {string} [peeringLocation] The name of the peering location that the
+ * ExpressRoutePort is mapped to physically.
+ * @member {number} [bandwidthInGbps] Bandwidth of procured ports in Gbps
+ * @member {number} [provisionedBandwidthInGbps] Aggregate Gbps of associated
+ * circuit bandwidths.
+ * @member {string} [mtu] Maximum transmission unit of the physical port
+ * pair(s)
+ * @member {string} [encapsulation] Encapsulation method on physical ports.
+ * Possible values include: 'Dot1Q', 'QinQ'
+ * @member {string} [etherType] Ethertype of the physical port.
+ * @member {string} [allocationDate] Date of the physical port allocation to be
+ * used in Letter of Authorization.
+ * @member {array} [links] ExpressRouteLink Sub-Resources. The set of physical
+ * links of the ExpressRoutePort resource
+ * @member {array} [circuits] Reference the ExpressRoute circuit(s) that are
+ * provisioned on this ExpressRoutePort resource.
+ * @member {string} [provisioningState] The provisioning state of the
+ * ExpressRoutePort resource. Possible values are: 'Succeeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [resourceGuid] The resource GUID property of the
+ * ExpressRoutePort resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRoutePort extends Resource {
+  peeringLocation?: string;
+  bandwidthInGbps?: number;
+  readonly provisionedBandwidthInGbps?: number;
+  readonly mtu?: string;
+  encapsulation?: string;
+  readonly etherType?: string;
+  readonly allocationDate?: string;
+  links?: ExpressRouteLink[];
+  readonly circuits?: SubResource[];
+  readonly provisioningState?: string;
+  resourceGuid?: string;
+  readonly etag?: string;
 }
 
 /**
@@ -10095,6 +10229,48 @@ export interface ExpressRouteCrossConnectionListResult extends Array<ExpressRout
  */
 export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRouteCrossConnectionPeering> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortsLocationListResult class.
+ * @constructor
+ * @summary ExpressRoutePorts Location List Result
+ *
+ * Response for ListExpressRoutePortsLocations API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRoutePortsLocationListResult extends Array<ExpressRoutePortsLocation> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRoutePortListResult class.
+ * @constructor
+ * @summary ExpressRoute Port List Result
+ *
+ * Response for ListExpressRoutePorts API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRoutePortListResult extends Array<ExpressRoutePort> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteLinkListResult class.
+ * @constructor
+ * @summary ExpressRouteLink List Result
+ *
+ * Response for ListExpressRouteLinks API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteLinkListResult extends Array<ExpressRouteLink> {
+  nextLink?: string;
 }
 
 /**
