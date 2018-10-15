@@ -38,6 +38,238 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the PurchasePlan class.
+ * @constructor
+ * Used for establishing the purchase context of any 3rd Party artifact through
+ * MarketPlace.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [promotionCode] The promotion code.
+ * @member {string} [publisher] The plan ID.
+ */
+export interface PurchasePlan {
+  name?: string;
+  product?: string;
+  promotionCode?: string;
+  publisher?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftRouterProfile class.
+ * @constructor
+ * Represents an OpenShift router
+ *
+ * @member {string} [name] Name of the router profile.
+ * @member {string} [publicSubdomain] DNS subdomain for openshift router.
+ * @member {string} [fqdn] Auto-allocated FQDN for the OpenShift router.
+ */
+export interface OpenShiftRouterProfile {
+  name?: string;
+  publicSubdomain?: string;
+  readonly fqdn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkProfile class.
+ * @constructor
+ * Represents the OpenShift networking configuration
+ *
+ * @member {string} [vnetCidr] CIDR for the OpenShift Vnet. Default value:
+ * '10.0.0.0/8' .
+ * @member {string} [peerVnetId] CIDR of the Vnet to peer.
+ */
+export interface NetworkProfile {
+  vnetCidr?: string;
+  peerVnetId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterMasterPoolProfile class.
+ * @constructor
+ * OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift
+ * master VMs.
+ *
+ * @member {string} [name] Unique name of the master pool profile in the
+ * context of the subscription and resource group.
+ * @member {number} count Number of masters (VMs) to host docker containers.
+ * The default value is 3. Default value: 3 .
+ * @member {string} vmSize Size of agent VMs. Possible values include:
+ * 'Standard_D2s_v3', 'Standard_D4s_v3'
+ * @member {string} [subnetCidr] Subnet CIDR for the peering.
+ * @member {string} [osType] OsType to be used to specify os type. Choose from
+ * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * 'Windows'. Default value: 'Linux' .
+ */
+export interface OpenShiftManagedClusterMasterPoolProfile {
+  name?: string;
+  count: number;
+  vmSize: string;
+  subnetCidr?: string;
+  osType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAgentPoolProfile class.
+ * @constructor
+ * Defines the configuration of the OpenShift cluster VMs.
+ *
+ * @member {string} name Unique name of the pool profile in the context of the
+ * subscription and resource group.
+ * @member {number} count Number of agents (VMs) to host docker containers.
+ * Allowed values must be in the range of 1 to 5 (inclusive). The default value
+ * is 2. . Default value: 2 .
+ * @member {string} vmSize Size of agent VMs. Possible values include:
+ * 'Standard_D2s_v3', 'Standard_D4s_v3'
+ * @member {string} [subnetCidr] Subnet CIDR for the peering. Default value:
+ * '10.0.0.0/24' .
+ * @member {string} [osType] OsType to be used to specify os type. Choose from
+ * Linux and Windows. Default to Linux. Possible values include: 'Linux',
+ * 'Windows'. Default value: 'Linux' .
+ * @member {string} [role] Define the role of the AgentPoolProfile. Possible
+ * values include: 'compute', 'infra'
+ */
+export interface OpenShiftManagedClusterAgentPoolProfile {
+  name: string;
+  count: number;
+  vmSize: string;
+  subnetCidr?: string;
+  osType?: string;
+  role?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterBaseIdentityProvider class.
+ * @constructor
+ * Structure for any Identity provider.
+ *
+ * @member {string} kind Polymorphic Discriminator
+ */
+export interface OpenShiftManagedClusterBaseIdentityProvider {
+  kind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterIdentityProvider class.
+ * @constructor
+ * Defines the configuration of the identity providers to be used in the
+ * OpenShift cluster.
+ *
+ * @member {string} [name] Name of the provider.
+ * @member {object} [provider] Configuration of the provider.
+ * @member {string} [provider.kind] Polymorphic Discriminator
+ */
+export interface OpenShiftManagedClusterIdentityProvider {
+  name?: string;
+  provider?: OpenShiftManagedClusterBaseIdentityProvider;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAuthProfile class.
+ * @constructor
+ * Defines all possible authentication profiles for the OpenShift cluster.
+ *
+ * @member {array} [identityProviders] Type of authentication profile to use.
+ */
+export interface OpenShiftManagedClusterAuthProfile {
+  identityProviders?: OpenShiftManagedClusterIdentityProvider[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedCluster class.
+ * @constructor
+ * OpenShift Managed cluster.
+ *
+ * @member {object} [plan] Define the resource plan as required by ARM for
+ * billing purposes
+ * @member {string} [plan.name] The plan ID.
+ * @member {string} [plan.product] Specifies the product of the image from the
+ * marketplace. This is the same value as Offer under the imageReference
+ * element.
+ * @member {string} [plan.promotionCode] The promotion code.
+ * @member {string} [plan.publisher] The plan ID.
+ * @member {string} [provisioningState] The current deployment or provisioning
+ * state, which only appears in the response.
+ * @member {string} openShiftVersion Version of OpenShift specified when
+ * creating the cluster.
+ * @member {string} [publicHostname] Optional user-specified FQDN for OpenShift
+ * API server.
+ * @member {string} [fqdn] User-specified FQDN for OpenShift API server
+ * loadbalancer internal hostname.
+ * @member {object} [networkProfile] Configuration for OpenShift networking.
+ * @member {string} [networkProfile.vnetCidr] CIDR for the OpenShift Vnet.
+ * @member {string} [networkProfile.peerVnetId] CIDR of the Vnet to peer.
+ * @member {array} [routerProfiles] Configuration for OpenShift router(s).
+ * @member {object} [masterPoolProfile] Configuration for OpenShift master VMs.
+ * @member {string} [masterPoolProfile.name] Unique name of the master pool
+ * profile in the context of the subscription and resource group.
+ * @member {number} [masterPoolProfile.count] Number of masters (VMs) to host
+ * docker containers. The default value is 3.
+ * @member {string} [masterPoolProfile.vmSize] Size of agent VMs. Possible
+ * values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+ * @member {string} [masterPoolProfile.subnetCidr] Subnet CIDR for the peering.
+ * @member {string} [masterPoolProfile.osType] OsType to be used to specify os
+ * type. Choose from Linux and Windows. Default to Linux. Possible values
+ * include: 'Linux', 'Windows'
+ * @member {array} [agentPoolProfiles] Configuration of OpenShift cluster VMs.
+ * @member {object} [authProfile] Configures OpenShift authentication.
+ * @member {array} [authProfile.identityProviders] Type of authentication
+ * profile to use.
+ */
+export interface OpenShiftManagedCluster extends Resource {
+  plan?: PurchasePlan;
+  readonly provisioningState?: string;
+  openShiftVersion: string;
+  publicHostname?: string;
+  fqdn?: string;
+  networkProfile?: NetworkProfile;
+  routerProfiles?: OpenShiftRouterProfile[];
+  masterPoolProfile?: OpenShiftManagedClusterMasterPoolProfile;
+  agentPoolProfiles?: OpenShiftManagedClusterAgentPoolProfile[];
+  authProfile?: OpenShiftManagedClusterAuthProfile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OpenShiftManagedClusterAADIdentityProvider class.
+ * @constructor
+ * Defines the Identity provider for MS AAD.
+ *
+ * @member {string} [clientId] The clientId password associated with the
+ * provider.
+ * @member {string} [secret] The secret password associated with the provider.
+ * @member {string} [tenantId] The tenantId associated with the provider.
+ */
+export interface OpenShiftManagedClusterAADIdentityProvider extends OpenShiftManagedClusterBaseIdentityProvider {
+  clientId?: string;
+  secret?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagsObject class.
+ * @constructor
+ * Tags object for patch operations.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface TagsObject {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerServiceCustomProfile class.
  * @constructor
  * Properties to configure a custom container service cluster.
@@ -539,18 +771,6 @@ export interface OperationValue {
   readonly resource?: string;
   readonly description?: string;
   readonly provider?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TagsObject class.
- * @constructor
- * Tags object for patch operations.
- *
- * @member {object} [tags] Resource tags.
- */
-export interface TagsObject {
-  tags?: { [propertyName: string]: string };
 }
 
 /**
