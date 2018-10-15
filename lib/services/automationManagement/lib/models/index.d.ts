@@ -1576,7 +1576,7 @@ export interface LinuxProperties {
  * @constructor
  * Tag filter information for the VM.
  *
- * @member {object} [tags] Dictionary of tags with its list of values
+ * @member {object} [tags] Dictionary of tags with its list of values.
  * @member {string} [filterOperator] Filter VMs by Any or All specified tags.
  * Possible values include: 'All', 'Any'
  */
@@ -1595,7 +1595,7 @@ export interface TagSettingsProperties {
  * @member {array} [location] List of locations for the VM.
  * @member {object} [tagSettings] Tag settings for the VM.
  * @member {object} [tagSettings.tags] Dictionary of tags with its list of
- * values
+ * values.
  * @member {string} [tagSettings.filterOperator] Filter VMs by Any or All
  * specified tags. Possible values include: 'All', 'Any'
  */
@@ -1611,7 +1611,7 @@ export interface AzureQueryProperties {
  * @constructor
  * Group specific to the update configuration.
  *
- * @member {array} [azureQueries] List of Azure queries in software update
+ * @member {array} [azureQueries] List of Azure queries in the software update
  * configuration.
  */
 export interface TargetProperties {
@@ -1655,9 +1655,9 @@ export interface TargetProperties {
  * virtual machines targeted by the software update configuration.
  * @member {array} [nonAzureComputerNames] List of names of non-azure machines
  * targeted by the software update configuration.
- * @member {object} [targets] Group information that will be patched during run
- * time.
- * @member {array} [targets.azureQueries] List of Azure queries in software
+ * @member {object} [targets] Group targets for the software update
+ * configuration.
+ * @member {array} [targets.azureQueries] List of Azure queries in the software
  * update configuration.
  */
 export interface UpdateConfiguration {
@@ -1715,10 +1715,10 @@ export interface UpdateConfiguration {
  * configuration.
  * @member {array} [updateConfiguration.nonAzureComputerNames] List of names of
  * non-azure machines targeted by the software update configuration.
- * @member {object} [updateConfiguration.targets] Group information that will
- * be patched during run time.
+ * @member {object} [updateConfiguration.targets] Group targets for the
+ * software update configuration.
  * @member {array} [updateConfiguration.targets.azureQueries] List of Azure
- * queries in software update configuration.
+ * queries in the software update configuration.
  * @member {object} scheduleInfo Schedule information for the Software update
  * configuration
  * @member {date} [scheduleInfo.startTime] Gets or sets the start time of the
