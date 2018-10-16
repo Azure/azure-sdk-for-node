@@ -179,12 +179,12 @@ export interface Operation {
  *
  * @member {string} name The name of the IoT Central application instance to
  * check.
- * @member {string} type The type of the IoT Central resource to query. Default
- * value: 'IoTApps' .
+ * @member {string} [type] The type of the IoT Central resource to query.
+ * Possible values include: 'IoTApps'. Default value: 'IoTApps' .
  */
 export interface OperationInputs {
   name: string;
-  type: string;
+  type?: string;
 }
 
 /**
