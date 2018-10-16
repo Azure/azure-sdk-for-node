@@ -39,7 +39,7 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get a list of the available domains
+   * @summary Get a list of the available domains.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -55,7 +55,7 @@ export default class TrainingAPIClient extends ServiceClient {
   getDomainsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Domain[]>>;
 
   /**
-   * @summary Get a list of the available domains
+   * @summary Get a list of the available domains.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -89,9 +89,9 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get information about a specific domain
+   * @summary Get information about a specific domain.
    *
-   * @param {uuid} domainId The id of the domain to get information about
+   * @param {uuid} domainId The id of the domain to get information about.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -107,9 +107,9 @@ export default class TrainingAPIClient extends ServiceClient {
   getDomainWithHttpOperationResponse(domainId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Domain>>;
 
   /**
-   * @summary Get information about a specific domain
+   * @summary Get information about a specific domain.
    *
-   * @param {uuid} domainId The id of the domain to get information about
+   * @param {uuid} domainId The id of the domain to get information about.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -144,17 +144,17 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Gets the number of images tagged with the provided {tagIds}
+   * @summary Gets the number of images tagged with the provided {tagIds}.
    *
    * The filtering is on an and/or relationship. For example, if the provided tag
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {array} [options.tagIds] A list of tags ids to filter the images to
    * count. Defaults to all tags when null.
@@ -171,17 +171,17 @@ export default class TrainingAPIClient extends ServiceClient {
   getTaggedImageCountWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
   /**
-   * @summary Gets the number of images tagged with the provided {tagIds}
+   * @summary Gets the number of images tagged with the provided {tagIds}.
    *
    * The filtering is on an and/or relationship. For example, if the provided tag
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {array} [options.tagIds] A list of tags ids to filter the images to
    * count. Defaults to all tags when null.
@@ -216,17 +216,17 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Gets the number of untagged images
+   * @summary Gets the number of untagged images.
    *
    * This API returns the images which have no tags for a given project and
    * optionally an iteration. If no iteration is specified the
    * current workspace is used.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -240,17 +240,17 @@ export default class TrainingAPIClient extends ServiceClient {
   getUntaggedImageCountWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<number>>;
 
   /**
-   * @summary Gets the number of untagged images
+   * @summary Gets the number of untagged images.
    *
    * This API returns the images which have no tags for a given project and
    * optionally an iteration. If no iteration is specified the
    * current workspace is used.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -282,13 +282,13 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Associate a set of images with a set of tags
+   * @summary Associate a set of images with a set of tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} batch Batch of image tags. Limited to 128 tags per batch
+   * @param {object} batch Batch of image tags. Limited to 128 tags per batch.
    *
-   * @param {array} [batch.tags]
+   * @param {array} [batch.tags] Image Tag entries to include in this batch.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -304,13 +304,13 @@ export default class TrainingAPIClient extends ServiceClient {
   createImageTagsWithHttpOperationResponse(projectId: string, batch: models.ImageTagCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageTagCreateSummary>>;
 
   /**
-   * @summary Associate a set of images with a set of tags
+   * @summary Associate a set of images with a set of tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} batch Batch of image tags. Limited to 128 tags per batch
+   * @param {object} batch Batch of image tags. Limited to 128 tags per batch.
    *
-   * @param {array} [batch.tags]
+   * @param {array} [batch.tags] Image Tag entries to include in this batch.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -345,14 +345,14 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Remove a set of tags from a set of images
+   * @summary Remove a set of tags from a set of images.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {array} imageIds Image ids. Limited to 64 images
+   * @param {array} imageIds Image ids. Limited to 64 images.
    *
    * @param {array} tagIds Tags to be deleted from the specified images. Limted
-   * to 20 tags
+   * to 20 tags.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -368,14 +368,14 @@ export default class TrainingAPIClient extends ServiceClient {
   deleteImageTagsWithHttpOperationResponse(projectId: string, imageIds: string[], tagIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Remove a set of tags from a set of images
+   * @summary Remove a set of tags from a set of images.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {array} imageIds Image ids. Limited to 64 images
+   * @param {array} imageIds Image ids. Limited to 64 images.
    *
    * @param {array} tagIds Tags to be deleted from the specified images. Limted
-   * to 20 tags
+   * to 20 tags.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -409,16 +409,16 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Create a set of image regions
+   * @summary Create a set of image regions.
    *
    * This API accepts a batch of image regions, and optionally tags, to update
    * existing images with region information.
    * There is a limit of 64 entries in the batch.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch Batch of image regions which include a tag and
-   * bounding box. Limited to 64
+   * bounding box. Limited to 64.
    *
    * @param {array} [batch.regions]
    *
@@ -436,16 +436,16 @@ export default class TrainingAPIClient extends ServiceClient {
   createImageRegionsWithHttpOperationResponse(projectId: string, batch: models.ImageRegionCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageRegionCreateSummary>>;
 
   /**
-   * @summary Create a set of image regions
+   * @summary Create a set of image regions.
    *
    * This API accepts a batch of image regions, and optionally tags, to update
    * existing images with region information.
    * There is a limit of 64 entries in the batch.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch Batch of image regions which include a tag and
-   * bounding box. Limited to 64
+   * bounding box. Limited to 64.
    *
    * @param {array} [batch.regions]
    *
@@ -483,11 +483,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Delete a set of image regions
+   * @summary Delete a set of image regions.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {array} regionIds Regions to delete. Limited to 64
+   * @param {array} regionIds Regions to delete. Limited to 64.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -503,11 +503,11 @@ export default class TrainingAPIClient extends ServiceClient {
   deleteImageRegionsWithHttpOperationResponse(projectId: string, regionIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Delete a set of image regions
+   * @summary Delete a set of image regions.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {array} regionIds Regions to delete. Limited to 64
+   * @param {array} regionIds Regions to delete. Limited to 64.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -541,7 +541,7 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get tagged images for a given project iteration
+   * @summary Get tagged images for a given project iteration.
    *
    * This API supports batching and range selection. By default it will only
    * return first 50 images matching images.
@@ -551,23 +551,23 @@ export default class TrainingAPIClient extends ServiceClient {
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {array} [options.tagIds] A list of tags ids to filter the images.
-   * Defaults to all tagged images when null. Limited to 20
+   * Defaults to all tagged images when null. Limited to 20.
    *
    * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
    * values include: 'Newest', 'Oldest'
    *
    * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
+   * to 50, limited to 256.
    *
    * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
+   * image batch. Defaults to 0.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -581,7 +581,7 @@ export default class TrainingAPIClient extends ServiceClient {
   getTaggedImagesWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image[]>>;
 
   /**
-   * @summary Get tagged images for a given project iteration
+   * @summary Get tagged images for a given project iteration.
    *
    * This API supports batching and range selection. By default it will only
    * return first 50 images matching images.
@@ -591,23 +591,23 @@ export default class TrainingAPIClient extends ServiceClient {
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {array} [options.tagIds] A list of tags ids to filter the images.
-   * Defaults to all tagged images when null. Limited to 20
+   * Defaults to all tagged images when null. Limited to 20.
    *
    * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
    * values include: 'Newest', 'Oldest'
    *
    * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
+   * to 50, limited to 256.
    *
    * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
+   * image batch. Defaults to 0.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -639,27 +639,27 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get untagged images for a given project iteration
+   * @summary Get untagged images for a given project iteration.
    *
    * This API supports batching and range selection. By default it will only
    * return first 50 images matching images.
    * Use the {take} and {skip} parameters to control how many images to return in
    * a given batch.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
    * values include: 'Newest', 'Oldest'
    *
    * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
+   * to 50, limited to 256.
    *
    * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
+   * image batch. Defaults to 0.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -673,27 +673,27 @@ export default class TrainingAPIClient extends ServiceClient {
   getUntaggedImagesWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image[]>>;
 
   /**
-   * @summary Get untagged images for a given project iteration
+   * @summary Get untagged images for a given project iteration.
    *
    * This API supports batching and range selection. By default it will only
    * return first 50 images matching images.
    * Use the {take} and {skip} parameters to control how many images to return in
    * a given batch.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
    * values include: 'Newest', 'Oldest'
    *
    * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
+   * to 50, limited to 256.
    *
    * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
+   * image batch. Defaults to 0.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -725,20 +725,20 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get images by id for a given project iteration
+   * @summary Get images by id for a given project iteration.
    *
    * This API will return a set of Images for the specified tags and optionally
    * iteration. If no iteration is specified the
    * current workspace is used.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.imageIds] The list of image ids to retrieve. Limited
-   * to 256
+   * to 256.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -752,20 +752,20 @@ export default class TrainingAPIClient extends ServiceClient {
   getImagesByIdsWithHttpOperationResponse(projectId: string, options?: { imageIds? : string[], iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image[]>>;
 
   /**
-   * @summary Get images by id for a given project iteration
+   * @summary Get images by id for a given project iteration.
    *
    * This API will return a set of Images for the specified tags and optionally
    * iteration. If no iteration is specified the
    * current workspace is used.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.imageIds] The list of image ids to retrieve. Limited
-   * to 256
+   * to 256.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -797,20 +797,20 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Add the provided images to the set of training images
+   * @summary Add the provided images to the set of training images.
    *
    * This API accepts body content as multipart/form-data and
    * application/octet-stream. When using multipart
    * multiple image files can be sent at once, with a maximum of 64 files
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {object} imageData Binary image data.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.tagIds] The tags ids with which to tag each image.
-   * Limited to 20
+   * Limited to 20.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -824,20 +824,20 @@ export default class TrainingAPIClient extends ServiceClient {
   createImagesFromDataWithHttpOperationResponse(projectId: string, imageData: stream.Readable, options?: { tagIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageCreateSummary>>;
 
   /**
-   * @summary Add the provided images to the set of training images
+   * @summary Add the provided images to the set of training images.
    *
    * This API accepts body content as multipart/form-data and
    * application/octet-stream. When using multipart
    * multiple image files can be sent at once, with a maximum of 64 files
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {object} imageData Binary image data.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.tagIds] The tags ids with which to tag each image.
-   * Limited to 20
+   * Limited to 20.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -870,12 +870,12 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Delete images from the set of training images
+   * @summary Delete images from the set of training images.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {array} imageIds Ids of the images to be deleted. Limted to 256
-   * images per batch
+   * images per batch.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -891,12 +891,12 @@ export default class TrainingAPIClient extends ServiceClient {
   deleteImagesWithHttpOperationResponse(projectId: string, imageIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Delete images from the set of training images
+   * @summary Delete images from the set of training images.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {array} imageIds Ids of the images to be deleted. Limted to 256
-   * images per batch
+   * images per batch.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -930,15 +930,15 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Add the provided batch of images to the set of training images
+   * @summary Add the provided batch of images to the set of training images.
    *
    * This API accepts a batch of files, and optionally tags, to create images.
    * There is a limit of 64 images and 20 tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch The batch of image files to add. Limited to 64 images
-   * and 20 tags per batch
+   * and 20 tags per batch.
    *
    * @param {array} [batch.images]
    *
@@ -958,15 +958,15 @@ export default class TrainingAPIClient extends ServiceClient {
   createImagesFromFilesWithHttpOperationResponse(projectId: string, batch: models.ImageFileCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageCreateSummary>>;
 
   /**
-   * @summary Add the provided batch of images to the set of training images
+   * @summary Add the provided batch of images to the set of training images.
    *
    * This API accepts a batch of files, and optionally tags, to create images.
    * There is a limit of 64 images and 20 tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch The batch of image files to add. Limited to 64 images
-   * and 20 tags per batch
+   * and 20 tags per batch.
    *
    * @param {array} [batch.images]
    *
@@ -1005,15 +1005,15 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Add the provided images urls to the set of training images
+   * @summary Add the provided images urls to the set of training images.
    *
    * This API accepts a batch of urls, and optionally tags, to create images.
    * There is a limit of 64 images and 20 tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch Image urls and tag ids. Limited to 64 images and 20
-   * tags per batch
+   * tags per batch.
    *
    * @param {array} [batch.images]
    *
@@ -1033,15 +1033,15 @@ export default class TrainingAPIClient extends ServiceClient {
   createImagesFromUrlsWithHttpOperationResponse(projectId: string, batch: models.ImageUrlCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageCreateSummary>>;
 
   /**
-   * @summary Add the provided images urls to the set of training images
+   * @summary Add the provided images urls to the set of training images.
    *
    * This API accepts a batch of urls, and optionally tags, to create images.
    * There is a limit of 64 images and 20 tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch Image urls and tag ids. Limited to 64 images and 20
-   * tags per batch
+   * tags per batch.
    *
    * @param {array} [batch.images]
    *
@@ -1080,15 +1080,15 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Add the specified predicted images to the set of training images
+   * @summary Add the specified predicted images to the set of training images.
    *
    * This API creates a batch of images from predicted images specified. There is
    * a limit of 64 images and 20 tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch Image and tag ids. Limted to 64 images and 20 tags per
-   * batch
+   * batch.
    *
    * @param {array} [batch.images]
    *
@@ -1108,15 +1108,15 @@ export default class TrainingAPIClient extends ServiceClient {
   createImagesFromPredictionsWithHttpOperationResponse(projectId: string, batch: models.ImageIdCreateBatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageCreateSummary>>;
 
   /**
-   * @summary Add the specified predicted images to the set of training images
+   * @summary Add the specified predicted images to the set of training images.
    *
    * This API creates a batch of images from predicted images specified. There is
    * a limit of 64 images and 20 tags.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} batch Image and tag ids. Limted to 64 images and 20 tags per
-   * batch
+   * batch.
    *
    * @param {array} [batch.images]
    *
@@ -1161,9 +1161,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * This API will get region proposals for an image along with confidences for
    * the region. It returns an empty array if no proposals are found.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} imageId The image id
+   * @param {uuid} imageId The image id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1185,9 +1185,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * This API will get region proposals for an image along with confidences for
    * the region. It returns an empty array if no proposals are found.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} imageId The image id
+   * @param {uuid} imageId The image id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1223,11 +1223,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
   /**
    * @summary Delete a set of predicted images and their associated prediction
-   * results
+   * results.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {array} ids The prediction ids. Limited to 64
+   * @param {array} ids The prediction ids. Limited to 64.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1244,11 +1244,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
   /**
    * @summary Delete a set of predicted images and their associated prediction
-   * results
+   * results.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {array} ids The prediction ids. Limited to 64
+   * @param {array} ids The prediction ids. Limited to 64.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1282,12 +1282,12 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Quick test an image url
+   * @summary Quick test an image url.
    *
-   * @param {uuid} projectId The project to evaluate against
+   * @param {uuid} projectId The project to evaluate against.
    *
    * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
-   * url of the image to be evaluated
+   * url of the image to be evaluated.
    *
    * @param {string} [imageUrl.url]
    *
@@ -1309,12 +1309,12 @@ export default class TrainingAPIClient extends ServiceClient {
   quickTestImageUrlWithHttpOperationResponse(projectId: string, imageUrl: models.ImageUrl, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
 
   /**
-   * @summary Quick test an image url
+   * @summary Quick test an image url.
    *
-   * @param {uuid} projectId The project to evaluate against
+   * @param {uuid} projectId The project to evaluate against.
    *
    * @param {object} imageUrl An {Iris.Web.Api.Models.ImageUrl} that contains the
-   * url of the image to be evaluated
+   * url of the image to be evaluated.
    *
    * @param {string} [imageUrl.url]
    *
@@ -1355,11 +1355,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Quick test an image
+   * @summary Quick test an image.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {object} imageData Binary image data.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1379,11 +1379,11 @@ export default class TrainingAPIClient extends ServiceClient {
   quickTestImageWithHttpOperationResponse(projectId: string, imageData: stream.Readable, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePrediction>>;
 
   /**
-   * @summary Quick test an image
+   * @summary Quick test an image.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {object} imageData
+   * @param {object} imageData Binary image data.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1422,12 +1422,12 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get images that were sent to your prediction endpoint
+   * @summary Get images that were sent to your prediction endpoint.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} query Parameters used to query the predictions. Limited to
-   * combining 2 tags
+   * combining 2 tags.
    *
    * @param {string} [query.session]
    *
@@ -1462,12 +1462,12 @@ export default class TrainingAPIClient extends ServiceClient {
   queryPredictionsWithHttpOperationResponse(projectId: string, query: models.PredictionQueryToken, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PredictionQueryResult>>;
 
   /**
-   * @summary Get images that were sent to your prediction endpoint
+   * @summary Get images that were sent to your prediction endpoint.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} query Parameters used to query the predictions. Limited to
-   * combining 2 tags
+   * combining 2 tags.
    *
    * @param {string} [query.session]
    *
@@ -1521,19 +1521,19 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get detailed performance information about an iteration
+   * @summary Get detailed performance information about an iteration.
    *
-   * @param {uuid} projectId The id of the project the iteration belongs to
+   * @param {uuid} projectId The id of the project the iteration belongs to.
    *
-   * @param {uuid} iterationId The id of the iteration to get
+   * @param {uuid} iterationId The id of the iteration to get.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.threshold] The threshold used to determine true
-   * predictions
+   * predictions.
    *
    * @param {number} [options.overlapThreshold] If applicable, the bounding box
-   * overlap threshold used to determine true predictions
+   * overlap threshold used to determine true predictions.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1547,19 +1547,19 @@ export default class TrainingAPIClient extends ServiceClient {
   getIterationPerformanceWithHttpOperationResponse(projectId: string, iterationId: string, options?: { threshold? : number, overlapThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IterationPerformance>>;
 
   /**
-   * @summary Get detailed performance information about an iteration
+   * @summary Get detailed performance information about an iteration.
    *
-   * @param {uuid} projectId The id of the project the iteration belongs to
+   * @param {uuid} projectId The id of the project the iteration belongs to.
    *
-   * @param {uuid} iterationId The id of the iteration to get
+   * @param {uuid} iterationId The id of the iteration to get.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.threshold] The threshold used to determine true
-   * predictions
+   * predictions.
    *
    * @param {number} [options.overlapThreshold] If applicable, the bounding box
-   * overlap threshold used to determine true predictions
+   * overlap threshold used to determine true predictions.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1592,7 +1592,7 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get image with its prediction for a given project iteration
+   * @summary Get image with its prediction for a given project iteration.
    *
    * This API supports batching and range selection. By default it will only
    * return first 50 images matching images.
@@ -1602,23 +1602,23 @@ export default class TrainingAPIClient extends ServiceClient {
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   * @param {uuid} iterationId The iteration id. Defaults to workspace.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.tagIds] A list of tags ids to filter the images.
-   * Defaults to all tagged images when null. Limited to 20
+   * Defaults to all tagged images when null. Limited to 20.
    *
    * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
    * values include: 'Newest', 'Oldest'
    *
    * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
+   * to 50, limited to 256.
    *
    * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
+   * image batch. Defaults to 0.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1632,7 +1632,7 @@ export default class TrainingAPIClient extends ServiceClient {
   getImagePerformancesWithHttpOperationResponse(projectId: string, iterationId: string, options?: { tagIds? : string[], orderBy? : string, take? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImagePerformance[]>>;
 
   /**
-   * @summary Get image with its prediction for a given project iteration
+   * @summary Get image with its prediction for a given project iteration.
    *
    * This API supports batching and range selection. By default it will only
    * return first 50 images matching images.
@@ -1642,23 +1642,23 @@ export default class TrainingAPIClient extends ServiceClient {
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   * @param {uuid} iterationId The iteration id. Defaults to workspace.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {array} [options.tagIds] A list of tags ids to filter the images.
-   * Defaults to all tagged images when null. Limited to 20
+   * Defaults to all tagged images when null. Limited to 20.
    *
    * @param {string} [options.orderBy] The ordering. Defaults to newest. Possible
    * values include: 'Newest', 'Oldest'
    *
    * @param {number} [options.take] Maximum number of images to return. Defaults
-   * to 50, limited to 256
+   * to 50, limited to 256.
    *
    * @param {number} [options.skip] Number of images to skip before beginning the
-   * image batch. Defaults to 0
+   * image batch. Defaults to 0.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1692,15 +1692,15 @@ export default class TrainingAPIClient extends ServiceClient {
   /**
    * @summary Gets the number of images tagged with the provided {tagIds} that
    * have prediction results from
-   * training for the provided iteration {iterationId}
+   * training for the provided iteration {iterationId}.
    *
    * The filtering is on an and/or relationship. For example, if the provided tag
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   * @param {uuid} iterationId The iteration id. Defaults to workspace.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1721,15 +1721,15 @@ export default class TrainingAPIClient extends ServiceClient {
   /**
    * @summary Gets the number of images tagged with the provided {tagIds} that
    * have prediction results from
-   * training for the provided iteration {iterationId}
+   * training for the provided iteration {iterationId}.
    *
    * The filtering is on an and/or relationship. For example, if the provided tag
    * ids are for the "Dog" and
    * "Cat" tags, then only images tagged with Dog and/or Cat will be returned
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id. Defaults to workspace
+   * @param {uuid} iterationId The iteration id. Defaults to workspace.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1766,7 +1766,7 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get your projects
+   * @summary Get your projects.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1782,7 +1782,7 @@ export default class TrainingAPIClient extends ServiceClient {
   getProjectsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project[]>>;
 
   /**
-   * @summary Get your projects
+   * @summary Get your projects.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1816,16 +1816,16 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Create a project
+   * @summary Create a project.
    *
-   * @param {string} name Name of the project
+   * @param {string} name Name of the project.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.description] The description of the project
+   * @param {string} [options.description] The description of the project.
    *
    * @param {uuid} [options.domainId] The id of the domain to use for this
-   * project. Defaults to General
+   * project. Defaults to General.
    *
    * @param {string} [options.classificationType] The type of classifier to
    * create for this project. Possible values include: 'Multiclass', 'Multilabel'
@@ -1842,16 +1842,16 @@ export default class TrainingAPIClient extends ServiceClient {
   createProjectWithHttpOperationResponse(name: string, options?: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
 
   /**
-   * @summary Create a project
+   * @summary Create a project.
    *
-   * @param {string} name Name of the project
+   * @param {string} name Name of the project.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.description] The description of the project
+   * @param {string} [options.description] The description of the project.
    *
    * @param {uuid} [options.domainId] The id of the domain to use for this
-   * project. Defaults to General
+   * project. Defaults to General.
    *
    * @param {string} [options.classificationType] The type of classifier to
    * create for this project. Possible values include: 'Multiclass', 'Multilabel'
@@ -1887,9 +1887,9 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get a specific project
+   * @summary Get a specific project.
    *
-   * @param {uuid} projectId The id of the project to get
+   * @param {uuid} projectId The id of the project to get.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1905,9 +1905,9 @@ export default class TrainingAPIClient extends ServiceClient {
   getProjectWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
 
   /**
-   * @summary Get a specific project
+   * @summary Get a specific project.
    *
-   * @param {uuid} projectId The id of the project to get
+   * @param {uuid} projectId The id of the project to get.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1942,9 +1942,9 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Delete a specific project
+   * @summary Delete a specific project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1960,9 +1960,9 @@ export default class TrainingAPIClient extends ServiceClient {
   deleteProjectWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Delete a specific project
+   * @summary Delete a specific project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1996,21 +1996,21 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Update a specific project
+   * @summary Update a specific project.
    *
-   * @param {uuid} projectId The id of the project to update
+   * @param {uuid} projectId The id of the project to update.
    *
-   * @param {object} updatedProject The updated project model
+   * @param {object} updatedProject The updated project model.
    *
-   * @param {string} [updatedProject.name] Gets or sets the name of the project
+   * @param {string} [updatedProject.name] Gets or sets the name of the project.
    *
    * @param {string} [updatedProject.description] Gets or sets the description of
-   * the project
+   * the project.
    *
-   * @param {object} [updatedProject.settings] Gets or sets the project settings
+   * @param {object} [updatedProject.settings] Gets or sets the project settings.
    *
    * @param {uuid} [updatedProject.settings.domainId] Gets or sets the id of the
-   * Domain to use with this project
+   * Domain to use with this project.
    *
    * @param {string} [updatedProject.settings.classificationType] Gets or sets
    * the classification type of the project. Possible values include:
@@ -2030,21 +2030,21 @@ export default class TrainingAPIClient extends ServiceClient {
   updateProjectWithHttpOperationResponse(projectId: string, updatedProject: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
 
   /**
-   * @summary Update a specific project
+   * @summary Update a specific project.
    *
-   * @param {uuid} projectId The id of the project to update
+   * @param {uuid} projectId The id of the project to update.
    *
-   * @param {object} updatedProject The updated project model
+   * @param {object} updatedProject The updated project model.
    *
-   * @param {string} [updatedProject.name] Gets or sets the name of the project
+   * @param {string} [updatedProject.name] Gets or sets the name of the project.
    *
    * @param {string} [updatedProject.description] Gets or sets the description of
-   * the project
+   * the project.
    *
-   * @param {object} [updatedProject.settings] Gets or sets the project settings
+   * @param {object} [updatedProject.settings] Gets or sets the project settings.
    *
    * @param {uuid} [updatedProject.settings.domainId] Gets or sets the id of the
-   * Domain to use with this project
+   * Domain to use with this project.
    *
    * @param {string} [updatedProject.settings.classificationType] Gets or sets
    * the classification type of the project. Possible values include:
@@ -2083,9 +2083,9 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get iterations for the project
+   * @summary Get iterations for the project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2101,9 +2101,9 @@ export default class TrainingAPIClient extends ServiceClient {
   getIterationsWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration[]>>;
 
   /**
-   * @summary Get iterations for the project
+   * @summary Get iterations for the project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2137,11 +2137,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get a specific iteration
+   * @summary Get a specific iteration.
    *
-   * @param {uuid} projectId The id of the project the iteration belongs to
+   * @param {uuid} projectId The id of the project the iteration belongs to.
    *
-   * @param {uuid} iterationId The id of the iteration to get
+   * @param {uuid} iterationId The id of the iteration to get.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2157,11 +2157,11 @@ export default class TrainingAPIClient extends ServiceClient {
   getIterationWithHttpOperationResponse(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
 
   /**
-   * @summary Get a specific iteration
+   * @summary Get a specific iteration.
    *
-   * @param {uuid} projectId The id of the project the iteration belongs to
+   * @param {uuid} projectId The id of the project the iteration belongs to.
    *
-   * @param {uuid} iterationId The id of the iteration to get
+   * @param {uuid} iterationId The id of the iteration to get.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2196,11 +2196,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Delete a specific iteration of a project
+   * @summary Delete a specific iteration of a project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id
+   * @param {uuid} iterationId The iteration id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2216,11 +2216,11 @@ export default class TrainingAPIClient extends ServiceClient {
   deleteIterationWithHttpOperationResponse(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Delete a specific iteration of a project
+   * @summary Delete a specific iteration of a project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id
+   * @param {uuid} iterationId The iteration id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2254,19 +2254,19 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Update a specific iteration
+   * @summary Update a specific iteration.
    *
-   * @param {uuid} projectId Project id
+   * @param {uuid} projectId Project id.
    *
-   * @param {uuid} iterationId Iteration id
+   * @param {uuid} iterationId Iteration id.
    *
-   * @param {object} updatedIteration The updated iteration model
+   * @param {object} updatedIteration The updated iteration model.
    *
    * @param {string} [updatedIteration.name] Gets or sets the name of the
-   * iteration
+   * iteration.
    *
    * @param {boolean} [updatedIteration.isDefault] Gets or sets a value
-   * indicating whether the iteration is the default iteration for the project
+   * indicating whether the iteration is the default iteration for the project.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2282,19 +2282,19 @@ export default class TrainingAPIClient extends ServiceClient {
   updateIterationWithHttpOperationResponse(projectId: string, iterationId: string, updatedIteration: models.Iteration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
 
   /**
-   * @summary Update a specific iteration
+   * @summary Update a specific iteration.
    *
-   * @param {uuid} projectId Project id
+   * @param {uuid} projectId Project id.
    *
-   * @param {uuid} iterationId Iteration id
+   * @param {uuid} iterationId Iteration id.
    *
-   * @param {object} updatedIteration The updated iteration model
+   * @param {object} updatedIteration The updated iteration model.
    *
    * @param {string} [updatedIteration.name] Gets or sets the name of the
-   * iteration
+   * iteration.
    *
    * @param {boolean} [updatedIteration.isDefault] Gets or sets a value
-   * indicating whether the iteration is the default iteration for the project
+   * indicating whether the iteration is the default iteration for the project.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2329,9 +2329,9 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Queues project for training
+   * @summary Queues project for training.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2347,9 +2347,9 @@ export default class TrainingAPIClient extends ServiceClient {
   trainProjectWithHttpOperationResponse(projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Iteration>>;
 
   /**
-   * @summary Queues project for training
+   * @summary Queues project for training.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2384,11 +2384,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get the list of exports for a specific iteration
+   * @summary Get the list of exports for a specific iteration.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id
+   * @param {uuid} iterationId The iteration id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2404,11 +2404,11 @@ export default class TrainingAPIClient extends ServiceClient {
   getExportsWithHttpOperationResponse(projectId: string, iterationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExportModel[]>>;
 
   /**
-   * @summary Get the list of exports for a specific iteration
+   * @summary Get the list of exports for a specific iteration.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id
+   * @param {uuid} iterationId The iteration id.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2442,20 +2442,19 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Export a trained iteration
+   * @summary Export a trained iteration.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id
+   * @param {uuid} iterationId The iteration id.
    *
-   * @param {string} platform The target platform (coreml or tensorflow).
-   * Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
+   * @param {string} platform The target platform. Possible values include:
+   * 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.flavor] The flavor of the target platform (Windows,
-   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows', 'ONNX10',
-   * 'ONNX12'
+   * @param {string} [options.flavor] The flavor of the target platform. Possible
+   * values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2469,20 +2468,19 @@ export default class TrainingAPIClient extends ServiceClient {
   exportIterationWithHttpOperationResponse(projectId: string, iterationId: string, platform: string, options?: { flavor? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExportModel>>;
 
   /**
-   * @summary Export a trained iteration
+   * @summary Export a trained iteration.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} iterationId The iteration id
+   * @param {uuid} iterationId The iteration id.
    *
-   * @param {string} platform The target platform (coreml or tensorflow).
-   * Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
+   * @param {string} platform The target platform. Possible values include:
+   * 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.flavor] The flavor of the target platform (Windows,
-   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows', 'ONNX10',
-   * 'ONNX12'
+   * @param {string} [options.flavor] The flavor of the target platform. Possible
+   * values include: 'Linux', 'Windows', 'ONNX10', 'ONNX12'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2515,16 +2513,16 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get information about a specific tag
+   * @summary Get information about a specific tag.
    *
-   * @param {uuid} projectId The project this tag belongs to
+   * @param {uuid} projectId The project this tag belongs to.
    *
-   * @param {uuid} tagId The tag id
+   * @param {uuid} tagId The tag id.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {uuid} [options.iterationId] The iteration to retrieve this tag from.
-   * Optional, defaults to current training set
+   * Optional, defaults to current training set.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2538,16 +2536,16 @@ export default class TrainingAPIClient extends ServiceClient {
   getTagWithHttpOperationResponse(projectId: string, tagId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tag>>;
 
   /**
-   * @summary Get information about a specific tag
+   * @summary Get information about a specific tag.
    *
-   * @param {uuid} projectId The project this tag belongs to
+   * @param {uuid} projectId The project this tag belongs to.
    *
-   * @param {uuid} tagId The tag id
+   * @param {uuid} tagId The tag id.
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {uuid} [options.iterationId] The iteration to retrieve this tag from.
-   * Optional, defaults to current training set
+   * Optional, defaults to current training set.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2580,11 +2578,11 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Delete a tag from the project
+   * @summary Delete a tag from the project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} tagId Id of the tag to be deleted
+   * @param {uuid} tagId Id of the tag to be deleted.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2600,11 +2598,11 @@ export default class TrainingAPIClient extends ServiceClient {
   deleteTagWithHttpOperationResponse(projectId: string, tagId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Delete a tag from the project
+   * @summary Delete a tag from the project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} tagId Id of the tag to be deleted
+   * @param {uuid} tagId Id of the tag to be deleted.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2638,18 +2636,18 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Update a tag
+   * @summary Update a tag.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} tagId The id of the target tag
+   * @param {uuid} tagId The id of the target tag.
    *
-   * @param {object} updatedTag The updated tag model
+   * @param {object} updatedTag The updated tag model.
    *
-   * @param {string} [updatedTag.name] Gets or sets the name of the tag
+   * @param {string} [updatedTag.name] Gets or sets the name of the tag.
    *
    * @param {string} [updatedTag.description] Gets or sets the description of the
-   * tag
+   * tag.
    *
    * @param {string} [updatedTag.type] Gets or sets the type of the tag. Possible
    * values include: 'Regular', 'Negative'
@@ -2668,18 +2666,18 @@ export default class TrainingAPIClient extends ServiceClient {
   updateTagWithHttpOperationResponse(projectId: string, tagId: string, updatedTag: models.Tag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tag>>;
 
   /**
-   * @summary Update a tag
+   * @summary Update a tag.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {uuid} tagId The id of the target tag
+   * @param {uuid} tagId The id of the target tag.
    *
-   * @param {object} updatedTag The updated tag model
+   * @param {object} updatedTag The updated tag model.
    *
-   * @param {string} [updatedTag.name] Gets or sets the name of the tag
+   * @param {string} [updatedTag.name] Gets or sets the name of the tag.
    *
    * @param {string} [updatedTag.description] Gets or sets the description of the
-   * tag
+   * tag.
    *
    * @param {string} [updatedTag.type] Gets or sets the type of the tag. Possible
    * values include: 'Regular', 'Negative'
@@ -2717,13 +2715,13 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Get the tags for a given project and iteration
+   * @summary Get the tags for a given project and iteration.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2737,13 +2735,13 @@ export default class TrainingAPIClient extends ServiceClient {
   getTagsWithHttpOperationResponse(projectId: string, options?: { iterationId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tag[]>>;
 
   /**
-   * @summary Get the tags for a given project and iteration
+   * @summary Get the tags for a given project and iteration.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace
+   * @param {uuid} [options.iterationId] The iteration id. Defaults to workspace.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2775,15 +2773,15 @@ export default class TrainingAPIClient extends ServiceClient {
 
 
   /**
-   * @summary Create a tag for the project
+   * @summary Create a tag for the project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {string} name The tag name
+   * @param {string} name The tag name.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.description] Optional description for the tag
+   * @param {string} [options.description] Optional description for the tag.
    *
    * @param {string} [options.type] Optional type for the tag. Possible values
    * include: 'Regular', 'Negative'
@@ -2800,15 +2798,15 @@ export default class TrainingAPIClient extends ServiceClient {
   createTagWithHttpOperationResponse(projectId: string, name: string, options?: { description? : string, type? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tag>>;
 
   /**
-   * @summary Create a tag for the project
+   * @summary Create a tag for the project.
    *
-   * @param {uuid} projectId The project id
+   * @param {uuid} projectId The project id.
    *
-   * @param {string} name The tag name
+   * @param {string} name The tag name.
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.description] Optional description for the tag
+   * @param {string} [options.description] Optional description for the tag.
    *
    * @param {string} [options.type] Optional type for the tag. Possible values
    * include: 'Regular', 'Negative'
