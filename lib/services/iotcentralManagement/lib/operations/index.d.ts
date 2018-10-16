@@ -466,8 +466,8 @@ export interface Apps {
      * @param {string} operationInputs.name The name of the IoT Central application
      * instance to check.
      *
-     * @param {string} [operationInputs.type] The type of the IoT Central resource
-     * to query.
+     * @param {string} operationInputs.type The type of the IoT Central resource to
+     * query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -492,8 +492,8 @@ export interface Apps {
      * @param {string} operationInputs.name The name of the IoT Central application
      * instance to check.
      *
-     * @param {string} [operationInputs.type] The type of the IoT Central resource
-     * to query.
+     * @param {string} operationInputs.type The type of the IoT Central resource to
+     * query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -537,8 +537,8 @@ export interface Apps {
      * @param {string} operationInputs.name The name of the IoT Central application
      * instance to check.
      *
-     * @param {string} [operationInputs.type] The type of the IoT Central resource
-     * to query.
+     * @param {string} operationInputs.type The type of the IoT Central resource to
+     * query.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -563,8 +563,8 @@ export interface Apps {
      * @param {string} operationInputs.name The name of the IoT Central application
      * instance to check.
      *
-     * @param {string} [operationInputs.type] The type of the IoT Central resource
-     * to query.
+     * @param {string} operationInputs.type The type of the IoT Central resource to
+     * query.
      *
      * @param {object} [options] Optional Parameters.
      *
