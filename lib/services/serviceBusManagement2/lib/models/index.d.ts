@@ -840,6 +840,9 @@ export interface Eventhub extends Resource {
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
+ * @member {string} [armDisasterRecoveryType] Replication Type on the
+ * Alias(Disaster Recovery configurations). Possible values include:
+ * 'MetadataReplication'
  */
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
@@ -847,6 +850,7 @@ export interface ArmDisasterRecovery extends Resource {
   partnerNamespace?: string;
   alternateName?: string;
   readonly role?: string;
+  readonly armDisasterRecoveryType?: string;
 }
 
 /**
