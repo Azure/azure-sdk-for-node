@@ -2154,7 +2154,7 @@ export interface SourceControlCreateOrUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
- * 'PartialSync', 'FullSync'
+ * 'IncrementalSync', 'FullSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
@@ -2195,7 +2195,7 @@ export interface SourceControlSyncJobCreateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
- * 'PartialSync', 'FullSync'
+ * 'IncrementalSync', 'FullSync'
  * @member {string} [exception] The exceptions that occured while running the
  * sync job.
  */
