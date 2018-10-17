@@ -1036,6 +1036,18 @@ export interface OrchestratorProfile {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedClusterAccessProfile class.
+ * @constructor
+ * Managed cluster Access Profile.
+ *
+ * @member {buffer} [kubeConfig] Base64-encoded Kubernetes configuration file.
+ */
+export interface ManagedClusterAccessProfile extends Resource {
+  kubeConfig?: Buffer;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedClusterPoolUpgradeProfile class.
  * @constructor
  * The list of available upgrade versions.
