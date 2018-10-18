@@ -18642,9 +18642,10 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} parameters.storageContainerPath A blob storage container
+     * @param {string} [parameters.storageContainerPath] A blob storage container
      * path to hold the scan results (e.g.
-     * https://myStorage.blob.core.windows.net/VaScans/).
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
      *
      * @param {string} [parameters.storageContainerSasKey] A shared access
      * signature (SAS Key) that has write access to the blob container specified in
@@ -18652,9 +18653,9 @@ export interface DatabaseVulnerabilityAssessments {
      * specified, StorageContainerSasKey is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the vulnerability assessment storage account. If
-     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
-     * required.
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -18695,9 +18696,10 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} parameters.storageContainerPath A blob storage container
+     * @param {string} [parameters.storageContainerPath] A blob storage container
      * path to hold the scan results (e.g.
-     * https://myStorage.blob.core.windows.net/VaScans/).
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
      *
      * @param {string} [parameters.storageContainerSasKey] A shared access
      * signature (SAS Key) that has write access to the blob container specified in
@@ -18705,9 +18707,9 @@ export interface DatabaseVulnerabilityAssessments {
      * specified, StorageContainerSasKey is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the vulnerability assessment storage account. If
-     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
-     * required.
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -18820,6 +18822,134 @@ export interface DatabaseVulnerabilityAssessments {
     deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment policies are defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment policies are defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessment policies associated with a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
 }
 
 /**
@@ -28207,9 +28337,10 @@ export interface ManagedDatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} parameters.storageContainerPath A blob storage container
+     * @param {string} [parameters.storageContainerPath] A blob storage container
      * path to hold the scan results (e.g.
-     * https://myStorage.blob.core.windows.net/VaScans/).
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
      *
      * @param {string} [parameters.storageContainerSasKey] A shared access
      * signature (SAS Key) that has write access to the blob container specified in
@@ -28217,9 +28348,9 @@ export interface ManagedDatabaseVulnerabilityAssessments {
      * specified, StorageContainerSasKey is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the vulnerability assessment storage account. If
-     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
-     * required.
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -28260,9 +28391,10 @@ export interface ManagedDatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} parameters.storageContainerPath A blob storage container
+     * @param {string} [parameters.storageContainerPath] A blob storage container
      * path to hold the scan results (e.g.
-     * https://myStorage.blob.core.windows.net/VaScans/).
+     * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+     * level vulnerability assessment policy doesn't set
      *
      * @param {string} [parameters.storageContainerSasKey] A shared access
      * signature (SAS Key) that has write access to the blob container specified in
@@ -28270,9 +28402,9 @@ export interface ManagedDatabaseVulnerabilityAssessments {
      * specified, StorageContainerSasKey is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the vulnerability assessment storage account. If
-     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
-     * required.
+     * identifier key of the storage account for vulnerability assessment scan
+     * results. If 'StorageContainerSasKey' isn't specified,
+     * storageAccountAccessKey is required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -28385,6 +28517,134 @@ export interface ManagedDatabaseVulnerabilityAssessments {
     deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabase(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentListResult>>;
+
+    /**
+     * Lists the vulnerability assessments of a managed database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentListResult>): void;
 }
 
 /**
