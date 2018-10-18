@@ -859,12 +859,11 @@ export interface ManagedClusterServicePrincipalProfile {
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
- * @member {number} [maxCount] Maximun number of nodes for auto-scaling
- * @member {number} [minCount] Minimun number of nodes for auto-scaling
- * @member {boolean} [enableAutoScaling] Wheter to enable auto-scaler
+ * @member {number} [maxCount] Maximum number of nodes for auto-scaling
+ * @member {number} [minCount] Minimum number of nodes for auto-scaling
+ * @member {boolean} [enableAutoScaling] Whether to enable auto-scaler
  * @member {string} [type] AgentPoolType represents types of agentpool.
- * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'.
- * Default value: 'VirtualMachineScaleSets' .
+ * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
  */
 export interface ManagedClusterAgentPoolProfile {
   name: string;
@@ -934,14 +933,14 @@ export interface ManagedClusterAddonProfile {
  *
  * @member {string} clientAppID The client AAD application ID.
  * @member {string} serverAppID The server AAD application ID.
- * @member {string} serverAppSecret The server AAD application secret.
+ * @member {string} [serverAppSecret] The server AAD application secret.
  * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
  * not specified, will use the tenant of the deployment subscription.
  */
 export interface ManagedClusterAADProfile {
   clientAppID: string;
   serverAppID: string;
-  serverAppSecret: string;
+  serverAppSecret?: string;
   tenantID?: string;
 }
 
