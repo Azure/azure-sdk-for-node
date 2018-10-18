@@ -47,6 +47,7 @@ export default class LUISAuthoringClient extends ServiceClient {
   train: operations.Train;
   permissions: operations.Permissions;
   pattern: operations.Pattern;
+  settings: operations.Settings;
 }
 
 export { LUISAuthoringClient, models as LUISAuthoringModels };

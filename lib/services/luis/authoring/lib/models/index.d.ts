@@ -580,13 +580,10 @@ export interface HierarchicalModel {
  * @member {string} [versionId] The version ID to publish.
  * @member {boolean} [isStaging] Indicates if the staging slot should be used,
  * instead of the Production one. Default value: false .
- * @member {string} [region] The target region that the application is
- * published to.
  */
 export interface ApplicationPublishObject {
   versionId?: string;
   isStaging?: boolean;
-  region?: string;
 }
 
 /**
@@ -1754,6 +1751,20 @@ export interface PatternRuleInfo {
 export interface LabelTextObject {
   id?: number;
   text?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AppVersionSettingObject class.
+ * @constructor
+ * Object model of an application version setting.
+ *
+ * @member {string} [name] The application version setting name.
+ * @member {string} [value] The application version setting value.
+ */
+export interface AppVersionSettingObject {
+  name?: string;
+  value?: string;
 }
 
 /**
