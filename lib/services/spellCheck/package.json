@@ -13,7 +13,7 @@
   "license": "MIT",
   "main": "./lib/spellCheckAPIClient.js",
   "types": "./lib/spellCheckAPIClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/spellCheck",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/spellCheck",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
