@@ -1368,6 +1368,21 @@ export interface AzureFunctionReceiver {
 
 /**
  * @class
+ * Initializes a new instance of the ArmRoleReceiver class.
+ * @constructor
+ * An arm role receiver.
+ *
+ * @member {string} name The name of the arm role receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} roleId The arm role id.
+ */
+export interface ArmRoleReceiver {
+  name: string;
+  roleId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1395,6 +1410,8 @@ export interface AzureFunctionReceiver {
  * part of this action group.
  * @member {array} [azureFunctionReceivers] The list of azure function
  * receivers that are part of this action group.
+ * @member {array} [armRoleReceivers] The list of arm role receivers that are
+ * part of this action group.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1408,6 +1425,7 @@ export interface ActionGroupResource extends Resource {
   voiceReceivers?: VoiceReceiver[];
   logicAppReceivers?: LogicAppReceiver[];
   azureFunctionReceivers?: AzureFunctionReceiver[];
+  armRoleReceivers?: ArmRoleReceiver[];
 }
 
 /**

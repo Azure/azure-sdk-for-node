@@ -2118,6 +2118,9 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
+     * @param {array} [actionGroup.armRoleReceivers] The list of arm role receivers
+     * that are part of this action group.
+     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -2178,6 +2181,9 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.armRoleReceivers] The list of arm role receivers
+     * that are part of this action group.
      *
      * @param {string} actionGroup.location Resource location
      *
