@@ -5399,8 +5399,7 @@ export interface ResourceGroups {
      *
      * @param {string} resourceGroupName The name of the resource group to create
      * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
-     * (except at end), and Unicode characters that match the regular expression
-     * pattern.
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
@@ -5434,8 +5433,7 @@ export interface ResourceGroups {
      *
      * @param {string} resourceGroupName The name of the resource group to create
      * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
-     * (except at end), and Unicode characters that match the regular expression
-     * pattern.
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
