@@ -6749,7 +6749,7 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {object} parameters Request body.
      *
-     * @param {object} parameters.updateConfiguration update specific properties
+     * @param {object} [parameters.updateConfiguration] update specific properties
      * for the Software update configuration
      *
      * @param {string} parameters.updateConfiguration.operatingSystem operating
@@ -6811,7 +6811,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
-     * @param {object} parameters.scheduleInfo Schedule information for the
+     * @param {object} [parameters.scheduleInfo] Schedule information for the
      * Software update configuration
      *
      * @param {date} [parameters.scheduleInfo.startTime] Gets or sets the start
@@ -6869,6 +6869,19 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {string} [parameters.error.message] Error message indicating why the
      * operation failed.
+     *
+     * @param {object} [parameters.tasks] Tasks information for the Software update
+     * configuration
+     *
+     * @param {object} [parameters.tasks.preTask] Pre task object
+     *
+     * @param {object} [parameters.tasks.postTask] Post task object
+     *
+     * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
+     * parameters of the task.
+     *
+     * @param {string} [parameters.tasks.postTask.source] Gets or sets the name of
+     * the runbook.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6898,7 +6911,7 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {object} parameters Request body.
      *
-     * @param {object} parameters.updateConfiguration update specific properties
+     * @param {object} [parameters.updateConfiguration] update specific properties
      * for the Software update configuration
      *
      * @param {string} parameters.updateConfiguration.operatingSystem operating
@@ -6960,7 +6973,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
-     * @param {object} parameters.scheduleInfo Schedule information for the
+     * @param {object} [parameters.scheduleInfo] Schedule information for the
      * Software update configuration
      *
      * @param {date} [parameters.scheduleInfo.startTime] Gets or sets the start
@@ -7018,6 +7031,19 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {string} [parameters.error.message] Error message indicating why the
      * operation failed.
+     *
+     * @param {object} [parameters.tasks] Tasks information for the Software update
+     * configuration
+     *
+     * @param {object} [parameters.tasks.preTask] Pre task object
+     *
+     * @param {object} [parameters.tasks.postTask] Post task object
+     *
+     * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
+     * parameters of the task.
+     *
+     * @param {string} [parameters.tasks.postTask.source] Gets or sets the name of
+     * the runbook.
      *
      * @param {object} [options] Optional Parameters.
      *
