@@ -797,7 +797,7 @@ export interface ManagedClusterServicePrincipalProfile {
  *
  * @member {string} name Unique name of the agent pool profile in the context
  * of the subscription and resource group.
- * @member {number} [count] Number of agents (VMs) to host docker containers.
+ * @member {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 100 (inclusive). The default
  * value is 1. . Default value: 1 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
@@ -853,25 +853,30 @@ export interface ManagedClusterServicePrincipalProfile {
  * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
  * disk size for every machine in this master/agent pool. If you specify 0, it
  * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [storageProfile] Storage profile specifies what kind of
- * storage used. Defaults to ManagedDisks. Possible values include:
- * 'StorageAccount', 'ManagedDisks'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
  * @member {number} [maxPods] Maximum number of pods that can run on a node.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
+ * @member {number} [maxCount] Maximum number of nodes for auto-scaling
+ * @member {number} [minCount] Minimum number of nodes for auto-scaling
+ * @member {boolean} [enableAutoScaling] Whether to enable auto-scaler
+ * @member {string} [type] AgentPoolType represents types of agentpool.
+ * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'
  */
 export interface ManagedClusterAgentPoolProfile {
   name: string;
-  count?: number;
+  count: number;
   vmSize: string;
   osDiskSizeGB?: number;
-  readonly storageProfile?: string;
   vnetSubnetID?: string;
   maxPods?: number;
   osType?: string;
+  maxCount?: number;
+  minCount?: number;
+  enableAutoScaling?: boolean;
+  type?: string;
 }
 
 /**
@@ -952,8 +957,7 @@ export interface ManagedClusterAADProfile {
  * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
  * cluster.
  * @member {string} [fqdn] FDQN for the master pool.
- * @member {array} [agentPoolProfiles] Properties of the agent pool. Currently
- * only one agent pool can exist.
+ * @member {array} [agentPoolProfiles] Properties of the agent pool.
  * @member {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.
  * @member {string} [linuxProfile.adminUsername] The administrator username to
