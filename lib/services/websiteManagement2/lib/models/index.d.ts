@@ -4540,11 +4540,14 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
  * @member {string} [snapshotTime] Point in time to restore the deleted app
  * from, formatted as a DateTime string.
  * If unspecified, default value is the time that the app was deleted.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
   deletedSiteId?: string;
   recoverConfiguration?: boolean;
   snapshotTime?: string;
+  useDRSecondary?: boolean;
 }
 
 /**
@@ -6247,6 +6250,8 @@ export interface SnapshotRecoverySource {
  * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
  * conflicts will be ignored when recovering to a target web app.
  * This setting is only necessary when RecoverConfiguration is enabled.
+ * @member {boolean} [useDRSecondary] If true, the snapshot is retrieved from
+ * DRSecondary endpoint.
  */
 export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   snapshotTime?: string;
@@ -6254,6 +6259,7 @@ export interface SnapshotRestoreRequest extends ProxyOnlyResource {
   overwrite: boolean;
   recoverConfiguration?: boolean;
   ignoreConflictingHostNames?: boolean;
+  useDRSecondary?: boolean;
 }
 
 /**
