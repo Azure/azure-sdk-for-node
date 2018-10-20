@@ -494,6 +494,22 @@ export interface Usage {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineReimageParameters class.
+ * @constructor
+ * Paramaters for Reimaging Virtual Machine.
+ *
+ * @member {boolean} [osDisk] Specified whether to reimage os disk. Default
+ * value: true.
+ * @member {boolean} [tempDisk] Specified whether to reimage temp disk. Default
+ * value: false.
+ */
+export interface VirtualMachineReimageParameters {
+  osDisk?: boolean;
+  tempDisk?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineCaptureParameters class.
  * @constructor
  * Capture Virtual Machine parameters.
@@ -4292,6 +4308,34 @@ export interface VirtualMachineScaleSet extends Resource {
   platformFaultDomainCount?: number;
   identity?: VirtualMachineScaleSetIdentity;
   zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMReimageParameters class.
+ * @constructor
+ * Describes a Virtual Machine Scale Set VM Reimage Parameters.
+ *
+ * @member {array} [dataDisks] Luns of dataDisks in the virtual machine scale
+ * set VM to reimage.
+ */
+export interface VirtualMachineScaleSetVMReimageParameters extends VirtualMachineReimageParameters {
+  dataDisks?: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetReimageParameters class.
+ * @constructor
+ * Describes a Virtual Machine Scale Set VM Reimage Parameters.
+ *
+ * @member {array} [instanceIds] The virtual machine scale set instance ids.
+ * Omitting the virtual machine scale set instance ids will result in the
+ * operation being performed on all virtual machines in the virtual machine
+ * scale set.
+ */
+export interface VirtualMachineScaleSetReimageParameters extends VirtualMachineScaleSetVMReimageParameters {
+  instanceIds?: string[];
 }
 
 /**
