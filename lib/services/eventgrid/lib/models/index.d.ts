@@ -1128,12 +1128,14 @@ export interface MediaJobError {
  * @member {string} state Gets the Job output state. Possible values include:
  * 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
  * 'Scheduled'
+ * @member {string} odatatype Polymorphic Discriminator
  */
 export interface MediaJobOutput {
   error?: MediaJobError;
   label?: string;
   progress: number;
   state: string;
+  odatatype: string;
 }
 
 /**
@@ -1180,6 +1182,7 @@ export interface MediaJobOutputAsset extends MediaJobOutput {
  * @member {string} [output.state] Gets the Job output state. Possible values
  * include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
  * 'Queued', 'Scheduled'
+ * @member {string} [output.odatatype] Polymorphic Discriminator
  * @member {object} [jobCorrelationData] Gets the Job correlation data.
  */
 export interface MediaJobOutputStateChangeEventData {
