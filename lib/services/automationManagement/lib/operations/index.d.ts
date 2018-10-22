@@ -6749,7 +6749,7 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {object} parameters Request body.
      *
-     * @param {object} [parameters.updateConfiguration] update specific properties
+     * @param {object} parameters.updateConfiguration update specific properties
      * for the Software update configuration
      *
      * @param {string} parameters.updateConfiguration.operatingSystem operating
@@ -6811,7 +6811,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
-     * @param {object} [parameters.scheduleInfo] Schedule information for the
+     * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
      *
      * @param {date} [parameters.scheduleInfo.startTime] Gets or sets the start
@@ -6911,7 +6911,7 @@ export interface SoftwareUpdateConfigurations {
      *
      * @param {object} parameters Request body.
      *
-     * @param {object} [parameters.updateConfiguration] update specific properties
+     * @param {object} parameters.updateConfiguration update specific properties
      * for the Software update configuration
      *
      * @param {string} parameters.updateConfiguration.operatingSystem operating
@@ -6973,7 +6973,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.targets.azureQueries] List of
      * Azure queries in the software update configuration.
      *
-     * @param {object} [parameters.scheduleInfo] Schedule information for the
+     * @param {object} parameters.scheduleInfo Schedule information for the
      * Software update configuration
      *
      * @param {date} [parameters.scheduleInfo.startTime] Gets or sets the start
