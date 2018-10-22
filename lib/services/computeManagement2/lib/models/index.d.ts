@@ -316,6 +316,8 @@ export interface VirtualMachineExtensionInstanceView {
  * the script handler.
  * @member {array} [instanceView.substatuses] The resource status information.
  * @member {array} [instanceView.statuses] The resource status information.
+ * @member {array} [provisionAfterExtensions] Collection of extension names
+ * after which this extension needs to be provisioned.
  */
 export interface VirtualMachineExtension extends Resource {
   forceUpdateTag?: string;
@@ -327,6 +329,7 @@ export interface VirtualMachineExtension extends Resource {
   protectedSettings?: any;
   readonly provisioningState?: string;
   instanceView?: VirtualMachineExtensionInstanceView;
+  provisionAfterExtensions?: string[];
 }
 
 /**
@@ -351,6 +354,8 @@ export interface VirtualMachineExtension extends Resource {
  * @member {object} [protectedSettings] The extension can contain either
  * protectedSettings or protectedSettingsFromKeyVault or no protected settings
  * at all.
+ * @member {array} [provisionAfterExtensions] Collection of extension names
+ * after which this extension needs to be provisioned.
  */
 export interface VirtualMachineExtensionUpdate extends UpdateResource {
   forceUpdateTag?: string;
@@ -360,6 +365,7 @@ export interface VirtualMachineExtensionUpdate extends UpdateResource {
   autoUpgradeMinorVersion?: boolean;
   settings?: any;
   protectedSettings?: any;
+  provisionAfterExtensions?: string[];
 }
 
 /**
@@ -3578,6 +3584,8 @@ export interface SubResourceReadOnly extends BaseResource {
  * at all.
  * @member {string} [provisioningState] The provisioning state, which only
  * appears in the response.
+ * @member {array} [provisionAfterExtensions] Collection of extension names
+ * after which this extension needs to be provisioned.
  */
 export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
   name?: string;
@@ -3589,6 +3597,7 @@ export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
   settings?: any;
   protectedSettings?: any;
   readonly provisioningState?: string;
+  provisionAfterExtensions?: string[];
 }
 
 /**
