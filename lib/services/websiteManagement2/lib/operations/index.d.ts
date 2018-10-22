@@ -20096,7 +20096,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getNetworkTraceOperationOldWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -20138,9 +20138,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationOld(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getNetworkTraceOperationOld(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationOld(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -20392,6 +20392,150 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
+    getNetworkTracesOldWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTracesOld(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTracesOld(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTracesOld(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
+
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
     getNetworkTracesWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
@@ -20437,150 +20581,6 @@ export interface WebApps {
     getNetworkTraces(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
     getNetworkTraces(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
     getNetworkTraces(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
-
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getNetworkTraceOperation1WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Object} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getNetworkTraceOperation1(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperation1(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperation1(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getNetworkTraces1WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getNetworkTraces1(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
-    getNetworkTraces1(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
-    getNetworkTraces1(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -34678,7 +34678,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getNetworkTraceOperationSlotOldWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -34723,9 +34723,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationSlotOld(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getNetworkTraceOperationSlotOld(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationSlotOld(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 
 
     /**
@@ -34992,6 +34992,162 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
+    getNetworkTracesSlotOldWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTracesSlotOld(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTracesSlotOld(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTracesSlotOld(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
+
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Gets a named operation for a network trace capturing (or deployment
+     * slot, if specified).
+     *
+     * Gets a named operation for a network trace capturing (or deployment slot, if
+     * specified).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} operationId GUID of the operation.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get an operation for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
     getNetworkTracesSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
@@ -35040,162 +35196,6 @@ export interface WebApps {
     getNetworkTracesSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
     getNetworkTracesSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
     getNetworkTracesSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
-
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will get an operation for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getNetworkTraceOperationSlot1WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will get an operation for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Object} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getNetworkTraceOperationSlot1(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperationSlot1(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperationSlot1(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will get an operation for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getNetworkTracesSlot1WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
-
-    /**
-     * @summary Gets a named operation for a network trace capturing (or deployment
-     * slot, if specified).
-     *
-     * Gets a named operation for a network trace capturing (or deployment slot, if
-     * specified).
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {string} operationId GUID of the operation.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will get an operation for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getNetworkTracesSlot1(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
-    getNetworkTracesSlot1(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
-    getNetworkTracesSlot1(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
