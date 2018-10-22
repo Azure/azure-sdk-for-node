@@ -2118,8 +2118,9 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
-     * @param {array} [actionGroup.armRoleReceivers] The list of arm role receivers
-     * that are part of this action group.
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
      *
      * @param {string} actionGroup.location Resource location
      *
@@ -2182,8 +2183,9 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
-     * @param {array} [actionGroup.armRoleReceivers] The list of arm role receivers
-     * that are part of this action group.
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
      *
      * @param {string} actionGroup.location Resource location
      *
