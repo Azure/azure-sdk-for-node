@@ -6863,7 +6863,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {string} [parameters.scheduleInfo.description] Gets or sets the
      * description.
      *
-     * @param {object} [parameters.error] detailes of provisioning error
+     * @param {object} [parameters.error] Details of provisioning error
      *
      * @param {string} [parameters.error.code] Error code
      *
@@ -6871,11 +6871,11 @@ export interface SoftwareUpdateConfigurations {
      * operation failed.
      *
      * @param {object} [parameters.tasks] Tasks information for the Software update
-     * configuration
+     * configuration.
      *
-     * @param {object} [parameters.tasks.preTask] Pre task object
+     * @param {object} [parameters.tasks.preTask] Pre task object.
      *
-     * @param {object} [parameters.tasks.postTask] Post task object
+     * @param {object} [parameters.tasks.postTask] Post task object.
      *
      * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
      * parameters of the task.
@@ -7025,7 +7025,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {string} [parameters.scheduleInfo.description] Gets or sets the
      * description.
      *
-     * @param {object} [parameters.error] detailes of provisioning error
+     * @param {object} [parameters.error] Details of provisioning error
      *
      * @param {string} [parameters.error.code] Error code
      *
@@ -7033,11 +7033,11 @@ export interface SoftwareUpdateConfigurations {
      * operation failed.
      *
      * @param {object} [parameters.tasks] Tasks information for the Software update
-     * configuration
+     * configuration.
      *
-     * @param {object} [parameters.tasks.preTask] Pre task object
+     * @param {object} [parameters.tasks.preTask] Pre task object.
      *
-     * @param {object} [parameters.tasks.postTask] Post task object
+     * @param {object} [parameters.tasks.postTask] Post task object.
      *
      * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
      * parameters of the task.
@@ -7390,7 +7390,7 @@ export interface SoftwareUpdateConfigurationRuns {
      * can use the following filters: 'properties/osType', 'properties/status',
      * 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
      *
-     * @param {string} [options.skip] number of entries you skip before returning
+     * @param {string} [options.skip] Number of entries you skip before returning
      * results
      *
      * @param {string} [options.top] Maximum number of entries returned in the
@@ -7423,7 +7423,7 @@ export interface SoftwareUpdateConfigurationRuns {
      * can use the following filters: 'properties/osType', 'properties/status',
      * 'properties/startTime', and 'properties/softwareUpdateConfiguration/name'
      *
-     * @param {string} [options.skip] number of entries you skip before returning
+     * @param {string} [options.skip] Number of entries you skip before returning
      * results
      *
      * @param {string} [options.top] Maximum number of entries returned in the
