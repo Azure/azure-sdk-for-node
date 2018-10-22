@@ -1686,20 +1686,20 @@ export interface TaskProperties {
 
 /**
  * @class
- * Initializes a new instance of the TasksProperties class.
+ * Initializes a new instance of the SoftwareUpdateConfigurationTasks class.
  * @constructor
  * Task properties of the software update configuration.
  *
- * @member {object} [preTask] Pre task object.
+ * @member {object} [preTask] Pre task properties.
  * @member {object} [preTask.parameters] Gets or sets the parameters of the
  * task.
  * @member {string} [preTask.source] Gets or sets the name of the runbook.
- * @member {object} [postTask] Post task object.
+ * @member {object} [postTask] Post task properties.
  * @member {object} [postTask.parameters] Gets or sets the parameters of the
  * task.
  * @member {string} [postTask.source] Gets or sets the name of the runbook.
  */
-export interface TasksProperties {
+export interface SoftwareUpdateConfigurationTasks {
   preTask?: TaskProperties;
   postTask?: TaskProperties;
 }
@@ -1793,7 +1793,7 @@ export interface TasksProperties {
  * @member {string} [error.code] Error code
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
- * @member {date} [creationTime] Creation time of there source, which only
+ * @member {date} [creationTime] Creation time of the resource, which only
  * appears in the response.
  * @member {string} [createdBy] CreatedBy property, which only appears in the
  * response.
@@ -1803,12 +1803,12 @@ export interface TasksProperties {
  * appears in the response.
  * @member {object} [tasks] Tasks information for the Software update
  * configuration.
- * @member {object} [tasks.preTask] Pre task object.
+ * @member {object} [tasks.preTask] Pre task properties.
  * @member {object} [tasks.preTask.parameters] Gets or sets the parameters of
  * the task.
  * @member {string} [tasks.preTask.source] Gets or sets the name of the
  * runbook.
- * @member {object} [tasks.postTask] Post task object.
+ * @member {object} [tasks.postTask] Post task properties.
  * @member {object} [tasks.postTask.parameters] Gets or sets the parameters of
  * the task.
  * @member {string} [tasks.postTask.source] Gets or sets the name of the
@@ -1826,7 +1826,7 @@ export interface SoftwareUpdateConfiguration extends BaseResource {
   readonly createdBy?: string;
   readonly lastModifiedTime?: Date;
   readonly lastModifiedBy?: string;
-  tasks?: TasksProperties;
+  tasks?: SoftwareUpdateConfigurationTasks;
 }
 
 /**
@@ -1935,7 +1935,7 @@ export interface SoftareUpdateConfigurationRunTaskProperties {
  * @constructor
  * Software update configuration run tasks model.
  *
- * @member {object} [preTask] Pre task object.
+ * @member {object} [preTask] Pre task properties.
  * @member {string} [preTask.status] The status of the task.
  * @member {string} [preTask.source] The name of the source of the task.
  * @member {string} [preTask.jobId] The job id of the task.
@@ -1982,7 +1982,7 @@ export interface SoftareUpdateConfigurationRunTasks {
  * appears in the response.
  * @member {object} [tasks] Software update configuration tasks triggered in
  * this run
- * @member {object} [tasks.preTask] Pre task object.
+ * @member {object} [tasks.preTask] Pre task properties.
  * @member {string} [tasks.preTask.status] The status of the task.
  * @member {string} [tasks.preTask.source] The name of the source of the task.
  * @member {string} [tasks.preTask.jobId] The job id of the task.

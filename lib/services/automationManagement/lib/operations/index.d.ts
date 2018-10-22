@@ -6873,9 +6873,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {object} [parameters.tasks] Tasks information for the Software update
      * configuration.
      *
-     * @param {object} [parameters.tasks.preTask] Pre task object.
+     * @param {object} [parameters.tasks.preTask] Pre task properties.
      *
-     * @param {object} [parameters.tasks.postTask] Post task object.
+     * @param {object} [parameters.tasks.postTask] Post task properties.
      *
      * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
      * parameters of the task.
@@ -7035,9 +7035,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {object} [parameters.tasks] Tasks information for the Software update
      * configuration.
      *
-     * @param {object} [parameters.tasks.preTask] Pre task object.
+     * @param {object} [parameters.tasks.preTask] Pre task properties.
      *
-     * @param {object} [parameters.tasks.postTask] Post task object.
+     * @param {object} [parameters.tasks.postTask] Post task properties.
      *
      * @param {object} [parameters.tasks.postTask.parameters] Gets or sets the
      * parameters of the task.
