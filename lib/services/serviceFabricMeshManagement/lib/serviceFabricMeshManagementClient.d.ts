@@ -56,13 +56,16 @@ export default class ServiceFabricMeshManagementClient extends AzureServiceClien
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
+  secret: operations.Secret;
+  secretValueOperations: operations.SecretValueOperations;
+  volume: operations.Volume;
+  network: operations.Network;
+  gateway: operations.Gateway;
   application: operations.Application;
   service: operations.Service;
-  replica: operations.Replica;
+  serviceReplica: operations.ServiceReplica;
   codePackage: operations.CodePackage;
-  operations: operations.Operations;
-  network: operations.Network;
-  volume: operations.Volume;
 }
 
 export { ServiceFabricMeshManagementClient, models as ServiceFabricMeshManagementModels };
