@@ -10,6 +10,7 @@
 
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from "./models";
+import * as operations from "./operations";
 
 export default class ServiceFabricClient extends ServiceClient {
   /**
@@ -30,6 +31,17 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    */
   constructor(baseUri?: string, options?: ServiceClientOptions);
+
+  // Operation groups
+  meshSecret: operations.MeshSecret;
+  meshSecretValue: operations.MeshSecretValue;
+  meshVolume: operations.MeshVolume;
+  meshNetwork: operations.MeshNetwork;
+  meshApplication: operations.MeshApplication;
+  meshService: operations.MeshService;
+  meshCodePackage: operations.MeshCodePackage;
+  meshServiceReplica: operations.MeshServiceReplica;
+  meshGateway: operations.MeshGateway;
 
 
   /**
@@ -1299,7 +1311,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -1422,7 +1434,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -2167,9 +2179,9 @@ export default class ServiceFabricClient extends ServiceClient {
 
 
   /**
-   * @summary Rollback the upgrade of a Service Fabric cluster.
+   * @summary Roll back the upgrade of a Service Fabric cluster.
    *
-   * Rollback the code or configuration upgrade of a Service Fabric cluster.
+   * Roll back the code or configuration upgrade of a Service Fabric cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2190,9 +2202,9 @@ export default class ServiceFabricClient extends ServiceClient {
   rollbackClusterUpgradeWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
-   * @summary Rollback the upgrade of a Service Fabric cluster.
+   * @summary Roll back the upgrade of a Service Fabric cluster.
    *
-   * Rollback the code or configuration upgrade of a Service Fabric cluster.
+   * Roll back the code or configuration upgrade of a Service Fabric cluster.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2757,11 +2769,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * standalone cluster configuration upgrade.
    *
    * @param {string} clusterConfigurationUpgradeDescription.clusterConfig The
-   * cluster configuration.
+   * cluster configuration as a JSON string. For example, [this
+   * file](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/blob/master/Samples/ClusterConfig.Unsecure.DevCluster.json)
+   * contains JSON describing the [nodes and other properties of the
+   * cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
    *
    * @param {moment.duration}
    * [clusterConfigurationUpgradeDescription.healthCheckRetryTimeout] The length
-   * of time between attempts to perform a health checks if the application or
+   * of time between attempts to perform health checks if the application or
    * cluster is not healthy.
    *
    * @param {moment.duration}
@@ -2771,7 +2786,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {moment.duration}
    * [clusterConfigurationUpgradeDescription.healthCheckStableDurationInSeconds]
-   * The length of time that the application or cluster must remain healthy.
+   * The length of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain.
    *
    * @param {moment.duration}
    * [clusterConfigurationUpgradeDescription.upgradeDomainTimeoutInSeconds] The
@@ -2840,11 +2856,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * standalone cluster configuration upgrade.
    *
    * @param {string} clusterConfigurationUpgradeDescription.clusterConfig The
-   * cluster configuration.
+   * cluster configuration as a JSON string. For example, [this
+   * file](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/blob/master/Samples/ClusterConfig.Unsecure.DevCluster.json)
+   * contains JSON describing the [nodes and other properties of the
+   * cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
    *
    * @param {moment.duration}
    * [clusterConfigurationUpgradeDescription.healthCheckRetryTimeout] The length
-   * of time between attempts to perform a health checks if the application or
+   * of time between attempts to perform health checks if the application or
    * cluster is not healthy.
    *
    * @param {moment.duration}
@@ -2854,7 +2873,8 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {moment.duration}
    * [clusterConfigurationUpgradeDescription.healthCheckStableDurationInSeconds]
-   * The length of time that the application or cluster must remain healthy.
+   * The length of time that the application or cluster must remain healthy
+   * before the upgrade proceeds to the next upgrade domain.
    *
    * @param {moment.duration}
    * [clusterConfigurationUpgradeDescription.upgradeDomainTimeoutInSeconds] The
@@ -3429,6 +3449,73 @@ export default class ServiceFabricClient extends ServiceClient {
   getAadMetadata(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.AadMetadataObject>;
   getAadMetadata(callback: ServiceCallback<models.AadMetadataObject>): void;
   getAadMetadata(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AadMetadataObject>): void;
+
+
+  /**
+   * @summary Get the current Service Fabric cluster version.
+   *
+   * If a cluster upgrade is happening, then this API will return the lowest
+   * (older) version of the current and target cluster runtime versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ClusterVersion>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getClusterVersionWithHttpOperationResponse(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterVersion>>;
+
+  /**
+   * @summary Get the current Service Fabric cluster version.
+   *
+   * If a cluster upgrade is happening, then this API will return the lowest
+   * (older) version of the current and target cluster runtime versions.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ClusterVersion} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ClusterVersion} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ClusterVersion} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getClusterVersion(options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterVersion>;
+  getClusterVersion(callback: ServiceCallback<models.ClusterVersion>): void;
+  getClusterVersion(options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterVersion>): void;
 
 
   /**
@@ -4074,7 +4161,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -4198,7 +4285,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -6959,7 +7046,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -7089,7 +7176,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -9117,7 +9204,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -9251,7 +9338,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -11066,7 +11153,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -11197,7 +11284,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -11287,6 +11374,11 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} [options.partitionKeyValue] Partition key. This is required
    * if the partition scheme for the service is Int64Range or Named.
+   * This is not the partition ID, but rather, either the integer key value, or
+   * the name of the partition ID.
+   * For example, if your service is using ranged partitions from 0 to 10, then
+   * they PartitionKeyValue would be an
+   * integer in that range. Query service description to see the range or name.
    *
    * @param {string} [options.previousRspVersion] The value in the Version field
    * of the response that was received previously. This is required if the user
@@ -11339,6 +11431,11 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} [options.partitionKeyValue] Partition key. This is required
    * if the partition scheme for the service is Int64Range or Named.
+   * This is not the partition ID, but rather, either the integer key value, or
+   * the name of the partition ID.
+   * For example, if your service is using ranged partitions from 0 to 10, then
+   * they PartitionKeyValue would be an
+   * integer in that range. Query service description to see the range or name.
    *
    * @param {string} [options.previousRspVersion] The value in the Version field
    * of the response that was received previously. This is required if the user
@@ -12238,7 +12335,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -12363,7 +12460,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -14615,7 +14712,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -14746,7 +14843,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -15982,7 +16079,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -16118,7 +16215,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * of this property is false by default.
    * When clients report periodically, they should set RemoveWhenExpired false
    * (default).
-   * This way, is the reporter has issues (eg. deadlock) and can't report, the
+   * This way, if the reporter has issues (e.g. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
    *
@@ -17652,6 +17749,76 @@ export default class ServiceFabricClient extends ServiceClient {
 
 
   /**
+   * @summary Starts rolling back a compose deployment upgrade in the Service
+   * Fabric cluster.
+   *
+   * Rollback a service fabric compose deployment upgrade.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  startRollbackComposeDeploymentUpgradeWithHttpOperationResponse(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Starts rolling back a compose deployment upgrade in the Service
+   * Fabric cluster.
+   *
+   * Rollback a service fabric compose deployment upgrade.
+   *
+   * @param {string} deploymentName The identity of the deployment.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.timeout] The server timeout for performing the
+   * operation in seconds. This timeout specifies the time duration that the
+   * client is willing to wait for the requested operation to complete. The
+   * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  startRollbackComposeDeploymentUpgrade(deploymentName: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  startRollbackComposeDeploymentUpgrade(deploymentName: string, callback: ServiceCallback<void>): void;
+  startRollbackComposeDeploymentUpgrade(deploymentName: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
    * @summary Get the status of Chaos.
    *
    * Get the status of Chaos indicating whether or not Chaos is running, the
@@ -18674,7 +18841,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @summary Deletes existing image store content.
    *
    * Deletes existing image store content being found within the given image
-   * store relative path. This can be used to delete uploaded application
+   * store relative path. This command can be used to delete uploaded application
    * packages once they are provisioned.
    *
    * @param {string} contentPath Relative path to file or folder in the image
@@ -18702,7 +18869,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @summary Deletes existing image store content.
    *
    * Deletes existing image store content being found within the given image
-   * store relative path. This can be used to delete uploaded application
+   * store relative path. This command can be used to delete uploaded application
    * packages once they are provisioned.
    *
    * @param {string} contentPath Relative path to file or folder in the image
@@ -20389,7 +20556,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @summary Gets a list of user-induced fault operations filtered by provided
    * input.
    *
-   * Gets the a list of user-induced fault operations filtered by provided input.
+   * Gets the list of user-induced fault operations filtered by provided input.
    *
    * @param {number} typeFilter Used to filter on OperationType for user-induced
    * operations.
@@ -20433,7 +20600,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @summary Gets a list of user-induced fault operations filtered by provided
    * input.
    *
-   * Gets the a list of user-induced fault operations filtered by provided input.
+   * Gets the list of user-induced fault operations filtered by provided input.
    *
    * @param {number} typeFilter Used to filter on OperationType for user-induced
    * operations.
@@ -20522,8 +20689,8 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
    * is passed into the corresponding GetProgress API
    *
-   * @param {boolean} force Indicates whether to gracefully rollback and clean up
-   * internal system state modified by executing the user-induced operation.
+   * @param {boolean} force Indicates whether to gracefully roll back and clean
+   * up internal system state modified by executing the user-induced operation.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -20574,8 +20741,8 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
    * is passed into the corresponding GetProgress API
    *
-   * @param {boolean} force Indicates whether to gracefully rollback and clean up
-   * internal system state modified by executing the user-induced operation.
+   * @param {boolean} force Indicates whether to gracefully roll back and clean
+   * up internal system state modified by executing the user-induced operation.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -20652,6 +20819,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
    * Discriminator
    *
+   * @param {object} [backupPolicyDescription.retentionPolicy] Describes the
+   * policy to retain backups in storage.
+   *
+   * @param {string} backupPolicyDescription.retentionPolicy.retentionPolicyType
+   * Polymorphic Discriminator
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -20708,6 +20881,12 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
    * Discriminator
+   *
+   * @param {object} [backupPolicyDescription.retentionPolicy] Describes the
+   * policy to retain backups in storage.
+   *
+   * @param {string} backupPolicyDescription.retentionPolicy.retentionPolicyType
+   * Polymorphic Discriminator
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -21130,6 +21309,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
    * Discriminator
    *
+   * @param {object} [backupPolicyDescription.retentionPolicy] Describes the
+   * policy to retain backups in storage.
+   *
+   * @param {string} backupPolicyDescription.retentionPolicy.retentionPolicyType
+   * Polymorphic Discriminator
+   *
    * @param {string} backupPolicyName The name of the backup policy.
    *
    * @param {object} [options] Optional Parameters.
@@ -21187,6 +21372,12 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} backupPolicyDescription.storage.storageKind Polymorphic
    * Discriminator
+   *
+   * @param {object} [backupPolicyDescription.retentionPolicy] Describes the
+   * policy to retain backups in storage.
+   *
+   * @param {string} backupPolicyDescription.retentionPolicy.retentionPolicyType
+   * Polymorphic Discriminator
    *
    * @param {string} backupPolicyName The name of the backup policy.
    *
@@ -21349,6 +21540,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * client is willing to wait for the requested operation to complete. The
    * default value for this parameter is 60 seconds.
    *
+   * @param {object} [options.disableBackupDescription] Specifies the parameters
+   * to disable backup for any backup entity.
+   *
+   * @param {boolean} options.disableBackupDescription.cleanBackup Boolean flag
+   * to delete backups. It can be set to true for deleting all the backups which
+   * were created for the backup entity that is getting disabled for backup.
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -21358,7 +21556,7 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  disableApplicationBackupWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  disableApplicationBackupWithHttpOperationResponse(applicationId: string, options?: { timeout? : number, disableBackupDescription? : models.DisableBackupDescription, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Disables periodic backup of Service Fabric application.
@@ -21380,6 +21578,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * operation in seconds. This timeout specifies the time duration that the
    * client is willing to wait for the requested operation to complete. The
    * default value for this parameter is 60 seconds.
+   *
+   * @param {object} [options.disableBackupDescription] Specifies the parameters
+   * to disable backup for any backup entity.
+   *
+   * @param {boolean} options.disableBackupDescription.cleanBackup Boolean flag
+   * to delete backups. It can be set to true for deleting all the backups which
+   * were created for the backup entity that is getting disabled for backup.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -21405,9 +21610,9 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  disableApplicationBackup(applicationId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disableApplicationBackup(applicationId: string, options?: { timeout? : number, disableBackupDescription? : models.DisableBackupDescription, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   disableApplicationBackup(applicationId: string, callback: ServiceCallback<void>): void;
-  disableApplicationBackup(applicationId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  disableApplicationBackup(applicationId: string, options: { timeout? : number, disableBackupDescription? : models.DisableBackupDescription, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -21977,6 +22182,13 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
+   * @param {object} [options.disableBackupDescription] Specifies the parameters
+   * to disable backup for any backup entity.
+   *
+   * @param {boolean} options.disableBackupDescription.cleanBackup Boolean flag
+   * to delete backups. It can be set to true for deleting all the backups which
+   * were created for the backup entity that is getting disabled for backup.
+   *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
    * client is willing to wait for the requested operation to complete. The
@@ -21991,7 +22203,7 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  disableServiceBackupWithHttpOperationResponse(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  disableServiceBackupWithHttpOperationResponse(serviceId: string, options?: { disableBackupDescription? : models.DisableBackupDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Disables periodic backup of Service Fabric service which was
@@ -22012,6 +22224,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * previous versions.
    *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.disableBackupDescription] Specifies the parameters
+   * to disable backup for any backup entity.
+   *
+   * @param {boolean} options.disableBackupDescription.cleanBackup Boolean flag
+   * to delete backups. It can be set to true for deleting all the backups which
+   * were created for the backup entity that is getting disabled for backup.
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -22042,9 +22261,9 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  disableServiceBackup(serviceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disableServiceBackup(serviceId: string, options?: { disableBackupDescription? : models.DisableBackupDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   disableServiceBackup(serviceId: string, callback: ServiceCallback<void>): void;
-  disableServiceBackup(serviceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  disableServiceBackup(serviceId: string, options: { disableBackupDescription? : models.DisableBackupDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -22588,6 +22807,13 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
+   * @param {object} [options.disableBackupDescription] Specifies the parameters
+   * to disable backup for any backup entity.
+   *
+   * @param {boolean} options.disableBackupDescription.cleanBackup Boolean flag
+   * to delete backups. It can be set to true for deleting all the backups which
+   * were created for the backup entity that is getting disabled for backup.
+   *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
    * client is willing to wait for the requested operation to complete. The
@@ -22602,7 +22828,7 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  disablePartitionBackupWithHttpOperationResponse(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  disablePartitionBackupWithHttpOperationResponse(partitionId: string, options?: { disableBackupDescription? : models.DisableBackupDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * @summary Disables periodic backup of Service Fabric partition which was
@@ -22617,6 +22843,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.disableBackupDescription] Specifies the parameters
+   * to disable backup for any backup entity.
+   *
+   * @param {boolean} options.disableBackupDescription.cleanBackup Boolean flag
+   * to delete backups. It can be set to true for deleting all the backups which
+   * were created for the backup entity that is getting disabled for backup.
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -22647,9 +22880,9 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  disablePartitionBackup(partitionId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  disablePartitionBackup(partitionId: string, options?: { disableBackupDescription? : models.DisableBackupDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
   disablePartitionBackup(partitionId: string, callback: ServiceCallback<void>): void;
-  disablePartitionBackup(partitionId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  disablePartitionBackup(partitionId: string, options: { disableBackupDescription? : models.DisableBackupDescription, timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -25622,748 +25855,6 @@ export default class ServiceFabricClient extends ServiceClient {
   getCorrelatedEventList(eventInstanceId: string, options?: { timeout? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FabricEvent[]>;
   getCorrelatedEventList(eventInstanceId: string, callback: ServiceCallback<models.FabricEvent[]>): void;
   getCorrelatedEventList(eventInstanceId: string, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FabricEvent[]>): void;
-
-
-  /**
-   * @summary Creates or updates an application resource.
-   *
-   * Creates an application with the specified name and description. If an
-   * application with the same name already exists, then its description are
-   * updated to the one indicated in this request.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} applicationResourceDescription Description for creating an
-   * application resource.
-   *
-   * @param {string} [applicationResourceDescription.description] User readable
-   * description of the application.
-   *
-   * @param {string} [applicationResourceDescription.debugParams] Internal use.
-   *
-   * @param {array} [applicationResourceDescription.services] describes the
-   * services in the application.
-   *
-   * @param {object} [applicationResourceDescription.diagnostics] Describes the
-   * diagnostics definition and usage for an application resource.
-   *
-   * @param {array} [applicationResourceDescription.diagnostics.sinks] List of
-   * supported sinks that can be referenced.
-   *
-   * @param {boolean} [applicationResourceDescription.diagnostics.enabled] Status
-   * of whether or not sinks are enabled.
-   *
-   * @param {array} [applicationResourceDescription.diagnostics.defaultSinkRefs]
-   * The sinks to be used if diagnostics is enabled. Sink choices can be
-   * overridden at the service and code package level.
-   *
-   * @param {string} applicationResourceDescription.name Application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  createApplicationResourceWithHttpOperationResponse(applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-  /**
-   * @summary Creates or updates an application resource.
-   *
-   * Creates an application with the specified name and description. If an
-   * application with the same name already exists, then its description are
-   * updated to the one indicated in this request.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} applicationResourceDescription Description for creating an
-   * application resource.
-   *
-   * @param {string} [applicationResourceDescription.description] User readable
-   * description of the application.
-   *
-   * @param {string} [applicationResourceDescription.debugParams] Internal use.
-   *
-   * @param {array} [applicationResourceDescription.services] describes the
-   * services in the application.
-   *
-   * @param {object} [applicationResourceDescription.diagnostics] Describes the
-   * diagnostics definition and usage for an application resource.
-   *
-   * @param {array} [applicationResourceDescription.diagnostics.sinks] List of
-   * supported sinks that can be referenced.
-   *
-   * @param {boolean} [applicationResourceDescription.diagnostics.enabled] Status
-   * of whether or not sinks are enabled.
-   *
-   * @param {array} [applicationResourceDescription.diagnostics.defaultSinkRefs]
-   * The sinks to be used if diagnostics is enabled. Sink choices can be
-   * overridden at the service and code package level.
-   *
-   * @param {string} applicationResourceDescription.name Application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {null} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {null} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  createApplicationResource(applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  createApplicationResource(applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, callback: ServiceCallback<void>): void;
-  createApplicationResource(applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-  /**
-   * @summary Gets the application with the given name.
-   *
-   * Gets the application with the given name. This includes the information
-   * about the application's services and other runtime information.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ApplicationResourceDescription>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getApplicationResourceWithHttpOperationResponse(applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescription>>;
-
-  /**
-   * @summary Gets the application with the given name.
-   *
-   * Gets the application with the given name. This includes the information
-   * about the application's services and other runtime information.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ApplicationResourceDescription} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ApplicationResourceDescription} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ApplicationResourceDescription} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getApplicationResource(applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescription>;
-  getApplicationResource(applicationResourceName: string, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
-  getApplicationResource(applicationResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
-
-
-  /**
-   * @summary Deletes the specified application.
-   *
-   * Deletes the application identified by the name.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  deleteApplicationResourceWithHttpOperationResponse(applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-  /**
-   * @summary Deletes the specified application.
-   *
-   * Deletes the application identified by the name.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {null} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {null} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  deleteApplicationResource(applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  deleteApplicationResource(applicationResourceName: string, callback: ServiceCallback<void>): void;
-  deleteApplicationResource(applicationResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-  /**
-   * @summary Gets all the services in the application resource.
-   *
-   * The operation returns the service descriptions of all the services in the
-   * application resource.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<PagedServiceResourceDescriptionList>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getServicesWithHttpOperationResponse(applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedServiceResourceDescriptionList>>;
-
-  /**
-   * @summary Gets all the services in the application resource.
-   *
-   * The operation returns the service descriptions of all the services in the
-   * application resource.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {PagedServiceResourceDescriptionList} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {PagedServiceResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link PagedServiceResourceDescriptionList} for
-   *                      more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getServices(applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedServiceResourceDescriptionList>;
-  getServices(applicationResourceName: string, callback: ServiceCallback<models.PagedServiceResourceDescriptionList>): void;
-  getServices(applicationResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedServiceResourceDescriptionList>): void;
-
-
-  /**
-   * @summary Gets the description of the specified service in an application
-   * resource.
-   *
-   * Gets the description of the service resource.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {string} serviceResourceName Service Fabric service resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ServiceResourceDescription>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getServiceWithHttpOperationResponse(applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceDescription>>;
-
-  /**
-   * @summary Gets the description of the specified service in an application
-   * resource.
-   *
-   * Gets the description of the service resource.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {string} serviceResourceName Service Fabric service resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ServiceResourceDescription} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ServiceResourceDescription} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ServiceResourceDescription} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getService(applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceDescription>;
-  getService(applicationResourceName: string, serviceResourceName: string, callback: ServiceCallback<models.ServiceResourceDescription>): void;
-  getService(applicationResourceName: string, serviceResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceDescription>): void;
-
-
-  /**
-   * @summary Gets replicas of a given service in an applciation resource.
-   *
-   * Gets the information about all replicas of a given service of an
-   * application. The information includes the runtime properties of the replica
-   * instance.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {string} serviceResourceName Service Fabric service resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<PagedServiceResourceReplicaDescriptionList>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getReplicasWithHttpOperationResponse(applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PagedServiceResourceReplicaDescriptionList>>;
-
-  /**
-   * @summary Gets replicas of a given service in an applciation resource.
-   *
-   * Gets the information about all replicas of a given service of an
-   * application. The information includes the runtime properties of the replica
-   * instance.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {string} serviceResourceName Service Fabric service resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {PagedServiceResourceReplicaDescriptionList} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {PagedServiceResourceReplicaDescriptionList} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link PagedServiceResourceReplicaDescriptionList}
-   *                      for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getReplicas(applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PagedServiceResourceReplicaDescriptionList>;
-  getReplicas(applicationResourceName: string, serviceResourceName: string, callback: ServiceCallback<models.PagedServiceResourceReplicaDescriptionList>): void;
-  getReplicas(applicationResourceName: string, serviceResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PagedServiceResourceReplicaDescriptionList>): void;
-
-
-  /**
-   * @summary Gets a specific replica of a given service in an application
-   * resource.
-   *
-   * Gets the information about the specified replica of a given service of an
-   * application. The information includes the runtime properties of the replica
-   * instance.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {string} serviceResourceName Service Fabric service resource name.
-   *
-   * @param {string} replicaName Service Fabric replica name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<ServiceResourceReplicaDescription>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getReplicaWithHttpOperationResponse(applicationResourceName: string, serviceResourceName: string, replicaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceReplicaDescription>>;
-
-  /**
-   * @summary Gets a specific replica of a given service in an application
-   * resource.
-   *
-   * Gets the information about the specified replica of a given service of an
-   * application. The information includes the runtime properties of the replica
-   * instance.
-   *
-   * @param {string} applicationResourceName Service Fabric application resource
-   * name.
-   *
-   * @param {string} serviceResourceName Service Fabric service resource name.
-   *
-   * @param {string} replicaName Service Fabric replica name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {ServiceResourceReplicaDescription} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {ServiceResourceReplicaDescription} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link ServiceResourceReplicaDescription} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getReplica(applicationResourceName: string, serviceResourceName: string, replicaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceReplicaDescription>;
-  getReplica(applicationResourceName: string, serviceResourceName: string, replicaName: string, callback: ServiceCallback<models.ServiceResourceReplicaDescription>): void;
-  getReplica(applicationResourceName: string, serviceResourceName: string, replicaName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceReplicaDescription>): void;
-
-
-  /**
-   * @summary Creates or updates a volume resource.
-   *
-   * Creates a volume resource with the specified name and description. If a
-   * volume with the same name already exists, then its description is updated to
-   * the one indicated in this request.
-   *
-   * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
-   * @param {object} volumeResourceDescription Description for creating a volume
-   * resource.
-   *
-   * @param {string} [volumeResourceDescription.description] User readable
-   * description of the volume.
-   *
-   * @param {object} [volumeResourceDescription.azureFileParameters] This type
-   * describes a volume provided by an Azure Files file share.
-   *
-   * @param {string} volumeResourceDescription.azureFileParameters.accountName
-   * Name of the Azure storage account for the File Share.
-   *
-   * @param {string} [volumeResourceDescription.azureFileParameters.accountKey]
-   * Access key of the Azure storage account for the File Share.
-   *
-   * @param {string} volumeResourceDescription.azureFileParameters.shareName Name
-   * of the Azure Files file share that provides storage for the volume.
-   *
-   * @param {string} volumeResourceDescription.name Volume resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  createVolumeResourceWithHttpOperationResponse(volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-  /**
-   * @summary Creates or updates a volume resource.
-   *
-   * Creates a volume resource with the specified name and description. If a
-   * volume with the same name already exists, then its description is updated to
-   * the one indicated in this request.
-   *
-   * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
-   * @param {object} volumeResourceDescription Description for creating a volume
-   * resource.
-   *
-   * @param {string} [volumeResourceDescription.description] User readable
-   * description of the volume.
-   *
-   * @param {object} [volumeResourceDescription.azureFileParameters] This type
-   * describes a volume provided by an Azure Files file share.
-   *
-   * @param {string} volumeResourceDescription.azureFileParameters.accountName
-   * Name of the Azure storage account for the File Share.
-   *
-   * @param {string} [volumeResourceDescription.azureFileParameters.accountKey]
-   * Access key of the Azure storage account for the File Share.
-   *
-   * @param {string} volumeResourceDescription.azureFileParameters.shareName Name
-   * of the Azure Files file share that provides storage for the volume.
-   *
-   * @param {string} volumeResourceDescription.name Volume resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {null} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {null} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  createVolumeResource(volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  createVolumeResource(volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, callback: ServiceCallback<void>): void;
-  createVolumeResource(volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-  /**
-   * @summary Gets the volume resource.
-   *
-   * Gets the information about the volume resource with a given name. This
-   * information includes the volume description and other runtime information.
-   *
-   * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<VolumeResourceDescription>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getVolumeResourceWithHttpOperationResponse(volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VolumeResourceDescription>>;
-
-  /**
-   * @summary Gets the volume resource.
-   *
-   * Gets the information about the volume resource with a given name. This
-   * information includes the volume description and other runtime information.
-   *
-   * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {VolumeResourceDescription} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {VolumeResourceDescription} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link VolumeResourceDescription} for more
-   *                      information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getVolumeResource(volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VolumeResourceDescription>;
-  getVolumeResource(volumeResourceName: string, callback: ServiceCallback<models.VolumeResourceDescription>): void;
-  getVolumeResource(volumeResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VolumeResourceDescription>): void;
-
-
-  /**
-   * @summary Deletes the volume resource.
-   *
-   * Deletes the volume identified by the name.
-   *
-   * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  deleteVolumeResourceWithHttpOperationResponse(volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-  /**
-   * @summary Deletes the volume resource.
-   *
-   * Deletes the volume identified by the name.
-   *
-   * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {null} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {null} [result]   - The deserialized result object if an error did not occur.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  deleteVolumeResource(volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  deleteVolumeResource(volumeResourceName: string, callback: ServiceCallback<void>): void;
-  deleteVolumeResource(volumeResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 export { ServiceFabricClient, models as ServiceFabricModels };
