@@ -14,6 +14,123 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ResourceManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Microsoft.Resources REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * Deployments
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ResourceManagementClient.
@@ -2638,9 +2755,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resources.
@@ -2664,9 +2798,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resources.
@@ -2872,9 +3023,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter.
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -2895,9 +3063,26 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>The properties you can use for eq (equals) or ne (not
+     * equals) are: location, resourceType, name, resourceGroup, identity,
+     * identity/principalId, plan, plan/publisher, plan/product, plan/name,
+     * plan/version, and plan/promotionCode.<br><br>For example, to filter by a
+     * resource type, use: $filter=resourceType eq
+     * 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value,
+     * property) in the filter. The properties you can use for substring are: name
+     * and resourceGroup.<br><br>For example, to get all resources with 'demo'
+     * anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can
+     * link more than one substringof together by adding and/or
+     * operators.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'<br><br>You can use some properties together when filtering. The
+     * combinations you can use are: substringof and/or resourceType, plan and
+     * plan/publisher and plan/name, identity and identity/principalId.
      *
-     * @param {string} [options.expand] The $expand query parameter.
+     * @param {string} [options.expand] The $expand query parameter. You can expand
+     * createdTime and changedTime. For example, to expand both properties, use
+     * $expand=changedTime,createdTime
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -5213,12 +5398,11 @@ export interface ResourceGroups {
      * Creates or updates a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
+     * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
      *
      * @param {object} [parameters.properties]
      *
@@ -5248,12 +5432,11 @@ export interface ResourceGroups {
      * Creates or updates a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to create
-     * or update.
+     * or update. Can include alphanumeric, underscore, parentheses, hyphen, period
+     * (except at end), and Unicode characters that match the allowed characters.
      *
      * @param {object} parameters Parameters supplied to the create or update a
      * resource group.
-     *
-     * @param {string} [parameters.name] The name of the resource group.
      *
      * @param {object} [parameters.properties]
      *
@@ -5589,7 +5772,10 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.
@@ -5610,7 +5796,10 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the
+     * operation.<br><br>You can filter by tag names and values. For example, to
+     * filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue
+     * eq 'Value1'
      *
      * @param {number} [options.top] The number of results to return. If null is
      * passed, returns all resource groups.

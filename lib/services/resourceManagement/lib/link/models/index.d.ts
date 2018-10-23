@@ -54,6 +54,7 @@ export interface ResourceLinkProperties {
  *
  * @member {string} [id] The fully qualified ID of the resource link.
  * @member {string} [name] The name of the resource link.
+ * @member {object} [type] The resource link object.
  * @member {object} [properties] Properties for resource link.
  * @member {string} [properties.sourceId] The fully qualified ID of the source
  * resource in the link.
@@ -64,9 +65,63 @@ export interface ResourceLinkProperties {
 export interface ResourceLink extends BaseResource {
   readonly id?: string;
   readonly name?: string;
+  readonly type?: any;
   properties?: ResourceLinkProperties;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft.Resources
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Profile, endpoint, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @member {string} [description] Description of the operation.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Microsoft.Resources operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider: Microsoft.Resources
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Profile, endpoint, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ * @member {string} [display.description] Description of the operation.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Microsoft.Resources operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
 
 /**
  * @class

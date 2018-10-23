@@ -77,7 +77,7 @@ class MSITokenCredentials {
       if (typeof parsedBody['expires_on'] === 'string') {
         // possibly a Date string '09/14/2017 00:00:00 PM +00:00'
         if (parsedBody['expires_on'].includes(':') || parsedBody['expires_on'].includes('/')) {
-          parsedBody.expiresOn = new Date(parsedBody['expires_on'], 10);
+          parsedBody.expiresOn = new Date(parsedBody['expires_on']);
         } else {
           // normal number as a string '1504130527'
           parsedBody.expiresOn = new Date(parseInt(parsedBody['expires_on'], 10));
