@@ -139,19 +139,6 @@ export interface SBNamespaceUpdateParameters extends ResourceNamespacePatch {
 
 /**
  * @class
- * Initializes a new instance of the SBNamespaceMigrate class.
- * @constructor
- * Namespace Migrate Object
- *
- * @member {string} targetNamespaceType Type of namespaces. Possible values
- * include: 'Messaging', 'NotificationHub', 'Mixed', 'EventHub', 'Relay'
- */
-export interface SBNamespaceMigrate {
-  targetNamespaceType: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SBAuthorizationRule class.
  * @constructor
  * Description of a namespace authorization rule.
