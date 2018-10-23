@@ -3,7 +3,7 @@ uid: azure-arm-frontdoor
 summary: *content
 
 ---
-# Microsoft Azure SDK for Node.js - FrontdoorManagementClient
+# Microsoft Azure SDK for Node.js - FrontDoorManagementClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
 
@@ -22,10 +22,10 @@ npm install azure-arm-frontdoor
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
-const FrontdoorManagementClient = require("azure-arm-frontdoor");
+const FrontDoorManagementClient = require("azure-arm-frontdoor");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
-    const client = new FrontdoorManagementClient(creds, subscriptionId);
+    const client = new FrontDoorManagementClient(creds, subscriptionId);
     return client.frontDoors.list().then((result) => {
       console.log("The result is:");
       console.log(result);

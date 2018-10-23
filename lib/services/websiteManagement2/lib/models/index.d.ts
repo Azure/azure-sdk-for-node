@@ -1811,6 +1811,8 @@ export interface SkuDescription {
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
+ * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
+ * allowed for this ElasticScaleEnabled App Service Plan
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
  * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
@@ -1861,6 +1863,7 @@ export interface AppServicePlan extends Resource {
   readonly maximumNumberOfWorkers?: number;
   readonly geoRegion?: string;
   perSiteScaling?: boolean;
+  maximumElasticWorkerCount?: number;
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
@@ -6906,6 +6909,8 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
+ * @member {number} [maximumElasticWorkerCount] Maximum number of total workers
+ * allowed for this ElasticScaleEnabled App Service Plan
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
  * @member {boolean} [isSpot] If <code>true</code>, this App Service Plan owns
@@ -6936,6 +6941,7 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly maximumNumberOfWorkers?: number;
   readonly geoRegion?: string;
   perSiteScaling?: boolean;
+  maximumElasticWorkerCount?: number;
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
