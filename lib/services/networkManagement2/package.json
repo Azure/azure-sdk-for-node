@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/networkManagementClient.js",
   "types": "./lib/networkManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/networkManagement2",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
