@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/serviceFabricMeshManagementClient.js",
   "types": "./lib/serviceFabricMeshManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/tree/master/lib/services/serviceFabricMeshManagement",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
