@@ -402,6 +402,7 @@ export interface ServerEndpoint extends ProxyResource {
  * @member {string} [serviceLocation] Service Location
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [managementEndpointUri] Management Endpoint Uri
+ * @member {string} [monitoringConfiguration] Monitoring Configuration
  */
 export interface RegisteredServer extends ProxyResource {
   serverCertificate?: string;
@@ -422,6 +423,7 @@ export interface RegisteredServer extends ProxyResource {
   serviceLocation?: string;
   friendlyName?: string;
   managementEndpointUri?: string;
+  monitoringConfiguration?: string;
 }
 
 /**
