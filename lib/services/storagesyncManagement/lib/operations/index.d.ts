@@ -217,6 +217,20 @@ export interface StorageSyncServices {
      *
      * @param {object} parameters Storage Sync Service resource name.
      *
+     * @param {string} parameters.location Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
+     * @param {object} [parameters.properties]
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -228,7 +242,7 @@ export interface StorageSyncServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
 
     /**
      * Create a new StorageSyncService.
@@ -240,6 +254,20 @@ export interface StorageSyncServices {
      * resource.
      *
      * @param {object} parameters Storage Sync Service resource name.
+     *
+     * @param {string} parameters.location Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
+     *
+     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
+     * that describe the resource. These tags can be used for viewing and grouping
+     * this resource (across resource groups). A maximum of 15 tags can be provided
+     * for a resource. Each tag must have a key with a length no greater than 128
+     * characters and a value with a length no greater than 256 characters.
+     *
+     * @param {object} [parameters.properties]
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -268,9 +296,9 @@ export interface StorageSyncServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
-    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, callback: ServiceCallback<models.StorageSyncService>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, callback: ServiceCallback<models.StorageSyncService>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncServiceCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
 
 
     /**
@@ -672,7 +700,8 @@ export interface SyncGroups {
      *
      * @param {object} parameters Sync Group Body
      *
-     * @param {string} [parameters.uniqueId] Unique Id
+     * @param {object} [parameters.properties] The parameters used to create the
+     * sync group
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -685,7 +714,7 @@ export interface SyncGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SyncGroup>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SyncGroup>>;
 
     /**
      * Create a new SyncGroup.
@@ -700,7 +729,8 @@ export interface SyncGroups {
      *
      * @param {object} parameters Sync Group Body
      *
-     * @param {string} [parameters.uniqueId] Unique Id
+     * @param {object} [parameters.properties] The parameters used to create the
+     * sync group
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -729,9 +759,9 @@ export interface SyncGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroup>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, callback: ServiceCallback<models.SyncGroup>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroup>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroup>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, callback: ServiceCallback<models.SyncGroup>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroupCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroup>): void;
 
 
     /**
@@ -891,10 +921,6 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
-     *
-     * @param {string} [parameters.storageAccount] Storage Account name.
-     *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
@@ -903,17 +929,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -926,7 +941,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
 
     /**
      * Create a new CloudEndpoint.
@@ -943,10 +958,6 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
-     *
-     * @param {string} [parameters.storageAccount] Storage Account name.
-     *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
@@ -955,17 +966,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -994,9 +994,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, callback: ServiceCallback<models.CloudEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
 
 
     /**
@@ -1683,10 +1683,6 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
-     *
-     * @param {string} [parameters.storageAccount] Storage Account name.
-     *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
@@ -1695,17 +1691,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1718,7 +1703,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
 
     /**
      * Create a new CloudEndpoint.
@@ -1735,10 +1720,6 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.storageAccountKey] Storage Account access key.
-     *
-     * @param {string} [parameters.storageAccount] Storage Account name.
-     *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
@@ -1747,17 +1728,6 @@ export interface CloudEndpoints {
      *
      * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
      * Id
-     *
-     * @param {string} [parameters.partnershipId] Partnership Id
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1786,9 +1756,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, callback: ServiceCallback<models.CloudEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
 
 
     /**
@@ -2284,18 +2254,12 @@ export interface ServerEndpoints {
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
      *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
+     *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2308,7 +2272,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Create a new ServerEndpoint.
@@ -2333,18 +2297,12 @@ export interface ServerEndpoints {
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
      *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
+     *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2373,9 +2331,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, callback: ServiceCallback<models.ServerEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -2396,14 +2354,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2434,14 +2392,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2694,6 +2652,12 @@ export interface ServerEndpoints {
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2705,7 +2669,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    recallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
@@ -2719,6 +2683,12 @@ export interface ServerEndpoints {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2746,9 +2716,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, callback: ServiceCallback<void>): void;
+    recallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2774,18 +2744,12 @@ export interface ServerEndpoints {
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
      *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
+     *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2798,7 +2762,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Create a new ServerEndpoint.
@@ -2823,18 +2787,12 @@ export interface ServerEndpoints {
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
      *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
+     *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {string} [parameters.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2863,9 +2821,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpointCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -2886,14 +2844,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2924,14 +2882,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3046,6 +3004,12 @@ export interface ServerEndpoints {
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3057,7 +3021,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRecallActionWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
@@ -3071,6 +3035,12 @@ export interface ServerEndpoints {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} parameters Body of Recall Action object.
+     *
+     * @param {string} [parameters.pattern] Pattern of the files.
+     *
+     * @param {string} [parameters.recallPath] Recall path.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3098,9 +3068,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, callback: ServiceCallback<void>): void;
+    beginRecallAction(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.RecallActionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3261,13 +3231,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3277,23 +3241,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3306,7 +3254,7 @@ export interface RegisteredServers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
 
     /**
      * Add a new registered server.
@@ -3327,13 +3275,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3343,23 +3285,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3388,9 +3314,9 @@ export interface RegisteredServers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, callback: ServiceCallback<models.RegisteredServer>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
 
 
     /**
@@ -3460,7 +3386,7 @@ export interface RegisteredServers {
 
 
     /**
-     * Add a new registered server.
+     * Triggers Server certificate rollover.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -3468,49 +3394,11 @@ export interface RegisteredServers {
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
      *
-     * @param {string} serverId GUID identifying the on-premises server.
+     * @param {string} serverId Server Id
      *
-     * @param {object} parameters Body of Registered Server object.
+     * @param {object} parameters Body of Trigger Rollover request.
      *
-     * @param {string} [parameters.serverCertificate] Registered Server Certificate
-     *
-     * @param {string} [parameters.agentVersion] Registered Server Agent Version
-     *
-     * @param {string} [parameters.serverOSVersion] Registered Server OS Version
-     *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
-     * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
-     *
-     * @param {string} [parameters.serverRole] Registered Server serverRole
-     *
-     * @param {string} [parameters.clusterId] Registered Server clusterId
-     *
-     * @param {string} [parameters.clusterName] Registered Server clusterName
-     *
-     * @param {string} [parameters.serverId] Registered Server serverId
-     *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
-     * @param {string} [parameters.friendlyName] Friendly Name
-     *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
+     * @param {string} [parameters.certificateData] Certificate Data
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3519,11 +3407,57 @@ export interface RegisteredServers {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RegisteredServer>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+    triggerRolloverWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.certificateData] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    triggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    triggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, callback: ServiceCallback<void>): void;
+    triggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Add a new registered server.
@@ -3544,13 +3478,7 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
-     * Management Error Code
-     *
      * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
-     *
-     * @param {string} [parameters.provisioningState] Registered Server
-     * Provisioning State
      *
      * @param {string} [parameters.serverRole] Registered Server serverRole
      *
@@ -3560,23 +3488,51 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [parameters.storageSyncServiceUid] Registered Server
-     * storageSyncServiceUid
-     *
-     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
-     *
-     * @param {string} [parameters.lastOperationName] Resource Last Operation Name
-     *
-     * @param {string} [parameters.discoveryEndpointUri] Resource
-     * discoveryEndpointUri
-     *
-     * @param {string} [parameters.resourceLocation] Resource Location
-     *
-     * @param {string} [parameters.serviceLocation] Service Location
-     *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegisteredServer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+
+    /**
+     * Add a new registered server.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId GUID identifying the on-premises server.
+     *
+     * @param {object} parameters Body of Registered Server object.
+     *
+     * @param {string} [parameters.serverCertificate] Registered Server Certificate
+     *
+     * @param {string} [parameters.agentVersion] Registered Server Agent Version
+     *
+     * @param {string} [parameters.serverOSVersion] Registered Server OS Version
+     *
+     * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
+     *
+     * @param {string} [parameters.serverRole] Registered Server serverRole
+     *
+     * @param {string} [parameters.clusterId] Registered Server clusterId
+     *
+     * @param {string} [parameters.clusterName] Registered Server clusterName
+     *
+     * @param {string} [parameters.serverId] Registered Server serverId
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3605,9 +3561,9 @@ export interface RegisteredServers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, callback: ServiceCallback<models.RegisteredServer>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
 
 
     /**
@@ -3674,6 +3630,80 @@ export interface RegisteredServers {
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, serverId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, serverId: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, serverId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.certificateData] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginTriggerRolloverWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.certificateData] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginTriggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginTriggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, callback: ServiceCallback<void>): void;
+    beginTriggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3683,6 +3713,69 @@ export interface RegisteredServers {
  * instance of the StorageSyncManagementClient.
  */
 export interface Workflows {
+
+
+    /**
+     * Get a Workflow List
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowArray>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByStorageSyncServiceWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowArray>>;
+
+    /**
+     * Get a Workflow List
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowArray} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowArray} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowArray} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowArray>;
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.WorkflowArray>): void;
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowArray>): void;
 
 
     /**

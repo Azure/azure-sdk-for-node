@@ -71,6 +71,64 @@ export interface DomainServiceOperations {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationEntityListResult>;
     list(callback: ServiceCallback<models.OperationEntityListResult>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationEntityListResult>): void;
+
+
+    /**
+     * Lists all the available Domain Services operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationEntityListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationEntityListResult>>;
+
+    /**
+     * Lists all the available Domain Services operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationEntityListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationEntityListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationEntityListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationEntityListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationEntityListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationEntityListResult>): void;
 }
 
 /**
@@ -247,6 +305,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -300,6 +387,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -502,6 +618,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -547,6 +692,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -621,6 +795,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -674,6 +877,35 @@ export interface DomainServices {
      * @param {string} [properties.ldapsSettings.externalAccess] A flag to
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -807,6 +1039,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -853,6 +1114,35 @@ export interface DomainServices {
      * determine whether or not Secure LDAP access over the internet is enabled or
      * disabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {object} [properties.notificationSettings] Notification Settings
+     *
+     * @param {string} [properties.notificationSettings.notifyGlobalAdmins] Should
+     * global admins be notified. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.notificationSettings.notifyDcAdmins] Should
+     * domain controller admins be notified. Possible values include: 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [properties.notificationSettings.additionalRecipients] The
+     * list of additional recipients
+     *
+     * @param {object} [properties.domainSecuritySettings] DomainSecurity Settings
+     *
+     * @param {string} [properties.domainSecuritySettings.ntlmV1] A flag to
+     * determine whether or not NtlmV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.tlsV1] A flag to
+     * determine whether or not TlsV1 is enabled or disabled. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.domainSecuritySettings.syncNtlmPasswords] A flag
+     * to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [properties.filteredSync] Enabled or Disabled flag to turn
+     * on Group-based filtered sync. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -883,4 +1173,134 @@ export interface DomainServices {
     beginUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainService>;
     beginUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, callback: ServiceCallback<models.DomainService>): void;
     beginUpdate(resourceGroupName: string, domainServiceName: string, properties: models.DomainServicePatchProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainService>): void;
+
+
+    /**
+     * @summary List Domain Services in Subscription (GET Resources)
+     *
+     * The List Domain Services in Subscription operation lists all the domain
+     * services available under the given subscription (and across all resource
+     * groups within that subscription).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DomainServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainServiceListResult>>;
+
+    /**
+     * @summary List Domain Services in Subscription (GET Resources)
+     *
+     * The List Domain Services in Subscription operation lists all the domain
+     * services available under the given subscription (and across all resource
+     * groups within that subscription).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DomainServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DomainServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DomainServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainServiceListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.DomainServiceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainServiceListResult>): void;
+
+
+    /**
+     * @summary List Domain Services in Resource Group (GET Resources)
+     *
+     * The List Domain Services in Resource Group operation lists all the domain
+     * services available under the given resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DomainServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainServiceListResult>>;
+
+    /**
+     * @summary List Domain Services in Resource Group (GET Resources)
+     *
+     * The List Domain Services in Resource Group operation lists all the domain
+     * services available under the given resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DomainServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DomainServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DomainServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainServiceListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DomainServiceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainServiceListResult>): void;
 }
