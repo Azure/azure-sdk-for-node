@@ -1886,6 +1886,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -1950,7 +1951,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -1994,6 +1995,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2058,7 +2060,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2256,6 +2258,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2320,7 +2323,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use
@@ -2364,6 +2367,7 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
+     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2428,7 +2432,7 @@ export interface ManagedClusters {
      * @param {string} parameters.aadProfile.serverAppID The server AAD application
      * ID.
      *
-     * @param {string} parameters.aadProfile.serverAppSecret The server AAD
+     * @param {string} [parameters.aadProfile.serverAppSecret] The server AAD
      * application secret.
      *
      * @param {string} [parameters.aadProfile.tenantID] The AAD tenant ID to use

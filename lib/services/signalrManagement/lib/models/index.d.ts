@@ -38,6 +38,26 @@ export interface OperationDisplay {
 
 /**
  * @class
+ * Initializes a new instance of the Dimension class.
+ * @constructor
+ * Specifications of the Dimension of metrics.
+ *
+ * @member {string} [name] The public facing name of the dimension.
+ * @member {string} [displayName] Localized friendly display name of the
+ * dimension.
+ * @member {string} [internalName] Name of the dimension as it appears in MDM.
+ * @member {boolean} [toBeExportedForShoebox] A Boolean flag indicating whether
+ * this dimension should be included for the shoebox export scenario.
+ */
+export interface Dimension {
+  name?: string;
+  displayName?: string;
+  internalName?: string;
+  toBeExportedForShoebox?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the MetricSpecification class.
  * @constructor
  * Specifications of the Metrics for Azure Monitoring.
@@ -58,6 +78,7 @@ export interface OperationDisplay {
  * periods where nothing was emitted.
  * @member {string} [category] The name of the metric category that the metric
  * belongs to. A metric can only belong to a single category.
+ * @member {array} [dimensions] The dimensions of the metrics.
  */
 export interface MetricSpecification {
   name?: string;
@@ -67,6 +88,7 @@ export interface MetricSpecification {
   aggregationType?: string;
   fillGapWithZero?: string;
   category?: string;
+  dimensions?: Dimension[];
 }
 
 /**
@@ -170,8 +192,9 @@ export interface NameAvailability {
  *
  * @member {string} name The name of the SKU. This is typically a letter +
  * number code, such as A0 or P3.  Required (if sku is specified)
- * @member {string} [tier] The tier of this particular SKU. Optional. Possible
- * values include: 'Free', 'Basic', 'Premium'
+ * @member {string} [tier] Optional tier of this particular SKU. `Basic` is
+ * deprecated, use `Standard` instead for Basic tier. Possible values include:
+ * 'Free', 'Basic', 'Standard', 'Premium'
  * @member {string} [size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
  * @member {string} [family] Optional, string. If the service has different
@@ -230,8 +253,9 @@ export interface TrackedResource extends Resource {
  * @member {object} [sku] SKU of the service.
  * @member {string} [sku.name] The name of the SKU. This is typically a letter
  * + number code, such as A0 or P3.  Required (if sku is specified)
- * @member {string} [sku.tier] The tier of this particular SKU. Optional.
- * Possible values include: 'Free', 'Basic', 'Premium'
+ * @member {string} [sku.tier] Optional tier of this particular SKU. `Basic` is
+ * deprecated, use `Standard` instead for Basic tier. Possible values include:
+ * 'Free', 'Basic', 'Standard', 'Premium'
  * @member {string} [sku.size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] Optional, string. If the service has different
@@ -253,6 +277,8 @@ export interface TrackedResource extends Resource {
  * service which is designed for browser/client side usage.
  * @member {number} [serverPort] The publicly accessibly port of the SignalR
  * service which is designed for customer server side usage.
+ * @member {string} [version] Version of the SignalR resource. Probably you
+ * need the same or higher version of client SDKs.
  */
 export interface SignalRResource extends TrackedResource {
   sku?: ResourceSku;
@@ -262,6 +288,7 @@ export interface SignalRResource extends TrackedResource {
   readonly hostName?: string;
   readonly publicPort?: number;
   readonly serverPort?: number;
+  version?: string;
 }
 
 /**
@@ -286,10 +313,16 @@ export interface SignalRCreateOrUpdateProperties {
  *
  * @member {string} [primaryKey] The primary access key.
  * @member {string} [secondaryKey] The secondary access key.
+ * @member {string} [primaryConnectionString] SignalR connection string
+ * constructed via the primaryKey
+ * @member {string} [secondaryConnectionString] SignalR connection string
+ * constructed via the secondaryKey
  */
 export interface SignalRKeys {
   primaryKey?: string;
   secondaryKey?: string;
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
 }
 
 /**
@@ -318,8 +351,9 @@ export interface RegenerateKeyParameters {
  * vs. standard)
  * @member {string} [sku.name] The name of the SKU. This is typically a letter
  * + number code, such as A0 or P3.  Required (if sku is specified)
- * @member {string} [sku.tier] The tier of this particular SKU. Optional.
- * Possible values include: 'Free', 'Basic', 'Premium'
+ * @member {string} [sku.tier] Optional tier of this particular SKU. `Basic` is
+ * deprecated, use `Standard` instead for Basic tier. Possible values include:
+ * 'Free', 'Basic', 'Standard', 'Premium'
  * @member {string} [sku.size] Optional, string. When the name field is the
  * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] Optional, string. If the service has different
@@ -356,6 +390,45 @@ export interface SignalRCreateParameters extends SignalRUpdateParameters {
   location: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the SignalRUsageName class.
+ * @constructor
+ * Localizable String object containing the name and a localized value.
+ *
+ * @member {string} [value] The indentifier of the usage.
+ * @member {string} [localizedValue] Localized name of the usage.
+ */
+export interface SignalRUsageName {
+  value?: string;
+  localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SignalRUsage class.
+ * @constructor
+ * Object that describes a specific usage of SignalR resources.
+ *
+ * @member {string} [id] Fully qualified ARM resource id
+ * @member {number} [currentValue] Current value for the usage quota.
+ * @member {number} [limit] The maximum permitted value for the usage quota. If
+ * there is no limit, this value will be -1.
+ * @member {object} [name] Localizable String object containing the name and a
+ * localized value.
+ * @member {string} [name.value] The indentifier of the usage.
+ * @member {string} [name.localizedValue] Localized name of the usage.
+ * @member {string} [unit] Representing the units of the usage quota. Possible
+ * values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond.
+ */
+export interface SignalRUsage {
+  id?: string;
+  currentValue?: number;
+  limit?: number;
+  name?: SignalRUsageName;
+  unit?: string;
+}
+
 
 /**
  * @class
@@ -384,5 +457,20 @@ export interface OperationList extends Array<Operation> {
  * It's null for now, added for future use.
  */
 export interface SignalRResourceList extends Array<SignalRResource> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SignalRUsageList class.
+ * @constructor
+ * Object that includes an array of SignalR resource usages and a possible link
+ * for next set.
+ *
+ * @member {string} [nextLink] The URL the client should use to fetch the next
+ * page (per server side paging).
+ * It's null for now, added for future use.
+ */
+export interface SignalRUsageList extends Array<SignalRUsage> {
   nextLink?: string;
 }

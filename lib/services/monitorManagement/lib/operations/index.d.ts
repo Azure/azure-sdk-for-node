@@ -2118,6 +2118,10 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
+     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -2178,6 +2182,10 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
      *
      * @param {string} actionGroup.location Resource location
      *
@@ -4047,6 +4055,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4101,6 +4117,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
@@ -4178,6 +4202,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4230,6 +4262,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
@@ -4493,7 +4533,8 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
-     * @param {string} parameters.source.query Log search query.
+     * @param {string} [parameters.source.query] Log search query. Required for
+     * action type - AlertingAction
      *
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
@@ -4504,8 +4545,8 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
-     * rule.
+     * @param {object} [parameters.schedule] Schedule (Frequnecy, Time Window) for
+     * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
      * minutes) at which rule condition should be evaluated.
@@ -4555,7 +4596,8 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
-     * @param {string} parameters.source.query Log search query.
+     * @param {string} [parameters.source.query] Log search query. Required for
+     * action type - AlertingAction
      *
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
@@ -4566,8 +4608,8 @@ export interface ScheduledQueryRules {
      * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
      * Possible values include: 'ResultCount'
      *
-     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
-     * rule.
+     * @param {object} [parameters.schedule] Schedule (Frequnecy, Time Window) for
+     * rule. Required for action type - AlertingAction
      *
      * @param {number} parameters.schedule.frequencyInMinutes frequency (in
      * minutes) at which rule condition should be evaluated.
@@ -4931,4 +4973,75 @@ export interface ScheduledQueryRules {
     listByResourceGroup(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResourceCollection>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
     listByResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
+}
+
+/**
+ * @class
+ * MetricNamespaces
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface MetricNamespaces {
+
+
+    /**
+     * Lists the metric namespaces for the resource.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.startTime] The ISO 8601 conform Date start time
+     * from which to query for metric namespaces.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricNamespaceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceUri: string, options?: { startTime? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricNamespaceCollection>>;
+
+    /**
+     * Lists the metric namespaces for the resource.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.startTime] The ISO 8601 conform Date start time
+     * from which to query for metric namespaces.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricNamespaceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricNamespaceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricNamespaceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceUri: string, options?: { startTime? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricNamespaceCollection>;
+    list(resourceUri: string, callback: ServiceCallback<models.MetricNamespaceCollection>): void;
+    list(resourceUri: string, options: { startTime? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricNamespaceCollection>): void;
 }

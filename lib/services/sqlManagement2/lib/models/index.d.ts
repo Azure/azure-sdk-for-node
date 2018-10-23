@@ -174,7 +174,7 @@ export interface ServerConnectionPolicy extends ProxyResource {
  * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
  * alerts that are disabled, or empty string to disable no alerts. Possible
  * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
- * Usage_Anomaly.
+ * Data_Exfiltration; Unsafe_Action.
  * @member {string} [emailAddresses] Specifies the semicolon-separated list of
  * e-mail addresses to which the alert is sent.
  * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
@@ -1342,6 +1342,10 @@ export interface Sku {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1354,6 +1358,9 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
 }
 
 /**
@@ -1388,6 +1395,10 @@ export interface ManagedInstance extends TrackedResource {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  * @member {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
@@ -1400,6 +1411,9 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -2869,20 +2883,6 @@ export interface ManagedDatabaseUpdate {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabel class.
- * @constructor
- * A sensitivity label.
- *
- * @member {string} [labelName] The label name.
- * @member {string} [informationType] The information type.
- */
-export interface SensitivityLabel extends ProxyResource {
-  labelName?: string;
-  informationType?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutomaticTuningServerOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -2957,7 +2957,7 @@ export interface ServerDnsAliasAcquisition {
  * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
  * @member {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
- * Access_Anomaly
+ * Access_Anomaly, Data_Exfiltration, Unsafe_Action
  * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
  * which the alert is sent.
  * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
@@ -4156,6 +4156,52 @@ export interface TdeCertificate extends ProxyResource {
   certPassword?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceKey class.
+ * @constructor
+ * A managed instance key.
+ *
+ * @member {string} [kind] Kind of encryption protector. This is metadata used
+ * for the Azure portal experience.
+ * @member {string} serverKeyType The key type like 'ServiceManaged',
+ * 'AzureKeyVault'. Possible values include: 'ServiceManaged', 'AzureKeyVault'
+ * @member {string} [uri] The URI of the key. If the ServerKeyType is
+ * AzureKeyVault, then the URI is required.
+ * @member {string} [thumbprint] Thumbprint of the key.
+ * @member {date} [creationDate] The key creation date.
+ */
+export interface ManagedInstanceKey extends ProxyResource {
+  readonly kind?: string;
+  serverKeyType: string;
+  uri?: string;
+  readonly thumbprint?: string;
+  readonly creationDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceEncryptionProtector class.
+ * @constructor
+ * The managed instance encryption protector.
+ *
+ * @member {string} [kind] Kind of encryption protector. This is metadata used
+ * for the Azure portal experience.
+ * @member {string} [serverKeyName] The name of the managed instance key.
+ * @member {string} serverKeyType The encryption protector type like
+ * 'ServiceManaged', 'AzureKeyVault'. Possible values include:
+ * 'ServiceManaged', 'AzureKeyVault'
+ * @member {string} [uri] The URI of the server key.
+ * @member {string} [thumbprint] Thumbprint of the server key.
+ */
+export interface ManagedInstanceEncryptionProtector extends ProxyResource {
+  readonly kind?: string;
+  serverKeyName?: string;
+  serverKeyType: string;
+  readonly uri?: string;
+  readonly thumbprint?: string;
+}
+
 
 /**
  * @class
@@ -4662,18 +4708,6 @@ export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
 
 /**
  * @class
- * Initializes a new instance of the SensitivityLabelListResult class.
- * @constructor
- * A list of sensitivity labels.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ServerDnsAliasListResult class.
  * @constructor
  * A list of server DNS aliases.
@@ -4753,5 +4787,29 @@ export interface InstanceFailoverGroupListResult extends Array<InstanceFailoverG
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface BackupShortTermRetentionPolicyListResult extends Array<BackupShortTermRetentionPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceKeyListResult class.
+ * @constructor
+ * A list of managed instance keys.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceKeyListResult extends Array<ManagedInstanceKey> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceEncryptionProtectorListResult class.
+ * @constructor
+ * A list of managed instance encryption protectors.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceEncryptionProtectorListResult extends Array<ManagedInstanceEncryptionProtector> {
   readonly nextLink?: string;
 }
