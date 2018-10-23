@@ -3350,6 +3350,9 @@ export interface Pipelines {
      * @param {object} [pipelineParameter.parameters] List of parameters for
      * pipeline.
      *
+     * @param {object} [pipelineParameter.variables] List of variables for
+     * pipeline.
+     *
      * @param {number} [pipelineParameter.concurrency] The max number of concurrent
      * runs for the pipeline.
      *
@@ -3397,6 +3400,9 @@ export interface Pipelines {
      * pipeline.
      *
      * @param {object} [pipelineParameter.parameters] List of parameters for
+     * pipeline.
+     *
+     * @param {object} [pipelineParameter.variables] List of variables for
      * pipeline.
      *
      * @param {number} [pipelineParameter.concurrency] The max number of concurrent
@@ -4638,6 +4644,630 @@ export interface Triggers {
     listByFactoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerListResponse>;
     listByFactoryNext(nextPageLink: string, callback: ServiceCallback<models.TriggerListResponse>): void;
     listByFactoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerListResponse>): void;
+}
+
+/**
+ * @class
+ * RerunTriggers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface RerunTriggers {
+
+
+    /**
+     * Creates a rerun trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} rerunTumblingWindowTriggerActionParameters Rerun tumbling
+     * window trigger action parameters.
+     *
+     * @param {date} rerunTumblingWindowTriggerActionParameters.startTime The start
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
+     *
+     * @param {date} rerunTumblingWindowTriggerActionParameters.endTime The end
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
+     *
+     * @param {number} rerunTumblingWindowTriggerActionParameters.maxConcurrency
+     * The max number of parallel time windows (ready for execution) for which a
+     * rerun is triggered.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TriggerResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, rerunTumblingWindowTriggerActionParameters: models.RerunTumblingWindowTriggerActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerResource>>;
+
+    /**
+     * Creates a rerun trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} rerunTumblingWindowTriggerActionParameters Rerun tumbling
+     * window trigger action parameters.
+     *
+     * @param {date} rerunTumblingWindowTriggerActionParameters.startTime The start
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
+     *
+     * @param {date} rerunTumblingWindowTriggerActionParameters.endTime The end
+     * time for the time period for which restatement is initiated. Only UTC time
+     * is currently supported.
+     *
+     * @param {number} rerunTumblingWindowTriggerActionParameters.maxConcurrency
+     * The max number of parallel time windows (ready for execution) for which a
+     * rerun is triggered.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TriggerResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TriggerResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TriggerResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, rerunTumblingWindowTriggerActionParameters: models.RerunTumblingWindowTriggerActionParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerResource>;
+    create(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, rerunTumblingWindowTriggerActionParameters: models.RerunTumblingWindowTriggerActionParameters, callback: ServiceCallback<models.TriggerResource>): void;
+    create(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, rerunTumblingWindowTriggerActionParameters: models.RerunTumblingWindowTriggerActionParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerResource>): void;
+
+
+    /**
+     * Starts a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Starts a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stops a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stops a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Cancels a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Cancels a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists rerun triggers by an original trigger name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RerunTriggerListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTriggerWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RerunTriggerListResponse>>;
+
+    /**
+     * Lists rerun triggers by an original trigger name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RerunTriggerListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RerunTriggerListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RerunTriggerListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByTrigger(resourceGroupName: string, factoryName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RerunTriggerListResponse>;
+    listByTrigger(resourceGroupName: string, factoryName: string, triggerName: string, callback: ServiceCallback<models.RerunTriggerListResponse>): void;
+    listByTrigger(resourceGroupName: string, factoryName: string, triggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RerunTriggerListResponse>): void;
+
+
+    /**
+     * Starts a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Starts a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stops a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStopWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stops a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStop(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStop(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, callback: ServiceCallback<void>): void;
+    beginStop(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Cancels a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCancelWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Cancels a trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} triggerName The trigger name.
+     *
+     * @param {string} rerunTriggerName The rerun trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCancel(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCancel(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, callback: ServiceCallback<void>): void;
+    beginCancel(resourceGroupName: string, factoryName: string, triggerName: string, rerunTriggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists rerun triggers by an original trigger name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RerunTriggerListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTriggerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RerunTriggerListResponse>>;
+
+    /**
+     * Lists rerun triggers by an original trigger name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RerunTriggerListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RerunTriggerListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RerunTriggerListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByTriggerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RerunTriggerListResponse>;
+    listByTriggerNext(nextPageLink: string, callback: ServiceCallback<models.RerunTriggerListResponse>): void;
+    listByTriggerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RerunTriggerListResponse>): void;
 }
 
 /**
