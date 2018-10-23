@@ -85,6 +85,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -94,6 +101,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -172,6 +193,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -181,6 +209,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -710,6 +752,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -719,6 +768,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -797,6 +860,13 @@ export interface Clusters {
      * @param {array} [parameters.properties.securityProfile.clusterUsersGroupDNs]
      * Optional. The Distinguished Names for cluster user groups
      *
+     * @param {string} [parameters.properties.securityProfile.aaddsResourceId] The
+     * resource ID of the user's Azure Active Directory Domain Service.
+     *
+     * @param {string} [parameters.properties.securityProfile.msiResourceId] User
+     * assigned identity that has permissions to read and create cluster-related
+     * artifacts in the user's AADDS.
+     *
      * @param {object} [parameters.properties.computeProfile] The compute profile.
      *
      * @param {array} [parameters.properties.computeProfile.roles] The list of
@@ -806,6 +876,20 @@ export interface Clusters {
      *
      * @param {array} [parameters.properties.storageProfile.storageaccounts] The
      * list of storage accounts in the cluster.
+     *
+     * @param {object} [parameters.identity] The identity of the cluster, if
+     * configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly
+     * created identity and a set of user assigned identities. Possible values
+     * include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned',
+     * 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the cluster. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {object} [options] Optional Parameters.
      *

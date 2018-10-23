@@ -174,7 +174,7 @@ export interface ServerConnectionPolicy extends ProxyResource {
  * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
  * alerts that are disabled, or empty string to disable no alerts. Possible
  * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
- * Usage_Anomaly.
+ * Data_Exfiltration; Unsafe_Action.
  * @member {string} [emailAddresses] Specifies the semicolon-separated list of
  * e-mail addresses to which the alert is sent.
  * @member {string} [emailAccountAdmins] Specifies that the alert is sent to
@@ -1342,6 +1342,10 @@ export interface Sku {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1354,6 +1358,9 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
 }
 
 /**
@@ -1388,6 +1395,10 @@ export interface ManagedInstance extends TrackedResource {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  * @member {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
@@ -1400,6 +1411,9 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -2943,7 +2957,7 @@ export interface ServerDnsAliasAcquisition {
  * enabled or disabled. Possible values include: 'New', 'Enabled', 'Disabled'
  * @member {array} [disabledAlerts] Specifies an array of alerts that are
  * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
- * Access_Anomaly
+ * Access_Anomaly, Data_Exfiltration, Unsafe_Action
  * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
  * which the alert is sent.
  * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to

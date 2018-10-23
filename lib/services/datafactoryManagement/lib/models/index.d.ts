@@ -584,6 +584,21 @@ export interface Activity {
 
 /**
  * @class
+ * Initializes a new instance of the VariableSpecification class.
+ * @constructor
+ * Definition of a single variable for a Pipeline.
+ *
+ * @member {string} type Variable type. Possible values include: 'String',
+ * 'Bool', 'Array'
+ * @member {object} [defaultValue] Default value of variable.
+ */
+export interface VariableSpecification {
+  type: string;
+  defaultValue?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineFolder class.
  * @constructor
  * The folder that this Pipeline is in. If not specified, Pipeline will appear
@@ -604,6 +619,7 @@ export interface PipelineFolder {
  * @member {string} [description] The description of the pipeline.
  * @member {array} [activities] List of activities in pipeline.
  * @member {object} [parameters] List of parameters for pipeline.
+ * @member {object} [variables] List of variables for pipeline.
  * @member {number} [concurrency] The max number of concurrent runs for the
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
@@ -617,6 +633,7 @@ export interface PipelineResource extends SubResource {
   description?: string;
   activities?: Activity[];
   parameters?: { [propertyName: string]: ParameterSpecification };
+  variables?: { [propertyName: string]: VariableSpecification };
   concurrency?: number;
   annotations?: any[];
   folder?: PipelineFolder;
@@ -1068,6 +1085,68 @@ export interface TriggerRunsQueryResponse {
 
 /**
  * @class
+ * Initializes a new instance of the RerunTumblingWindowTriggerActionParameters class.
+ * @constructor
+ * Rerun tumbling window trigger Parameters.
+ *
+ * @member {date} startTime The start time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {date} endTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTumblingWindowTriggerActionParameters {
+  startTime: Date;
+  endTime: Date;
+  maxConcurrency: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline reruns for all fixed time interval windows
+ * from a requested start time to requested end time.
+ *
+ * @member {object} [parentTrigger] The parent trigger reference.
+ * @member {date} requestedStartTime The start time for the time period for
+ * which restatement is initiated. Only UTC time is currently supported.
+ * @member {date} requestedEndTime The end time for the time period for which
+ * restatement is initiated. Only UTC time is currently supported.
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTumblingWindowTrigger extends Trigger {
+  parentTrigger?: any;
+  requestedStartTime: Date;
+  requestedEndTime: Date;
+  maxConcurrency: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTriggerResource class.
+ * @constructor
+ * RerunTrigger resource type.
+ *
+ * @member {object} properties Properties of the rerun trigger.
+ * @member {object} [properties.parentTrigger] The parent trigger reference.
+ * @member {date} [properties.requestedStartTime] The start time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {date} [properties.requestedEndTime] The end time for the time
+ * period for which restatement is initiated. Only UTC time is currently
+ * supported.
+ * @member {number} [properties.maxConcurrency] The max number of parallel time
+ * windows (ready for execution) for which a rerun is triggered.
+ */
+export interface RerunTriggerResource extends SubResource {
+  properties: RerunTumblingWindowTrigger;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Metadata associated with the operation.
@@ -1212,6 +1291,305 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the DependencyReference class.
+ * @constructor
+ * Referenced dependency.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface DependencyReference {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
+ * @constructor
+ * Self referenced tumbling window trigger dependency.
+ *
+ * @member {string} offset Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
+  offset: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerReference class.
+ * @constructor
+ * Trigger reference type.
+ *
+ * @member {string} referenceName Reference trigger name.
+ */
+export interface TriggerReference {
+  referenceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerDependencyReference class.
+ * @constructor
+ * Trigger referenced dependency.
+ *
+ * @member {object} referenceTrigger Referenced trigger.
+ * @member {string} [referenceTrigger.referenceName] Reference trigger name.
+ */
+export interface TriggerDependencyReference extends DependencyReference {
+  referenceTrigger: TriggerReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
+ * @constructor
+ * Referenced tumbling window trigger dependency.
+ *
+ * @member {string} [offset] Timespan applied to the start time of a tumbling
+ * window when evaluating dependency.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used.
+ */
+export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
+  offset?: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RetryPolicy class.
+ * @constructor
+ * Execution policy for an activity.
+ *
+ * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
+ * Type: integer (or Expression with resultType integer), minimum: 0.
+ * @member {number} [intervalInSeconds] Interval between retries in seconds.
+ * Default is 30.
+ */
+export interface RetryPolicy {
+  count?: any;
+  intervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTrigger class.
+ * @constructor
+ * Trigger that schedules pipeline runs for all fixed time interval windows
+ * from a start time without gaps and also supports backfill scenarios (when
+ * start time is in the past).
+ *
+ * @member {object} pipelineProperty Pipeline for which runs are created when
+ * an event is fired for trigger window that is ready.
+ * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
+ * @member {string} [pipelineProperty.pipelineReference.referenceName]
+ * Reference pipeline name.
+ * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
+ * @member {object} [pipelineProperty.parameters] Pipeline parameters.
+ * @member {string} frequency The frequency of the time windows. Possible
+ * values include: 'Minute', 'Hour'
+ * @member {number} interval The interval of the time windows. The minimum
+ * interval allowed is 15 Minutes.
+ * @member {date} startTime The start time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {date} [endTime] The end time for the time period for the trigger
+ * during which events are fired for windows that are ready. Only UTC time is
+ * currently supported.
+ * @member {object} [delay] Specifies how long the trigger waits past due time
+ * before triggering new run. It doesn't alter window start and end time. The
+ * default is 0. Type: string (or Expression with resultType string), pattern:
+ * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+ * @member {number} maxConcurrency The max number of parallel time windows
+ * (ready for execution) for which a new run is triggered.
+ * @member {object} [retryPolicy] Retry policy that will be applied for failed
+ * pipeline runs.
+ * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
+ * Default is 0. Type: integer (or Expression with resultType integer),
+ * minimum: 0.
+ * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
+ * seconds. Default is 30.
+ * @member {array} [dependsOn] Triggers that this trigger depends on. Only
+ * tumbling window triggers are supported.
+ */
+export interface TumblingWindowTrigger extends Trigger {
+  pipelineProperty: TriggerPipelineReference;
+  frequency: string;
+  interval: number;
+  startTime: Date;
+  endTime?: Date;
+  delay?: any;
+  maxConcurrency: number;
+  retryPolicy?: RetryPolicy;
+  dependsOn?: DependencyReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MultiplePipelineTrigger class.
+ * @constructor
+ * Base class for all triggers that support one to many model for trigger to
+ * pipeline.
+ *
+ * @member {array} [pipelines] Pipelines that need to be started.
+ */
+export interface MultiplePipelineTrigger extends Trigger {
+  pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobEventsTrigger class.
+ * @constructor
+ * Trigger that runs everytime a Blob event occurs.
+ *
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ */
+export interface BlobEventsTrigger extends MultiplePipelineTrigger {
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
+  events: string[];
+  scope: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobTrigger class.
+ * @constructor
+ * Trigger that runs everytime the selected Blob container changes.
+ *
+ * @member {string} folderPath The path of the container/folder that will
+ * trigger the pipeline.
+ * @member {number} maxConcurrency The max number of parallel files to handle
+ * when it is triggered.
+ * @member {object} linkedService The Azure Storage linked service reference.
+ * @member {string} [linkedService.referenceName] Reference LinkedService name.
+ * @member {object} [linkedService.parameters] Arguments for LinkedService.
+ */
+export interface BlobTrigger extends MultiplePipelineTrigger {
+  folderPath: string;
+  maxConcurrency: number;
+  linkedService: LinkedServiceReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrenceScheduleOccurrence class.
+ * @constructor
+ * The recurrence schedule occurence.
+ *
+ * @member {string} [day] The day of the week. Possible values include:
+ * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+ * @member {number} [occurrence] The occurrence.
+ */
+export interface RecurrenceScheduleOccurrence {
+  day?: string;
+  occurrence?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecurrenceSchedule class.
+ * @constructor
+ * The recurrence schedule.
+ *
+ * @member {array} [minutes] The minutes.
+ * @member {array} [hours] The hours.
+ * @member {array} [weekDays] The days of the week.
+ * @member {array} [monthDays] The month days.
+ * @member {array} [monthlyOccurrences] The monthly occurrences.
+ */
+export interface RecurrenceSchedule {
+  minutes?: number[];
+  hours?: number[];
+  weekDays?: string[];
+  monthDays?: number[];
+  monthlyOccurrences?: RecurrenceScheduleOccurrence[];
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleTriggerRecurrence class.
+ * @constructor
+ * The workflow trigger recurrence.
+ *
+ * @member {string} [frequency] The frequency. Possible values include:
+ * 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {number} [interval] The interval.
+ * @member {date} [startTime] The start time.
+ * @member {date} [endTime] The end time.
+ * @member {string} [timeZone] The time zone.
+ * @member {object} [schedule] The recurrence schedule.
+ * @member {array} [schedule.minutes] The minutes.
+ * @member {array} [schedule.hours] The hours.
+ * @member {array} [schedule.weekDays] The days of the week.
+ * @member {array} [schedule.monthDays] The month days.
+ * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
+ */
+export interface ScheduleTriggerRecurrence {
+  frequency?: string;
+  interval?: number;
+  startTime?: Date;
+  endTime?: Date;
+  timeZone?: string;
+  schedule?: RecurrenceSchedule;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ScheduleTrigger class.
+ * @constructor
+ * Trigger that creates pipeline runs periodically, on schedule.
+ *
+ * @member {object} recurrence Recurrence schedule configuration.
+ * @member {string} [recurrence.frequency] The frequency. Possible values
+ * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
+ * @member {number} [recurrence.interval] The interval.
+ * @member {date} [recurrence.startTime] The start time.
+ * @member {date} [recurrence.endTime] The end time.
+ * @member {string} [recurrence.timeZone] The time zone.
+ * @member {object} [recurrence.schedule] The recurrence schedule.
+ * @member {array} [recurrence.schedule.minutes] The minutes.
+ * @member {array} [recurrence.schedule.hours] The hours.
+ * @member {array} [recurrence.schedule.weekDays] The days of the week.
+ * @member {array} [recurrence.schedule.monthDays] The month days.
+ * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
+ * occurrences.
+ */
+export interface ScheduleTrigger extends MultiplePipelineTrigger {
+  recurrence: ScheduleTriggerRecurrence;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResponsysLinkedService class.
  * @constructor
  * Responsys linked service.
@@ -1333,6 +1711,25 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the ScriptAction class.
+ * @constructor
+ * Custom script action to run on HDI ondemand cluster once it's up.
+ *
+ * @member {string} name The user provided name of the script action.
+ * @member {string} uri The URI for the script action.
+ * @member {object} roles The node types on which the script action should be
+ * executed.
+ * @member {string} [parameters] The parameters for the script action.
+ */
+export interface ScriptAction {
+  name: string;
+  uri: string;
+  roles: any;
+  parameters?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the HDInsightOnDemandLinkedService class.
  * @constructor
  * HDInsight ondemand linked service.
@@ -1413,6 +1810,9 @@ export interface AzureDataLakeAnalyticsLinkedService extends LinkedService {
  * HDInsight cluster.
  * @member {object} [zookeeperNodeSize] Specifies the size of the Zoo Keeper
  * node for the HDInsight cluster.
+ * @member {array} [scriptActions] Custom script actions to run on HDI ondemand
+ * cluster once it's up. Please refer to
+ * https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
  */
 export interface HDInsightOnDemandLinkedService extends LinkedService {
   clusterSize: any;
@@ -1445,6 +1845,7 @@ export interface HDInsightOnDemandLinkedService extends LinkedService {
   headNodeSize?: any;
   dataNodeSize?: any;
   zookeeperNodeSize?: any;
+  scriptActions?: ScriptAction[];
 }
 
 /**
@@ -2327,6 +2728,60 @@ export interface GoogleBigQueryLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the GoogleAdWordsLinkedService class.
+ * @constructor
+ * Google Awords service linked service.
+ *
+ * @member {object} clientCustomerID The Client customer ID of the AdWords
+ * account that you want to fetch report data for.
+ * @member {object} developerToken The developer token associated with the
+ * manager account that you use to grant access to the AdWords API.
+ * @member {string} [developerToken.type] Polymorphic Discriminator
+ * @member {string} authenticationType The OAuth 2.0 authentication mechanism
+ * used for authentication. ServiceAuthentication can only be used on
+ * self-hosted IR. Possible values include: 'ServiceAuthentication',
+ * 'UserAuthentication'
+ * @member {object} [refreshToken] The refresh token obtained from Google for
+ * authorizing access to AdWords for UserAuthentication.
+ * @member {string} [refreshToken.type] Polymorphic Discriminator
+ * @member {object} [clientId] The client id of the google application used to
+ * acquire the refresh token.
+ * @member {string} [clientId.type] Polymorphic Discriminator
+ * @member {object} [clientSecret] The client secret of the google application
+ * used to acquire the refresh token.
+ * @member {string} [clientSecret.type] Polymorphic Discriminator
+ * @member {object} [email] The service account email ID that is used for
+ * ServiceAuthentication and can only be used on self-hosted IR.
+ * @member {object} [keyFilePath] The full path to the .p12 key file that is
+ * used to authenticate the service account email address and can only be used
+ * on self-hosted IR.
+ * @member {object} [trustedCertPath] The full path of the .pem file containing
+ * trusted CA certificates for verifying the server when connecting over SSL.
+ * This property can only be set when using SSL on self-hosted IR. The default
+ * value is the cacerts.pem file installed with the IR.
+ * @member {object} [useSystemTrustStore] Specifies whether to use a CA
+ * certificate from the system trust store or from a specified PEM file. The
+ * default value is false.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface GoogleAdWordsLinkedService extends LinkedService {
+  clientCustomerID: any;
+  developerToken: SecretBase;
+  authenticationType: string;
+  refreshToken?: SecretBase;
+  clientId?: SecretBase;
+  clientSecret?: SecretBase;
+  email?: any;
+  keyFilePath?: any;
+  trustedCertPath?: any;
+  useSystemTrustStore?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EloquaLinkedService class.
  * @constructor
  * Eloqua server linked service.
@@ -2632,6 +3087,49 @@ export interface FtpServerLinkedService extends LinkedService {
   encryptedCredential?: any;
   enableSsl?: any;
   enableServerCertificateValidation?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestServiceLinkedService class.
+ * @constructor
+ * Rest Service linked service.
+ *
+ * @member {object} url The base URL of the REST service.
+ * @member {object} [enableServerCertificateValidation] Whether to validate
+ * server side SSL certificate when connecting to the endpoint.The default
+ * value is true. Type: boolean (or Expression with resultType boolean).
+ * @member {string} authenticationType Type of authentication used to connect
+ * to the REST service. Possible values include: 'Anonymous', 'Basic',
+ * 'AadServicePrincial', 'ManagedServiceIdentity'
+ * @member {object} [userName] The user name used in Basic authentication type.
+ * @member {object} [password] The password used in Basic authentication type.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [servicePrincipalId] The application’s client ID used in
+ * AadServicePrincipal authentication type.
+ * @member {object} [servicePrincipalKey] The application’s key used in
+ * AadServicePrincipal authentication type.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [tenant] The tenant information (domain name or tenant ID)
+ * used in AadServicePrincipal authentication type under which your application
+ * resides.
+ * @member {object} [aadResourceId] The resource you are requesting
+ * authorization to use.
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface RestServiceLinkedService extends LinkedService {
+  url: any;
+  enableServerCertificateValidation?: any;
+  authenticationType: string;
+  userName?: any;
+  password?: SecretBase;
+  servicePrincipalId?: any;
+  servicePrincipalKey?: SecretBase;
+  tenant?: any;
+  aadResourceId?: any;
+  encryptedCredential?: any;
 }
 
 /**
@@ -3046,21 +3544,56 @@ export interface WebLinkedService extends LinkedService {
  *
  * @member {object} url The URL of the OData service endpoint. Type: string (or
  * Expression with resultType string).
- * @member {string} [authenticationType] Type of authentication used to connect
- * to the OData service. Possible values include: 'Basic', 'Anonymous'
+ * @member {string} authenticationType Type of authentication used to connect
+ * to the OData service. Possible values include: 'Anonymous', 'Basic',
+ * 'Windows', 'AadServicePrincipal', 'ManagedServiceIdentity'
  * @member {object} [userName] User name of the OData service. Type: string (or
  * Expression with resultType string).
  * @member {object} [password] Password of the OData service.
  * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [tenant] Specify the tenant information (domain name or
+ * tenant ID) under which your application resides. Type: string (or Expression
+ * with resultType string).
+ * @member {object} [servicePrincipalId] Specify the application id of your
+ * application registered in Azure Active Directory. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [aadResourceId] Specify the resource you are requesting
+ * authorization to use Directory. Type: string (or Expression with resultType
+ * string).
+ * @member {string} [aadServicePrincipalCredentialType] Specify the credential
+ * type (key or cert) is used for service principal. Possible values include:
+ * 'ServicePrincipalKey', 'ServicePrincipalCert'
+ * @member {object} [servicePrincipalKey] Specify the secret of your
+ * application registered in Azure Active Directory. Type: string (or
+ * Expression with resultType string).
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [servicePrincipalEmbeddedCert] Specify the base64 encoded
+ * certificate of your application registered in Azure Active Directory. Type:
+ * string (or Expression with resultType string).
+ * @member {string} [servicePrincipalEmbeddedCert.type] Polymorphic
+ * Discriminator
+ * @member {object} [servicePrincipalEmbeddedCertPassword] Specify the password
+ * of your certificate if your certificate has a password and you are using
+ * AadServicePrincipal authentication. Type: string (or Expression with
+ * resultType string).
+ * @member {string} [servicePrincipalEmbeddedCertPassword.type] Polymorphic
+ * Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface ODataLinkedService extends LinkedService {
   url: any;
-  authenticationType?: string;
+  authenticationType: string;
   userName?: any;
   password?: SecretBase;
+  tenant?: any;
+  servicePrincipalId?: any;
+  aadResourceId?: any;
+  aadServicePrincipalCredentialType?: string;
+  servicePrincipalKey?: SecretBase;
+  servicePrincipalEmbeddedCert?: SecretBase;
+  servicePrincipalEmbeddedCertPassword?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -3301,6 +3834,42 @@ export interface AzureMySqlLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the OracleServiceCloudLinkedService class.
+ * @constructor
+ * Oracle Service Cloud linked service.
+ *
+ * @member {object} host The URL of the Oracle Service Cloud instance.
+ * @member {object} username The user name that you use to access Oracle
+ * Service Cloud server.
+ * @member {object} password The password corresponding to the user name that
+ * you provided in the username key.
+ * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} [useEncryptedEndpoints] Specifies whether the data source
+ * endpoints are encrypted using HTTPS. The default value is true. Type:
+ * boolean (or Expression with resultType boolean).
+ * @member {object} [useHostVerification] Specifies whether to require the host
+ * name in the server's certificate to match the host name of the server when
+ * connecting over SSL. The default value is true. Type: boolean (or Expression
+ * with resultType boolean).
+ * @member {object} [usePeerVerification] Specifies whether to verify the
+ * identity of the server when connecting over SSL. The default value is true.
+ * Type: boolean (or Expression with resultType boolean).
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface OracleServiceCloudLinkedService extends LinkedService {
+  host: any;
+  username: any;
+  password: SecretBase;
+  useEncryptedEndpoints?: any;
+  useHostVerification?: any;
+  usePeerVerification?: any;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OracleLinkedService class.
  * @constructor
  * Oracle database.
@@ -3372,6 +3941,41 @@ export interface HDInsightLinkedService extends LinkedService {
   password?: SecretBase;
   linkedServiceName?: LinkedServiceReference;
   hcatalogLinkedServiceName?: LinkedServiceReference;
+  encryptedCredential?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DynamicsAXLinkedService class.
+ * @constructor
+ * Dynamics AX linked service.
+ *
+ * @member {object} url The URL of Dynamics AX OData API. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [tenant] Specify the tenant information (domain name or
+ * tenant ID) under which your application resides. Type: string (or Expression
+ * with resultType string).
+ * @member {object} [servicePrincipalId] Specify the application id of your
+ * application registered in Azure Active Directory. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [aadResourceId] Specify the resource you are requesting
+ * authorization to use Directory. Type: string (or Expression with resultType
+ * string).
+ * @member {object} [servicePrincipalKey] Specify the secret of your
+ * application registered in Azure Active Directory. Type: string (or
+ * Expression with resultType string).
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Either encryptedCredential or username/password must be
+ * provided. Type: string (or Expression with resultType string).
+ */
+export interface DynamicsAXLinkedService extends LinkedService {
+  url: any;
+  tenant?: any;
+  servicePrincipalId?: any;
+  aadResourceId?: any;
+  servicePrincipalKey?: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -3886,6 +4490,16 @@ export interface GoogleBigQueryObjectDataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the GoogleAdWordsObjectDataset class.
+ * @constructor
+ * Google AdWords service dataset.
+ *
+ */
+export interface GoogleAdWordsObjectDataset extends Dataset {
+}
+
+/**
+ * @class
  * Initializes a new instance of the EloquaObjectDataset class.
  * @constructor
  * Eloqua server dataset.
@@ -3942,6 +4556,33 @@ export interface AzurePostgreSqlTableDataset extends Dataset {
  *
  */
 export interface AmazonMWSObjectDataset extends Dataset {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestServiceDataset class.
+ * @constructor
+ * A Rest service dataset.
+ *
+ * @member {object} [relativeUrl] The relative URL to the resource that the
+ * RESTful API provides. Type: string (or Expression with resultType string).
+ * @member {object} [requestMethod] The HTTP method used to call the RESTful
+ * API. The default is GET. Type: string (or Expression with resultType
+ * string).
+ * @member {object} [requestBody] The HTTP request body to the RESTful API if
+ * requestMethod is POST. Type: string (or Expression with resultType string).
+ * @member {object} [additionalHeaders] The additional HTTP headers in the
+ * request to the RESTful API. Type: string (or Expression with resultType
+ * string).
+ * @member {object} [paginationRules] The pagination rules to compose next page
+ * requests.
+ */
+export interface RestServiceDataset extends Dataset {
+  relativeUrl?: any;
+  requestMethod?: any;
+  requestBody?: any;
+  additionalHeaders?: any;
+  paginationRules?: any;
 }
 
 /**
@@ -4290,6 +4931,16 @@ export interface AzureMySqlTableDataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the OracleServiceCloudObjectDataset class.
+ * @constructor
+ * Oracle Service Cloud dataset.
+ *
+ */
+export interface OracleServiceCloudObjectDataset extends Dataset {
+}
+
+/**
+ * @class
  * Initializes a new instance of the OracleTableDataset class.
  * @constructor
  * The on-premises Oracle database dataset.
@@ -4337,6 +4988,9 @@ export interface MongoDbCollectionDataset extends Dataset {
  * string (or Expression with resultType string).
  * @member {object} [fileName] The name of the on-premises file system. Type:
  * string (or Expression with resultType string).
+ * @member {object} [wildcardPath] The whole path include file name of the
+ * on-premises file system with wildcard supported. Type: string (or Expression
+ * with resultType string).
  * @member {object} [format] The format of the files.
  * @member {object} [format.serializer] Serializer. Type: string (or Expression
  * with resultType string).
@@ -4353,6 +5007,7 @@ export interface MongoDbCollectionDataset extends Dataset {
 export interface FileShareDataset extends Dataset {
   folderPath?: any;
   fileName?: any;
+  wildcardPath?: any;
   format?: DatasetStorageFormat;
   fileFilter?: any;
   compression?: DatasetCompression;
@@ -4364,8 +5019,8 @@ export interface FileShareDataset extends Dataset {
  * @constructor
  * Azure Data Lake Store dataset.
  *
- * @member {object} folderPath Path to the folder in the Azure Data Lake Store.
- * Type: string (or Expression with resultType string).
+ * @member {object} [folderPath] Path to the folder in the Azure Data Lake
+ * Store. Type: string (or Expression with resultType string).
  * @member {object} [fileName] The name of the file in the Azure Data Lake
  * Store. Type: string (or Expression with resultType string).
  * @member {object} [format] The format of the Data Lake Store.
@@ -4374,15 +5029,32 @@ export interface FileShareDataset extends Dataset {
  * @member {object} [format.deserializer] Deserializer. Type: string (or
  * Expression with resultType string).
  * @member {string} [format.type] Polymorphic Discriminator
+ * @member {object} [wildcardPath] The whole path include file name in the
+ * Azure Data Lake Store with wildcard supported. Type: string (or Expression
+ * with resultType string).
  * @member {object} [compression] The data compression method used for the
  * item(s) in the Azure Data Lake Store.
  * @member {string} [compression.type] Polymorphic Discriminator
  */
 export interface AzureDataLakeStoreDataset extends Dataset {
-  folderPath: any;
+  folderPath?: any;
   fileName?: any;
   format?: DatasetStorageFormat;
+  wildcardPath?: any;
   compression?: DatasetCompression;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DynamicsAXResourceDataset class.
+ * @constructor
+ * The path of the Dynamics AX OData entity.
+ *
+ * @member {string} path The path of the Dynamics AX OData entity. Type: string
+ * (or Expression with resultType string).
+ */
+export interface DynamicsAXResourceDataset extends Dataset {
+  path: string;
 }
 
 /**
@@ -4490,6 +5162,9 @@ export interface AzureTableDataset extends Dataset {
  * Expression with resultType string).
  * @member {object} [fileName] The name of the Azure Blob. Type: string (or
  * Expression with resultType string).
+ * @member {object} [wildcardPath] The whole path include file name of the
+ * Azure Blob storage with wildcard supported. Type: string (or Expression with
+ * resultType string).
  * @member {object} [format] The format of the Azure Blob storage.
  * @member {object} [format.serializer] Serializer. Type: string (or Expression
  * with resultType string).
@@ -4504,6 +5179,7 @@ export interface AzureBlobDataset extends Dataset {
   folderPath?: any;
   tableRootLocation?: any;
   fileName?: any;
+  wildcardPath?: any;
   format?: DatasetStorageFormat;
   compression?: DatasetCompression;
 }
@@ -4520,6 +5196,8 @@ export interface AzureBlobDataset extends Dataset {
  * Expression with resultType string).
  * @member {object} [prefix] The prefix filter for the S3 object name. Type:
  * string (or Expression with resultType string).
+ * @member {object} [wildcardPath] The path of the S3 object with wildcard
+ * supported. Type: string (or Expression with resultType string).
  * @member {object} [version] The version for the S3 object. Type: string (or
  * Expression with resultType string).
  * @member {object} [format] The format of files.
@@ -4536,308 +5214,10 @@ export interface AmazonS3Dataset extends Dataset {
   bucketName: any;
   key?: any;
   prefix?: any;
+  wildcardPath?: any;
   version?: any;
   format?: DatasetStorageFormat;
   compression?: DatasetCompression;
-}
-
-/**
- * @class
- * Initializes a new instance of the DependencyReference class.
- * @constructor
- * Referenced dependency.
- *
- * @member {string} type Polymorphic Discriminator
- */
-export interface DependencyReference {
-  type: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
- * @constructor
- * Self referenced tumbling window trigger dependency.
- *
- * @member {string} offset Timespan applied to the start time of a tumbling
- * window when evaluating dependency.
- * @member {string} [size] The size of the window when evaluating the
- * dependency. If undefined the frequency of the tumbling window will be used.
- */
-export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
-  offset: string;
-  size?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TriggerReference class.
- * @constructor
- * Trigger reference type.
- *
- * @member {string} referenceName Reference trigger name.
- */
-export interface TriggerReference {
-  referenceName: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TriggerDependencyReference class.
- * @constructor
- * Trigger referenced dependency.
- *
- * @member {object} referenceTrigger Referenced trigger.
- * @member {string} [referenceTrigger.referenceName] Reference trigger name.
- */
-export interface TriggerDependencyReference extends DependencyReference {
-  referenceTrigger: TriggerReference;
-}
-
-/**
- * @class
- * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
- * @constructor
- * Referenced tumbling window trigger dependency.
- *
- * @member {string} [offset] Timespan applied to the start time of a tumbling
- * window when evaluating dependency.
- * @member {string} [size] The size of the window when evaluating the
- * dependency. If undefined the frequency of the tumbling window will be used.
- */
-export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
-  offset?: string;
-  size?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RetryPolicy class.
- * @constructor
- * Execution policy for an activity.
- *
- * @member {object} [count] Maximum ordinary retry attempts. Default is 0.
- * Type: integer (or Expression with resultType integer), minimum: 0.
- * @member {number} [intervalInSeconds] Interval between retries in seconds.
- * Default is 30.
- */
-export interface RetryPolicy {
-  count?: any;
-  intervalInSeconds?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the TumblingWindowTrigger class.
- * @constructor
- * Trigger that schedules pipeline runs for all fixed time interval windows
- * from a start time without gaps and also supports backfill scenarios (when
- * start time is in the past).
- *
- * @member {object} pipelineProperty Pipeline for which runs are created when
- * an event is fired for trigger window that is ready.
- * @member {object} [pipelineProperty.pipelineReference] Pipeline reference.
- * @member {string} [pipelineProperty.pipelineReference.referenceName]
- * Reference pipeline name.
- * @member {string} [pipelineProperty.pipelineReference.name] Reference name.
- * @member {object} [pipelineProperty.parameters] Pipeline parameters.
- * @member {string} frequency The frequency of the time windows. Possible
- * values include: 'Minute', 'Hour'
- * @member {number} interval The interval of the time windows. The minimum
- * interval allowed is 15 Minutes.
- * @member {date} startTime The start time for the time period for the trigger
- * during which events are fired for windows that are ready. Only UTC time is
- * currently supported.
- * @member {date} [endTime] The end time for the time period for the trigger
- * during which events are fired for windows that are ready. Only UTC time is
- * currently supported.
- * @member {object} [delay] Specifies how long the trigger waits past due time
- * before triggering new run. It doesn't alter window start and end time. The
- * default is 0. Type: string (or Expression with resultType string), pattern:
- * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
- * @member {number} maxConcurrency The max number of parallel time windows
- * (ready for execution) for which a new run is triggered.
- * @member {object} [retryPolicy] Retry policy that will be applied for failed
- * pipeline runs.
- * @member {object} [retryPolicy.count] Maximum ordinary retry attempts.
- * Default is 0. Type: integer (or Expression with resultType integer),
- * minimum: 0.
- * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
- * seconds. Default is 30.
- * @member {array} [dependsOn] Triggers that this trigger depends on. Only
- * tumbling window triggers are supported.
- */
-export interface TumblingWindowTrigger extends Trigger {
-  pipelineProperty: TriggerPipelineReference;
-  frequency: string;
-  interval: number;
-  startTime: Date;
-  endTime?: Date;
-  delay?: any;
-  maxConcurrency: number;
-  retryPolicy?: RetryPolicy;
-  dependsOn?: DependencyReference[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MultiplePipelineTrigger class.
- * @constructor
- * Base class for all triggers that support one to many model for trigger to
- * pipeline.
- *
- * @member {array} [pipelines] Pipelines that need to be started.
- */
-export interface MultiplePipelineTrigger extends Trigger {
-  pipelines?: TriggerPipelineReference[];
-}
-
-/**
- * @class
- * Initializes a new instance of the BlobEventsTrigger class.
- * @constructor
- * Trigger that runs everytime a Blob event occurs.
- *
- * @member {string} [blobPathBeginsWith] The blob path must begin with the
- * pattern provided for trigger to fire. For example,
- * '/records/blobs/december/' will only fire the trigger for blobs in the
- * december folder under the records container. At least one of these must be
- * provided: blobPathBeginsWith, blobPathEndsWith.
- * @member {string} [blobPathEndsWith] The blob path must end with the pattern
- * provided for trigger to fire. For example, 'december/boxes.csv' will only
- * fire the trigger for blobs named boxes in a december folder. At least one of
- * these must be provided: blobPathBeginsWith, blobPathEndsWith.
- * @member {array} events The type of events that cause this trigger to fire.
- * @member {string} scope The ARM resource ID of the Storage Account.
- */
-export interface BlobEventsTrigger extends MultiplePipelineTrigger {
-  blobPathBeginsWith?: string;
-  blobPathEndsWith?: string;
-  events: string[];
-  scope: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BlobTrigger class.
- * @constructor
- * Trigger that runs everytime the selected Blob container changes.
- *
- * @member {string} folderPath The path of the container/folder that will
- * trigger the pipeline.
- * @member {number} maxConcurrency The max number of parallel files to handle
- * when it is triggered.
- * @member {object} linkedService The Azure Storage linked service reference.
- * @member {string} [linkedService.referenceName] Reference LinkedService name.
- * @member {object} [linkedService.parameters] Arguments for LinkedService.
- */
-export interface BlobTrigger extends MultiplePipelineTrigger {
-  folderPath: string;
-  maxConcurrency: number;
-  linkedService: LinkedServiceReference;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecurrenceScheduleOccurrence class.
- * @constructor
- * The recurrence schedule occurence.
- *
- * @member {string} [day] The day of the week. Possible values include:
- * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
- * @member {number} [occurrence] The occurrence.
- */
-export interface RecurrenceScheduleOccurrence {
-  day?: string;
-  occurrence?: number;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecurrenceSchedule class.
- * @constructor
- * The recurrence schedule.
- *
- * @member {array} [minutes] The minutes.
- * @member {array} [hours] The hours.
- * @member {array} [weekDays] The days of the week.
- * @member {array} [monthDays] The month days.
- * @member {array} [monthlyOccurrences] The monthly occurrences.
- */
-export interface RecurrenceSchedule {
-  minutes?: number[];
-  hours?: number[];
-  weekDays?: string[];
-  monthDays?: number[];
-  monthlyOccurrences?: RecurrenceScheduleOccurrence[];
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleTriggerRecurrence class.
- * @constructor
- * The workflow trigger recurrence.
- *
- * @member {string} [frequency] The frequency. Possible values include:
- * 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [interval] The interval.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
- * @member {string} [timeZone] The time zone.
- * @member {object} [schedule] The recurrence schedule.
- * @member {array} [schedule.minutes] The minutes.
- * @member {array} [schedule.hours] The hours.
- * @member {array} [schedule.weekDays] The days of the week.
- * @member {array} [schedule.monthDays] The month days.
- * @member {array} [schedule.monthlyOccurrences] The monthly occurrences.
- */
-export interface ScheduleTriggerRecurrence {
-  frequency?: string;
-  interval?: number;
-  startTime?: Date;
-  endTime?: Date;
-  timeZone?: string;
-  schedule?: RecurrenceSchedule;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ScheduleTrigger class.
- * @constructor
- * Trigger that creates pipeline runs periodically, on schedule.
- *
- * @member {object} recurrence Recurrence schedule configuration.
- * @member {string} [recurrence.frequency] The frequency. Possible values
- * include: 'NotSpecified', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [recurrence.interval] The interval.
- * @member {date} [recurrence.startTime] The start time.
- * @member {date} [recurrence.endTime] The end time.
- * @member {string} [recurrence.timeZone] The time zone.
- * @member {object} [recurrence.schedule] The recurrence schedule.
- * @member {array} [recurrence.schedule.minutes] The minutes.
- * @member {array} [recurrence.schedule.hours] The hours.
- * @member {array} [recurrence.schedule.weekDays] The days of the week.
- * @member {array} [recurrence.schedule.monthDays] The month days.
- * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
- * occurrences.
- */
-export interface ScheduleTrigger extends MultiplePipelineTrigger {
-  recurrence: ScheduleTriggerRecurrence;
 }
 
 /**
@@ -4853,6 +5233,8 @@ export interface ScheduleTrigger extends MultiplePipelineTrigger {
  * Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [secureInput] When set to true, Input from activity is
+ * considered as secure and will not be logged to monitoring.
  * @member {boolean} [secureOutput] When set to true, Output from activity is
  * considered as secure and will not be logged to monitoring.
  */
@@ -4860,6 +5242,7 @@ export interface ActivityPolicy {
   timeout?: any;
   retry?: any;
   retryIntervalInSeconds?: number;
+  secureInput?: boolean;
   secureOutput?: boolean;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -4887,6 +5270,8 @@ export interface ActivityPolicy {
  * 0. Type: integer (or Expression with resultType integer), minimum: 0.
  * @member {number} [policy.retryIntervalInSeconds] Interval between each retry
  * attempt (in seconds). The default is 30 sec.
+ * @member {boolean} [policy.secureInput] When set to true, Input from activity
+ * is considered as secure and will not be logged to monitoring.
  * @member {boolean} [policy.secureOutput] When set to true, Output from
  * activity is considered as secure and will not be logged to monitoring.
  */
@@ -5544,6 +5929,19 @@ export interface GoogleBigQuerySource extends CopySource {
 
 /**
  * @class
+ * Initializes a new instance of the GoogleAdWordsSource class.
+ * @constructor
+ * A copy activity Google AdWords service source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface GoogleAdWordsSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EloquaSource class.
  * @constructor
  * A copy activity Eloqua server source.
@@ -5622,6 +6020,27 @@ export interface AmazonMWSSource extends CopySource {
 
 /**
  * @class
+ * Initializes a new instance of the RestServiceSource class.
+ * @constructor
+ * A copy activity Rest service source.
+ *
+ * @member {object} [httpRequestTimeout] The timeout (TimeSpan) to get an HTTP
+ * response.  It is the timeout to get a response, not the timeout to read
+ * response data.  Default value: 00:01:40. Type: string (or Expression with
+ * resultType string), pattern:
+ * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+ * @member {object} [requestInterval] The time to await before sending next
+ * page request.  Default value: 00:00:01. Type: string (or Expression with
+ * resultType string), pattern:
+ * ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+ */
+export interface RestServiceSource extends CopySource {
+  httpRequestTimeout?: any;
+  requestInterval?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the HttpSource class.
  * @constructor
  * A copy activity source for an HTTP file.
@@ -5693,6 +6112,19 @@ export interface CassandraSource extends CopySource {
  *
  */
 export interface WebSource extends CopySource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OracleServiceCloudSource class.
+ * @constructor
+ * A copy activity Oracle Service Cloud source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface OracleServiceCloudSource extends CopySource {
+  query?: any;
 }
 
 /**
@@ -5813,13 +6245,13 @@ export interface SqlDWSource extends CopySource {
  * @constructor
  * SQL stored procedure parameter.
  *
- * @member {object} value Stored procedure parameter value. Type: string (or
+ * @member {object} [value] Stored procedure parameter value. Type: string (or
  * Expression with resultType string).
  * @member {string} [type] Stored procedure parameter type. Possible values
  * include: 'String', 'Int', 'Decimal', 'Guid', 'Boolean', 'Date'
  */
 export interface StoredProcedureParameter {
-  value: any;
+  value?: any;
   type?: string;
 }
 
@@ -5896,6 +6328,19 @@ export interface SalesforceSource extends CopySource {
  * resultType string).
  */
 export interface RelationalSource extends CopySource {
+  query?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DynamicsAXSource class.
+ * @constructor
+ * A copy activity Dynamics AX source.
+ *
+ * @member {object} [query] A query to retrieve data from source. Type: string
+ * (or Expression with resultType string).
+ */
+export interface DynamicsAXSource extends CopySource {
   query?: any;
 }
 
@@ -6797,6 +7242,38 @@ export interface ControlActivity extends Activity {
 
 /**
  * @class
+ * Initializes a new instance of the AppendVariableActivity class.
+ * @constructor
+ * Append value for a Variable of type Array.
+ *
+ * @member {string} [variableName] Name of the variable whose value needs to be
+ * appended to.
+ * @member {object} [value] Value to be appended. Could be a static value or
+ * Expression
+ */
+export interface AppendVariableActivity extends ControlActivity {
+  variableName?: string;
+  value?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SetVariableActivity class.
+ * @constructor
+ * Set value for a Variable.
+ *
+ * @member {string} [variableName] Name of the variable whose value needs to be
+ * set.
+ * @member {object} [value] Value to be set. Could be a static value or
+ * Expression
+ */
+export interface SetVariableActivity extends ControlActivity {
+  variableName?: string;
+  value?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FilterActivity class.
  * @constructor
  * Filter and return results from input array based on the conditions.
@@ -7638,4 +8115,17 @@ export interface PipelineListResponse extends Array<PipelineResource> {
  */
 export interface TriggerListResponse extends Array<TriggerResource> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RerunTriggerListResponse class.
+ * @constructor
+ * A list of rerun triggers.
+ *
+ * @member {string} [nextLink] The continuation token for getting the next page
+ * of results, if any remaining results exist, null otherwise.
+ */
+export interface RerunTriggerListResponse extends Array<RerunTriggerResource> {
+  readonly nextLink?: string;
 }

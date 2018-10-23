@@ -34,21 +34,52 @@ export interface StorageSyncErrorDetails {
 
 /**
  * @class
- * Initializes a new instance of the StorageSyncError class.
+ * Initializes a new instance of the StorageSyncApiError class.
  * @constructor
  * Error type
  *
  * @member {string} [code] Error code of the given entry.
  * @member {string} [message] Error message of the given entry.
+ * @member {string} [target] Target of the given error entry.
  * @member {object} [details] Error details of the given entry.
  * @member {string} [details.code] Error code of the given entry.
  * @member {string} [details.message] Error message of the given entry.
  * @member {string} [details.target] Target of the given entry.
  */
-export interface StorageSyncError {
+export interface StorageSyncApiError {
   code?: string;
   message?: string;
+  target?: string;
   details?: StorageSyncErrorDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSyncError class.
+ * @constructor
+ * Error type
+ *
+ * @member {object} [error] Error details of the given entry.
+ * @member {string} [error.code] Error code of the given entry.
+ * @member {string} [error.message] Error message of the given entry.
+ * @member {string} [error.target] Target of the given error entry.
+ * @member {object} [error.details] Error details of the given entry.
+ * @member {string} [error.details.code] Error code of the given entry.
+ * @member {string} [error.details.message] Error message of the given entry.
+ * @member {string} [error.details.target] Target of the given entry.
+ * @member {object} [innererror] Error details of the given entry.
+ * @member {string} [innererror.code] Error code of the given entry.
+ * @member {string} [innererror.message] Error message of the given entry.
+ * @member {string} [innererror.target] Target of the given error entry.
+ * @member {object} [innererror.details] Error details of the given entry.
+ * @member {string} [innererror.details.code] Error code of the given entry.
+ * @member {string} [innererror.details.message] Error message of the given
+ * entry.
+ * @member {string} [innererror.details.target] Target of the given entry.
+ */
+export interface StorageSyncError {
+  error?: StorageSyncApiError;
+  innererror?: StorageSyncApiError;
 }
 
 /**
@@ -114,6 +145,17 @@ export interface StorageSyncService extends TrackedResource {
 
 /**
  * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
  * Initializes a new instance of the SyncGroup class.
  * @constructor
  * Sync Group object.
@@ -121,7 +163,7 @@ export interface StorageSyncService extends TrackedResource {
  * @member {string} [uniqueId] Unique Id
  * @member {string} [syncGroupStatus] Sync group status
  */
-export interface SyncGroup extends Resource {
+export interface SyncGroup extends ProxyResource {
   uniqueId?: string;
   readonly syncGroupStatus?: string;
 }
@@ -132,8 +174,6 @@ export interface SyncGroup extends Resource {
  * @constructor
  * Cloud Endpoint object.
  *
- * @member {string} [storageAccountKey] Storage Account access key.
- * @member {string} [storageAccount] Storage Account name.
  * @member {string} [storageAccountResourceId] Storage Account Resource Id
  * @member {string} [storageAccountShareName] Storage Account Share name
  * @member {string} [storageAccountTenantId] Storage Account Tenant Id
@@ -144,9 +184,7 @@ export interface SyncGroup extends Resource {
  * @member {string} [lastWorkflowId] CloudEndpoint lastWorkflowId
  * @member {string} [lastOperationName] Resource Last Operation Name
  */
-export interface CloudEndpoint extends Resource {
-  storageAccountKey?: string;
-  storageAccount?: string;
+export interface CloudEndpoint extends ProxyResource {
   storageAccountResourceId?: string;
   storageAccountShareName?: string;
   storageAccountTenantId?: string;
@@ -160,21 +198,150 @@ export interface CloudEndpoint extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ServerEndpointUpdateParameters class.
+ * Initializes a new instance of the RecallActionParameters class.
  * @constructor
- * Parameters for updating an Server Endpoint.
+ * The parameters used when calling recall action on server endpoint.
  *
- * @member {object} [tags] The user-specified tags associated with the server
- * endpoint.
+ * @member {string} [pattern] Pattern of the files.
+ * @member {string} [recallPath] Recall path.
+ */
+export interface RecallActionParameters {
+  pattern?: string;
+  recallPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageSyncServiceCreateParameters class.
+ * @constructor
+ * The parameters used when creating a storage sync service.
+ *
+ * @member {string} location Required. Gets or sets the location of the
+ * resource. This will be one of the supported and registered Azure Geo Regions
+ * (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource
+ * cannot be changed once it is created, but if an identical geo region is
+ * specified on update, the request will succeed.
+ * @member {object} [tags] Gets or sets a list of key value pairs that describe
+ * the resource. These tags can be used for viewing and grouping this resource
+ * (across resource groups). A maximum of 15 tags can be provided for a
+ * resource. Each tag must have a key with a length no greater than 128
+ * characters and a value with a length no greater than 256 characters.
+ * @member {object} [properties]
+ */
+export interface StorageSyncServiceCreateParameters {
+  location: string;
+  tags?: { [propertyName: string]: string };
+  properties?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SyncGroupCreateParameters class.
+ * @constructor
+ * The parameters used when creating a sync group.
+ *
+ * @member {object} [properties] The parameters used to create the sync group
+ */
+export interface SyncGroupCreateParameters extends ProxyResource {
+  properties?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudEndpointCreateParameters class.
+ * @constructor
+ * The parameters used when creating a cloud endpoint.
+ *
+ * @member {string} [storageAccountResourceId] Storage Account Resource Id
+ * @member {string} [storageAccountShareName] Storage Account Share name
+ * @member {string} [storageAccountTenantId] Storage Account Tenant Id
+ */
+export interface CloudEndpointCreateParameters extends ProxyResource {
+  storageAccountResourceId?: string;
+  storageAccountShareName?: string;
+  storageAccountTenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerEndpointCreateParameters class.
+ * @constructor
+ * The parameters used when creating a server endpoint.
+ *
+ * @member {string} [serverLocalPath] Server Local path.
  * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
+ * @member {string} [friendlyName] Friendly Name
+ * @member {string} [serverResourceId] Server Resource Id.
  */
-export interface ServerEndpointUpdateParameters {
-  tags?: { [propertyName: string]: string };
+export interface ServerEndpointCreateParameters extends ProxyResource {
+  serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
+  friendlyName?: string;
+  serverResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerRolloverRequest class.
+ * @constructor
+ * Trigger Rollover Request.
+ *
+ * @member {string} [certificateData] Certificate Data
+ */
+export interface TriggerRolloverRequest {
+  certificateData?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegisteredServerCreateParameters class.
+ * @constructor
+ * The parameters used when creating a registered server.
+ *
+ * @member {string} [serverCertificate] Registered Server Certificate
+ * @member {string} [agentVersion] Registered Server Agent Version
+ * @member {string} [serverOSVersion] Registered Server OS Version
+ * @member {string} [lastHeartBeat] Registered Server last heart beat
+ * @member {string} [serverRole] Registered Server serverRole
+ * @member {string} [clusterId] Registered Server clusterId
+ * @member {string} [clusterName] Registered Server clusterName
+ * @member {string} [serverId] Registered Server serverId
+ * @member {string} [friendlyName] Friendly Name
+ */
+export interface RegisteredServerCreateParameters extends ProxyResource {
+  serverCertificate?: string;
+  agentVersion?: string;
+  serverOSVersion?: string;
+  lastHeartBeat?: string;
+  serverRole?: string;
+  clusterId?: string;
+  clusterName?: string;
+  serverId?: string;
+  friendlyName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerEndpointUpdateParameters class.
+ * @constructor
+ * Parameters for updating an Server Endpoint.
+ *
+ * @member {string} [cloudTiering] Cloud Tiering. Possible values include:
+ * 'on', 'off'
+ * @member {number} [volumeFreeSpacePercent] Level of free space to be
+ * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
+ */
+export interface ServerEndpointUpdateParameters {
+  cloudTiering?: string;
+  volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
 }
 
 /**
@@ -188,6 +355,7 @@ export interface ServerEndpointUpdateParameters {
  * 'on', 'off'
  * @member {number} [volumeFreeSpacePercent] Level of free space to be
  * maintained by Cloud Tiering if it is enabled.
+ * @member {number} [tierFilesOlderThanDays] Tier files older than days.
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [serverResourceId] Server Resource Id.
  * @member {string} [provisioningState] ServerEndpoint Provisioning State
@@ -195,10 +363,11 @@ export interface ServerEndpointUpdateParameters {
  * @member {string} [lastOperationName] Resource Last Operation Name
  * @member {object} [syncStatus] Sync Health Status
  */
-export interface ServerEndpoint extends Resource {
+export interface ServerEndpoint extends ProxyResource {
   serverLocalPath?: string;
   cloudTiering?: string;
   volumeFreeSpacePercent?: number;
+  tierFilesOlderThanDays?: number;
   friendlyName?: string;
   serverResourceId?: string;
   provisioningState?: string;
@@ -213,9 +382,6 @@ export interface ServerEndpoint extends Resource {
  * @constructor
  * Registered Server resource.
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
  * @member {string} [serverCertificate] Registered Server Certificate
  * @member {string} [agentVersion] Registered Server Agent Version
  * @member {string} [serverOSVersion] Registered Server OS Version
@@ -236,11 +402,9 @@ export interface ServerEndpoint extends Resource {
  * @member {string} [serviceLocation] Service Location
  * @member {string} [friendlyName] Friendly Name
  * @member {string} [managementEndpointUri] Management Endpoint Uri
+ * @member {string} [monitoringConfiguration] Monitoring Configuration
  */
-export interface RegisteredServer extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
+export interface RegisteredServer extends ProxyResource {
   serverCertificate?: string;
   agentVersion?: string;
   serverOSVersion?: string;
@@ -259,6 +423,7 @@ export interface RegisteredServer extends BaseResource {
   serviceLocation?: string;
   friendlyName?: string;
   managementEndpointUri?: string;
+  monitoringConfiguration?: string;
 }
 
 /**
@@ -289,7 +454,7 @@ export interface ResourcesMoveInfo {
  * @member {string} [steps] workflow steps
  * @member {string} [lastOperationId] workflow last operation identifier.
  */
-export interface Workflow extends Resource {
+export interface Workflow extends ProxyResource {
   lastStepName?: string;
   status?: string;
   operation?: string;
@@ -488,18 +653,6 @@ export interface PostBackupResponse {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowArray class.
- * @constructor
- * Array of Workflow
- *
- * @member {array} [value] Collection of workflow items.
- */
-export interface WorkflowArray {
-  value?: Workflow[];
-}
-
-/**
- * @class
  * Initializes a new instance of the StorageSyncServiceUpdateParameters class.
  * @constructor
  * Parameters for updating an Storage sync service.
@@ -511,17 +664,6 @@ export interface WorkflowArray {
 export interface StorageSyncServiceUpdateParameters {
   tags?: { [propertyName: string]: string };
   properties?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
- *
- */
-export interface ProxyResource extends Resource {
 }
 
 /**
@@ -599,4 +741,14 @@ export interface ServerEndpointArray extends Array<ServerEndpoint> {
  *
  */
 export interface RegisteredServerArray extends Array<RegisteredServer> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkflowArray class.
+ * @constructor
+ * Array of Workflow
+ *
+ */
+export interface WorkflowArray extends Array<Workflow> {
 }
