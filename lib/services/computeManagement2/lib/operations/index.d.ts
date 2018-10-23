@@ -979,9 +979,6 @@ export interface VirtualMachineExtensions {
      * @param {array} [extensionParameters.instanceView.statuses] The resource
      * status information.
      *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
-     *
      * @param {string} extensionParameters.location Resource location
      *
      * @param {object} [extensionParameters.tags] Resource tags
@@ -1054,9 +1051,6 @@ export interface VirtualMachineExtensions {
      *
      * @param {array} [extensionParameters.instanceView.statuses] The resource
      * status information.
-     *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
      *
      * @param {string} extensionParameters.location Resource location
      *
@@ -1133,9 +1127,6 @@ export interface VirtualMachineExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
-     *
      * @param {object} [extensionParameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
@@ -1188,9 +1179,6 @@ export interface VirtualMachineExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
-     *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [extensionParameters.tags] Resource tags
      *
@@ -1487,9 +1475,6 @@ export interface VirtualMachineExtensions {
      * @param {array} [extensionParameters.instanceView.statuses] The resource
      * status information.
      *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
-     *
      * @param {string} extensionParameters.location Resource location
      *
      * @param {object} [extensionParameters.tags] Resource tags
@@ -1562,9 +1547,6 @@ export interface VirtualMachineExtensions {
      *
      * @param {array} [extensionParameters.instanceView.statuses] The resource
      * status information.
-     *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
      *
      * @param {string} extensionParameters.location Resource location
      *
@@ -1641,9 +1623,6 @@ export interface VirtualMachineExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
-     *
      * @param {object} [extensionParameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
@@ -1696,9 +1675,6 @@ export interface VirtualMachineExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
-     *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [extensionParameters.tags] Resource tags
      *
@@ -14206,9 +14182,6 @@ export interface VirtualMachineScaleSetExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14261,9 +14234,6 @@ export interface VirtualMachineScaleSetExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
-     *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -14536,9 +14506,6 @@ export interface VirtualMachineScaleSetExtensions {
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
      *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -14591,9 +14558,6 @@ export interface VirtualMachineScaleSetExtensions {
      * @param {object} [extensionParameters.protectedSettings] The extension can
      * contain either protectedSettings or protectedSettingsFromKeyVault or no
      * protected settings at all.
-     *
-     * @param {array} [extensionParameters.provisionAfterExtensions] Collection of
-     * extension names after which this extension needs to be provisioned.
      *
      * @param {object} [options] Optional Parameters.
      *
