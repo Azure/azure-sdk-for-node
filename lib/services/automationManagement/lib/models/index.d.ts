@@ -1939,7 +1939,7 @@ export interface SoftareUpdateConfigurationRunTaskProperties {
  * @member {string} [preTask.status] The status of the task.
  * @member {string} [preTask.source] The name of the source of the task.
  * @member {string} [preTask.jobId] The job id of the task.
- * @member {object} [postTask] Post task object.
+ * @member {object} [postTask] Post task properties.
  * @member {string} [postTask.status] The status of the task.
  * @member {string} [postTask.source] The name of the source of the task.
  * @member {string} [postTask.jobId] The job id of the task.
@@ -1986,7 +1986,7 @@ export interface SoftareUpdateConfigurationRunTasks {
  * @member {string} [tasks.preTask.status] The status of the task.
  * @member {string} [tasks.preTask.source] The name of the source of the task.
  * @member {string} [tasks.preTask.jobId] The job id of the task.
- * @member {object} [tasks.postTask] Post task object.
+ * @member {object} [tasks.postTask] Post task properties.
  * @member {string} [tasks.postTask.status] The status of the task.
  * @member {string} [tasks.postTask.source] The name of the source of the task.
  * @member {string} [tasks.postTask.jobId] The job id of the task.
@@ -2253,7 +2253,7 @@ export interface SourceControlCreateOrUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
- * 'IncrementalSync', 'FullSync'
+ * 'PartialSync', 'FullSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
@@ -2294,7 +2294,7 @@ export interface SourceControlSyncJobCreateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {string} [syncType] The sync type. Possible values include:
- * 'IncrementalSync', 'FullSync'
+ * 'PartialSync', 'FullSync'
  * @member {string} [exception] The exceptions that occured while running the
  * sync job.
  */
