@@ -1053,6 +1053,546 @@ export interface Namespaces {
 
 
     /**
+     * Gets a list of IP Filter rules for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IpFilterRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listIpFilterRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IpFilterRuleListResult>>;
+
+    /**
+     * Gets a list of IP Filter rules for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IpFilterRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IpFilterRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IpFilterRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listIpFilterRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IpFilterRuleListResult>;
+    listIpFilterRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.IpFilterRuleListResult>): void;
+    listIpFilterRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IpFilterRuleListResult>): void;
+
+
+    /**
+     * Creates or updates an IpFilterRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} ipFilterRuleName The IP Filter Rule name.
+     *
+     * @param {object} parameters The Namespace IpFilterRule.
+     *
+     * @param {string} [parameters.ipMask] IP Mask
+     *
+     * @param {string} [parameters.action] The IP Filter Action. Possible values
+     * include: 'Accept', 'Reject'
+     *
+     * @param {string} [parameters.filterName] IP Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IpFilterRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateIpFilterRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, parameters: models.IpFilterRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IpFilterRule>>;
+
+    /**
+     * Creates or updates an IpFilterRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} ipFilterRuleName The IP Filter Rule name.
+     *
+     * @param {object} parameters The Namespace IpFilterRule.
+     *
+     * @param {string} [parameters.ipMask] IP Mask
+     *
+     * @param {string} [parameters.action] The IP Filter Action. Possible values
+     * include: 'Accept', 'Reject'
+     *
+     * @param {string} [parameters.filterName] IP Filter name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IpFilterRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IpFilterRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IpFilterRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, parameters: models.IpFilterRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IpFilterRule>;
+    createOrUpdateIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, parameters: models.IpFilterRule, callback: ServiceCallback<models.IpFilterRule>): void;
+    createOrUpdateIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, parameters: models.IpFilterRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IpFilterRule>): void;
+
+
+    /**
+     * Deletes an IpFilterRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} ipFilterRuleName The IP Filter Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteIpFilterRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an IpFilterRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} ipFilterRuleName The IP Filter Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, callback: ServiceCallback<void>): void;
+    deleteIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets an IpFilterRule for a Namespace by rule name.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} ipFilterRuleName The IP Filter Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IpFilterRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getIpFilterRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IpFilterRule>>;
+
+    /**
+     * Gets an IpFilterRule for a Namespace by rule name.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} ipFilterRuleName The IP Filter Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IpFilterRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IpFilterRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IpFilterRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IpFilterRule>;
+    getIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, callback: ServiceCallback<models.IpFilterRule>): void;
+    getIpFilterRule(resourceGroupName: string, namespaceName: string, ipFilterRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IpFilterRule>): void;
+
+
+    /**
+     * Gets a list of VirtualNetwork rules for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualNetworkRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRuleListResult>>;
+
+    /**
+     * Gets a list of VirtualNetwork rules for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualNetworkRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
+    listVirtualNetworkRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+    listVirtualNetworkRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+
+
+    /**
+     * Creates or updates an VirtualNetworkRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} virtualNetworkRuleName The Virtual Network Rule name.
+     *
+     * @param {object} parameters The Namespace VirtualNetworkRule.
+     *
+     * @param {string} [parameters.virtualNetworkSubnetId] Resource ID of Virtual
+     * Network Subnet
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateVirtualNetworkRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Creates or updates an VirtualNetworkRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} virtualNetworkRuleName The Virtual Network Rule name.
+     *
+     * @param {object} parameters The Namespace VirtualNetworkRule.
+     *
+     * @param {string} [parameters.virtualNetworkSubnetId] Resource ID of Virtual
+     * Network Subnet
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    createOrUpdateVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    createOrUpdateVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Deletes an VirtualNetworkRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} virtualNetworkRuleName The Virtual Network Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteVirtualNetworkRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an VirtualNetworkRule for a Namespace.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} virtualNetworkRuleName The Virtual Network Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, callback: ServiceCallback<void>): void;
+    deleteVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets an VirtualNetworkRule for a Namespace by rule name.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} virtualNetworkRuleName The Virtual Network Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getVirtualNetworkRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Gets an VirtualNetworkRule for a Namespace by rule name.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {string} virtualNetworkRuleName The Virtual Network Rule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    getVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    getVirtualNetworkRule(resourceGroupName: string, namespaceName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
      * Creates or updates a service namespace. Once created, this namespace's
      * resource manifest is immutable. This operation is idempotent.
      *
@@ -1387,6 +1927,122 @@ export interface Namespaces {
     listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBAuthorizationRuleListResult>;
     listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
     listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBAuthorizationRuleListResult>): void;
+
+
+    /**
+     * Gets a list of IP Filter rules for a Namespace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IpFilterRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listIpFilterRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IpFilterRuleListResult>>;
+
+    /**
+     * Gets a list of IP Filter rules for a Namespace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IpFilterRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IpFilterRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IpFilterRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listIpFilterRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IpFilterRuleListResult>;
+    listIpFilterRulesNext(nextPageLink: string, callback: ServiceCallback<models.IpFilterRuleListResult>): void;
+    listIpFilterRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IpFilterRuleListResult>): void;
+
+
+    /**
+     * Gets a list of VirtualNetwork rules for a Namespace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualNetworkRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRuleListResult>>;
+
+    /**
+     * Gets a list of VirtualNetwork rules for a Namespace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualNetworkRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
+    listVirtualNetworkRulesNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+    listVirtualNetworkRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
 }
 
 /**
