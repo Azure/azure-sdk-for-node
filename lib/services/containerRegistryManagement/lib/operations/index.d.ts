@@ -39,7 +39,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -92,7 +101,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1176,7 +1194,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1229,7 +1256,16 @@ export interface Registries {
      * the source Azure Container Registry.
      *
      * @param {string} [parameters.source.registryUri] The address of the source
-     * registry.
+     * registry (e.g. 'mcr.microsoft.com').
+     *
+     * @param {object} [parameters.source.credentials] Credentials used when
+     * importing from a registry uri.
+     *
+     * @param {string} [parameters.source.credentials.username] The username to
+     * authenticate with the source registry.
+     *
+     * @param {string} parameters.source.credentials.password The password used to
+     * authenticate with the source registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -4354,6 +4390,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4371,8 +4410,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4432,6 +4470,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4449,8 +4490,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4594,6 +4634,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4611,8 +4654,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4670,6 +4712,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4687,8 +4732,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4829,6 +4873,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4846,8 +4893,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -4907,6 +4953,9 @@ export interface Tasks {
      *
      * @param {object} taskCreateParameters.step The properties of a task step.
      *
+     * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4924,8 +4973,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskCreateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -5069,6 +5117,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5086,8 +5137,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
@@ -5145,6 +5195,9 @@ export interface Tasks {
      * @param {object} [taskUpdateParameters.step] The properties for updating a
      * task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
+     * relative) of the source context for the task step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5162,8 +5215,7 @@ export interface Tasks {
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
-     * current status of build trigger. Possible values include: 'Disabled',
-     * 'Enabled'
+     * current status of trigger. Possible values include: 'Disabled', 'Enabled'
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
