@@ -14,1049 +14,6 @@ import * as models from '../models';
 
 /**
  * @class
- * Application
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricMeshManagementClient.
- */
-export interface Application {
-
-
-    /**
-     * @summary Creates or updates an application resource.
-     *
-     * Creates an application resource with the specified name and description. If
-     * an application with the same name already exists, then its description is
-     * updated to the one indicated in this request.
-     *
-     * Use network resources to provide public connectivity to the services of an
-     * application.
-     *
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} applicationResourceDescription Description for creating an
-     * application resource.
-     *
-     * @param {string} [applicationResourceDescription.description] User readable
-     * description of the application.
-     *
-     * @param {string} [applicationResourceDescription.debugParams] Internal use.
-     *
-     * @param {array} [applicationResourceDescription.services] describes the
-     * services in the application.
-     *
-     * @param {object} [applicationResourceDescription.diagnostics] Describes the
-     * diagnostics definition and usage for an application resource.
-     *
-     * @param {array} [applicationResourceDescription.diagnostics.sinks] List of
-     * supported sinks that can be referenced.
-     *
-     * @param {boolean} [applicationResourceDescription.diagnostics.enabled] Status
-     * of whether or not sinks are enabled.
-     *
-     * @param {array} [applicationResourceDescription.diagnostics.defaultSinkRefs]
-     * The sinks to be used if diagnostics is enabled. Sink choices can be
-     * overridden at the service and code package level.
-     *
-     * @param {object} [applicationResourceDescription.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationResourceDescription>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, applicationName: string, applicationResourceDescription: models.ApplicationResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescription>>;
-
-    /**
-     * @summary Creates or updates an application resource.
-     *
-     * Creates an application resource with the specified name and description. If
-     * an application with the same name already exists, then its description is
-     * updated to the one indicated in this request.
-     *
-     * Use network resources to provide public connectivity to the services of an
-     * application.
-     *
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} applicationResourceDescription Description for creating an
-     * application resource.
-     *
-     * @param {string} [applicationResourceDescription.description] User readable
-     * description of the application.
-     *
-     * @param {string} [applicationResourceDescription.debugParams] Internal use.
-     *
-     * @param {array} [applicationResourceDescription.services] describes the
-     * services in the application.
-     *
-     * @param {object} [applicationResourceDescription.diagnostics] Describes the
-     * diagnostics definition and usage for an application resource.
-     *
-     * @param {array} [applicationResourceDescription.diagnostics.sinks] List of
-     * supported sinks that can be referenced.
-     *
-     * @param {boolean} [applicationResourceDescription.diagnostics.enabled] Status
-     * of whether or not sinks are enabled.
-     *
-     * @param {array} [applicationResourceDescription.diagnostics.defaultSinkRefs]
-     * The sinks to be used if diagnostics is enabled. Sink choices can be
-     * overridden at the service and code package level.
-     *
-     * @param {object} [applicationResourceDescription.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationResourceDescription} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationResourceDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationResourceDescription} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, applicationName: string, applicationResourceDescription: models.ApplicationResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescription>;
-    create(resourceGroupName: string, applicationName: string, applicationResourceDescription: models.ApplicationResourceDescription, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
-    create(resourceGroupName: string, applicationName: string, applicationResourceDescription: models.ApplicationResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
-
-
-    /**
-     * @summary Gets the application resource.
-     *
-     * Gets the information about the application resource with a given name. The
-     * information includes the information about the application's services and
-     * other runtime properties.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationResourceDescription>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescription>>;
-
-    /**
-     * @summary Gets the application resource.
-     *
-     * Gets the information about the application resource with a given name. The
-     * information includes the information about the application's services and
-     * other runtime properties.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationResourceDescription} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationResourceDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationResourceDescription} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescription>;
-    get(resourceGroupName: string, applicationName: string, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
-    get(resourceGroupName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
-
-
-    /**
-     * @summary Deletes the application resource.
-     *
-     * Deletes the application resource identified by the name.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes the application resource.
-     *
-     * Deletes the application resource identified by the name.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, applicationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Gets all the application resources in a given resource group.
-     *
-     * Gets the information about all application resources in a given resource
-     * group. The information includes the information about the application's
-     * services and other runtime properties.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
-
-    /**
-     * @summary Gets all the application resources in a given resource group.
-     *
-     * Gets the information about all application resources in a given resource
-     * group. The information includes the information about the application's
-     * services and other runtime properties.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationResourceDescriptionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-
-
-    /**
-     * @summary Gets all the application resources in a given subscription.
-     *
-     * Gets the information about all application resources in a given
-     * subscription. The information includes the information about the
-     * application's services and other runtime properties.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
-
-    /**
-     * @summary Gets all the application resources in a given subscription.
-     *
-     * Gets the information about all application resources in a given
-     * subscription. The information includes the information about the
-     * application's services and other runtime properties.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationResourceDescriptionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
-    listBySubscription(callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-
-
-    /**
-     * @summary Gets all the application resources in a given resource group.
-     *
-     * Gets the information about all application resources in a given resource
-     * group. The information includes the information about the application's
-     * services and other runtime properties.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
-
-    /**
-     * @summary Gets all the application resources in a given resource group.
-     *
-     * Gets the information about all application resources in a given resource
-     * group. The information includes the information about the application's
-     * services and other runtime properties.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationResourceDescriptionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-
-
-    /**
-     * @summary Gets all the application resources in a given subscription.
-     *
-     * Gets the information about all application resources in a given
-     * subscription. The information includes the information about the
-     * application's services and other runtime properties.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
-
-    /**
-     * @summary Gets all the application resources in a given subscription.
-     *
-     * Gets the information about all application resources in a given
-     * subscription. The information includes the information about the
-     * application's services and other runtime properties.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationResourceDescriptionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
-}
-
-/**
- * @class
- * Service
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricMeshManagementClient.
- */
-export interface Service {
-
-
-    /**
-     * @summary Gets services of a given application.
-     *
-     * Gets the information about all services of a given service of an
-     * application. The information includes the runtime properties of the service
-     * instance.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByApplicationNameWithHttpOperationResponse(resourceGroupName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceList>>;
-
-    /**
-     * @summary Gets services of a given application.
-     *
-     * Gets the information about all services of a given service of an
-     * application. The information includes the runtime properties of the service
-     * instance.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByApplicationName(resourceGroupName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceList>;
-    listByApplicationName(resourceGroupName: string, applicationName: string, callback: ServiceCallback<models.ServiceList>): void;
-    listByApplicationName(resourceGroupName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceList>): void;
-
-
-    /**
-     * @summary Gets the properties of the service.
-     *
-     * The operation returns the properties of the service.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceResourceDescription>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceDescription>>;
-
-    /**
-     * @summary Gets the properties of the service.
-     *
-     * The operation returns the properties of the service.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceResourceDescription} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceResourceDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceResourceDescription} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceDescription>;
-    get(resourceGroupName: string, applicationName: string, serviceName: string, callback: ServiceCallback<models.ServiceResourceDescription>): void;
-    get(resourceGroupName: string, applicationName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceDescription>): void;
-
-
-    /**
-     * @summary Gets services of a given application.
-     *
-     * Gets the information about all services of a given service of an
-     * application. The information includes the runtime properties of the service
-     * instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByApplicationNameNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceList>>;
-
-    /**
-     * @summary Gets services of a given application.
-     *
-     * Gets the information about all services of a given service of an
-     * application. The information includes the runtime properties of the service
-     * instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByApplicationNameNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceList>;
-    listByApplicationNameNext(nextPageLink: string, callback: ServiceCallback<models.ServiceList>): void;
-    listByApplicationNameNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceList>): void;
-}
-
-/**
- * @class
- * Replica
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricMeshManagementClient.
- */
-export interface Replica {
-
-
-    /**
-     * @summary Gets replicas of a given service.
-     *
-     * Gets the information about all replicas of a given service of an
-     * application. The information includes the runtime properties of the replica
-     * instance.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceReplicaList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNameWithHttpOperationResponse(resourceGroupName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceReplicaList>>;
-
-    /**
-     * @summary Gets replicas of a given service.
-     *
-     * Gets the information about all replicas of a given service of an
-     * application. The information includes the runtime properties of the replica
-     * instance.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceReplicaList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceReplicaList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceReplicaList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceName(resourceGroupName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceReplicaList>;
-    listByServiceName(resourceGroupName: string, applicationName: string, serviceName: string, callback: ServiceCallback<models.ServiceReplicaList>): void;
-    listByServiceName(resourceGroupName: string, applicationName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceReplicaList>): void;
-
-
-    /**
-     * @summary Gets a specific replica of a given service.
-     *
-     * Gets the information about the specified replica of a given service of an
-     * application. The information includes the runtime properties of the replica
-     * instance.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {string} replicaName The identity of the service replica.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceReplicaDescription>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceReplicaDescription>>;
-
-    /**
-     * @summary Gets a specific replica of a given service.
-     *
-     * Gets the information about the specified replica of a given service of an
-     * application. The information includes the runtime properties of the replica
-     * instance.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {string} replicaName The identity of the service replica.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceReplicaDescription} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceReplicaDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceReplicaDescription} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceReplicaDescription>;
-    get(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, callback: ServiceCallback<models.ServiceReplicaDescription>): void;
-    get(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceReplicaDescription>): void;
-
-
-    /**
-     * @summary Gets replicas of a given service.
-     *
-     * Gets the information about all replicas of a given service of an
-     * application. The information includes the runtime properties of the replica
-     * instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceReplicaList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNameNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceReplicaList>>;
-
-    /**
-     * @summary Gets replicas of a given service.
-     *
-     * Gets the information about all replicas of a given service of an
-     * application. The information includes the runtime properties of the replica
-     * instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceReplicaList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceReplicaList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceReplicaList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceNameNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceReplicaList>;
-    listByServiceNameNext(nextPageLink: string, callback: ServiceCallback<models.ServiceReplicaList>): void;
-    listByServiceNameNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceReplicaList>): void;
-}
-
-/**
- * @class
- * CodePackage
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricMeshManagementClient.
- */
-export interface CodePackage {
-
-
-    /**
-     * @summary Gets the logs for the container.
-     *
-     * Get the logs for the container of a given code package of an application.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {string} replicaName The identity of the service replica.
-     *
-     * @param {string} codePackageName The name of the code package.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {number} [options.tail] Number of lines to show from the end of the
-     * logs. Default is 100.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerLogs>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getContainerLogWithHttpOperationResponse(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, codePackageName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerLogs>>;
-
-    /**
-     * @summary Gets the logs for the container.
-     *
-     * Get the logs for the container of a given code package of an application.
-     *
-     * @param {string} resourceGroupName Azure resource group name
-     *
-     * @param {string} applicationName The identity of the application.
-     *
-     * @param {string} serviceName The identity of the service.
-     *
-     * @param {string} replicaName The identity of the service replica.
-     *
-     * @param {string} codePackageName The name of the code package.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {number} [options.tail] Number of lines to show from the end of the
-     * logs. Default is 100.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerLogs} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerLogs} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerLogs} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getContainerLog(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, codePackageName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerLogs>;
-    getContainerLog(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, codePackageName: string, callback: ServiceCallback<models.ContainerLogs>): void;
-    getContainerLog(resourceGroupName: string, applicationName: string, serviceName: string, replicaName: string, codePackageName: string, options: { tail? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerLogs>): void;
-}
-
-/**
- * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricMeshManagementClient.
@@ -1186,47 +143,45 @@ export interface Operations {
 
 /**
  * @class
- * Network
+ * Secret
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricMeshManagementClient.
  */
-export interface Network {
+export interface Secret {
 
 
     /**
-     * @summary Creates or updates a network resource.
+     * @summary Creates or updates a secret resource.
      *
-     * Creates a network resource with the specified name and description. If a
-     * network with the same name already exists, then its description is updated
-     * to the one indicated in this request.
-     *
-     * Use network resources to create private network and configure public
-     * connectivity for services within your application.
-     *
+     * Creates a secret resource with the specified name, description and
+     * properties. If a secret resource with the same name exists, then it is
+     * updated with the specified description and properties.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} networkName The identity of the network.
+     * @param {string} secretResourceName The name of the secret resource.
      *
-     * @param {object} networkResourceDescription Description for creating a
-     * network resource.
+     * @param {object} secretResourceDescription Description for creating a secret
+     * resource.
      *
-     * @param {string} [networkResourceDescription.description] User readable
-     * description of the network.
+     * @param {object} secretResourceDescription.properties Describes the
+     * properties of a secret resource.
      *
-     * @param {string} networkResourceDescription.addressPrefix the address prefix
-     * for this network.
+     * @param {string} [secretResourceDescription.properties.description] User
+     * readable description of the secret.
      *
-     * @param {object} [networkResourceDescription.ingressConfig] Configuration for
-     * public connectivity for this network.
+     * @param {string} [secretResourceDescription.properties.contentType] The type
+     * of the content stored in the secret value. The value of this property is
+     * opaque to Service Fabric. Once set, the value of this property cannot be
+     * changed.
      *
-     * @param {string} [networkResourceDescription.ingressConfig.qosLevel] The QoS
-     * tier for ingress. Possible values include: 'Bronze'
+     * @param {string} secretResourceDescription.properties.kind Polymorphic
+     * Discriminator
      *
-     * @param {array} [networkResourceDescription.ingressConfig.layer4]
-     * Configuration for layer4 public connectivity for this network.
+     * @param {object} [secretResourceDescription.tags] Resource tags.
      *
-     * @param {object} [networkResourceDescription.tags] Resource tags.
+     * @param {string} secretResourceDescription.location The geo-location where
+     * the resource lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1235,46 +190,44 @@ export interface Network {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NetworkResourceDescription>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SecretResourceDescription>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, networkName: string, networkResourceDescription: models.NetworkResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescription>>;
+    createWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, secretResourceDescription: models.SecretResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretResourceDescription>>;
 
     /**
-     * @summary Creates or updates a network resource.
+     * @summary Creates or updates a secret resource.
      *
-     * Creates a network resource with the specified name and description. If a
-     * network with the same name already exists, then its description is updated
-     * to the one indicated in this request.
-     *
-     * Use network resources to create private network and configure public
-     * connectivity for services within your application.
-     *
+     * Creates a secret resource with the specified name, description and
+     * properties. If a secret resource with the same name exists, then it is
+     * updated with the specified description and properties.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} networkName The identity of the network.
+     * @param {string} secretResourceName The name of the secret resource.
      *
-     * @param {object} networkResourceDescription Description for creating a
-     * network resource.
+     * @param {object} secretResourceDescription Description for creating a secret
+     * resource.
      *
-     * @param {string} [networkResourceDescription.description] User readable
-     * description of the network.
+     * @param {object} secretResourceDescription.properties Describes the
+     * properties of a secret resource.
      *
-     * @param {string} networkResourceDescription.addressPrefix the address prefix
-     * for this network.
+     * @param {string} [secretResourceDescription.properties.description] User
+     * readable description of the secret.
      *
-     * @param {object} [networkResourceDescription.ingressConfig] Configuration for
-     * public connectivity for this network.
+     * @param {string} [secretResourceDescription.properties.contentType] The type
+     * of the content stored in the secret value. The value of this property is
+     * opaque to Service Fabric. Once set, the value of this property cannot be
+     * changed.
      *
-     * @param {string} [networkResourceDescription.ingressConfig.qosLevel] The QoS
-     * tier for ingress. Possible values include: 'Bronze'
+     * @param {string} secretResourceDescription.properties.kind Polymorphic
+     * Discriminator
      *
-     * @param {array} [networkResourceDescription.ingressConfig.layer4]
-     * Configuration for layer4 public connectivity for this network.
+     * @param {object} [secretResourceDescription.tags] Resource tags.
      *
-     * @param {object} [networkResourceDescription.tags] Resource tags.
+     * @param {string} secretResourceDescription.location The geo-location where
+     * the resource lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1288,7 +241,7 @@ export interface Network {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NetworkResourceDescription} - The deserialized result object.
+     *                      @resolve {SecretResourceDescription} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1296,29 +249,28 @@ export interface Network {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NetworkResourceDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NetworkResourceDescription} for more
+     *                      {SecretResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretResourceDescription} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, networkName: string, networkResourceDescription: models.NetworkResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescription>;
-    create(resourceGroupName: string, networkName: string, networkResourceDescription: models.NetworkResourceDescription, callback: ServiceCallback<models.NetworkResourceDescription>): void;
-    create(resourceGroupName: string, networkName: string, networkResourceDescription: models.NetworkResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescription>): void;
+    create(resourceGroupName: string, secretResourceName: string, secretResourceDescription: models.SecretResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretResourceDescription>;
+    create(resourceGroupName: string, secretResourceName: string, secretResourceDescription: models.SecretResourceDescription, callback: ServiceCallback<models.SecretResourceDescription>): void;
+    create(resourceGroupName: string, secretResourceName: string, secretResourceDescription: models.SecretResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretResourceDescription>): void;
 
 
     /**
-     * @summary Gets the network resource.
+     * @summary Gets the secret resource with the given name.
      *
-     * Gets the information about the network resource with a given name. This
-     * information includes the network description and other runtime information.
-     *
+     * Gets the information about the secret resource with the given name. The
+     * information include the description and other properties of the secret.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} networkName The identity of the network.
+     * @param {string} secretResourceName The name of the secret resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1327,22 +279,21 @@ export interface Network {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NetworkResourceDescription>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SecretResourceDescription>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescription>>;
+    getWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretResourceDescription>>;
 
     /**
-     * @summary Gets the network resource.
+     * @summary Gets the secret resource with the given name.
      *
-     * Gets the information about the network resource with a given name. This
-     * information includes the network description and other runtime information.
-     *
+     * Gets the information about the secret resource with the given name. The
+     * information include the description and other properties of the secret.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} networkName The identity of the network.
+     * @param {string} secretResourceName The name of the secret resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1356,7 +307,7 @@ export interface Network {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NetworkResourceDescription} - The deserialized result object.
+     *                      @resolve {SecretResourceDescription} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1364,27 +315,27 @@ export interface Network {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NetworkResourceDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NetworkResourceDescription} for more
+     *                      {SecretResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretResourceDescription} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescription>;
-    get(resourceGroupName: string, networkName: string, callback: ServiceCallback<models.NetworkResourceDescription>): void;
-    get(resourceGroupName: string, networkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescription>): void;
+    get(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretResourceDescription>;
+    get(resourceGroupName: string, secretResourceName: string, callback: ServiceCallback<models.SecretResourceDescription>): void;
+    get(resourceGroupName: string, secretResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretResourceDescription>): void;
 
 
     /**
-     * @summary Deletes the network resource.
+     * @summary Deletes the secret resource.
      *
-     * Deletes the network resource identified by the name.
+     * Deletes the secret resource identified by the name.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} networkName The identity of the network.
+     * @param {string} secretResourceName The name of the secret resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1397,16 +348,16 @@ export interface Network {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Deletes the network resource.
+     * @summary Deletes the secret resource.
      *
-     * Deletes the network resource identified by the name.
+     * Deletes the secret resource identified by the name.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} networkName The identity of the network.
+     * @param {string} secretResourceName The name of the secret resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1434,18 +385,16 @@ export interface Network {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, networkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, networkName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, networkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, secretResourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, secretResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * @summary Gets all the network resources in a given resource group.
+     * @summary Gets all the secret resources in a given resource group.
      *
-     * Gets the information about all network resources in a given resource group.
-     * The information includes the network description and other runtime
-     * properties.
-     *
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the Secret.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
@@ -1456,19 +405,17 @@ export interface Network {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SecretResourceDescriptionList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretResourceDescriptionList>>;
 
     /**
-     * @summary Gets all the network resources in a given resource group.
+     * @summary Gets all the secret resources in a given resource group.
      *
-     * Gets the information about all network resources in a given resource group.
-     * The information includes the network description and other runtime
-     * properties.
-     *
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the Secret.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
@@ -1484,7 +431,7 @@ export interface Network {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *                      @resolve {SecretResourceDescriptionList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1492,25 +439,24 @@ export interface Network {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      {SecretResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretResourceDescriptionList} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretResourceDescriptionList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
 
 
     /**
-     * @summary Gets all the network resources in a given subscription.
+     * @summary Gets all the secret resources in a given subscription.
      *
-     * Gets the information about all network resources in a given subscription.
-     * The information includes the network description and other runtime
-     * properties.
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the secret.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1519,18 +465,17 @@ export interface Network {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SecretResourceDescriptionList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretResourceDescriptionList>>;
 
     /**
-     * @summary Gets all the network resources in a given subscription.
+     * @summary Gets all the secret resources in a given subscription.
      *
-     * Gets the information about all network resources in a given subscription.
-     * The information includes the network description and other runtime
-     * properties.
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the secret.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1544,7 +489,7 @@ export interface Network {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *                      @resolve {SecretResourceDescriptionList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1552,26 +497,24 @@ export interface Network {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      {SecretResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretResourceDescriptionList} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
-    listBySubscription(callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
-    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretResourceDescriptionList>;
+    listBySubscription(callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
 
 
     /**
-     * @summary Gets all the network resources in a given resource group.
+     * @summary Gets all the secret resources in a given resource group.
      *
-     * Gets the information about all network resources in a given resource group.
-     * The information includes the network description and other runtime
-     * properties.
-     *
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the Secret.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1583,85 +526,17 @@ export interface Network {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<SecretResourceDescriptionList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretResourceDescriptionList>>;
 
     /**
-     * @summary Gets all the network resources in a given resource group.
+     * @summary Gets all the secret resources in a given resource group.
      *
-     * Gets the information about all network resources in a given resource group.
-     * The information includes the network description and other runtime
-     * properties.
-     *
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NetworkResourceDescriptionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
-
-
-    /**
-     * @summary Gets all the network resources in a given subscription.
-     *
-     * Gets the information about all network resources in a given subscription.
-     * The information includes the network description and other runtime
-     * properties.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
-
-    /**
-     * @summary Gets all the network resources in a given subscription.
-     *
-     * Gets the information about all network resources in a given subscription.
-     * The information includes the network description and other runtime
-     * properties.
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the Secret.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1678,7 +553,7 @@ export interface Network {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *                      @resolve {SecretResourceDescriptionList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1686,17 +561,537 @@ export interface Network {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      {SecretResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretResourceDescriptionList} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretResourceDescriptionList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the secret resources in a given subscription.
+     *
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the secret.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the secret resources in a given subscription.
+     *
+     * Gets the information about all secret resources in a given resource group.
+     * The information include the description and other properties of the secret.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretResourceDescriptionList>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretResourceDescriptionList>): void;
+}
+
+/**
+ * @class
+ * SecretValueOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface SecretValueOperations {
+
+
+    /**
+     * @summary Adds the specified value as a new version of the specified secret
+     * resource.
+     *
+     * Creates a new value of the specified secret resource. The name of the value
+     * is typically the version identifier. Once created the value cannot be
+     * changed.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} secretValueResourceDescription Description for creating a
+     * value of a secret resource.
+     *
+     * @param {string} [secretValueResourceDescription.value] The actual value of
+     * the secret.
+     *
+     * @param {object} [secretValueResourceDescription.tags] Resource tags.
+     *
+     * @param {string} secretValueResourceDescription.location The geo-location
+     * where the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretValueResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, secretValueResourceDescription: models.SecretValueResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValueResourceDescription>>;
+
+    /**
+     * @summary Adds the specified value as a new version of the specified secret
+     * resource.
+     *
+     * Creates a new value of the specified secret resource. The name of the value
+     * is typically the version identifier. Once created the value cannot be
+     * changed.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} secretValueResourceDescription Description for creating a
+     * value of a secret resource.
+     *
+     * @param {string} [secretValueResourceDescription.value] The actual value of
+     * the secret.
+     *
+     * @param {object} [secretValueResourceDescription.tags] Resource tags.
+     *
+     * @param {string} secretValueResourceDescription.location The geo-location
+     * where the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretValueResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretValueResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretValueResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, secretValueResourceDescription: models.SecretValueResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretValueResourceDescription>;
+    create(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, secretValueResourceDescription: models.SecretValueResourceDescription, callback: ServiceCallback<models.SecretValueResourceDescription>): void;
+    create(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, secretValueResourceDescription: models.SecretValueResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretValueResourceDescription>): void;
+
+
+    /**
+     * @summary Gets the specified secret value resource.
+     *
+     * Get the information about the specified named secret value resources. The
+     * information does not include the actual value of the secret.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretValueResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValueResourceDescription>>;
+
+    /**
+     * @summary Gets the specified secret value resource.
+     *
+     * Get the information about the specified named secret value resources. The
+     * information does not include the actual value of the secret.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretValueResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretValueResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretValueResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretValueResourceDescription>;
+    get(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, callback: ServiceCallback<models.SecretValueResourceDescription>): void;
+    get(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretValueResourceDescription>): void;
+
+
+    /**
+     * @summary Deletes the specified  value of the named secret resource.
+     *
+     * Deletes the secret value resource identified by the name. The name of the
+     * resource is typically the version associated with that value. Deletion will
+     * fail if the specified value is in use.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the specified  value of the named secret resource.
+     *
+     * Deletes the secret value resource identified by the name. The name of the
+     * resource is typically the version associated with that value. Deletion will
+     * fail if the specified value is in use.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary List names of all values of the the specified secret resource.
+     *
+     * Gets information about all secret value resources of the specified secret
+     * resource. The information includes the names of the secret value resources,
+     * but not the actual values.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretValueResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValueResourceDescriptionList>>;
+
+    /**
+     * @summary List names of all values of the the specified secret resource.
+     *
+     * Gets information about all secret value resources of the specified secret
+     * resource. The information includes the names of the secret value resources,
+     * but not the actual values.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretValueResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretValueResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretValueResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, secretResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretValueResourceDescriptionList>;
+    list(resourceGroupName: string, secretResourceName: string, callback: ServiceCallback<models.SecretValueResourceDescriptionList>): void;
+    list(resourceGroupName: string, secretResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretValueResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Lists the specified value of the secret resource.
+     *
+     * Lists the decrypted value of the specified named value of the secret
+     * resource. This is a privileged operation.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretValue>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listValueWithHttpOperationResponse(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValue>>;
+
+    /**
+     * @summary Lists the specified value of the secret resource.
+     *
+     * Lists the decrypted value of the specified named value of the secret
+     * resource. This is a privileged operation.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} secretResourceName The name of the secret resource.
+     *
+     * @param {string} secretValueResourceName The name of the secret resource
+     * value which is typically the version identifier for the value.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretValue} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretValue} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretValue} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listValue(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretValue>;
+    listValue(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, callback: ServiceCallback<models.SecretValue>): void;
+    listValue(resourceGroupName: string, secretResourceName: string, secretValueResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretValue>): void;
+
+
+    /**
+     * @summary List names of all values of the the specified secret resource.
+     *
+     * Gets information about all secret value resources of the specified secret
+     * resource. The information includes the names of the secret value resources,
+     * but not the actual values.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SecretValueResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SecretValueResourceDescriptionList>>;
+
+    /**
+     * @summary List names of all values of the the specified secret resource.
+     *
+     * Gets information about all secret value resources of the specified secret
+     * resource. The information includes the names of the secret value resources,
+     * but not the actual values.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SecretValueResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SecretValueResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SecretValueResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SecretValueResourceDescriptionList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.SecretValueResourceDescriptionList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SecretValueResourceDescriptionList>): void;
 }
 
 /**
@@ -1711,16 +1106,15 @@ export interface Volume {
     /**
      * @summary Creates or updates a volume resource.
      *
-     * Creates a volume resource with the specified name and description. If a
-     * volume with the same name already exists, then its description is updated to
-     * the one indicated in this request.
-     *
+     * Creates a volume resource with the specified name, description and
+     * properties. If a volume resource with the same name exists, then it is
+     * updated with the specified description and properties.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} volumeName The identity of the volume.
+     * @param {string} volumeResourceName The identity of the volume.
      *
-     * @param {object} volumeResourceDescription Description for creating a volume
+     * @param {object} volumeResourceDescription Description for creating a Volume
      * resource.
      *
      * @param {string} [volumeResourceDescription.description] User readable
@@ -1740,6 +1134,9 @@ export interface Volume {
      *
      * @param {object} [volumeResourceDescription.tags] Resource tags.
      *
+     * @param {string} volumeResourceDescription.location The geo-location where
+     * the resource lives
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1751,21 +1148,20 @@ export interface Volume {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, volumeName: string, volumeResourceDescription: models.VolumeResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VolumeResourceDescription>>;
+    createWithHttpOperationResponse(resourceGroupName: string, volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VolumeResourceDescription>>;
 
     /**
      * @summary Creates or updates a volume resource.
      *
-     * Creates a volume resource with the specified name and description. If a
-     * volume with the same name already exists, then its description is updated to
-     * the one indicated in this request.
-     *
+     * Creates a volume resource with the specified name, description and
+     * properties. If a volume resource with the same name exists, then it is
+     * updated with the specified description and properties.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} volumeName The identity of the volume.
+     * @param {string} volumeResourceName The identity of the volume.
      *
-     * @param {object} volumeResourceDescription Description for creating a volume
+     * @param {object} volumeResourceDescription Description for creating a Volume
      * resource.
      *
      * @param {string} [volumeResourceDescription.description] User readable
@@ -1785,6 +1181,9 @@ export interface Volume {
      *
      * @param {object} [volumeResourceDescription.tags] Resource tags.
      *
+     * @param {string} volumeResourceDescription.location The geo-location where
+     * the resource lives
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1813,21 +1212,20 @@ export interface Volume {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, volumeName: string, volumeResourceDescription: models.VolumeResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VolumeResourceDescription>;
-    create(resourceGroupName: string, volumeName: string, volumeResourceDescription: models.VolumeResourceDescription, callback: ServiceCallback<models.VolumeResourceDescription>): void;
-    create(resourceGroupName: string, volumeName: string, volumeResourceDescription: models.VolumeResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VolumeResourceDescription>): void;
+    create(resourceGroupName: string, volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VolumeResourceDescription>;
+    create(resourceGroupName: string, volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, callback: ServiceCallback<models.VolumeResourceDescription>): void;
+    create(resourceGroupName: string, volumeResourceName: string, volumeResourceDescription: models.VolumeResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VolumeResourceDescription>): void;
 
 
     /**
-     * @summary Gets the volume resource.
+     * @summary Gets the volume resource with the given name.
      *
-     * Gets the information about the volume resource with a given name. This
-     * information includes the volume description and other runtime information.
-     *
+     * Gets the information about the volume resource with the given name. The
+     * information include the description and other properties of the volume.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} volumeName The identity of the volume.
+     * @param {string} volumeResourceName The identity of the volume.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1840,18 +1238,17 @@ export interface Volume {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, volumeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VolumeResourceDescription>>;
+    getWithHttpOperationResponse(resourceGroupName: string, volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VolumeResourceDescription>>;
 
     /**
-     * @summary Gets the volume resource.
+     * @summary Gets the volume resource with the given name.
      *
-     * Gets the information about the volume resource with a given name. This
-     * information includes the volume description and other runtime information.
-     *
+     * Gets the information about the volume resource with the given name. The
+     * information include the description and other properties of the volume.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} volumeName The identity of the volume.
+     * @param {string} volumeResourceName The identity of the volume.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1881,19 +1278,19 @@ export interface Volume {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, volumeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VolumeResourceDescription>;
-    get(resourceGroupName: string, volumeName: string, callback: ServiceCallback<models.VolumeResourceDescription>): void;
-    get(resourceGroupName: string, volumeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VolumeResourceDescription>): void;
+    get(resourceGroupName: string, volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VolumeResourceDescription>;
+    get(resourceGroupName: string, volumeResourceName: string, callback: ServiceCallback<models.VolumeResourceDescription>): void;
+    get(resourceGroupName: string, volumeResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VolumeResourceDescription>): void;
 
 
     /**
      * @summary Deletes the volume resource.
      *
-     * Deletes the volume identified by the name.
+     * Deletes the volume resource identified by the name.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} volumeName The identity of the volume.
+     * @param {string} volumeResourceName The identity of the volume.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1906,16 +1303,16 @@ export interface Volume {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, volumeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes the volume resource.
      *
-     * Deletes the volume identified by the name.
+     * Deletes the volume resource identified by the name.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
-     * @param {string} volumeName The identity of the volume.
+     * @param {string} volumeResourceName The identity of the volume.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1943,18 +1340,16 @@ export interface Volume {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, volumeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, volumeName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, volumeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, volumeResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, volumeResourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, volumeResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * @summary Gets all the volume resources in a given resource group.
      *
      * Gets the information about all volume resources in a given resource group.
-     * The information includes the volume description and other runtime
-     * information.
-     *
+     * The information include the description and other properties of the Volume.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
@@ -1975,9 +1370,7 @@ export interface Volume {
      * @summary Gets all the volume resources in a given resource group.
      *
      * Gets the information about all volume resources in a given resource group.
-     * The information includes the volume description and other runtime
-     * information.
-     *
+     * The information include the description and other properties of the Volume.
      *
      * @param {string} resourceGroupName Azure resource group name
      *
@@ -2017,9 +1410,8 @@ export interface Volume {
     /**
      * @summary Gets all the volume resources in a given subscription.
      *
-     * Gets the information about all volume resources in a given subscription. The
-     * information includes the volume description and other runtime information.
-     *
+     * Gets the information about all volume resources in a given resource group.
+     * The information include the description and other properties of the volume.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2037,9 +1429,8 @@ export interface Volume {
     /**
      * @summary Gets all the volume resources in a given subscription.
      *
-     * Gets the information about all volume resources in a given subscription. The
-     * information includes the volume description and other runtime information.
-     *
+     * Gets the information about all volume resources in a given resource group.
+     * The information include the description and other properties of the volume.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2078,9 +1469,7 @@ export interface Volume {
      * @summary Gets all the volume resources in a given resource group.
      *
      * Gets the information about all volume resources in a given resource group.
-     * The information includes the volume description and other runtime
-     * information.
-     *
+     * The information include the description and other properties of the Volume.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2102,9 +1491,7 @@ export interface Volume {
      * @summary Gets all the volume resources in a given resource group.
      *
      * Gets the information about all volume resources in a given resource group.
-     * The information includes the volume description and other runtime
-     * information.
-     *
+     * The information include the description and other properties of the Volume.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2145,9 +1532,8 @@ export interface Volume {
     /**
      * @summary Gets all the volume resources in a given subscription.
      *
-     * Gets the information about all volume resources in a given subscription. The
-     * information includes the volume description and other runtime information.
-     *
+     * Gets the information about all volume resources in a given resource group.
+     * The information include the description and other properties of the volume.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2168,9 +1554,8 @@ export interface Volume {
     /**
      * @summary Gets all the volume resources in a given subscription.
      *
-     * Gets the information about all volume resources in a given subscription. The
-     * information includes the volume description and other runtime information.
-     *
+     * Gets the information about all volume resources in a given resource group.
+     * The information include the description and other properties of the volume.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2206,4 +1591,2059 @@ export interface Volume {
     listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VolumeResourceDescriptionList>;
     listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.VolumeResourceDescriptionList>): void;
     listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VolumeResourceDescriptionList>): void;
+}
+
+/**
+ * @class
+ * Network
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface Network {
+
+
+    /**
+     * @summary Creates or updates a network resource.
+     *
+     * Creates a network resource with the specified name, description and
+     * properties. If a network resource with the same name exists, then it is
+     * updated with the specified description and properties.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} networkResourceName The identity of the network.
+     *
+     * @param {object} networkResourceDescription Description for creating a
+     * Network resource.
+     *
+     * @param {object} networkResourceDescription.properties Describes properties
+     * of a network resource.
+     *
+     * @param {string} [networkResourceDescription.properties.description] User
+     * readable description of the network.
+     *
+     * @param {string} networkResourceDescription.properties.kind Polymorphic
+     * Discriminator
+     *
+     * @param {object} [networkResourceDescription.tags] Resource tags.
+     *
+     * @param {string} networkResourceDescription.location The geo-location where
+     * the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, networkResourceName: string, networkResourceDescription: models.NetworkResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescription>>;
+
+    /**
+     * @summary Creates or updates a network resource.
+     *
+     * Creates a network resource with the specified name, description and
+     * properties. If a network resource with the same name exists, then it is
+     * updated with the specified description and properties.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} networkResourceName The identity of the network.
+     *
+     * @param {object} networkResourceDescription Description for creating a
+     * Network resource.
+     *
+     * @param {object} networkResourceDescription.properties Describes properties
+     * of a network resource.
+     *
+     * @param {string} [networkResourceDescription.properties.description] User
+     * readable description of the network.
+     *
+     * @param {string} networkResourceDescription.properties.kind Polymorphic
+     * Discriminator
+     *
+     * @param {object} [networkResourceDescription.tags] Resource tags.
+     *
+     * @param {string} networkResourceDescription.location The geo-location where
+     * the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, networkResourceName: string, networkResourceDescription: models.NetworkResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescription>;
+    create(resourceGroupName: string, networkResourceName: string, networkResourceDescription: models.NetworkResourceDescription, callback: ServiceCallback<models.NetworkResourceDescription>): void;
+    create(resourceGroupName: string, networkResourceName: string, networkResourceDescription: models.NetworkResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescription>): void;
+
+
+    /**
+     * @summary Gets the network resource with the given name.
+     *
+     * Gets the information about the network resource with the given name. The
+     * information include the description and other properties of the network.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} networkResourceName The identity of the network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, networkResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescription>>;
+
+    /**
+     * @summary Gets the network resource with the given name.
+     *
+     * Gets the information about the network resource with the given name. The
+     * information include the description and other properties of the network.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} networkResourceName The identity of the network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, networkResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescription>;
+    get(resourceGroupName: string, networkResourceName: string, callback: ServiceCallback<models.NetworkResourceDescription>): void;
+    get(resourceGroupName: string, networkResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescription>): void;
+
+
+    /**
+     * @summary Deletes the network resource.
+     *
+     * Deletes the network resource identified by the name.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} networkResourceName The identity of the network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, networkResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the network resource.
+     *
+     * Deletes the network resource identified by the name.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} networkResourceName The identity of the network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, networkResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, networkResourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, networkResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets all the network resources in a given resource group.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the Network.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the network resources in a given resource group.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the Network.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the network resources in a given subscription.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the network resources in a given subscription.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
+    listBySubscription(callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the network resources in a given resource group.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the Network.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the network resources in a given resource group.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the Network.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the network resources in a given subscription.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the network.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the network resources in a given subscription.
+     *
+     * Gets the information about all network resources in a given resource group.
+     * The information include the description and other properties of the network.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkResourceDescriptionList>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkResourceDescriptionList>): void;
+}
+
+/**
+ * @class
+ * Gateway
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface Gateway {
+
+
+    /**
+     * @summary Creates or updates a gateway resource.
+     *
+     * Creates a gateway resource with the specified name, description and
+     * properties. If a gateway resource with the same name exists, then it is
+     * updated with the specified description and properties. Use gateway resources
+     * to create a gateway for public connectivity for services within your
+     * application.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} gatewayResourceName The identity of the gateway.
+     *
+     * @param {object} gatewayResourceDescription Description for creating a
+     * Gateway resource.
+     *
+     * @param {string} [gatewayResourceDescription.description] User readable
+     * description of the gateway.
+     *
+     * @param {object} gatewayResourceDescription.sourceNetwork Network the gateway
+     * should listen on for requests.
+     *
+     * @param {object} gatewayResourceDescription.destinationNetwork Network that
+     * the Application is using.
+     *
+     * @param {string} [gatewayResourceDescription.destinationNetwork.name] Name of
+     * the network
+     *
+     * @param {array} [gatewayResourceDescription.destinationNetwork.endpointRefs]
+     * A list of endpoints that are exposed on this network.
+     *
+     * @param {array} [gatewayResourceDescription.tcp] Configuration for tcp
+     * connectivity for this gateway.
+     *
+     * @param {array} [gatewayResourceDescription.http] Configuration for http
+     * connectivity for this gateway.
+     *
+     * @param {object} [gatewayResourceDescription.tags] Resource tags.
+     *
+     * @param {string} gatewayResourceDescription.location The geo-location where
+     * the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, gatewayResourceName: string, gatewayResourceDescription: models.GatewayResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayResourceDescription>>;
+
+    /**
+     * @summary Creates or updates a gateway resource.
+     *
+     * Creates a gateway resource with the specified name, description and
+     * properties. If a gateway resource with the same name exists, then it is
+     * updated with the specified description and properties. Use gateway resources
+     * to create a gateway for public connectivity for services within your
+     * application.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} gatewayResourceName The identity of the gateway.
+     *
+     * @param {object} gatewayResourceDescription Description for creating a
+     * Gateway resource.
+     *
+     * @param {string} [gatewayResourceDescription.description] User readable
+     * description of the gateway.
+     *
+     * @param {object} gatewayResourceDescription.sourceNetwork Network the gateway
+     * should listen on for requests.
+     *
+     * @param {object} gatewayResourceDescription.destinationNetwork Network that
+     * the Application is using.
+     *
+     * @param {string} [gatewayResourceDescription.destinationNetwork.name] Name of
+     * the network
+     *
+     * @param {array} [gatewayResourceDescription.destinationNetwork.endpointRefs]
+     * A list of endpoints that are exposed on this network.
+     *
+     * @param {array} [gatewayResourceDescription.tcp] Configuration for tcp
+     * connectivity for this gateway.
+     *
+     * @param {array} [gatewayResourceDescription.http] Configuration for http
+     * connectivity for this gateway.
+     *
+     * @param {object} [gatewayResourceDescription.tags] Resource tags.
+     *
+     * @param {string} gatewayResourceDescription.location The geo-location where
+     * the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, gatewayResourceName: string, gatewayResourceDescription: models.GatewayResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayResourceDescription>;
+    create(resourceGroupName: string, gatewayResourceName: string, gatewayResourceDescription: models.GatewayResourceDescription, callback: ServiceCallback<models.GatewayResourceDescription>): void;
+    create(resourceGroupName: string, gatewayResourceName: string, gatewayResourceDescription: models.GatewayResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayResourceDescription>): void;
+
+
+    /**
+     * @summary Gets the gateway resource with the given name.
+     *
+     * Gets the information about the gateway resource with the given name. The
+     * information include the description and other properties of the gateway.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} gatewayResourceName The identity of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, gatewayResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayResourceDescription>>;
+
+    /**
+     * @summary Gets the gateway resource with the given name.
+     *
+     * Gets the information about the gateway resource with the given name. The
+     * information include the description and other properties of the gateway.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} gatewayResourceName The identity of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, gatewayResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayResourceDescription>;
+    get(resourceGroupName: string, gatewayResourceName: string, callback: ServiceCallback<models.GatewayResourceDescription>): void;
+    get(resourceGroupName: string, gatewayResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayResourceDescription>): void;
+
+
+    /**
+     * @summary Deletes the gateway resource.
+     *
+     * Deletes the gateway resource identified by the name.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} gatewayResourceName The identity of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the gateway resource.
+     *
+     * Deletes the gateway resource identified by the name.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} gatewayResourceName The identity of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, gatewayResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, gatewayResourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, gatewayResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets all the gateway resources in a given resource group.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the Gateway.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the gateway resources in a given resource group.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the Gateway.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayResourceDescriptionList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the gateway resources in a given subscription.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the gateway resources in a given subscription.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayResourceDescriptionList>;
+    listBySubscription(callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the gateway resources in a given resource group.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the Gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the gateway resources in a given resource group.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the Gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayResourceDescriptionList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the gateway resources in a given subscription.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GatewayResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GatewayResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the gateway resources in a given subscription.
+     *
+     * Gets the information about all gateway resources in a given resource group.
+     * The information include the description and other properties of the gateway.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GatewayResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GatewayResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GatewayResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayResourceDescriptionList>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayResourceDescriptionList>): void;
+}
+
+/**
+ * @class
+ * Application
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface Application {
+
+
+    /**
+     * @summary Creates or updates an application resource.
+     *
+     * Creates an application resource with the specified name, description and
+     * properties. If an application resource with the same name exists, then it is
+     * updated with the specified description and properties.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} applicationResourceDescription Description for creating a
+     * Application resource.
+     *
+     * @param {string} [applicationResourceDescription.description] User readable
+     * description of the application.
+     *
+     * @param {array} [applicationResourceDescription.services] Describes the
+     * services in the application. This property is used to create or modify
+     * services of the application. On get only the name of the service is
+     * returned. The service description can be obtained by querying for the
+     * service resource.
+     *
+     * @param {object} [applicationResourceDescription.diagnostics] Describes the
+     * diagnostics definition and usage for an application resource.
+     *
+     * @param {array} [applicationResourceDescription.diagnostics.sinks] List of
+     * supported sinks that can be referenced.
+     *
+     * @param {boolean} [applicationResourceDescription.diagnostics.enabled] Status
+     * of whether or not sinks are enabled.
+     *
+     * @param {array} [applicationResourceDescription.diagnostics.defaultSinkRefs]
+     * The sinks to be used if diagnostics is enabled. Sink choices can be
+     * overridden at the service and code package level.
+     *
+     * @param {string} [applicationResourceDescription.debugParams] Internal - used
+     * by Visual Studio to setup the debugging session on the local development
+     * environment.
+     *
+     * @param {object} [applicationResourceDescription.tags] Resource tags.
+     *
+     * @param {string} applicationResourceDescription.location The geo-location
+     * where the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescription>>;
+
+    /**
+     * @summary Creates or updates an application resource.
+     *
+     * Creates an application resource with the specified name, description and
+     * properties. If an application resource with the same name exists, then it is
+     * updated with the specified description and properties.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} applicationResourceDescription Description for creating a
+     * Application resource.
+     *
+     * @param {string} [applicationResourceDescription.description] User readable
+     * description of the application.
+     *
+     * @param {array} [applicationResourceDescription.services] Describes the
+     * services in the application. This property is used to create or modify
+     * services of the application. On get only the name of the service is
+     * returned. The service description can be obtained by querying for the
+     * service resource.
+     *
+     * @param {object} [applicationResourceDescription.diagnostics] Describes the
+     * diagnostics definition and usage for an application resource.
+     *
+     * @param {array} [applicationResourceDescription.diagnostics.sinks] List of
+     * supported sinks that can be referenced.
+     *
+     * @param {boolean} [applicationResourceDescription.diagnostics.enabled] Status
+     * of whether or not sinks are enabled.
+     *
+     * @param {array} [applicationResourceDescription.diagnostics.defaultSinkRefs]
+     * The sinks to be used if diagnostics is enabled. Sink choices can be
+     * overridden at the service and code package level.
+     *
+     * @param {string} [applicationResourceDescription.debugParams] Internal - used
+     * by Visual Studio to setup the debugging session on the local development
+     * environment.
+     *
+     * @param {object} [applicationResourceDescription.tags] Resource tags.
+     *
+     * @param {string} applicationResourceDescription.location The geo-location
+     * where the resource lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescription>;
+    create(resourceGroupName: string, applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
+    create(resourceGroupName: string, applicationResourceName: string, applicationResourceDescription: models.ApplicationResourceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
+
+
+    /**
+     * @summary Gets the application resource with the given name.
+     *
+     * Gets the information about the application resource with the given name. The
+     * information include the description and other properties of the application.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescription>>;
+
+    /**
+     * @summary Gets the application resource with the given name.
+     *
+     * Gets the information about the application resource with the given name. The
+     * information include the description and other properties of the application.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescription>;
+    get(resourceGroupName: string, applicationResourceName: string, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
+    get(resourceGroupName: string, applicationResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescription>): void;
+
+
+    /**
+     * @summary Deletes the application resource.
+     *
+     * Deletes the application resource identified by the name.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the application resource.
+     *
+     * Deletes the application resource identified by the name.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, applicationResourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, applicationResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets all the application resources in a given resource group.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * Application.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the application resources in a given resource group.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * Application.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the application resources in a given subscription.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the application resources in a given subscription.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
+    listBySubscription(callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the application resources in a given resource group.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * Application.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the application resources in a given resource group.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * Application.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Gets all the application resources in a given subscription.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * application.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceDescriptionList>>;
+
+    /**
+     * @summary Gets all the application resources in a given subscription.
+     *
+     * Gets the information about all application resources in a given resource
+     * group. The information include the description and other properties of the
+     * application.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceDescriptionList>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceDescriptionList>): void;
+}
+
+/**
+ * @class
+ * Service
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface Service {
+
+
+    /**
+     * @summary Gets the service resource with the given name.
+     *
+     * Gets the information about the service resource with the given name. The
+     * information include the description and other properties of the service.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResourceDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceDescription>>;
+
+    /**
+     * @summary Gets the service resource with the given name.
+     *
+     * Gets the information about the service resource with the given name. The
+     * information include the description and other properties of the service.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResourceDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResourceDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResourceDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceDescription>;
+    get(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, callback: ServiceCallback<models.ServiceResourceDescription>): void;
+    get(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceDescription>): void;
+
+
+    /**
+     * @summary Lists all the service resources.
+     *
+     * Gets the information about all services of an application resource. The
+     * information include the description and other properties of the Service.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceDescriptionList>>;
+
+    /**
+     * @summary Lists all the service resources.
+     *
+     * Gets the information about all services of an application resource. The
+     * information include the description and other properties of the Service.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, applicationResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceDescriptionList>;
+    list(resourceGroupName: string, applicationResourceName: string, callback: ServiceCallback<models.ServiceResourceDescriptionList>): void;
+    list(resourceGroupName: string, applicationResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceDescriptionList>): void;
+
+
+    /**
+     * @summary Lists all the service resources.
+     *
+     * Gets the information about all services of an application resource. The
+     * information include the description and other properties of the Service.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResourceDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceDescriptionList>>;
+
+    /**
+     * @summary Lists all the service resources.
+     *
+     * Gets the information about all services of an application resource. The
+     * information include the description and other properties of the Service.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResourceDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResourceDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResourceDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceDescriptionList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ServiceResourceDescriptionList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceDescriptionList>): void;
+}
+
+/**
+ * @class
+ * ServiceReplica
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface ServiceReplica {
+
+
+    /**
+     * @summary Gets the given replica of the service of an application.
+     *
+     * Gets the information about the service replica with the given name. The
+     * information include the description and other properties of the service
+     * replica.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {string} replicaName Service Fabric replica name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceReplicaDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceReplicaDescription>>;
+
+    /**
+     * @summary Gets the given replica of the service of an application.
+     *
+     * Gets the information about the service replica with the given name. The
+     * information include the description and other properties of the service
+     * replica.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {string} replicaName Service Fabric replica name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceReplicaDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceReplicaDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceReplicaDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceReplicaDescription>;
+    get(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, callback: ServiceCallback<models.ServiceReplicaDescription>): void;
+    get(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceReplicaDescription>): void;
+
+
+    /**
+     * @summary Gets replicas of a given service.
+     *
+     * Gets the information about all replicas of a given service of an
+     * application. The information includes the runtime properties of the replica
+     * instance.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceReplicaDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceReplicaDescriptionList>>;
+
+    /**
+     * @summary Gets replicas of a given service.
+     *
+     * Gets the information about all replicas of a given service of an
+     * application. The information includes the runtime properties of the replica
+     * instance.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceReplicaDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceReplicaDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceReplicaDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceReplicaDescriptionList>;
+    list(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, callback: ServiceCallback<models.ServiceReplicaDescriptionList>): void;
+    list(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceReplicaDescriptionList>): void;
+
+
+    /**
+     * @summary Gets replicas of a given service.
+     *
+     * Gets the information about all replicas of a given service of an
+     * application. The information includes the runtime properties of the replica
+     * instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceReplicaDescriptionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceReplicaDescriptionList>>;
+
+    /**
+     * @summary Gets replicas of a given service.
+     *
+     * Gets the information about all replicas of a given service of an
+     * application. The information includes the runtime properties of the replica
+     * instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceReplicaDescriptionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceReplicaDescriptionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceReplicaDescriptionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceReplicaDescriptionList>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ServiceReplicaDescriptionList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceReplicaDescriptionList>): void;
+}
+
+/**
+ * @class
+ * CodePackage
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricMeshManagementClient.
+ */
+export interface CodePackage {
+
+
+    /**
+     * @summary Gets the logs from the container.
+     *
+     * Gets the logs for the container of the specified code package of the service
+     * replica.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {string} replicaName Service Fabric replica name.
+     *
+     * @param {string} codePackageName The name of code package of the service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.tail] Number of lines to show from the end of the
+     * logs. Default is 100.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerLogs>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContainerLogsWithHttpOperationResponse(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, codePackageName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerLogs>>;
+
+    /**
+     * @summary Gets the logs from the container.
+     *
+     * Gets the logs for the container of the specified code package of the service
+     * replica.
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     *
+     * @param {string} applicationResourceName The identity of the application.
+     *
+     * @param {string} serviceResourceName The identity of the service.
+     *
+     * @param {string} replicaName Service Fabric replica name.
+     *
+     * @param {string} codePackageName The name of code package of the service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.tail] Number of lines to show from the end of the
+     * logs. Default is 100.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerLogs} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerLogs} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerLogs} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContainerLogs(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, codePackageName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerLogs>;
+    getContainerLogs(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, codePackageName: string, callback: ServiceCallback<models.ContainerLogs>): void;
+    getContainerLogs(resourceGroupName: string, applicationResourceName: string, serviceResourceName: string, replicaName: string, codePackageName: string, options: { tail? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerLogs>): void;
 }
