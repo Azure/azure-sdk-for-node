@@ -2748,7 +2748,7 @@ export interface LongTermRetentionBackup extends ProxyResource {
  *
  * @member {string} [weeklyRetention] The weekly retention policy for an LTR
  * backup in an ISO 8601 format.
- * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * @member {string} [monthlyRetention] The monthly retention policy for an LTR
  * backup in an ISO 8601 format.
  * @member {string} [yearlyRetention] The yearly retention policy for an LTR
  * backup in an ISO 8601 format.
