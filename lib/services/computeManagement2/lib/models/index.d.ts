@@ -496,15 +496,12 @@ export interface Usage {
  * @class
  * Initializes a new instance of the VirtualMachineReimageParameters class.
  * @constructor
- * Paramaters for Reimaging Virtual Machine.
+ * Paramaters for Reimaging Virtual Machine. Default value for OSDisk : true.
  *
- * @member {boolean} [osDisk] Specified whether to reimage os disk. Default
- * value: true.
  * @member {boolean} [tempDisk] Specified whether to reimage temp disk. Default
  * value: false.
  */
 export interface VirtualMachineReimageParameters {
-  osDisk?: boolean;
   tempDisk?: boolean;
 }
 
@@ -4316,11 +4313,8 @@ export interface VirtualMachineScaleSet extends Resource {
  * @constructor
  * Describes a Virtual Machine Scale Set VM Reimage Parameters.
  *
- * @member {array} [dataDisks] Luns of dataDisks in the virtual machine scale
- * set VM to reimage.
  */
 export interface VirtualMachineScaleSetVMReimageParameters extends VirtualMachineReimageParameters {
-  dataDisks?: number[];
 }
 
 /**

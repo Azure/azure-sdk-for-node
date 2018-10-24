@@ -4916,14 +4916,8 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters supplied to the Reimage
-     * Virtual Machine operation.
-     *
-     * @param {boolean} [options.parameters.osDisk] Specified whether to reimage os
-     * disk. Default value: true.
-     *
-     * @param {boolean} [options.parameters.tempDisk] Specified whether to reimage
-     * temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4934,7 +4928,7 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { parameters? : models.VirtualMachineReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) virtual machine. This operation is
@@ -4946,14 +4940,8 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters supplied to the Reimage
-     * Virtual Machine operation.
-     *
-     * @param {boolean} [options.parameters.osDisk] Specified whether to reimage os
-     * disk. Default value: true.
-     *
-     * @param {boolean} [options.parameters.tempDisk] Specified whether to reimage
-     * temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4979,9 +4967,9 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimage(resourceGroupName: string, vmName: string, options?: { parameters? : models.VirtualMachineReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimage(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     reimage(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-    reimage(resourceGroupName: string, vmName: string, options: { parameters? : models.VirtualMachineReimageParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmName: string, options: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -7365,14 +7353,8 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters supplied to the Reimage
-     * Virtual Machine operation.
-     *
-     * @param {boolean} [options.parameters.osDisk] Specified whether to reimage os
-     * disk. Default value: true.
-     *
-     * @param {boolean} [options.parameters.tempDisk] Specified whether to reimage
-     * temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7383,7 +7365,7 @@ export interface VirtualMachines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { parameters? : models.VirtualMachineReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) virtual machine. This operation is
@@ -7395,14 +7377,8 @@ export interface VirtualMachines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters supplied to the Reimage
-     * Virtual Machine operation.
-     *
-     * @param {boolean} [options.parameters.osDisk] Specified whether to reimage os
-     * disk. Default value: true.
-     *
-     * @param {boolean} [options.parameters.tempDisk] Specified whether to reimage
-     * temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7428,9 +7404,9 @@ export interface VirtualMachines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimage(resourceGroupName: string, vmName: string, options?: { parameters? : models.VirtualMachineReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimage(resourceGroupName: string, vmName: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginReimage(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-    beginReimage(resourceGroupName: string, vmName: string, options: { parameters? : models.VirtualMachineReimageParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmName: string, options: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -11536,9 +11512,6 @@ export interface VirtualMachineScaleSets {
      * instance ids will result in the operation being performed on all virtual
      * machines in the virtual machine scale set.
      *
-     * @param {array} [options.vmScaleSetReimageInput.dataDisks] Luns of dataDisks
-     * in the virtual machine scale set VM to reimage.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -11567,9 +11540,6 @@ export interface VirtualMachineScaleSets {
      * machine scale set instance ids. Omitting the virtual machine scale set
      * instance ids will result in the operation being performed on all virtual
      * machines in the virtual machine scale set.
-     *
-     * @param {array} [options.vmScaleSetReimageInput.dataDisks] Luns of dataDisks
-     * in the virtual machine scale set VM to reimage.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -13939,9 +13909,6 @@ export interface VirtualMachineScaleSets {
      * instance ids will result in the operation being performed on all virtual
      * machines in the virtual machine scale set.
      *
-     * @param {array} [options.vmScaleSetReimageInput.dataDisks] Luns of dataDisks
-     * in the virtual machine scale set VM to reimage.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -13970,9 +13937,6 @@ export interface VirtualMachineScaleSets {
      * machine scale set instance ids. Omitting the virtual machine scale set
      * instance ids will result in the operation being performed on all virtual
      * machines in the virtual machine scale set.
-     *
-     * @param {array} [options.vmScaleSetReimageInput.dataDisks] Luns of dataDisks
-     * in the virtual machine scale set VM to reimage.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -15348,17 +15312,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.vmScaleSetVMReimageInput] Parameters for the
-     * Reimaging Virtual machine in ScaleSet.
-     *
-     * @param {array} [options.vmScaleSetVMReimageInput.dataDisks] Luns of
-     * dataDisks in the virtual machine scale set VM to reimage.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.osDisk] Specified whether
-     * to reimage os disk. Default value: true.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.tempDisk] Specified
-     * whether to reimage temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -15369,7 +15324,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { vmScaleSetVMReimageInput? : models.VirtualMachineScaleSetVMReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -15383,17 +15338,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.vmScaleSetVMReimageInput] Parameters for the
-     * Reimaging Virtual machine in ScaleSet.
-     *
-     * @param {array} [options.vmScaleSetVMReimageInput.dataDisks] Luns of
-     * dataDisks in the virtual machine scale set VM to reimage.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.osDisk] Specified whether
-     * to reimage os disk. Default value: true.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.tempDisk] Specified
-     * whether to reimage temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -15419,9 +15365,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { vmScaleSetVMReimageInput? : models.VirtualMachineScaleSetVMReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { vmScaleSetVMReimageInput? : models.VirtualMachineScaleSetVMReimageParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17075,17 +17021,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.vmScaleSetVMReimageInput] Parameters for the
-     * Reimaging Virtual machine in ScaleSet.
-     *
-     * @param {array} [options.vmScaleSetVMReimageInput.dataDisks] Luns of
-     * dataDisks in the virtual machine scale set VM to reimage.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.osDisk] Specified whether
-     * to reimage os disk. Default value: true.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.tempDisk] Specified
-     * whether to reimage temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -17096,7 +17033,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { vmScaleSetVMReimageInput? : models.VirtualMachineScaleSetVMReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -17110,17 +17047,8 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.vmScaleSetVMReimageInput] Parameters for the
-     * Reimaging Virtual machine in ScaleSet.
-     *
-     * @param {array} [options.vmScaleSetVMReimageInput.dataDisks] Luns of
-     * dataDisks in the virtual machine scale set VM to reimage.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.osDisk] Specified whether
-     * to reimage os disk. Default value: true.
-     *
-     * @param {boolean} [options.vmScaleSetVMReimageInput.tempDisk] Specified
-     * whether to reimage temp disk. Default value: false.
+     * @param {boolean} [options.tempDisk] Specified whether to reimage temp disk.
+     * Default value: false.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -17146,9 +17074,9 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { vmScaleSetVMReimageInput? : models.VirtualMachineScaleSetVMReimageParameters, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { vmScaleSetVMReimageInput? : models.VirtualMachineScaleSetVMReimageParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { tempDisk? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
