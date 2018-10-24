@@ -10829,6 +10829,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -10905,6 +10907,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -11056,6 +11060,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -11122,6 +11128,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -11217,6 +11225,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -11293,6 +11303,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
@@ -11444,6 +11456,8 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
+     * @param {string} [parameters.collation] Collation of the managed instance.
+     *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after
      * creation.
@@ -11510,6 +11524,8 @@ export interface ManagedInstances {
      * @param {number} [parameters.vCores] The number of VCores.
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} [parameters.collation] Collation of the managed instance.
      *
      * @param {string} [parameters.dnsZonePartner] The resource id of another
      * managed instance whose DNS zone this managed instance will share after

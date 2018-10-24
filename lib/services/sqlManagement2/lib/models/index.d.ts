@@ -1358,7 +1358,7 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
-  readonly collation?: string;
+  collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
 }
@@ -1411,7 +1411,7 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
-  readonly collation?: string;
+  collation?: string;
   readonly dnsZone?: string;
   dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
