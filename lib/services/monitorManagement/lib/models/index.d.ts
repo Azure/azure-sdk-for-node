@@ -1368,6 +1368,21 @@ export interface AzureFunctionReceiver {
 
 /**
  * @class
+ * Initializes a new instance of the ArmRoleReceiver class.
+ * @constructor
+ * An arm role receiver.
+ *
+ * @member {string} name The name of the arm role receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} roleId The arm role id.
+ */
+export interface ArmRoleReceiver {
+  name: string;
+  roleId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1395,6 +1410,9 @@ export interface AzureFunctionReceiver {
  * part of this action group.
  * @member {array} [azureFunctionReceivers] The list of azure function
  * receivers that are part of this action group.
+ * @member {array} [armRoleReceivers] The list of ARM role receivers that are
+ * part of this action group. Roles are Azure RBAC roles and only built-in
+ * roles are supported.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1408,6 +1426,7 @@ export interface ActionGroupResource extends Resource {
   voiceReceivers?: VoiceReceiver[];
   logicAppReceivers?: LogicAppReceiver[];
   azureFunctionReceivers?: AzureFunctionReceiver[];
+  armRoleReceivers?: ArmRoleReceiver[];
 }
 
 /**
@@ -2033,6 +2052,12 @@ export interface MetricAlertCriteria {
  * @member {moment.duration} windowSize the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold.
+ * @member {string} [targetResourceType] the resource type of the target
+ * resource(s) on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
+ * @member {string} [targetResourceRegion] the region of the target resource(s)
+ * on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
  * @member {boolean} [autoMitigate] the flag that indicates whether the alert
@@ -2049,6 +2074,8 @@ export interface MetricAlertResource extends Resource {
   scopes?: string[];
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
+  targetResourceType?: string;
+  targetResourceRegion?: string;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
   actions?: MetricAlertAction[];
@@ -2074,6 +2101,12 @@ export interface MetricAlertResource extends Resource {
  * @member {moment.duration} windowSize the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold.
+ * @member {string} [targetResourceType] the resource type of the target
+ * resource(s) on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
+ * @member {string} [targetResourceRegion] the region of the target resource(s)
+ * on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
  * @member {boolean} [autoMitigate] the flag that indicates whether the alert
@@ -2091,6 +2124,8 @@ export interface MetricAlertResourcePatch {
   scopes?: string[];
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
+  targetResourceType?: string;
+  targetResourceRegion?: string;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
   actions?: MetricAlertAction[];
@@ -2156,13 +2191,31 @@ export interface MetricAlertStatusCollection {
  * Specifies a metric dimension.
  *
  * @member {string} name Name of the dimension.
- * @member {string} operator the dimension operator.
+ * @member {string} operator the dimension operator. Only 'Include' and
+ * 'Exclude' are supported
  * @member {array} values list of dimension values.
  */
 export interface MetricDimension {
   name: string;
   operator: string;
   values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MultiMetricCriteria class.
+ * @constructor
+ * The types of conditions for a multi resource alert
+ *
+ * @member {string} criterionType Polymorphic Discriminator
+ */
+export interface MultiMetricCriteria {
+  criterionType: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -2180,7 +2233,7 @@ export interface MetricDimension {
  * alert.
  * @member {array} [dimensions] List of dimension conditions.
  */
-export interface MetricCriteria {
+export interface MetricCriteria extends MultiMetricCriteria {
   name: string;
   metricName: string;
   metricNamespace?: string;
@@ -2206,11 +2259,26 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
 
 /**
  * @class
+ * Initializes a new instance of the MetricAlertMultipleResourceMultipleMetricCriteria class.
+ * @constructor
+ * Speficies the metric alert criteria for multiple resource that has multiple
+ * metric criteria.
+ *
+ * @member {array} [allOf] the list of multiple metric criteria for this 'all
+ * of' operation.
+ */
+export interface MetricAlertMultipleResourceMultipleMetricCriteria extends MetricAlertCriteria {
+  allOf?: MultiMetricCriteria[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the Source class.
  * @constructor
  * Specifies the log search query.
  *
- * @member {string} query Log search query.
+ * @member {string} [query] Log search query. Required for action type -
+ * AlertingAction
  * @member {array} [authorizedResources] List of  Resource referred into query
  * @member {string} dataSourceId The resource uri over which log search query
  * is to be run.
@@ -2218,7 +2286,7 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
  * include: 'ResultCount'
  */
 export interface Source {
-  query: string;
+  query?: string;
   authorizedResources?: string[];
   dataSourceId: string;
   queryType?: string;
@@ -2268,14 +2336,16 @@ export interface Action {
  * scheduledquery rule. Possible values include: 'Succeeded', 'Deploying',
  * 'Canceled', 'Failed'
  * @member {object} source Data Source against which rule will Query Data
- * @member {string} [source.query] Log search query.
+ * @member {string} [source.query] Log search query. Required for action type -
+ * AlertingAction
  * @member {array} [source.authorizedResources] List of  Resource referred into
  * query
  * @member {string} [source.dataSourceId] The resource uri over which log
  * search query is to be run.
  * @member {string} [source.queryType] Set value to 'ResultCount'. Possible
  * values include: 'ResultCount'
- * @member {object} schedule Schedule (Frequnecy, Time Window) for rule.
+ * @member {object} [schedule] Schedule (Frequnecy, Time Window) for rule.
+ * Required for action type - AlertingAction
  * @member {number} [schedule.frequencyInMinutes] frequency (in minutes) at
  * which rule condition should be evaluated.
  * @member {number} [schedule.timeWindowInMinutes] Time window for which data
@@ -2290,7 +2360,7 @@ export interface LogSearchRuleResource extends Resource {
   readonly lastUpdatedTime?: Date;
   readonly provisioningState?: string;
   source: Source;
-  schedule: Schedule;
+  schedule?: Schedule;
   action: Action;
 }
 
@@ -2418,6 +2488,48 @@ export interface AlertingAction extends Action {
   aznsAction: AzNsActionGroup;
   throttlingInMin?: number;
   trigger: TriggerCondition;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Dimension class.
+ * @constructor
+ * Specifies the criteria for converting log to metric.
+ *
+ * @member {string} name Name of the dimension
+ * @member {array} values List of dimension values
+ */
+export interface Dimension {
+  name: string;
+  values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Criteria class.
+ * @constructor
+ * Specifies the criteria for converting log to metric.
+ *
+ * @member {string} metricName Name of the metric
+ * @member {array} [dimensions] List of Dimensions for creating metric
+ */
+export interface Criteria {
+  metricName: string;
+  dimensions?: Dimension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogToMetricAction class.
+ * @constructor
+ * Specifiy action need to be taken when rule type is converting log to metric
+ *
+ * @member {object} criteria Severity of the alert
+ * @member {string} [criteria.metricName] Name of the metric
+ * @member {array} [criteria.dimensions] List of Dimensions for creating metric
+ */
+export interface LogToMetricAction extends Action {
+  criteria: Criteria;
 }
 
 /**
