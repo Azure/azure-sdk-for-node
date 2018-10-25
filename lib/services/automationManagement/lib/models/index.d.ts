@@ -1572,6 +1572,54 @@ export interface LinuxProperties {
 
 /**
  * @class
+ * Initializes a new instance of the TagSettingsProperties class.
+ * @constructor
+ * Tag filter information for the VM.
+ *
+ * @member {object} [tags] Dictionary of tags with its list of values.
+ * @member {string} [filterOperator] Filter VMs by Any or All specified tags.
+ * Possible values include: 'All', 'Any'
+ */
+export interface TagSettingsProperties {
+  tags?: { [propertyName: string]: string[] };
+  filterOperator?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureQueryProperties class.
+ * @constructor
+ * Azure query for the update configuration.
+ *
+ * @member {array} [scope] List of Subscription or Resource Group ARM Ids.
+ * @member {array} [location] List of locations to scope the query to.
+ * @member {object} [tagSettings] Tag settings for the VM.
+ * @member {object} [tagSettings.tags] Dictionary of tags with its list of
+ * values.
+ * @member {string} [tagSettings.filterOperator] Filter VMs by Any or All
+ * specified tags. Possible values include: 'All', 'Any'
+ */
+export interface AzureQueryProperties {
+  scope?: string[];
+  location?: string[];
+  tagSettings?: TagSettingsProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetProperties class.
+ * @constructor
+ * Group specific to the update configuration.
+ *
+ * @member {array} [azureQueries] List of Azure queries in the software update
+ * configuration.
+ */
+export interface TargetProperties {
+  azureQueries?: AzureQueryProperties[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the UpdateConfiguration class.
  * @constructor
  * Update specifc properties of the software update configuration.
@@ -1607,6 +1655,10 @@ export interface LinuxProperties {
  * virtual machines targeted by the software update configuration.
  * @member {array} [nonAzureComputerNames] List of names of non-azure machines
  * targeted by the software update configuration.
+ * @member {object} [targets] Group targets for the software update
+ * configuration.
+ * @member {array} [targets.azureQueries] List of Azure queries in the software
+ * update configuration.
  */
 export interface UpdateConfiguration {
   operatingSystem: string;
@@ -1615,6 +1667,7 @@ export interface UpdateConfiguration {
   duration?: moment.Duration;
   azureVirtualMachines?: string[];
   nonAzureComputerNames?: string[];
+  targets?: TargetProperties;
 }
 
 /**
@@ -1662,6 +1715,10 @@ export interface UpdateConfiguration {
  * configuration.
  * @member {array} [updateConfiguration.nonAzureComputerNames] List of names of
  * non-azure machines targeted by the software update configuration.
+ * @member {object} [updateConfiguration.targets] Group targets for the
+ * software update configuration.
+ * @member {array} [updateConfiguration.targets.azureQueries] List of Azure
+ * queries in the software update configuration.
  * @member {object} scheduleInfo Schedule information for the Software update
  * configuration
  * @member {date} [scheduleInfo.startTime] Gets or sets the start time of the
@@ -3152,6 +3209,41 @@ export interface RunbookCreateOrUpdateDraftProperties {
  */
 export interface RunbookCreateOrUpdateDraftParameters {
   runbookContent: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PythonPackageCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update module operation.
+ *
+ * @member {object} contentLink Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface PythonPackageCreateParameters {
+  contentLink: ContentLink;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PythonPackageUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update module operation.
+ *
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface PythonPackageUpdateParameters {
+  tags?: { [propertyName: string]: string };
 }
 
 

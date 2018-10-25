@@ -98,6 +98,7 @@ export default class AutomationClient extends AzureServiceClient {
   runbookOperations: operations.RunbookOperations;
   testJobStreams: operations.TestJobStreams;
   testJobOperations: operations.TestJobOperations;
+  python2Package: operations.Python2Package;
 }
 
 export { AutomationClient, models as AutomationModels };
