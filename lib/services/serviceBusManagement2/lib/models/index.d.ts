@@ -875,6 +875,36 @@ export interface MigrationConfigProperties extends Resource {
   readonly migrationState?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the IpFilterRule class.
+ * @constructor
+ * Single item in a List or Get IpFilterRules operation
+ *
+ * @member {string} [ipMask] IP Mask
+ * @member {string} [action] The IP Filter Action. Possible values include:
+ * 'Accept', 'Reject'
+ * @member {string} [filterName] IP Filter name
+ */
+export interface IpFilterRule extends Resource {
+  ipMask?: string;
+  action?: string;
+  filterName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * Single item in a List or Get VirtualNetworkRules operation
+ *
+ * @member {string} [virtualNetworkSubnetId] Resource ID of Virtual Network
+ * Subnet
+ */
+export interface VirtualNetworkRule extends Resource {
+  virtualNetworkSubnetId?: string;
+}
+
 
 /**
  * @class
@@ -913,6 +943,32 @@ export interface SBNamespaceListResult extends Array<SBNamespace> {
  * Value contains incomplete list of Authorization Rules.
  */
 export interface SBAuthorizationRuleListResult extends Array<SBAuthorizationRule> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IpFilterRuleListResult class.
+ * @constructor
+ * The response from the List namespace operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains an incomplete list of IpFilter Rules
+ */
+export interface IpFilterRuleListResult extends Array<IpFilterRule> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRuleListResult class.
+ * @constructor
+ * The response from the List namespace operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains an incomplete list of VirtualNetwork Rules
+ */
+export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
   nextLink?: string;
 }
 

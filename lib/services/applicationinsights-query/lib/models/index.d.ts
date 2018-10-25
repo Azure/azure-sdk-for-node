@@ -1075,7 +1075,7 @@ export interface Column {
 export interface Table {
   name: string;
   columns: Column[];
-  rows: string[][];
+  rows: any[][];
 }
 
 /**
