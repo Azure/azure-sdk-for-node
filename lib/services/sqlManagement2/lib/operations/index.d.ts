@@ -23781,7 +23781,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23819,7 +23819,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23945,7 +23945,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23983,7 +23983,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
