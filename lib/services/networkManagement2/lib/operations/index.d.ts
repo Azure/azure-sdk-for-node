@@ -12139,6 +12139,39 @@ export interface InterfaceEndpoints {
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
      *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [parameters.subnet.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.subnet.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [parameters.subnet.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.resourceGuid] The resource
+     * GUID property of the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.natGateway.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.natGateway.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.natGateway.tags] Resource tags.
+     *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -12264,6 +12297,39 @@ export interface InterfaceEndpoints {
      * @param {string} [parameters.subnet.routeTable.location] Resource location.
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [parameters.subnet.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.subnet.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [parameters.subnet.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.resourceGuid] The resource
+     * GUID property of the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.natGateway.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.natGateway.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.natGateway.tags] Resource tags.
      *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
@@ -12576,6 +12642,39 @@ export interface InterfaceEndpoints {
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
      *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [parameters.subnet.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.subnet.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [parameters.subnet.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.resourceGuid] The resource
+     * GUID property of the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.natGateway.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.natGateway.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.natGateway.tags] Resource tags.
+     *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -12701,6 +12800,39 @@ export interface InterfaceEndpoints {
      * @param {string} [parameters.subnet.routeTable.location] Resource location.
      *
      * @param {object} [parameters.subnet.routeTable.tags] Resource tags.
+     *
+     * @param {object} [parameters.subnet.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [parameters.subnet.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [parameters.subnet.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [parameters.subnet.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [parameters.subnet.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.resourceGuid] The resource
+     * GUID property of the nat gateway resource.
+     *
+     * @param {string} [parameters.subnet.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.subnet.natGateway.etag] A unique read-only
+     * string that changes whenever the resource is updated.
+     *
+     * @param {string} [parameters.subnet.natGateway.id] Resource ID.
+     *
+     * @param {string} [parameters.subnet.natGateway.location] Resource location.
+     *
+     * @param {object} [parameters.subnet.natGateway.tags] Resource tags.
      *
      * @param {array} [parameters.subnet.serviceEndpoints] An array of service
      * endpoints.
@@ -17752,6 +17884,55 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
+     * Resource tags.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -18134,6 +18315,55 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
      * Resource tags.
      *
      * @param {array}
@@ -18662,6 +18892,55 @@ export interface NetworkInterfaceTapConfigurations {
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
+     * Resource tags.
+     *
      * @param {array}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -19044,6 +19323,55 @@ export interface NetworkInterfaceTapConfigurations {
      *
      * @param {object}
      * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [tapConfigurationParameters.virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
      * Resource tags.
      *
      * @param {array}
@@ -33704,6 +34032,39 @@ export interface Subnets {
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
      *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [subnetParameters.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [subnetParameters.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [subnetParameters.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.resourceGuid] The resource GUID
+     * property of the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [subnetParameters.natGateway.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
+     *
+     * @param {string} [subnetParameters.natGateway.location] Resource location.
+     *
+     * @param {object} [subnetParameters.natGateway.tags] Resource tags.
+     *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -33810,6 +34171,39 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location.
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
+     *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [subnetParameters.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [subnetParameters.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [subnetParameters.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.resourceGuid] The resource GUID
+     * property of the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [subnetParameters.natGateway.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
+     *
+     * @param {string} [subnetParameters.natGateway.location] Resource location.
+     *
+     * @param {object} [subnetParameters.natGateway.tags] Resource tags.
      *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
@@ -34058,6 +34452,39 @@ export interface Subnets {
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
      *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [subnetParameters.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [subnetParameters.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [subnetParameters.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.resourceGuid] The resource GUID
+     * property of the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [subnetParameters.natGateway.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
+     *
+     * @param {string} [subnetParameters.natGateway.location] Resource location.
+     *
+     * @param {object} [subnetParameters.natGateway.tags] Resource tags.
+     *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
      *
@@ -34164,6 +34591,39 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location.
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
+     *
+     * @param {object} [subnetParameters.natGateway] Nat gateway associated with
+     * this subnet.
+     *
+     * @param {object} [subnetParameters.natGateway.sku] The nat gateway SKU.
+     *
+     * @param {string} [subnetParameters.natGateway.sku.name] Name of Nat Gateway
+     * SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number} [subnetParameters.natGateway.idleTimeoutInMinutes] The idle
+     * timeout of the nat gateway.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpAddresses] An array of
+     * public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array} [subnetParameters.natGateway.publicIpPrefixes] An array of
+     * public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.resourceGuid] The resource GUID
+     * property of the nat gateway resource.
+     *
+     * @param {string} [subnetParameters.natGateway.provisioningState] The
+     * provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [subnetParameters.natGateway.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {string} [subnetParameters.natGateway.id] Resource ID.
+     *
+     * @param {string} [subnetParameters.natGateway.location] Resource location.
+     *
+     * @param {object} [subnetParameters.natGateway.tags] Resource tags.
      *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
@@ -35247,6 +35707,55 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
+     * Resource tags.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -35605,6 +36114,55 @@ export interface VirtualNetworkTaps {
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
      * Resource tags.
      *
      * @param {array}
@@ -36221,6 +36779,55 @@ export interface VirtualNetworkTaps {
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
      * Resource tags.
      *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
+     * Resource tags.
+     *
      * @param {array}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
      * An array of service endpoints.
@@ -36579,6 +37186,55 @@ export interface VirtualNetworkTaps {
      *
      * @param {object}
      * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.tags]
+     * Resource tags.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+     * Nat gateway associated with this subnet.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+     * The nat gateway SKU.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+     * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+     *
+     * @param {number}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+     * The idle timeout of the nat gateway.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+     * An array of public ip addresses associated with the nat gateway resource.
+     *
+     * @param {array}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+     * An array of public ip prefixes associated with the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+     * The resource GUID property of the nat gateway resource.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+     * The provisioning state of the NatGateway resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+     * A unique read-only string that changes whenever the resource is updated.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.id]
+     * Resource ID.
+     *
+     * @param {string}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.location]
+     * Resource location.
+     *
+     * @param {object}
+     * [parameters.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.tags]
      * Resource tags.
      *
      * @param {array}

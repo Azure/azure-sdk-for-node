@@ -127,6 +127,37 @@ export interface SubResource extends BaseResource {
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -252,6 +283,37 @@ export interface SubResource extends BaseResource {
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -329,6 +391,37 @@ export interface SubResource extends BaseResource {
  * @member {array}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags]
  * The list of tags associated with the public IP address.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {string}
  * [virtualNetworkTap.destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipAddress]
  * The IP address associated with the public IP address resource.
@@ -447,6 +540,37 @@ export interface SubResource extends BaseResource {
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -569,6 +693,37 @@ export interface SubResource extends BaseResource {
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -646,6 +801,37 @@ export interface SubResource extends BaseResource {
  * @member {array}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags]
  * The list of tags associated with the public IP address.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {string}
  * [virtualNetworkTap.destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
  * The IP address associated with the public IP address resource.
@@ -887,6 +1073,26 @@ export interface EndpointService {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {object} [subnet.natGateway] Nat gateway associated with this
+ * subnet.
+ * @member {object} [subnet.natGateway.sku] The nat gateway SKU.
+ * @member {string} [subnet.natGateway.sku.name] Name of Nat Gateway SKU.
+ * Possible values include: 'Basic', 'Standard'
+ * @member {number} [subnet.natGateway.idleTimeoutInMinutes] The idle timeout
+ * of the nat gateway.
+ * @member {array} [subnet.natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.publicIpPrefixes] An array of public ip
+ * prefixes associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.subnets] Gets an array of references to
+ * the subnets using this nat gateway resource.
+ * @member {string} [subnet.natGateway.resourceGuid] The resource GUID property
+ * of the nat gateway resource.
+ * @member {string} [subnet.natGateway.provisioningState] The provisioning
+ * state of the NatGateway resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [subnet.natGateway.etag] A unique read-only string that
+ * changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
@@ -1036,6 +1242,27 @@ export interface NetworkInterfaceDnsSettings {
  * provisioning state of the resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
  * @member {string} [interfaceEndpoint.subnet.routeTable.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {object} [interfaceEndpoint.subnet.natGateway] Nat gateway
+ * associated with this subnet.
+ * @member {object} [interfaceEndpoint.subnet.natGateway.sku] The nat gateway
+ * SKU.
+ * @member {string} [interfaceEndpoint.subnet.natGateway.sku.name] Name of Nat
+ * Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number} [interfaceEndpoint.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array} [interfaceEndpoint.subnet.natGateway.publicIpAddresses] An
+ * array of public ip addresses associated with the nat gateway resource.
+ * @member {array} [interfaceEndpoint.subnet.natGateway.publicIpPrefixes] An
+ * array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [interfaceEndpoint.subnet.natGateway.subnets] Gets an array
+ * of references to the subnets using this nat gateway resource.
+ * @member {string} [interfaceEndpoint.subnet.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string} [interfaceEndpoint.subnet.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [interfaceEndpoint.subnet.natGateway.etag] A unique
  * read-only string that changes whenever the resource is updated.
  * @member {array} [interfaceEndpoint.subnet.serviceEndpoints] An array of
  * service endpoints.
@@ -1214,69 +1441,15 @@ export interface RouteTable extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ServiceEndpointPropertiesFormat class.
+ * Initializes a new instance of the NatGatewaySku class.
  * @constructor
- * The service endpoint properties.
+ * SKU of nat gateway
  *
- * @member {string} [service] The type of the endpoint service.
- * @member {array} [locations] A list of locations.
- * @member {string} [provisioningState] The provisioning state of the resource.
+ * @member {string} [name] Name of Nat Gateway SKU. Possible values include:
+ * 'Basic', 'Standard'
  */
-export interface ServiceEndpointPropertiesFormat {
-  service?: string;
-  locations?: string[];
-  provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceEndpointPolicyDefinition class.
- * @constructor
- * Service Endpoint policy definitions.
- *
- * @member {string} [description] A description for this rule. Restricted to
- * 140 chars.
- * @member {string} [service] service endpoint name.
- * @member {array} [serviceResources] A list of service resources.
- * @member {string} [provisioningState] The provisioning state of the service
- * end point policy definition. Possible values are: 'Updating', 'Deleting',
- * and 'Failed'.
- * @member {string} [name] The name of the resource that is unique within a
- * resource group. This name can be used to access the resource.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- */
-export interface ServiceEndpointPolicyDefinition extends SubResource {
-  description?: string;
-  service?: string;
-  serviceResources?: string[];
-  readonly provisioningState?: string;
+export interface NatGatewaySku {
   name?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceEndpointPolicy class.
- * @constructor
- * Service End point policy resource.
- *
- * @member {array} [serviceEndpointPolicyDefinitions] A collection of service
- * endpoint policy definitions of the service endpoint policy.
- * @member {array} [subnets] A collection of references to subnets.
- * @member {string} [resourceGuid] The resource GUID property of the service
- * endpoint policy resource.
- * @member {string} [provisioningState] The provisioning state of the service
- * endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- */
-export interface ServiceEndpointPolicy extends Resource {
-  serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinition[];
-  readonly subnets?: Subnet[];
-  readonly resourceGuid?: string;
-  readonly provisioningState?: string;
-  etag?: string;
 }
 
 /**
@@ -1290,6 +1463,180 @@ export interface ServiceEndpointPolicy extends Resource {
  */
 export interface PublicIPAddressSku {
   name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IPConfiguration class.
+ * @constructor
+ * IP configuration
+ *
+ * @member {string} [privateIPAddress] The private IP address of the IP
+ * configuration.
+ * @member {string} [privateIPAllocationMethod] The private IP allocation
+ * method. Possible values are 'Static' and 'Dynamic'. Possible values include:
+ * 'Static', 'Dynamic'
+ * @member {object} [subnet] The reference of the subnet resource.
+ * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
+ * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
+ * subnet.
+ * @member {object} [subnet.networkSecurityGroup] The reference of the
+ * NetworkSecurityGroup resource.
+ * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
+ * security rules of the network security group.
+ * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
+ * default security rules of network security group.
+ * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
+ * of references to network interfaces.
+ * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
+ * references to subnets.
+ * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
+ * GUID property of the network security group resource.
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] The
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {object} [subnet.routeTable] The reference of the RouteTable
+ * resource.
+ * @member {array} [subnet.routeTable.routes] Collection of routes contained
+ * within a route table.
+ * @member {array} [subnet.routeTable.subnets] A collection of references to
+ * subnets.
+ * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
+ * sets whether to disable the routes learned by BGP on that route table. True
+ * means disable.
+ * @member {string} [subnet.routeTable.provisioningState] The provisioning
+ * state of the resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated.
+ * @member {object} [subnet.natGateway] Nat gateway associated with this
+ * subnet.
+ * @member {object} [subnet.natGateway.sku] The nat gateway SKU.
+ * @member {string} [subnet.natGateway.sku.name] Name of Nat Gateway SKU.
+ * Possible values include: 'Basic', 'Standard'
+ * @member {number} [subnet.natGateway.idleTimeoutInMinutes] The idle timeout
+ * of the nat gateway.
+ * @member {array} [subnet.natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.publicIpPrefixes] An array of public ip
+ * prefixes associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.subnets] Gets an array of references to
+ * the subnets using this nat gateway resource.
+ * @member {string} [subnet.natGateway.resourceGuid] The resource GUID property
+ * of the nat gateway resource.
+ * @member {string} [subnet.natGateway.provisioningState] The provisioning
+ * state of the NatGateway resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [subnet.natGateway.etag] A unique read-only string that
+ * changes whenever the resource is updated.
+ * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
+ * @member {array} [subnet.interfaceEndpoints] An array of references to
+ * interface endpoints
+ * @member {array} [subnet.ipConfigurations] Gets an array of references to the
+ * network interface IP configurations using subnet.
+ * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
+ * profiles which reference this subnet.
+ * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
+ * to the external resources using subnet.
+ * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
+ * to services injecting into this subnet.
+ * @member {array} [subnet.delegations] Gets an array of references to the
+ * delegations on the subnet.
+ * @member {string} [subnet.purpose] A read-only string identifying the
+ * intention of use for this subnet based on delegations and other user-defined
+ * properties.
+ * @member {string} [subnet.provisioningState] The provisioning state of the
+ * resource.
+ * @member {string} [subnet.name] The name of the resource that is unique
+ * within a resource group. This name can be used to access the resource.
+ * @member {string} [subnet.etag] A unique read-only string that changes
+ * whenever the resource is updated.
+ * @member {object} [publicIPAddress] The reference of the public IP resource.
+ * @member {object} [publicIPAddress.sku] The public IP address SKU.
+ * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
+ * Possible values include: 'Basic', 'Standard'
+ * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
+ * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
+ * values include: 'Static', 'Dynamic'
+ * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
+ * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
+ * include: 'IPv4', 'IPv6'
+ * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
+ * associated with the public IP address.
+ * @member {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
+ * associated with the public IP address.
+ * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
+ * the Domain name label.The concatenation of the domain name label and the
+ * regionalized DNS zone make up the fully qualified domain name associated
+ * with the public IP address. If a domain name label is specified, an A DNS
+ * record is created for the public IP in the Microsoft Azure DNS system.
+ * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
+ * qualified domain name of the A DNS record associated with the public IP.
+ * This is the concatenation of the domainNameLabel and the regionalized DNS
+ * zone.
+ * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets the
+ * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
+ * this public IP address. If the reverseFqdn is specified, then a PTR DNS
+ * record is created pointing from the IP address in the in-addr.arpa domain to
+ * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
+ * @member {object} [publicIPAddress.natGateway] Nat gateway associated with
+ * this subnet.
+ * @member {object} [publicIPAddress.natGateway.sku] The nat gateway SKU.
+ * @member {string} [publicIPAddress.natGateway.sku.name] Name of Nat Gateway
+ * SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number} [publicIPAddress.natGateway.idleTimeoutInMinutes] The idle
+ * timeout of the nat gateway.
+ * @member {array} [publicIPAddress.natGateway.publicIpAddresses] An array of
+ * public ip addresses associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.natGateway.publicIpPrefixes] An array of
+ * public ip prefixes associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.natGateway.subnets] Gets an array of
+ * references to the subnets using this nat gateway resource.
+ * @member {string} [publicIPAddress.natGateway.resourceGuid] The resource GUID
+ * property of the nat gateway resource.
+ * @member {string} [publicIPAddress.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.natGateway.etag] A unique read-only string
+ * that changes whenever the resource is updated.
+ * @member {string} [publicIPAddress.ipAddress] The IP address associated with
+ * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
+ * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
+ * the public IP address.
+ * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
+ * of the public IP resource.
+ * @member {string} [publicIPAddress.provisioningState] The provisioning state
+ * of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [publicIPAddress.etag] A unique read-only string that
+ * changes whenever the resource is updated.
+ * @member {array} [publicIPAddress.zones] A list of availability zones
+ * denoting the IP allocated for the resource needs to come from.
+ * @member {string} [provisioningState] Gets the provisioning state of the
+ * public IP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface IPConfiguration extends SubResource {
+  privateIPAddress?: string;
+  privateIPAllocationMethod?: string;
+  subnet?: Subnet;
+  publicIPAddress?: PublicIPAddress;
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
 }
 
 /**
@@ -1396,6 +1743,27 @@ export interface IpTag {
  * 'Deleting', and 'Failed'.
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
+ * @member {object} [ipConfiguration.subnet.natGateway] Nat gateway associated
+ * with this subnet.
+ * @member {object} [ipConfiguration.subnet.natGateway.sku] The nat gateway
+ * SKU.
+ * @member {string} [ipConfiguration.subnet.natGateway.sku.name] Name of Nat
+ * Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number} [ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array} [ipConfiguration.subnet.natGateway.publicIpAddresses] An
+ * array of public ip addresses associated with the nat gateway resource.
+ * @member {array} [ipConfiguration.subnet.natGateway.publicIpPrefixes] An
+ * array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [ipConfiguration.subnet.natGateway.subnets] Gets an array of
+ * references to the subnets using this nat gateway resource.
+ * @member {string} [ipConfiguration.subnet.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string} [ipConfiguration.subnet.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [ipConfiguration.subnet.natGateway.etag] A unique read-only
+ * string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
  * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
@@ -1448,6 +1816,25 @@ export interface IpTag {
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
  * @member {array} [ipTags] The list of tags associated with the public IP
  * address.
+ * @member {object} [natGateway] Nat gateway associated with this subnet.
+ * @member {object} [natGateway.sku] The nat gateway SKU.
+ * @member {string} [natGateway.sku.name] Name of Nat Gateway SKU. Possible
+ * values include: 'Basic', 'Standard'
+ * @member {number} [natGateway.idleTimeoutInMinutes] The idle timeout of the
+ * nat gateway.
+ * @member {array} [natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [natGateway.publicIpPrefixes] An array of public ip prefixes
+ * associated with the nat gateway resource.
+ * @member {array} [natGateway.subnets] Gets an array of references to the
+ * subnets using this nat gateway resource.
+ * @member {string} [natGateway.resourceGuid] The resource GUID property of the
+ * nat gateway resource.
+ * @member {string} [natGateway.provisioningState] The provisioning state of
+ * the NatGateway resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [natGateway.etag] A unique read-only string that changes
+ * whenever the resource is updated.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
  * @member {object} [publicIPPrefix] The Public IP Prefix this Public IP
@@ -1471,6 +1858,7 @@ export interface PublicIPAddress extends Resource {
   readonly ipConfiguration?: IPConfiguration;
   dnsSettings?: PublicIPAddressDnsSettings;
   ipTags?: IpTag[];
+  readonly natGateway?: NatGateway;
   ipAddress?: string;
   publicIPPrefix?: SubResource;
   idleTimeoutInMinutes?: number;
@@ -1482,135 +1870,186 @@ export interface PublicIPAddress extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IPConfiguration class.
+ * Initializes a new instance of the PublicIPPrefixSku class.
  * @constructor
- * IP configuration
+ * SKU of a public IP prefix
  *
- * @member {string} [privateIPAddress] The private IP address of the IP
- * configuration.
- * @member {string} [privateIPAllocationMethod] The private IP allocation
- * method. Possible values are 'Static' and 'Dynamic'. Possible values include:
- * 'Static', 'Dynamic'
- * @member {object} [subnet] The reference of the subnet resource.
- * @member {string} [subnet.addressPrefix] The address prefix for the subnet.
- * @member {array} [subnet.addressPrefixes] List of  address prefixes for the
- * subnet.
- * @member {object} [subnet.networkSecurityGroup] The reference of the
- * NetworkSecurityGroup resource.
- * @member {array} [subnet.networkSecurityGroup.securityRules] A collection of
- * security rules of the network security group.
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] The
- * default security rules of network security group.
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] A collection
- * of references to network interfaces.
- * @member {array} [subnet.networkSecurityGroup.subnets] A collection of
- * references to subnets.
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] The resource
- * GUID property of the network security group resource.
- * @member {string} [subnet.networkSecurityGroup.provisioningState] The
- * provisioning state of the public IP resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [subnet.networkSecurityGroup.etag] A unique read-only
- * string that changes whenever the resource is updated.
- * @member {object} [subnet.routeTable] The reference of the RouteTable
- * resource.
- * @member {array} [subnet.routeTable.routes] Collection of routes contained
- * within a route table.
- * @member {array} [subnet.routeTable.subnets] A collection of references to
- * subnets.
- * @member {boolean} [subnet.routeTable.disableBgpRoutePropagation] Gets or
- * sets whether to disable the routes learned by BGP on that route table. True
- * means disable.
- * @member {string} [subnet.routeTable.provisioningState] The provisioning
- * state of the resource. Possible values are: 'Updating', 'Deleting', and
+ * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ */
+export interface PublicIPPrefixSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReferencedPublicIpAddress class.
+ * @constructor
+ * @member {string} [id] The PublicIPAddress Reference
+ */
+export interface ReferencedPublicIpAddress {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefix class.
+ * @constructor
+ * Public IP prefix resource.
+ *
+ * @member {object} [sku] The public IP prefix SKU.
+ * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ * @member {string} [publicIPAddressVersion] The public IP address version.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * prefix.
+ * @member {object} [natGateway] Nat gateway associated with this subnet.
+ * @member {object} [natGateway.sku] The nat gateway SKU.
+ * @member {string} [natGateway.sku.name] Name of Nat Gateway SKU. Possible
+ * values include: 'Basic', 'Standard'
+ * @member {number} [natGateway.idleTimeoutInMinutes] The idle timeout of the
+ * nat gateway.
+ * @member {array} [natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [natGateway.publicIpPrefixes] An array of public ip prefixes
+ * associated with the nat gateway resource.
+ * @member {array} [natGateway.subnets] Gets an array of references to the
+ * subnets using this nat gateway resource.
+ * @member {string} [natGateway.resourceGuid] The resource GUID property of the
+ * nat gateway resource.
+ * @member {string} [natGateway.provisioningState] The provisioning state of
+ * the NatGateway resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
- * that changes whenever the resource is updated.
- * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
- * @member {array} [subnet.serviceEndpointPolicies] An array of service
- * endpoint policies.
- * @member {array} [subnet.interfaceEndpoints] An array of references to
- * interface endpoints
- * @member {array} [subnet.ipConfigurations] Gets an array of references to the
- * network interface IP configurations using subnet.
- * @member {array} [subnet.ipConfigurationProfiles] Array of IP configuration
- * profiles which reference this subnet.
- * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
- * to the external resources using subnet.
- * @member {array} [subnet.serviceAssociationLinks] Gets an array of references
- * to services injecting into this subnet.
- * @member {array} [subnet.delegations] Gets an array of references to the
- * delegations on the subnet.
- * @member {string} [subnet.purpose] A read-only string identifying the
- * intention of use for this subnet based on delegations and other user-defined
- * properties.
- * @member {string} [subnet.provisioningState] The provisioning state of the
- * resource.
- * @member {string} [subnet.name] The name of the resource that is unique
- * within a resource group. This name can be used to access the resource.
- * @member {string} [subnet.etag] A unique read-only string that changes
+ * @member {string} [natGateway.etag] A unique read-only string that changes
  * whenever the resource is updated.
- * @member {object} [publicIPAddress] The reference of the public IP resource.
- * @member {object} [publicIPAddress.sku] The public IP address SKU.
- * @member {string} [publicIPAddress.sku.name] Name of a public IP address SKU.
- * Possible values include: 'Basic', 'Standard'
- * @member {string} [publicIPAddress.publicIPAllocationMethod] The public IP
- * allocation method. Possible values are: 'Static' and 'Dynamic'. Possible
- * values include: 'Static', 'Dynamic'
- * @member {string} [publicIPAddress.publicIPAddressVersion] The public IP
- * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
- * include: 'IPv4', 'IPv6'
- * @member {object} [publicIPAddress.ipConfiguration] The IP configuration
- * associated with the public IP address.
- * @member {object} [publicIPAddress.dnsSettings] The FQDN of the DNS record
- * associated with the public IP address.
- * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
- * qualified domain name of the A DNS record associated with the public IP.
- * This is the concatenation of the domainNameLabel and the regionalized DNS
- * zone.
- * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sets the
- * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
- * this public IP address. If the reverseFqdn is specified, then a PTR DNS
- * record is created pointing from the IP address in the in-addr.arpa domain to
- * the reverse FQDN.
- * @member {array} [publicIPAddress.ipTags] The list of tags associated with
- * the public IP address.
- * @member {string} [publicIPAddress.ipAddress] The IP address associated with
- * the public IP address resource.
- * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
- * Public IP Address should be allocated from.
- * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
- * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
- * the public IP address.
- * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
- * of the public IP resource.
- * @member {string} [publicIPAddress.provisioningState] The provisioning state
- * of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and
+ * @member {number} [prefixLength] The Length of the Public IP Prefix.
+ * @member {string} [ipPrefix] The allocated Prefix
+ * @member {array} [publicIPAddresses] The list of all referenced
+ * PublicIPAddresses
+ * @member {string} [resourceGuid] The resource GUID property of the public IP
+ * prefix resource.
+ * @member {string} [provisioningState] The provisioning state of the Public IP
+ * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
+ */
+export interface PublicIPPrefix extends Resource {
+  sku?: PublicIPPrefixSku;
+  publicIPAddressVersion?: string;
+  ipTags?: IpTag[];
+  readonly natGateway?: NatGateway;
+  prefixLength?: number;
+  ipPrefix?: string;
+  publicIPAddresses?: ReferencedPublicIpAddress[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+  zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NatGateway class.
+ * @constructor
+ * Nat Gateway resource.
+ *
+ * @member {object} [sku] The nat gateway SKU.
+ * @member {string} [sku.name] Name of Nat Gateway SKU. Possible values
+ * include: 'Basic', 'Standard'
+ * @member {number} [idleTimeoutInMinutes] The idle timeout of the nat gateway.
+ * @member {array} [publicIpAddresses] An array of public ip addresses
+ * associated with the nat gateway resource.
+ * @member {array} [publicIpPrefixes] An array of public ip prefixes associated
+ * with the nat gateway resource.
+ * @member {array} [subnets] Gets an array of references to the subnets using
+ * this nat gateway resource.
+ * @member {string} [resourceGuid] The resource GUID property of the nat
+ * gateway resource.
+ * @member {string} [provisioningState] The provisioning state of the
+ * NatGateway resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
- * @member {string} [publicIPAddress.etag] A unique read-only string that
- * changes whenever the resource is updated.
- * @member {array} [publicIPAddress.zones] A list of availability zones
- * denoting the IP allocated for the resource needs to come from.
- * @member {string} [provisioningState] Gets the provisioning state of the
- * public IP resource. Possible values are: 'Updating', 'Deleting', and
- * 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface NatGateway extends Resource {
+  sku?: NatGatewaySku;
+  idleTimeoutInMinutes?: number;
+  publicIpAddresses?: PublicIPAddress[];
+  publicIpPrefixes?: PublicIPPrefix[];
+  readonly subnets?: Subnet[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPropertiesFormat class.
+ * @constructor
+ * The service endpoint properties.
+ *
+ * @member {string} [service] The type of the endpoint service.
+ * @member {array} [locations] A list of locations.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ */
+export interface ServiceEndpointPropertiesFormat {
+  service?: string;
+  locations?: string[];
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinition class.
+ * @constructor
+ * Service Endpoint policy definitions.
+ *
+ * @member {string} [description] A description for this rule. Restricted to
+ * 140 chars.
+ * @member {string} [service] service endpoint name.
+ * @member {array} [serviceResources] A list of service resources.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * end point policy definition. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface IPConfiguration extends SubResource {
-  privateIPAddress?: string;
-  privateIPAllocationMethod?: string;
-  subnet?: Subnet;
-  publicIPAddress?: PublicIPAddress;
-  provisioningState?: string;
+export interface ServiceEndpointPolicyDefinition extends SubResource {
+  description?: string;
+  service?: string;
+  serviceResources?: string[];
+  readonly provisioningState?: string;
   name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicy class.
+ * @constructor
+ * Service End point policy resource.
+ *
+ * @member {array} [serviceEndpointPolicyDefinitions] A collection of service
+ * endpoint policy definitions of the service endpoint policy.
+ * @member {array} [subnets] A collection of references to subnets.
+ * @member {string} [resourceGuid] The resource GUID property of the service
+ * endpoint policy resource.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicy extends Resource {
+  serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinition[];
+  readonly subnets?: Subnet[];
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
   etag?: string;
 }
 
@@ -1656,6 +2095,26 @@ export interface IPConfiguration extends SubResource {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {object} [subnet.natGateway] Nat gateway associated with this
+ * subnet.
+ * @member {object} [subnet.natGateway.sku] The nat gateway SKU.
+ * @member {string} [subnet.natGateway.sku.name] Name of Nat Gateway SKU.
+ * Possible values include: 'Basic', 'Standard'
+ * @member {number} [subnet.natGateway.idleTimeoutInMinutes] The idle timeout
+ * of the nat gateway.
+ * @member {array} [subnet.natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.publicIpPrefixes] An array of public ip
+ * prefixes associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.subnets] Gets an array of references to
+ * the subnets using this nat gateway resource.
+ * @member {string} [subnet.natGateway.resourceGuid] The resource GUID property
+ * of the nat gateway resource.
+ * @member {string} [subnet.natGateway.provisioningState] The provisioning
+ * state of the NatGateway resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [subnet.natGateway.etag] A unique read-only string that
+ * changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
@@ -1801,6 +2260,25 @@ export interface Delegation extends SubResource {
  * the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
+ * @member {object} [natGateway] Nat gateway associated with this subnet.
+ * @member {object} [natGateway.sku] The nat gateway SKU.
+ * @member {string} [natGateway.sku.name] Name of Nat Gateway SKU. Possible
+ * values include: 'Basic', 'Standard'
+ * @member {number} [natGateway.idleTimeoutInMinutes] The idle timeout of the
+ * nat gateway.
+ * @member {array} [natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [natGateway.publicIpPrefixes] An array of public ip prefixes
+ * associated with the nat gateway resource.
+ * @member {array} [natGateway.subnets] Gets an array of references to the
+ * subnets using this nat gateway resource.
+ * @member {string} [natGateway.resourceGuid] The resource GUID property of the
+ * nat gateway resource.
+ * @member {string} [natGateway.provisioningState] The provisioning state of
+ * the NatGateway resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [natGateway.etag] A unique read-only string that changes
+ * whenever the resource is updated.
  * @member {array} [serviceEndpoints] An array of service endpoints.
  * @member {array} [serviceEndpointPolicies] An array of service endpoint
  * policies.
@@ -1829,6 +2307,7 @@ export interface Subnet extends SubResource {
   addressPrefixes?: string[];
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
+  natGateway?: NatGateway;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
   serviceEndpointPolicies?: ServiceEndpointPolicy[];
   readonly interfaceEndpoints?: InterfaceEndpoint[];
@@ -1897,6 +2376,26 @@ export interface Subnet extends SubResource {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {object} [subnet.natGateway] Nat gateway associated with this
+ * subnet.
+ * @member {object} [subnet.natGateway.sku] The nat gateway SKU.
+ * @member {string} [subnet.natGateway.sku.name] Name of Nat Gateway SKU.
+ * Possible values include: 'Basic', 'Standard'
+ * @member {number} [subnet.natGateway.idleTimeoutInMinutes] The idle timeout
+ * of the nat gateway.
+ * @member {array} [subnet.natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.publicIpPrefixes] An array of public ip
+ * prefixes associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.subnets] Gets an array of references to
+ * the subnets using this nat gateway resource.
+ * @member {string} [subnet.natGateway.resourceGuid] The resource GUID property
+ * of the nat gateway resource.
+ * @member {string} [subnet.natGateway.provisioningState] The provisioning
+ * state of the NatGateway resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [subnet.natGateway.etag] A unique read-only string that
+ * changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
@@ -1986,6 +2485,33 @@ export interface Subnet extends SubResource {
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object} [publicIPAddress.ipConfiguration.subnet.natGateway] Nat
+ * gateway associated with this subnet.
+ * @member {object} [publicIPAddress.ipConfiguration.subnet.natGateway.sku] The
+ * nat gateway SKU.
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.sku.name] Name of Nat
+ * Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes] The
+ * idle timeout of the nat gateway.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses] An
+ * array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes] An
+ * array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.natGateway.etag] A
+ * unique read-only string that changes whenever the resource is updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
  * @member {array}
@@ -2045,6 +2571,26 @@ export interface Subnet extends SubResource {
  * the reverse FQDN.
  * @member {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
+ * @member {object} [publicIPAddress.natGateway] Nat gateway associated with
+ * this subnet.
+ * @member {object} [publicIPAddress.natGateway.sku] The nat gateway SKU.
+ * @member {string} [publicIPAddress.natGateway.sku.name] Name of Nat Gateway
+ * SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number} [publicIPAddress.natGateway.idleTimeoutInMinutes] The idle
+ * timeout of the nat gateway.
+ * @member {array} [publicIPAddress.natGateway.publicIpAddresses] An array of
+ * public ip addresses associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.natGateway.publicIpPrefixes] An array of
+ * public ip prefixes associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.natGateway.subnets] Gets an array of
+ * references to the subnets using this nat gateway resource.
+ * @member {string} [publicIPAddress.natGateway.resourceGuid] The resource GUID
+ * property of the nat gateway resource.
+ * @member {string} [publicIPAddress.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.natGateway.etag] A unique read-only string
+ * that changes whenever the resource is updated.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
@@ -2183,6 +2729,37 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {string}
  * [destinationNetworkInterfaceIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway] Nat gateway
+ * associated with this subnet.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.sku] The nat
+ * gateway SKU.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.sku.name] Name
+ * of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.subnets] Gets
+ * an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.subnet.natGateway.etag] A unique
+ * read-only string that changes whenever the resource is updated.
  * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
@@ -2302,6 +2879,37 @@ export interface FrontendIPConfiguration extends SubResource {
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -2379,6 +2987,37 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {array}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipTags] The list
  * of tags associated with the public IP address.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway] Nat
+ * gateway associated with this subnet.
+ * @member {object}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {string}
  * [destinationNetworkInterfaceIPConfiguration.publicIPAddress.ipAddress] The
  * IP address associated with the public IP address resource.
@@ -2492,6 +3131,37 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.routeTable.etag] Gets
  * a unique read-only string that changes whenever the resource is updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway] Nat
+ * gateway associated with this subnet.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku] The
+ * nat gateway SKU.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.subnet.natGateway.etag] A
+ * unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
@@ -2614,6 +3284,37 @@ export interface FrontendIPConfiguration extends SubResource {
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -2691,6 +3392,37 @@ export interface FrontendIPConfiguration extends SubResource {
  * @member {array}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipTags] The
  * list of tags associated with the public IP address.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {string}
  * [destinationLoadBalancerFrontEndIPConfiguration.publicIPAddress.ipAddress]
  * The IP address associated with the public IP address resource.
@@ -2854,6 +3586,29 @@ export interface BackendAddressPool extends SubResource {
  * 'Deleting', and 'Failed'.
  * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated.
+ * @member {object} [backendIPConfiguration.subnet.natGateway] Nat gateway
+ * associated with this subnet.
+ * @member {object} [backendIPConfiguration.subnet.natGateway.sku] The nat
+ * gateway SKU.
+ * @member {string} [backendIPConfiguration.subnet.natGateway.sku.name] Name of
+ * Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [backendIPConfiguration.subnet.natGateway.idleTimeoutInMinutes] The idle
+ * timeout of the nat gateway.
+ * @member {array} [backendIPConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array} [backendIPConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [backendIPConfiguration.subnet.natGateway.subnets] Gets an
+ * array of references to the subnets using this nat gateway resource.
+ * @member {string} [backendIPConfiguration.subnet.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [backendIPConfiguration.subnet.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [backendIPConfiguration.subnet.natGateway.etag] A unique
+ * read-only string that changes whenever the resource is updated.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
@@ -2960,6 +3715,37 @@ export interface BackendAddressPool extends SubResource {
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway]
+ * Nat gateway associated with this subnet.
+ * @member {object}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku]
+ * The nat gateway SKU.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.etag]
+ * A unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
@@ -3033,6 +3819,33 @@ export interface BackendAddressPool extends SubResource {
  * domain to the reverse FQDN.
  * @member {array} [backendIPConfiguration.publicIPAddress.ipTags] The list of
  * tags associated with the public IP address.
+ * @member {object} [backendIPConfiguration.publicIPAddress.natGateway] Nat
+ * gateway associated with this subnet.
+ * @member {object} [backendIPConfiguration.publicIPAddress.natGateway.sku] The
+ * nat gateway SKU.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.natGateway.sku.name] Name of Nat
+ * Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [backendIPConfiguration.publicIPAddress.natGateway.idleTimeoutInMinutes] The
+ * idle timeout of the nat gateway.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.natGateway.publicIpAddresses] An
+ * array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.natGateway.publicIpPrefixes] An
+ * array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [backendIPConfiguration.publicIPAddress.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [backendIPConfiguration.publicIPAddress.natGateway.etag] A
+ * unique read-only string that changes whenever the resource is updated.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
  * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
@@ -3158,6 +3971,26 @@ export interface InboundNatRule extends SubResource {
  * 'Failed'.
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ * @member {object} [subnet.natGateway] Nat gateway associated with this
+ * subnet.
+ * @member {object} [subnet.natGateway.sku] The nat gateway SKU.
+ * @member {string} [subnet.natGateway.sku.name] Name of Nat Gateway SKU.
+ * Possible values include: 'Basic', 'Standard'
+ * @member {number} [subnet.natGateway.idleTimeoutInMinutes] The idle timeout
+ * of the nat gateway.
+ * @member {array} [subnet.natGateway.publicIpAddresses] An array of public ip
+ * addresses associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.publicIpPrefixes] An array of public ip
+ * prefixes associated with the nat gateway resource.
+ * @member {array} [subnet.natGateway.subnets] Gets an array of references to
+ * the subnets using this nat gateway resource.
+ * @member {string} [subnet.natGateway.resourceGuid] The resource GUID property
+ * of the nat gateway resource.
+ * @member {string} [subnet.natGateway.provisioningState] The provisioning
+ * state of the NatGateway resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [subnet.natGateway.etag] A unique read-only string that
+ * changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
  * @member {array} [subnet.serviceEndpointPolicies] An array of service
  * endpoint policies.
@@ -3250,6 +4083,33 @@ export interface InboundNatRule extends SubResource {
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object} [publicIPAddress.ipConfiguration.subnet.natGateway] Nat
+ * gateway associated with this subnet.
+ * @member {object} [publicIPAddress.ipConfiguration.subnet.natGateway.sku] The
+ * nat gateway SKU.
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.sku.name] Name of Nat
+ * Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes] The
+ * idle timeout of the nat gateway.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses] An
+ * array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes] An
+ * array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.natGateway.etag] A
+ * unique read-only string that changes whenever the resource is updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
  * @member {array}
@@ -3309,6 +4169,26 @@ export interface InboundNatRule extends SubResource {
  * the reverse FQDN.
  * @member {array} [publicIPAddress.ipTags] The list of tags associated with
  * the public IP address.
+ * @member {object} [publicIPAddress.natGateway] Nat gateway associated with
+ * this subnet.
+ * @member {object} [publicIPAddress.natGateway.sku] The nat gateway SKU.
+ * @member {string} [publicIPAddress.natGateway.sku.name] Name of Nat Gateway
+ * SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number} [publicIPAddress.natGateway.idleTimeoutInMinutes] The idle
+ * timeout of the nat gateway.
+ * @member {array} [publicIPAddress.natGateway.publicIpAddresses] An array of
+ * public ip addresses associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.natGateway.publicIpPrefixes] An array of
+ * public ip prefixes associated with the nat gateway resource.
+ * @member {array} [publicIPAddress.natGateway.subnets] Gets an array of
+ * references to the subnets using this nat gateway resource.
+ * @member {string} [publicIPAddress.natGateway.resourceGuid] The resource GUID
+ * property of the nat gateway resource.
+ * @member {string} [publicIPAddress.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.natGateway.etag] A unique read-only string
+ * that changes whenever the resource is updated.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
@@ -3544,6 +4424,27 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * 'Deleting', and 'Failed'.
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
+ * @member {object} [ipConfiguration.subnet.natGateway] Nat gateway associated
+ * with this subnet.
+ * @member {object} [ipConfiguration.subnet.natGateway.sku] The nat gateway
+ * SKU.
+ * @member {string} [ipConfiguration.subnet.natGateway.sku.name] Name of Nat
+ * Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number} [ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array} [ipConfiguration.subnet.natGateway.publicIpAddresses] An
+ * array of public ip addresses associated with the nat gateway resource.
+ * @member {array} [ipConfiguration.subnet.natGateway.publicIpPrefixes] An
+ * array of public ip prefixes associated with the nat gateway resource.
+ * @member {array} [ipConfiguration.subnet.natGateway.subnets] Gets an array of
+ * references to the subnets using this nat gateway resource.
+ * @member {string} [ipConfiguration.subnet.natGateway.resourceGuid] The
+ * resource GUID property of the nat gateway resource.
+ * @member {string} [ipConfiguration.subnet.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [ipConfiguration.subnet.natGateway.etag] A unique read-only
+ * string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
  * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
@@ -3647,6 +4548,37 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ * @member {object}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway] Nat
+ * gateway associated with this subnet.
+ * @member {object}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku] The
+ * nat gateway SKU.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.sku.name]
+ * Name of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.idleTimeoutInMinutes]
+ * The idle timeout of the nat gateway.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpAddresses]
+ * An array of public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.publicIpPrefixes]
+ * An array of public ip prefixes associated with the nat gateway resource.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.subnets]
+ * Gets an array of references to the subnets using this nat gateway resource.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.provisioningState]
+ * The provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.natGateway.etag] A
+ * unique read-only string that changes whenever the resource is updated.
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
@@ -3717,6 +4649,31 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * in-addr.arpa domain to the reverse FQDN.
  * @member {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
  * associated with the public IP address.
+ * @member {object} [ipConfiguration.publicIPAddress.natGateway] Nat gateway
+ * associated with this subnet.
+ * @member {object} [ipConfiguration.publicIPAddress.natGateway.sku] The nat
+ * gateway SKU.
+ * @member {string} [ipConfiguration.publicIPAddress.natGateway.sku.name] Name
+ * of Nat Gateway SKU. Possible values include: 'Basic', 'Standard'
+ * @member {number}
+ * [ipConfiguration.publicIPAddress.natGateway.idleTimeoutInMinutes] The idle
+ * timeout of the nat gateway.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.natGateway.publicIpAddresses] An array of
+ * public ip addresses associated with the nat gateway resource.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.natGateway.publicIpPrefixes] An array of
+ * public ip prefixes associated with the nat gateway resource.
+ * @member {array} [ipConfiguration.publicIPAddress.natGateway.subnets] Gets an
+ * array of references to the subnets using this nat gateway resource.
+ * @member {string} [ipConfiguration.publicIPAddress.natGateway.resourceGuid]
+ * The resource GUID property of the nat gateway resource.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.natGateway.provisioningState] The
+ * provisioning state of the NatGateway resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [ipConfiguration.publicIPAddress.natGateway.etag] A unique
+ * read-only string that changes whenever the resource is updated.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
  * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
@@ -8282,69 +9239,6 @@ export interface Operation {
   display?: OperationDisplay;
   origin?: string;
   serviceSpecification?: OperationPropertiesFormatServiceSpecification;
-}
-
-/**
- * @class
- * Initializes a new instance of the PublicIPPrefixSku class.
- * @constructor
- * SKU of a public IP prefix
- *
- * @member {string} [name] Name of a public IP prefix SKU. Possible values
- * include: 'Standard'
- */
-export interface PublicIPPrefixSku {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReferencedPublicIpAddress class.
- * @constructor
- * @member {string} [id] The PublicIPAddress Reference
- */
-export interface ReferencedPublicIpAddress {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PublicIPPrefix class.
- * @constructor
- * Public IP prefix resource.
- *
- * @member {object} [sku] The public IP prefix SKU.
- * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
- * include: 'Standard'
- * @member {string} [publicIPAddressVersion] The public IP address version.
- * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
- * 'IPv6'
- * @member {array} [ipTags] The list of tags associated with the public IP
- * prefix.
- * @member {number} [prefixLength] The Length of the Public IP Prefix.
- * @member {string} [ipPrefix] The allocated Prefix
- * @member {array} [publicIPAddresses] The list of all referenced
- * PublicIPAddresses
- * @member {string} [resourceGuid] The resource GUID property of the public IP
- * prefix resource.
- * @member {string} [provisioningState] The provisioning state of the Public IP
- * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {array} [zones] A list of availability zones denoting the IP
- * allocated for the resource needs to come from.
- */
-export interface PublicIPPrefix extends Resource {
-  sku?: PublicIPPrefixSku;
-  publicIPAddressVersion?: string;
-  ipTags?: IpTag[];
-  prefixLength?: number;
-  ipPrefix?: string;
-  publicIPAddresses?: ReferencedPublicIpAddress[];
-  resourceGuid?: string;
-  provisioningState?: string;
-  etag?: string;
-  zones?: string[];
 }
 
 /**
