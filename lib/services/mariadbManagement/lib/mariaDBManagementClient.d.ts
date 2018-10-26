@@ -58,6 +58,7 @@ export default class MariaDBManagementClient extends AzureServiceClient {
   // Operation groups
   servers: operations.Servers;
   firewallRules: operations.FirewallRules;
+  virtualNetworkRules: operations.VirtualNetworkRules;
   databases: operations.Databases;
   configurations: operations.Configurations;
   logFiles: operations.LogFiles;
