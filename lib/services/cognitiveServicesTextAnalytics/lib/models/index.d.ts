@@ -227,14 +227,19 @@ export interface MatchRecord {
  * @member {string} [bingId] Bing unique identifier of the recognized entity.
  * Use in conjunction with the Bing Entity Search API to fetch additional
  * relevant information.
+ * @member {string} [type] Entity type from Named Entity Recognition model
+ * @member {string} [subType] Entity sub type from Named Entity Recognition
+ * model
  */
 export interface EntityRecord {
   name?: string;
-  readonly matches?: MatchRecord[];
+  matches?: MatchRecord[];
   wikipediaLanguage?: string;
   wikipediaId?: string;
   readonly wikipediaUrl?: string;
   bingId?: string;
+  type?: string;
+  subType?: string;
 }
 
 /**
