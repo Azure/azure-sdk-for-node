@@ -33112,13 +33112,13 @@ export interface VirtualNetworks {
     /**
      * Checks whether a private IP address is available for use.
      *
+     * @param {string} ipAddress The private IP address to be verified.
+     *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} virtualNetworkName The name of the virtual network.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.ipAddress] The private IP address to be verified.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -33129,18 +33129,18 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkIPAddressAvailabilityWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, options?: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IPAddressAvailabilityResult>>;
+    checkIPAddressAvailabilityWithHttpOperationResponse(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IPAddressAvailabilityResult>>;
 
     /**
      * Checks whether a private IP address is available for use.
+     *
+     * @param {string} ipAddress The private IP address to be verified.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} virtualNetworkName The name of the virtual network.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.ipAddress] The private IP address to be verified.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -33168,9 +33168,9 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options?: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IPAddressAvailabilityResult>;
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IPAddressAvailabilityResult>;
+    checkIPAddressAvailability(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
 
 
     /**
