@@ -2,7 +2,7 @@
   "name": "azure-arm-consumption",
   "author": "Microsoft Corporation",
   "description": "ConsumptionManagementClient Library with typescript type definitions for node",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
