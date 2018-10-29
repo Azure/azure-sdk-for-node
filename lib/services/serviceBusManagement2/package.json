@@ -2,7 +2,7 @@
   "name": "azure-arm-sb",
   "author": "Microsoft Corporation",
   "description": "ServiceBusManagementClient Library with typescript type definitions for node",
-  "version": "2.8.0",
+  "version": "3.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
