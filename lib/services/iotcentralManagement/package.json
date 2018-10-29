@@ -2,7 +2,7 @@
   "name": "azure-arm-iotcentral",
   "author": "Microsoft Corporation",
   "description": "IotCentralClient Library with typescript type definitions for node",
-  "version": "2.1.0",
+  "version": "2.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
