@@ -341,6 +341,9 @@ export interface Namespaces {
      * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
+     * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
+     * Kafka is enabled for eventhub namespace.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -386,6 +389,9 @@ export interface Namespaces {
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
      * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
+     * Kafka is enabled for eventhub namespace.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -575,6 +581,9 @@ export interface Namespaces {
      * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
+     * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
+     * Kafka is enabled for eventhub namespace.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -620,6 +629,9 @@ export interface Namespaces {
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
      * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
+     * Kafka is enabled for eventhub namespace.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -1161,6 +1173,9 @@ export interface Namespaces {
      * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
      *
+     * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
+     * Kafka is enabled for eventhub namespace.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -1206,6 +1221,9 @@ export interface Namespaces {
      * @param {number} [parameters.maximumThroughputUnits] Upper limit of
      * throughput units when AutoInflate is enabled, vaule should be within 0 to 20
      * throughput units. ( '0' if AutoInflateEnabled = true)
+     *
+     * @param {boolean} [parameters.kafkaEnabled] Value that indicates whether
+     * Kafka is enabled for eventhub namespace.
      *
      * @param {string} [parameters.location] Resource location
      *

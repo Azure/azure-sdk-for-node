@@ -1342,6 +1342,10 @@ export interface Sku {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  */
 export interface ManagedInstance extends TrackedResource {
   identity?: ResourceIdentity;
@@ -1354,6 +1358,9 @@ export interface ManagedInstance extends TrackedResource {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
 }
 
 /**
@@ -1388,6 +1395,10 @@ export interface ManagedInstance extends TrackedResource {
  * 'LicenseIncluded' and 'BasePrice'.
  * @member {number} [vCores] The number of VCores.
  * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {string} [collation] Collation of the managed instance.
+ * @member {string} [dnsZone] The Dns Zone that the managed instance is in.
+ * @member {string} [dnsZonePartner] The resource id of another managed
+ * instance whose DNS zone this managed instance will share after creation.
  * @member {object} [tags] Resource tags.
  */
 export interface ManagedInstanceUpdate {
@@ -1400,6 +1411,9 @@ export interface ManagedInstanceUpdate {
   licenseType?: string;
   vCores?: number;
   storageSizeInGB?: number;
+  readonly collation?: string;
+  readonly dnsZone?: string;
+  dnsZonePartner?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -2734,7 +2748,7 @@ export interface LongTermRetentionBackup extends ProxyResource {
  *
  * @member {string} [weeklyRetention] The weekly retention policy for an LTR
  * backup in an ISO 8601 format.
- * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * @member {string} [monthlyRetention] The monthly retention policy for an LTR
  * backup in an ISO 8601 format.
  * @member {string} [yearlyRetention] The yearly retention policy for an LTR
  * backup in an ISO 8601 format.
