@@ -15053,7 +15053,7 @@ export interface LoadBalancerOutboundRules {
      *
      * @param {string} loadBalancerName The name of the load balancer.
      *
-     * @param {string} loadBalancingRuleName The name of the outbound rule.
+     * @param {string} outboundRuleName The name of the outbound rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15066,7 +15066,7 @@ export interface LoadBalancerOutboundRules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, loadBalancingRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OutboundRule>>;
+    getWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OutboundRule>>;
 
     /**
      * Gets the specified load balancer outbound rule.
@@ -15075,7 +15075,7 @@ export interface LoadBalancerOutboundRules {
      *
      * @param {string} loadBalancerName The name of the load balancer.
      *
-     * @param {string} loadBalancingRuleName The name of the outbound rule.
+     * @param {string} outboundRuleName The name of the outbound rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15104,9 +15104,9 @@ export interface LoadBalancerOutboundRules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, loadBalancerName: string, loadBalancingRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OutboundRule>;
-    get(resourceGroupName: string, loadBalancerName: string, loadBalancingRuleName: string, callback: ServiceCallback<models.OutboundRule>): void;
-    get(resourceGroupName: string, loadBalancerName: string, loadBalancingRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OutboundRule>): void;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OutboundRule>;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, callback: ServiceCallback<models.OutboundRule>): void;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OutboundRule>): void;
 
 
     /**
