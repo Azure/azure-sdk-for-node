@@ -2,7 +2,7 @@
   "name": "azure-arm-signalr",
   "author": "Microsoft Corporation",
   "description": "SignalRManagementClient Library with typescript type definitions for node",
-  "version": "1.2.0-preview",
+  "version": "1.1.1-preview",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
