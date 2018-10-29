@@ -10421,18 +10421,6 @@ export interface VirtualNetworkPeeringListResult extends Array<VirtualNetworkPee
 
 /**
  * @class
- * Initializes a new instance of the VirtualNetworkTapListResult class.
- * @constructor
- * Response for ListVirtualNetworkTap API service call.
- *
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface VirtualNetworkTapListResult extends Array<VirtualNetworkTap> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the VirtualNetworkGatewayListResult class.
  * @constructor
  * Response for the ListVirtualNetworkGateways API service call.
@@ -10477,6 +10465,18 @@ export interface VirtualNetworkGatewayConnectionListResult extends Array<Virtual
  */
 export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkTapListResult class.
+ * @constructor
+ * Response for ListVirtualNetworkTap API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface VirtualNetworkTapListResult extends Array<VirtualNetworkTap> {
+  nextLink?: string;
 }
 
 /**
