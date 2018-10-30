@@ -14983,6 +14983,196 @@ export interface LoadBalancerLoadBalancingRules {
 
 /**
  * @class
+ * LoadBalancerOutboundRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface LoadBalancerOutboundRules {
+
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LoadBalancerOutboundRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoadBalancerOutboundRuleListResult>>;
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LoadBalancerOutboundRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LoadBalancerOutboundRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LoadBalancerOutboundRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, loadBalancerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancerOutboundRuleListResult>;
+    list(resourceGroupName: string, loadBalancerName: string, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+    list(resourceGroupName: string, loadBalancerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+
+
+    /**
+     * Gets the specified load balancer outbound rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {string} outboundRuleName The name of the outbound rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OutboundRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OutboundRule>>;
+
+    /**
+     * Gets the specified load balancer outbound rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} loadBalancerName The name of the load balancer.
+     *
+     * @param {string} outboundRuleName The name of the outbound rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OutboundRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OutboundRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OutboundRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OutboundRule>;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, callback: ServiceCallback<models.OutboundRule>): void;
+    get(resourceGroupName: string, loadBalancerName: string, outboundRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OutboundRule>): void;
+
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LoadBalancerOutboundRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoadBalancerOutboundRuleListResult>>;
+
+    /**
+     * Gets all the outbound rules in a load balancer.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LoadBalancerOutboundRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LoadBalancerOutboundRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LoadBalancerOutboundRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoadBalancerOutboundRuleListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoadBalancerOutboundRuleListResult>): void;
+}
+
+/**
+ * @class
  * LoadBalancerNetworkInterfaces
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the NetworkManagementClient.
@@ -32926,13 +33116,13 @@ export interface VirtualNetworks {
     /**
      * Checks whether a private IP address is available for use.
      *
+     * @param {string} ipAddress The private IP address to be verified.
+     *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} virtualNetworkName The name of the virtual network.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.ipAddress] The private IP address to be verified.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -32943,18 +33133,18 @@ export interface VirtualNetworks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkIPAddressAvailabilityWithHttpOperationResponse(resourceGroupName: string, virtualNetworkName: string, options?: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IPAddressAvailabilityResult>>;
+    checkIPAddressAvailabilityWithHttpOperationResponse(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IPAddressAvailabilityResult>>;
 
     /**
      * Checks whether a private IP address is available for use.
+     *
+     * @param {string} ipAddress The private IP address to be verified.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} virtualNetworkName The name of the virtual network.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.ipAddress] The private IP address to be verified.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -32982,9 +33172,9 @@ export interface VirtualNetworks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options?: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IPAddressAvailabilityResult>;
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
-    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IPAddressAvailabilityResult>;
+    checkIPAddressAvailability(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(ipAddress: string, resourceGroupName: string, virtualNetworkName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
 
 
     /**

@@ -10349,6 +10349,18 @@ export interface LoadBalancerLoadBalancingRuleListResult extends Array<LoadBalan
 
 /**
  * @class
+ * Initializes a new instance of the LoadBalancerOutboundRuleListResult class.
+ * @constructor
+ * Response for ListOutboundRule API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface LoadBalancerOutboundRuleListResult extends Array<OutboundRule> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NetworkInterfaceListResult class.
  * @constructor
  * Response for the ListNetworkInterface API service call.

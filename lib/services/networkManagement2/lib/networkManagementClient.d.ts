@@ -80,6 +80,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   loadBalancerFrontendIPConfigurations: operations.LoadBalancerFrontendIPConfigurations;
   inboundNatRules: operations.InboundNatRules;
   loadBalancerLoadBalancingRules: operations.LoadBalancerLoadBalancingRules;
+  loadBalancerOutboundRules: operations.LoadBalancerOutboundRules;
   loadBalancerNetworkInterfaces: operations.LoadBalancerNetworkInterfaces;
   loadBalancerProbes: operations.LoadBalancerProbes;
   networkInterfaces: operations.NetworkInterfaces;
