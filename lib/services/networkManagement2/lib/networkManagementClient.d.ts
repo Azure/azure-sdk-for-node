@@ -71,12 +71,16 @@ export default class NetworkManagementClient extends AzureServiceClient {
   expressRouteCrossConnectionPeerings: operations.ExpressRouteCrossConnectionPeerings;
   expressRouteGateways: operations.ExpressRouteGateways;
   expressRouteConnections: operations.ExpressRouteConnections;
+  expressRoutePortsLocations: operations.ExpressRoutePortsLocations;
+  expressRoutePorts: operations.ExpressRoutePorts;
+  expressRouteLinks: operations.ExpressRouteLinks;
   interfaceEndpoints: operations.InterfaceEndpoints;
   loadBalancers: operations.LoadBalancers;
   loadBalancerBackendAddressPools: operations.LoadBalancerBackendAddressPools;
   loadBalancerFrontendIPConfigurations: operations.LoadBalancerFrontendIPConfigurations;
   inboundNatRules: operations.InboundNatRules;
   loadBalancerLoadBalancingRules: operations.LoadBalancerLoadBalancingRules;
+  loadBalancerOutboundRules: operations.LoadBalancerOutboundRules;
   loadBalancerNetworkInterfaces: operations.LoadBalancerNetworkInterfaces;
   loadBalancerProbes: operations.LoadBalancerProbes;
   networkInterfaces: operations.NetworkInterfaces;
@@ -104,10 +108,10 @@ export default class NetworkManagementClient extends AzureServiceClient {
   virtualNetworks: operations.VirtualNetworks;
   subnets: operations.Subnets;
   virtualNetworkPeerings: operations.VirtualNetworkPeerings;
-  virtualNetworkTaps: operations.VirtualNetworkTaps;
   virtualNetworkGateways: operations.VirtualNetworkGateways;
   virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
   localNetworkGateways: operations.LocalNetworkGateways;
+  virtualNetworkTaps: operations.VirtualNetworkTaps;
   virtualWans: operations.VirtualWans;
   vpnSites: operations.VpnSites;
   vpnSitesConfiguration: operations.VpnSitesConfiguration;
