@@ -230,22 +230,6 @@ export interface Sku {
 
 /**
  * @class
- * Initializes a new instance of the RegistryIdentity class.
- * @constructor
- * The identity of the container registry.
- *
- * @member {string} [type] The type of identity used for the registry.
- * @member {string} [principalId] The principal ID of registry identity.
- * @member {string} [tenantId] The tenant ID associated with the registry.
- */
-export interface RegistryIdentity {
-  type?: string;
-  principalId?: string;
-  tenantId?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Status class.
  * @constructor
  * The status of an Azure resource at the time the operation was called.
@@ -308,12 +292,6 @@ export interface Resource extends BaseResource {
  * 'Standard', 'Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
  * values include: 'Classic', 'Basic', 'Standard', 'Premium'
- * @member {object} [identity] The identity of the container registry.
- * @member {string} [identity.type] The type of identity used for the registry.
- * @member {string} [identity.principalId] The principal ID of registry
- * identity.
- * @member {string} [identity.tenantId] The tenant ID associated with the
- * registry.
  * @member {string} [loginServer] The URL that can be used to log into the
  * container registry.
  * @member {date} [creationDate] The creation date of the container registry in
@@ -336,7 +314,6 @@ export interface Resource extends BaseResource {
  */
 export interface Registry extends Resource {
   sku: Sku;
-  identity?: RegistryIdentity;
   readonly loginServer?: string;
   readonly creationDate?: Date;
   readonly provisioningState?: string;
@@ -358,12 +335,6 @@ export interface Registry extends Resource {
  * 'Standard', 'Premium'
  * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
  * values include: 'Classic', 'Basic', 'Standard', 'Premium'
- * @member {object} [identity] The identity of the container registry.
- * @member {string} [identity.type] The type of identity used for the registry.
- * @member {string} [identity.principalId] The principal ID of registry
- * identity.
- * @member {string} [identity.tenantId] The tenant ID associated with the
- * registry.
  * @member {boolean} [adminUserEnabled] The value that indicates whether the
  * admin user is enabled.
  * @member {object} [storageAccount] The parameters of a storage account for
@@ -375,7 +346,6 @@ export interface Registry extends Resource {
 export interface RegistryUpdateParameters {
   tags?: { [propertyName: string]: string };
   sku?: Sku;
-  identity?: RegistryIdentity;
   adminUserEnabled?: boolean;
   storageAccount?: StorageAccountProperties;
 }

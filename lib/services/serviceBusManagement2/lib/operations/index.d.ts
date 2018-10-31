@@ -1053,6 +1053,76 @@ export interface Namespaces {
 
 
     /**
+     * This operation Migrate the given namespace to provided name type
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters supplied to migrate namespace type.
+     *
+     * @param {string} parameters.targetNamespaceType Type of namespaces. Possible
+     * values include: 'Messaging', 'NotificationHub', 'Mixed', 'EventHub', 'Relay'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    migrateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceMigrate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * This operation Migrate the given namespace to provided name type
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters supplied to migrate namespace type.
+     *
+     * @param {string} parameters.targetNamespaceType Type of namespaces. Possible
+     * values include: 'Messaging', 'NotificationHub', 'Mixed', 'EventHub', 'Relay'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    migrate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceMigrate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    migrate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceMigrate, callback: ServiceCallback<void>): void;
+    migrate(resourceGroupName: string, namespaceName: string, parameters: models.SBNamespaceMigrate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Creates or updates a service namespace. Once created, this namespace's
      * resource manifest is immutable. This operation is idempotent.
      *

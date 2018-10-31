@@ -16520,7 +16520,7 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16528,11 +16528,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -16612,6 +16612,26 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16643,7 +16663,7 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16651,11 +16671,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -16735,6 +16755,26 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16857,7 +16897,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16865,11 +16905,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -16949,6 +16989,26 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16978,7 +17038,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -16986,11 +17046,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17070,6 +17130,26 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17119,7 +17199,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17127,11 +17207,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17211,6 +17291,26 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17240,7 +17340,7 @@ export interface ExtendedServerBlobAuditingPolicies {
      * where clause when creating an audit.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17248,11 +17348,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17332,6 +17432,26 @@ export interface ExtendedServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17451,7 +17571,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17459,11 +17579,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17543,6 +17663,26 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17569,7 +17709,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17577,11 +17717,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17661,6 +17801,26 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17707,7 +17867,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17715,11 +17875,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17799,6 +17959,26 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17825,7 +18005,7 @@ export interface ServerBlobAuditingPolicies {
      * @param {object} parameters Properties of blob auditing policy
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -17833,11 +18013,11 @@ export interface ServerBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -17917,6 +18097,26 @@ export interface ServerBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18042,7 +18242,7 @@ export interface DatabaseBlobAuditingPolicies {
      * @param {object} parameters The database blob auditing policy.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -18050,11 +18250,11 @@ export interface DatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -18134,6 +18334,26 @@ export interface DatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18162,7 +18382,7 @@ export interface DatabaseBlobAuditingPolicies {
      * @param {object} parameters The database blob auditing policy.
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      * Possible values include: 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.storageEndpoint] Specifies the blob storage
@@ -18170,11 +18390,11 @@ export interface DatabaseBlobAuditingPolicies {
      * Enabled, storageEndpoint is required.
      *
      * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
+     * identifier key of the auditing storage account. If state is Enabled and
+     * storageEndpoint is specified, storageAccountAccessKey is required.
      *
      * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
+     * keep in the audit logs in the storage account.
      *
      * @param {array} [parameters.auditActionsAndGroups] Specifies the
      * Actions-Groups and Actions to audit.
@@ -18254,6 +18474,26 @@ export interface DatabaseBlobAuditingPolicies {
      *
      * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
      * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {boolean} [parameters.isAzureMonitorTargetEnabled] Specifies whether
+     * audit events are sent to Azure Monitor.
+     * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+     * and 'IsAzureMonitorTargetEnabled' as true.
+     *
+     * When using REST API to configure auditing, Diagnostic Settings with
+     * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+     * also created.
+     * Note that for server level audit you should use the 'master' database as
+     * <databaseName>.
+     * Diagnostic Settings URI format:
+     * PUT
+     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     *
+     * For more information, see [Diagnostic Settings REST
+     * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+     * or [Diagnostic Settings
+     * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
+     *
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -23781,7 +24021,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23819,7 +24059,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23945,7 +24185,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
@@ -23983,7 +24223,7 @@ export interface BackupLongTermRetentionPolicies {
      * @param {string} [parameters.weeklyRetention] The weekly retention policy for
      * an LTR backup in an ISO 8601 format.
      *
-     * @param {string} [parameters.monthlyRetention] The montly retention policy
+     * @param {string} [parameters.monthlyRetention] The monthly retention policy
      * for an LTR backup in an ISO 8601 format.
      *
      * @param {string} [parameters.yearlyRetention] The yearly retention policy for
