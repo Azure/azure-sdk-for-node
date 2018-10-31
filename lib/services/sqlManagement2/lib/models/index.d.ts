@@ -2419,15 +2419,18 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * @constructor
  * A database vulnerability assessment.
  *
- * @member {string} storageContainerPath A blob storage container path to hold
- * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} [storageContainerPath] A blob storage container path to
+ * hold the scan results (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/).  It is required if server
+ * level vulnerability assessment policy doesn't set
  * @member {string} [storageContainerSasKey] A shared access signature (SAS
  * Key) that has write access to the blob container specified in
  * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
  * specified, StorageContainerSasKey is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the vulnerability assessment storage account. If 'StorageContainerSasKey'
- * isn't specified, storageAccountAccessKey is required.
+ * the storage account for vulnerability assessment scan results. If
+ * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+ * required.
  * @member {object} [recurringScans] The recurring scans settings
  * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
  * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
@@ -2437,7 +2440,7 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * addresses to which the scan notification is sent.
  */
 export interface DatabaseVulnerabilityAssessment extends ProxyResource {
-  storageContainerPath: string;
+  storageContainerPath?: string;
   storageContainerSasKey?: string;
   storageAccountAccessKey?: string;
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
@@ -4671,6 +4674,18 @@ export interface SubscriptionUsageListResult extends Array<SubscriptionUsage> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentListResult class.
+ * @constructor
+ * A list of the database's vulnerability assessments.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface DatabaseVulnerabilityAssessmentListResult extends Array<DatabaseVulnerabilityAssessment> {
   readonly nextLink?: string;
 }
 
