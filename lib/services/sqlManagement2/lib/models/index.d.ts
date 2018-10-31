@@ -1878,16 +1878,16 @@ export interface VirtualNetworkRule extends ProxyResource {
  * @member {string} [predicateExpression] Specifies condition of where clause
  * when creating an audit.
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -1964,6 +1964,24 @@ export interface VirtualNetworkRule extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * <databaseName>.
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
   predicateExpression?: string;
@@ -1974,6 +1992,7 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -1985,16 +2004,16 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * @member {string} [predicateExpression] Specifies condition of where clause
  * when creating an audit.
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -2071,6 +2090,24 @@ export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * <databaseName>.
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
   predicateExpression?: string;
@@ -2081,6 +2118,7 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -2090,16 +2128,16 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * A server blob auditing policy.
  *
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -2176,6 +2214,24 @@ export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * <databaseName>.
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface ServerBlobAuditingPolicy extends ProxyResource {
   state: string;
@@ -2185,6 +2241,7 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -2195,16 +2252,16 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  *
  * @member {string} [kind] Resource kind.
  * @member {string} state Specifies the state of the policy. If state is
- * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'Enabled', 'Disabled'
+ * Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
+ * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
  * https://MyAccount.blob.core.windows.net). If state is Enabled,
  * storageEndpoint is required.
  * @member {string} [storageAccountAccessKey] Specifies the identifier key of
- * the auditing storage account. If state is Enabled, storageAccountAccessKey
- * is required.
+ * the auditing storage account. If state is Enabled and storageEndpoint is
+ * specified, storageAccountAccessKey is required.
  * @member {number} [retentionDays] Specifies the number of days to keep in the
- * audit logs.
+ * audit logs in the storage account.
  * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
  * Actions to audit.
  *
@@ -2281,6 +2338,24 @@ export interface ServerBlobAuditingPolicy extends ProxyResource {
  * subscription Id.
  * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
  * storageAccountAccessKey value is the storage's secondary key.
+ * @member {boolean} [isAzureMonitorTargetEnabled] Specifies whether audit
+ * events are sent to Azure Monitor.
+ * In order to send the events to Azure Monitor, specify 'State' as 'Enabled'
+ * and 'IsAzureMonitorTargetEnabled' as true.
+ *
+ * When using REST API to configure auditing, Diagnostic Settings with
+ * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
+ * also created.
+ * Note that for server level audit you should use the 'master' database as
+ * <databaseName>.
+ * Diagnostic Settings URI format:
+ * PUT
+ * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+ *
+ * For more information, see [Diagnostic Settings REST
+ * API](https://go.microsoft.com/fwlink/?linkid=2033207)
+ * or [Diagnostic Settings
+ * PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
  */
 export interface DatabaseBlobAuditingPolicy extends ProxyResource {
   readonly kind?: string;
@@ -2291,6 +2366,7 @@ export interface DatabaseBlobAuditingPolicy extends ProxyResource {
   auditActionsAndGroups?: string[];
   storageAccountSubscriptionId?: string;
   isStorageSecondaryKeyInUse?: boolean;
+  isAzureMonitorTargetEnabled?: boolean;
 }
 
 /**
@@ -2751,7 +2827,7 @@ export interface LongTermRetentionBackup extends ProxyResource {
  *
  * @member {string} [weeklyRetention] The weekly retention policy for an LTR
  * backup in an ISO 8601 format.
- * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * @member {string} [monthlyRetention] The monthly retention policy for an LTR
  * backup in an ISO 8601 format.
  * @member {string} [yearlyRetention] The yearly retention policy for an LTR
  * backup in an ISO 8601 format.
