@@ -4509,6 +4509,45 @@ export interface ApplicationGateway extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableServerVariablesResult class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableServerVariables API service call.
+ *
+ * @member {array} [value] The list of supported server variables in
+ * application gateway.
+ */
+export interface ApplicationGatewayAvailableServerVariablesResult {
+  value?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableRequestHeadersResult class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableRequestHeaders API service call.
+ *
+ * @member {array} [value] The list of supported request headers in application
+ * gateway.
+ */
+export interface ApplicationGatewayAvailableRequestHeadersResult {
+  value?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableResponseHeadersResult class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableResponeHeaders API service call.
+ *
+ * @member {array} [value] The list of supported response header in application
+ * gateway.
+ */
+export interface ApplicationGatewayAvailableResponseHeadersResult {
+  value?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayFirewallRule class.
  * @constructor
  * A web application firewall rule.
