@@ -307,6 +307,25 @@ export interface FirewallRule extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * A virtual network rule.
+ *
+ * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * network subnet.
+ * @member {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
+ * before the virtual network has vnet service endpoint enabled.
+ * @member {string} [state] Virtual Network Rule State. Possible values
+ * include: 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
+ */
+export interface VirtualNetworkRule extends ProxyResource {
+  virtualNetworkSubnetId: string;
+  ignoreMissingVnetServiceEndpoint?: boolean;
+  readonly state?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Database class.
  * @constructor
  * Represents a Database.
@@ -545,6 +564,18 @@ export interface ServerListResult extends Array<Server> {
  *
  */
 export interface FirewallRuleListResult extends Array<FirewallRule> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRuleListResult class.
+ * @constructor
+ * A list of virtual network rules.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
+  readonly nextLink?: string;
 }
 
 /**
