@@ -22696,6 +22696,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -22757,6 +22765,14 @@ export interface NetworkWatchers {
      *
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
+     *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
      *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
@@ -23835,6 +23851,14 @@ export interface NetworkWatchers {
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
      *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
+     *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
      * @param {object}
@@ -23896,6 +23920,14 @@ export interface NetworkWatchers {
      *
      * @param {boolean} [parameters.retentionPolicy.enabled] Flag to enable/disable
      * retention.
+     *
+     * @param {object} [parameters.format]
+     *
+     * @param {string} [parameters.format.type] The file type of flow log. Possible
+     * values include: 'JSON'
+     *
+     * @param {number} [parameters.format.version] The version (revision) of the
+     * flow log.
      *
      * @param {object} [parameters.flowAnalyticsConfiguration]
      *
