@@ -1834,12 +1834,12 @@ export interface SkuDescription {
  * @member {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- * @member {string} [appServicePlanKind]
- * @member {string} [mdmId]
- * @member {number} [currentNumberOfWorkers]
- * @member {string} [currentWorkerSize]
- * @member {number} [numberOfWorkers]
- * @member {string} [workerSize]
+ * @member {string} [appServicePlanKind] Kind of resource.
+ * @member {string} [mdmId] MDM ID of the App Service plan.
+ * @member {number} [currentNumberOfWorkers] Current worker count.
+ * @member {string} [currentWorkerSize] Current worker size.
+ * @member {number} [numberOfWorkers] Worker count.
+ * @member {string} [workerSize] Worker size.
  * @member {object} [sku]
  * @member {string} [sku.name] Name of the resource SKU.
  * @member {string} [sku.tier] Service tier of the resource SKU.

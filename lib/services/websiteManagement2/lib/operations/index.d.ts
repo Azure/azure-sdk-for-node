@@ -20092,11 +20092,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -20124,7 +20124,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20132,15 +20132,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraceOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -20248,11 +20248,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWebSiteNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    startWebSiteNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -20284,7 +20284,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20292,15 +20292,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    startWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -20460,11 +20460,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationV2WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getNetworkTraceOperationV2WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -20492,7 +20492,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20500,15 +20500,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperationV2(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperationV2(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperationV2(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationV2(resourceGroupName: string, name: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTraceOperationV2(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraceOperationV2(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -34674,11 +34674,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -34709,7 +34709,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -34717,15 +34717,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraceOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -34839,11 +34839,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWebSiteNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    startWebSiteNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -34877,7 +34877,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -34885,15 +34885,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
-    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    startWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -35066,11 +35066,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationSlotV2WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    getNetworkTraceOperationSlotV2WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -35101,7 +35101,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -35109,15 +35109,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
-    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -38664,11 +38664,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    startNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -38702,7 +38702,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -38710,15 +38710,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    startNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
-    startNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    startNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    startNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    startNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -41104,11 +41104,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    startNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -41140,7 +41140,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -41148,15 +41148,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startNetworkTrace(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    startNetworkTrace(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-    startNetworkTrace(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    startNetworkTrace(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    startNetworkTrace(resourceGroupName: string, name: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    startNetworkTrace(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -44324,11 +44324,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWebSiteNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    beginStartWebSiteNetworkTraceOperationWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -44360,7 +44360,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -44368,15 +44368,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    beginStartWebSiteNetworkTraceOperation(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -46248,11 +46248,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWebSiteNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    beginStartWebSiteNetworkTraceOperationSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -46286,7 +46286,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -46294,15 +46294,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
-    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    beginStartWebSiteNetworkTraceOperationSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -46998,11 +46998,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    beginStartNetworkTraceSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -47036,7 +47036,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -47044,15 +47044,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    beginStartNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
-    beginStartNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    beginStartNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    beginStartNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    beginStartNetworkTraceSlot(resourceGroupName: string, name: string, slot: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -47271,11 +47271,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+    beginStartNetworkTraceWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Start capturing network packets for the site.
@@ -47307,7 +47307,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -47315,15 +47315,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartNetworkTrace(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    beginStartNetworkTrace(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-    beginStartNetworkTrace(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    beginStartNetworkTrace(resourceGroupName: string, name: string, options?: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    beginStartNetworkTrace(resourceGroupName: string, name: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    beginStartNetworkTrace(resourceGroupName: string, name: string, options: { durationInSeconds? : number, maxFrameLength? : number, sasUrl? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
