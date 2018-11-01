@@ -289,6 +289,10 @@ export interface ApplicationUpdateParameters {
  * @member {string} [homepage] The home page of the application.
  * @member {boolean} [oauth2AllowImplicitFlow] Whether to allow implicit grant
  * flow for OAuth2
+ * @member {array} [requiredResourceAccess] Specifies resources that this
+ * application requires access to and the set of OAuth permission scopes and
+ * application roles that it needs under each of those resources. This
+ * pre-configuration of required resource access drives the consent experience.
  */
 export interface Application extends DirectoryObject {
   appId?: string;
@@ -300,6 +304,7 @@ export interface Application extends DirectoryObject {
   replyUrls?: string[];
   homepage?: string;
   oauth2AllowImplicitFlow?: boolean;
+  requiredResourceAccess?: RequiredResourceAccess[];
 }
 
 /**
