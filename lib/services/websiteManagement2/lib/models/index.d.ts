@@ -1790,6 +1790,7 @@ export interface SkuDescription {
  * @constructor
  * App Service plan.
  *
+ * @member {string} [appServicePlanName] Name for the App Service plan.
  * @member {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
  * @member {string} [status] App Service plan status. Possible values include:
@@ -1833,6 +1834,12 @@ export interface SkuDescription {
  * @member {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
+ * @member {string} [appServicePlanKind]
+ * @member {string} [mdmId]
+ * @member {number} [currentNumberOfWorkers]
+ * @member {string} [currentWorkerSize]
+ * @member {number} [numberOfWorkers]
+ * @member {string} [workerSize]
  * @member {object} [sku]
  * @member {string} [sku.name] Name of the resource SKU.
  * @member {string} [sku.tier] Service tier of the resource SKU.
@@ -1855,6 +1862,7 @@ export interface SkuDescription {
  * manager enabled?
  */
 export interface AppServicePlan extends Resource {
+  appServicePlanName?: string;
   workerTierName?: string;
   readonly status?: string;
   readonly subscription?: string;
@@ -1875,6 +1883,12 @@ export interface AppServicePlan extends Resource {
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
+  readonly appServicePlanKind?: string;
+  readonly mdmId?: string;
+  readonly currentNumberOfWorkers?: number;
+  readonly currentWorkerSize?: string;
+  readonly numberOfWorkers?: number;
+  readonly workerSize?: string;
   sku?: SkuDescription;
 }
 
