@@ -35070,7 +35070,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTraceOperationV2SlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
+    getNetworkTraceOperationSlotV2WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -35115,9 +35115,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTraceOperationV2Slot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
-    getNetworkTraceOperationV2Slot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
-    getNetworkTraceOperationV2Slot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTraceOperationSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
@@ -35148,7 +35148,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getNetworkTracesV2SlotWithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
+    getNetworkTracesSlotV2WithHttpOperationResponse(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkTrace[]>>;
 
     /**
      * @summary Gets a named operation for a network trace capturing (or deployment
@@ -35193,9 +35193,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getNetworkTracesV2Slot(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
-    getNetworkTracesV2Slot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
-    getNetworkTracesV2Slot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTracesSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkTrace[]>;
+    getNetworkTracesSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<models.NetworkTrace[]>): void;
+    getNetworkTracesSlotV2(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkTrace[]>): void;
 
 
     /**
