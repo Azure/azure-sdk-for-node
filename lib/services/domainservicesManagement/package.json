@@ -2,7 +2,7 @@
   "name": "azure-arm-domainservices",
   "author": "Microsoft Corporation",
   "description": "DomainservicesManagementClient Library with typescript type definitions for node",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
