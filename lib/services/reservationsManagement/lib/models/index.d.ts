@@ -127,7 +127,7 @@ export interface ReservationMergeProperties {
  * Initializes a new instance of the ReservationProperties class.
  * @constructor
  * @member {string} [reservedResourceType] Possible values include:
- * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb'
+ * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
  * @member {string} [instanceFlexibility] Possible values include: 'On', 'Off',
  * 'NotSupported'
  * @member {string} [displayName] Friendly name for user to easily identify the
@@ -196,7 +196,7 @@ export interface ReservationProperties {
  * @member {string} [sku.name]
  * @member {object} [properties]
  * @member {string} [properties.reservedResourceType] Possible values include:
- * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb'
+ * 'VirtualMachines', 'SqlDatabases', 'SuseLinux', 'CosmosDb', 'RedHat'
  * @member {string} [properties.instanceFlexibility] Possible values include:
  * 'On', 'Off', 'NotSupported'
  * @member {string} [properties.displayName] Friendly name for user to easily
