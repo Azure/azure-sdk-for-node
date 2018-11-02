@@ -4158,8 +4158,8 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * Azure Key Vault. The default value is the latest version of the secret.
  * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [sasToken] The Azure key vault secret reference of sasToken
  * in sas uri.
  * @member {object} [sasToken.store] The Azure Key Vault linked service
@@ -4179,7 +4179,7 @@ export interface AzureSqlDWLinkedService extends LinkedService {
 export interface AzureTableStorageLinkedService extends LinkedService {
   connectionString?: any;
   accountKey?: AzureKeyVaultSecretReference;
-  sasUri?: SecretBase;
+  sasUri?: any;
   sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
@@ -4206,8 +4206,8 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  * Azure Key Vault. The default value is the latest version of the secret.
  * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Blob Storage resource. It is
- * mutually exclusive with connectionString, serviceEndpoint property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString, serviceEndpoint property. Type:
+ * string, SecureString or AzureKeyVaultSecretReference.
  * @member {object} [sasToken] The Azure key vault secret reference of sasToken
  * in sas uri.
  * @member {object} [sasToken.store] The Azure Key Vault linked service
@@ -4238,7 +4238,7 @@ export interface AzureTableStorageLinkedService extends LinkedService {
 export interface AzureBlobStorageLinkedService extends LinkedService {
   connectionString?: any;
   accountKey?: AzureKeyVaultSecretReference;
-  sasUri?: SecretBase;
+  sasUri?: any;
   sasToken?: AzureKeyVaultSecretReference;
   serviceEndpoint?: string;
   servicePrincipalId?: any;
@@ -4269,8 +4269,8 @@ export interface AzureBlobStorageLinkedService extends LinkedService {
  * Azure Key Vault. The default value is the latest version of the secret.
  * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [sasToken] The Azure key vault secret reference of sasToken
  * in sas uri.
  * @member {object} [sasToken.store] The Azure Key Vault linked service
@@ -4290,7 +4290,7 @@ export interface AzureBlobStorageLinkedService extends LinkedService {
 export interface AzureStorageLinkedService extends LinkedService {
   connectionString?: any;
   accountKey?: AzureKeyVaultSecretReference;
-  sasUri?: SecretBase;
+  sasUri?: any;
   sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
