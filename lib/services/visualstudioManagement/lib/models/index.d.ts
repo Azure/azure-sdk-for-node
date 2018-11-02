@@ -62,6 +62,18 @@ export interface AccountResourceListResult {
 
 /**
  * @class
+ * Initializes a new instance of the AccountTagRequest class.
+ * @constructor
+ * The body of a Patch request to add tags to a Visual Studio account resource.
+ *
+ * @member {object} [tags] The custom tags of the resource.
+ */
+export interface AccountTagRequest {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the AccountResourceRequest class.
  * @constructor
  * The body of a PUT request to modify a Visual Studio account resource.
