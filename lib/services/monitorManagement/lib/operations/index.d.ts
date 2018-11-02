@@ -2118,6 +2118,10 @@ export interface ActionGroups {
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
      *
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
+     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -2178,6 +2182,10 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
      * function receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.armRoleReceivers] The list of ARM role receivers
+     * that are part of this action group. Roles are Azure RBAC roles and only
+     * built-in roles are supported.
      *
      * @param {string} actionGroup.location Resource location
      *
@@ -4047,6 +4055,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4101,6 +4117,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
@@ -4178,6 +4202,14 @@ export interface MetricAlerts {
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
      *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.
      *
@@ -4230,6 +4262,14 @@ export interface MetricAlerts {
      * @param {moment.duration} parameters.windowSize the period of time (in ISO
      * 8601 duration format) that is used to monitor alert activity based on the
      * threshold.
+     *
+     * @param {string} [parameters.targetResourceType] the resource type of the
+     * target resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
+     *
+     * @param {string} [parameters.targetResourceRegion] the region of the target
+     * resource(s) on which the alert is created/updated. Mandatory for
+     * MultipleResourceMultipleMetricCriteria.
      *
      * @param {object} parameters.criteria defines the specific alert criteria
      * information.

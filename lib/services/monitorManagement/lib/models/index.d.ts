@@ -1368,6 +1368,21 @@ export interface AzureFunctionReceiver {
 
 /**
  * @class
+ * Initializes a new instance of the ArmRoleReceiver class.
+ * @constructor
+ * An arm role receiver.
+ *
+ * @member {string} name The name of the arm role receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} roleId The arm role id.
+ */
+export interface ArmRoleReceiver {
+  name: string;
+  roleId: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1395,6 +1410,9 @@ export interface AzureFunctionReceiver {
  * part of this action group.
  * @member {array} [azureFunctionReceivers] The list of azure function
  * receivers that are part of this action group.
+ * @member {array} [armRoleReceivers] The list of ARM role receivers that are
+ * part of this action group. Roles are Azure RBAC roles and only built-in
+ * roles are supported.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1408,6 +1426,7 @@ export interface ActionGroupResource extends Resource {
   voiceReceivers?: VoiceReceiver[];
   logicAppReceivers?: LogicAppReceiver[];
   azureFunctionReceivers?: AzureFunctionReceiver[];
+  armRoleReceivers?: ArmRoleReceiver[];
 }
 
 /**
@@ -2033,6 +2052,12 @@ export interface MetricAlertCriteria {
  * @member {moment.duration} windowSize the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold.
+ * @member {string} [targetResourceType] the resource type of the target
+ * resource(s) on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
+ * @member {string} [targetResourceRegion] the region of the target resource(s)
+ * on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
  * @member {boolean} [autoMitigate] the flag that indicates whether the alert
@@ -2049,6 +2074,8 @@ export interface MetricAlertResource extends Resource {
   scopes?: string[];
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
+  targetResourceType?: string;
+  targetResourceRegion?: string;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
   actions?: MetricAlertAction[];
@@ -2074,6 +2101,12 @@ export interface MetricAlertResource extends Resource {
  * @member {moment.duration} windowSize the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold.
+ * @member {string} [targetResourceType] the resource type of the target
+ * resource(s) on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
+ * @member {string} [targetResourceRegion] the region of the target resource(s)
+ * on which the alert is created/updated. Mandatory for
+ * MultipleResourceMultipleMetricCriteria.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
  * @member {boolean} [autoMitigate] the flag that indicates whether the alert
@@ -2091,6 +2124,8 @@ export interface MetricAlertResourcePatch {
   scopes?: string[];
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
+  targetResourceType?: string;
+  targetResourceRegion?: string;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
   actions?: MetricAlertAction[];
@@ -2156,13 +2191,31 @@ export interface MetricAlertStatusCollection {
  * Specifies a metric dimension.
  *
  * @member {string} name Name of the dimension.
- * @member {string} operator the dimension operator.
+ * @member {string} operator the dimension operator. Only 'Include' and
+ * 'Exclude' are supported
  * @member {array} values list of dimension values.
  */
 export interface MetricDimension {
   name: string;
   operator: string;
   values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MultiMetricCriteria class.
+ * @constructor
+ * The types of conditions for a multi resource alert
+ *
+ * @member {string} criterionType Polymorphic Discriminator
+ */
+export interface MultiMetricCriteria {
+  criterionType: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
@@ -2180,7 +2233,7 @@ export interface MetricDimension {
  * alert.
  * @member {array} [dimensions] List of dimension conditions.
  */
-export interface MetricCriteria {
+export interface MetricCriteria extends MultiMetricCriteria {
   name: string;
   metricName: string;
   metricNamespace?: string;
@@ -2202,6 +2255,20 @@ export interface MetricCriteria {
  */
 export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricAlertCriteria {
   allOf?: MetricCriteria[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricAlertMultipleResourceMultipleMetricCriteria class.
+ * @constructor
+ * Speficies the metric alert criteria for multiple resource that has multiple
+ * metric criteria.
+ *
+ * @member {array} [allOf] the list of multiple metric criteria for this 'all
+ * of' operation.
+ */
+export interface MetricAlertMultipleResourceMultipleMetricCriteria extends MetricAlertCriteria {
+  allOf?: MultiMetricCriteria[];
 }
 
 /**

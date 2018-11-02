@@ -89,6 +89,8 @@ export interface Sku {
  * @member {number} [maximumThroughputUnits] Upper limit of throughput units
  * when AutoInflate is enabled, vaule should be within 0 to 20 throughput
  * units. ( '0' if AutoInflateEnabled = true)
+ * @member {boolean} [kafkaEnabled] Value that indicates whether Kafka is
+ * enabled for eventhub namespace.
  */
 export interface EHNamespace extends TrackedResource {
   sku?: Sku;
@@ -99,6 +101,7 @@ export interface EHNamespace extends TrackedResource {
   readonly metricId?: string;
   isAutoInflateEnabled?: boolean;
   maximumThroughputUnits?: number;
+  kafkaEnabled?: boolean;
 }
 
 /**

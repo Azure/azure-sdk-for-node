@@ -217,7 +217,7 @@ export interface StorageSyncServices {
      *
      * @param {object} parameters Storage Sync Service resource name.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
      * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
      * resource cannot be changed once it is created, but if an identical geo
@@ -228,6 +228,8 @@ export interface StorageSyncServices {
      * this resource (across resource groups). A maximum of 15 tags can be provided
      * for a resource. Each tag must have a key with a length no greater than 128
      * characters and a value with a length no greater than 256 characters.
+     *
+     * @param {object} [parameters.properties]
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -253,7 +255,7 @@ export interface StorageSyncServices {
      *
      * @param {object} parameters Storage Sync Service resource name.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
+     * @param {string} parameters.location Required. Gets or sets the location of
      * the resource. This will be one of the supported and registered Azure Geo
      * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
      * resource cannot be changed once it is created, but if an identical geo
@@ -264,6 +266,8 @@ export interface StorageSyncServices {
      * this resource (across resource groups). A maximum of 15 tags can be provided
      * for a resource. Each tag must have a key with a length no greater than 128
      * characters and a value with a length no greater than 256 characters.
+     *
+     * @param {object} [parameters.properties]
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -696,18 +700,6 @@ export interface SyncGroups {
      *
      * @param {object} parameters Sync Group Body
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {object} [parameters.properties] The parameters used to create the
      * sync group
      *
@@ -736,18 +728,6 @@ export interface SyncGroups {
      * @param {string} syncGroupName Name of Sync Group resource.
      *
      * @param {object} parameters Sync Group Body
-     *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
      *
      * @param {object} [parameters.properties] The parameters used to create the
      * sync group
@@ -941,18 +921,6 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
@@ -989,18 +957,6 @@ export interface CloudEndpoints {
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
-     *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
@@ -1727,18 +1683,6 @@ export interface CloudEndpoints {
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
      *
@@ -1775,18 +1719,6 @@ export interface CloudEndpoints {
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
      * @param {object} parameters Body of Cloud Endpoint resource.
-     *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.storageAccountResourceId] Storage Account
      * Resource Id
@@ -2314,18 +2246,6 @@ export interface ServerEndpoints {
      *
      * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
      * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
@@ -2333,6 +2253,9 @@ export interface ServerEndpoints {
      *
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
@@ -2366,18 +2289,6 @@ export interface ServerEndpoints {
      *
      * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
      * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
@@ -2385,6 +2296,9 @@ export interface ServerEndpoints {
      *
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
@@ -2440,14 +2354,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2478,14 +2392,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2822,18 +2736,6 @@ export interface ServerEndpoints {
      *
      * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
      * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
@@ -2841,6 +2743,9 @@ export interface ServerEndpoints {
      *
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
@@ -2874,18 +2779,6 @@ export interface ServerEndpoints {
      *
      * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.serverLocalPath] Server Local path.
      *
      * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
@@ -2893,6 +2786,9 @@ export interface ServerEndpoints {
      *
      * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
      * be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [parameters.tierFilesOlderThanDays] Tier files older than
+     * days.
      *
      * @param {string} [parameters.friendlyName] Friendly Name
      *
@@ -2948,14 +2844,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2986,14 +2882,14 @@ export interface ServerEndpoints {
      * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {object} [options.parameters.tags] The user-specified tags associated
-     * with the server endpoint.
-     *
      * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
      * values include: 'on', 'off'
      *
      * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
      * space to be maintained by Cloud Tiering if it is enabled.
+     *
+     * @param {number} [options.parameters.tierFilesOlderThanDays] Tier files older
+     * than days.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3329,18 +3225,6 @@ export interface RegisteredServers {
      *
      * @param {object} parameters Body of Registered Server object.
      *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
-     *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
      * @param {string} [parameters.agentVersion] Registered Server Agent Version
@@ -3384,18 +3268,6 @@ export interface RegisteredServers {
      * @param {string} serverId GUID identifying the on-premises server.
      *
      * @param {object} parameters Body of Registered Server object.
-     *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
@@ -3514,6 +3386,80 @@ export interface RegisteredServers {
 
 
     /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.serverCertificate] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    triggerRolloverWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.serverCertificate] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    triggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    triggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, callback: ServiceCallback<void>): void;
+    triggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Add a new registered server.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
@@ -3525,18 +3471,6 @@ export interface RegisteredServers {
      * @param {string} serverId GUID identifying the on-premises server.
      *
      * @param {object} parameters Body of Registered Server object.
-     *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
@@ -3581,18 +3515,6 @@ export interface RegisteredServers {
      * @param {string} serverId GUID identifying the on-premises server.
      *
      * @param {object} parameters Body of Registered Server object.
-     *
-     * @param {string} [parameters.location] Required. Gets or sets the location of
-     * the resource. This will be one of the supported and registered Azure Geo
-     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-     * resource cannot be changed once it is created, but if an identical geo
-     * region is specified on update, the request will succeed.
-     *
-     * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used for viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be provided
-     * for a resource. Each tag must have a key with a length no greater than 128
-     * characters and a value with a length no greater than 256 characters.
      *
      * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
@@ -3708,6 +3630,80 @@ export interface RegisteredServers {
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, serverId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, serverId: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, serverId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.serverCertificate] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginTriggerRolloverWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Triggers Server certificate rollover.
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} serverId Server Id
+     *
+     * @param {object} parameters Body of Trigger Rollover request.
+     *
+     * @param {string} [parameters.serverCertificate] Certificate Data
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginTriggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginTriggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, callback: ServiceCallback<void>): void;
+    beginTriggerRollover(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.TriggerRolloverRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3717,6 +3713,69 @@ export interface RegisteredServers {
  * instance of the StorageSyncManagementClient.
  */
 export interface Workflows {
+
+
+    /**
+     * Get a Workflow List
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowArray>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByStorageSyncServiceWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowArray>>;
+
+    /**
+     * Get a Workflow List
+     *
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowArray} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowArray} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowArray} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowArray>;
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.WorkflowArray>): void;
+    listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowArray>): void;
 
 
     /**
