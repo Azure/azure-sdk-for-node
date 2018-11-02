@@ -4393,6 +4393,10 @@ export interface Tasks {
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4472,6 +4476,10 @@ export interface Tasks {
      *
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
@@ -4637,6 +4645,10 @@ export interface Tasks {
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -4714,6 +4726,10 @@ export interface Tasks {
      *
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -4876,6 +4892,10 @@ export interface Tasks {
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskCreateParameters.trigger] The properties that describe
@@ -4955,6 +4975,10 @@ export interface Tasks {
      *
      * @param {string} [taskCreateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskCreateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskCreateParameters.step.type Polymorphic Discriminator
      *
@@ -5120,6 +5144,10 @@ export interface Tasks {
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
      *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
+     *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
      * @param {object} [taskUpdateParameters.trigger] The properties for updating
@@ -5197,6 +5225,10 @@ export interface Tasks {
      *
      * @param {string} [taskUpdateParameters.step.contextPath] The URL(absolute or
      * relative) of the source context for the task step.
+     *
+     * @param {string} [taskUpdateParameters.step.contextAccessToken] The token
+     * (git PAT or SAS token of storage account blob) associated with the context
+     * for a step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
