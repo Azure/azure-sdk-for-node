@@ -14,6 +14,779 @@ import * as models from '../models';
 
 /**
  * @class
+ * OpenShiftManagedClusters
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerServiceClient.
+ */
+export interface OpenShiftManagedClusters {
+
+
+    /**
+     * @summary Gets a openshift managed cluster.
+     *
+     * Gets the details of the managed openshift cluster with a specified resource
+     * group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Gets a openshift managed cluster.
+     *
+     * Gets the details of the managed openshift cluster with a specified resource
+     * group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Creates or updates an openshift managed cluster.
+     *
+     * Creates or updates a openshift managed cluster with the specified
+     * configuration for agents and OpenShift version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update an
+     * OpenShift Managed Cluster operation.
+     *
+     * @param {object} [parameters.plan] Define the resource plan as required by
+     * ARM for billing purposes
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.publisher] The plan ID.
+     *
+     * @param {string} parameters.openShiftVersion Version of OpenShift specified
+     * when creating the cluster.
+     *
+     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
+     * OpenShift API server.
+     *
+     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
+     * server loadbalancer internal hostname.
+     *
+     * @param {object} [parameters.networkProfile] Configuration for OpenShift
+     * networking.
+     *
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
+     * Vnet.
+     *
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
+     * peer.
+     *
+     * @param {array} [parameters.routerProfiles] Configuration for OpenShift
+     * router(s).
+     *
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
+     * the peering.
+     *
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
+     * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
+     * cluster VMs.
+     *
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Creates or updates an openshift managed cluster.
+     *
+     * Creates or updates a openshift managed cluster with the specified
+     * configuration for agents and OpenShift version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update an
+     * OpenShift Managed Cluster operation.
+     *
+     * @param {object} [parameters.plan] Define the resource plan as required by
+     * ARM for billing purposes
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.publisher] The plan ID.
+     *
+     * @param {string} parameters.openShiftVersion Version of OpenShift specified
+     * when creating the cluster.
+     *
+     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
+     * OpenShift API server.
+     *
+     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
+     * server loadbalancer internal hostname.
+     *
+     * @param {object} [parameters.networkProfile] Configuration for OpenShift
+     * networking.
+     *
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
+     * Vnet.
+     *
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
+     * peer.
+     *
+     * @param {array} [parameters.routerProfiles] Configuration for OpenShift
+     * router(s).
+     *
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
+     * the peering.
+     *
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
+     * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
+     * cluster VMs.
+     *
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Deletes an openshift managed cluster.
+     *
+     * Deletes the openshift managed cluster with a specified resource group and
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes an openshift managed cluster.
+     *
+     * Deletes the openshift managed cluster with a specified resource group and
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Creates or updates an openshift managed cluster.
+     *
+     * Creates or updates a openshift managed cluster with the specified
+     * configuration for agents and OpenShift version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update an
+     * OpenShift Managed Cluster operation.
+     *
+     * @param {object} [parameters.plan] Define the resource plan as required by
+     * ARM for billing purposes
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.publisher] The plan ID.
+     *
+     * @param {string} parameters.openShiftVersion Version of OpenShift specified
+     * when creating the cluster.
+     *
+     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
+     * OpenShift API server.
+     *
+     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
+     * server loadbalancer internal hostname.
+     *
+     * @param {object} [parameters.networkProfile] Configuration for OpenShift
+     * networking.
+     *
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
+     * Vnet.
+     *
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
+     * peer.
+     *
+     * @param {array} [parameters.routerProfiles] Configuration for OpenShift
+     * router(s).
+     *
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
+     * the peering.
+     *
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
+     * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
+     * cluster VMs.
+     *
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Creates or updates an openshift managed cluster.
+     *
+     * Creates or updates a openshift managed cluster with the specified
+     * configuration for agents and OpenShift version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update an
+     * OpenShift Managed Cluster operation.
+     *
+     * @param {object} [parameters.plan] Define the resource plan as required by
+     * ARM for billing purposes
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.product] Specifies the product of the image
+     * from the marketplace. This is the same value as Offer under the
+     * imageReference element.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {string} [parameters.plan.publisher] The plan ID.
+     *
+     * @param {string} parameters.openShiftVersion Version of OpenShift specified
+     * when creating the cluster.
+     *
+     * @param {string} [parameters.publicHostname] Optional user-specified FQDN for
+     * OpenShift API server.
+     *
+     * @param {string} [parameters.fqdn] User-specified FQDN for OpenShift API
+     * server loadbalancer internal hostname.
+     *
+     * @param {object} [parameters.networkProfile] Configuration for OpenShift
+     * networking.
+     *
+     * @param {string} [parameters.networkProfile.vnetCidr] CIDR for the OpenShift
+     * Vnet.
+     *
+     * @param {string} [parameters.networkProfile.peerVnetId] CIDR of the Vnet to
+     * peer.
+     *
+     * @param {array} [parameters.routerProfiles] Configuration for OpenShift
+     * router(s).
+     *
+     * @param {object} [parameters.masterPoolProfile] Configuration for OpenShift
+     * master VMs.
+     *
+     * @param {string} [parameters.masterPoolProfile.name] Unique name of the
+     * master pool profile in the context of the subscription and resource group.
+     *
+     * @param {number} parameters.masterPoolProfile.count Number of masters (VMs)
+     * to host docker containers. The default value is 3.
+     *
+     * @param {string} parameters.masterPoolProfile.vmSize Size of agent VMs.
+     * Possible values include: 'Standard_D2s_v3', 'Standard_D4s_v3'
+     *
+     * @param {string} [parameters.masterPoolProfile.subnetCidr] Subnet CIDR for
+     * the peering.
+     *
+     * @param {string} [parameters.masterPoolProfile.osType] OsType to be used to
+     * specify os type. Choose from Linux and Windows. Default to Linux. Possible
+     * values include: 'Linux', 'Windows'
+     *
+     * @param {array} [parameters.agentPoolProfiles] Configuration of OpenShift
+     * cluster VMs.
+     *
+     * @param {object} [parameters.authProfile] Configures OpenShift
+     * authentication.
+     *
+     * @param {array} [parameters.authProfile.identityProviders] Type of
+     * authentication profile to use.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.OpenShiftManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OpenShiftManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OpenShiftManagedCluster>>;
+
+    /**
+     * @summary Updates tags on an openshift managed cluster.
+     *
+     * Updates an openshift managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update OpenShift
+     * Managed Cluster Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OpenShiftManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OpenShiftManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OpenShiftManagedCluster} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OpenShiftManagedCluster>;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OpenShiftManagedCluster>): void;
+
+
+    /**
+     * @summary Deletes an openshift managed cluster.
+     *
+     * Deletes the openshift managed cluster with a specified resource group and
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes an openshift managed cluster.
+     *
+     * Deletes the openshift managed cluster with a specified resource group and
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the openshift managed cluster
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
  * ContainerServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ContainerServiceClient.
@@ -1886,7 +2659,6 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
-     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -1995,7 +2767,6 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
-     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2258,7 +3029,6 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
-     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
@@ -2367,7 +3137,6 @@ export interface ManagedClusters {
      * the managed cluster.
      *
      * @param {array} [parameters.agentPoolProfiles] Properties of the agent pool.
-     * Currently only one agent pool can exist.
      *
      * @param {object} [parameters.linuxProfile] Profile for Linux VMs in the
      * container service cluster.
