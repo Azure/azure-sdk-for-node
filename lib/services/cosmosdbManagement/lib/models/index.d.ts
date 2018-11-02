@@ -110,9 +110,12 @@ export interface FailoverPolicy {
  *
  * @member {string} [id] Resource ID of a subnet, for example:
  * /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
+ * @member {boolean} [ignoreMissingVNetServiceEndpoint] Create firewall rule
+ * before the virtual network has vnet service endpoint enabled.
  */
 export interface VirtualNetworkRule {
   id?: string;
+  ignoreMissingVNetServiceEndpoint?: boolean;
 }
 
 /**
