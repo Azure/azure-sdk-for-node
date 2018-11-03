@@ -216,6 +216,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
+     * application gateway resource.
+     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -382,6 +385,9 @@ export interface ApplicationGateways {
      * gateway resource.
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
+     * application gateway resource.
+     *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
@@ -1204,6 +1210,9 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
      *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
+     * application gateway resource.
+     *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations
      * of the application gateway resource.
      *
@@ -1370,6 +1379,9 @@ export interface ApplicationGateways {
      * gateway resource.
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
+     * application gateway resource.
+     *
+     * @param {array} [parameters.rewriteRuleSets] Rewrite rules for the
      * application gateway resource.
      *
      * @param {array} [parameters.redirectConfigurations] Redirect configurations

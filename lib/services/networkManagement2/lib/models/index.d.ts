@@ -4141,6 +4141,9 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @member {object} [redirectConfiguration] Redirect configuration resource of
  * URL path map path rule.
  * @member {string} [redirectConfiguration.id] Resource ID.
+ * @member {object} [rewriteRuleSet] Rewrite rule set resource of URL path map
+ * path rule.
+ * @member {string} [rewriteRuleSet.id] Resource ID.
  * @member {string} [provisioningState] Path rule of URL path map resource.
  * Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [name] Name of the path rule that is unique within an
@@ -4154,6 +4157,7 @@ export interface ApplicationGatewayPathRule extends SubResource {
   backendAddressPool?: SubResource;
   backendHttpSettings?: SubResource;
   redirectConfiguration?: SubResource;
+  rewriteRuleSet?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4251,6 +4255,9 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @member {object} [urlPathMap] URL path map resource of the application
  * gateway.
  * @member {string} [urlPathMap.id] Resource ID.
+ * @member {object} [rewriteRuleSet] Rewrite Rule Set resource in Basic rule of
+ * the application gateway.
+ * @member {string} [rewriteRuleSet.id] Resource ID.
  * @member {object} [redirectConfiguration] Redirect configuration resource of
  * the application gateway.
  * @member {string} [redirectConfiguration.id] Resource ID.
@@ -4269,11 +4276,99 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
   backendHttpSettings?: SubResource;
   httpListener?: SubResource;
   urlPathMap?: SubResource;
+  rewriteRuleSet?: SubResource;
   redirectConfiguration?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
   type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayHeaderConfiguration class.
+ * @constructor
+ * Header configuration of the Actions set in Application Gateway.
+ *
+ * @member {string} [headerName] Header name of the header configuration
+ * @member {string} [headerValue] Header value of the header configuration
+ */
+export interface ApplicationGatewayHeaderConfiguration {
+  headerName?: string;
+  headerValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRewriteRuleActionSet class.
+ * @constructor
+ * Set of actions in the Rewrite Rule in Application Gateway.
+ *
+ * @member {object} [requestHeaderConfigurations] Request Header Actions in the
+ * Action Set
+ * @member {string} [requestHeaderConfigurations.headerName] Header name of the
+ * header configuration
+ * @member {string} [requestHeaderConfigurations.headerValue] Header value of
+ * the header configuration
+ * @member {object} [responseHeaderConfigurations] Response Header Actions in
+ * the Action Set
+ * @member {string} [responseHeaderConfigurations.headerName] Header name of
+ * the header configuration
+ * @member {string} [responseHeaderConfigurations.headerValue] Header value of
+ * the header configuration
+ */
+export interface ApplicationGatewayRewriteRuleActionSet {
+  requestHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
+  responseHeaderConfigurations?: ApplicationGatewayHeaderConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRewriteRule class.
+ * @constructor
+ * Rewrite rule of an application gateway.
+ *
+ * @member {string} [name] Name of the rewrite rule that is unique within an
+ * Application Gateway.
+ * @member {object} [actionSet] Set of actions to be done as part of the
+ * rewrite Rule.
+ * @member {object} [actionSet.requestHeaderConfigurations] Request Header
+ * Actions in the Action Set
+ * @member {string} [actionSet.requestHeaderConfigurations.headerName] Header
+ * name of the header configuration
+ * @member {string} [actionSet.requestHeaderConfigurations.headerValue] Header
+ * value of the header configuration
+ * @member {object} [actionSet.responseHeaderConfigurations] Response Header
+ * Actions in the Action Set
+ * @member {string} [actionSet.responseHeaderConfigurations.headerName] Header
+ * name of the header configuration
+ * @member {string} [actionSet.responseHeaderConfigurations.headerValue] Header
+ * value of the header configuration
+ */
+export interface ApplicationGatewayRewriteRule {
+  name?: string;
+  actionSet?: ApplicationGatewayRewriteRuleActionSet;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRewriteRuleSet class.
+ * @constructor
+ * Rewrite rule set of an application gateway.
+ *
+ * @member {array} [rewriteRules] Rewrite rules in the rewrite rule set.
+ * @member {string} [provisioningState] Provisioning state of the rewrite rule
+ * set resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [name] Name of the rewrite rule set that is unique within
+ * an Application Gateway.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ApplicationGatewayRewriteRuleSet extends SubResource {
+  rewriteRules?: ApplicationGatewayRewriteRule[];
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
 }
 
 /**
@@ -4330,6 +4425,9 @@ export interface ApplicationGatewayRedirectConfiguration extends SubResource {
  * @member {object} [defaultBackendHttpSettings] Default backend http settings
  * resource of URL path map.
  * @member {string} [defaultBackendHttpSettings.id] Resource ID.
+ * @member {object} [defaultRewriteRuleSet] Default Rewrite rule set resource
+ * of URL path map.
+ * @member {string} [defaultRewriteRuleSet.id] Resource ID.
  * @member {object} [defaultRedirectConfiguration] Default redirect
  * configuration resource of URL path map.
  * @member {string} [defaultRedirectConfiguration.id] Resource ID.
@@ -4346,6 +4444,7 @@ export interface ApplicationGatewayRedirectConfiguration extends SubResource {
 export interface ApplicationGatewayUrlPathMap extends SubResource {
   defaultBackendAddressPool?: SubResource;
   defaultBackendHttpSettings?: SubResource;
+  defaultRewriteRuleSet?: SubResource;
   defaultRedirectConfiguration?: SubResource;
   pathRules?: ApplicationGatewayPathRule[];
   provisioningState?: string;
@@ -4491,6 +4590,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * resource.
  * @member {array} [requestRoutingRules] Request routing rules of the
  * application gateway resource.
+ * @member {array} [rewriteRuleSets] Rewrite rules for the application gateway
+ * resource.
  * @member {array} [redirectConfigurations] Redirect configurations of the
  * application gateway resource.
  * @member {object} [webApplicationFirewallConfiguration] Web application
@@ -4551,6 +4652,7 @@ export interface ApplicationGateway extends Resource {
   httpListeners?: ApplicationGatewayHttpListener[];
   urlPathMaps?: ApplicationGatewayUrlPathMap[];
   requestRoutingRules?: ApplicationGatewayRequestRoutingRule[];
+  rewriteRuleSets?: ApplicationGatewayRewriteRuleSet[];
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   enableHttp2?: boolean;
