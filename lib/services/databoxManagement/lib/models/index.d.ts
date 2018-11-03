@@ -24,7 +24,7 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [shareName] Name of the share.
  * @member {string} [shareType] Type of the share. Possible values include:
- * 'UnknownType', 'HCS', 'BlockBlob', 'PageBlob', 'AzureFile'
+ * 'UnknownType', 'HCS', 'BlockBlob', 'PageBlob', 'AzureFile', 'ManagedDisk'
  * @member {string} [userName] User name for the share.
  * @member {string} [password] Password for the share.
  * @member {array} [supportedAccessProtocols] Access protocols supported on the
@@ -230,7 +230,8 @@ export interface SkuCost {
  * @member {array} [costs] Cost of the Sku.
  * @member {array} [apiVersions] Api versions that support this Sku.
  * @member {string} [disabledReason] Reason why the Sku is disabled. Possible
- * values include: 'None', 'Country', 'Region', 'Feature', 'OfferType'
+ * values include: 'None', 'Country', 'Region', 'Feature', 'OfferType',
+ * 'NoSubscriptionInfo'
  * @member {string} [disabledReasonMessage] Message for why the Sku is
  * disabled.
  * @member {string} [requiredFeature] Required feature to access the sku.
@@ -326,12 +327,18 @@ export interface CopyLogDetails {
  * now.
  * @member {number} [totalBytesToProcess] Total amount of data to be processed
  * by the job.
+ * @member {number} [filesProcessed] Number of files processed by the job as of
+ * now.
+ * @member {number} [totalFilesToProcess] Total number of files to be processed
+ * by the job.
  */
 export interface CopyProgress {
   readonly storageAccountName?: string;
   readonly accountId?: string;
   readonly bytesSentToCloud?: number;
   readonly totalBytesToProcess?: number;
+  readonly filesProcessed?: number;
+  readonly totalFilesToProcess?: number;
 }
 
 /**
@@ -639,12 +646,43 @@ export interface DataboxJobSecrets extends JobSecrets {
  * @class
  * Initializes a new instance of the DestinationAccountDetails class.
  * @constructor
- * Details for the destination account.
+ * Details of the destination of the data
  *
- * @member {string} accountId Destination storage account id.
+ * @member {string} [accountId] Arm Id of the destination where the data has to
+ * be moved.
+ * @member {string} dataDestinationType Polymorphic Discriminator
  */
 export interface DestinationAccountDetails {
-  accountId: string;
+  accountId?: string;
+  dataDestinationType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DestinationManagedDiskDetails class.
+ * @constructor
+ * Details for the destination compute disks.
+ *
+ * @member {string} resourceGroupId Destination Resource Group Id where the
+ * Compute disks should be created.
+ * @member {string} stagingStorageAccountId Arm Id of the storage account that
+ * can be used to copy the vhd for staging.
+ */
+export interface DestinationManagedDiskDetails extends DestinationAccountDetails {
+  resourceGroupId: string;
+  stagingStorageAccountId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DestinationStorageAccountDetails class.
+ * @constructor
+ * Details for the destination storage account.
+ *
+ * @member {string} storageAccountId Destination Storage Account Arm Id.
+ */
+export interface DestinationStorageAccountDetails extends DestinationAccountDetails {
+  storageAccountId: string;
 }
 
 /**
