@@ -27379,6 +27379,74 @@ export interface DatabaseVulnerabilityAssessmentScans {
 
 
     /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+
+
+    /**
      * Gets a vulnerability assessment scan record of a database.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -27522,74 +27590,6 @@ export interface DatabaseVulnerabilityAssessmentScans {
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
     initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
 
 
     /**
