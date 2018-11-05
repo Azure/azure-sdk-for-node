@@ -8532,20 +8532,6 @@ export interface RequestHistory extends Resource {
   response?: Response;
 }
 
-/**
- * @class
- * Initializes a new instance of the RequestHistoryListResult class.
- * @constructor
- * The list of workflow request histories.
- *
- * @member {array} [value] A list of workflow request histories.
- * @member {string} [nextLink] The URL to get the next set of results.
- */
-export interface RequestHistoryListResult {
-  value?: RequestHistory[];
-  nextLink?: string;
-}
-
 
 /**
  * @class
@@ -8636,6 +8622,18 @@ export interface ExpressionTraces extends Array<ExpressionRoot> {
  *
  */
 export interface WorkflowRunActionRepetitionDefinitionCollection extends Array<WorkflowRunActionRepetitionDefinition> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RequestHistoryListResult class.
+ * @constructor
+ * The list of workflow request histories.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface RequestHistoryListResult extends Array<RequestHistory> {
+  nextLink?: string;
 }
 
 /**

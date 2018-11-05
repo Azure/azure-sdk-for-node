@@ -3283,6 +3283,64 @@ export interface WorkflowRunActionRepetitionsRequestHistories {
     get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistory>;
     get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, callback: ServiceCallback<models.RequestHistory>): void;
     get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, requestHistoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistory>): void;
+
+
+    /**
+     * List a workflow run repetition request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistoryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistoryListResult>>;
+
+    /**
+     * List a workflow run repetition request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistoryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistoryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistoryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistoryListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistoryListResult>): void;
 }
 
 /**
@@ -3431,6 +3489,64 @@ export interface WorkflowRunActionRequestHistories {
     get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistory>;
     get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, callback: ServiceCallback<models.RequestHistory>): void;
     get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, requestHistoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistory>): void;
+
+
+    /**
+     * List a workflow run request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RequestHistoryListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RequestHistoryListResult>>;
+
+    /**
+     * List a workflow run request history.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RequestHistoryListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RequestHistoryListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RequestHistoryListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RequestHistoryListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RequestHistoryListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RequestHistoryListResult>): void;
 }
 
 /**
