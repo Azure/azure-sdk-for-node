@@ -6106,7 +6106,7 @@ export interface LookupActivity extends ExecutionActivity {
  * @constructor
  * Delete activity.
  *
- * @member {boolean} recursive If true, files under the folder path will be
+ * @member {object} [recursive] If true, files under the folder path will be
  * deleted recursively. Default is true. Type: boolean (or Expression with
  * resultType boolean).
  * @member {object} dataset Delete activity dataset reference.
@@ -6114,7 +6114,7 @@ export interface LookupActivity extends ExecutionActivity {
  * @member {object} [dataset.parameters] Arguments for dataset.
  */
 export interface DeleteActivity extends ExecutionActivity {
-  recursive: boolean;
+  recursive?: any;
   dataset: DatasetReference;
 }
 
