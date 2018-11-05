@@ -7325,6 +7325,22 @@ export interface RetentionPolicyParameters {
 
 /**
  * @class
+ * Initializes a new instance of the FlowLogFormatParameters class.
+ * @constructor
+ * Parameters that define the flow log format.
+ *
+ * @member {string} [type] The file type of flow log. Possible values include:
+ * 'JSON'
+ * @member {number} [version] The version (revision) of the flow log. Default
+ * value: 0 .
+ */
+export interface FlowLogFormatParameters {
+  type?: string;
+  version?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FlowLogStatusParameters class.
  * @constructor
  * Parameters that define a resource to query flow log and traffic analytics
@@ -7393,6 +7409,10 @@ export interface TrafficAnalyticsProperties {
  * records.
  * @member {boolean} [retentionPolicy.enabled] Flag to enable/disable
  * retention.
+ * @member {object} [format]
+ * @member {string} [format.type] The file type of flow log. Possible values
+ * include: 'JSON'
+ * @member {number} [format.version] The version (revision) of the flow log.
  * @member {object} [flowAnalyticsConfiguration]
  * @member {object}
  * [flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration]
@@ -7414,6 +7434,7 @@ export interface FlowLogInformation {
   storageId: string;
   enabled: boolean;
   retentionPolicy?: RetentionPolicyParameters;
+  format?: FlowLogFormatParameters;
   flowAnalyticsConfiguration?: TrafficAnalyticsProperties;
 }
 
