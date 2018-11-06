@@ -322,259 +322,6 @@ export interface ProviderOperationsMetadataOperations {
 
 /**
  * @class
- * Permissions
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AuthorizationManagementClient.
- */
-export interface Permissions {
-
-
-    /**
-     * Gets all permissions the caller has for a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listForResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
-
-    /**
-     * Gets all permissions the caller has for a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PermissionGetResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PermissionGetResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listForResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
-    listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PermissionGetResult>): void;
-    listForResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
-
-
-    /**
-     * Gets all permissions the caller has for a resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceProviderNamespace The namespace of the resource
-     * provider.
-     *
-     * @param {string} parentResourcePath The parent resource identity.
-     *
-     * @param {string} resourceType The resource type of the resource.
-     *
-     * @param {string} resourceName The name of the resource to get the permissions
-     * for.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listForResourceWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
-
-    /**
-     * Gets all permissions the caller has for a resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceProviderNamespace The namespace of the resource
-     * provider.
-     *
-     * @param {string} parentResourcePath The parent resource identity.
-     *
-     * @param {string} resourceType The resource type of the resource.
-     *
-     * @param {string} resourceName The name of the resource to get the permissions
-     * for.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PermissionGetResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PermissionGetResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PermissionGetResult>): void;
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
-
-
-    /**
-     * Gets all permissions the caller has for a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listForResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
-
-    /**
-     * Gets all permissions the caller has for a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PermissionGetResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PermissionGetResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listForResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
-    listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PermissionGetResult>): void;
-    listForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
-
-
-    /**
-     * Gets all permissions the caller has for a resource.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listForResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
-
-    /**
-     * Gets all permissions the caller has for a resource.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PermissionGetResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PermissionGetResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
-    listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PermissionGetResult>): void;
-    listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
-}
-
-/**
- * @class
  * RoleAssignments
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AuthorizationManagementClient.
@@ -818,6 +565,11 @@ export interface RoleAssignments {
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
+     *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
      *
@@ -856,6 +608,11 @@ export interface RoleAssignments {
      * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
+     *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
@@ -1020,6 +777,11 @@ export interface RoleAssignments {
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
      *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
+     *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
      *
@@ -1049,6 +811,11 @@ export interface RoleAssignments {
      * @param {string} parameters.principalId The principal ID assigned to the
      * role. This maps to the ID inside the Active Directory. It can point to a
      * user, service principal, or security group.
+     *
+     * @param {string} [parameters.principalType] The principal type of the
+     * assigned principal ID. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal', 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup',
+     * 'Application', 'MSI', 'DirectoryObjectOrGroup', 'Everyone'
      *
      * @param {boolean} [parameters.canDelegate] The delgation flag used for
      * creating a role assignment
@@ -1498,6 +1265,259 @@ export interface RoleAssignments {
     listForScopeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignmentListResult>;
     listForScopeNext(nextPageLink: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
     listForScopeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
+}
+
+/**
+ * @class
+ * Permissions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AuthorizationManagementClient.
+ */
+export interface Permissions {
+
+
+    /**
+     * Gets all permissions the caller has for a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
+
+    /**
+     * Gets all permissions the caller has for a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PermissionGetResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionGetResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
+    listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PermissionGetResult>): void;
+    listForResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
+
+
+    /**
+     * Gets all permissions the caller has for a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource.
+     *
+     * @param {string} resourceName The name of the resource to get the permissions
+     * for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
+
+    /**
+     * Gets all permissions the caller has for a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {string} parentResourcePath The parent resource identity.
+     *
+     * @param {string} resourceType The resource type of the resource.
+     *
+     * @param {string} resourceName The name of the resource to get the permissions
+     * for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PermissionGetResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionGetResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PermissionGetResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
+
+
+    /**
+     * Gets all permissions the caller has for a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
+
+    /**
+     * Gets all permissions the caller has for a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PermissionGetResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionGetResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
+    listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PermissionGetResult>): void;
+    listForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
+
+
+    /**
+     * Gets all permissions the caller has for a resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PermissionGetResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listForResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PermissionGetResult>>;
+
+    /**
+     * Gets all permissions the caller has for a resource.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PermissionGetResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PermissionGetResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PermissionGetResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
+    listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PermissionGetResult>): void;
+    listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
 }
 
 /**
