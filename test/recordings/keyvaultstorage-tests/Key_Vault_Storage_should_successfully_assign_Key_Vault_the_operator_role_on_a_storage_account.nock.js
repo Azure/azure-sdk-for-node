@@ -136,7 +136,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('//subscriptions/6d8e19c2-3a60-481f-8ebb-118dc3007c5d/resourceGroups/nodeTestGroup8988/providers/Microsoft.Storage/storageAccounts/testakvsa725/providers/Microsoft.Authorization/roleAssignments/afb48884-7051-4b73-b83f-afcca5decd79?api-version=2018-01-01-preview', '*')
+.put('//subscriptions/6d8e19c2-3a60-481f-8ebb-118dc3007c5d/resourceGroups/nodeTestGroup8988/providers/Microsoft.Storage/storageAccounts/testakvsa725/providers/Microsoft.Authorization/roleAssignments/afb48884-7051-4b73-b83f-afcca5decd79?api-version=2018-09-01-preview', '*')
   .reply(201, "{\"properties\":{\"roleDefinitionId\":\"/subscriptions/6d8e19c2-3a60-481f-8ebb-118dc3007c5d/providers/Microsoft.Authorization/roleDefinitions/81a9662b-bebf-436f-a333-f67b29880f12\",\"principalId\":\"93c27d83-f79b-4cb2-8dd4-4aa716542e74\",\"principalType\":\"ServicePrincipal\",\"scope\":\"/subscriptions/6d8e19c2-3a60-481f-8ebb-118dc3007c5d/resourceGroups/nodeTestGroup8988/providers/Microsoft.Storage/storageAccounts/testakvsa725\",\"createdOn\":\"2018-06-27T23:53:49.6661846Z\",\"updatedOn\":\"2018-06-27T23:53:49.6661846Z\",\"createdBy\":null,\"updatedBy\":\"7541419d-883d-452f-a823-56aa8bf0749f\"},\"id\":\"/subscriptions/6d8e19c2-3a60-481f-8ebb-118dc3007c5d/resourceGroups/nodeTestGroup8988/providers/Microsoft.Storage/storageAccounts/testakvsa725/providers/Microsoft.Authorization/roleAssignments/afb48884-7051-4b73-b83f-afcca5decd79\",\"type\":\"Microsoft.Authorization/roleAssignments\",\"name\":\"afb48884-7051-4b73-b83f-afcca5decd79\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '901',
