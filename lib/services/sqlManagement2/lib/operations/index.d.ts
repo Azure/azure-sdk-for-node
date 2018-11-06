@@ -16592,11 +16592,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16622,10 +16622,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -16735,11 +16736,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16765,10 +16766,11 @@ export interface ExtendedDatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -16969,11 +16971,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -16999,10 +17001,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17110,11 +17113,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17140,10 +17143,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17271,11 +17275,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17301,10 +17305,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17412,11 +17417,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17442,10 +17447,11 @@ export interface ExtendedServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17643,11 +17649,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17673,10 +17679,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17781,11 +17788,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17811,10 +17818,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -17939,11 +17947,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -17969,10 +17977,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -18077,11 +18086,11 @@ export interface ServerBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18107,10 +18116,11 @@ export interface ServerBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -18314,11 +18324,11 @@ export interface DatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18344,10 +18354,11 @@ export interface DatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
@@ -18454,11 +18465,11 @@ export interface DatabaseBlobAuditingPolicies {
      * REFERENCES
      *
      * The general form for defining an action to be audited is:
-     * <action> ON <object> BY <principal>
+     * {action} ON {object} BY {principal}
      *
      * Note that <object> in the above format can refer to an object like a table,
      * view, or stored procedure, or an entire database or schema. For the latter
-     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used,
      * respectively.
      *
      * For example:
@@ -18484,10 +18495,11 @@ export interface DatabaseBlobAuditingPolicies {
      * 'SQLSecurityAuditEvents' diagnostic logs category on the database should be
      * also created.
      * Note that for server level audit you should use the 'master' database as
-     * <databaseName>.
+     * {databaseName}.
+     *
      * Diagnostic Settings URI format:
      * PUT
-     * https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Sql/servers/<serverName>/databases/<databaseName>/providers/microsoft.insights/diagnosticSettings/<settingsName>?api-version=2017-05-01-preview
+     * https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/providers/microsoft.insights/diagnosticSettings/{settingsName}?api-version=2017-05-01-preview
      *
      * For more information, see [Diagnostic Settings REST
      * API](https://go.microsoft.com/fwlink/?linkid=2033207)
