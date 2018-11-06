@@ -2,6 +2,8 @@
 
 [![NPM version](https://badge.fury.io/js/azure.png)](https://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
+**The SDKs generated from this repository will be deprecated next year. These packages will be replaced by new TypeScript-based isomorphic SDKs (https://github.com/Azure/azure-sdk-for-js) which work on Node.js and browsers.**
+
 This project provides Node.js packages that makes it easy to consume and manage Microsoft Azure Services.
 
 If you are new to Azure and Node.js, see [Azure for Node.js developers](https://docs.microsoft.com/en-us/javascript/azure).
