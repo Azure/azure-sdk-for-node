@@ -99,64 +99,6 @@ export interface ProviderOperationsMetadata {
 
 /**
  * @class
- * Initializes a new instance of the Permission class.
- * @constructor
- * Role definition permissions.
- *
- * @member {array} [actions] Allowed actions.
- * @member {array} [notActions] Denied actions.
- * @member {array} [dataActions] Allowed Data actions.
- * @member {array} [notDataActions] Denied Data actions.
- */
-export interface Permission {
-  actions?: string[];
-  notActions?: string[];
-  dataActions?: string[];
-  notDataActions?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleDefinitionFilter class.
- * @constructor
- * Role Definitions filter
- *
- * @member {string} [roleName] Returns role definition with the specific name.
- * @member {string} [type] Returns role definition with the specific type.
- */
-export interface RoleDefinitionFilter {
-  roleName?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RoleDefinition class.
- * @constructor
- * Role definition.
- *
- * @member {string} [id] The role definition ID.
- * @member {string} [name] The role definition name.
- * @member {string} [type] The role definition type.
- * @member {string} [roleName] The role name.
- * @member {string} [description] The role definition description.
- * @member {string} [roleType] The role type.
- * @member {array} [permissions] Role definition permissions.
- * @member {array} [assignableScopes] Role definition assignable scopes.
- */
-export interface RoleDefinition {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  roleName?: string;
-  description?: string;
-  roleType?: string;
-  permissions?: Permission[];
-  assignableScopes?: string[];
-}
-
-/**
- * @class
  * Initializes a new instance of the RoleAssignmentFilter class.
  * @constructor
  * Role Assignments filter
@@ -205,13 +147,76 @@ export interface RoleAssignment {
  * @member {string} principalId The principal ID assigned to the role. This
  * maps to the ID inside the Active Directory. It can point to a user, service
  * principal, or security group.
+ * @member {string} [principalType] The principal type of the assigned
+ * principal ID. Possible values include: 'User', 'Group', 'ServicePrincipal',
+ * 'Unknown', 'DirectoryRoleTemplate', 'ForeignGroup', 'Application', 'MSI',
+ * 'DirectoryObjectOrGroup', 'Everyone'
  * @member {boolean} [canDelegate] The delgation flag used for creating a role
  * assignment
  */
 export interface RoleAssignmentCreateParameters {
   roleDefinitionId: string;
   principalId: string;
+  principalType?: string;
   canDelegate?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoleDefinitionFilter class.
+ * @constructor
+ * Role Definitions filter
+ *
+ * @member {string} [roleName] Returns role definition with the specific name.
+ * @member {string} [type] Returns role definition with the specific type.
+ */
+export interface RoleDefinitionFilter {
+  roleName?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Permission class.
+ * @constructor
+ * Role definition permissions.
+ *
+ * @member {array} [actions] Allowed actions.
+ * @member {array} [notActions] Denied actions.
+ * @member {array} [dataActions] Allowed Data actions.
+ * @member {array} [notDataActions] Denied Data actions.
+ */
+export interface Permission {
+  actions?: string[];
+  notActions?: string[];
+  dataActions?: string[];
+  notDataActions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoleDefinition class.
+ * @constructor
+ * Role definition.
+ *
+ * @member {string} [id] The role definition ID.
+ * @member {string} [name] The role definition name.
+ * @member {string} [type] The role definition type.
+ * @member {string} [roleName] The role name.
+ * @member {string} [description] The role definition description.
+ * @member {string} [roleType] The role type.
+ * @member {array} [permissions] Role definition permissions.
+ * @member {array} [assignableScopes] Role definition assignable scopes.
+ */
+export interface RoleDefinition {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  roleName?: string;
+  description?: string;
+  roleType?: string;
+  permissions?: Permission[];
+  assignableScopes?: string[];
 }
 
 /**
@@ -343,19 +348,6 @@ export interface ProviderOperationsMetadataListResult extends Array<ProviderOper
 
 /**
  * @class
- * Initializes a new instance of the PermissionGetResult class.
- * @constructor
- * Permissions information.
- *
- * @member {string} [nextLink] The URL to use for getting the next set of
- * results.
- */
-export interface PermissionGetResult extends Array<Permission> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RoleAssignmentListResult class.
  * @constructor
  * Role assignment list operation result.
@@ -364,6 +356,19 @@ export interface PermissionGetResult extends Array<Permission> {
  * results.
  */
 export interface RoleAssignmentListResult extends Array<RoleAssignment> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PermissionGetResult class.
+ * @constructor
+ * Permissions information.
+ *
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface PermissionGetResult extends Array<Permission> {
   nextLink?: string;
 }
 
