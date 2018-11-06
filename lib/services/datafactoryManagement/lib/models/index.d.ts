@@ -1892,12 +1892,23 @@ export interface SalesforceMarketingCloudLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface NetezzaLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -1909,12 +1920,23 @@ export interface NetezzaLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface VerticaLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2373,12 +2395,23 @@ export interface MarketoLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MariaDBLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2660,12 +2693,23 @@ export interface HBaseLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface GreenplumLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2767,12 +2811,23 @@ export interface EloquaLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [pwd] The Azure key vault secret reference of password in
+ * connection string.
+ * @member {object} [pwd.store] The Azure Key Vault linked service reference.
+ * @member {string} [pwd.store.referenceName] Reference LinkedService name.
+ * @member {object} [pwd.store.parameters] Arguments for LinkedService.
+ * @member {object} [pwd.secretName] The name of the secret in Azure Key Vault.
+ * Type: string (or Expression with resultType string).
+ * @member {object} [pwd.secretVersion] The version of the secret in Azure Key
+ * Vault. The default value is the latest version of the secret. Type: string
+ * (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface DrillLinkedService extends LinkedService {
   connectionString?: any;
+  pwd?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2784,12 +2839,25 @@ export interface DrillLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [credString] The Azure key vault secret reference of
+ * credString in connection string.
+ * @member {object} [credString.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [credString.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [credString.store.parameters] Arguments for LinkedService.
+ * @member {object} [credString.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [credString.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CouchbaseLinkedService extends LinkedService {
   connectionString?: any;
+  credString?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -2835,12 +2903,25 @@ export interface ConcurLinkedService extends LinkedService {
  *
  * @member {object} [connectionString] An ODBC connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzurePostgreSqlLinkedService extends LinkedService {
   connectionString?: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3657,12 +3738,25 @@ export interface SybaseLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string.
  * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface PostgreSqlLinkedService extends LinkedService {
   connectionString: SecretBase;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3674,12 +3768,25 @@ export interface PostgreSqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string.
  * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MySqlLinkedService extends LinkedService {
   connectionString: SecretBase;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3691,12 +3798,25 @@ export interface MySqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureMySqlLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3708,12 +3828,25 @@ export interface AzureMySqlLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OracleLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3829,12 +3962,25 @@ export interface DynamicsLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CosmosDbLinkedService extends LinkedService {
   connectionString: any;
+  accountKey?: AzureKeyVaultSecretReference;
   encryptedCredential?: any;
 }
 
@@ -3892,6 +4038,18 @@ export interface AzureBatchLinkedService extends LinkedService {
  *
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Database. Type: string (or Expression with
  * resultType string).
@@ -3906,6 +4064,7 @@ export interface AzureBatchLinkedService extends LinkedService {
  */
 export interface AzureSqlDatabaseLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3944,6 +4103,18 @@ export interface SqlServerLinkedService extends LinkedService {
  * @member {object} connectionString The connection string. Type: string,
  * SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [password] The Azure key vault secret reference of password
+ * in connection string.
+ * @member {object} [password.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [password.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [password.store.parameters] Arguments for LinkedService.
+ * @member {object} [password.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [password.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Data Warehouse. Type: string (or
  * Expression with resultType string).
@@ -3958,6 +4129,7 @@ export interface SqlServerLinkedService extends LinkedService {
  */
 export interface AzureSqlDWLinkedService extends LinkedService {
   connectionString: any;
+  password?: AzureKeyVaultSecretReference;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3973,16 +4145,42 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureTableStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
 
@@ -3995,9 +4193,33 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri, serviceEndpoint property. Type: string, SecureString
  * or AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Blob Storage resource. It is
- * mutually exclusive with connectionString, serviceEndpoint property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString, serviceEndpoint property. Type:
+ * string, SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [serviceEndpoint] Blob service endpoint of the Azure Blob
  * Storage resource. It is mutually exclusive with connectionString, sasUri
  * property.
@@ -4015,7 +4237,9 @@ export interface AzureTableStorageLinkedService extends LinkedService {
  */
 export interface AzureBlobStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   serviceEndpoint?: string;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
@@ -4032,16 +4256,42 @@ export interface AzureBlobStorageLinkedService extends LinkedService {
  * @member {object} [connectionString] The connection string. It is mutually
  * exclusive with sasUri property. Type: string, SecureString or
  * AzureKeyVaultSecretReference.
+ * @member {object} [accountKey] The Azure key vault secret reference of
+ * accountKey in connection string.
+ * @member {object} [accountKey.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [accountKey.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [accountKey.store.parameters] Arguments for LinkedService.
+ * @member {object} [accountKey.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [accountKey.secretVersion] The version of the secret in
+ * Azure Key Vault. The default value is the latest version of the secret.
+ * Type: string (or Expression with resultType string).
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
- * mutually exclusive with connectionString property.
- * @member {string} [sasUri.type] Polymorphic Discriminator
+ * mutually exclusive with connectionString property. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
+ * @member {object} [sasToken] The Azure key vault secret reference of sasToken
+ * in sas uri.
+ * @member {object} [sasToken.store] The Azure Key Vault linked service
+ * reference.
+ * @member {string} [sasToken.store.referenceName] Reference LinkedService
+ * name.
+ * @member {object} [sasToken.store.parameters] Arguments for LinkedService.
+ * @member {object} [sasToken.secretName] The name of the secret in Azure Key
+ * Vault. Type: string (or Expression with resultType string).
+ * @member {object} [sasToken.secretVersion] The version of the secret in Azure
+ * Key Vault. The default value is the latest version of the secret. Type:
+ * string (or Expression with resultType string).
  * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
   connectionString?: any;
-  sasUri?: SecretBase;
+  accountKey?: AzureKeyVaultSecretReference;
+  sasUri?: any;
+  sasToken?: AzureKeyVaultSecretReference;
   encryptedCredential?: string;
 }
 
